@@ -1,76 +1,151 @@
 .supplement-motion-study {
-  margin: 28px 0;
+  container: motion-study / inline-size;
+  margin: 32px 0;
   color: var(--route-heading-ink);
+  font-family: var(--font-sans);
 }
-.supplement-motion-study__phases {
+
+.supplement-motion-study__heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #b9c69f;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.supplement-motion-study__eyebrow {
+  color: var(--route-body-ink, #465540);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.wiki-page .supplement-motion-study__sequence {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  gap: 24px;
+  margin: 0;
+  padding: 22px 0 24px;
+  list-style: none;
 }
-.supplement-motion-study__phases button {
-  padding: 10px 6px;
-  border: 0;
-  border-bottom: 2px solid transparent;
-  background: transparent;
-  color: var(--route-heading-ink);
-  font: 500 14px/1.4 var(--font-sans);
-  cursor: pointer;
+
+.supplement-motion-study__state {
+  min-width: 0;
 }
-.supplement-motion-study__phases button[aria-pressed="true"] {
-  border-bottom-color: var(--route-subheading-ink);
-  color: var(--route-subheading-ink);
+
+.supplement-motion-study__phase {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  font-size: 14px;
+  line-height: 1.5;
 }
+
 .supplement-motion-study__letter {
+  color: var(--route-subheading-ink);
   font:
     700 16px/1 Arial,
     sans-serif;
-  margin-right: 6px;
 }
-.supplement-motion-study button:focus-visible,
-.supplement-motion-study input:focus-visible {
-  outline: 2px solid var(--route-heading-ink);
-  outline-offset: 4px;
+
+.supplement-motion-study__scene {
+  position: relative;
+  height: 218px;
+  margin-top: 14px;
+  background: #fcfaf7;
+  border-block: 1px solid #eee7df;
 }
-.supplement-motion-study svg {
-  display: block;
-  width: 100%;
-  height: auto;
+
+.supplement-motion-study__context {
+  position: absolute;
+  top: 16px;
+  inset-inline: 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
 }
-.supplement-motion-study__guide {
-  fill: none;
-  stroke: var(--route-heading-ink);
-  stroke-width: 1.5;
-  stroke-dasharray: 5 6;
-  opacity: 0.3;
+
+.wiki-page .supplement-motion-study__ring {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  width: 118px;
+  height: 116px;
+  max-width: 68%;
+  margin: 0;
+  object-fit: contain;
+  transform: translateX(-50%);
 }
-.supplement-motion-study__labels {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 10%;
-  margin: 0 0 28px;
-  font: 400 15px/1.6 var(--font-sans);
+
+.supplement-motion-study__annotation {
+  position: absolute;
+  bottom: 15px;
+  inset-inline: 8px;
+  color: var(--route-body-ink, #465540);
+  font-size: 11px;
+  line-height: 1.5;
+  text-align: center;
 }
-.supplement-motion-study__range {
-  display: grid;
-  gap: 12px;
-  font: 400 14px/1.6 var(--font-sans);
+
+.supplement-motion-study__state--carry .supplement-motion-study__context {
+  color: #746e66;
+  font-style: italic;
 }
-.supplement-motion-study__range input {
-  width: 100%;
-  accent-color: var(--route-heading-ink);
+
+.supplement-motion-study__state--carry .supplement-motion-study__annotation {
+  opacity: 0.25;
 }
-.wiki-page .supplement-motion-study .supplement-motion-study__explanation {
-  margin: 18px 0 12px;
-  font: 400 15px/1.7 var(--font-sans);
-  min-height: 3.4em;
+
+.supplement-motion-study__state--settle
+  :is(.supplement-motion-study__context, .supplement-motion-study__annotation) {
+  opacity: 0.5;
 }
+
+.supplement-motion-study__state--read .supplement-motion-study__scene {
+  background: #f4f7ec;
+  border-color: #d4dcc5;
+}
+
+.supplement-motion-study__note {
+  margin-top: 16px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.wiki-page .supplement-motion-study__note p {
+  margin: 7px 0 0;
+  color: var(--route-body-ink, #465540);
+  font-size: 13px;
+  line-height: 1.75;
+  text-align: left;
+}
+
 .supplement-motion-study figcaption {
-  font: 400 13.5px/1.6 var(--font-sans);
-  opacity: 0.8;
+  padding-top: 16px;
+  border-top: 1px solid #d4dcc5;
+  color: var(--route-body-ink, #465540);
+  font: 400 13px/1.8 var(--font-sans);
 }
-@media (max-width: 540px) {
-  .supplement-motion-study__phases {
+
+@container motion-study (max-width: 760px) {
+  .wiki-page .supplement-motion-study__sequence {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 4px 10px;
+    gap: 28px 20px;
+  }
+}
+
+@container motion-study (max-width: 380px) {
+  .wiki-page .supplement-motion-study__sequence {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .supplement-motion-study__scene {
+    height: 200px;
+  }
+  .wiki-page .supplement-motion-study__ring {
+    top: 46px;
   }
 }

@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
+import type { WikiContentBlock } from "../components/wiki/wikiPageTypes";
 import { visualDesignFeatures } from "../components/wiki/features/project/VisualDesignPanels";
 import { VisualDesignNarrativeFeature } from "../components/wiki/features/project/VisualDesignNarrativePanels";
 import { installVisualDesignFigures } from "../components/wiki/features/project/visualDesignFigureTools";
@@ -14,19 +15,22 @@ import "../styles/features/visual-design-panels.css";
 const renderVisualDesignText = createCitationRenderer(
   visualDesignCitationIndex,
 );
+function collectNarrativeFeatures(blocks: WikiContentBlock[]): string[] {
+  return blocks.flatMap((block) => {
+    if (block.type === "feature") return [block.key];
+    if (block.type === "split")
+      return collectNarrativeFeatures([...block.prose, block.aside]);
+    return [];
+  });
+}
+
 const narrativeFeatures = Object.fromEntries(
-  visualDesignNarrativeSections.flatMap((section) =>
-    (section.blocks ?? []).flatMap((block) =>
-      block.type === "feature"
-        ? [
-            [
-              block.key,
-              <VisualDesignNarrativeFeature key={block.key} name={block.key} />,
-            ],
-          ]
-        : [],
-    ),
-  ),
+  visualDesignNarrativeSections
+    .flatMap((section) => collectNarrativeFeatures(section.blocks ?? []))
+    .map((name) => [
+      name,
+      <VisualDesignNarrativeFeature key={name} name={name} />,
+    ]),
 );
 
 export function VisualDesign() {
@@ -39,6 +43,7 @@ export function VisualDesign() {
       theme="project"
       pageClassName="wiki-page--project wiki-page--description wiki-page--visual-design"
       hideHeroCopy
+      outlineDepth={2}
       features={{ ...visualDesignFeatures(), ...narrativeFeatures }}
       inlineRenderer={renderVisualDesignText}
     />

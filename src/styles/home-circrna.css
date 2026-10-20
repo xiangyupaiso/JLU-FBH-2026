@@ -5,6 +5,9 @@
 #why-circrna .circrna-heading-art {
   top: 3.4% !important;
 }
+#why-circrna .circrna-illustration {
+  width: min(94%, calc((var(--scene-height) - 48px) * var(--art-aspect)));
+}
 #why-circrna .circrna-caption {
   position: absolute;
   top: 92%;
@@ -13,15 +16,15 @@
   margin: 0;
   color: #765968;
   text-align: center;
-  font: 400 clamp(11px, 1.05vw, 15px)/1.5 var(--font-sans);
-  opacity: 0.75;
+  font: 400 clamp(13px, 1.1vw, 17px)/1.5 var(--font-sans);
+  text-wrap: balance;
 }
 @media (max-width: 800px) and (orientation: portrait) {
   #why-circrna {
     --scene-hold: 65svh;
   }
   #why-circrna .circrna-illustration {
-    width: min(100%, calc((var(--scene-height) - 24px) * 0.8));
+    width: min(100%, calc((var(--scene-height) - 48px) * 0.8));
     aspect-ratio: 4 / 5;
   }
   /* Recompose the same layers for a tall screen. */
@@ -50,7 +53,7 @@
     height: auto !important;
   }
   #why-circrna .circrna-caption {
-    top: 93%;
+    top: 92%;
     left: 8%;
     width: 84%;
   }

@@ -2,7 +2,7 @@ import { QueuedImage } from "./common/QueuedImage";
 import { useEffect, useRef, type CSSProperties } from "react";
 import { FOOTER_SPONSORS, FOOTER_SUPPORTERS } from "../data/footer";
 
-const SPONSOR_SCROLL_SPEED = 54;
+const SPONSOR_SCROLL_SPEED = 24;
 
 /** Colour supporters lead; a single grey ribbon loops beneath them. */
 export function FooterSponsors() {
@@ -40,7 +40,11 @@ export function FooterSponsors() {
       <h2 id="footer-supporters-title">With thanks</h2>
       <ul className="circure-footer__supporter-list">
         {FOOTER_SUPPORTERS.map((organisation) => (
-          <li className="circure-footer__supporter" key={organisation.name}>
+          <li
+            className="circure-footer__supporter"
+            data-organisation={organisation.name}
+            key={organisation.name}
+          >
             {organisation.marks.map((mark) => (
               <QueuedImage
                 key={mark.src}

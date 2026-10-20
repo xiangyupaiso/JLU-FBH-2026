@@ -4,6 +4,7 @@
   font-display: swap;
 }
 .manuscript {
+  --visual-design-image-radius: 10px;
   --paper: #fbf8ef;
   --ink: #283c30;
   --pencil: #52614e;
@@ -30,17 +31,15 @@
 }
 .manuscript .ms-cover {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 32px;
-  padding: 34px 0 40px;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 40px;
+  align-items: center;
+  padding: 44px 0;
   border-block: 1px solid var(--rule);
   margin: 24px 0 0;
 }
 .manuscript .ms-cover > div {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  column-gap: 36px;
-  align-items: end;
+  min-width: 0;
 }
 .manuscript .ms-cover .ms-eyebrow {
   grid-column: 1 / -1;
@@ -54,12 +53,13 @@
 }
 .manuscript .ms-cover :is(h1, h4) {
   font:
-    450 clamp(30px, 4.5vw, 54px)/1.12 ArchiveNewsreader,
+    450 clamp(38px, 5.8cqi, 64px)/1.02 ArchiveNewsreader,
     Georgia,
     serif;
-  letter-spacing: -0.025em;
+  font-family: ArchiveNewsreader, Georgia, serif !important;
+  letter-spacing: -0.035em;
   color: var(--ink);
-  margin: 0;
+  margin: 0 0 24px;
   max-width: 12ch;
 }
 .manuscript:lang(zh-CN) .ms-cover :is(h1, h4) {
@@ -70,7 +70,7 @@
   font-weight: 450;
 }
 .manuscript .ms-cover__intro {
-  font: 400 14px/1.95 var(--font-sans, Lexend, sans-serif);
+  font: 400 14px/1.85 var(--font-sans, Lexend, sans-serif);
   max-width: 45ch;
   margin: 0;
   color: var(--pencil);
@@ -83,7 +83,7 @@
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 12px;
+  border-radius: var(--visual-design-image-radius, 16px);
 }
 .manuscript .ms-cover__object figcaption {
   margin: 12px 0 0;
@@ -92,18 +92,19 @@
 }
 .manuscript .ms-contents {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0 28px;
-  border-bottom: 1px solid var(--rule);
-  margin: 0 0 48px;
-  padding: 16px 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 36px;
+  margin: 0 0 56px;
+  padding: 16px 0 0;
 }
 .manuscript .ms-contents a {
   display: flex;
-  gap: 12px;
-  padding: 12px 0;
+  gap: 16px;
+  min-height: 56px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
   text-decoration: none;
-  font: 400 11px/1.6 var(--font-sans, Lexend, sans-serif);
+  font: 400 13px/1.6 var(--font-sans, Lexend, sans-serif);
   align-items: baseline;
 }
 .manuscript .ms-contents a:hover span:last-child {
@@ -111,23 +112,20 @@
   text-underline-offset: 4px;
 }
 .manuscript .ms-contents a > span:first-child {
-  font: 400 10px/1.6 monospace;
+  flex: 0 0 26px;
+  font:
+    450 23px/1 ArchiveNewsreader,
+    Georgia,
+    serif;
   color: var(--rust);
 }
 .manuscript .ms-timeline {
   position: relative;
   display: grid;
-  gap: 44px;
+  gap: 72px;
   list-style: none;
   margin: 0;
-  padding: 0 0 0 32px;
-}
-.manuscript .ms-timeline::before {
-  content: "";
-  position: absolute;
-  inset: 30px auto 30px 6px;
-  width: 1px;
-  background: var(--rule);
+  padding: 0;
 }
 .manuscript .ms-timeline > li {
   position: relative;
@@ -135,69 +133,49 @@
   margin: 0;
   padding: 0;
 }
-.manuscript .ms-timeline > li::before {
-  content: "";
-  position: absolute;
-  top: 45px;
-  left: -30px;
-  width: 9px;
-  height: 9px;
-  border: 2px solid var(--paper);
-  border-radius: 50%;
-  background: var(--ink);
-  box-shadow: 0 0 0 1px var(--rule);
-}
 .manuscript .ms-folio {
   min-width: 0;
   margin: 0;
-  padding: 28px;
-  background: var(--paper);
-  border: 1px solid #dddcd1;
-  border-radius: 8px;
-  box-shadow: 0 6px 22px rgb(40 60 48 / 3%);
+  padding: 30px 0 0;
+  border-top: 1px solid var(--rule);
   scroll-margin-top: 100px;
 }
 .manuscript .ms-folio__header {
   display: grid;
-  grid-template-columns: 58px minmax(0, 1fr);
-  gap: 16px;
-  align-items: center;
-  margin-bottom: 28px;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  margin-bottom: 36px;
 }
 .manuscript .ms-folio__number {
-  display: grid;
-  place-items: center;
-  width: 58px;
-  height: 58px;
-  border: 1px solid var(--rule);
-  border-radius: 50%;
-  background: #f0eee4;
-  font: 500 18px/1 var(--font-sans, Lexend, sans-serif);
-  letter-spacing: -0.03em;
-  color: var(--ink);
+  font:
+    350 76px/0.95 ArchiveNewsreader,
+    Georgia,
+    serif;
+  letter-spacing: -0.06em;
+  color: #a67c65;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 .manuscript .ms-folio__date {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 4px 16px;
-  margin: 0 0 12px;
+  gap: 6px 16px;
+  margin: 2px 0 12px;
 }
 .manuscript .ms-folio__period {
-  font:
-    550 25px/1.2 ArchiveNewsreader,
-    Georgia,
-    serif;
-  letter-spacing: -0.015em;
+  font: 500 11px/1.6 var(--font-sans, Lexend, sans-serif);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--rust);
 }
 .manuscript .ms-folio__phase {
-  font: 400 12px/1.6 var(--font-sans, Lexend, sans-serif);
+  font: 400 11px/1.6 var(--font-sans, Lexend, sans-serif);
   color: var(--pencil);
 }
 .manuscript .ms-folio :is(h2, h4) {
   font:
-    500 clamp(28px, 4.2cqi, 40px)/1.12 ArchiveNewsreader,
+    450 clamp(30px, 4.8cqi, 49px)/1.08 ArchiveNewsreader,
     Georgia,
     serif;
   /* The shared route typography marks its display family as important. */
@@ -213,21 +191,55 @@
 .manuscript .ms-spread {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 28px;
+  gap: 24px;
   align-items: start;
 }
 .manuscript .ms-spread__objects {
   min-width: 0;
 }
+.manuscript .ms-folio > p {
+  max-width: 76ch;
+  margin: 0 0 20px;
+  font: 400 14px/1.9 var(--font-sans, Lexend, sans-serif);
+  color: var(--pencil);
+}
+.manuscript .ms-folio > .ms-archive-caption {
+  margin-bottom: 32px;
+  font-size: 11px;
+}
 .manuscript .ms-pair {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
+  gap: 28px;
   align-items: start;
 }
+/* Column ratios solve for equal image heights: a 4:5 portrait beside a
+   1410x891 view, and a 1040x760 letter beside a 1440x900 page. */
 .manuscript .ms-pair--composition {
-  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
-  align-items: center;
+  grid-template-columns: minmax(0, 0.5055fr) minmax(0, 1fr);
+  align-items: start;
+}
+.manuscript .ms-pair--letter {
+  grid-template-columns: minmax(0, 0.8553fr) minmax(0, 1fr);
+}
+/* Keep the three navigation studies at an identical scale and resting state. */
+.manuscript .ms-explore-sequence {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.manuscript .ms-explore-sequence .archive-object__image {
+  aspect-ratio: 8 / 5;
+}
+.manuscript .ms-explore-conditions {
+  margin: 16px 0 0;
+  color: var(--pencil);
+  font: 400 12px/1.6 var(--font-sans, sans-serif);
+}
+@media (max-width: 1100px) {
+  .manuscript .ms-explore-sequence {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
 }
 .manuscript .ms-object {
   margin: 0;
@@ -235,20 +247,23 @@
 }
 .manuscript .ms-object__label {
   display: flex;
-  gap: 9px;
+  gap: 10px;
   align-items: baseline;
-  font: 400 13px/1.6 var(--font-sans, Lexend, sans-serif);
+  font: 500 12px/1.6 var(--font-sans, Lexend, sans-serif);
   margin: 0 0 12px;
   color: var(--pencil);
 }
 .manuscript .ms-object__label b {
-  font: 600 16px/1.4 var(--font-sans, Lexend, sans-serif);
+  font:
+    italic 500 20px/1 ArchiveNewsreader,
+    Georgia,
+    serif;
   color: var(--rust);
 }
 .manuscript .ms-object .archive-object__image {
   display: block;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: var(--visual-design-image-radius, 16px);
   padding: 0;
   cursor: zoom-in;
 }
@@ -257,7 +272,7 @@
   width: 100%;
   height: auto;
   object-fit: contain;
-  border-radius: 12px;
+  border-radius: var(--visual-design-image-radius, 16px);
   margin: 0;
 }
 .manuscript .ms-object figcaption {
@@ -290,22 +305,23 @@
 }
 .manuscript .ms-note {
   display: grid;
-  grid-template-columns: minmax(120px, 0.3fr) minmax(0, 1fr);
-  gap: 0 28px;
-  border-top: 1px solid var(--rule);
-  padding-top: 22px;
+  grid-template-columns: minmax(0, 0.33fr) minmax(0, 1fr);
+  gap: 0 32px;
+  padding: 22px 24px 6px;
+  border-left: 2px solid #cab09b;
+  background: #f8f6ef;
   min-width: 0;
 }
 .manuscript .ms-note__label {
   grid-row: span 3;
-  font: 500 11px/1.7 var(--font-sans, Lexend, sans-serif);
+  font: 500 10px/1.8 var(--font-sans, Lexend, sans-serif);
   color: var(--rust);
   letter-spacing: 0.06em;
   margin: 0 0 12px;
   text-transform: uppercase;
 }
 .manuscript .ms-note p:not(.ms-note__label) {
-  font: 400 14px/1.9 var(--font-sans, Lexend, sans-serif);
+  font: 400 13px/1.85 var(--font-sans, Lexend, sans-serif);
   margin: 0 0 16px;
 }
 .manuscript .ms-note blockquote {
@@ -322,6 +338,7 @@
 }
 .manuscript .ms-note--quotation {
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  padding-block: 28px 12px;
 }
 .manuscript .ms-note--quotation .ms-note__label {
   grid-row: 1;
@@ -355,73 +372,141 @@
   font: 400 10px/1.8 monospace;
   color: var(--rust);
 }
-.manuscript .ms-comparison {
-  margin: 0 auto;
+/* Two synchronized representations replace the enlarged screenshot wipe. */
+.manuscript .ms-ring-study {
+  margin: 0;
   min-width: 0;
-  width: 100%;
-  max-width: 560px;
 }
-.manuscript .ms-comparison__stage {
+.manuscript .ms-ring-study:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 6px;
+}
+.manuscript .ms-ring-study__heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 16px;
+  font: 500 14px/1.6 var(--font-sans, sans-serif);
+  margin-bottom: 18px;
+}
+.manuscript .ms-ring-study__hint {
+  color: var(--rust);
+  font-size: 12px;
+  font-weight: 400;
+}
+.manuscript .ms-ring-study__scene {
   position: relative;
-  aspect-ratio: 560/510;
-  overflow: hidden;
-  border-radius: 12px;
+  padding: 44px 0 28px;
   border: 1px solid var(--rule);
-  background: var(--paper);
-  --split: 50%;
+  border-radius: var(--visual-design-image-radius, 16px);
+  background: #fffaf2;
+  overflow: hidden;
 }
-.manuscript .ms-comparison__stage img {
+.manuscript .ms-ring-study canvas {
   display: block;
+  width: 100%;
+  aspect-ratio: 2;
+}
+.manuscript .ms-ring-study__row-label {
   position: absolute;
-  inset: 0;
+  top: 16px;
+  left: 18px;
+  right: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 12px;
+  font: 400 12px/1.6 var(--font-sans, sans-serif);
+  color: var(--pencil);
+}
+.manuscript .ms-ring-study__row-label b {
+  color: var(--rust);
+  font-weight: 500;
+}
+.manuscript .ms-ring-study__row-label--revised {
+  top: calc(50% - 6px);
+}
+.manuscript .ms-ring-study__endpoints {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5%;
+  font: 400 11px/1.6 var(--font-sans, sans-serif);
+  color: var(--pencil);
+}
+.manuscript .ms-ring-study__progress {
+  height: 2px;
+  margin-top: 18px;
+  background: var(--rule);
+  overflow: hidden;
+}
+.manuscript .ms-ring-study__progress span {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  margin: 0;
-  border-radius: 12px;
+  background: var(--rust);
+  transform: scaleX(0);
+  transform-origin: left;
 }
-.manuscript .ms-comparison__revised {
-  clip-path: inset(0 calc(100% - var(--split)) 0 0);
+.manuscript .ms-ring-study__state {
+  margin: 10px 0 0;
+  font: 500 12px/1.8 var(--font-sans, sans-serif);
+  color: var(--rust);
 }
-.manuscript .ms-comparison__divider {
-  position: absolute;
-  left: var(--split);
-  top: 0;
-  bottom: 0;
-  border-left: 2px solid var(--rust);
-  pointer-events: none;
+.manuscript .ms-ring-study__controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+  font-size: 12px;
 }
-.manuscript .ms-comparison__tag {
-  position: absolute;
-  top: 12px;
-  padding: 5px 9px;
-  background: var(--paper);
-  color: var(--ink);
-  font: 500 10px/1.6 var(--font-sans, Lexend, sans-serif);
-  border: 1px solid var(--rule);
-}
-.manuscript .ms-comparison__tag--left {
-  left: 12px;
-}
-.manuscript .ms-comparison__tag--right {
-  right: 12px;
-}
-.manuscript .ms-comparison label {
-  display: grid;
-  gap: 10px;
-  margin: 18px 0 12px;
-  font: 400 11px/1.8 var(--font-sans, Lexend, sans-serif);
-}
-.manuscript .ms-comparison input {
+.manuscript .ms-ring-study__controls input {
   width: 100%;
   min-width: 0;
-  accent-color: var(--rust);
-  cursor: ew-resize;
+  accent-color: #84382b;
 }
-.manuscript .ms-comparison__buttons {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+.manuscript .ms-ring-study__controls input:focus-visible {
+  outline: 2px solid #84382b;
+  outline-offset: 4px;
+}
+.manuscript .ms-ring-study figcaption {
+  font: 400 12px/1.9 var(--font-sans, sans-serif);
+  color: var(--pencil);
+  margin: 12px 0 0;
+}
+.manuscript .ms-ring-sources {
+  margin-top: 20px;
+  border-top: 1px solid var(--rule);
+  padding-top: 14px;
+}
+.manuscript .ms-ring-sources summary {
+  cursor: pointer;
+  font: 400 12px/1.8 var(--font-sans, sans-serif);
+  color: var(--pencil);
+}
+.manuscript .ms-ring-sources .ms-print-originals {
+  display: grid;
+  margin-top: 18px;
+}
+@container (max-width: 400px) {
+  .manuscript #archive-ring-revision {
+    padding-inline: 12px;
+  }
+  .manuscript .ms-ring-study__row-label {
+    font-size: 10px;
+    left: 10px;
+    right: 10px;
+  }
+  .manuscript .ms-ring-study__row-label span {
+    display: none;
+  }
+  .manuscript .ms-ring-study__endpoints {
+    font-size: 9px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .manuscript .ms-ring-study__hint {
+    display: none;
+  }
 }
 .manuscript button {
   border: 1px solid var(--rule);
@@ -436,20 +521,19 @@
   border-color: var(--rust);
   color: var(--rust);
 }
-.manuscript .ms-comparison figcaption {
-  font: 400 11px/1.9 var(--font-sans, Lexend, sans-serif);
-  color: var(--pencil);
-  margin: 15px 0 0;
-}
 .manuscript .ms-detail-row + .ms-detail-row,
 .manuscript .ms-folio > .ms-spread + .ms-detail-row {
-  margin-top: 32px;
-  padding-top: 28px;
+  margin-top: 44px;
+  padding-top: 32px;
   border-top: 1px solid var(--rule);
 }
 .manuscript .ms-detail-row :is(h3, h5) {
-  font: 500 16px/1.6 var(--font-sans, Lexend, sans-serif);
-  margin: 0 0 18px;
+  font:
+    450 clamp(23px, 3cqi, 30px)/1.25 ArchiveNewsreader,
+    Georgia,
+    serif;
+  font-family: ArchiveNewsreader, Georgia, serif !important;
+  margin: 0 0 24px;
   color: var(--ink);
 }
 .manuscript .ms-lens {
@@ -482,6 +566,7 @@
   gap: 24px;
   justify-content: space-between;
   padding: 24px 0;
+  border-top: 1px solid var(--rule);
   font: 400 11px/1.9 var(--font-sans, Lexend, sans-serif);
   color: var(--pencil);
 }
@@ -492,10 +577,10 @@
 }
 .manuscript .ms-archive-end {
   font:
-    450 28px/1.35 ArchiveNewsreader,
+    450 clamp(30px, 4.3cqi, 46px)/1.18 ArchiveNewsreader,
     Georgia,
     serif;
-  margin: 36px 0 16px;
+  margin: 56px 0 28px;
   color: var(--ink);
   max-width: 24ch;
 }
@@ -504,10 +589,18 @@
 }
 @container (max-width:800px) {
   .manuscript .ms-cover {
-    gap: 24px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+  .manuscript .ms-cover > div {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 0 28px;
+    align-items: end;
   }
   .manuscript .ms-cover :is(h1, h4) {
-    font-size: 38px;
+    font-size: 48px;
+    margin-bottom: 0;
   }
   .manuscript .ms-contents {
     gap: 0 16px;
@@ -531,43 +624,37 @@
   }
   .manuscript .ms-contents {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 20px;
     margin-bottom: 24px;
   }
+  .manuscript .ms-contents a {
+    gap: 10px;
+    font-size: 11px;
+  }
   .manuscript .ms-folio__header {
-    grid-template-columns: 44px minmax(0, 1fr);
-    gap: 14px 12px;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 18px;
   }
   .manuscript .ms-folio__header > div {
-    display: contents;
+    min-width: 0;
   }
   .manuscript .ms-folio__date {
-    margin: 0;
+    margin: 0 0 10px;
   }
   .manuscript .ms-folio__period {
-    font-size: 21px;
+    font-size: 10px;
   }
   .manuscript .ms-folio__header :is(h2, h4) {
-    grid-column: 1 / -1;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
   }
   .manuscript .ms-timeline {
-    gap: 24px;
-    padding-left: 18px;
-  }
-  .manuscript .ms-timeline::before {
-    left: 3px;
-  }
-  .manuscript .ms-timeline > li::before {
-    top: 35px;
-    left: -19px;
+    gap: 48px;
   }
   .manuscript .ms-folio {
-    padding: 20px 16px;
+    padding: 24px 0 0;
   }
   .manuscript .ms-folio__number {
-    width: 44px;
-    height: 44px;
-    font-size: 15px;
+    font-size: 48px;
   }
   .manuscript .ms-folio :is(h2, h4) {
     font-size: 29px;
@@ -595,6 +682,7 @@
   }
   .manuscript .ms-note {
     display: block;
+    padding: 18px 18px 2px;
   }
   .manuscript .ms-note__label {
     margin-bottom: 12px;
@@ -609,6 +697,24 @@
   .manuscript .ms-colophon {
     flex-direction: column;
     gap: 12px;
+  }
+}
+@container (max-width: 350px) {
+  .manuscript .ms-contents {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .manuscript .ms-contents a {
+    font-size: 12px;
+  }
+  .manuscript .ms-folio__header {
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 12px;
+  }
+  .manuscript .ms-folio__number {
+    font-size: 40px;
+  }
+  .manuscript .ms-folio__header :is(h2, h4) {
+    font-size: 27px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -645,8 +751,11 @@
   .manuscript .ms-print-originals {
     display: grid;
   }
-  .manuscript .ms-comparison {
+  .manuscript .ms-ring-study {
     display: none;
+  }
+  .manuscript .ms-ring-sources > * {
+    display: grid;
   }
   .manuscript .ms-object {
     break-inside: avoid;

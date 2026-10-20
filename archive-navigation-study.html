@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CirCure · July navigation study</title>
+    <link
+      rel="stylesheet"
+      href="/src/components/wiki/features/project/visual-design-studies/archive-navigation/style.css"
+    />
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <div class="nav-shell" data-nav-shell>
+        <div class="nav-head">
+          <a class="brand" href="#top" aria-label="Neo-TNBsee home" data-flip>
+            <span class="brand-full" aria-hidden="true">
+              <img
+                src="/src/components/wiki/features/project/visual-design-studies/archive-navigation/assets/circure-logo-white-v1.webp"
+                alt=""
+                decoding="async"
+              />
+              <span
+                ><strong>CirCure</strong
+                ><small>Neo-TNBsee · iGEM 2026</small></span
+              >
+            </span>
+            <span class="brand-mark" aria-hidden="true"
+              ><img
+                src="/src/components/wiki/features/project/visual-design-studies/archive-navigation/assets/circure-logo-white-v1.webp"
+                alt=""
+                decoding="async"
+            /></span>
+          </a>
+
+          <nav class="nav-links" aria-label="Primary navigation" data-flip>
+            <a href="#top" data-nav-home>Home</a>
+            <button
+              class="nav-dropdown-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="nav-dropdown"
+              data-nav-key="project"
+              data-nav-target="#project"
+            >
+              Project <span aria-hidden="true">⌄</span>
+            </button>
+            <button
+              class="nav-dropdown-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="nav-dropdown"
+              data-nav-key="wet-lab"
+              data-nav-target="#proof"
+            >
+              Wet Lab <span aria-hidden="true">⌄</span>
+            </button>
+            <button
+              class="nav-dropdown-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="nav-dropdown"
+              data-nav-key="dry-lab"
+              data-nav-target="#platform"
+            >
+              Dry Lab <span aria-hidden="true">⌄</span>
+            </button>
+            <button
+              class="nav-dropdown-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="nav-dropdown"
+              data-nav-key="engagement"
+              data-nav-target="#decisions"
+            >
+              Engagement <span aria-hidden="true">⌄</span>
+            </button>
+            <button
+              class="nav-dropdown-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="nav-dropdown"
+              data-nav-key="team"
+              data-nav-target="#team"
+            >
+              Team <span aria-hidden="true">⌄</span>
+            </button>
+            <button
+              class="nav-dropdown-toggle"
+              type="button"
+              aria-expanded="false"
+              aria-controls="nav-dropdown"
+              data-nav-key="award"
+              data-nav-target="#judging"
+            >
+              Award <span aria-hidden="true">⌄</span>
+            </button>
+          </nav>
+
+          <button
+            class="mobile-toggle"
+            type="button"
+            aria-expanded="false"
+            data-mobile-toggle
+          >
+            <span>Menu</span>
+            <span aria-hidden="true">+</span>
+          </button>
+        </div>
+
+        <span class="nav-bg" aria-hidden="true" data-flip></span>
+
+        <div
+          class="nav-dropdown"
+          id="nav-dropdown"
+          data-dropdown
+          aria-hidden="true"
+          inert
+        >
+          <div
+            class="nav-dropdown-panel is-active"
+            data-nav-panel="project"
+            aria-hidden="false"
+          >
+            <article class="dropdown-tile text-tile dropdown-intro">
+              <p>Project</p>
+              <strong
+                >The clinical question, vaccine design and research behind
+                CirCure.</strong
+              ><a class="glass-button" href="#project"
+                >Project overview <span>→</span></a
+              >
+            </article>
+            <a class="dropdown-tile image-tile tile-description" href="#project"
+              ><small>01 / CONTEXT</small><span>Description</span
+              ><em>Problem · Gap · Response</em></a
+            >
+            <a
+              class="dropdown-tile image-tile tile-engineering"
+              href="#evidence"
+              ><small>02 / ITERATE</small><span>Engineering</span
+              ><em>Design · Build · Test · Learn</em></a
+            >
+            <a class="dropdown-tile image-tile tile-safety" href="#proof"
+              ><small>03 / RESPONSIBILITY</small
+              ><span>Safety &amp; Contribution</span
+              ><em>Gates · Limits · Reuse</em></a
+            >
+          </div>
+          <div
+            class="nav-dropdown-panel"
+            data-nav-panel="wet-lab"
+            aria-hidden="true"
+            inert
+          >
+            <article class="dropdown-tile text-tile dropdown-intro">
+              <p>Wet Lab</p>
+              <strong
+                >Construct design, experimental methods and the measurements
+                used to evaluate them.</strong
+              ><a class="glass-button" href="#proof"
+                >Enter Wet Lab <span>→</span></a
+              >
+            </article>
+            <a class="dropdown-tile image-tile tile-experiments" href="#proof"
+              ><small>01 / METHODS</small><span>Experiments</span
+              ><em>Protocols · Controls · Materials</em></a
+            >
+            <a class="dropdown-tile image-tile tile-results" href="#evidence"
+              ><small>02 / EVIDENCE</small><span>Results</span
+              ><em>Figures · Statistics · Failures</em></a
+            >
+            <a class="dropdown-tile image-tile tile-notebook" href="#news"
+              ><small>03 / TRACE</small><span>Notebook</span
+              ><em>Timeline · Records · Reproduce</em></a
+            >
+          </div>
+          <div
+            class="nav-dropdown-panel"
+            data-nav-panel="dry-lab"
+            aria-hidden="true"
+            inert
+          >
+            <article class="dropdown-tile text-tile dropdown-intro">
+              <p>Dry Lab</p>
+              <strong
+                >Neo-TNBsee compares known and patient-derived candidates using
+                a documented set of assumptions.</strong
+              ><a class="glass-button" href="#platform"
+                >Enter Dry Lab <span>→</span></a
+              >
+            </article>
+            <a class="dropdown-tile image-tile tile-pipeline" href="#platform"
+              ><small>01 / PIPELINE</small><span>Neo-TNBsee</span
+              ><em>A-arm · B1-arm · 5D matrix</em></a
+            >
+            <a class="dropdown-tile image-tile tile-model" href="#proof"
+              ><small>02 / REASON</small><span>Model</span
+              ><em>Assumptions · Validation · Limits</em></a
+            >
+            <a class="dropdown-tile image-tile tile-software" href="#news"
+              ><small>03 / REUSE</small><span>Software</span
+              ><em>Run · Inspect · Extend</em></a
+            >
+          </div>
+          <div
+            class="nav-dropdown-panel"
+            data-nav-panel="engagement"
+            aria-hidden="true"
+            inert
+          >
+            <article class="dropdown-tile text-tile dropdown-intro">
+              <p>Engagement</p>
+              <strong
+                >Conversations with stakeholders help us reconsider the design
+                and record what changes.</strong
+              ><a class="glass-button" href="#decisions"
+                >Follow the decisions <span>→</span></a
+              >
+            </article>
+            <a class="dropdown-tile image-tile tile-hp" href="#decisions"
+              ><small>01 / LISTEN</small><span>Integrated HP</span
+              ><em>Input · Change · Consequence</em></a
+            >
+            <a class="dropdown-tile image-tile tile-education" href="#team"
+              ><small>02 / EXPLAIN</small><span>Education</span
+              ><em>Audience · Access · Reflection</em></a
+            >
+            <a
+              class="dropdown-tile image-tile tile-implementation"
+              href="#snapshot"
+              ><small>03 / APPLY</small><span>Implementation</span
+              ><em>Users · Risks · Next steps</em></a
+            >
+          </div>
+          <div
+            class="nav-dropdown-panel"
+            data-nav-panel="team"
+            aria-hidden="true"
+            inert
+          >
+            <article class="dropdown-tile text-tile dropdown-intro">
+              <p>Team</p>
+              <strong
+                >The people, roles, collaborations, and acknowledgements behind
+                CirCure.</strong
+              ><a class="glass-button" href="#team"
+                >Meet CirCure <span>→</span></a
+              >
+            </article>
+            <a class="dropdown-tile image-tile tile-members" href="#team"
+              ><small>01 / PEOPLE</small><span>Members</span
+              ><em>Students · PIs · Advisors</em></a
+            >
+            <a
+              class="dropdown-tile image-tile tile-attributions"
+              href="#judging"
+              ><small>02 / CREDIT</small><span>Attributions</span
+              ><em>Roles · Timeline · Support</em></a
+            >
+            <a class="dropdown-tile image-tile tile-collaboration" href="#news"
+              ><small>03 / TOGETHER</small><span>Collaborations</span
+              ><em>Teams · Experts · Partners</em></a
+            >
+          </div>
+          <div
+            class="nav-dropdown-panel"
+            data-nav-panel="award"
+            aria-hidden="true"
+            inert
+          >
+            <article class="dropdown-tile text-tile dropdown-intro">
+              <p>Award</p>
+              <strong
+                >A guide to medal requirements, supporting work and the pages
+                where each is discussed.</strong
+              ><a class="glass-button" href="#judging"
+                >Open judging map <span>→</span></a
+              >
+            </article>
+            <a class="dropdown-tile image-tile tile-judging" href="#judging"
+              ><small>01 / FIND</small><span>Judging</span
+              ><em>Criteria · Claims · Routes</em></a
+            >
+            <a class="dropdown-tile image-tile tile-medals" href="#judging"
+              ><small>02 / VERIFY</small><span>Medal Criteria</span
+              ><em>Bronze · Silver · Gold</em></a
+            >
+            <a class="dropdown-tile image-tile tile-awards" href="#snapshot"
+              ><small>03 / OUTCOME</small><span>Achievements</span
+              ><em>Nominations · Prizes · Deliverables</em></a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section
+        class="archive-hero"
+        aria-label="Original July opening composition"
+      >
+        <img
+          class="archive-hero__image"
+          src="/src/components/wiki/features/project/visual-design-studies/archive-navigation/assets/igem-hero-v2.webp"
+          alt=""
+        />
+        <h1>Find.<br />Weigh.<br /><span>Care.</span></h1>
+        <p class="archive-hint">
+          Explore the menu above.<br />Scroll to see the header contract, then
+          return upward.
+        </p>
+      </section>
+      <section class="archive-reading" aria-labelledby="study-title">
+        <p>JULY 2026 / PRESERVED INTERACTION STUDY</p>
+        <h2 id="study-title">A menu that opens into the project.</h2>
+        <p>
+          Hover, focus or select a category to explore its illustrated
+          destinations. Select a card to preview its label here.
+        </p>
+        <p id="destination-preview" role="status">
+          Choose a destination from the menu.
+        </p>
+        <a href="#top">Return to the opening ↑</a>
+      </section>
+    </main>
+    <script
+      type="module"
+      src="/src/components/wiki/features/project/visual-design-studies/archive-navigation/script.js"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+/* Give fitted artwork a definite box, including in Safari's flex sizing. */
+.wiki-page--visual-design
+  :is(
+    .design-explanation--design-particle-endpoints,
+    .design-explanation--layers
+  )
+  .design-panel__image,
+.wiki-page--visual-design #study-08c-on-demand-hints .design-panel__image {
+  display: block;
+  position: relative;
+}
+
+.wiki-page--visual-design
+  :is(
+    .design-explanation--design-particle-endpoints,
+    .design-explanation--layers
+  )
+  .design-panel__image
+  img,
+.wiki-page--visual-design
+  .design-explanation--layers
+  .design-panel
+  .design-explanation__assembly
+  img,
+.wiki-page--visual-design #study-08c-on-demand-hints .design-panel__image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 16px;
+  border-radius: 0;
+  object-fit: contain;
+  object-position: center;
+  box-sizing: border-box;
+}
+
+.wiki-page--visual-design
+  .design-explanation--design-particle-endpoints
+  .design-panel:last-child
+  img {
+  object-fit: scale-down;
+}
+
+.wiki-page--visual-design
+  .design-explanation--layers
+  .design-panel:first-child
+  img {
+  padding: 0;
+}
+
+.wiki-page--visual-design
+  .design-explanation--layers
+  .design-panel:nth-child(-n + 3):not(:first-child)
+  img {
+  padding: 24px;
+}
+
+.wiki-page--visual-design
+  .design-explanation--layers
+  .design-panel
+  .design-explanation__assembly
+  img {
+  padding: 0;
+}
+
+/* Let the navigation strips use the article width instead of a narrow aside. */
+.wiki-page--visual-design #navigation-editorial {
+  display: block;
+}
+
+.wiki-page--visual-design #navigation-editorial .wiki-blocks--split__aside {
+  margin-top: 24px;
+}
+
+/* Exploration entries are small controls; preserve their complete square crop. */
+.wiki-page--visual-design
+  #study-08c-on-demand-hints
+  .design-panel[data-panel="a"],
+.wiki-page--visual-design
+  #study-08c-on-demand-hints
+  .design-panel[data-panel="b"] {
+  width: min(100%, 300px);
+  justify-self: center;
+  align-self: start;
+}
+
+.wiki-page--visual-design
+  #study-08c-on-demand-hints
+  .design-panel:nth-child(-n + 2)
+  .design-panel__image {
+  aspect-ratio: 492 / 474;
+  padding: 0;
+}
+
+.wiki-page--visual-design
+  #study-08c-on-demand-hints
+  .design-panel:nth-child(n + 3)
+  .design-panel__image {
+  aspect-ratio: 774 / 462;
+  padding: 0;
+}

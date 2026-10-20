@@ -8,7 +8,7 @@
   --notice-accent: #715266;
   position: fixed;
   right: var(--player-edge);
-  bottom: calc(112px + env(safe-area-inset-bottom));
+  bottom: calc(160px + env(safe-area-inset-bottom));
   display: grid;
   grid-template-columns: 28px minmax(0, 1fr);
   gap: 5px 12px;
@@ -89,14 +89,14 @@
   line-height: 1.4;
   text-decoration: none;
 }
-.home-playback .home-playback-loading-actions button:first-child {
+.home-playback .home-playback-loading-actions button:last-child {
   padding-inline: 14px;
   border-color: rgba(80, 49, 68, 0.14);
   background: var(--notice-accent);
   color: #fffaf7;
   box-shadow: 0 2px 4px rgba(74, 45, 62, 0.08);
 }
-.home-playback-loading-actions button:first-child::before {
+.home-playback-loading-actions button:last-child::before {
   content: "";
   width: 12px;
   height: 12px;
@@ -109,7 +109,7 @@
   text-underline-offset: 4px;
   text-decoration-color: #cbb6c2;
 }
-.home-playback .home-playback-loading-actions button:first-child:hover {
+.home-playback .home-playback-loading-actions button:last-child:hover {
   background: #604456;
   color: #fffaf7;
   text-decoration: none;
@@ -233,6 +233,38 @@ body:has(.site-header.is-mobile-open) .home-playback-scenes {
 .home-playback-scenes-toggle[aria-expanded="true"] {
   background: var(--player-selected);
 }
+.home-playback-reading {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 32px;
+  padding: 3px 0 8px;
+  cursor: default;
+}
+.home-playback-reading-track {
+  width: 26px;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--player-line);
+}
+.home-playback-reading-track > span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: currentColor;
+  transform-origin: left;
+}
+.home-playback-reading-value {
+  font-size: 10px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+/* The archived controller study retains its original edge indicator. */
 .home-playback-progress {
   position: absolute;
   top: 18px;

@@ -10,26 +10,26 @@ export const visualDesignNarrativeSections: WikiSection[] = [
     navLabel: "Humanistic Care",
     title: "Humanistic Care & Narrative Design",
     summary:
-      "Start with the person, connect the science, and leave room for the reader to choose a pace.",
+      "A patient’s question guides the scientific explanation and keeps the life behind the clinical problem in view.",
     blocks: [
       {
         type: "prose",
         paragraphs: [
-          "“What if it comes back?” gives the CirCure home story its starting point. We organize the journey around three design intentions: keep the person visible as the science becomes more detailed, make molecular relationships available through simple actions, and let readers choose their own pace. The five choices below carry that approach from the first patient scene to the closing wish for ordinary days.",
+          "**“What if it comes back?”** gives the CirCure homepage its direction. A woman’s concern leads into the clinical problem and our proposed circRNA platform; the story then returns to the ordinary life that motivates the work. By following her question through the science, we wanted to keep the purpose of the research in view.",
         ],
       },
       {
         type: "subheading",
         id: "person-behind-the-question",
         index: "8.1",
-        title: "Start with the Person",
+        title: "Begin with the Person",
         level: 3,
       },
       {
         type: "prose",
         paragraphs: [
-          "A molecular platform needs a reason to matter to someone encountering it for the first time. We introduce a woman before the research: illustrations of anxiety, surgery and hair loss surround her, then recede as the view approaches. **“Behind every diagnosis, there is a person”** remains beside her silhouette. This change of emphasis keeps the person at the center of the composition.",
-          "In the ward, **“What if it comes back?”** gives the research a question to address. Clinical challenges, vaccine approaches and circular RNA follow from that concern. This attention to the lived experience of illness draws on **narrative medicine**.[1] The scene establishes the human motivation for the work without presenting the proposed platform as an assured outcome.",
+          "Before introducing circRNA, we give the reader time to meet the woman at the center of the story. Anxiety, surgery and hair loss appear as illustrations around her. As the view moves closer, those images recede and **“Behind every diagnosis, there is a person”** remains beside her silhouette. The change in emphasis introduces the person whose concern will guide the explanation.",
+          "That concern becomes a question in the ward: **“What if it comes back?”** Written for the illustrated story, the line leads into treatment challenges, vaccine approaches and our circular RNA platform. This attention to a person’s experience draws on **narrative medicine**.[1] It also gives the scientific discussion a clear starting point: the uncertainty she is living with.",
         ],
       },
       {
@@ -40,15 +40,15 @@ export const visualDesignNarrativeSections: WikiSection[] = [
         type: "subheading",
         id: "carrying-meaning-between-scenes",
         index: "8.2",
-        title: "Connect the Human and Molecular Scales",
+        title: "Connect the Science to the Story",
         level: 3,
       },
       {
         type: "prose",
         paragraphs: [
-          "The story moves from one patient to a wider population, then into molecular design. We use two kinds of visual continuity to make those changes of scale traceable.",
-          "First, the patient’s question rests within a tear. Its pigment disperses and gathers into a cloud as the map appears. The watercolor carries a trace of the ward into the wider breast-cancer context, linking an individual concern with the clinical problem.",
-          "Later, a recognizable RNA ring connects the vaccine candidates, circRNA explanation and platform composition. Its backbone stays identifiable as the context and antigen-coding sequence change. The tear-to-cloud transition carries the concern forward; the persistent ring gives the scientific explanation a stable object to follow.",
+          "Her question also matters at a wider scale. The story considers the population affected by breast cancer, then examines molecular design. Familiar visual elements connect these changes in scale, helping readers carry the earlier idea into the next explanation.",
+          "**Watercolor connects the ward to the wider clinical picture.** Her question rests inside a tear. When the map appears, the tear’s pigment disperses and gathers into a cloud above it. A trace of the earlier scene therefore remains in the new one, keeping her concern present as the view widens.",
+          "**The RNA ring provides continuity within the scientific explanation.** It appears among the vaccine candidates, in the circRNA explanation and again in the platform. Here, keeping the outline intact matters: the reader is following one object through different relationships. The same backbone becomes a reference for the modularity interaction, where the coding segment can change.",
         ],
       },
       {
@@ -58,15 +58,15 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "subheading",
         id: "understanding-through-participation",
-        index: "8.3",
-        title: "Make the Design Choice Visible",
-        level: 3,
+        index: "",
+        title: "Try the Modular Design",
+        level: 4,
       },
       {
         type: "prose",
         paragraphs: [
-          "Modularity can be difficult to picture from a sentence alone. **“Like changing a key”** turns it into a visible relationship: the reader selects or drags an antigen-coding segment into the circular construct. The highlighted sequence and illustrative target change together, while the backbone stays in place. This reversible action applies **direct manipulation** to one conceptual design choice.[4]",
-          "The mechanism view then follows translation, antigen presentation and immune recognition. A, B and C are **conceptual examples**. Nearby notes retain the limits of the analogy: human leukocyte antigen (**HLA**) compatibility matters, recognition differs from killing, and a new target requires validation. The interaction is intended to make the relationship inspectable; it does not establish therapeutic effectiveness.",
+          "With the backbone established, **“Like changing a key” lets the reader try a modular design choice.** Selecting or dragging an antigen-coding segment into the circular construct changes the highlighted segment and its illustrative target together. Because the backbone stays visible, successive selections can be compared against the same structure. This use of **direct manipulation** makes the relationship between shared and replaceable parts visible.[4]",
+          "The mechanism view then follows translation, antigen presentation and immune recognition. Antigens A, B and C serve as **conceptual examples**, with nearby notes providing the biological context: human leukocyte antigen (**HLA**) compatibility, the distinction between recognition and killing, and the need to validate each new target.",
         ],
       },
       {
@@ -76,29 +76,42 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "subheading",
         id: "room-to-read-and-choose",
-        index: "8.4",
-        title: "Leave Room to Read and Choose",
+        index: "8.3",
+        title: "Leave the Pace to the Reader",
         level: 3,
       },
       {
         type: "prose",
         paragraphs: [
-          "A scientific explanation asks readers to divide attention between an image, unfamiliar terms and a changing scene. We keep text away from the main action, emphasize the current explanation and let completed compositions settle into stillness. Movement introduces a relationship; the pause gives readers time to examine it.",
-          "The authored route also leaves room for local choices, an approach discussed in **narrative visualization**.[2] Readers can change a selection, replay a sequence, open a note, pause the guide or return to an earlier scene. Reduced motion offers a quieter presentation. On research pages, stable headings, an outline and citation return links support longer reading. Section 9 explains how these controls preserve pace and position.",
+          "An explanation that is familiar to one reader may be new to another. Readers also differ in how much time they want to spend with an illness-related story. We therefore pair a clear narrative sequence with opportunities to pause, revisit an explanation or move ahead. This balance between guidance and reader choice draws on **narrative visualization**.[2]",
+        ],
+      },
+      {
+        type: "list",
+        items: [
+          "**Time to read.** Text has its own space beside the illustration. Once the elements have settled, a **reading hold** leaves the complete explanation in view.",
+          "**A choice of pace.** Pause, replay and scene selection let readers return to a moment or move ahead.",
+          "**Respect for motion settings.** The story offers a quieter presentation when the device requests reduced motion.",
+        ],
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "This choice extends to the closing letter, which opens when readers ask for the longer personal message. Section 9 explains how the playback controls and letter support these different ways of moving through the page.",
         ],
       },
       {
         type: "subheading",
         id: "for-more-ordinary-days",
-        index: "8.5",
+        index: "8.4",
         title: "Return to Ordinary Life",
         level: 3,
       },
       {
         type: "prose",
         paragraphs: [
-          "The closing brings the scientific journey back to the life that motivated it. The woman returns with **“If it comes back, can we give her more options?”** The supporting hands from the loading illustration now hold the patient. **“For more ordinary days”** names the purpose of that return: time with family, plans for tomorrow and a future beyond illness.",
-          "The team photograph then identifies the people doing the work. **“A note from us”** opens a longer message on request, allowing the photograph and the letter to occupy separate reading moments. The letter repeats the patient and hands; **“Our work is a beginning”** keeps the closing connected to research that continues. The figures below pair the team with that optional message.",
+          "When the story returns to the clinic, the question changes hands. The patient asks, **“What if it comes back?”** We ask, **“If it comes back, can we give her more options?”** Putting our response beside her concern expresses the responsibility we wanted to take on, and the reason to pursue this research.",
+          "The team photograph introduces the people taking up that work. Readers can then open **“A note from us”**, where the woman and supporting hands return beside **“For more ordinary days.”** Time with family and plans for tomorrow bring the story back to everyday life. We end with **“Our work is a beginning”** because the question that started the project is also a reason to keep working.",
         ],
       },
       {
@@ -110,31 +123,75 @@ export const visualDesignNarrativeSections: WikiSection[] = [
   {
     id: "interaction-craft",
     index: "09",
-    kicker: "09 / Interaction Craft",
-    navLabel: "Interaction Craft",
-    title: "Interaction Craft & Technical Design",
+    kicker: "09 / Reading & Interaction",
+    navLabel: "Reading & Interaction",
+    title: "Reading Experience & Interaction Craft",
     summary:
-      "Six reader needs connect the opening, motion, navigation, destination links and closing sequence.",
+      "Artwork, motion, reading pages and navigation each have a part in making the story clear and easy to explore.",
     blocks: [
       {
         type: "prose",
         paragraphs: [
-          "Section 8 sets out the human and narrative intentions. Here, six reader needs organize their implementation: enter a prepared page, follow motion at a readable pace, keep a sense of location, discover the next step, choose how to close, and retain continuity when input or layout changes. Each case connects a visible behavior to its mechanism; expandable technical notes preserve the finer implementation details.",
+          "Section 8 explains the experience we wanted to create. Here we follow the work that supports it: preparing the artwork and opening, giving motion a reading rhythm, shaping the article pages and making the routes between them clear. The team closing brings that experience back to the people behind CirCure; the design record then shows how the details developed. Figures and small examples sit beside the relevant decisions, with implementation notes available to open.",
         ],
       },
       {
         type: "subheading",
-        id: "opening-with-readiness",
+        id: "artwork-and-opening",
         index: "9.1",
-        title: "Reliable Entry",
+        title: "Prepare the Artwork and Opening",
         level: 3,
       },
       {
         type: "prose",
         paragraphs: [
-          "The first scene should arrive with its artwork and layout prepared. The loading screen is available as **HTML and CSS before the application bundle**, and its departure depends on actual page preparation. Status messages distinguish preparation, an extended wait and failure, applying **visibility of system status** to the opening.[10]",
-          "The signature begins as the loader leaves, so its first strokes are visible. After the final subtitle word settles, a reading hold keeps the complete sentence available before the patient appears. The wordmark then travels toward its measured position in the header, connecting the introduction with the interface that follows.",
-          "Skip resolves the introduction to its completed state. Reduced motion presents the finished title with a Continue control. Resource readiness, animation time and reader input therefore determine different transitions.",
+          "A scene needs a reliable composition before it can move. We begin with aligned artwork layers, then prepare the resources and introduction that bring the reader into that scene. These two stages connect the illustrated source to its first appearance on screen.",
+        ],
+      },
+      {
+        type: "subheading",
+        id: "prepare-painted-layers",
+        index: "",
+        title: "Prepare the Painted Layers",
+        level: 4,
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "**The way an element moves determines how we prepare it.** Backgrounds, characters, objects and annotations belong to one composition, with separate layers wherever their timing or movement differs. The patient can remain still while the medical student enters; the RNA ring can move while its explanation stays in place. Exporting those layers on a shared canvas preserves their alignment when the page assembles them.",
+        ],
+      },
+      {
+        type: "feature",
+        key: "design-painted-layers",
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "The [supporting paintings and layer exports](#artwork-layer-exports) show how the scenes are built. The notes below explain our canvas choices and how the exported layers find their positions on screen.",
+        ],
+      },
+      {
+        type: "feature",
+        key: "design-details-artwork",
+      },
+      {
+        type: "feature",
+        key: "design-details-layers",
+      },
+      {
+        type: "subheading",
+        id: "opening-with-readiness",
+        index: "",
+        title: "Introduce the Project",
+        level: 4,
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "The opening begins with a practical need: the first scene takes time to prepare. Our loading screen is available as **HTML and CSS before the application bundle**, so its messages can explain preparation, a longer wait or a failure. This follows the principle of **visibility of system status**.[10] Readiness checks and a waiting limit determine the handoff to the introduction.",
+          "Once the loader leaves, the CirCure signature introduces the project. The subtitle appears word by word, but its reading hold starts after the final word settles. The complete sentence therefore has time on screen before the patient appears. Finally, the wordmark moves into its measured header position, linking the introduction to the navigation.",
+          "Readers can use Skip to reach the completed introduction. With reduced motion enabled, the finished title appears with a Continue control, leaving the next step to the reader.",
         ],
       },
       {
@@ -149,41 +206,33 @@ export const visualDesignNarrativeSections: WikiSection[] = [
         type: "subheading",
         id: "keyframes-and-reading-holds",
         index: "9.2",
-        title: "Readable Motion",
+        title: "Give Motion a Reading Rhythm",
         level: 3,
       },
       {
         type: "prose",
         paragraphs: [
-          "A **keyframe** defines a readable composition: what is visible, which sentence is available and what relationship the scene explains. In the RNA sequence, the ring is established before moving into the platform. Keeping its outline recognizable supports **object constancy**; stable intervals reflect coherence, signaling and segmenting principles in multimedia learning.[3][5]",
-          "**Staging** sets the order of changes, **easing** shapes their speed, and a **reading hold** leaves the completed state still. For a single transition, scroll position supplies progress:",
+          "With the artwork aligned and the opening in place, timing determines what readers meet together. We arrange complete explanations, connect them through transitions and give readers control of the pace. Movement and stillness are planned as parts of the same sequence.",
         ],
       },
       {
-        type: "code",
-        code: "p = clamp((s - s0) / (s1 - s0), 0, 1)\nu = E(p)\nx(p) = (1 - u) * x0 + u * x1",
-        label: "From scroll position to one changing property",
+        type: "subheading",
+        id: "build-readable-states",
+        index: "",
+        title: "Make Time for a Complete Explanation",
+        level: 4,
       },
       {
         type: "prose",
         paragraphs: [
-          "Here, s is scroll position, s0 and s1 bound the segment, and E is the easing function. The amount u interpolates a property x between its endpoints. During a hold, the relevant properties stay unchanged. On a scroll-controlled timeline, duration allocates scroll distance; the automatic guide uses separate travel and hold times.[7]",
-          "The study below separates establishing the ring, carrying it, settling it and reading the completed relationship. Intermediate states matter during slow scrolling, reversal and scene jumps, as animation-comprehension research also emphasizes.[6]",
+          "Once the layers are assembled, we decide what the reader needs to see together. If an object moves while its explanation changes, both demand attention. We therefore build **readable states**, where the object is visible, the sentence is complete and the composition pauses. Establishing the RNA ring before moving it into the platform preserves **object constancy**, a recognizable identity through change.[3] Keeping the explanation focused and dividing it into stages also draws on coherence, signaling and segmenting principles.[5]",
+          "Within that sequence, **staging** sets the order of events, **easing** shapes their speed and a **reading hold** leaves the completed scene still. Duration on a scroll timeline allocates scroll distance; automatic playback assigns separate times to travel and reading.[7] The circRNA explanation and project-advantages panels in Section 8.2 show two of the settled compositions this produces.",
+          "The route into and out of each state matters too. We check slow scrolling, reversals and scene jumps so the composition remains clear through each kind of movement. Animation research informs the timing: each change needs to be visible long enough for the reader to follow it.[6]",
         ],
       },
       {
         type: "feature",
-        key: "motion-score-study",
-      },
-      {
-        type: "prose",
-        paragraphs: [
-          "The story controller puts pace in the reader’s hands. Opening the scene list pauses the guide; choosing a scene moves there and closes the list. Wheel, touch or scrolling-key input transfers control to the reader. Escape dismisses the list and returns focus to its entry. Playback, scene choice and progress remain together in one compact rail.[8][9]",
-        ],
-      },
-      {
-        type: "feature",
-        key: "design-study-06a-story-controls",
+        key: "design-revision-ring",
       },
       {
         type: "feature",
@@ -191,27 +240,136 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       },
       {
         type: "subheading",
-        id: "navigation-with-a-landmark",
+        id: "choose-scene-transitions",
+        index: "",
+        title: "Connect One Scene to the Next",
+        level: 4,
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "Between readable states, **the relationship determines the transition**. Dispersing pigment connects the tear to the cloud above the map. In the clinical sequence, the doctor takes over the explanation after the nurse introduces the treatment challenges; smaller illustrations then gather into keywords as a research direction emerges. Each movement links related ideas before settling into original artwork or native text.",
+          "When the reader is following **the same object into a new context**, we preserve its outline throughout the move. The magnifier and RNA ring use this continuous treatment. The distinction follows Section 8.2: an associative transition can connect scenes through shared pigment, while a continuous outline keeps an object recognizable as its surroundings change.",
+        ],
+      },
+      {
+        type: "feature",
+        key: "design-particle-endpoints",
+      },
+      {
+        type: "feature",
+        key: "design-details-particles",
+      },
+      {
+        type: "subheading",
+        id: "control-story-playback",
+        index: "",
+        title: "Let the Reader Change the Pace",
+        level: 4,
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "These prepared sequences give the automatic guide a starting pace, which readers can adjust. The mouse wheel, touch or scrolling keys return control to the reader; playback can also be paused or a scene revisited. Opening the scene list pauses the guide while a chapter is chosen. Selection moves to that chapter and closes the list, while Escape closes it and returns focus to its button. Pause controls and reduced-motion alternatives follow guidance on making animated content controllable.[8][9] The example below brings these controls together.",
+        ],
+      },
+      {
+        type: "feature",
+        key: "design-study-06a-story-controls",
+      },
+      {
+        type: "subheading",
+        id: "reading-surfaces",
         index: "9.3",
-        title: "Orientation and Return",
+        title: "Make Room for Sustained Reading",
+        level: 3,
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "The research subpages give readers space to examine the ideas introduced in the story. Longer explanations call for a calmer visual rhythm: color establishes the opening, then recedes around the article, while typography organizes the title, explanation and smaller labels. The studies below develop these two parts of the reading surface, building on the palettes in Section 2 and cover illustrations in Section 6.",
+        ],
+      },
+      {
+        type: "subheading",
+        id: "subpage-color-studies",
+        index: "",
+        title: "Let Color Recede Around the Text",
+        level: 4,
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "Earlier subpage studies explored **soft gradients and broad, wave-like bands of color**. Blurred edges and fine grain give the static backgrounds a gentle sense of movement, with open areas for the title and introduction. We were drawn to this restraint: color and texture give the page character while leaving a clear place for the words.",
+          "The five backgrounds below vary that approach by module. Blue and cyan appear in the Dry Lab studies, apricot and lilac in the Wet Lab studies, and rose in the Project previews. Shared placement and text hierarchy connect the pages as the palettes change. Toward the article, the background fades into a plain surface, carrying the opening into the reading area without an abrupt edge.",
+        ],
+      },
+      {
+        type: "feature",
+        key: "design-study-10-subpage-color",
+      },
+      {
+        type: "feature",
+        key: "design-details-subpage-color",
+      },
+      {
+        type: "subheading",
+        id: "typography-and-reading-hierarchy",
+        index: "",
+        title: "Give Each Kind of Text a Role",
+        level: 4,
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "On that quieter surface, **typography gives the text its reading order**. A title introduces the subject, body text develops the explanation and smaller labels identify destinations or technical details. Fraunces and Lexend form the main title–body pairing, with other families assigned to specific roles. The specimens below first compare the typefaces, then use the same words at different sizes and weights to show how hierarchy changes the composition.",
+        ],
+      },
+      {
+        type: "feature",
+        key: "design-typography-study",
+      },
+      {
+        type: "subheading",
+        id: "navigation-with-a-landmark",
+        index: "9.4",
+        title: "Keep the Route Clear",
         level: 3,
         anchorIds: ["reading-with-context"],
       },
       {
         type: "prose",
         paragraphs: [
-          "Readers need to distinguish their place in the story, their current page and the route back from supporting evidence. The global navigation keeps its crest recognizable while its surrounding controls change. It stays full during the opening, becomes compact after that scene leaves the viewport and returns near the closing. Expanding the compact entrance exposes page choices on request, applying **progressive disclosure**.[11]",
-          "The same principle guides local feedback: a current-page marker remains distinct from a temporary hover or focus cue. When navigation changes direction mid-transition, it continues from the state already visible. Controls that are fading out become unavailable, and keyboard focus returns to the crest when necessary.",
+          "After entering a research page, readers need ways to locate an explanation, check its sources and choose where to go next. The navigation connects pages; the outline, search and citation backlinks support movement within them. We keep these routes recognizable while allowing their controls to recede around the content.",
         ],
       },
       {
-        type: "feature",
-        key: "design-study-06b-navigation",
+        type: "split",
+        id: "navigation-editorial",
+        aside: {
+          type: "feature",
+          key: "design-study-06b-navigation",
+        },
+        prose: [
+          {
+            type: "prose",
+            paragraphs: [
+              "On the homepage, the crest gives the changing navigation a familiar point of reference. A full bar presents the page choices at the opening, with a transparent background and soft text shadows that leave the illustration visible. Later, it folds around the crest to make room for the story. The choices return when needed, applying **progressive disclosure** to the navigation.[11]",
+              "In the middle of the story, **scrolling up opens the navigation; scrolling down folds it into the circular entrance**. A movement threshold filters small changes in direction. Near the opening and ending, however, scene position controls the transition, keeping the bar’s handoff coordinated with the illustration.",
+            ],
+          },
+        ],
       },
       {
         type: "prose",
         paragraphs: [
-          "On research pages, the outline, in-page search and citation returns share a positioning convention within the reading frame. A citation opens its full reference entry; **individual backlinks return to the citing sentences**, including separate return points for repeated uses. These routes let readers inspect supporting material while keeping a place in the argument.",
+          "**The labels are timed around the background that holds them.** They enter after the capsule begins opening and leave before it finishes folding, so the lettering has room throughout the transition. Reversing direction continues from the visible position. Within the open menu, the current-page marker remains distinct from temporary hover and focus cues; when the controls fold away, keyboard focus returns to the crest if needed.",
+        ],
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "Once readers enter a research page, the outline and in-page search help them locate a particular explanation. Citations provide a further route into its sources, with a **backlink to the sentence that cited each reference**. Checking a source can therefore lead back to the argument at the point where it was left. Section 4 describes this citation system in more detail.",
         ],
       },
       {
@@ -219,21 +377,32 @@ export const visualDesignNarrativeSections: WikiSection[] = [
         key: "design-details-navigation",
       },
       {
+        type: "feature",
+        key: "design-details-navigation-motion",
+      },
+      {
         type: "subheading",
         id: "small-responses-shared-character",
-        index: "9.4",
-        title: "Discovering the Next Step",
-        level: 3,
+        index: "",
+        title: "Make the Destinations Readable",
+        level: 4,
         anchorIds: [
           "measuring-artwork-and-layout",
           "ribbon-guided-continuation",
+          "readable-destination-labels",
         ],
       },
       {
         type: "prose",
         paragraphs: [
-          "A destination should be easy to identify before the illustration responds. In the home exploration area, three links sit on each side of the central artwork. Aligned titles provide a common reading edge; selecting one adds its arrow, short topic hint and a single greeting from the corresponding lamb. The other entries stay still.",
-          "Hints describe concrete topics, such as **“Why we chose circRNA”** and **“Tools for circular RNA design.”** Hover and keyboard focus share the preview. Scrolling dismisses a pointer preview while retaining a focused entry’s description. Optical alignment uses the visible lamb silhouettes, so their resting sizes and positions remain balanced despite different transparent canvases.",
+          "The same concern for orientation extends to the page links themselves. On the homepage, six destinations offer different routes through the project. At an article’s ending, Next page suggests one continuation. In both places, a clear name establishes the destination before illustration and feedback draw attention to it.",
+        ],
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "In the exploration area, **the titles align along two straight edges** beside the central illustration. The lambs sit outside those edges, with space between entries to keep the six choices distinct. We adjust each lamb’s size and position by its visible silhouette and feet, accounting for the transparent margins around the artwork.",
+          "A short preview gives each destination a topic, such as **“Why we chose circRNA”** or **“Tools for circular RNA design.”** The page names remain visible, and the preview appears beside the entry being considered. This continues the navigation’s use of **progressive disclosure**.[11]",
         ],
       },
       {
@@ -241,14 +410,50 @@ export const visualDesignNarrativeSections: WikiSection[] = [
         key: "design-study-08a-exploration",
       },
       {
+        type: "feature",
+        key: "design-revision-labels",
+      },
+      {
+        type: "subheading",
+        id: "continue-to-next-page",
+        index: "",
+        title: "Give the Next Step Its Own Space",
+        level: 4,
+      },
+      {
         type: "prose",
         paragraphs: [
-          "At the end of a research page, the **next-page ribbon** extends this relationship between illustration and destination. Scrolling carries the lamb along the painted surface until it rests beside the explicit page name and arrow. The link remains the navigation target. Hover or keyboard focus reveals its topic without moving the surrounding composition.",
+          "At the end of a research page, the choice narrows to a closing thought and an invitation to continue. The small **“Next page”** label leads to a larger destination name and circular arrow. Their different sizes set a reading order, and the surrounding space lets this ending occupy a view of its own.",
+          "**The generous white space gives that sequence room.** We wanted readers to finish the article before meeting another set of information. Separating the ribbon from the institutional footer limits what is visible together, leaving the closing thought and next destination as the immediate focus. Here, **“less is more”** means deciding which information belongs in the same view. Narrow screens retain that order through reflow and smaller gaps.",
+          "Within this open space, **Lumi’s movement leads toward the destination**. Her feet follow the painted edge of the ribbon as the reader scrolls, then settle beside the page name and arrow. The movement connects a familiar character to the next action and gives the eye a path across the composition.",
+          "Scrolling back retraces the path. On smaller screens, Lumi rests in a static composition; reduced motion shows the desktop arrival state. The destination stays visible as a text link throughout.",
         ],
       },
       {
         type: "feature",
         key: "design-study-08b-ribbon",
+      },
+      {
+        type: "feature",
+        key: "design-revision-ribbon",
+      },
+      {
+        type: "subheading",
+        id: "destination-hints-on-request",
+        index: "",
+        title: "Keep Feedback Beside the Choice",
+        level: 4,
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "The two layouts also share a way of offering detail: **hover or keyboard focus adds context beside the active link**. In exploration, the title changes color and gains an arrow and short topic hint, accompanied by a greeting from its lamb. The Next page control darkens and turns its arrow toward continuation. In both, the response stays close to the choice being considered.",
+          "To keep that response from shifting the layout, the hint has a reserved position below the label. Opacity and a slight movement bring it into view while the title, ribbon and neighboring content stay still. Escape dismisses the hint. On touch screens, the visible page name remains a normal link, with the destination clear before selection.",
+        ],
+      },
+      {
+        type: "feature",
+        key: "design-study-08c-on-demand-hints",
       },
       {
         type: "feature",
@@ -258,26 +463,16 @@ export const visualDesignNarrativeSections: WikiSection[] = [
         type: "subheading",
         id: "photo-reveal-craft",
         index: "9.5",
-        title: "A Deliberate Closing",
+        title: "Meet the Team, Open the Letter",
         level: 3,
         anchorIds: ["keepsake-on-request"],
       },
       {
         type: "prose",
         paragraphs: [
-          "The closing gives readers two successive choices of attention: meet the team, then open its message if they wish. We adapted the clipping and sticky-positioning structure studied on **Wolverine Worldwide’s website** so the photograph appears as the preceding content moves away.[15] An outer window clips a sticky stage; inside it, the photo scales from 1.3 to 1.[13]",
-        ],
-      },
-      {
-        type: "code",
-        code: "p = clamp((V - y) / H, 0, 1)\nscale = 1.3 - 0.3 * p",
-        label: "The same scroll position restores the same photo scale",
-      },
-      {
-        type: "prose",
-        paragraphs: [
-          "V is viewport height, y the window’s top and H its measured height. At progress 0.5, the scale is 1.15. Reversing the scroll restores the corresponding composition. Reserved height and viewport-specific cropping keep this reveal connected to the page and the people in the image. Frame-scheduled transform updates follow browser animation guidance.[12]",
-          "The longer message stays behind **“A note from us”** so it can be read without covering the group by default. The paper opens from that button and returns to it on closing. The photo-reveal sequence and the optional letter are shown together below.",
+          "Beyond the page’s last links, the closing introduces the people behind CirCure. The team photograph emerges as the preceding content moves away: a sticky stage holds the scene while a clipping window reveals it.[13] We adapted this structure from a study of **Wolverine Worldwide’s website**.[15]",
+          "As more of the photograph appears, its scale follows scroll position; moving back restores the corresponding earlier view. The framing adapts to the viewport to retain the group, with transform updates scheduled on the browser’s animation frames.[12] A light shade and soft shadows separate **CirCure** from the photographic detail while leaving the faces visible.",
+          "The photograph also provides a setting for **“A note from us”**. Readers can open this longer message when they want to stay. The paper moves out from its button and returns there on closing, connecting the letter to the scene where it was found.",
         ],
       },
       {
@@ -287,7 +482,7 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "The native modal **dialog** moves focus to its labelled heading and returns it to the opening button on close.[14] The letter scrolls inside its own sheet, with the return action in a separate row. Escape can reverse opening; resizing settles the panel into a defined state. Reduced motion uses a short fade. The background photograph retains its geometry throughout the reading session.",
+          "The letter opens in a native modal **dialog**, with focus moving to its heading and returning to the button on close.[14] Its sheet scrolls independently while the photograph stays in place. Escape closes the letter or reverses its opening; reduced motion uses a short fade. Closing brings the reader back to the same photograph and page position.",
         ],
       },
       {
@@ -296,52 +491,26 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       },
       {
         type: "subheading",
-        id: "continuity-across-design-states",
+        id: "design-record",
         index: "9.6",
-        title: "Shared Design Rules",
+        title: "Refine the Details, Keep the Record",
         level: 3,
+        anchorIds: ["continuity-across-design-states"],
+      },
+      {
+        type: "feature",
+        key: "design-craft-principle",
       },
       {
         type: "prose",
         paragraphs: [
-          "Across the cases, three questions describe continuity: **what stays recognizable, what changes, and what supplies progress?** The RNA outline preserves an object while its context changes; the crest anchors a changing menu; the photograph keeps its relationship to scroll position. These are complementary applications of the same design concern.",
-        ],
-      },
-      {
-        type: "table",
-        headers: ["Reader need", "Stable reference", "Source of change"],
-        rows: [
-          [
-            "Enter the page",
-            "Title and header destination",
-            "Resource readiness, then animation time or explicit input",
-          ],
-          [
-            "Follow the explanation",
-            "RNA outline and readable composition",
-            "Scroll position or guide travel and hold times",
-          ],
-          [
-            "Keep a place",
-            "Crest, current marker and citing sentence",
-            "Navigation state or a selected destination",
-          ],
-          [
-            "Discover the next step",
-            "Aligned labels and painted path",
-            "Hover, focus or scroll position",
-          ],
-          [
-            "Choose the closing",
-            "Team photograph and note button",
-            "Scroll position, then an explicit opening or closing action",
-          ],
+          "Across the story, reading pages and controls, we return to three concerns: **keep something recognizable, make the next step clear and leave a way back**. The RNA outline, persistent crest, loading messages and citation backlinks address these concerns in different places. They also give us concrete details to revisit when a sequence feels difficult to follow.",
         ],
       },
       {
         type: "prose",
         paragraphs: [
-          "Each mechanism also defines what happens when its input changes. Reversal continues from the visible state, layout changes refresh measured geometry, and keyboard focus identifies the available action. Reduced motion keeps the destination and information available with less movement. These rules organize the implementation; they do not by themselves demonstrate comprehension gains or full accessibility compliance.",
+          "Lumi connects these places through a familiar character, while labels and controls explain her different roles. We check those roles across reverse scrolling, scene changes, resizing, keyboard input and reduced motion. The implementation note below gathers the shared conventions and source files.",
         ],
       },
       {
@@ -351,15 +520,19 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "subheading",
         id: "from-the-sketchbook",
-        index: "9.A",
-        title: "Design Archive",
-        level: 3,
+        index: "",
+        title: "Sketches and Revisions",
+        level: 4,
       },
       {
         type: "prose",
         paragraphs: [
-          "The archive supplements the six cases with preserved prototypes, composition studies and revisions. July concepts are shown as parallel directions; later comparisons identify the issue under review and the form retained. Interpretive labels and expandable source records provide successive levels of detail, informed by gallery-text and figure-panel guidance.[16][17]",
+          "The archive records this work in drawings and interface studies. **Eleven initial drafts** explore the patient’s question, the molecular explanation and the closing gestures of care. Supporting layers show how the paintings are assembled, while **six design folios** collect the interface studies and revisions. Brief labels leave room to examine the images; each can be opened at full size.[16][17]",
         ],
+      },
+      {
+        type: "feature",
+        key: "design-study-09-artwork-archive",
       },
       {
         type: "feature",
@@ -368,14 +541,14 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "subheading",
         id: "design-references",
-        index: "9.B",
+        index: "",
         title: "Design References",
-        level: 3,
+        level: 4,
       },
       {
         type: "prose",
         paragraphs: [
-          "Sources for Sections 8 and 9 include research concepts, interaction guidance, implementation documentation and the identified reference-site study. Citation backlinks return to the individual passages above.",
+          "These sources informed our approach to storytelling, interaction and implementation. Each citation links back to the passage where we used it.",
         ],
       },
       {
@@ -386,63 +559,582 @@ export const visualDesignNarrativeSections: WikiSection[] = [
   },
 ];
 
+/** The motto connects observation and revision to concrete design decisions. */
+export const visualDesignCraftPrinciple = {
+  label: "Our approach to craft",
+  motto: "精益求精，止于至善",
+  translation: "Pursue excellence through continual refinement.",
+  description:
+    "For us, refinement starts with noticing where the reading becomes difficult: an object loses its outline, a title drifts out of alignment or too many details ask for attention together. We return to those moments, change the detail that causes the problem and try the sequence again.",
+  steps: [
+    {
+      title: "Observe",
+      body: "Notice where an object becomes hard to follow, labels compete for attention or the next action is unclear.",
+    },
+    {
+      title: "Refine",
+      body: "Change the detail causing the difficulty: keep the outline whole, align the titles or fit the movement to the painting.",
+    },
+    {
+      title: "Recheck",
+      body: "Read through the revised sequence, reverse direction and try the keyboard and smaller screens. Check whether the same problem still appears.",
+    },
+  ],
+};
+
+export const visualDesignArchiveHighlights = [
+  {
+    key: "design-revision-ring",
+    title: "Keep the object recognizable",
+    body: "In the earlier transfer, the ring disperses into particles and its outline is lost along the way. We kept the circle whole in the revision so readers could follow it into the platform. The saved frames below show the two treatments at different points in their journeys.",
+    target: "archive-ring-revision",
+    images: [
+      {
+        label: "Earlier · particle transfer",
+        path: "history/images/08-ring-particles.jpg",
+        alt: "Saved earlier frame with a particle-based ring transfer.",
+        width: 1440,
+        height: 900,
+      },
+      {
+        label: "Revision · continuous outline",
+        path: "history/images/09-ring-solid.jpg",
+        alt: "Saved revised frame retaining the continuous RNA outline.",
+        width: 1440,
+        height: 900,
+      },
+    ],
+  },
+  {
+    key: "design-revision-labels",
+    title: "Give labels a common reading edge",
+    body: "The curved layout gave the links a flowing arrangement, with each title starting at a different position. We aligned the titles along straight edges and kept the extra description beside the active choice. The revision gives the reader a consistent place to scan while leaving more space around the illustrations.",
+    target: "archive-reading-edge",
+    images: [
+      {
+        label: "Earlier · curved rows",
+        path: "history/images/10-explore-arc-standard.jpg",
+        alt: "Earlier exploration layout with curved labels and all descriptions shown.",
+        width: 1440,
+        height: 900,
+      },
+      {
+        label: "Revision · aligned labels",
+        path: "history/images/11-explore-aligned-standard.jpg",
+        alt: "Revised exploration layout with aligned labels and a local hint.",
+        width: 1440,
+        height: 900,
+      },
+    ],
+  },
+  {
+    key: "design-revision-ribbon",
+    title: "Let the artwork supply the route",
+    body: "The watercolor ribbon brought the page ending closer to the painted story, and its uneven edge needed a new motion path. We sampled that edge again so Lumi’s feet would follow the actual surface. The painting keeps its handmade contour, and the movement leads to the page name beside it.",
+    target: "archive-painted-route",
+    images: [
+      {
+        label: "Earlier · smooth band",
+        path: "history/images/14-ribbon-before.jpg",
+        alt: "Earlier smooth ribbon beneath the next-page destination.",
+        width: 1265,
+        height: 889,
+      },
+      {
+        label: "Revision · painted path",
+        path: "history/images/15-ribbon-after.jpg",
+        alt: "Revised watercolor ribbon with the lamb placed on its painted surface.",
+        width: 1265,
+        height: 889,
+      },
+    ],
+  },
+];
+
+/** Reconstruct the team's framing trials within one consistent display frame. */
+export const visualDesignArtworkRatios = [
+  {
+    ratio: "4:3",
+    variant: "initial",
+    label: "Initial canvas",
+    detail: "Side gaps occupy 8.3% of the frame on each side.",
+  },
+  {
+    ratio: "16:9",
+    variant: "wide",
+    label: "Wider trial",
+    detail: "Top and bottom gaps each occupy 5% of the frame height.",
+  },
+  {
+    ratio: "16:10",
+    variant: "standard",
+    label: "Artwork delivery standard",
+    detail: "Fills the frame. This 16:9 source loses 5% from each side.",
+  },
+] as const;
+
 /** Optional implementation detail stays beside its case without lengthening the main argument. */
 export const visualDesignTechnicalNotes: Record<
   string,
-  { title: string; paragraphs: string[]; code?: string }
+  {
+    title: string;
+    description: string;
+    sections: { title: string; paragraphs: string[] }[];
+    code?: string;
+    codeLabel?: string;
+  }
 > = {
+  "design-details-subpage-color": {
+    title: "Technical details · Color fields and reading surfaces",
+    description:
+      "How the earlier subpages use color at the opening and leave a quieter area for the article.",
+    sections: [
+      {
+        title: "One structure, several palettes",
+        paragraphs: [
+          "In the earlier Dry Lab pages, the background sits on the cover’s ::before layer, beneath the HTML title and introduction. A route selects its image through --dry-lab-art. Project previews use the same structure with rose-colored backgrounds, allowing the palette to change while the text keeps a consistent position.",
+          "To connect the cover with the article, background-size: cover fills the opening and a vertical CSS mask fades its lower edge into the plain reading surface. The painted bands supply the sense of flow; the mask carries their color gradually out of the text area.",
+        ],
+      },
+      {
+        title: "Adapting the color composition",
+        paragraphs: [
+          "That transition also depends on the crop. The title needs an open part of the image behind it, so adapting a background means checking its placement at each screen size. The main text stays on a plain surface, and written module names accompany the colors to identify the pages as their compositions change.",
+        ],
+      },
+    ],
+  },
+  "design-details-layers": {
+    title: "Technical details · Assembling and animating painted layers",
+    description:
+      "How separate paintings keep their alignment as they become an animated scene.",
+    sections: [
+      {
+        title: "Prepare the layered handoff",
+        paragraphs: [
+          "The handoff begins with a layered master and a reference image showing the complete composition. Independent movement, overlap or reuse determines which elements need their own layers; parts that always move together can remain grouped. Exports share the master canvas’s origin and dimensions, preserve transparency and identify each element’s scene, role and stacking order.",
+          "A complete still image is the starting point for this preparation. As its layers move, they can uncover background or character details that were previously hidden. New paintings therefore need those areas filled in as well.",
+        ],
+      },
+      {
+        title: "Restore the original coordinates",
+        paragraphs: [
+          "The page uses cropped images to avoid carrying large transparent margins, but each crop retains its position on the master canvas. For a canvas W × H and bounding rectangle (x0, y0, x1, y1), the equations below express left, top, width and height as canvas-relative percentages. Applying them restores the smaller image to the composition’s original alignment.",
+        ],
+      },
+      {
+        title: "Assemble cropped layers in components",
+        paragraphs: [
+          "The story and supplement manifests carry that alignment into the code, recording each layer’s file, number, position, size and source hash. prepare-home-supplements.py produces the lossless WebP crops and normalized coordinates, which home-story.tsx and CircRnaArtwork.tsx use to place the layers. Existing scenes keep their recorded proportions; the 16:10 standard guides new desktop artwork. In either case, the assembled composition is checked at its intended screen sizes.",
+        ],
+      },
+      {
+        title: "Separate layout from animation",
+        paragraphs: [
+          "Once the layers are placed, animation controllers schedule their changes through data-layer targets. CircRnaArtwork exposes the ring, heading and benefit sketches separately. PaintedReveal uncovers the original paint through an SVG mask, and animateCircRnaSequence moves the ring into the platform as annotations fade. Separating placement from movement gives each transform a clear owner and keeps the two responsibilities from competing.",
+        ],
+      },
+      {
+        title: "Check the scene before and after motion",
+        paragraphs: [
+          "The reference image remains useful after assembly: we use it to check the pose, stacking order and pivot points before adding motion, then return to it when checking the finished scene, reversals, resizing and reduced motion. Explanations and controls stay in semantic HTML. A composed illustration can have one accessible description, with its decorative layers hidden from assistive technology.",
+        ],
+      },
+      {
+        title: "Account for rendering work",
+        paragraphs: [
+          "This layer structure also shapes the rendering work. Cropping reduces empty bitmap area, and reuse lets the same painting appear in several compositions. Image decoding, transparent overlaps, masks and filters still contribute separate costs, which can be examined when profiling the scene on a device.",
+        ],
+      },
+    ],
+    code: "left   = 100 * x0 / W\ntop    = 100 * y0 / H\nwidth  = 100 * (x1 - x0) / W\nheight = 100 * (y1 - y0) / H",
+    codeLabel:
+      "Restore a cropped layer on its original canvas using percentage coordinates",
+  },
+  "design-details-artwork": {
+    title: "Technical details · Choosing a 16:10 canvas for the artwork",
+    description:
+      "Why we chose a wider canvas, and how existing paintings fit that frame.",
+    sections: [
+      {
+        title: "Why the frame changed",
+        paragraphs: [
+          "The canvas ratio came from fitting the paintings to the desktop scene. Our early 4:3 compositions left side gaps. A 16:9 trial reduced that mismatch, although space remained above and below the chosen frame. Enlarging the painting and trimming its sides gave a 16:10 view that filled the frame and aligned with the companion scenes.",
+        ],
+      },
+      {
+        title: "Preparing new artwork",
+        paragraphs: [
+          "These trials led us to choose 16:10 for new desktop story illustrations, for example 4000 × 2500 px. Related layers share the canvas and alignment. We also leave room around faces, key objects and lettering so a responsive crop can adjust without cutting into the scene’s focus.",
+        ],
+      },
+      {
+        title: "Framing existing originals",
+        paragraphs: [
+          "For existing 16:9 paintings, the complete original is retained and available in the image viewer. The page can display a 16:10 cover crop that trims the sides. Its framing is then adjusted for the browser proportions, navigation space and narrow-screen layout, keeping the important parts of the scene in view.",
+        ],
+      },
+    ],
+  },
   "design-details-entry": {
     title: "Technical details · Loading and title handoff",
-    paragraphs: [
-      "The loader waits for its entrance and the route’s styles, fonts, nearby images and registered scene work. After styles become available, the remaining checks share a bounded waiting period.",
-      "SVG masks uncover the CirCure lettering along measured paths, with a glowing tip following each stroke. The subtitle appears word by word. Its reading hold starts after the final word settles; the header wordmark supplies the measured handoff destination.",
+    description:
+      "How resource preparation, lettering and reading time lead into the first scene.",
+    sections: [
+      {
+        title: "Preparing the first scene",
+        paragraphs: [
+          "The loader’s entrance runs alongside preparation of the route’s styles, fonts, nearby images and registered scene initialization. Styles form the first readiness gate. Once they are available, the remaining checks share a waiting limit before the introduction continues.",
+        ],
+      },
+      {
+        title: "Lettering, reading time and handoff",
+        paragraphs: [
+          "The title sequence then traces CirCure through SVG masks, with a glowing tip following each stroke. The subtitle appears word by word and holds once its final word has settled. Measuring the header wordmark supplies the final destination, so the large title can move into its place in the navigation.",
+        ],
+      },
     ],
   },
   "design-details-motion": {
     title: "Technical details · Timeline states and story controls",
-    paragraphs: [
-      "Named timeline labels such as stability-readable, why-readable and advantages-readable locate states. The tweens and still intervals create the composition. The shared helper currently uses a 0.22-second scrub to smooth catch-up; reading time comes from hold intervals and the reader’s pace.",
-      "The tear-to-cloud revision balances sequential change with usable paused frames: pigment disperses first, then the map fades in while the cloud gathers. A crossfade handles a pass when image sampling is not ready.",
-      'The current scene is marked with aria-current="step". Hover or keyboard focus moves a scene title 2 px and reveals its arrow. CSS transitions keep this list responsive while narrative playback is paused. Playback speed is available in the list; travel and reading holds keep separate timings.',
+    description:
+      "How scroll distance becomes movement, stillness and time to read.",
+    sections: [
+      {
+        title: "Progress and interpolation",
+        paragraphs: [
+          "A scroll-controlled transition occupies the interval [s0, s1]. Normalizing scroll position s over that interval gives progress p; the easing function E maps p to u, which interpolates a property x between its starting and ending values. During a reading hold, those properties stay unchanged while progress moves through the reserved interval. The reader can therefore continue scrolling through a still composition.",
+        ],
+      },
+      {
+        title: "Readable states and timing",
+        paragraphs: [
+          "Labels such as stability-readable, why-readable and advantages-readable mark the completed explanations, with movement and hold intervals arranged around them. The shared helper uses a 0.22-second scrub, meaning the animation briefly eases toward the requested scroll position. Reading holds serve a separate purpose: they reserve distance over which the completed composition remains still.",
+        ],
+      },
+      {
+        title: "Scene selection and playback",
+        paragraphs: [
+          'For automatic playback, travel and reading holds have separate timings, with a speed choice in the scene list. That list marks the current chapter with aria-current="step". Hover or keyboard focus shifts a title by 2 px and reveals its arrow through CSS transitions, keeping the controls responsive while the narrative animation is paused.',
+        ],
+      },
+    ],
+    code: "p = clamp((s - s0) / (s1 - s0), 0, 1)\nu = E(p)\nx(p) = (1 - u) * x0 + u * x1",
+    codeLabel: "Scroll progress and property interpolation",
+  },
+  "design-details-particles": {
+    title: "Technical details · Particle morphing and scene continuity",
+    description:
+      "How sampled watercolor travels between scenes and settles back into artwork or text.",
+    sections: [
+      {
+        title: "Sample the artwork and its destination",
+        paragraphs: [
+          "The transition starts by sampling its two ends. An offscreen Canvas records the position, color and transparency of visible paint in the source images. When the destination is a keyword, DOM character ranges and computed font styles locate the letters using the browser’s actual line breaks. This ties the sampled geometry to the artwork and text being displayed.",
+        ],
+      },
+      {
+        title: "Pair points and evaluate their paths",
+        paragraphs: [
+          "After sampling, the clinical transition pairs source and target points in reading order, distributing the correspondence across both sets when their sizes differ. Each pair retains its delay, bend and phase values. Scroll progress then interpolates position and color, with a sinusoidal offset that bends the path during travel and returns to zero at both ends.",
+        ],
+      },
+      {
+        title: "Coordinate the scene handoff",
+        paragraphs: [
+          "The images and particles also need a shared handoff. In the tear sequence, pigment disperses before gathering into a cloud as the map appears. Both scenes use viewport coordinates during this bridge, and coordinated opacity ranges determine when the outgoing image, particles, incoming artwork and background are visible.",
+          "As the transition finishes, the particle layer gives way to the original painting. Keyword transitions restore native text, and the reading-ink reveal returns to selectable DOM text. The movement therefore ends in the image or sentence the reader needs to examine.",
+        ],
+      },
+      {
+        title: "Reverse from the same progress",
+        paragraphs: [
+          "Because point pairs stay fixed and their variation comes from their indices, the prepared transition is deterministic: the same geometry and progress produce the same composition. Reverse scrolling can therefore retrace the path. Image and text visibility follow that progress too, letting scene jumps resolve to the appropriate endpoint.",
+          "When the viewport is resized, the point pairs keep their correspondence. In the clinical scene, cached points are repositioned within newly measured image bounds. Chapter-boundary guards separately coordinate the tear bridge with its adjacent timelines.",
+        ],
+      },
+      {
+        title: "Bound preparation and rendering work",
+        paragraphs: [
+          "To draw these sampled points, the tear, clinical and challenge transitions share a WebGL renderer. Prepared positions are uploaded to buffers; a vertex shader calculates their travel, and a fragment shader softens their edges. Canvas 2D provides an alternative rendering path.",
+          "Preparation is spread out or reused where possible. Compact viewports have sampling-density and pixel-ratio limits, and challenge preparations are queued one per animation frame. Reading ink keeps its sampled text in a cache and redraws when progress changes, so the scene can use the same preparation as scrolling continues.",
+        ],
+      },
+      {
+        title: "Fallbacks, motion preferences and cleanup",
+        paragraphs: [
+          "When sampling is unavailable, the clinical and challenge scenes use a dissolve between the original images or text. The tear bridge chooses particles or crossfade at the start of a pass and retains that choice, keeping the treatment consistent throughout the transition.",
+          "Reduced motion leaves the main story timelines unregistered, while decorative canvases are hidden from assistive technology. When a transition is removed, cleanup releases its graphics resources, listeners and queued preparation frames.",
+        ],
+      },
+      {
+        title: "Implementation source",
+        paragraphs: [
+          "animateTearCloud.ts, createClinicalParticleMorph.ts and animateChallengeMorph.ts define the scene transitions, with rendering in challengeParticleRenderer.ts and readingInk.ts. useHomeStoryAnimation.ts connects them to the story. The magnifier and ring use animateThinkingGallery.ts, animateGalleryWhy.ts and createRnaRingMorph.ts for their continuous handoffs.",
+        ],
+      },
     ],
   },
   "design-details-navigation": {
-    title: "Technical details · Navigation geometry and text search",
-    paragraphs: [
-      "The compact-navigation trigger waits until the dark opening has left the viewport. The closing trigger uses the pinned scene’s document placeholder, because the visible scene’s screen position remains fixed during pinning. Shared transition progress coordinates the circle, crest, bar and labels; expanded width is measured from the visible controls.",
-      "A 70 ms opening delay filters brief category crossings; a 170 ms closing delay leaves time to enter the menu. A critically damped follower carries the tray’s position and velocity through reversals. Icon-and-label groups use a separate 180 ms handoff, and inactive panels are inert.",
-      "Menu rows stay in place. A category tint and chevron signal an available link; mouse hover raises only the illustration by 1 px. Keyboard focus adds an outline and the same directional cue. The current page retains its persistent marker.",
-      "The outline and inline links convert a target in the reading frame into the corresponding document scroll position. In-page search uses ranges in rendered text and the CSS Custom Highlight API where supported, preserving application-managed text nodes. A selection-based fallback navigates the current match. Controls and hidden content are excluded; ranges refresh after layout changes rebuild home-story word wrappers.",
+    title: "Technical details · Transparent navigation, shadows and search",
+    description:
+      "How the navigation stays legible over the illustration and helps readers find their place.",
+    sections: [
+      {
+        title: "Opening contrast",
+        paragraphs: [
+          "A transparent opening bar leaves the illustration visible, which makes local contrast around the letters important. The full-width background has zero opacity, while two warm-dark RGB (20, 17, 23) shadows separate the text from the painting. One defines the letter edges; the broader shadow softens the separation. In the CSS, each shadow specifies horizontal offset, vertical offset, blur radius and color with alpha. The opening selector applies them to the wordmark, folio, navigation labels and mobile menu toggle; inner pages retain their route palettes.",
+          "The labels use pale #f8e9e8, with the folio at 62% alpha and link backgrounds at 10%. Images need a corresponding treatment: the crest, carets and mobile-menu SVG use drop-shadow(0 1px 3px rgb(20 17 23 / 25%)). text-shadow follows letter shapes, and drop-shadow follows the visible image or SVG outline. Both keep the shading local to the controls.",
+        ],
+      },
+      {
+        title: "Menu timing and input feedback",
+        paragraphs: [
+          "Opening and closing use different delays because the pointer makes different journeys. The 70 ms opening delay filters brief crossings between categories; the 170 ms closing delay leaves time to enter the tray. A critically damped follower preserves the tray’s position and velocity through direction changes, with icon-and-label groups using a separate 180 ms transition. Inactive panels are inert.",
+          "Within the open menu, feedback stays attached to the link. Rows retain their positions, a category tint and chevron identify the destination, and hover lifts the illustration by 1 px. Keyboard focus adds an outline and the same directional cue, while the current-page marker remains distinct.",
+        ],
+      },
+      {
+        title: "Finding and returning to a passage",
+        paragraphs: [
+          "Inside an article, the outline and inline links translate the target’s position in the reading frame into the document scroll position needed to reach it. Search works from ranges in the rendered text. Where supported, the CSS Custom Highlight API marks those ranges while preserving the application’s text nodes; a selection-based fallback navigates the current match.",
+          "These matches need to follow the displayed content as it changes. Search therefore excludes controls and hidden material, and refreshes its ranges when layout changes rebuild the homepage’s word wrappers.",
+        ],
+      },
+      {
+        title: "Source files and contrast checks",
+        paragraphs: [
+          "Navbar.tsx measures the navigation and controls transition progress; circure-nav.css defines its shadows, transparent background and compact capsule. The illustration behind the lettering changes with scrolling, so the contrast needs to be checked across the sequence.",
+        ],
+      },
     ],
+    code: `.site-header.is-home-page[data-home-opening="true"]
+  :is(.logo-word-full, .wordmark-folio, .nav-link, .mobile-menu-toggle) {
+  text-shadow:
+    0 1px 2px rgb(20 17 23 / 42%),
+    0 3px 8px rgb(20 17 23 / 24%);
+}
+
+/* Navbar.tsx sets this opacity to 0 at the opening. */
+.site-header.is-home-page::before,
+.site-header.is-home-page[data-home-opening]::before {
+  background: var(--home-bar-base);
+  opacity: var(--home-bar-opacity);
+  transition: none;
+}`,
+    codeLabel:
+      "Opening navigation text shadows and scroll-controlled surface opacity",
+  },
+  "design-details-navigation-motion": {
+    title: "Technical details · Folding navigation and continuous transitions",
+    description:
+      "How the bar folds around the crest, with room for labels to enter and leave.",
+    sections: [
+      {
+        title: "Scene position and scroll direction",
+        paragraphs: [
+          "The bar’s overall form and the capsule’s expansion respond to different information. Scene position controls the move between full bar and compact crest. After that compact state settles in the middle of the homepage, scroll direction opens or folds its controls. Scene position takes priority again near the opening and ending, where navigation must coordinate with the illustration.",
+          "An accumulator tracks movement in window.scrollY, folding the capsule after more than 18 px downward and expanding it after more than 18 px upward. A direction change resets the previous accumulation before adding the new movement. Together, the reset and threshold filter small reversals before they change the visible state.",
+          "This direction control becomes active after the scene handoff has settled: target progress is 1, rendered progress exceeds 0.999, preparation is finished and both scene boundaries are clear. For header height H, the opening’s lower edge must be above −(H + 168 px), and the closing anchor below H + 168 px. Outside that region, the accumulator resets so the scene transition can take over.",
+        ],
+      },
+      {
+        title: "Folding the full bar around the crest",
+        paragraphs: [
+          "The opening’s lower edge b sets the exit timing. A 56 px band ends at header height H, giving q = clamp((H + 56 − b) / 56, 0, 1). The smoothstep function S(t) = t²(3 − 2t) softens the beginning and end. With rendered handoff progress p, label opacity is min(1 − S(p), 1 − S(q)). This lets the approaching scene fade the labels on time while the crest catches up. The labels lift by up to 24 px as they leave.",
+          "Alongside the fading labels, a shared progress value coordinates the crest and circular background. The 44 px crest stays anchored while its CSS scale decreases, starting at 1 and reaching about 0.682. Its visible size is then about 30 px within the 48 px entrance. Compact layout takes over at p ≥ 0.999, with the labels hidden during the switch.",
+          "The ending reverses this relationship between the scene and the bar. Its pinned scene is measured through a document placeholder; the opaque bar background is established before full-bar labels return. During the handoff, an outgoing set of labels keeps its palette until it has left, so its colors remain consistent with its background.",
+        ],
+      },
+      {
+        title: "Expanding the compact navigation",
+        paragraphs: [
+          "Within compact mode, selecting the crest expands or folds the controls. The resting circle measures 48 × 48 px, with a 24 px corner radius and rgba(253, 248, 242, 0.97) background. Above 980 px, visible controls determine the expanded width, capped by the navigation shell; narrower layouts use the shell width and mobile menu. ResizeObserver and font-loading notifications keep the measurement up to date.",
+          "The background leads the opening. Its width changes over 480 ms, using power3.out to expand and power3.inOut to fold. On expansion, the lettering’s offset begins at −6 px and reaches 0 over 420 ms with cubic-bezier(0.22, 1, 0.36, 1). A 240 ms delay precedes the 180 ms fade-in, allowing the background to open around the text.",
+          "Closing changes that order: lettering fades over 140 ms, completes its movement over 300 ms and becomes hidden after 300 ms. The background then finishes narrowing to the circle. This stagger keeps each label inside a surface with enough room to hold it.",
+        ],
+      },
+      {
+        title: "Returning to the full bar",
+        paragraphs: [
+          "As an expanded capsule approaches the opening or ending, it first closes menus and fades its labels over 180 ms. The background then narrows to 48 px over 200 ms with sine.inOut. A 410 ms preparation window covers this 380 ms sequence plus a 30 ms allowance before the scene handoff resumes. The same preparation applies if a recently closed capsule is still wider than 49 px. This leaves clear space around the crest before the full bar returns.",
+          "A reader can change direction before that sequence has finished, so new movement starts from the rendered state. Scene progress catches up with power1.out over 0.16 + 0.12 × |target − current| seconds, a range of 160–280 ms. GSAP overwrite replaces the target while preserving the current value. requestAnimationFrame combines scroll updates, with layout reads preceding style writes. These choices coordinate the frames between endpoints as well as the endpoints themselves.",
+        ],
+      },
+      {
+        title: "Match interaction to the visible state",
+        paragraphs: [
+          "Controls become inert and aria-hidden while collapsed, preparing or handing over between layouts. If a focused control is about to disappear, focus returns to the wordmark with preventScroll. Folding closes any open menu; Escape, the collapse button and an outside pointer press also dismiss it. With reduced motion enabled, width and label transitions settle directly, and the scene handoff uses its endpoint.",
+        ],
+      },
+    ],
+    code: `// Direction control is gated by settled compact mode and scene clearance.
+if (delta > 0) {
+  if (scrollDeltaRef.current < 0) scrollDeltaRef.current = 0;
+  scrollDeltaRef.current += delta;
+  if (scrollDeltaRef.current > 18) setIsBallExpanded(false);
+} else if (delta < 0) {
+  if (scrollDeltaRef.current > 0) scrollDeltaRef.current = 0;
+  scrollDeltaRef.current += delta;
+  if (scrollDeltaRef.current < -18) setIsBallExpanded(true);
+}
+
+// Opening clearance and shared rendered progress.
+// H: header height; b: opening bottom; p: rendered progress.
+q = clamp((H + 56 - b) / 56, 0, 1)
+S(t) = t * t * (3 - 2 * t)
+labelOpacity = min(1 - S(p), 1 - S(q))
+labelLift = -24 * (1 - labelOpacity) // px
+catchUp = 0.16 + 0.12 * abs(target - p) // seconds`,
+    codeLabel: "Direction-control source excerpt and opening handoff equations",
   },
   "design-details-destinations": {
-    title: "Technical details · Artwork alignment and ribbon travel",
-    paragraphs: [
-      "Each exploration selection coordinates title emphasis, arrow, hint and a single 780 ms greeting. Gestures vary between a nod, peek, hop and bow, then return to rest. Hints are absolutely positioned; a longer description is associated through aria-describedby. Escape dismisses a hint, and inert story layers suppress hints and greetings.",
-      "Keyboard-visible focus takes priority over pointer entry. Deliberate pointer movement may select another entry; leaving restores the focused entry where present. Reduced motion preserves the title, arrow and hint while removing the greeting.",
-      "Resting alignment uses visible silhouettes and feet. Engineering is shifted and slightly enlarged; Contribution is slightly reduced. CSS scale and translation for framing remain separate from the greeting animation. The custom cursor likewise separates its stable input coordinate from the follower’s tilt and lag; the native pointer returns around the next-page action.",
-      "Ten normalized samples on the ribbon’s upper painted surface are joined by cubic Hermite interpolation. Layout measurements map them through the ribbon rectangle and place the lamb’s foot anchor on the curve. The starting point clears closing text; the endpoint is measured relative to the next-page link.",
-      "Travel starts as the head enters the viewport and approaches completion as the section reaches the center. Scroll position supplies target progress; an exponential follower settles displayed progress p toward it. The mapping below has a nonzero entry derivative and a zero arrival derivative. h(x) is the measured painted contact curve.",
-      "The body sits above the curve by its foot-anchor offset. Tilt follows the local tangent, capped at 14 degrees and multiplied by sin(πq), so both endpoints are level. Reverse scrolling follows the same curve; large jumps settle directly. Layout and font changes trigger fresh measurements. Below the desktop breakpoint the companion is static; reduced motion places desktop travel at its endpoint.",
-      "At the destination, the arrow surface darkens and rotates 45 degrees. An absolutely positioned hint leaves the label and artwork in place. Scrolling clears a mouse preview; visible keyboard focus retains it, and Escape closes it.",
+    title: "Technical details · Destination layout and motion",
+    description:
+      "How the layout, painted ribbon and small hints work together at the end of a page.",
+    sections: [
+      {
+        title: "Spacing values",
+        paragraphs: [
+          "The open composition is built from content spacing. WikiNextRecord grows with its text, using desktop padding of clamp(64px, 6vw, 88px) above and 88px below, plus a 40px row gap. The route background spans the page, while the content is capped at 1120px. This places the closing and destination within a wider field of color.",
+          "The interval continues into the footer through padding-top: clamp(156px, 17vw, 248px), with a gradient of height clamp(220px, 25vw, 360px) blending the route color into the footer paper. On widths of 760px and below, the component uses 48px top padding, 72px bottom padding and a 22px row gap. Smaller spacing accommodates the narrower layout as the text wraps.",
+        ],
+      },
+      {
+        title: "A closing thought and a separate destination",
+        paragraphs: [
+          "On desktop, the closing copy spans the first grid row; Lumi and the destination share the second. Within the 1120 px content width, an 11 px label introduces a destination name sized at 38–60 px beside a 64 px arrow. The ribbon runs behind them at 0.42 opacity, giving the movement a path while keeping the text prominent.",
+          "At 760 px and below, the static lamb sits beside the closing title, followed by the explanation and a destination link across the available width. Type, gaps and arrow size adapt together, preserving the order of closing thought, explanation and next step.",
+        ],
+      },
+      {
+        title: "Selection and alternative inputs",
+        paragraphs: [
+          "An active exploration entry brings together title emphasis, arrow, hint and one 780 ms greeting. Its lamb nods, peeks, hops or bows, then returns to rest. When a story layer becomes inactive, hints and greetings are suppressed together.",
+          "Pointer and keyboard selection follow a shared priority. Keyboard-visible focus stays active until deliberate pointer movement selects another entry; leaving then restores the focused entry when one exists. Reduced motion retains the title, arrow and hint, with the lamb at rest.",
+        ],
+      },
+      {
+        title: "Making room for hints",
+        paragraphs: [
+          "The extra line needs space before it appears. Both exploration and Next page reserve a position below the label through absolute positioning, keeping the title and neighboring entries still. The hints enter from a 4 px offset, with a 180 ms opacity transition and 280 ms transform transition. Title color changes take 240 ms on Home and 220 ms on Next page.",
+          "Hover or keyboard focus reveals the short line, and aria-describedby connects the link to its fuller summary. Escape dismisses the hint. Scrolling clears a pointer preview while keeping a keyboard-selected description visible. On touch screens, the visible page name works as a normal link.",
+        ],
+      },
+      {
+        title: "Aligning the visible artwork",
+        paragraphs: [
+          "Alignment follows the visible artwork, including the feet, so transparent margins are accounted for. Engineering is shifted and slightly enlarged; Contribution is slightly reduced. CSS scale and translation handle those framing adjustments separately from the greeting. A similar separation keeps the custom cursor’s input coordinate stable while its illustration tilts and follows with a lag. Around the next-page action, the native pointer returns.",
+        ],
+      },
+      {
+        title: "Measuring the painted route",
+        paragraphs: [
+          "The path begins with the painting: ten normalized samples mark the ribbon’s upper edge, and cubic Hermite interpolation joins them into a smooth curve. Layout measurements place that curve on the displayed ribbon. Lumi’s foot anchor follows it, starting clear of the closing text and ending beside the next-page link.",
+          "Scroll position determines where Lumi is along that path. Travel starts as the section head enters the viewport and nears completion as the section reaches the center. An exponential follower brings displayed progress p toward the target. The mapping below has a nonzero entry derivative and a zero arrival derivative, giving the journey a prompt start and gradual arrival. h(x) is the measured contact curve.",
+        ],
+      },
+      {
+        title: "Arrival, reversal and responsive states",
+        paragraphs: [
+          "The body sits above the curve by the foot-anchor offset. Its tilt follows the local tangent, capped at 14 degrees and multiplied by sin(πq) to leave both endpoints level. Reversing scroll retraces the curve; large jumps settle directly. Layout and font changes trigger a new measurement. Below the desktop breakpoint, Lumi stays still; reduced motion places desktop travel at the destination.",
+          "Hovering or focusing the destination darkens the circular control and rotates its arrow by 45 degrees. Its hint uses the reserved position and input behavior described above.",
+        ],
+      },
     ],
     code: "q(p) = p + p² - p³\nx(p) = x_start + (x_end - x_start) * q(p)\ny_foot(p) = h(x(p))",
+    codeLabel: "Ribbon travel equations",
   },
   "design-details-closing": {
-    title: "Technical details · Photo geometry and the optional letter",
-    paragraphs: [
-      "The photo hook writes transform directly. requestAnimationFrame combines scroll notifications; intersection and resize observers limit nearby updates and refresh the window height. Bottom alignment reduces excess wall while retaining the group. Narrow windows derive their height from photo width; wide, shallow screens keep a centered group and fill edges from the same photograph. Reduced motion fixes the final scale.",
-      "The note button and paper rectangles are measured when the transition begins. Thirty-three keyframes interpolate translation, horizontal and vertical scale, opacity and corner radius along a shallow arc. Opening takes 540 ms and closing 380 ms. Radius compensation keeps soft edges through scaling.",
-      "Escape during opening reverses the active animation from its current frame. If resizing invalidates the geometry, the panel settles open or completes closing according to direction. Closing restores focus with preventScroll; reopening resets the letter to its beginning.",
-      "Wheel, touch and scrolling-key input are intercepted at the sheet boundaries without changing page overflow. The underlying sticky geometry, viewport width and photo scale stay stable. The desktop two-column letter becomes one column on narrow screens and stays within the available viewport height.",
-      "Footer social tiles lift 4 px and scale to 1.06 on hover, then compress on press. Text links use underlining; source and licence links strengthen their existing underline. Keyboard focus outlines each target.",
+    title:
+      "Technical details · Photo shading, wordmark shadows and the optional letter",
+    description:
+      "How the photograph comes into view, the title stays legible and the letter opens from its button.",
+    sections: [
+      {
+        title: "Scroll position and photo scale",
+        paragraphs: [
+          "The photograph’s reveal is tied to position on the page. V denotes viewport height, y the clipping window’s top and H its measured height. The scale starts at 1.3 and reaches 1 as progress p increases; at p = 0.5 it is 1.15. Because position determines the scale, scrolling back restores the corresponding view. The letter uses a separate opening and closing animation.",
+          "The photo hook applies that scale through transform, with requestAnimationFrame combining scroll notifications. Intersection and resize observers limit updates to nearby views and refresh the window height. Framing then adapts the same photograph to the available shape: bottom alignment retains more of the group, narrow windows derive their height from photo width, and wide, shallow screens center the group and fill the edges from the image. Reduced motion holds the final scale.",
+        ],
+      },
+      {
+        title: "Photo shading and wordmark contrast",
+        paragraphs: [
+          "To keep the title legible as the photograph changes scale, shade and lettering occupy separate layers above it. .keepsake-photo-shade uses z-index 1, .keepsake-brand uses 2 and the note button uses 3. The RGB (20, 17, 23) shade has opacity stops of 6% at the top, 9% at 46% height, 23% at 82% and 12% at the bottom. Its strongest darkening sits near the lower wordmark; the group remains visible above it as the photograph scales beneath the stationary shade.",
+          "The wordmark uses #fffdf9 with two shadows in RGB (20, 17, 23): 0 2px 8px at 28% alpha and 0 10px 28px at 16%. The close shadow defines the letters against fine photographic detail, while the wider shadow gives them a softer separation. brightness(0) invert(1) turns the emblem white, followed by a 0 3px 8px shadow at 25%. Together, these details let the title sit clearly over the photograph.",
+        ],
+      },
+      {
+        title: "Desktop and narrow-screen framing",
+        paragraphs: [
+          "On desktop, the wordmark is centered with font-weight 600, font-size clamp(48px, 11.5cqw, 164px) and a bottom offset of clamp(20px, 4cqw, 56px). One cqw equals 1% of the query container’s width, so the lettering responds to the photograph’s available space.",
+          "At viewport widths of 720 px or less, the brand moves to left: 14px and bottom: 12px, with font-size clamp(30px, 10.5cqw, 64px). The text keeps its shadows. The smaller emblem gains a 0.35 px white edge and a tighter 0 2px 3px dark shadow at 35%. footer-photo-scene.css defines these treatments for FooterPhotoScene.tsx.",
+        ],
+      },
+      {
+        title: "Opening, reversing and closing the letter",
+        paragraphs: [
+          "The letter’s transition uses the button as its point of origin. We measure the button and paper rectangles, then interpolate position, horizontal and vertical scale, opacity and corner radius through thirty-three keyframes along a shallow arc. Opening takes 540 ms and closing takes 380 ms, with radius compensation preserving the soft corners during scaling.",
+          "Pressing Escape during opening reverses the animation from its current frame. If a resize changes the measured geometry, the panel settles open or finishes closing according to its direction. Closing returns focus with preventScroll, and reopening starts the letter from the beginning.",
+        ],
+      },
+      {
+        title: "Reading inside the letter",
+        paragraphs: [
+          "Once open, the letter needs its own reading space while retaining its place over the photograph. The sheet contains wheel, touch and scrolling-key input at its boundaries and leaves page overflow unchanged, preserving the photograph’s sticky position, viewport width and scale. Illustration and text occupy two columns on desktop, then become one column within the available height on narrow screens.",
+        ],
+      },
     ],
+    code: `.keepsake-photo-shade {
+  /* Decorative overlay; controls remain available above it. */
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgb(20 17 23 / 6%) 0%,
+    rgb(20 17 23 / 9%) 46%,
+    rgb(20 17 23 / 23%) 82%,
+    rgb(20 17 23 / 12%) 100%
+  );
+  pointer-events: none;
+}
+
+.keepsake-brand {
+  z-index: 2;
+  color: #fffdf9;
+  text-shadow:
+    0 2px 8px rgb(20 17 23 / 28%),
+    0 10px 28px rgb(20 17 23 / 16%);
+}
+
+/* Photo scale: p = clamp((V - y) / H, 0, 1)
+   scale = 1.3 - 0.3 * p */`,
+    codeLabel:
+      "Photo shade and wordmark shadow CSS excerpts, followed by the reveal equation",
   },
   "design-details-shared": {
-    title: "Implementation notes · Measured content and source files",
-    paragraphs: [
-      "The sponsor strip derives duration from one group’s measured width to keep drift speed consistent after resize. Repeated groups fill the track; only the first is exposed to assistive technology. Reduced motion stops the track and removes duplicates.",
-      "HomeIntro.tsx, Navbar.tsx and useFooterPhotoReveal.ts contain the opening, navigation and photo-reveal mechanisms. home-explore.css records optical corrections; useWikiNextCompanion.ts records the ribbon path. The design archive below preserves the corresponding visual studies.",
+    title: "Implementation notes · A shared character across the interface",
+    description:
+      "How Lumi’s different roles share a visual language while keeping their own controls.",
+    sections: [
+      {
+        title: "One character, different tasks",
+        paragraphs: [
+          "The shared character appears through components suited to each task. HomeExploreLinks.tsx pairs the six homeDestinations with their illustrations; WikiNextRecord.tsx supplies route-specific closing text, with useWikiNextCompanion.ts handling the measured ribbon journey. The loader, SheepCursor.tsx and FooterPhotoScene.tsx manage their own state and layout. Visual continuity comes from the character and responses, while each component controls the behavior it needs.",
+        ],
+      },
+      {
+        title: "Keeping the controls clear",
+        paragraphs: [
+          "The illustrated cursor appears for a fine mouse with hover support when reduced motion is off. Text-entry controls, embedded content and dialogs keep native cursors unless explicitly opted in. Decorative lambs are hidden from assistive technology, with meaning and actions supplied by the links, status messages and note button around them.",
+        ],
+      },
+      {
+        title: "Following the source files",
+        paragraphs: [
+          "The main sequences live in HomeIntro.tsx, Navbar.tsx and useFooterPhotoReveal.ts. home-explore.css contains the optical adjustments to the destination illustrations, and useWikiNextCompanion.ts defines the ribbon path. The archive below shows the drawings and studies behind these choices.",
+        ],
+      },
     ],
   },
 };

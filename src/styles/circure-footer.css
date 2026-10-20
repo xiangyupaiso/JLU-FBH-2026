@@ -36,6 +36,11 @@
   text-align: center;
 }
 
+/* Cover fractional-pixel seams where the pinned Home finale meets the footer. */
+.circure-footer.is-home-page {
+  margin-top: -1px;
+}
+
 /* Carry each page into paper with the same entry spacing. */
 .circure-footer:is(.is-home-page, .is-route-page) > .circure-footer__panel {
   --footer-entry-height: clamp(220px, 25vw, 360px);
@@ -305,13 +310,13 @@
 }
 
 .circure-footer__marquee {
-  --sponsor-gap: 36px;
-  --sponsor-logo-scale: 1.12;
+  --sponsor-gap: 56px;
+  --sponsor-logo-scale: 1.28;
   --sponsor-fade: clamp(12px, 2vw, 28px);
   width: 100%;
   min-width: 0;
   overflow: hidden;
-  margin-top: 24px;
+  margin-top: 32px;
   margin-inline: auto;
   mask-image: linear-gradient(
     to right,
@@ -359,14 +364,14 @@
   align-items: center;
   justify-content: center;
   min-width: 0;
-  height: 56px;
+  height: 64px;
 }
 
 .circure-footer__sponsor img {
   display: block;
-  width: auto;
+  width: 100%;
   max-width: 100%;
-  max-height: 52px;
+  max-height: 60px;
   height: auto;
   object-fit: contain;
   filter: grayscale(1) contrast(0.7) brightness(0.85);
@@ -385,17 +390,22 @@
 .circure-footer__supporter-list {
   display: flex;
   justify-content: center;
-  gap: 56px;
-  margin: 24px 0 0;
+  gap: 72px;
+  margin: 28px 0 0;
   padding: 0;
   list-style: none;
 }
 
 .circure-footer__supporter img {
   display: block;
-  width: 72px;
-  height: 72px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
+}
+
+/* Compensate for the extra whitespace in the supplied animal-center artwork. */
+.circure-footer__supporter[data-organisation="Laboratory Animal Center"] img {
+  transform: scale(1.2);
 }
 
 @keyframes footer-sponsor-loop {
@@ -520,27 +530,27 @@
   }
 
   .circure-footer__supporter img {
-    width: 64px;
-    height: 64px;
+    width: 72px;
+    height: 72px;
   }
 
   .circure-footer__supporter-list {
-    gap: 48px;
-    margin-top: 22px;
+    gap: clamp(20px, calc((100% - 216px) / 2), 56px);
+    margin-top: 26px;
   }
 
   .circure-footer__marquee {
-    --sponsor-gap: 28px;
-    margin-top: 20px;
+    --sponsor-gap: 40px;
+    margin-top: 28px;
   }
 
   .circure-footer__sponsor {
     width: calc(var(--sponsor-logo-width) * var(--sponsor-logo-scale) * 0.84);
-    height: 48px;
+    height: 56px;
   }
 
   .circure-footer__sponsor img {
-    max-height: 40px;
+    max-height: 46px;
   }
 
   .circure-footer__sponsor[data-organisation="Charles River"] img {

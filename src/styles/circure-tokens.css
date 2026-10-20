@@ -1,6 +1,14 @@
 /* CirCure design tokens — Friendly Scientific Editorial.
    Loaded AFTER bootstrap.min.css so it overrides Bootstrap body/typography defaults.
-   Web fonts are served from the team's iGEM Uploads directory. */
+   Main web fonts are served from the team's iGEM Uploads directory. */
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../assets/fonts/outfit-latin-variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
 
 @font-face {
   font-family: "Fraunces";
@@ -69,6 +77,7 @@
   --font-sans: "Lexend", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
   --font-body: "Lexend", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
   --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-figure-label: "Outfit", var(--font-sans);
 
   --radius-control: 6px;
   --radius-panel: 28px;

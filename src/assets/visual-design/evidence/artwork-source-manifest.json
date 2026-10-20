@@ -1,0 +1,422 @@
+{
+  "note": "The eleven user-provided images are identified as initial drafts by the user. They are grouped by subject; no dates or within-group chronological order are inferred. Original files remain unchanged. Full views retain source dimensions as lossless WebP. Selected supporting-layer previews trim transparent outer margins.",
+  "objects": [
+    {
+      "id": "ward",
+      "source": "source/main-page/02/IMG_0627.png",
+      "sourceSha256": "1e21a7ce92644c97a712ff24750ed540ff4f050aaaa6eb5e03948e5bf20e14d2",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "The clinical setting",
+      "alt": "A watercolor ward with a bed, an IV stand and a door.",
+      "thumbnail": "history/artwork/ward.webp",
+      "fullView": "history/artwork/ward-full.webp",
+      "thumbnailSize": [
+        1333,
+        1000
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "1f86e6ed1d81265e4114988c2cb7865e6112b52c517a2f4d4918fb5c8cce5ded",
+      "fullViewLossless": true
+    },
+    {
+      "id": "patient",
+      "source": "source/main-page/02/IMG_0628.png",
+      "sourceSha256": "6fd78eff65b831f02c475c318fa7a0f90df916374f84c729ce1937a918b3ad95",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "The patient",
+      "alt": "An isolated seated patient in blue striped hospital clothes.",
+      "thumbnail": "history/artwork/patient.webp",
+      "fullView": "history/artwork/patient-full.webp",
+      "thumbnailSize": [
+        620,
+        1000
+      ],
+      "thumbnailCrop": [
+        532,
+        411,
+        1557,
+        2064
+      ],
+      "fullViewSha256": "c5c1f814ac6ac158c583c4dfaca08ca3205370b792dda8101232a7dc42e62ed5",
+      "fullViewLossless": true
+    },
+    {
+      "id": "student",
+      "source": "source/main-page/02/IMG_0629.png",
+      "sourceSha256": "912a1f120d26a24ee57145fa481235abd808a846c45ad13859791c0122da6b5e",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "The medical student",
+      "alt": "An isolated medical student in a white coat.",
+      "thumbnail": "history/artwork/student.webp",
+      "fullView": "history/artwork/student-full.webp",
+      "thumbnailSize": [
+        487,
+        1000
+      ],
+      "thumbnailCrop": [
+        1704,
+        104,
+        2209,
+        1142
+      ],
+      "fullViewSha256": "ed53f2e3f4e086476ea27c16f7f171505b317bac139e9c673ae75e33db95f89c",
+      "fullViewLossless": true
+    },
+    {
+      "id": "treatment-study",
+      "source": "source/main-page/01/f24bbdb1d14a547c180da8402fa733d0.png",
+      "sourceSha256": "82cc683c8470c42fec10ed4ca46246846ec3ec119c0d1548444da2b04b539b46",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "Preserved composition",
+      "alt": "A dark central silhouette surrounded by surgery, chemotherapy, hair loss, anxiety and death-rate motifs.",
+      "thumbnail": "history/artwork/treatment-study.webp",
+      "fullView": "history/artwork/treatment-study-full.webp",
+      "thumbnailSize": [
+        1333,
+        1000
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "7f7dc1220af7252eb7af0ec40ce2c42f7bbf985abc13623129fccea9e0be1d39",
+      "fullViewLossless": true
+    },
+    {
+      "id": "treatment-revision",
+      "source": "source/main-page/01-新/2020dce5e54c4def80982f2d8ae90548.jpg",
+      "sourceSha256": "4ebf52c87f9e190ad6b889fa0fe787943a0c3b65877bf2046ff13472e3c2e318",
+      "originalSize": [
+        1920,
+        1080
+      ],
+      "label": "Revised composition",
+      "alt": "The same treatment motifs arranged around a central silhouette and branching pink ribbon.",
+      "thumbnail": "history/artwork/treatment-revision.webp",
+      "fullView": "history/artwork/treatment-revision-full.webp",
+      "thumbnailSize": [
+        1400,
+        788
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "be0a115f33c0926eca0e383ebdc4a2db220513906325200b163e525d76f849f0",
+      "fullViewLossless": true
+    },
+    {
+      "id": "rna-ring",
+      "source": "source/main-page/分层/1/未命名作品-4.png",
+      "sourceSha256": "cdee998a5d9f026520c68407bcca6e07b66a66f2f4b333e5099bf0dd04e14015",
+      "originalSize": [
+        2560,
+        1440
+      ],
+      "label": "The RNA ring",
+      "alt": "An isolated pink watercolor ring with small marks around its circumference.",
+      "thumbnail": "history/artwork/rna-ring.webp",
+      "fullView": "history/artwork/rna-ring-full.webp",
+      "thumbnailSize": [
+        735,
+        717
+      ],
+      "thumbnailCrop": [
+        643,
+        369,
+        1378,
+        1086
+      ],
+      "fullViewSha256": "a6d31c0664154b63803c7bc05513db39428629ffb1729d740a3884cbf5083280",
+      "fullViewLossless": true
+    },
+    {
+      "id": "protecting-hands",
+      "source": "source/main-page/分层/9/未命名作品-2.png",
+      "sourceSha256": "e44d84f419fdde6f97cf335ad36a581dd2c5a4b3b36a86b7053ac55450c55954",
+      "originalSize": [
+        2560,
+        1440
+      ],
+      "label": "Protecting hands",
+      "alt": "Two cupped hands drawn on a pale pink canvas.",
+      "thumbnail": "history/artwork/protecting-hands.webp",
+      "fullView": "history/artwork/protecting-hands-full.webp",
+      "thumbnailSize": [
+        1400,
+        788
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "6133ae77a922a3d94877918a526708a86c9314e132d9aa235c15b558f933be17",
+      "fullViewLossless": true
+    },
+    {
+      "id": "protected-life",
+      "source": "source/main-page/分层/9/未命名作品-3.png",
+      "sourceSha256": "2780a3028307bff33eac4dabf572c6be51eb62c67316d03493e6d8f7381f3e98",
+      "originalSize": [
+        2560,
+        1440
+      ],
+      "label": "The protected figure",
+      "alt": "A small figure holding a heart on a pale pink canvas.",
+      "thumbnail": "history/artwork/protected-life.webp",
+      "fullView": "history/artwork/protected-life-full.webp",
+      "thumbnailSize": [
+        1400,
+        788
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "cec9795741d08a2c0febe6f9690a9eb42bddbc3a1617def4dcdda5ea9f3b7816",
+      "fullViewLossless": true
+    },
+    {
+      "id": "draft-treatment",
+      "source": "User-provided artwork / f24bbdb1d14a547c180da8402fa733d0.png",
+      "sourceSha256": "82cc683c8470c42fec10ed4ca46246846ec3ec119c0d1548444da2b04b539b46",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "Treatment pressures",
+      "alt": "A central silhouette surrounded by treatment concerns, with pink ribbons dividing the composition.",
+      "thumbnail": "history/artwork/treatment-study.webp",
+      "fullView": "history/artwork/treatment-study-full.webp",
+      "thumbnailSize": [
+        1333,
+        1000
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "7f7dc1220af7252eb7af0ec40ce2c42f7bbf985abc13623129fccea9e0be1d39",
+      "fullViewLossless": true,
+      "status": "Initial draft",
+      "statusEvidence": "Identified as an initial draft by the user in this conversation."
+    },
+    {
+      "id": "draft-ward-soft",
+      "source": "User-provided artwork / 398b62f24da270ad3c2944c27e918eab.png",
+      "sourceSha256": "a396b6d6f99d81b1ef112502ffbedbe295cc1edee557643341ba242b176d925f",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "Soft foreground",
+      "alt": "An early ward composition with a blurred patient in the foreground and a medical student beside a handwritten question.",
+      "thumbnail": "history/artwork/draft-ward-soft.webp",
+      "fullView": "history/artwork/draft-ward-soft-full.webp",
+      "thumbnailSize": [
+        1400,
+        1050
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "a666fe449cd1fb005c1eae9b685c3c2c2fbb96672be73223b9a443dd5856d32f",
+      "fullViewLossless": true,
+      "status": "Initial draft",
+      "statusEvidence": "Identified as an initial draft by the user in this conversation."
+    },
+    {
+      "id": "draft-ward-clear",
+      "source": "User-provided artwork / 94bb9ceb5238c67f9a085ae7232a0880.png",
+      "sourceSha256": "4579f56d2ea3837e1769163327894ac207b5bdf15818d98b5f79927e44a557ab",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "Defined foreground",
+      "alt": "A related ward draft with the patient drawn in sharper detail and the same medical student and question.",
+      "thumbnail": "history/artwork/draft-ward-clear.webp",
+      "fullView": "history/artwork/draft-ward-clear-full.webp",
+      "thumbnailSize": [
+        1400,
+        1050
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "eb6c95fa8cdb737b675d8c216f2856c2023a73094941960467508dd2383566cf",
+      "fullViewLossless": true,
+      "status": "Initial draft",
+      "statusEvidence": "Identified as an initial draft by the user in this conversation."
+    },
+    {
+      "id": "draft-map",
+      "source": "User-provided artwork / e3306d495d28c3b85eb1e0caf3f71627.png",
+      "sourceSha256": "7d81ae8818992072499fa36ebd1cb87122705df80d9f2f9a5bedf020d9a5a22c",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "Map composition",
+      "alt": "A stylized map layout with pastel land shapes and five location pins on a pink ground.",
+      "thumbnail": "history/artwork/draft-map.webp",
+      "fullView": "history/artwork/draft-map-full.webp",
+      "thumbnailSize": [
+        1400,
+        1050
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "ee2e977d62195f803e0605ad3b745166e6226d1bce5a7bf366414d1e75b854ec",
+      "fullViewLossless": true,
+      "status": "Initial draft",
+      "statusEvidence": "Identified as an initial draft by the user in this conversation."
+    },
+    {
+      "id": "draft-map-text",
+      "source": "User-provided artwork / 756ebe6af605a7384d678275fbeab334.png",
+      "sourceSha256": "eaa22afb7b357faa5b45c354f33112866efe7a46bd1fadd3e52050445034a330",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "Reserved text area",
+      "alt": "The same map study with a pencil rectangle and the handwritten Chinese placeholder for a text area.",
+      "thumbnail": "history/artwork/draft-map-text.webp",
+      "fullView": "history/artwork/draft-map-text-full.webp",
+      "thumbnailSize": [
+        1400,
+        1050
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "59e00ea175e88b449a85e0b7d932b7f30fde0fec856e2397064899ebe1034928",
+      "fullViewLossless": true,
+      "status": "Initial draft",
+      "statusEvidence": "Identified as an initial draft by the user in this conversation."
+    },
+    {
+      "id": "draft-comparison",
+      "source": "User-provided artwork / a5ea8ac3503cf0a471a832747054c830.png",
+      "sourceSha256": "d723288f4b650b2c43ecaa33f22c0e9d95403e154bb985f6a212a4d41cc6f812",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "Two-column explanation",
+      "alt": "A medical character presenting treatment methods and their limitations in two hand-drawn panels.",
+      "thumbnail": "history/artwork/draft-comparison.webp",
+      "fullView": "history/artwork/draft-comparison-full.webp",
+      "thumbnailSize": [
+        1400,
+        1050
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "3e146427043c847f498bfb68fdd084a6489f83b5cea363e07bccf6dde6ed3f62",
+      "fullViewLossless": true,
+      "status": "Initial draft",
+      "statusEvidence": "Identified as an initial draft by the user in this conversation."
+    },
+    {
+      "id": "draft-question",
+      "source": "User-provided artwork / 13f57f081f7a8c343084763699489325.png",
+      "sourceSha256": "1e87ad53f9e1e7718c72737366ce2a421165ca5eb9da26a63cb305e5f842b682",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "A research question",
+      "alt": "A clinician thinking between two hand-drawn panels containing a cell, magnifying glass and syringe.",
+      "thumbnail": "history/artwork/draft-question.webp",
+      "fullView": "history/artwork/draft-question-full.webp",
+      "thumbnailSize": [
+        1400,
+        1050
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "6e97878b84442d82c015e47b2740ef22624590453d51044027aae9fe941252c8",
+      "fullViewLossless": true,
+      "status": "Initial draft",
+      "statusEvidence": "Identified as an initial draft by the user in this conversation."
+    },
+    {
+      "id": "draft-why-ring",
+      "source": "User-provided artwork / 0a6afea8113c5537a4358d740de13dc4.png",
+      "sourceSha256": "52364b98b90f7e58e4e5d66188d18a120587b6524f10246e279c5ec590e8f553",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "Why circRNA?",
+      "alt": "A pink RNA ring beside handwritten stability and expression sketches.",
+      "thumbnail": "history/artwork/draft-why-ring.webp",
+      "fullView": "history/artwork/draft-why-ring-full.webp",
+      "thumbnailSize": [
+        1400,
+        1050
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "a3d6feee3277cf8658dbd62e21f3d6da739727835179b5ce48dcd77f88af38f0",
+      "fullViewLossless": true,
+      "status": "Initial draft",
+      "statusEvidence": "Identified as an initial draft by the user in this conversation."
+    },
+    {
+      "id": "draft-platform",
+      "source": "User-provided artwork / 98aba25b86a7333c1ca558d033d070c3.png",
+      "sourceSha256": "4367a52d52aca8b3500a1fb96480d5b0dede4b249597e9064a2497d03a16edb7",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "The platform sketch",
+      "alt": "A central circRNA ring with dashed guides and surrounding molecular motifs on a pale yellow ground.",
+      "thumbnail": "history/artwork/draft-platform.webp",
+      "fullView": "history/artwork/draft-platform-full.webp",
+      "thumbnailSize": [
+        1400,
+        1050
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "a90500e8fb69db4fba16a251227a494fc51cb4a0166dab6b7c8e2d29f6a04592",
+      "fullViewLossless": true,
+      "status": "Initial draft",
+      "statusEvidence": "Identified as an initial draft by the user in this conversation."
+    },
+    {
+      "id": "draft-care",
+      "source": "User-provided artwork / 3cb5965331cb2aa0255cc6579a2029df.png",
+      "sourceSha256": "9193e8aaf2217b041ec84d9ade6b1add66cbe902692a2cb7d3ed49e8f7904215",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "A moment of care",
+      "alt": "A patient and medical student holding hands under a sunlit window, with a second patient at the edge.",
+      "thumbnail": "history/artwork/draft-care.webp",
+      "fullView": "history/artwork/draft-care-full.webp",
+      "thumbnailSize": [
+        1400,
+        1050
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "c7d228b2951d410cefa37ea20c226d98fa0847d5286cfbf5f5e72a43a85535e0",
+      "fullViewLossless": true,
+      "status": "Initial draft",
+      "statusEvidence": "Identified as an initial draft by the user in this conversation."
+    },
+    {
+      "id": "draft-protection",
+      "source": "User-provided artwork / 630dd7c6c63d97bdab1f41091170e452.png",
+      "sourceSha256": "2c65a0607cc2e0a9584b670f6830051c2d3c66883a5aab3d6e28b8ed10b48175",
+      "originalSize": [
+        2752,
+        2064
+      ],
+      "label": "Life held in care",
+      "alt": "Cupped pink hands holding a figure with a heart against a warm pink glow.",
+      "thumbnail": "history/artwork/draft-protection.webp",
+      "fullView": "history/artwork/draft-protection-full.webp",
+      "thumbnailSize": [
+        1400,
+        1050
+      ],
+      "thumbnailCrop": null,
+      "fullViewSha256": "e33430ff2cb736f0a16df84ea2b04d36fba436ea2c17a057cadc2dc1ce4dc336",
+      "fullViewLossless": true,
+      "status": "Initial draft",
+      "statusEvidence": "Identified as an initial draft by the user in this conversation."
+    }
+  ]
+}

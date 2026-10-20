@@ -1,0 +1,16 @@
+{
+  "origin": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/wolverine-igem-motion-mascot-v4-local",
+  "scope": "Original header markup, navigation CSS and FLIP/category controller. Isolated opening canvas; responsive card layout and local destination previews added.",
+  "sourceSha256": {
+    "index.html": "acd98f4b185ca1fbdcc7d05b7869721356b3657cd4acf28a8d2f6b186ac31251",
+    "styles.css": "5682d3629e78cfc01681f73b4c8125051a26b3a304a5784f2acba39f9c428d3f",
+    "script.js": "5d0bd56f634988d13c66a840b17e1aad9d7a27ae62c0eb3f64bd2f930dfcbcf0"
+  },
+  "assetsSha256": {
+    "circure-logo-white-v1.webp": "617e51df3dd5cb900ef273f6e1631fb52e0ee872c3e659a82877f3e4a17889f6",
+    "nav-project-wetlab-v2.webp": "a2a5079605c2a35059f0e871a659af83b5f0e56a217de5e8ec75bb3b2212f1ad",
+    "nav-drylab-engagement-v2.webp": "e87f144dd87bad1562e2a7af869ad47b7be1aa4cb90883445172ab02a8a86965",
+    "nav-team-award-v2.webp": "a9a7ff8ad6174edae2f84fb2589736babb7e1d97c4654a46e57f4d222e24a04f",
+    "igem-hero-v2.webp": "984b2a61d9a7d89d8b8c70d560ad545c607ad2c64539d777f6c8598b770ab0d4"
+  }
+}

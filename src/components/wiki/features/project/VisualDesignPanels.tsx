@@ -1,5 +1,6 @@
 import { QueuedImage } from "../../../common/QueuedImage";
 import type { ReactNode } from "react";
+import { visualDesignFigures } from "../../../../data/project/visualDesignAssets";
 import "../../../../styles/features/visual-design-panels.css";
 
 /* -------------------------------------------------------------------------- */
@@ -73,9 +74,7 @@ export function PaletteSwatches() {
   return (
     <div className="palette-swatches" data-wiki-reveal>
       <header className="palette-swatches__header">
-        <h4 className="palette-swatches__title">
-          Module Colors
-        </h4>
+        <h4 className="palette-swatches__title">Module Colors</h4>
       </header>
 
       <div className="palette-swatches__grid">
@@ -85,9 +84,13 @@ export function PaletteSwatches() {
             className={`palette-swatches__card palette-swatches__card--${item.id}`}
           >
             <div className="palette-swatches__card-header">
-              <h5 className="palette-swatches__module-name">
-                {item.module}
-              </h5>
+              <h5 className="palette-swatches__module-name">{item.module}</h5>
+            </div>
+
+            <div className="palette-swatches__preview" aria-hidden="true">
+              {item.colors.map((color) => (
+                <span key={color.role} style={{ backgroundColor: color.hex }} />
+              ))}
             </div>
 
             <div className="palette-swatches__chips-row">
@@ -99,13 +102,14 @@ export function PaletteSwatches() {
                     aria-hidden="true"
                   />
                   <div className="palette-swatches__chip-meta">
-                    <span className="palette-swatches__chip-role">{c.role}</span>
+                    <span className="palette-swatches__chip-role">
+                      {c.role}
+                    </span>
                     <span className="palette-swatches__chip-hex">{c.hex}</span>
                   </div>
                 </div>
               ))}
             </div>
-
           </article>
         ))}
       </div>
@@ -157,7 +161,7 @@ const ARCHITECTURE_LAYERS: ArchitectureLayer[] = [
     highlights: [
       "**WikiRoutePage.tsx** assembles content, reading progress, and the mobile contents drawer.",
       "**wiki-route-skin.css** sets shared layout dimensions.",
-      "CSS numbers figures automatically.",
+      "Article order determines figure numbers automatically.",
     ],
   },
 ];
@@ -233,7 +237,7 @@ const CURSOR_STATES: CursorStateItem[] = [
     id: "rest",
     badge: "State A · Rest",
     title: "Alert Resting State",
-    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/lumi-cursor-rest.avif",
+    src: visualDesignFigures.lumiCursorRest.src,
     alt: "Lumi Cursor Resting Posture",
     description:
       "Default watchful posture accompanying general desktop navigation and long-form reading.",
@@ -242,7 +246,7 @@ const CURSOR_STATES: CursorStateItem[] = [
     id: "active",
     badge: "State B · Hover",
     title: "Joyful Active Reaction",
-    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/lumi-cursor-active.avif",
+    src: visualDesignFigures.lumiCursorActive.src,
     alt: "Lumi Cursor Active Hover Posture",
     description:
       "Joyful wink and delicate glass specular sheen triggered upon interactive links and controls.",
@@ -251,7 +255,7 @@ const CURSOR_STATES: CursorStateItem[] = [
     id: "spark",
     badge: "State C · Click",
     title: "Dynamic Spark Burst",
-    src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/lumi-cursor-spark.avif",
+    src: visualDesignFigures.lumiCursorSpark.src,
     alt: "Lumi Cursor Click Spark Burst",
     description:
       "Inertia spring recoil emitting an 18-particle burst tinted dynamically to the active section's palette.",
@@ -284,7 +288,10 @@ export function LumiCursorShowcase() {
         ))}
       </div>
       <figcaption>
-        Lumi mascot cursor interaction lifecycle: (A) Alert resting state during general desktop navigation; (B) Joyful hover reaction with glass specular sheen over interactive controls; (C) Inertia spring recoil emitting dynamic theme-aware spark particle bursts upon click.
+        Lumi mascot cursor interaction lifecycle: (A) Alert resting state during
+        general desktop navigation; (B) Joyful hover reaction with glass
+        specular sheen over interactive controls; (C) Inertia spring recoil
+        emitting dynamic theme-aware spark particle bursts upon click.
       </figcaption>
     </figure>
   );
@@ -301,4 +308,3 @@ export function visualDesignFeatures(): Record<string, ReactNode> {
     "lumi-cursor-showcase": <LumiCursorShowcase />,
   };
 }
-

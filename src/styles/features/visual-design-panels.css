@@ -9,6 +9,37 @@
 /* Figure Sizing Modifiers                                                    */
 /* -------------------------------------------------------------------------- */
 
+.wiki-page--visual-design {
+  --visual-design-image-radius: 16px;
+}
+
+/* Only each figure's own caption receives the article's ordered label. */
+.wiki-page--visual-design .wiki-article .wiki-figure figcaption::before {
+  content: none;
+}
+
+.wiki-page--visual-design
+  .wiki-article
+  figure
+  > figcaption[data-design-figure-label]::before {
+  display: inline-flex;
+  align-items: center;
+  padding: 2.5px 8px;
+  margin-right: 10px;
+  border-radius: 4px;
+  background: var(--route-heading-ink);
+  color: #fff;
+  font: 700 11px/1.25 var(--font-figure-label);
+  white-space: nowrap;
+  vertical-align: baseline;
+  content: attr(data-design-figure-label);
+}
+
+/* Keep article artwork, case studies and archive images on the same radius. */
+.wiki-page--visual-design .wiki-article img {
+  border-radius: var(--visual-design-image-radius);
+}
+
 /* Logos (Fig 1: Project Logo, Fig 2: Team Logo) */
 .wiki-page--visual-design .wiki-figure--logo img {
   max-width: min(320px, 80vw);
@@ -23,6 +54,8 @@
   width: 100%;
   height: auto;
   margin-inline: auto;
+  /* Trim the dark edge embedded in the source artwork. */
+  clip-path: inset(1% round var(--visual-design-image-radius));
 }
 
 /* Lumi Mascot Circular Emblem (Fig 5) */
@@ -56,28 +89,40 @@
 .palette-swatches {
   --palette-paper: #fffdf7;
   --palette-ink: var(--route-heading-ink, #243d2c);
-  --palette-rule: color-mix(in srgb, var(--palette-ink) 15%, transparent);
+  --palette-rule: color-mix(in srgb, var(--palette-ink) 11%, transparent);
   container: palette-swatches / inline-size;
   margin: 0;
-  padding: 1.75rem 1.5rem;
+  padding: clamp(1rem, 3vw, 1.75rem);
   background:
-    radial-gradient(ellipse at 0 0, color-mix(in srgb, var(--route-main, #b7d782) 18%, transparent), transparent 60%),
+    radial-gradient(
+      ellipse at 0 0,
+      color-mix(in srgb, var(--route-main, #b7d782) 12%, transparent),
+      transparent 60%
+    ),
     var(--palette-paper);
   border: 1px solid var(--palette-rule);
-  border-radius: 12px;
-  box-shadow: 0 4px 18px color-mix(in srgb, var(--palette-ink) 4%, transparent);
+  border-radius: 22px;
+  box-shadow: 0 8px 30px color-mix(in srgb, var(--palette-ink) 3%, transparent);
 }
 
 .palette-swatches__header {
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid var(--palette-rule);
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.1rem;
+}
+
+.palette-swatches__header::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, var(--palette-rule), transparent);
 }
 
 .palette-swatches__title {
   margin: 0;
   font-family: var(--font-editorial);
-  font-size: 1.25rem;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
   font-weight: 700;
   color: var(--palette-ink);
   letter-spacing: -0.01em;
@@ -86,11 +131,25 @@
 .palette-swatches__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 1.25rem;
+  gap: 1rem;
+}
+
+@container palette-swatches (min-width: 520px) {
+  .palette-swatches__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .palette-swatches__card {
+    grid-column: span 2;
+  }
+
+  .palette-swatches__card:last-child {
+    grid-column: 2 / span 2;
+  }
 }
 
 /* Six tracks place three equal cards above a centred pair. */
-@container palette-swatches (min-width: 640px) {
+@container palette-swatches (min-width: 860px) {
   .palette-swatches__grid {
     grid-template-columns: repeat(6, minmax(0, 1fr));
   }
@@ -103,7 +162,7 @@
     grid-column: 2 / span 2;
   }
 
-  .palette-swatches__card:nth-child(5) {
+  .palette-swatches__card:last-child {
     grid-column: 4 / span 2;
   }
 }
@@ -113,12 +172,15 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding: 1.15rem 1rem;
-  background:
-    radial-gradient(ellipse at 0 0, color-mix(in srgb, var(--palette-pigment) 18%, transparent), transparent 72%),
-    var(--palette-paper);
+  padding: 1rem;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--palette-pigment) 10%, white),
+    var(--palette-paper) 65%
+  );
   border: 1px solid var(--palette-rule);
-  border-radius: 10px;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px color-mix(in srgb, var(--palette-ink) 3%, transparent);
 }
 
 .palette-swatches__card--wet-lab {
@@ -138,23 +200,45 @@
 }
 
 .palette-swatches__card-header {
-  margin-bottom: 0.85rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--palette-rule);
+  margin-bottom: 0.9rem;
 }
 
 .palette-swatches__module-name {
   margin: 0;
   font-family: var(--font-editorial);
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--palette-ink);
+  letter-spacing: -0.02em;
+}
+
+.palette-swatches__preview {
+  display: flex;
+  gap: 4px;
+  height: 3.25rem;
+  margin-bottom: 1.1rem;
+}
+
+.palette-swatches__preview > span {
+  flex: 1;
+  min-width: 0;
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 1px rgb(36 61 44 / 7%);
+}
+
+.palette-swatches__preview > span:first-child {
+  flex: 1.7;
+  border-radius: 10px 6px 6px 10px;
+}
+
+.palette-swatches__preview > span:last-child {
+  border-radius: 6px 10px 10px 6px;
 }
 
 .palette-swatches__chips-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem 0.65rem;
+  gap: 0.9rem 0.65rem;
 }
 
 .palette-swatches__chip-item {
@@ -165,9 +249,9 @@
 }
 
 .palette-swatches__color-dot {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
   border: 1px solid var(--palette-rule);
   flex-shrink: 0;
 }
@@ -176,13 +260,13 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
-  gap: 3px;
+  gap: 4px;
   line-height: 1.3;
 }
 
 .palette-swatches__chip-role {
   font-size: 0.75rem;
-  color: color-mix(in srgb, var(--palette-ink) 78%, var(--palette-paper));
+  color: color-mix(in srgb, var(--palette-ink) 80%, var(--palette-paper));
 }
 
 .palette-swatches__chip-hex {
@@ -190,6 +274,26 @@
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--palette-ink);
+  letter-spacing: 0.015em;
+}
+
+@container palette-swatches (max-width: 260px) {
+  .palette-swatches__card {
+    padding: 0.9rem;
+  }
+
+  .palette-swatches__chips-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.65rem;
+  }
+
+  .palette-swatches__chip-meta {
+    flex: 1;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
 }
 
 /* -------------------------------------------------------------------------- */
@@ -197,19 +301,33 @@
 /* -------------------------------------------------------------------------- */
 
 .architecture-flowchart {
+  container: architecture / inline-size;
   --architecture-paper: #fffdf7;
   --architecture-ink: var(--route-heading-ink, #243d2c);
   --architecture-wash: var(--route-main, #b7d782);
-  --architecture-rule: color-mix(in srgb, var(--architecture-ink) 15%, transparent);
+  --architecture-rule: color-mix(
+    in srgb,
+    var(--architecture-ink) 15%,
+    transparent
+  );
   margin: 0;
   padding: 1.75rem 1.5rem;
   background:
-    radial-gradient(ellipse at 0 0, color-mix(in srgb, var(--architecture-wash) 19%, transparent), transparent 56%),
-    radial-gradient(ellipse at 100% 100%, rgb(228 200 162 / 12%), transparent 48%),
+    radial-gradient(
+      ellipse at 0 0,
+      color-mix(in srgb, var(--architecture-wash) 19%, transparent),
+      transparent 56%
+    ),
+    radial-gradient(
+      ellipse at 100% 100%,
+      rgb(228 200 162 / 12%),
+      transparent 48%
+    ),
     var(--architecture-paper);
   border: 1px solid var(--architecture-rule);
   border-radius: 12px;
-  box-shadow: 0 4px 18px color-mix(in srgb, var(--architecture-ink) 4%, transparent);
+  box-shadow: 0 4px 18px
+    color-mix(in srgb, var(--architecture-ink) 4%, transparent);
 }
 
 .architecture-flowchart__header {
@@ -255,7 +373,11 @@
   justify-content: center;
   border-radius: 44% 56% 48% 52% / 53% 44% 56% 47%;
   background:
-    radial-gradient(ellipse at 35% 30%, color-mix(in srgb, var(--architecture-wash) 40%, transparent), transparent 78%),
+    radial-gradient(
+      ellipse at 35% 30%,
+      color-mix(in srgb, var(--architecture-wash) 40%, transparent),
+      transparent 78%
+    ),
     color-mix(in srgb, var(--architecture-wash) 13%, var(--architecture-paper));
   color: var(--architecture-ink);
   font-family: var(--font-editorial);
@@ -267,14 +389,21 @@
 .architecture-flowchart__rail-line {
   flex: 1;
   width: 1px;
-  background: linear-gradient(var(--architecture-rule), color-mix(in srgb, var(--architecture-ink) 5%, transparent));
+  background: linear-gradient(
+    var(--architecture-rule),
+    color-mix(in srgb, var(--architecture-ink) 5%, transparent)
+  );
   margin-top: 8px;
 }
 
 .architecture-flowchart__card {
   padding: 1.15rem 1.35rem;
   background:
-    radial-gradient(ellipse at 0 0, color-mix(in srgb, var(--architecture-wash) 12%, transparent), transparent 72%),
+    radial-gradient(
+      ellipse at 0 0,
+      color-mix(in srgb, var(--architecture-wash) 12%, transparent),
+      transparent 72%
+    ),
     var(--architecture-paper);
   border: 1px solid var(--architecture-rule);
   border-radius: 9px;
@@ -318,13 +447,56 @@
   font-weight: 600;
 }
 
+@container architecture (min-width: 660px) {
+  .architecture-flowchart__step {
+    --architecture-node-top: 1.15rem;
+    grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1fr);
+  }
+
+  .architecture-flowchart__badge-col {
+    grid-column: 2;
+    grid-row: 1;
+    padding-top: var(--architecture-node-top);
+  }
+
+  .architecture-flowchart__rail-line {
+    position: absolute;
+    top: calc(var(--architecture-node-top) + 36px + 8px);
+    bottom: calc(-1.15rem - var(--architecture-node-top) + 8px);
+    margin-top: 0;
+    background: var(--architecture-rule);
+  }
+
+  .architecture-flowchart__card {
+    position: relative;
+    grid-column: 1;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  .architecture-flowchart__card::before {
+    content: "";
+    position: absolute;
+    top: calc(var(--architecture-node-top) + 18px);
+    right: calc(-1rem - 8px);
+    width: calc(1rem + 8px);
+    border-top: 1px solid var(--architecture-rule);
+  }
+
+  .architecture-flowchart__step:nth-child(even) .architecture-flowchart__card {
+    grid-column: 3;
+  }
+
+  .architecture-flowchart__step:nth-child(even)
+    .architecture-flowchart__card::before {
+    right: auto;
+    left: calc(-1rem - 8px);
+  }
+}
+
 @media (max-width: 640px) {
-  .palette-swatches,
   .architecture-flowchart {
     padding: 1.25rem 1rem;
-  }
-  .palette-swatches__grid {
-    grid-template-columns: 1fr;
   }
   .architecture-flowchart__step {
     grid-template-columns: 32px minmax(0, 1fr);
@@ -334,6 +506,9 @@
     width: 30px;
     height: 30px;
     font-size: 0.8rem;
+  }
+  .architecture-flowchart__card {
+    padding: 1rem;
   }
 }
 
@@ -362,10 +537,14 @@
   text-align: center;
   padding: 1.25rem 1rem;
   background: color-mix(in srgb, #ffffff 82%, var(--route-base, #f3f7e0));
-  border: 1px solid color-mix(in srgb, var(--route-heading-ink, #243d2c) 16%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--route-heading-ink, #243d2c) 16%, transparent);
   border-radius: 12px;
   box-shadow: 0 3px 12px rgba(36, 61, 44, 0.04);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .wiki-cursor-showcase__card:hover {
@@ -386,7 +565,8 @@
     color-mix(in srgb, var(--route-soft, #dfee91) 60%, #fff) 0%,
     rgba(255, 255, 255, 0.5) 70%
   );
-  border: 1px solid color-mix(in srgb, var(--route-main, #b7d782) 35%, transparent);
+  border: 1px solid
+    color-mix(in srgb, var(--route-main, #b7d782) 35%, transparent);
   margin-bottom: 0.9rem;
   transition: transform 0.3s ease;
 }
@@ -454,4 +634,3 @@
     height: 72px;
   }
 }
-

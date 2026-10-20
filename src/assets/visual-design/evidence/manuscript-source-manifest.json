@@ -7,13 +7,26 @@
       "caption": "A large wordmark, a progress rail and a labelled circular instruction.",
       "zhLabel": "圆环开场",
       "zhCaption": "大字标、进度线与带标注的环形指令。",
-      "kind": "Preserved prototype · re-rendered",
-      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-human-centered-preview-20261019/history/captures/july-system.png",
+      "kind": "Preserved source · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-scrollbar-recapture-20261019/01-ring.jpg",
       "origin": "2026-07-01-iGEM-wiki-v1-framer/circure-igem-local/index.html",
-      "width": 1425,
-      "height": 891,
-      "sha256": "c83ce581a553ee89a5def5f7a9d040cc2a8d8f9ef4ba407b5ba7af3d756c09c4",
-      "letter": "a"
+      "width": 1440,
+      "height": 900,
+      "sha256": "f382ef9ada923b9c87119fe20583e4946d1951fe1f059baf7b59efa3fe944bb6",
+      "letter": "a",
+      "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-human-centered-preview-20261019/history/captures/july-system.png",
+      "captureDate": "2026-10-20",
+      "captureSha256": "f382ef9ada923b9c87119fe20583e4946d1951fe1f059baf7b59efa3fe944bb6",
+      "captureState": {
+        "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/circure-igem-local/",
+        "viewport": [
+          1440,
+          900
+        ],
+        "scrollY": 650,
+        "scrollbars": [],
+        "note": "Retained source or build re-rendered; scrollbars hidden only in the capture environment. Original assets and native text retained; decorative cursor moved away or hidden."
+      }
     },
     {
       "id": "02-spatial",
@@ -22,13 +35,26 @@
       "caption": "The ring becomes the center of an imagined apparatus.",
       "zhLabel": "空间开场",
       "zhCaption": "圆环成为想象中装置的中心。",
-      "kind": "Preserved prototype · re-rendered",
-      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-human-centered-preview-20261019/history/captures/july-spatial.png",
+      "kind": "Preserved source · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-scrollbar-recapture-20261019/02-spatial.jpg",
       "origin": "2026-07-01-iGEM-wiki-v1-framer/worldlabs-spatial-scroll-local/index.html",
-      "width": 1425,
-      "height": 891,
-      "sha256": "818d8da568a676f5b7fc66cc095883ed851bb49f7934f9f9acd7caaa82f0e176",
-      "letter": "b"
+      "width": 1440,
+      "height": 900,
+      "sha256": "11eade6fc8f45760d870953028a0bf3d36f420d80e036cc40ba3e03101d3c008",
+      "letter": "b",
+      "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-human-centered-preview-20261019/history/captures/july-spatial.png",
+      "captureDate": "2026-10-20",
+      "captureSha256": "11eade6fc8f45760d870953028a0bf3d36f420d80e036cc40ba3e03101d3c008",
+      "captureState": {
+        "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/worldlabs-spatial-scroll-local/",
+        "viewport": [
+          1440,
+          900
+        ],
+        "scrollY": 0,
+        "scrollbars": [],
+        "note": "Retained source or build re-rendered; scrollbars hidden only in the capture environment. Original assets and native text retained; decorative cursor moved away or hidden."
+      }
     },
     {
       "id": "03-image-led",
@@ -37,13 +63,26 @@
       "caption": "Molecular imagery, a flowing ribbon and an early lamb silhouette share the opening.",
       "zhLabel": "影像方向",
       "zhCaption": "分子图像、流动丝带与早期小羊剪影同处开场。",
-      "kind": "Preserved prototype · re-rendered",
-      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-human-centered-preview-20261019/history/captures/july-mascot.png",
+      "kind": "Preserved source · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-scrollbar-recapture-20261019/03-image-led.jpg",
       "origin": "2026-07-01-iGEM-wiki-v1-framer/wolverine-igem-motion-mascot-v4-local/index.html",
-      "width": 1425,
-      "height": 891,
-      "sha256": "3393f2d15887a34858d86e816a1d18186955764c830399ec2f6095bda0ad03e1",
-      "letter": "a"
+      "width": 1440,
+      "height": 900,
+      "sha256": "31161eeafb176da812f7c80fffbb791643c5486d0c537fee45d117709f78d0ed",
+      "letter": "a",
+      "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-human-centered-preview-20261019/history/captures/july-mascot.png",
+      "captureDate": "2026-10-20",
+      "captureSha256": "31161eeafb176da812f7c80fffbb791643c5486d0c537fee45d117709f78d0ed",
+      "captureState": {
+        "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/wolverine-igem-motion-mascot-v4-local/",
+        "viewport": [
+          1440,
+          900
+        ],
+        "scrollY": 0,
+        "scrollbars": [],
+        "note": "Retained source or build re-rendered; scrollbars hidden only in the capture environment. Original assets and native text retained; decorative cursor moved away or hidden."
+      }
     },
     {
       "id": "04-recognition",
@@ -52,25 +91,26 @@
       "caption": "The report moves aside to make room for the human question.",
       "zhLabel": "识别叙事",
       "zhCaption": "报告向一旁移开，为人的问题留出空间。",
-      "kind": "Preserved prototype · re-rendered",
-      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/design-folios-timeline-20261019/recognition-homepage-complete.jpg",
+      "kind": "Preserved source · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-scrollbar-recapture-20261019/04-recognition-homepage.jpg",
       "origin": "2026-07-01-iGEM-wiki-v1-framer/anthropic-circure-story-nav-local/index.html",
-      "width": 1425,
-      "height": 891,
-      "sha256": "2a0734c3e7bbdc4537a643276d9b903c5328868185ff1eb12635214963133caf",
+      "width": 1440,
+      "height": 900,
+      "sha256": "370918446d53586f5ec0b7b5d8a50d96138cd1cacf8e715f1032f837a5a80fd2",
       "letter": "b",
-      "captureSha256": "19ee420476c701013de5bbb72db52511026ffe04056553cb94a244b267f2b4d8",
-      "captureDate": "2026-10-19",
+      "captureSha256": "370918446d53586f5ec0b7b5d8a50d96138cd1cacf8e715f1032f837a5a80fd2",
+      "captureDate": "2026-10-20",
       "captureState": {
-        "viewportWidth": 1440,
-        "viewportHeight": 900,
+        "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/anthropic-circure-story-nav-local/index.html",
+        "viewport": [
+          1440,
+          900
+        ],
         "scrollY": 1404,
-        "openingProgress": 0.8667,
-        "reportFold": 1,
-        "lifeProgress": 1,
-        "nextSectionTop": 1116,
-        "note": "Captured inside the sticky opening after its visible animation completed; the following history section remains below the viewport."
-      }
+        "scrollbars": [],
+        "note": "Retained source or build re-rendered; scrollbars hidden only in the capture environment. Original assets and native text retained; decorative cursor moved away or hidden."
+      },
+      "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/design-folios-timeline-20261019/recognition-homepage-complete.jpg"
     },
     {
       "id": "05-reader",
@@ -109,13 +149,26 @@
       "caption": "The surrounding images remain behind the approaching portrait.",
       "zhLabel": "合成后的场景",
       "zhCaption": "视线靠近人物时，周围意象留在后方。",
-      "kind": "Archived browser screenshot",
-      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/wiki-latest-main-20260928/outputs/home-layer-depth-20261002/desktop-depth.png",
+      "kind": "Archived screenshot · scrollbar gutter excluded",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-scrollbar-recapture-20261019/07-composed-scene.jpg",
       "origin": null,
-      "width": 1425,
+      "width": 1410,
       "height": 891,
-      "sha256": "f39e0c46b740747cc2fc408fcebfeeb002b66eff3fac361b191ace865dc48fc6",
-      "letter": "b"
+      "sha256": "4a28f42e19392ccf9189de699dbc319a6809ae04e80137521e39a5f4ef9ca0a1",
+      "letter": "b",
+      "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/wiki-latest-main-20260928/outputs/home-layer-depth-20261002/desktop-depth.png",
+      "captureDate": "2026-10-20",
+      "captureSha256": "4a28f42e19392ccf9189de699dbc319a6809ae04e80137521e39a5f4ef9ca0a1",
+      "captureState": {
+        "source": "Archived 2 October composition screenshot; browser recapture of the original pixels, excluding only its 15px scrollbar gutter. Original animation revision is unavailable.",
+        "viewport": [
+          1410,
+          891
+        ],
+        "scrollY": 0,
+        "scrollbars": [],
+        "note": "Original archived raster re-captured in a browser, excluding only the 15px scrollbar gutter; retained animation revision unavailable."
+      }
     },
     {
       "id": "08-ring-particles",
@@ -148,34 +201,110 @@
       "letter": "b"
     },
     {
-      "id": "10-explore-arc",
-      "src": "history/images/10-explore-arc.jpg",
-      "label": "Composition study",
-      "caption": "Curved rows follow the illustration, with all descriptions shown.",
-      "zhLabel": "构图试作",
-      "zhCaption": "行列围绕原画弯曲，说明同时显示。",
-      "kind": "Saved comparison sheet",
-      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/home-explore-sheep-20261019/arc-A-text.png",
-      "origin": null,
+      "id": "10-explore-original",
+      "src": "history/images/10-explore-original.jpg",
+      "label": "Text-only baseline",
+      "caption": "Text links and arrows frame the central illustration, before destination mascots were added.",
+      "zhLabel": "纯文字初版",
+      "zhCaption": "添加入口小羊之前，文字与箭头分列于中央插画两侧。",
+      "kind": "Standardized component re-render",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/explore-comparison-standard-20261019/original.jpg",
+      "origin": "2026-09-04-iGEM-WIKI-JLU-FBH/wiki-latest-main-20260928/diagnostics/explore-archive-capture/main.tsx",
       "width": 1440,
       "height": 900,
-      "sha256": "b38662853daf8868e8b0655e04b231991d5eb3ce191c49eefb2f3b29957bf487",
-      "letter": "a"
+      "sha256": "324736dd4e5a8b64d4e512389ea45fc1394b7a8eec6ec4886aa2c8bc53bca711",
+      "letter": "a",
+      "capture": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "interaction": "rest; pointer disabled; no focus",
+        "artwork": "shared scene-9 layers and scale",
+        "variant": "original"
+      },
+      "replaces": []
     },
     {
-      "id": "11-explore-aligned",
-      "src": "history/images/11-explore-aligned.jpg",
-      "label": "Revised reading edge",
-      "caption": "Aligned titles and a local hint leave the other entries still.",
-      "zhLabel": "修订后的阅读边缘",
-      "zhCaption": "标题对齐，提示留在当前入口，其余条目保持稳定。",
-      "kind": "Archived screenshot",
-      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/home-explore-B-final-20261019/desktop-hover.png",
-      "origin": null,
-      "width": 1425,
-      "height": 891,
-      "sha256": "1aafc6a283b95b780a33afadb9bef5b62ecda4b2d30fdca399ceb263b8fde27a",
-      "letter": "b"
+      "id": "10-explore-arc-standard",
+      "src": "history/images/10-explore-arc-standard.jpg",
+      "label": "Curved composition study",
+      "caption": "Six destination mascots accompany curved rows, with all subtitles visible.",
+      "zhLabel": "弧线构图试作",
+      "zhCaption": "六个入口小羊与弧线文字组合，副标题同时显示。",
+      "kind": "Standardized component re-render",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/explore-comparison-standard-20261019/arc.jpg",
+      "origin": "2026-09-04-iGEM-WIKI-JLU-FBH/wiki-latest-main-20260928/diagnostics/explore-archive-capture/main.tsx",
+      "width": 1440,
+      "height": 900,
+      "sha256": "135209fcf43fd7ebd7484abfa4b2e2886ee32d7cdf4d4ffc3b28181883750bcc",
+      "letter": "b",
+      "capture": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "interaction": "rest; pointer disabled; no focus",
+        "artwork": "shared scene-9 layers and scale",
+        "variant": "arc"
+      },
+      "replaces": []
+    },
+    {
+      "id": "11-explore-aligned-standard",
+      "src": "history/images/11-explore-aligned-standard.jpg",
+      "label": "Aligned illustrated layout",
+      "caption": "Titles share a straight inner edge; mascots sit outside, with hints hidden at rest.",
+      "zhLabel": "对齐后的插画版",
+      "zhCaption": "标题沿内侧直线对齐，小羊位于外侧，静止时隐藏提示。",
+      "kind": "Standardized component re-render",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/explore-comparison-standard-20261019/revised.jpg",
+      "origin": "2026-09-04-iGEM-WIKI-JLU-FBH/wiki-latest-main-20260928/diagnostics/explore-archive-capture/main.tsx",
+      "width": 1440,
+      "height": 900,
+      "sha256": "3e8a7ba705b0ce18dc6a15f6811d6a5802afbba89a03bfbf1d49dd188d8bacdf",
+      "letter": "c",
+      "capture": {
+        "viewport": [
+          1440,
+          900
+        ],
+        "interaction": "rest; pointer disabled; no focus",
+        "artwork": "shared scene-9 layers and scale",
+        "variant": "revised"
+      },
+      "replaces": [
+        {
+          "id": "10-explore-arc",
+          "src": "history/images/10-explore-arc.jpg",
+          "label": "Composition study",
+          "caption": "Curved rows follow the illustration, with all descriptions shown.",
+          "zhLabel": "构图试作",
+          "zhCaption": "行列围绕原画弯曲，说明同时显示。",
+          "kind": "Saved comparison sheet",
+          "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/home-explore-sheep-20261019/arc-A-text.png",
+          "origin": null,
+          "width": 1440,
+          "height": 900,
+          "sha256": "b38662853daf8868e8b0655e04b231991d5eb3ce191c49eefb2f3b29957bf487",
+          "letter": "a"
+        },
+        {
+          "id": "11-explore-aligned",
+          "src": "history/images/11-explore-aligned.jpg",
+          "label": "Revised reading edge",
+          "caption": "Aligned titles and a local hint leave the other entries still.",
+          "zhLabel": "修订后的阅读边缘",
+          "zhCaption": "标题对齐，提示留在当前入口，其余条目保持稳定。",
+          "kind": "Archived screenshot",
+          "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/home-explore-B-final-20261019/desktop-hover.png",
+          "origin": null,
+          "width": 1425,
+          "height": 891,
+          "sha256": "1aafc6a283b95b780a33afadb9bef5b62ecda4b2d30fdca399ceb263b8fde27a",
+          "letter": "b"
+        }
+      ]
     },
     {
       "id": "12-letter-before",
@@ -184,13 +313,26 @@
       "caption": "The illustration and text share a centered pink sheet.",
       "zhLabel": "前稿寄语",
       "zhCaption": "插画与文字集中在粉色整页中。",
-      "kind": "Archived screenshot",
-      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/footer-note-refinement-20261017/before-desktop.png",
+      "kind": "Preserved letter source · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-scrollbar-recapture-20261019/12-letter-before.jpg",
       "origin": null,
-      "width": 1425,
-      "height": 891,
-      "sha256": "d300f7b883f06ad0fdcd8d5d5a3179f568a362060ef33bceb8a2b398ba82a2c3",
-      "letter": "c"
+      "width": 1040,
+      "height": 760,
+      "sha256": "be17d76ccc661229023fba8efd072891ab9f30aefb70e646888a3dac3661908d",
+      "letter": "d",
+      "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/footer-note-refinement-20261017/before-desktop.png",
+      "captureDate": "2026-10-20",
+      "captureSha256": "be17d76ccc661229023fba8efd072891ab9f30aefb70e646888a3dac3661908d",
+      "captureState": {
+        "source": "f4b4c04^:src/components/FooterPhotoScene.tsx + src/styles/footer-photo-scene.css; isolated historical sheet, without the previously removed top line",
+        "viewport": [
+          1040,
+          760
+        ],
+        "scrollY": 0,
+        "scrollbars": [],
+        "note": "Original centered letter markup and CSS recovered from f4b4c04 parent. Isolated study restores the pink sheet without the previously removed top line, using a 1040x760 capture shell and return button; no bitmap retouching."
+      }
     },
     {
       "id": "13-letter-after",
@@ -205,7 +347,7 @@
       "width": 1440,
       "height": 900,
       "sha256": "66b6c97ed276b657c6cf6087068fb9ba7c284fc5b31101d7731f662be20e89c9",
-      "letter": "d"
+      "letter": "e"
     },
     {
       "id": "14-ribbon-before",
@@ -220,7 +362,7 @@
       "width": 1265,
       "height": 889,
       "sha256": "56865d42224a95e6e00391c429401b8e3af0143e70136b440c0ba6edf9d6ef81",
-      "letter": "e",
+      "letter": "f",
       "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/next-page-watercolor-20261019/before.png",
       "captureDate": "2026-10-19",
       "captureSha256": "866e41904f301691194a9f453c1b9370e7ff65cce97754b9fa22143f58ff9557",
@@ -237,88 +379,191 @@
       "caption": "Layered pigment connects the route with the wiki’s painted illustrations.",
       "zhLabel": "水彩修订",
       "zhCaption": "叠染颜料让路径与 Wiki 的插画质感联系起来。",
-      "kind": "Archived screenshot",
-      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/next-page-watercolor-20261019/desktop-final.png",
+      "kind": "Preserved source · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-scrollbar-recapture-20261019/15-ribbon-after.jpg",
       "origin": null,
       "width": 1265,
       "height": 889,
-      "sha256": "d5ed42539def7e4214852100eb463ad0fa3bc561a068526f7310bec3b6354ebc",
-      "letter": "f"
+      "sha256": "c56fd17e15729f57ee58eb860351dd8b81a08e8ebfc628d77e8edb9538863049",
+      "letter": "g",
+      "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/next-page-watercolor-20261019/desktop-final.png",
+      "captureDate": "2026-10-20",
+      "captureSha256": "c56fd17e15729f57ee58eb860351dd8b81a08e8ebfc628d77e8edb9538863049",
+      "captureState": {
+        "source": "/Users/lijy/Desktop/CodeX Project/2026-09-04-iGEM-WIKI-JLU-FBH/outputs/next-page-watercolor-20261019/build",
+        "viewport": [
+          1265,
+          889
+        ],
+        "scrollY": 3525,
+        "scrollbars": [],
+        "note": "Retained source or build re-rendered; scrollbars hidden only in the capture environment. Original assets and native text retained; decorative cursor moved away or hidden."
+      }
     },
     {
       "id": "16-image-led-navigation",
       "src": "history/images/16-image-led-navigation.jpg",
       "label": "Image-led navigation",
       "caption": "The expanded Project menu groups an introduction and three illustrated destinations.",
-      "kind": "Preserved prototype · re-rendered",
-      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/design-folios-timeline-20261019/image-led-navigation.jpg",
+      "kind": "Preserved source · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-scrollbar-recapture-20261019/16-image-led-navigation.jpg",
       "origin": "2026-07-01-iGEM-wiki-v1-framer/wolverine-igem-motion-mascot-v4-local/index.html",
-      "width": 1425,
-      "height": 891,
-      "sha256": "acd98f4b185ca1fbdcc7d05b7869721356b3657cd4acf28a8d2f6b186ac31251",
-      "captureSha256": "6f0b14437954b0c95fe15fbe744c731c8ab49cbe67c81dbe94d9d47af37c4b03",
-      "captureDate": "2026-10-19",
+      "width": 1440,
+      "height": 900,
+      "sha256": "fb0146425b8f452de188385ae0afcdeb7be8824ae9ca7ca402160b19c4e54f2f",
+      "captureSha256": "fb0146425b8f452de188385ae0afcdeb7be8824ae9ca7ca402160b19c4e54f2f",
+      "captureDate": "2026-10-20",
       "captureState": {
+        "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/wolverine-igem-motion-mascot-v4-local/index.html",
         "viewport": [
           1440,
           900
         ],
-        "menu": "Project",
-        "expanded": true,
-        "scrollY": 0
+        "scrollY": 0,
+        "scrollbars": [],
+        "note": "Retained source or build re-rendered; scrollbars hidden only in the capture environment. Original assets and native text retained; decorative cursor moved away or hidden."
       },
-      "letter": "c"
+      "letter": "c",
+      "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/design-folios-timeline-20261019/image-led-navigation.jpg"
     },
     {
       "id": "17-pink-thread-person",
       "src": "history/images/17-pink-thread-person.jpg",
       "label": "Pink thread in the Person chapter",
       "caption": "A drawn pink portrait line and a fixed ribbon marker locate the Person chapter.",
-      "kind": "Preserved prototype · re-rendered",
-      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/design-folios-timeline-20261019/pink-thread-person.jpg",
+      "kind": "Preserved source · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-scrollbar-recapture-20261019/17-pink-thread-person.jpg",
       "origin": "2026-07-01-iGEM-wiki-v1-framer/anthropic-circure-story-nav-local/index.html",
-      "width": 1425,
-      "height": 891,
-      "sha256": "af9b155f94513b749f43d0e01101b6e7a9de4c45b30a3619ada3ddf979409ac9",
-      "captureSha256": "25b1194f24e24ed83f539c265a74fa16186e0185e86879cdee46ddaacbe3ab3d",
-      "captureDate": "2026-10-19",
+      "width": 1440,
+      "height": 900,
+      "sha256": "9bcbe846572fc1832847aa4ebe7486720967c5fcf7f161b9d7c950fcbeb0c0d0",
+      "captureSha256": "9bcbe846572fc1832847aa4ebe7486720967c5fcf7f161b9d7c950fcbeb0c0d0",
+      "captureDate": "2026-10-20",
       "captureState": {
-        "guide": "Person, section 3 of 9",
-        "humanProgress": "0.7833",
-        "progress": "33",
-        "scrollY": 6780.5,
+        "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/anthropic-circure-story-nav-local/index.html",
         "viewport": [
           1440,
           900
-        ]
+        ],
+        "scrollY": 6781,
+        "scrollbars": [],
+        "note": "Retained source or build re-rendered; scrollbars hidden only in the capture environment. Original assets and native text retained; decorative cursor moved away or hidden."
       },
-      "letter": "d"
+      "letter": "d",
+      "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/design-folios-timeline-20261019/pink-thread-person.jpg"
     },
     {
       "id": "18-ribbon-emblem",
       "src": "history/images/18-ribbon-emblem.jpg",
       "label": "Ribbon and emblem revealed",
       "caption": "The profile, circular structure and pink awareness ribbon form the completed emblem.",
-      "kind": "Preserved prototype · re-rendered",
-      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/design-folios-timeline-20261019/ribbon-emblem.jpg",
+      "kind": "Preserved source · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-scrollbar-recapture-20261019/18-ribbon-emblem.jpg",
       "origin": "2026-07-01-iGEM-wiki-v1-framer/anthropic-circure-story-nav-local/index.html",
-      "width": 1425,
-      "height": 891,
-      "sha256": "af9b155f94513b749f43d0e01101b6e7a9de4c45b30a3619ada3ddf979409ac9",
-      "captureSha256": "61af7c5562c6d4ac8ef38dac785d9717857404516bc340c2e2fd9db272ab86e8",
-      "captureDate": "2026-10-19",
+      "width": 1440,
+      "height": 900,
+      "sha256": "d070e80d0734be094642020c91bc27b019f2fec0403e4ef9bb21eac3bd483392",
+      "captureSha256": "d070e80d0734be094642020c91bc27b019f2fec0403e4ef9bb21eac3bd483392",
+      "captureDate": "2026-10-20",
       "captureState": {
-        "guide": "Design, section 4 of 9",
-        "pageProgress": "43",
-        "ribbonOpacity": "1",
-        "scrollY": 8864,
-        "styles": "--frame-progress: 1.0000; --radius-progress: 1.0000; --content-progress: 1.0000; --label-progress: 1.0000; --diagram-progress: 1.0000;",
+        "source": "/Users/lijy/Desktop/CodeX Project/2026-07-01-iGEM-wiki-v1-framer/anthropic-circure-story-nav-local/index.html",
         "viewport": [
           1440,
           900
-        ]
+        ],
+        "scrollY": 8864,
+        "scrollbars": [],
+        "note": "Retained source or build re-rendered; scrollbars hidden only in the capture environment. Original assets and native text retained; decorative cursor moved away or hidden."
       },
-      "letter": "e"
+      "letter": "e",
+      "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/design-folios-timeline-20261019/ribbon-emblem.jpg"
+    },
+    {
+      "id": "19-hp-center",
+      "src": "history/images/19-hp-center.webp",
+      "label": "Centered timeline",
+      "caption": "Dates hold the center; people alternate around it.",
+      "kind": "Preserved source · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-scrollbar-recapture-20261019/19-hp-center.jpg",
+      "origin": "2026-07-01-iGEM-wiki-v1-framer/hp-testimonial-cards-local/index.html",
+      "originSHA256": "4132f6ce63af693d8f18c1df9e99b31dfdd7d4b3e03380eac7e1070e3c86287c",
+      "width": 1265,
+      "height": 712,
+      "sha256": "37775f149e8882c448990713e253c440b5b027e961fb7729d56eba4751ecf708",
+      "captureSHA256": "049e6bc79a54f4eb6a806d6586797424ee8a55d0649f79e2a5cb52b833288356",
+      "captureDate": "2026-10-20",
+      "letter": "a",
+      "note": "Demonstration portraits and content; not evidence of completed interviews or project results. Original section CSS and script preserved; archive notice and optimized local media added.",
+      "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/hp-card-folios-20261019/center.png",
+      "captureSha256": "049e6bc79a54f4eb6a806d6586797424ee8a55d0649f79e2a5cb52b833288356",
+      "captureState": {
+        "source": "public/archive-hp-study/center.html",
+        "viewport": [
+          1265,
+          712
+        ],
+        "scrollY": 341,
+        "scrollbars": [],
+        "note": "Retained source or build re-rendered; scrollbars hidden only in the capture environment. Original assets and native text retained; decorative cursor moved away or hidden."
+      }
+    },
+    {
+      "id": "19-hp-dial",
+      "src": "history/images/19-hp-dial.webp",
+      "label": "Rotating timeline",
+      "caption": "One conversation comes into focus as the ring turns.",
+      "kind": "Preserved source · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-scrollbar-recapture-20261019/19-hp-dial.jpg",
+      "origin": "2026-09-04-iGEM-WIKI-JLU-FBH/xyp-part-20260905/hp-testimonial-cards-local/index.html",
+      "originSHA256": "0cadfce7179d49908656a8c3bdb873717d53b1759e66ebbba2d955858aea3f98",
+      "width": 1265,
+      "height": 712,
+      "sha256": "ae468da4e0aca7cbd94d6398b144ee1bc4909c41dc7513fcab2055fc341d30e6",
+      "captureSHA256": "f3a01475143dd5eaba2f97170d6997bda74257ef0127d3a6e2dca8831a3edc1f",
+      "captureDate": "2026-10-20",
+      "letter": "b",
+      "note": "Demonstration portraits and content; not evidence of completed interviews or project results. Original section CSS and script preserved; archive notice and optimized local media added.",
+      "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/hp-card-folios-20261019/dial.png",
+      "captureSha256": "f3a01475143dd5eaba2f97170d6997bda74257ef0127d3a6e2dca8831a3edc1f",
+      "captureState": {
+        "source": "public/archive-hp-study/dial.html",
+        "viewport": [
+          1265,
+          712
+        ],
+        "scrollY": 411,
+        "scrollbars": [],
+        "note": "Retained source or build re-rendered; scrollbars hidden only in the capture environment. Original assets and native text retained; decorative cursor moved away or hidden."
+      }
+    },
+    {
+      "id": "19-hp-horizontal",
+      "src": "history/images/19-hp-horizontal.webp",
+      "label": "Horizontal impact cards",
+      "caption": "A row of image-backed cards connects perspectives with design changes.",
+      "kind": "Preserved source · re-rendered",
+      "source": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/visual-design-scrollbar-recapture-20261019/19-hp-horizontal.jpg",
+      "origin": "2026-07-01-iGEM-wiki-v1-framer/hp-testimonial-cards-local/index.html",
+      "originSHA256": "4132f6ce63af693d8f18c1df9e99b31dfdd7d4b3e03380eac7e1070e3c86287c",
+      "width": 1265,
+      "height": 712,
+      "sha256": "b45285acd262deb01cc37e9cf202c9602b05031558837796b94fbd3444776be7",
+      "captureSHA256": "dbecb7c13fe6add4b0c2d13e56884f7e7a52786d7b764883bc228e64599760bb",
+      "captureDate": "2026-10-20",
+      "letter": "c",
+      "note": "Demonstration portraits and content; not evidence of completed interviews or project results. Original section CSS and script preserved; archive notice and optimized local media added.",
+      "previousSource": "2026-09-04-iGEM-WIKI-JLU-FBH/outputs/hp-card-folios-20261019/horizontal.png",
+      "captureSha256": "dbecb7c13fe6add4b0c2d13e56884f7e7a52786d7b764883bc228e64599760bb",
+      "captureState": {
+        "source": "public/archive-hp-study/horizontal.html",
+        "viewport": [
+          1265,
+          712
+        ],
+        "scrollY": 73,
+        "scrollbars": [],
+        "note": "Retained source or build re-rendered; scrollbars hidden only in the capture environment. Original assets and native text retained; decorative cursor moved away or hidden."
+      }
     }
   ],
   "details": [
@@ -357,5 +602,29 @@
       "processing": "crop only; original pixels retained; no upscaling"
     }
   ],
-  "originalObjectCount": 15
+  "originalObjectCount": 15,
+  "panelCaptures": [
+    {
+      "id": "01-patient-question-b",
+      "source": "outputs/ward-clean-capture-20261020/ward-0.9.png",
+      "sourceSha256": "15d39a354eb843b632cf93e385255bb6dc0b63c2fbcede3d782f699070dcdc9e",
+      "output": "plates/panels/01-patient-question-b.png",
+      "outputSha256": "15d39a354eb843b632cf93e385255bb6dc0b63c2fbcede3d782f699070dcdc9e",
+      "captureDate": "2026-10-20",
+      "viewport": [
+        1440,
+        980
+      ],
+      "clip": [
+        0,
+        78,
+        1440,
+        902
+      ],
+      "scene": "what-we-saw",
+      "progress": 0.9,
+      "note": "Real local homepage capture; navigation outside clip; floating playback, cursor and back-to-top hidden for composition.",
+      "plateSha256": "32cb92f29ba92fc837951b52e1904b589f5da949cb86aa956b5fb9893756b171"
+    }
+  ]
 }

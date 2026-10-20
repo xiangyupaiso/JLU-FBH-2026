@@ -1,0 +1,581 @@
+/* Sections 8–9 share one spacing scale without changing the route-wide skin. */
+.wiki-page--visual-design :is(#human-centered-experience, #interaction-craft) {
+  --design-layout-gap: 24px;
+  --design-label-gap: 10px;
+}
+
+/* The block stack supplies spacing; feature wrappers must not add it twice. */
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .wiki-blocks
+  > .wiki-feature {
+  margin-block: 0 !important;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .wiki-blocks
+  > .wiki-table-wrap {
+  margin-block: 16px var(--design-layout-gap) !important;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .wiki-blocks
+  > .wiki-subheading {
+  margin-block: var(--wiki-space-subhead-top, 28px)
+    var(--wiki-space-subhead-bottom, 14px) !important;
+  text-wrap: pretty;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .wiki-blocks
+  > .wiki-subheading:first-child {
+  margin-top: 0 !important;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  h4.wiki-subheading
+  .wiki-subheading__title {
+  font-size: clamp(16.5px, 1.7vw, 18px) !important;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  figure.wiki-figure.design-plate {
+  margin-block: 8px 0 !important;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-plate__heading {
+  padding-top: 20px;
+  margin-bottom: 20px;
+  font-size: 18px;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-plate__panels {
+  gap: var(--design-layout-gap);
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-panel__heading {
+  gap: 8px;
+  align-items: baseline;
+  text-wrap: pretty;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-panel__letter {
+  flex: 0 0 0.85em;
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Shared rows align image tops even when a neighbouring label wraps. */
+@supports (grid-template-rows: subgrid) {
+  .wiki-page--visual-design
+    :is(#human-centered-experience, #interaction-craft)
+    .design-plate__panels
+    > .design-panel {
+    display: grid;
+    grid-row: span 2;
+    grid-template-rows: subgrid;
+    row-gap: var(--design-label-gap);
+  }
+
+  .wiki-page--visual-design
+    :is(#human-centered-experience, #interaction-craft)
+    .design-plate__panels
+    > .design-panel
+    > .design-panel__heading {
+    min-height: 0;
+    margin-bottom: 0;
+    padding-bottom: 4px;
+  }
+
+  .wiki-page--visual-design
+    :is(#interaction-craft)
+    .art-studio__grid
+    > .art-studio__object {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+    row-gap: var(--design-label-gap);
+  }
+
+  .wiki-page--visual-design
+    :is(#interaction-craft)
+    .art-studio__grid
+    > .art-studio__object
+    > :is(.design-panel__heading, figcaption) {
+    margin: 0;
+    min-height: 0;
+  }
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-plate
+  > figcaption {
+  margin-top: 18px;
+  line-height: 1.8;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-plate__legend {
+  column-gap: var(--design-layout-gap);
+  row-gap: 10px;
+  text-wrap: pretty;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-plate__sources {
+  margin-top: 16px;
+  padding-top: 12px;
+}
+
+/* Optional notes read as editorial annotations, continuous with the article. */
+.wiki-page--visual-design
+  :is(#interaction-craft, #human-centered-experience, .wiki-section)
+  .design-technical-note {
+  margin-block: 8px;
+  border: 0;
+  border-top: 1px solid #d7dfce;
+  border-radius: 0;
+  background: transparent;
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft, #human-centered-experience, .wiki-section)
+  .design-technical-note
+  > summary {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  list-style: none;
+  margin: 0;
+  padding: 18px 42px 20px 0;
+  border-radius: 0;
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.wiki-page--visual-design
+  .design-technical-note
+  > summary::-webkit-details-marker {
+  display: none;
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft, #human-centered-experience, .wiki-section)
+  .design-technical-note
+  > summary:hover {
+  background: transparent;
+}
+
+.wiki-page--visual-design .design-technical-note__label {
+  color: #65745c;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.wiki-page--visual-design .design-technical-note__title {
+  max-width: 68ch;
+  color: var(--route-heading-ink, #243d2c);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  text-wrap: pretty;
+  transition: color 200ms ease;
+}
+
+.wiki-page--visual-design
+  .design-technical-note
+  > summary:hover
+  .design-technical-note__title {
+  color: var(--route-subheading-ink, #84382b);
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft, #human-centered-experience, .wiki-section)
+  .design-technical-note
+  .design-disclosure-preview {
+  margin: 0;
+  max-width: 72ch;
+  color: #64705e;
+  font-size: 12px;
+  line-height: 1.8;
+  text-wrap: pretty;
+}
+
+.wiki-page--visual-design .design-technical-note__toggle {
+  position: absolute;
+  top: 35px;
+  right: 2px;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  border-radius: 0;
+  color: #526845;
+}
+
+.wiki-page--visual-design .design-technical-note__toggle::before,
+.wiki-page--visual-design .design-technical-note__toggle::after {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 12px;
+  height: 1px;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+}
+
+.wiki-page--visual-design .design-technical-note__toggle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+  transition:
+    transform 280ms ease,
+    opacity 280ms ease;
+}
+
+.wiki-page--visual-design .design-technical-note[open] {
+  background: transparent;
+}
+
+.wiki-page--visual-design
+  .design-technical-note[open]
+  .design-technical-note__toggle::after {
+  transform: translate(-50%, -50%) rotate(0deg);
+  opacity: 0;
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft, #human-centered-experience, .wiki-section)
+  .design-technical-note__body {
+  margin-inline: 0;
+  border-top: 0;
+  padding: 0 0 24px;
+}
+
+/* Browsers without intrinsic-size transitions keep the native disclosure. */
+@supports (interpolate-size: allow-keywords) {
+  .wiki-page--visual-design
+    :is(.design-technical-note, .design-archive-complete)::details-content {
+    interpolate-size: allow-keywords;
+    block-size: 0;
+    overflow: clip;
+    opacity: 0;
+    transition:
+      block-size 420ms cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 240ms ease,
+      content-visibility 420ms allow-discrete;
+  }
+
+  .wiki-page--visual-design
+    :is(
+      .design-technical-note,
+      .design-archive-complete
+    )[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+}
+
+.wiki-page--visual-design .design-archive-complete {
+  border: 0;
+  border-top: 1px solid #d7dfce;
+  background: transparent;
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft)
+  .design-archive-complete
+  > :is(summary, summary:hover) {
+  position: relative;
+  padding: 18px 36px 20px 0;
+  list-style: none;
+  background: transparent;
+}
+
+.wiki-page--visual-design
+  .design-archive-complete
+  > summary::-webkit-details-marker {
+  display: none;
+}
+
+.wiki-page--visual-design .design-archive-complete > summary::after {
+  content: "+";
+  position: absolute;
+  top: 18px;
+  right: 8px;
+  color: #526845;
+  font: 300 22px/1.2 var(--font-sans, sans-serif);
+}
+
+.wiki-page--visual-design .design-archive-complete[open] > summary::after {
+  content: "−";
+}
+
+.wiki-page--visual-design .design-archive-complete .design-disclosure-preview {
+  margin-inline: 0;
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft)
+  .design-technical-note__section {
+  margin-top: 24px;
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft)
+  .design-technical-note__section:first-child {
+  margin-top: 12px;
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft)
+  .design-technical-note__section
+  .design-technical-note__heading {
+  /* The route's display-family rule is important; technical labels use body type. */
+  font-family: var(--font-sans, Lexend, sans-serif) !important;
+  font-size: 15px;
+  line-height: 1.65;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-wrap: pretty;
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft)
+  .design-technical-note__section
+  p:last-child {
+  margin-bottom: 0;
+}
+
+.wiki-page--visual-design :is(#interaction-craft) .design-technical-note pre {
+  padding: 16px 18px;
+  border-left: 2px solid #c8d0ba;
+}
+
+/* Give a before/after pair enough space to compare the actual interface. */
+.wiki-page--visual-design
+  :is(#interaction-craft)
+  .design-archive-highlights
+  > li {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: var(--design-layout-gap);
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft)
+  .design-archive-highlights__pair {
+  gap: 16px;
+}
+
+.wiki-page--visual-design :is(#interaction-craft) .art-studio__intro {
+  align-items: start;
+  column-gap: 32px;
+}
+
+.wiki-page--visual-design :is(#interaction-craft) .art-studio__grid {
+  column-gap: var(--design-layout-gap);
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft)
+  .art-studio__object
+  .design-panel__heading {
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft)
+  .art-studio__object
+  figcaption {
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+.wiki-page--visual-design :is(#interaction-craft) .manuscript .ms-pair {
+  gap: var(--design-layout-gap);
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft)
+  .manuscript
+  .ms-object__label {
+  min-height: 2.6em;
+  margin-bottom: 10px;
+  align-items: baseline;
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft)
+  .manuscript
+  .ms-object
+  figcaption {
+  margin-top: 10px;
+  text-wrap: pretty;
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft)
+  .design-craft-principle__steps {
+  gap: var(--design-layout-gap);
+}
+
+@container design-revision (max-width: 800px) {
+  .wiki-page--visual-design
+    :is(#interaction-craft)
+    .design-archive-highlights
+    > li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+}
+
+@container design-plate (max-width: 680px) {
+  .wiki-page--visual-design
+    :is(#human-centered-experience, #interaction-craft)
+    .design-plate__panels
+    > .design-panel {
+    display: grid;
+    grid-row: auto;
+    grid-template-rows: auto auto;
+    row-gap: 10px;
+  }
+
+  .wiki-page--visual-design
+    :is(#human-centered-experience, #interaction-craft)
+    .design-plate__panels
+    > .design-panel
+    > .design-panel__heading {
+    min-height: 0;
+    margin: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  .wiki-page--visual-design
+    :is(#human-centered-experience, #interaction-craft) {
+    --design-layout-gap: 20px;
+  }
+
+  .wiki-page--visual-design
+    :is(#human-centered-experience, #interaction-craft)
+    .wiki-blocks
+    > .wiki-subheading {
+    margin-top: 20px !important;
+  }
+
+  .wiki-page--visual-design
+    :is(#human-centered-experience, #interaction-craft)
+    .design-plate__heading {
+    font-size: 16px;
+    margin-bottom: 18px;
+    padding-top: 18px;
+  }
+
+  .wiki-page--visual-design
+    :is(#interaction-craft, #human-centered-experience, .wiki-section)
+    .design-technical-note
+    > summary {
+    padding: 16px 32px 18px 0;
+  }
+
+  .wiki-page--visual-design .design-technical-note__title {
+    font-size: 14px;
+  }
+
+  .wiki-page--visual-design .design-technical-note__toggle {
+    top: 32px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+  }
+
+  .wiki-page--visual-design
+    :is(#interaction-craft, #human-centered-experience, .wiki-section)
+    .design-technical-note__body {
+    margin-inline: 0;
+  }
+
+  .wiki-page--visual-design :is(#interaction-craft) .art-studio__intro {
+    gap: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wiki-page--visual-design .design-technical-note__title,
+  .wiki-page--visual-design .design-technical-note__toggle::after,
+  .wiki-page--visual-design
+    :is(.design-technical-note, .design-archive-complete)::details-content {
+    transition: none;
+  }
+}
+
+/* This article spread reuses the reader's prose/figure split. */
+.wiki-page--visual-design #navigation-editorial {
+  margin-block: 0 !important;
+  gap: clamp(24px, 3vw, 44px);
+  align-items: start;
+}
+
+.wiki-page--visual-design #navigation-editorial {
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+}
+
+.wiki-page--visual-design #navigation-editorial .design-plate {
+  margin: 0 !important;
+}
+
+.wiki-page--visual-design
+  #navigation-editorial
+  :is(.design-plate__heading, .design-explanation__title) {
+  border: 0;
+  padding-top: 0;
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+.wiki-page--visual-design #navigation-editorial .design-plate__panels {
+  gap: 18px 14px;
+}
+
+.wiki-page--visual-design #navigation-editorial .design-plate__live {
+  margin-top: 18px;
+}
+
+.wiki-page--visual-design #navigation-editorial figcaption {
+  font-size: 12px;
+  line-height: 1.75;
+}
+
+@media (max-width: 1100px) {
+  .wiki-page--visual-design #navigation-editorial {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wiki-page--visual-design .design-technical-note,
+  .wiki-page--visual-design .design-technical-note__toggle::after {
+    transition: none;
+  }
+}

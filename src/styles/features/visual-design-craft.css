@@ -1,0 +1,848 @@
+@font-face {
+  font-family: "Craft Ephesis";
+  src: url("../../assets/fonts/craft-ephesis.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Craft Slide Youran";
+  src: url("../../assets/fonts/craft-slide-youran.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+/* Archived color studies share one quiet caption surface and responsive mosaic. */
+.wiki-page--visual-design .subpage-color-study__mosaic {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 20px 16px;
+}
+
+.wiki-page--visual-design .subpage-color-study__tile {
+  grid-column: span 4;
+  min-width: 0;
+  margin: 0;
+}
+
+.wiki-page--visual-design .subpage-color-study__tile--wide {
+  grid-column: span 7;
+}
+
+.wiki-page--visual-design .subpage-color-study__tile--rose {
+  grid-column: span 5;
+}
+
+.wiki-page--visual-design .subpage-color-study__image {
+  display: block;
+  height: clamp(130px, 16cqi, 180px);
+  overflow: hidden;
+  border-radius: var(--visual-design-image-radius, 16px);
+  background: #f8f6ef;
+  cursor: zoom-in;
+}
+
+.wiki-page--visual-design
+  .subpage-color-study__tile--wide
+  .subpage-color-study__image,
+.wiki-page--visual-design
+  .subpage-color-study__tile--rose
+  .subpage-color-study__image {
+  height: clamp(180px, 24cqi, 260px);
+}
+
+.wiki-page--visual-design .subpage-color-study__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  object-fit: cover;
+}
+
+.wiki-page--visual-design .subpage-color-study__label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin: 10px 0 0;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.wiki-page--visual-design .subpage-color-study__label span:last-child {
+  font-size: 11px;
+  color: var(--route-body-ink, #465540);
+}
+
+.wiki-page--visual-design .subpage-color-study__image:focus-visible {
+  outline: 2px solid var(--route-heading-ink, #243d2c);
+  outline-offset: 4px;
+}
+
+@container design-plate (max-width: 620px) {
+  .wiki-page--visual-design .subpage-color-study__mosaic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 12px;
+  }
+
+  .wiki-page--visual-design .subpage-color-study__tile {
+    grid-column: auto;
+  }
+
+  .wiki-page--visual-design .subpage-color-study__tile--wide {
+    grid-column: 1 / -1;
+  }
+
+  .wiki-page--visual-design
+    .subpage-color-study__tile
+    .subpage-color-study__image {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .wiki-page--visual-design
+    .subpage-color-study__tile--wide
+    .subpage-color-study__image {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@container design-plate (max-width: 360px) {
+  .wiki-page--visual-design .subpage-color-study__mosaic {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.wiki-page--visual-design :is(#human-centered-experience, #interaction-craft) {
+  --design-reading-width: 78ch;
+}
+
+/* Narrative text and case figures share the article's reading edges. */
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .wiki-blocks
+  > .wiki-prose {
+  width: 100%;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .wiki-subheading {
+  margin-top: clamp(36px, 4vw, 56px);
+  text-wrap: balance;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .wiki-blocks
+  > .wiki-prose
+  p {
+  line-height: 1.9;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+/* Center the figure badge and title; keep panel explanations left-aligned. */
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-plate
+  > figcaption:has(> .design-plate__title) {
+  text-align: center;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-plate__title {
+  display: inline;
+  margin-bottom: 0;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-plate__legend {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 24px;
+  text-align: left;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-plate
+  > figcaption:has(> .design-plate__title)
+  > span:not(.design-plate__legend) {
+  display: block;
+  margin-top: 12px;
+  text-align: left;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-plate__legend
+  > span {
+  display: block;
+  min-width: 0;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-plate__legend
+  > span:only-child {
+  grid-column: 1 / -1;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-plate__sources {
+  display: block;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid #d4dcc5;
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--route-body-ink, #465540);
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-technical-note {
+  margin-block: 16px 28px;
+  border-top: 0;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-technical-note
+  > summary {
+  padding-block: 14px;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.wiki-page--visual-design
+  :is(#human-centered-experience, #interaction-craft)
+  .design-technical-note__body
+  > p {
+  max-width: var(--design-reading-width);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.wiki-page--visual-design .design-revision {
+  container: design-revision / inline-size;
+}
+
+.wiki-page--visual-design .design-revision__label {
+  color: var(--route-subheading-ink, #84382b);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.wiki-page--visual-design .design-craft-principle {
+  margin-block: 28px 36px;
+  padding-block: 24px 28px;
+  border-block: 1px solid #b9c69f;
+  color: var(--route-heading-ink, #243d2c);
+}
+
+.wiki-page--visual-design .design-craft-principle__label {
+  margin: 0 0 20px;
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--route-subheading-ink, #84382b);
+}
+
+.wiki-page--visual-design .design-craft-principle blockquote {
+  margin: 0 0 20px;
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.wiki-page--visual-design .design-craft-principle__motto {
+  margin: 0;
+  /* The global paragraph rule uses !important, so override only this motto. */
+  font-family: "Craft Slide Youran", STKaiti, KaiTi, cursive !important;
+  font-size: clamp(28px, 3.3vw, 42px);
+  font-style: normal;
+  font-weight: 400;
+  font-synthesis: none;
+  line-height: 1.8;
+  letter-spacing: 0.06em;
+  text-wrap: balance;
+}
+
+.wiki-page--visual-design .design-craft-principle__translation {
+  margin: 8px 0 0;
+  font-family: "Craft Ephesis", "Snell Roundhand", cursive !important;
+  font-size: clamp(24px, 2.4vw, 30px);
+  font-style: normal;
+  font-weight: 400;
+  font-synthesis: none;
+  line-height: 1.6;
+  text-wrap: balance;
+}
+
+.wiki-page--visual-design .design-craft-principle__description {
+  max-width: 76ch;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.wiki-page--visual-design .design-craft-principle__steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: craft-step;
+}
+
+.wiki-page--visual-design .design-craft-principle__steps li {
+  margin: 0;
+  padding: 0;
+  counter-increment: craft-step;
+}
+
+.wiki-page--visual-design .design-craft-principle__steps strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.wiki-page--visual-design .design-craft-principle__steps strong::before {
+  content: counter(craft-step, decimal-leading-zero) " / ";
+  color: var(--route-subheading-ink, #84382b);
+  font-size: 11px;
+}
+
+.wiki-page--visual-design .design-craft-principle__steps p {
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+.wiki-page--visual-design .design-archive-highlights {
+  list-style: none;
+  margin: 28px 0;
+  padding: 0;
+}
+
+.wiki-page--visual-design .design-archive-highlights > li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  gap: 28px;
+  padding-block: 24px;
+  margin: 0;
+  border-top: 1px solid #c8cfb9;
+  align-items: start;
+}
+
+.wiki-page--visual-design .design-archive-highlights .design-revision__title {
+  margin: 0 0 12px;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--route-heading-ink, #243d2c);
+}
+
+.wiki-page--visual-design
+  .design-archive-highlights__copy
+  p:not(.design-revision__label, .design-revision__title) {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.wiki-page--visual-design .design-archive-highlights__copy a {
+  font-size: 12px;
+  line-height: 1.8;
+  text-underline-offset: 4px;
+}
+
+.wiki-page--visual-design .design-archive-highlights__pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 0;
+}
+
+.wiki-page--visual-design .design-archive-highlights figure {
+  min-width: 0;
+  margin: 0;
+}
+
+.wiki-page--visual-design .design-archive-highlights figcaption {
+  margin: 8px 0 0;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.wiki-page--visual-design .design-revision .design-archive-highlights > li {
+  border-bottom: 1px solid #c8cfb9;
+}
+
+.wiki-page--visual-design .design-revision :is(a, summary):focus-visible {
+  outline: 2px solid var(--route-subheading-ink, #84382b);
+  outline-offset: 4px;
+}
+
+@container design-revision (max-width: 760px) {
+  .wiki-page--visual-design .design-revision .design-archive-highlights > li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+}
+
+.wiki-page--visual-design .design-archive-complete {
+  margin-block: 24px 36px;
+  border-block: 1px solid #b9c69f;
+}
+
+.wiki-page--visual-design .design-archive-complete > summary {
+  padding-block: 18px;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--route-heading-ink, #243d2c);
+}
+
+.wiki-page--visual-design .design-archive-review :is(a, summary):focus-visible {
+  outline: 2px solid var(--route-subheading-ink, #84382b);
+  outline-offset: 4px;
+}
+
+@media (max-width: 680px) {
+  .wiki-page--visual-design
+    :is(#human-centered-experience, #interaction-craft)
+    .design-plate__legend {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .wiki-page--visual-design .design-craft-principle__steps {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .wiki-page--visual-design .design-archive-highlights > li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+}
+
+@container design-revision (max-width: 360px) {
+  .wiki-page--visual-design .design-revision .design-archive-highlights__pair {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+}
+
+.wiki-page--visual-design .art-studio {
+  margin-block: 32px 44px;
+  color: var(--route-heading-ink, #243d2c);
+}
+
+.wiki-page--visual-design .art-studio__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 18px 36px;
+  align-items: end;
+  padding-block: 28px 32px;
+  border-block: 1px solid #b9c69f;
+}
+
+.wiki-page--visual-design .art-studio__eyebrow {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--route-subheading-ink, #84382b);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+
+.wiki-page--visual-design .art-studio__intro h4 {
+  margin: 0;
+  font:
+    450 clamp(30px, 3.5vw, 46px) / 1.12 ArchiveNewsreader,
+    Georgia,
+    serif;
+  letter-spacing: -0.025em;
+  color: inherit;
+}
+
+.wiki-page--visual-design .art-studio__intro > p:last-child,
+.wiki-page--visual-design .art-studio__heading p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 76ch;
+}
+
+.wiki-page--visual-design .art-studio__study {
+  margin: 0;
+  padding-block: 30px;
+  border: 0;
+  border-bottom: 1px solid #c8cfb9;
+  background: none;
+}
+
+.wiki-page--visual-design .art-studio__heading > span {
+  color: var(--route-subheading-ink, #84382b);
+  font-size: 10px;
+  letter-spacing: 0.07em;
+}
+
+.wiki-page--visual-design .art-studio__heading h5 {
+  margin: 10px 0 12px;
+  font:
+    450 clamp(24px, 2.5vw, 32px) / 1.25 ArchiveNewsreader,
+    Georgia,
+    serif;
+  color: inherit;
+}
+
+.wiki-page--visual-design .art-studio__grid {
+  display: grid;
+  gap: 16px;
+  align-items: start;
+  margin-top: 24px;
+}
+
+.wiki-page--visual-design .art-studio__grid--ward {
+  grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+}
+
+.wiki-page--visual-design .art-studio__grid--pair {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.wiki-page--visual-design .art-studio__grid--layers,
+.wiki-page--visual-design .art-studio__grid--draft-trio {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.wiki-page--visual-design .art-studio__object {
+  min-width: 0;
+  margin: 0;
+}
+
+.wiki-page--visual-design .art-studio__object .design-panel__heading {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  min-height: 35px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.wiki-page--visual-design .art-studio__letter {
+  color: var(--route-subheading-ink, #84382b);
+  font-size: 13px;
+}
+
+.wiki-page--visual-design .art-studio__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: clamp(160px, 20vw, 270px);
+  aspect-ratio: auto;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #d9ddcc;
+  border-radius: var(--visual-design-image-radius, 16px);
+  background: #fbf8ef;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.wiki-page--visual-design .art-studio .art-studio__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  margin: 0;
+  border-radius: 0;
+}
+
+.wiki-page--visual-design .art-studio > .art-studio__study .art-studio__image {
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+
+.wiki-page--visual-design .art-studio__object figcaption {
+  margin: 8px 0 0;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.wiki-page--visual-design .art-studio__note,
+.wiki-page--visual-design .art-studio__footer {
+  font-size: 11px;
+  line-height: 1.85;
+  color: #52614e;
+}
+
+.wiki-page--visual-design .art-studio__note {
+  margin: 16px 0 0;
+}
+
+.wiki-page--visual-design .art-studio__footer {
+  padding-top: 18px;
+}
+
+.wiki-page--visual-design .art-studio__footer p {
+  margin: 0 0 8px;
+  font: inherit;
+}
+
+.wiki-page--visual-design .art-studio__sources {
+  margin-top: 24px;
+  border-bottom: 1px solid #c8cfb9;
+}
+
+.wiki-page--visual-design .art-studio__sources > summary {
+  padding-block: 16px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.wiki-page--visual-design .art-studio :is(a, summary):focus-visible {
+  outline: 2px solid var(--route-subheading-ink, #84382b);
+  outline-offset: 4px;
+}
+
+@media (max-width: 680px) {
+  .wiki-page--visual-design .art-studio__intro,
+  .wiki-page--visual-design .art-studio__grid--pair,
+  .wiki-page--visual-design .art-studio__grid--draft-trio {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .wiki-page--visual-design .art-studio__intro {
+    gap: 18px;
+  }
+
+  .wiki-page--visual-design .art-studio__grid--ward,
+  .wiki-page--visual-design .art-studio__grid--layers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .wiki-page--visual-design .art-studio__grid--ward > :first-child,
+  .wiki-page--visual-design .art-studio__grid--layers > :first-child {
+    grid-column: 1 / -1;
+  }
+
+  .wiki-page--visual-design .art-studio__image {
+    height: 200px;
+  }
+
+  .wiki-page--visual-design .art-studio__grid {
+    gap: 20px 12px;
+  }
+}
+.wiki-page--visual-design .artwork-ratio-study {
+  margin: 24px 0 12px;
+}
+
+/* Give optional material a clear entrance and a readable expanded hierarchy. */
+.wiki-page--visual-design
+  :is(#interaction-craft)
+  :is(
+    .design-technical-note,
+    .design-live-study,
+    .design-archive-complete,
+    .art-studio__sources,
+    .ms-ring-sources,
+    .ms-source
+  )
+  > summary {
+  min-height: 44px;
+  box-sizing: border-box;
+  padding: 14px 8px;
+  color: var(--route-heading-ink, #243d2c);
+  font-size: 14px;
+  line-height: 1.7;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+  transition: background-color 160ms ease;
+}
+
+.wiki-page--visual-design :is(#interaction-craft) details > summary::marker {
+  color: var(--route-subheading-ink, #84382b);
+}
+
+.wiki-page--visual-design :is(#interaction-craft) details > summary:hover {
+  background-color: rgb(183 215 130 / 10%);
+}
+
+.wiki-page--visual-design
+  :is(#interaction-craft)
+  details
+  > summary:focus-visible {
+  outline: 2px solid var(--route-subheading-ink, #84382b);
+  outline-offset: 3px;
+}
+
+.wiki-page--visual-design .design-disclosure-preview {
+  display: block;
+  margin: 5px 0 0 15px;
+  max-width: 76ch;
+  color: var(--route-body-ink, #465540);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+.wiki-page--visual-design :is(#interaction-craft) .design-technical-note__body {
+  padding: 4px 8px 24px 23px;
+}
+
+.wiki-page--visual-design .design-technical-note__section {
+  margin-top: 22px;
+  max-width: var(--design-reading-width, 78ch);
+  min-width: 0;
+}
+
+.wiki-page--visual-design
+  .design-technical-note__section
+  .design-technical-note__heading {
+  margin: 0 0 8px;
+  color: var(--route-heading-ink, #243d2c);
+  font: 500 15px/1.7 var(--font-sans, Lexend, sans-serif);
+}
+
+.wiki-page--visual-design .design-technical-note__section p {
+  margin: 0 0 14px;
+  font-size: 14px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.wiki-page--visual-design .design-technical-note__section pre {
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.8;
+  tab-size: 2;
+}
+
+.wiki-page--visual-design :is(#interaction-craft) .design-plate__live {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.wiki-page--visual-design :is(#interaction-craft) .design-live-study {
+  padding-block: 0;
+}
+
+.wiki-page--visual-design :is(#interaction-craft) .design-live-study > p {
+  max-width: 78ch;
+  font-size: 13px;
+  line-height: 1.85;
+  margin: 12px 8px 16px;
+}
+
+@media (max-width: 680px) {
+  .wiki-page--visual-design
+    :is(#interaction-craft)
+    .design-technical-note__body {
+    padding-inline: 8px;
+  }
+
+  .wiki-page--visual-design :is(#interaction-craft) .design-live-study iframe {
+    height: min(650px, 78svh);
+    min-height: 360px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wiki-page--visual-design :is(#interaction-craft) details > summary {
+    transition: none;
+  }
+}
+
+.wiki-page--visual-design .artwork-ratio-study__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.wiki-page--visual-design .artwork-ratio-study__label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 4.5em;
+  margin-bottom: 10px;
+  font: 400 12px/1.5 var(--font-sans, sans-serif);
+}
+
+.wiki-page--visual-design .artwork-ratio-study__label strong {
+  color: var(--route-heading-ink, #243d2c);
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.wiki-page--visual-design .artwork-ratio-study__frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid #aebd9c;
+  background: repeating-linear-gradient(135deg, #f4f3e9 0 5px, #e1e3d7 5px 7px);
+}
+
+.wiki-page--visual-design .artwork-ratio-study__canvas {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.wiki-page--visual-design
+  .artwork-ratio-study__frame--initial
+  .artwork-ratio-study__canvas {
+  width: 83.333333%;
+}
+
+.wiki-page--visual-design
+  .artwork-ratio-study__frame--wide
+  .artwork-ratio-study__canvas {
+  height: 90%;
+}
+
+.wiki-page--visual-design .artwork-ratio-study__canvas img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+.wiki-page--visual-design .artwork-ratio-study__item > p,
+.wiki-page--visual-design .artwork-ratio-study > figcaption {
+  margin: 10px 0 0;
+  font: 400 12px/1.8 var(--font-sans, sans-serif);
+  color: #52614e;
+}
+
+.wiki-page--visual-design .artwork-ratio-study > figcaption {
+  margin-top: 18px;
+}
+
+@media (max-width: 680px) {
+  .wiki-page--visual-design .artwork-ratio-study__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .wiki-page--visual-design .artwork-ratio-study__label {
+    min-height: 0;
+  }
+}

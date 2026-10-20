@@ -23,6 +23,7 @@ interface WikiNextRecordProps {
   title: string;
   description?: string;
   reveal?: boolean;
+  studyProgress?: number;
 }
 
 export const WikiNextRecord = memo(function WikiNextRecord({
@@ -31,13 +32,14 @@ export const WikiNextRecord = memo(function WikiNextRecord({
   title,
   description,
   reveal = true,
+  studyProgress,
 }: WikiNextRecordProps) {
   const icon = NAV_ICONS_BY_PATH[path];
   const preview = wikiDestinationPreviews[path];
   const previewId = useId();
   const [showPreview, setShowPreview] = useState(false);
   const { sectionRef, companionRef, ribbonRef, actionRef } =
-    useWikiNextCompanion(path);
+    useWikiNextCompanion(path, studyProgress);
 
   // Match Home: scrolling dismisses mouse hints while keyboard focus keeps them.
   useEffect(() => {

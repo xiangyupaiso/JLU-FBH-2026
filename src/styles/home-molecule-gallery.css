@@ -29,7 +29,7 @@
 }
 
 .home-molecule-gallery__artwork {
-  width: min(100%, 128svh);
+  width: min(100%, calc((100svh - var(--header-height) - 164px) * 1.65));
 }
 
 .home-molecule-gallery__title {
@@ -40,8 +40,12 @@
 }
 
 .home-molecule-gallery__caption {
-  fill: #765b60;
-  font: 400 32px var(--font-body);
+  display: block;
+  margin-top: 16px;
+  color: #533b46;
+  font: 400 clamp(13px, 1.2vw, 18px) / 1.4 var(--font-body);
+  text-align: center;
+  text-wrap: balance;
 }
 
 .home-molecule-gallery__choices {
@@ -54,9 +58,15 @@
 .home-molecule-gallery__card {
   position: relative;
   min-width: 0;
-  aspect-ratio: 574 / 1186;
   transform-origin: center;
   will-change: transform, opacity;
+}
+
+.home-molecule-gallery__card-visual {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 574 / 1186;
+  margin-inline: auto;
 }
 
 .home-molecule-gallery__card-art {
@@ -165,6 +175,11 @@
     gap: 2% 5%;
   }
 
+  .home-molecule-gallery__caption {
+    margin-top: 12px;
+    font-size: 12px;
+  }
+
   .home-molecule-gallery__decision {
     right: 10px;
     bottom: clamp(72px, 9svh, 92px);
@@ -185,7 +200,7 @@
 
 @media (max-width: 800px) and (min-aspect-ratio: 4/5) {
   .home-molecule-gallery__artwork {
-    width: min(100%, 128svh);
+    width: min(100%, calc((100svh - var(--header-height) - 164px) * 1.65));
   }
 
   .home-molecule-gallery__title {
@@ -201,7 +216,7 @@
 
 @media (max-height: 500px) and (min-aspect-ratio: 4/5) {
   .home-molecule-gallery__artwork {
-    width: min(100%, 104svh);
+    width: min(100%, calc((100svh - var(--header-height) - 132px) * 1.65));
   }
 
   .home-molecule-gallery__decision {
@@ -209,18 +224,22 @@
   }
 }
 
-/* Keep both card columns below the floating player and above the decision. */
+/* Keep captions in their own rows, with artwork sized to the available height. */
 @media (max-width: 800px) and (max-aspect-ratio: 3/4) {
   .home-molecule-gallery__stage {
-    padding-block: calc(var(--header-height) + 124px) 100px;
+    padding: calc(var(--header-height) + 28px) 18px 64px;
   }
 
   .home-molecule-gallery__artwork {
-    width: min(
-      100%,
-      30svh,
-      calc((100svh - var(--header-height) - 224px) * 0.48)
-    );
+    width: min(100%, 480px);
+  }
+
+  .home-molecule-gallery__choices {
+    gap: 16px 20px;
+  }
+
+  .home-molecule-gallery__card-visual {
+    width: min(100%, calc((100svh - var(--header-height) - 220px) * 0.22));
   }
 
   .home-molecule-gallery__decision {

@@ -12,12 +12,14 @@
 }
 .keepsake-reveal-track {
   position: relative;
-  top: -100dvh;
-  height: calc(100dvh + var(--photo-window-height));
+  top: calc(-1 * var(--photo-viewport-height, 100dvh));
+  height: calc(
+    var(--photo-viewport-height, 100dvh) + var(--photo-window-height)
+  );
 }
 .keepsake-pin {
   position: sticky;
-  top: calc(100dvh - var(--photo-window-height));
+  top: calc(var(--photo-viewport-height, 100dvh) - var(--photo-window-height));
   height: var(--photo-window-height);
   overflow: hidden;
 }

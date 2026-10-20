@@ -55,21 +55,6 @@
   content: "";
 }
 
-/* Pink Thread reading-progress line along the header's bottom edge. */
-.site-header::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: var(--header-height);
-  width: 100%;
-  height: 2px;
-  background: var(--care);
-  transform: scaleX(var(--scroll-p, 0));
-  transform-origin: left;
-  pointer-events: none;
-}
-
 /* Keep Home light after the opening illustration, at the existing bar height.
    CROSS-FILE: data-home-opening/-closing are set by Navbar.tsx from the Home
    page's .home-scene01 and #home-finale positions. */
