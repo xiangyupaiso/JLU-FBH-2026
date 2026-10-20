@@ -1207,9 +1207,14 @@ a.sust-sdg-pill:focus-visible {
 
 .sust-evidence__list {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 14px;
   margin: 0;
   padding-left: 1.4em;
+}
+.sust-evidence__item {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .sust-evidence__item::marker {
@@ -1675,6 +1680,7 @@ a.sust-sdg-pill:focus-visible {
 .sust-stake-reel__caption-text[data-current] {
   visibility: visible;
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   .sust-stake-reel__img {
@@ -3210,6 +3216,26 @@ a.sust-sdg-pill:focus-visible {
     width: 18px;
     height: 18px;
     font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .edu-feedback .ef-card {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .edu-feedback .ef-rail {
+    border-right: 0;
+    border-bottom: 1px solid var(--ef-rule);
+    border-radius: 11px 11px 0 0;
+  }
+  .edu-feedback .ef-tabs {
+    display: flex;
+    overflow-x: auto;
+  }
+  .edu-feedback .ef-tab {
+    flex: 0 0 106px;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 }
 

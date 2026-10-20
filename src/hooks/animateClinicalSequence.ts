@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HOME_EASE, HOME_SCRUB, stillHold, settleHomeScrubEndpoint } from "./homeMotion";
 import { createClinicalParticleMorph } from "./createClinicalParticleMorph";
+import { createNurseMotion } from "./createNurseMotion";
 import { resetTnbcCopyOpacity, setTnbcCopyOpacity } from "./tnbcCopyOpacity";
 
 // Reserve scroll distance for reading the original nurse illustration.
@@ -102,6 +103,18 @@ export function animateClinicalSequence(
 
   const particles = createClinicalParticleMorph(stage, nurse, doctor, compact);
   const pigment = { progress: 0 };
+
+  const nurseMotion = createNurseMotion(nurse);
+  const idleEase = gsap.parseEase("sine.inOut");
+  const updateIdle = (time: number) => {
+    const appear = gsap.utils.clamp(0, 1, (time - nurseVisibleAt) / 0.2);
+    const settle = gsap.utils.clamp(0, 1, (transitionAt - 0.08 - time) / 0.32);
+    const visible = sequence.classList.contains("is-current") && !document.hidden;
+    const weight = visible ? idleEase(appear) * idleEase(settle) : 0;
+    nurseMotion.update(weight);
+  };
+  const updateIdleVisibility = () => updateIdle(timeline.time());
+  document.addEventListener("visibilitychange", updateIdleVisibility);
 
   const entryStart = () => {
     const trigger = ScrollTrigger.getById("home-why-tnbc-reading");
@@ -259,6 +272,7 @@ export function animateClinicalSequence(
     // Restore the nurse when returning from the doctor, including the new
     // illustration hold after her entrance tween has stopped writing opacity.
     particles.draw(pigment.progress, time >= nurseVisibleAt);
+    updateIdle(time);
     sequence.dataset.progress = timeline.progress().toFixed(3);
     sequence.dataset.phase =
       time < challengeEnd
@@ -287,8 +301,10 @@ export function animateClinicalSequence(
       sequence.dataset.scrollEnd = String(trigger.end);
       update();
     },
-    onToggle: ({ isActive }) =>
-      sequence.classList.toggle("is-current", isActive),
+    onToggle: ({ isActive }) => {
+      sequence.classList.toggle("is-current", isActive);
+      update();
+    },
   });
   update();
 
@@ -296,6 +312,8 @@ export function animateClinicalSequence(
     timeline,
     cleanup: () => {
       timeline.eventCallback("onUpdate", null);
+      document.removeEventListener("visibilitychange", updateIdleVisibility);
+      nurseMotion.cleanup();
       particles.cleanup();
       stopBeforeArtwork();
       stopAfterArtwork();

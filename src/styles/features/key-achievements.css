@@ -39,13 +39,6 @@
   outline-offset: 4px;
 }
 
-.cc-achievements.cc-achievements .cc-image-definitions {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
-}
-
 .cc-achievements.cc-achievements .cc-responsive {
   container: key-achievements / inline-size;
 }

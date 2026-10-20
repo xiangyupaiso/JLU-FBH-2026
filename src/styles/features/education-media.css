@@ -224,7 +224,9 @@
 
 .education-gallery__stage {
   position: relative;
-  min-height: 240px;
+  min-width: 0;
+  min-height: min(240px, 65vw);
+  width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   perspective: 1600px;

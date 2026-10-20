@@ -310,6 +310,9 @@
   gap: 5px;
 }
 .vertical-gantt__phase {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
   justify-self: start;
   padding: 3px 9px;
   border-radius: 32% 14% 25% 16%;

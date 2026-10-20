@@ -14,6 +14,9 @@ import originalManifest from "../assets/home/story/manifest.json";
 import exploreBackdrop from "../assets/home/story/scene-9-layer-1.webp";
 import exploreHands from "../assets/home/story/scene-9-layer-2.webp";
 import explorePatient from "../assets/home/story/scene-9-layer-3.webp";
+import beyondBackdrop from "../assets/home/story/scene-6-layer-1.webp";
+import beyondFamily from "../assets/home/story/scene-6-layer-2.webp";
+import beyondPeople from "../assets/home/story/scene-6-layer-3.webp";
 import mapCloudWest from "../assets/home/story/map-detail-baked-cloud-west.webp";
 import mapCloudEast from "../assets/home/story/map-detail-baked-cloud-east.webp";
 import mapWaveWestOne from "../assets/home/story/map-detail-baked-wave-west-1.webp";
@@ -104,11 +107,11 @@ const imageUrls: Record<string, string> = {
   "../assets/home/story/scene-5-layer-3.webp":
     "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-5-layer-3.webp",
   "../assets/home/story/scene-6-layer-1.webp":
-    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-1.webp",
+    beyondBackdrop,
   "../assets/home/story/scene-6-layer-2.webp":
-    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-2.webp",
+    beyondFamily,
   "../assets/home/story/scene-6-layer-3.webp":
-    "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-6-layer-3.webp",
+    beyondPeople,
   "../assets/home/story/scene-7-layer-1.webp":
     "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-7-layer-1.webp",
   "../assets/home/story/scene-7-layer-2.webp":
@@ -1086,6 +1089,18 @@ function Chapter({
   copyInArtwork?: boolean;
   titleInArtwork?: boolean;
 }) {
+  const artworkStage = (
+    <div className="story-chapter-inner">
+      <div className="story-visual">
+        {art}
+        {titleInArtwork && (
+          <h2 className="story-artwork-title" id={`${id}-title`}>
+            {title}
+          </h2>
+        )}
+      </div>
+    </div>
+  );
   return (
     <section
       id={id}
@@ -1099,16 +1114,9 @@ function Chapter({
       )}
       {art && (
         <div className="story-scene-track">
-          <div className="story-chapter-inner">
-            <div className="story-visual">
-              {art}
-              {titleInArtwork && (
-                <h2 className="story-artwork-title" id={`${id}-title`}>
-                  {title}
-                </h2>
-              )}
-            </div>
-          </div>
+          {id === "what-we-saw" ? (
+            <div className="story-ward-anchor">{artworkStage}</div>
+          ) : artworkStage}
         </div>
       )}
       {!copyInArtwork && !titleInArtwork && (

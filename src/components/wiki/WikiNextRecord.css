@@ -197,6 +197,10 @@
   min-width: 0;
   gap: 10px;
 }
+:is(.wiki-page, .wiki-page--route) .wiki-next.wiki-next--record .wiki-next__action strong {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
 
 /* Keep Home's quiet hint below the label without moving the ribbon or sheep. */
 .wiki-next.wiki-next--record .wiki-next__preview {
@@ -440,7 +444,8 @@
     .wiki-next.wiki-next--record
     .wiki-next__action
     strong {
-    font-size: clamp(28px, 8vw, 38px);
+    font-size: clamp(24px, 7vw, 38px);
+    overflow-wrap: anywhere;
   }
 
   :is(.wiki-page, .wiki-page--route)

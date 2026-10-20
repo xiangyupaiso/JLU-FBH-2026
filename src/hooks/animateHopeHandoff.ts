@@ -1,4 +1,5 @@
 import gsap from "gsap";
+import { bindHomeArtwork } from "../utils/homeArtworkSource";
 import {
   HOME_EASE,
   HOME_SCRUB,
@@ -30,6 +31,7 @@ export function animateHopeHandoff(root: HTMLElement) {
   });
   frame.append(room);
   root.append(frame);
+  const stopArtwork = bindHomeArtwork(source, room);
   root.classList.add("has-hope-room-handoff");
 
   const sourceNodes = [
@@ -94,14 +96,16 @@ export function animateHopeHandoff(root: HTMLElement) {
   });
   bridge.to(state, { progress: 1, duration: 1, ease: "none" });
 
-  // Clear the question first, then let the room's pigment resolve into the
-  // finale paper. Separate variables preserve each person's entrance opacity.
+  // Finish the feather while the room is still sticky, then retain the
+  // original copy/pigment exit timing as the viewport starts moving away.
+  const featherLead = 0.4;
+  const sceneExitStart = featherLead / 0.82;
   const exit = gsap.timeline({
     defaults: { ease: HOME_EASE },
     scrollTrigger: {
       id: "home-what-we-hope-exit-edge",
       trigger: hopeTrack,
-      start: "bottom bottom",
+      start: () => `bottom bottom+=${window.innerHeight * featherLead}`,
       end: "bottom 18%",
       scrub: HOME_SCRUB,
       invalidateOnRefresh: true,
@@ -115,7 +119,7 @@ export function animateHopeHandoff(root: HTMLElement) {
       "--hope-copy-exit": 0,
       duration: 0.4,
     },
-    0,
+    sceneExitStart,
   );
   exit.fromTo(
     hope,
@@ -134,13 +138,14 @@ export function animateHopeHandoff(root: HTMLElement) {
       "--hope-exit-surface": "#f7e7e6",
       duration: 1,
     },
-    0,
+    sceneExitStart,
   );
 
   return {
     timeline: bridge,
     exitTimeline: exit,
     cleanup: () => {
+      stopArtwork();
       boundary.dispose();
       frame.remove();
       root.classList.remove("has-hope-room-handoff");

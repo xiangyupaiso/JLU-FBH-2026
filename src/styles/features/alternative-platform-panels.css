@@ -334,7 +334,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: safe center;
   gap: 8px;
   width: 100%;
   max-width: 860px;
@@ -352,7 +352,7 @@
     0 1px 4px rgba(83, 111, 135, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
-  overflow: hidden;
+  overflow-x: auto;
   text-align: center;
 }
 
@@ -367,7 +367,7 @@
 }
 
 .wiki-page[data-wiki-route="/alternative-platform"] .bsj-plate__segment {
-  flex: 1 1 0;
+  flex: 0 0 auto;
   min-width: 0;
   position: relative;
   z-index: 1;

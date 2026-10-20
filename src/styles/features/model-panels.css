@@ -498,6 +498,7 @@
 
 .wiki-page--model .model-download-card__header {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   gap: 16px;
   margin-bottom: 20px;
@@ -527,10 +528,14 @@
   line-height: 1.5;
   color: var(--route-muted, #566d65);
 }
+.wiki-page--model .model-download-card__header > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 
 .wiki-page--model .model-download-card__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
   gap: 12px;
 }
 
@@ -666,9 +671,10 @@
   padding-bottom: 8px;
   display: inline-block;
 }
-@media (max-width: 820px) {
+/* The article can be narrow even when the viewport still has a sidebar. */
+@container (max-width: 700px) {
   .wiki-page--model .model-ihc-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 24px;
   }
   .wiki-page--model .model-ihc-layout__left {

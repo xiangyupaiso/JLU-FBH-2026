@@ -26,7 +26,8 @@ import {
 import { animateGalleryWhy } from "./animateGalleryWhy";
 import { animateTnbcBridge } from "./animateTnbcBridge";
 import { animateHopeHandoff } from "./animateHopeHandoff";
-import { updateWardInfusionTube } from "./wardInfusionGeometry";
+import { animateFinalQuestionCarry } from "./animateFinalQuestionCarry";
+import { animateWardPeople } from "./animateWardPeople";
 import { registerPagePreparation } from "../utils/pageLoader";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
@@ -146,49 +147,7 @@ function choreographArt(
       animateTear(section, timeline, compact, splits, cleanups);
       break;
     case "what-we-saw": {
-      const ward = (name: string) =>
-        section.querySelector<HTMLElement>(`[data-ward="${name}"]`);
-      const tube = (name: string) =>
-        section.querySelector<SVGSVGElement>(`[data-ward-tube="${name}"]`);
-      timeline.eventCallback("onUpdate", () => updateWardInfusionTube(section));
-      camera({ scale: 1.02 }, { scale: 1.005 });
-      // The clinician faces right, so she approaches from the left.
-      timeline.fromTo(
-        ward("original-3"),
-        { x: -36 * distance },
-        { x: 0, duration: 0.34, ease: HOME_EASE },
-        0.04,
-      );
-      [
-        ["original-2", "patient", 0.42],
-        ["original-3", "clinician", 0.64],
-      ].forEach(([before, after, at]) => {
-        timeline.to(
-          ward(String(before)),
-          { opacity: 0, duration: 0.18, ease: HOME_EASE },
-          Number(at),
-        );
-        timeline.fromTo(
-          ward(String(after)),
-          { opacity: 0, y: 5 * distance },
-          { opacity: 1, y: 0, duration: 0.2, ease: HOME_EASE },
-          Number(at),
-        );
-      });
-      timeline.to(tube("original-2"), { opacity: 0, duration: 0.18, ease: HOME_EASE }, 0.42);
-      timeline.fromTo(tube("patient"), { opacity: 0 }, { opacity: 1, duration: 0.2, ease: HOME_EASE }, 0.42);
-      timeline.fromTo(
-        ward("question"),
-        { opacity: 0, scale: 0.94, y: 8 * distance },
-        { opacity: 1, scale: 1, y: 0, duration: 0.22, ease: HOME_EASE },
-        0.82,
-      );
-      timeline.fromTo(
-        ward("ellipsis"),
-        { opacity: 0, scale: 0.9 },
-        { opacity: 1, scale: 1, duration: 0.13, ease: HOME_EASE },
-        0.89,
-      );
+      cleanups.push(animateWardPeople(section, timeline, compact));
       break;
     }
     case "why-tnbc": {
@@ -306,6 +265,11 @@ function choreographArt(
       break;
     }
     case "clinical-challenge": {
+      // Match the portrait-only CSS anchor explicitly on every media rebuild.
+      const nurseXPercent = window.matchMedia(
+        "(max-width: 600px) and (orientation: portrait)",
+      ).matches ? -50 : 0;
+      const nurse = layer(4);
       camera({ scale: 1.02 }, { scale: 1.008 });
       move(
         2,
@@ -315,14 +279,17 @@ function choreographArt(
         0.17,
         HOME_EASE,
       );
-      move(
-        4,
-        { x: -8, opacity: 0.85 },
-        { x: 0, opacity: 1 },
-        0,
-        0.22,
-        HOME_EASE,
-      );
+      if (nurse) {
+        timeline.fromTo(
+          nurse,
+          { x: -8 * distance, xPercent: nurseXPercent, opacity: 0.85 },
+          {
+            x: 0, xPercent: nurseXPercent, opacity: 1,
+            duration: 0.22, ease: HOME_EASE,
+          },
+          0,
+        );
+      }
       timeline.addLabel("nurse-visible", 0.22);
       const morph = gsap.timeline();
       cleanups.push(animateChallengeMorph(section, morph, compact));
@@ -466,8 +433,10 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
       let resizePosition: ResizePosition | undefined;
       const primaryIds = new Set([
         "home-person-transition",
+        "home-ward-entry",
         "home-hope-room-handoff",
         "home-what-we-hope-exit-edge",
+        "home-final-question-carry",
         "home-ward-tear-carry", "home-tear-cloud-carry", "home-tnbc-copy-bridge",
         "home-why-tnbc-reading",
         "home-clinical-sequence", "home-thinking-gallery-carry", "home-molecule-gallery-intro", "home-gallery-why-ring",
@@ -556,7 +525,10 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
         if (top === undefined) return false;
         window.scrollTo({ top, behavior: "instant" });
         ScrollTrigger.update();
-        trigger?.getTween()?.progress(1);
+        // Direct scrub follows scroll immediately and has no smoothing tween.
+        if (typeof trigger?.vars.scrub === "number") {
+          trigger.getTween()?.progress(1);
+        }
         return true;
       };
       const mediaEvents = gsap as typeof gsap & {
@@ -594,6 +566,16 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
               section.querySelector<HTMLElement>(".story-scene-track");
             const visual = section.querySelector<HTMLElement>(".story-visual");
             if (stage && track && visual) {
+              if (section.id === "what-we-saw") {
+                // CSS owns the stationary room. Retain only a position marker
+                // so resizing during the rounded reveal preserves its progress.
+                ScrollTrigger.create({
+                  id: "home-ward-entry",
+                  trigger: track,
+                  start: "top bottom",
+                  end: "top top",
+                });
+              }
               const stackedVaccine =
                 compact && section.id === "a-new-direction";
               const stackedAntigen =
@@ -978,6 +960,14 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
           });
           timelines.set("home-finale", evolve);
 
+          if (root.current) {
+            const carry = animateFinalQuestionCarry(root.current, finale);
+            if (carry) {
+              timelines.set("final-question-carry", carry.timeline);
+              cleanups.push(carry.cleanup);
+            }
+          }
+
         }
 
         if (import.meta.env.DEV) {
@@ -992,7 +982,9 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
                 behavior: "instant",
               });
               ScrollTrigger.update();
-              trigger.getTween()?.progress(1);
+              if (typeof trigger.vars.scrub === "number") {
+                trigger.getTween()?.progress(1);
+              }
               timeline.progress(p);
             },
             state: () =>

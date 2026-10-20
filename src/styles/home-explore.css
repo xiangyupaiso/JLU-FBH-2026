@@ -151,23 +151,35 @@
 }
 .home-explore-preview {
   position: absolute;
-  top: calc(100% + 10px);
+  top: calc(100% + 3px);
   left: 50%;
   translate: -50% 0;
   width: min(260px, 125%);
   text-align: center;
   color: #73515b;
-  font: 400 12px/1.55 var(--font-sans);
+  font: 400 12px/1.4 var(--font-body);
   letter-spacing: 0;
   text-wrap: pretty;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(4px);
+  transform: translateY(2px);
   pointer-events: none;
   transition:
     opacity 180ms var(--ease-out),
     transform 280ms var(--ease-out),
     visibility 180ms;
+}
+/* Match Next Page's clear pointer while keeping the title and hint unobscured. */
+@media (hover: hover) and (pointer: fine) {
+  html:root.has-sheep-cursor body .story-hope-card,
+  html:root.has-sheep-cursor body .story-hope-card * {
+    cursor: pointer !important;
+  }
+
+  body:has(.story-hope-entry.is-previewing) .sheep-cursor {
+    visibility: hidden;
+    opacity: 0;
+  }
 }
 .story-hope-entry.is-previewing .home-explore-preview {
   opacity: 1;
@@ -286,8 +298,19 @@
 }
 /* Keep the existing player outside the mascot column on smaller viewports. */
 @media (max-width: 1100px) {
+  .story-hope-group {
+    width: 30%;
+  }
+  .story-hope-group--left {
+    left: 4%;
+  }
+  .story-hope-group--right {
+    right: 4%;
+  }
+  .story-hope-group .story-hope-entry:not(:nth-child(2)) {
+    left: 0;
+  }
   .home-explore-preview {
-    top: calc(100% + 7px);
     font-size: 11px;
   }
   body:has(.story-finale-explore[data-explore-in-view="true"]) .home-playback {
@@ -335,20 +358,18 @@
     right: 3%;
   }
   .story-hope-group--left .story-hope-entry:not(:nth-child(2)) {
-    left: 24%;
+    left: 0;
   }
   .story-hope-group--right .story-hope-entry:not(:nth-child(2)) {
-    left: -24%;
+    left: 0;
   }
   .home-explore-label {
     font-size: clamp(17px, 4.35vw, 28px);
     letter-spacing: -0.035em;
   }
   .home-explore-preview {
-    top: calc(100% + 6px);
     width: 112%;
     font-size: 10px;
-    line-height: 1.4;
   }
   .home-explore-arrow {
     left: calc(100% + 3px);
@@ -359,6 +380,36 @@
 @media (max-width: 360px) {
   .story-finale-explore .story-art {
     width: 94%;
+  }
+}
+/* Portrait screens need a dedicated illustration area above the paired links.
+   Both columns share the same rows; scroll animation still owns transforms. */
+@media (max-width: 1100px) and (max-aspect-ratio: 4/5) {
+  .story-finale-explore .story-art {
+    top: 26%;
+    width: min(150%, calc(var(--scene-height) * 0.78));
+  }
+  .story-hope-links {
+    --sheep-size: clamp(44px, min(15vw, 9svh), 80px);
+    inset: 44% 5% 5%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: clamp(12px, 5vw, 40px);
+  }
+  .story-hope-group {
+    position: static;
+    width: auto;
+    min-width: 0;
+  }
+  .story-hope-group .story-hope-entry:not(:nth-child(2)) {
+    left: 0;
+  }
+  .home-explore-label {
+    font-size: clamp(16px, 3.8vw, 24px);
+    overflow-wrap: anywhere;
+  }
+  .home-explore-preview {
+    width: 100%;
   }
 }
 @media (max-height: 500px) and (min-width: 801px) {

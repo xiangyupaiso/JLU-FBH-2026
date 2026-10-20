@@ -19,7 +19,6 @@ body:has(.home-redesign) {
 /* These controls otherwise explicitly select their own typefaces. */
 body:has(.home-redesign) .home-playback,
 body:has(.home-redesign) .home-playback .home-playback-scenes-heading h2,
-.site-header.is-home-page .wordmark-folio,
 .site-header.is-home-page .nav-card-info strong,
 .site-header.is-home-page .circure-mobile-menu .circure-mobile-group__link {
   font-family: var(--font-home) !important;

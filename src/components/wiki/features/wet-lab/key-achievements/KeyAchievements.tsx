@@ -33,14 +33,12 @@ export function KeyAchievements({
   const rootRef = useRef<HTMLElement>(null);
   const reactId = useId();
   const instanceId = `cc-achievements-${reactId.replace(/[^a-zA-Z0-9_-]/g, "")}`;
-  const imageId = `${instanceId}-image`;
-  const imageReference = `#${imageId}`;
 
   useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root) return;
-    return mountKeyAchievements(root, keyAchievements, imageId);
-  }, [imageId, overviewSrc]);
+    return mountKeyAchievements(root, keyAchievements, overviewSrc);
+  }, [overviewSrc]);
 
   return (
     <section
@@ -48,11 +46,6 @@ export function KeyAchievements({
       className={`cc-achievements ${className}`.trim()}
       aria-label="CirCure key achievements"
     >
-      <svg className="cc-image-definitions" aria-hidden="true">
-        <defs>
-          <QueuedSvgImage id={imageId} width="1394" height="2097" href={overviewSrc} />
-        </defs>
-      </svg>
       <div className="cc-responsive">
         <div className="cc-workspace">
           <nav
@@ -106,7 +99,7 @@ export function KeyAchievements({
                   role="img"
                   aria-label="Visual overview of all seven CirCure achievements"
                 >
-                  <use href={imageReference} />
+                  <QueuedSvgImage width="1394" height="2097" href={overviewSrc} />
                 </svg>
               </div>
               <p className="cc-overview-caption">
@@ -136,7 +129,7 @@ export function KeyAchievements({
                     role="img"
                   >
                     <title data-cc="crop-title" />
-                    <use href={imageReference} />
+                    <QueuedSvgImage width="1394" height="2097" href={overviewSrc} />
                   </svg>
                 </figure>
                 <div className="cc-figure-bottom">
@@ -180,7 +173,7 @@ export function KeyAchievements({
           role="img"
           aria-label="Enlarged visual overview"
         >
-          <use href={imageReference} />
+          <QueuedSvgImage width="1394" height="2097" href={overviewSrc} />
         </svg>
       </dialog>
     </section>

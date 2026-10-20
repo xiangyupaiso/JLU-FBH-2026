@@ -530,13 +530,18 @@
   }
 
   .circure-footer__supporter img {
-    width: 72px;
+    width: min(72px, 100%);
     height: 72px;
   }
 
   .circure-footer__supporter-list {
     gap: clamp(20px, calc((100% - 216px) / 2), 56px);
+    padding-inline: 8px;
     margin-top: 26px;
+  }
+  .circure-footer__supporter {
+    flex: 0 1 72px;
+    min-width: 0;
   }
 
   .circure-footer__marquee {

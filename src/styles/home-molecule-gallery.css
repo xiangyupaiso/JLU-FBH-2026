@@ -41,10 +41,13 @@
 
 .home-molecule-gallery__caption {
   display: block;
+  /* Let the second line extend without shifting the artwork or scroll anchors. */
+  height: 1.4em;
   margin-top: 16px;
   color: #533b46;
   font: 400 clamp(13px, 1.2vw, 18px) / 1.4 var(--font-body);
   text-align: center;
+  white-space: pre-line;
   text-wrap: balance;
 }
 
@@ -185,6 +188,12 @@
     bottom: clamp(72px, 9svh, 92px);
     left: 10px;
     font-size: clamp(17px, 4vw, 23px);
+  }
+}
+
+@media (max-width: 360px) {
+  .home-molecule-gallery__caption {
+    font-size: 11px;
   }
 }
 

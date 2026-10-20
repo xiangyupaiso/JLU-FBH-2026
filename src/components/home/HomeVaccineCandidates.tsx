@@ -18,29 +18,33 @@ const candidates = [
     key: "dna",
     board: dnaBoard,
     label: dnaLabel,
+    labelWidth: 52,
     illustration: dnaIllustration,
-    detail: "DNA vaccine",
+    detail: "DNA vaccines",
   },
   {
     key: "mrna",
     board: mrnaBoard,
     label: mrnaLabel,
+    labelWidth: 74,
     illustration: mrnaIllustration,
-    detail: "Linear RNA vaccine",
+    detail: "Linear mRNA vaccines",
   },
   {
     key: "circrna",
     board: circRnaBoard,
     label: circRnaLabel,
+    labelWidth: 78,
     illustration: null,
-    detail: "Our vaccine backbone",
+    detail: "circRNA vaccines",
   },
   {
     key: "protein",
     board: proteinBoard,
     label: proteinLabel,
+    labelWidth: 78,
     illustration: proteinIllustration,
-    detail: "Protein & cell vaccines",
+    detail: "Protein- and\ncell-based vaccines",
   },
 ] as const;
 
@@ -75,17 +79,18 @@ export function HomeVaccineCandidates() {
                 />
                 <HomeSvgImage
                   href={candidate.label}
-                  x="11%"
-                  y="14%"
-                  width="78%"
-                  height="16%"
+                  x={`${(100 - candidate.labelWidth) / 2 + (candidate.key === "circrna" ? 1.5 : 0)}%`}
+                  y="18%"
+                  width={`${candidate.labelWidth}%`}
+                  height="20%"
+                  preserveAspectRatio="xMidYMid meet"
                   data-gallery-layer="labels"
                 />
                 {candidate.illustration && (
                   <HomeSvgImage
                     href={candidate.illustration}
                     x={index === 3 ? "11%" : "17%"}
-                    y="39%"
+                    y="45%"
                     width={index === 3 ? "78%" : "66%"}
                     height="40%"
                     data-gallery-layer="symbols"
@@ -100,7 +105,7 @@ export function HomeVaccineCandidates() {
                   viewBox="0 0 436 436"
                   style={{
                     left: "13%",
-                    top: "40%",
+                    top: "47%",
                     width: "74%",
                     aspectRatio: "1",
                   }}

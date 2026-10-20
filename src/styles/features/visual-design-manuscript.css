@@ -503,6 +503,25 @@
     font-size: 9px;
   }
 }
+/* Date annotations retain the archive's original typography. */
+#design-history-archive .ms-folio__period {
+  color: #84382b;
+  font-size: clamp(14px, 1.65cqi, 16px);
+  font-weight: 650;
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+}
+#design-history-archive h5 time {
+  display: block;
+  margin-top: 8px;
+  color: #84382b;
+  font: 650 14px/1.6 var(--font-sans, Lexend, sans-serif);
+  letter-spacing: 0.02em;
+}
+#design-history-archive .ms-date-note {
+  color: var(--pencil);
+  font: 400 11px/1.8 var(--font-sans, Lexend, sans-serif);
+}
 @media (prefers-reduced-motion: reduce) {
   .manuscript .ms-ring-study__hint {
     display: none;
@@ -645,7 +664,7 @@
     font-size: 10px;
   }
   .manuscript .ms-folio__header :is(h2, h4) {
-    overflow-wrap: normal;
+    overflow-wrap: anywhere;
   }
   .manuscript .ms-timeline {
     gap: 48px;

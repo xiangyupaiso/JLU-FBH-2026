@@ -70,6 +70,7 @@
 .wiki-page--route .wiki-reference-item__content {
   flex: 1;
   min-width: 0;
+  overflow-wrap: anywhere;
 }
 
 .wiki-page--route .wiki-reference-item__authors {

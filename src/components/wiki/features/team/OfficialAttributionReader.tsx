@@ -341,6 +341,12 @@ export function OfficialAttributionReader() {
                 className="official-attributions-page__form"
                 style={formStyle}
               >
+                <p className="official-attributions-page__source">
+                  <a href={attributionPage.formUrl} target="_blank" rel="noopener noreferrer">
+                    Open official attribution form <span aria-hidden="true">↗</span>
+                    <span className="visually-hidden"> (opens in a new tab)</span>
+                  </a>
+                </p>
                 <div className="official-attributions-page__document">
                   <nav
                     className="official-attributions-page__jump-nav"

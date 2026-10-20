@@ -71,7 +71,6 @@ export function animateWardTear(
   room.style.backgroundColor = wardColor;
   room.querySelector<HTMLElement>(".story-visual")!.style.opacity = "1";
   const roomBackdrop = room.querySelector<HTMLImageElement>(".story-backdrop")!;
-  roomBackdrop.style.transform = "scale(1.005)";
   room
     .querySelectorAll("[id]")
     .forEach((element) => element.removeAttribute("id"));

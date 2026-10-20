@@ -211,16 +211,28 @@ test("Hero then six unique content sources decode serially; remaining waits for 
   queue.dispose();
 });
 
-test("critical network errors retry twice and reject without starting ordinary work", async () => {
+test("a failed Hero retries twice, then lets critical and ordinary images continue serially", async () => {
   const env = environment(); const route = env.route();
-  route.append(new env.Element("header", { class: "wiki-hero", "data-page-background-src": "broken.avif" }), env.image("never.avif"));
-  const queue = env.createPageImageQueue(env.body); const rejected = assert.rejects(queue.criticalReady, (error) => error.critical && error.reason === "network");
+  const hero = new env.Element("header", { class: "wiki-hero", "data-page-background-src": "broken.avif" });
+  const content = env.image("content.avif");
+  const nav = new env.Element("nav"); nav.append(env.image("menu.avif"));
+  route.append(hero, content); env.body.append(nav);
+  const queue = env.createPageImageQueue(env.body);
+  let ready = false; queue.criticalReady.then(() => { ready = true; });
   env.interact();
   for (let attempt = 0; attempt < 3; ++attempt) { await tick(); env.latest().finish(false); }
-  await rejected; await tick();
-  assert.equal(env.transfers.length, 3);
+  await tick();
+  assert.equal(hero.dataset.pageImageState, "error");
+  assert.equal(hero.dataset.pageLoaded, "false");
+  assert.equal(ready, false, "the remaining critical image must still settle");
   assert.match(env.transfers[1].requestedSrc, /circure_image_retry=/);
   assert.equal(env.transfers[1].src, "", "failed sources are removed to cancel their transfer");
+  assert.equal(env.latest().src, "https://example.test/content.avif");
+  env.latest().finish(); await queue.criticalReady; await tick();
+  assert.equal(content.dataset.pageLoaded, "true");
+  assert.equal(env.latest().src, "https://example.test/menu.avif");
+  env.latest().finish(); await queue.remainingReady();
+  assert.equal(env.transfers.length, 5);
   assert.equal(env.maximum, 1);
   queue.dispose();
 });
@@ -241,11 +253,13 @@ test("disposing cancels active work; rebuilt queues reuse successful Hero cache"
   second.dispose();
 });
 
-test("a slow critical transfer times out once and never counts as success", async () => {
-  const env = environment(); env.route().append(env.image("slow.avif"));
+test("a timed-out critical image releases entry without counting its pixels as loaded", async () => {
+  const env = environment(); const image = env.image("slow.avif"); env.route().append(image);
   const queue = env.createPageImageQueue(env.body);
-  const rejected = assert.rejects(queue.criticalReady, (error) => error.critical && error.reason === "timeout");
-  await tick(); await env.timeout(); await rejected;
+  await tick(); await env.timeout(); await queue.criticalReady;
+  assert.equal(image.dataset.pageImageState, "error");
+  assert.equal(image.dataset.pageLoaded, "false");
+  assert.equal(image.naturalWidth, 0);
   assert.equal(env.active, 0); assert.equal(env.transfers.length, 1);
   queue.dispose();
 });
@@ -316,6 +330,45 @@ test("Home assigns each source only after serial decoding and activates the comp
   home.dispose();
 });
 
+test("entering a preloaded Home scene promotes its queued art without restarting the active download", async () => {
+  const env = environment();
+  const earlier = new env.Element("section", { class: "story-chapter" });
+  earlier.append(
+    new env.Img({ "data-home-src": "https://example.test/active.avif" }),
+    new env.Img({ "data-home-src": "https://example.test/offscreen.avif" }),
+  );
+  const current = new env.Element("section", { class: "story-chapter" });
+  current.append(
+    new env.Img({ "data-home-src": "https://example.test/current-background.avif" }),
+    new env.Img({ "data-home-src": "https://example.test/current-people.avif" }),
+  );
+  env.body.append(earlier, current);
+  const home = env.createHomeArtworkLoader(env.body, () => {});
+  home.warm(earlier, "low");
+  home.warm(current, "low");
+  await tick();
+  const active = env.latest();
+  home.warm(current, "high");
+  await tick();
+  assert.equal(env.transfers.length, 1, "promotion keeps the ongoing transfer");
+  assert.equal(active.active, true);
+  active.finish();
+  await tick();
+  assert.equal(env.latest().src, "https://example.test/current-background.avif");
+  env.latest().finish();
+  await tick();
+  assert.equal(env.latest().src, "https://example.test/current-people.avif");
+  env.latest().finish();
+  await tick();
+  assert.equal(home.status(current), "ready");
+  assert.equal(env.latest().src, "https://example.test/offscreen.avif");
+  env.latest().finish();
+  await tick();
+  assert.equal(env.transfers.length, 4, "each URL downloads only once");
+  assert.equal(env.maximum, 1, "promotion preserves the single transfer slot");
+  home.dispose();
+});
+
 test("Home opening recovery retains successful art and retries failed sources from the loader button", async () => {
   const env = environment(); const scene = new env.Element("section", { class: "home-scene01" });
   const a = new env.Img({ "data-home-src": "https://example.test/a.avif" });
@@ -335,15 +388,49 @@ test("Home opening recovery retains successful art and retries failed sources fr
   home.dispose();
 });
 
-test("Home opening deadline cancels active and unissued sources until an explicit retry", async () => {
+test("Home keeps loading past the cover deadline and cancels only on a loader error before retry", async () => {
   const env = environment(); const scene = new env.Element("section", { class: "home-scene01" });
   scene.append(new env.Img({ "data-home-src": "https://example.test/a.avif" }), new env.Img({ "data-home-src": "https://example.test/b.avif" }));
   env.body.append(scene); const home = env.createHomeArtworkLoader(env.body, () => {}); home.warm(scene);
   await tick(); env.loader.dispatchEvent(new Event("loaderdeadline")); await tick();
+  assert.equal(env.active, 1); assert.equal(home.status(scene), "loading");
+  env.loader.dispatchEvent(new Event("loadererror")); await tick();
   assert.equal(env.active, 0); assert.equal(env.transfers.length, 1); assert.equal(home.status(scene), "error");
   env.loader.dispatchEvent(new Event("loaderretry")); await tick();
   env.latest().finish(); await tick(); env.latest().finish(); await tick();
   assert.equal(home.status(scene), "ready"); assert.equal(env.transfers.length, 3); assert.equal(env.maximum, 1);
+  home.dispose();
+});
+
+test("a cold Home room copy receives all source layers before carrying the next scene", async () => {
+  const env = environment();
+  const scene = new env.Element("section", { class: "story-chapter" });
+  const source = new env.Element();
+  const copy = new env.Element();
+  const urls = ["background.avif", "people.avif", "family.avif"];
+  for (const url of urls) {
+    const attrs = { "data-home-src": `https://example.test/${url}` };
+    source.append(new env.Img(attrs));
+    copy.append(new env.Img(attrs));
+  }
+  scene.append(source);
+  env.body.append(scene, copy);
+  const stop = env.bindHomeArtwork(source, copy);
+  const home = env.createHomeArtworkLoader(env.body, () => {});
+  assert.ok(copy.children.every((image) => !image.src));
+  home.warm(scene);
+  for (const url of urls) {
+    await tick();
+    assert.equal(env.latest().src, `https://example.test/${url}`);
+    env.latest().finish();
+  }
+  await tick();
+  assert.equal(scene.dataset.homeArtworkActive, "true");
+  assert.deepEqual(copy.children.map((image) => image.src), source.children.map((image) => image.src));
+  assert.ok(copy.children.every((image) => image.complete && image.naturalWidth > 0));
+  assert.equal(env.transfers.length, 3, "the room copy reuses the decoded source layers");
+  assert.deepEqual(env.accidentalRequests, []);
+  stop();
   home.dispose();
 });
 
