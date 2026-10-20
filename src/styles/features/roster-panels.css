@@ -36,7 +36,7 @@
 
 .wiki-page--roster .roster-opening > figcaption {
   position: relative;
-  margin: clamp(-80px, -5vw, -28px) 0 0;
+  margin: clamp(-48px, -3vw, -12px) 0 0;
   padding: 0 24px clamp(40px, 5vw, 72px);
   color: var(--route-heading-ink);
   font-family: var(--font-display) !important;

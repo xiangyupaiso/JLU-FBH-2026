@@ -1,0 +1,63 @@
+/* Keep every comparison identical except for the outer frame's corner radius. */
+.wiki-page--visual-design .image-radius-study {
+  margin: 28px 0;
+  container-type: inline-size;
+}
+
+.wiki-page--visual-design .image-radius-study__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.wiki-page--visual-design .image-radius-study__item {
+  min-width: 0;
+}
+
+.wiki-page--visual-design .image-radius-study__label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin: 0 0 10px;
+  color: var(--route-heading-ink);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.wiki-page--visual-design .image-radius-study__label strong {
+  font-size: 20px;
+}
+
+.wiki-page--visual-design .image-radius-study__frame {
+  overflow: hidden;
+  background: #f3eee8;
+}
+
+/* The outer frame owns the clipping, including the square-corner example. */
+.wiki-page--visual-design .wiki-article .image-radius-study__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  margin: 0;
+  border-radius: 0;
+}
+
+.wiki-page--visual-design .image-radius-study__detail,
+.wiki-page--visual-design .image-radius-study > figcaption {
+  margin: 10px 0 0;
+  color: var(--route-body-ink);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.wiki-page--visual-design .image-radius-study > figcaption {
+  margin-top: 20px;
+}
+
+@container (max-width: 440px) {
+  .wiki-page--visual-design .image-radius-study__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

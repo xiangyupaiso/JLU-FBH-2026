@@ -220,18 +220,9 @@
   height: clamp(180px, 26cqi, 260px);
   aspect-ratio: auto;
 }
-/* Show the complete reading hierarchy before comparing the travel states. */
-.design-plate .design-plate__panels--ribbon-sequence .design-panel:first-child {
-  grid-column: 1 / -1;
-}
+/* Compare the two travel states at the same scale. */
 .design-plate .design-plate__panels--ribbon-sequence .design-panel__image {
   aspect-ratio: 1120 / 430;
-}
-.design-plate
-  .design-plate__panels--ribbon-sequence
-  .design-panel:first-child
-  .design-panel__image {
-  aspect-ratio: 1425 / 792;
 }
 .design-plate .design-plate__panels--on-demand-hints .design-panel__image {
   aspect-ratio: 1.8;

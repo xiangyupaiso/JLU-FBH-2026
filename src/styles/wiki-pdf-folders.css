@@ -181,6 +181,8 @@
 }
 
 .sust-folder__title {
+  min-width: 0;
+  overflow-wrap: anywhere;
   color: var(--route-heading-ink, var(--route-ink));
   font-family: var(--font-editorial);
   font-size: 16px;

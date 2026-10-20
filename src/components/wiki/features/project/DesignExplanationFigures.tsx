@@ -30,23 +30,23 @@ const studies: Record<string, Study> = {
     ],
   },
   "design-white-space": {
-    title: "Give the next step room of its own",
+    title: "A screen for the next step, then the logos",
     caption:
-      "a, In the taller view, the interval separates the next-page invitation from the institutional footer. b, With the shorter viewport, the ribbon, Lumi and the destination occupy the reading area together. Page spacing is identical in both captures: the width is 1440 px, and the heights are 800 px and 520 px.",
+      "a, Next page sits near the middle of the screen, with open space below and the university and hospital logos still out of view. b, Scrolling further brings the university mark into view beneath the same gap. Both screenshots use the same window size and page layout. The scrollbar on the right shows the change in position.",
     panels: [
       {
-        path: "plates/panels/08b-whitespace-context.jpg",
-        label: "Context · Space before the institutional footer",
-        alt: "Full desktop viewport showing Notebook and the watercolor ribbon above a broad quiet interval, with the Jilin University and hospital marks below. The original page spacing is retained.",
-        width: 1440,
-        height: 800,
+        path: "plates/panels/08b-whitespace-focus-scroll.jpg",
+        label: "Next page · A view of its own",
+        alt: "Full desktop viewport with the closing thought above the watercolor ribbon and Notebook link near the center. Open space fills the lower screen; no university or hospital logos are visible. The vertical scrollbar is retained on the right.",
+        width: 1487,
+        height: 695,
       },
       {
-        path: "plates/panels/08b-whitespace-next-only.jpg",
-        label: "Focus · The next-page invitation",
-        alt: "Complete browser viewport with persistent navigation above the watercolor ribbon, lamb, Next page label, Notebook destination and arrow. The remaining reading area is quiet; no article text or institutional marks are visible.",
-        width: 1440,
-        height: 520,
+        path: "plates/panels/08b-whitespace-footer-scroll.jpg",
+        label: "Further down · The university logo enters",
+        alt: "The same desktop window after scrolling down. The Notebook link is higher on screen, a broad gap remains below the ribbon, and the blue Jilin University logo has entered at the bottom. The vertical scrollbar remains visible on the right.",
+        width: 1487,
+        height: 695,
       },
     ],
   },
@@ -202,14 +202,6 @@ function LayerAssembly({ sources }: Pick<Props, "sources">) {
 }
 
 export function DesignExplanationFigures({ name, sources }: Props) {
-  if (name === "design-details-destinations")
-    return (
-      <StudyFrame
-        name="design-white-space"
-        sources={sources}
-        study={studies["design-white-space"]}
-      />
-    );
   if (name === "design-painted-layers")
     return <LayerAssembly sources={sources} />;
   const study = studies[name];

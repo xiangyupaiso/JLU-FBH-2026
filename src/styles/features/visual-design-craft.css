@@ -554,10 +554,10 @@
   height: clamp(160px, 20vw, 270px);
   aspect-ratio: auto;
   box-sizing: border-box;
-  padding: 12px;
-  border: 1px solid #d9ddcc;
+  padding: 0;
+  border: 0;
   border-radius: var(--visual-design-image-radius, 16px);
-  background: #fbf8ef;
+  background: transparent;
   overflow: hidden;
   cursor: zoom-in;
 }
@@ -568,7 +568,7 @@
   height: 100%;
   object-fit: contain;
   margin: 0;
-  border-radius: 0;
+  border-radius: var(--visual-design-image-radius, 16px);
 }
 
 .wiki-page--visual-design .art-studio > .art-studio__study .art-studio__image {

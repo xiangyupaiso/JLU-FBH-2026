@@ -116,6 +116,8 @@
 
 .trop2-floating-group {
   display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
   align-items: center;
   gap: 4px;
   padding: 4px;
@@ -251,6 +253,8 @@
 
 .trop2-floating-legend {
   display: inline-flex;
+  flex-wrap: wrap;
+  max-width: 100%;
   align-items: center;
   gap: 12px;
   padding: 5px 12px;

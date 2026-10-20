@@ -164,6 +164,7 @@
 }
 .wiki-page--engineering .eng-introduction .wiki-blocks {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 24px;
 }
 .wiki-page--engineering #engineering-overview .wiki-blocks > .wiki-figure {

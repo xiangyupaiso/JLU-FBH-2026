@@ -11,7 +11,7 @@ interface ScreenRect {
 export function mountKeyAchievements(
   root: HTMLElement,
   achievements: readonly KeyAchievement[],
-  imageId: string,
+  imageSrc: string,
 ): () => void {
   const document = root.ownerDocument;
   const view = document.defaultView;
@@ -217,9 +217,11 @@ export function mountKeyAchievements(
     ghost.setAttribute("aria-hidden", "true");
     const svg = document.createElementNS(svgNamespace, "svg");
     svg.setAttribute("viewBox", `0 ${item.y} 1394 ${item.h}`);
-    const use = document.createElementNS(svgNamespace, "use");
-    use.setAttribute("href", `#${imageId}`);
-    svg.append(use);
+    const image = document.createElementNS(svgNamespace, "image");
+    image.setAttribute("width", "1394");
+    image.setAttribute("height", "2097");
+    image.setAttribute("data-page-src", imageSrc);
+    svg.append(image);
     ghost.append(svg);
     root.append(ghost);
     const origin = root.getBoundingClientRect();

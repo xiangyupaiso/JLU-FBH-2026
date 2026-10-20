@@ -53,11 +53,14 @@ export function HomeHopeArtwork() {
         </figure>
         <article className="story-hope-copy">
           <h3 data-hope-copy="question">
-            “If it comes back, can we give her <em>more options?</em>”
+            <span>“If it comes back,</span>{" "}
+            <span>can we give her <em>more options?”</em></span>
           </h3>
           <p data-hope-copy="context">
-            Clinical training showed us the uncertainty patients face. Research
-            gives us a way to work toward an answer.
+            <span>
+              Clinical training showed us the <strong>uncertainty patients face.</strong>
+            </span>{" "}
+            <span>Research gives us a way to <strong>work toward an answer.</strong></span>
           </p>
         </article>
       </div>

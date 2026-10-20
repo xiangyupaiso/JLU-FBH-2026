@@ -30,7 +30,8 @@
     translate: -50% -50%;
     z-index: 7;
   }
-  .home-story #clinical-challenge .story-art--8 > [data-layer="4"] {
+  .home-story #clinical-challenge .story-art--8
+    > :is([data-layer="4"], [data-nurse-motion]) {
     left: 50% !important;
     top: auto !important;
     bottom: calc(54.69cqw + 96px);

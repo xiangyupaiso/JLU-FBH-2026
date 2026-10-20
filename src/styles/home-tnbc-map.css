@@ -195,7 +195,7 @@
 }
 .tnbc-map-note-body {
   position: absolute;
-  inset: 19% 10% 10% 16%;
+  inset: 23% 10% 6% 16%;
   display: grid;
   /* Reserve two caption lines so short captions keep the same number baseline. */
   grid-template-rows: var(--note-value-size) 2.5em;

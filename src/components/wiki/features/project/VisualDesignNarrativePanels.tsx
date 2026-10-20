@@ -2,6 +2,7 @@ import { QueuedImage } from "../../../common/QueuedImage";
 import { Fragment, useEffect, useId, useRef } from "react";
 import tearOutline from "../../../../assets/home/supplements/tear-4.webp";
 import mapCloud from "../../../../assets/home/story/map-cloud-northwest.webp";
+import radiusStudyPhoto from "../../../../assets/visual-design/team-radius-study.jpg";
 import { visualDesignFigures } from "../../../../data/project/visualDesignAssets";
 import { DesignExplanationFigures } from "./DesignExplanationFigures";
 import { visualDesignCitationIndex as citationIndex } from "../../../../data/citations/visualDesignCitations";
@@ -25,6 +26,7 @@ import "../../../../styles/features/visual-design-craft.css";
 import "../../../../styles/features/visual-design-layout.css";
 import "../../../../styles/features/visual-design-figure-fit.css";
 import "../../../../styles/features/visual-design-folds.css";
+import "../../../../styles/features/visual-design-radius-study.css";
 
 const plateMarkup = import.meta.glob<string>(
   "../../../../data/project/visual-design/plates/*.html",
@@ -158,6 +160,66 @@ function ArtworkRatioStudy() {
         16:10 desktop frame. Pale striped areas mark unused space. The final
         view enlarges and crops the existing source; new artwork can be composed
         directly on a 16:10 canvas.
+      </figcaption>
+    </figure>
+  );
+}
+
+function ImageRadiusStudy() {
+  const id = useId();
+  const examples = [
+    {
+      radius: 0,
+      label: "Square edge",
+      detail: "A crisp rectangular boundary.",
+    },
+    {
+      radius: 8,
+      label: "Slight curve",
+      detail: "A small softening at each corner.",
+    },
+    {
+      radius: 16,
+      label: "Our article default",
+      detail: "A gentle turn with long straight edges.",
+    },
+    {
+      radius: 32,
+      label: "Broader curve",
+      detail: "A more prominent frame; more corner area is hidden.",
+    },
+  ];
+
+  return (
+    <figure className="image-radius-study" aria-labelledby={id}>
+      <div className="image-radius-study__grid">
+        {examples.map(({ radius, label, detail }) => (
+          <div className="image-radius-study__item" key={radius}>
+            <p className="image-radius-study__label">
+              <strong>{radius} px</strong>
+              <span>{label}</span>
+            </p>
+            <div
+              className="image-radius-study__frame"
+              style={{ borderRadius: radius }}
+            >
+              <QueuedImage
+                src={radiusStudyPhoto}
+                width="1710"
+                height="1282"
+                alt="Team members posing together in the laboratory with their laptops."
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <p className="image-radius-study__detail">{detail}</p>
+          </div>
+        ))}
+      </div>
+      <figcaption id={id}>
+        Same photograph, same display size, four CSS corner radii. Only the
+        corners change; the original image stays intact. At narrower widths,
+        each fixed radius occupies a larger share of the frame.
       </figcaption>
     </figure>
   );
@@ -315,7 +377,13 @@ function DesignArchive({
 
 export function VisualDesignNarrativeFeature({ name }: { name: string }) {
   if (name === "design-typography-study") return <TypographyStudy />;
-  if (["design-painted-layers", "design-particle-endpoints"].includes(name)) {
+  if (
+    [
+      "design-painted-layers",
+      "design-particle-endpoints",
+      "design-white-space",
+    ].includes(name)
+  ) {
     return <DesignExplanationFigures name={name} sources={mediaByPath} />;
   }
   if (name === "design-study-07-footer-reveal") {
@@ -375,6 +443,8 @@ export function VisualDesignNarrativeFeature({ name }: { name: string }) {
               {index === 0 ? (
                 name === "design-details-artwork" ? (
                   <ArtworkRatioStudy />
+                ) : name === "design-details-image-corners" ? (
+                  <ImageRadiusStudy />
                 ) : (
                   <DesignExplanationFigures name={name} sources={mediaByPath} />
                 )
