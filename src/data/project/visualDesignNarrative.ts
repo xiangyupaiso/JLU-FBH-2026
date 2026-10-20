@@ -725,12 +725,12 @@ export const visualDesignTechnicalNotes: Record<
   "design-details-image-corners": {
     title: "Technical details · Why we use 16 px image corners",
     description:
-      "Compare four corner sizes on the same photograph, then see how the shared rule reaches images and their frames.",
+      "Compare four corner sizes on the same illustration, then see how the shared rule reaches images and their frames.",
     sections: [
       {
         title: "A small curve, repeated across the page",
         paragraphs: [
-          "A square corner gives the picture a crisp boundary. At 8 px, that boundary softens slightly; at 32 px, the curve becomes a more noticeable part of the frame and hides more of each corner. The examples below keep the photograph, dimensions and placement identical so the corner treatment can be compared on its own. We made this comparison to show how the current choice changes the image’s edge.",
+          "A square corner gives the picture a crisp boundary. At 8 px, that boundary softens slightly; at 32 px, the curve becomes a more noticeable part of the frame and hides more of each corner. The examples below keep the illustration, dimensions and placement identical so the corner treatment can be compared on its own. We made this comparison to show how the current choice changes the image’s edge.",
         ],
       },
       {

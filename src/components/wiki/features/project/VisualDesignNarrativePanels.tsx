@@ -1,6 +1,6 @@
 import { QueuedImage } from "../../../common/QueuedImage";
 import { Fragment, useEffect, useId, useRef } from "react";
-import radiusStudyPhoto from "../../../../assets/visual-design/team-radius-study.jpg";
+import radiusStudyIllustration from "../../../../assets/visual-design/home-hope-radius-study.webp";
 import whitespaceFocus from "../../../../assets/visual-design/plates/panels/08b-whitespace-focus-scroll.jpg";
 import whitespaceFooter from "../../../../assets/visual-design/plates/panels/08b-whitespace-footer-scroll.jpg";
 import { visualDesignFigures } from "../../../../data/project/visualDesignAssets";
@@ -200,10 +200,10 @@ function ImageRadiusStudy() {
               style={{ borderRadius: radius }}
             >
               <QueuedImage
-                src={radiusStudyPhoto}
-                width="1710"
-                height="1282"
-                alt="Team members posing together in the laboratory with their laptops."
+                src={radiusStudyIllustration}
+                width="1600"
+                height="900"
+                alt="Open hands support a smiling patient holding a heart against a soft pink background."
                 loading="lazy"
                 decoding="async"
               />
@@ -213,7 +213,7 @@ function ImageRadiusStudy() {
         ))}
       </div>
       <figcaption id={id}>
-        Same photograph, same display size, four CSS corner radii. Only the
+        Same illustration, same display size, four CSS corner radii. Only the
         corners change; the original image stays intact. At narrower widths,
         each fixed radius occupies a larger share of the frame.
       </figcaption>
