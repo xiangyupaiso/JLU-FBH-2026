@@ -8,7 +8,7 @@ import {
 } from "react";
 import { Link, useLocation } from "react-router-dom";
 import gsap from "gsap";
-import teamCrestUrl from "../../../../../assets/jlu-fbh-crest.png";
+const teamCrestUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/jlu-fbh-crest.avif";
 import Pages from "../../../../../pages";
 import { PageSearch } from "../../../../PageSearch";
 import { HOME_INTRO_REPLAY_EVENT } from "../../../../../utils/homeIntro";

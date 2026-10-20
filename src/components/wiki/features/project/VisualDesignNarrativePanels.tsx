@@ -1,8 +1,10 @@
 import { QueuedImage } from "../../../common/QueuedImage";
 import { Fragment, useEffect, useId, useRef } from "react";
-import tearOutline from "../../../../assets/home/supplements/tear-4.webp";
-import mapCloud from "../../../../assets/home/story/map-cloud-northwest.webp";
 import { visualDesignFigures } from "../../../../data/project/visualDesignAssets";
+import {
+  visualDesignMediaUrls,
+  visualDesignMediaSizes,
+} from "../../../../data/project/visualDesignNarrativeMedia";
 import { DesignExplanationFigures } from "./DesignExplanationFigures";
 import { visualDesignCitationIndex as citationIndex } from "../../../../data/citations/visualDesignCitations";
 import { CitationReferenceList } from "../../citations/CitationRegister";
@@ -37,28 +39,18 @@ const plateMarkup = import.meta.glob<string>(
 
 const references = visualDesignReferences;
 
-const media = import.meta.glob<string>(
-  [
-    "../../../../assets/visual-design/**/*.{png,jpg,webp,svg,json}",
-    "!../../../../assets/visual-design/explainers/**",
-  ],
-  {
-    query: "?url",
-    import: "default",
-    eager: true,
-  },
+const mediaByPath = new Map(Object.entries(visualDesignMediaUrls));
+mediaByPath.set(
+  "home:tear",
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/tear-4-74fdbdde9e93.webp",
 );
-const mediaByPath = new Map(
-  Object.entries(media).map(([path, url]) => [
-    path.split("/assets/visual-design/")[1],
-    url,
-  ]),
+mediaByPath.set(
+  "home:cloud",
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/home/map-cloud-northwest-7a14ee146da5.webp",
 );
-mediaByPath.set("home:tear", tearOutline);
-mediaByPath.set("home:cloud", mapCloud);
 mediaByPath.set("home:cursor", visualDesignFigures.lumiCursorActive.src);
 
-/** Resolve every image and source record through Vite's production asset graph. */
+/** Resolve article, disclosure and image-viewer media through the verified CDN map. */
 function resolveMedia(markup: string) {
   return markup.replace(
     /\b(src|href|data-src)="([^"]+)"/g,
@@ -141,8 +133,8 @@ function ArtworkRatioStudy() {
                   src={mediaByPath.get(
                     "plates/panels/01-patient-question-a.png",
                   )}
-                  width="4000"
-                  height="2250"
+                  width={visualDesignMediaSizes["plates/panels/01-patient-question-a.png"].width}
+                  height={visualDesignMediaSizes["plates/panels/01-patient-question-a.png"].height}
                   alt=""
                   loading="lazy"
                   decoding="async"

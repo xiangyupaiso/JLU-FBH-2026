@@ -49,18 +49,24 @@ export const visualDesignFigures = {
   },
   lumiCursorRest: {
     src: `${base}lumi-cursor-rest.avif`,
+    width: 236,
+    height: 222,
     alt: "Lumi Cursor Resting Posture",
     caption: "Lumi mascot cursor resting state: watchful posture accompanying general desktop navigation.",
     className: "wiki-figure--cursor-sprite",
   },
   lumiCursorActive: {
     src: `${base}lumi-cursor-active.avif`,
+    width: 238,
+    height: 216,
     alt: "Lumi Cursor Active Hover Posture",
     caption: "Lumi mascot cursor hover state: joyful expression and glass specular sheen upon interactive elements.",
     className: "wiki-figure--cursor-sprite",
   },
   lumiCursorSpark: {
     src: `${base}lumi-cursor-spark.avif`,
+    width: 254,
+    height: 254,
     alt: "Lumi Cursor Click Spark Burst",
     caption: "Lumi mascot cursor click reaction: inertia spring recoil and dynamic theme-aware spark particle burst.",
     className: "wiki-figure--cursor-sprite",
@@ -83,6 +89,8 @@ export const visualDesignFigures = {
   },
   loading: {
     src: `${base}loading.avif`,
+    width: 1264,
+    height: 711,
     alt: "Loading Screen Artwork",
     caption: "Loading Screen illustration: cupped hands protecting life with warm watercolor aesthetics.",
   },

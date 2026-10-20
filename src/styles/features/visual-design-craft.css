@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Craft Ephesis";
-  src: url("../../assets/fonts/craft-ephesis.woff2") format("woff2");
+  src: url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/craft-ephesis.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Craft Slide Youran";
-  src: url("../../assets/fonts/craft-slide-youran.woff2") format("woff2");
+  src: url("https://static.igem.wiki/teams/6056/wiki/files/fonts/site/craft-slide-youran.woff2") format("woff2");
   font-style: normal;
   font-weight: 400;
   font-display: swap;

@@ -1,5 +1,6 @@
 import { useId } from "react";
 import { QueuedImage } from "../../../common/QueuedImage";
+import { visualDesignMediaSizes } from "../../../../data/project/visualDesignNarrativeMedia";
 import "../../../../styles/features/design-explanation-figures.css";
 
 type Panel = {
@@ -111,8 +112,8 @@ function StudyFrame({ study, sources, name }: Props & { study: Study }) {
               <QueuedImage
                 src={sources.get(panel.path)}
                 alt={panel.alt}
-                width={panel.width}
-                height={panel.height}
+                width={visualDesignMediaSizes[panel.path]?.width ?? panel.width}
+                height={visualDesignMediaSizes[panel.path]?.height ?? panel.height}
                 loading="lazy"
                 decoding="async"
               />
@@ -158,9 +159,15 @@ function LayerAssembly({ sources }: Pick<Props, "sources">) {
                     : `Original ${layer} artwork centered for individual inspection.`
                 }
                 width={
-                  layer === "ward" ? 2752 : layer === "patient" ? 620 : 487
+                  visualDesignMediaSizes[
+                    `history/artwork/${layer}${layer === "ward" ? "-full" : ""}.webp`
+                  ].width
                 }
-                height={layer === "ward" ? 2064 : 1000}
+                height={
+                  visualDesignMediaSizes[
+                    `history/artwork/${layer}${layer === "ward" ? "-full" : ""}.webp`
+                  ].height
+                }
                 loading="lazy"
                 decoding="async"
               />
@@ -182,8 +189,8 @@ function LayerAssembly({ sources }: Pick<Props, "sources">) {
                 alt=""
                 aria-hidden="true"
                 key={layer}
-                width="2752"
-                height="2064"
+                width={visualDesignMediaSizes[`history/artwork/${layer}-full.webp`].width}
+                height={visualDesignMediaSizes[`history/artwork/${layer}-full.webp`].height}
                 loading="lazy"
                 decoding="async"
               />

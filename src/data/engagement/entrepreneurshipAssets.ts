@@ -24,7 +24,7 @@ export const entrepreneurshipAssets = {
     competitorImmunomicTherapeutics: `${PAGE_ASSETS}/immunomic-therapeutics.avif`,
     competitorUniversityOfWashingtonStemvac: `${PAGE_ASSETS}/university-of-washington-stemvac.avif`,
     competitorClevelandClinic: `${PAGE_ASSETS}/cleveland-clinic.avif`,
-    competitorMerck: `${PAGE_ASSETS}/merck.webp`,
+    competitorMerck: `${PAGE_ASSETS}/merck.avif`,
     competitorAstraZeneca: `${PAGE_ASSETS}/astrazeneca-logo.avif`,
     businessModel: `${PAGE_ASSETS}/business-model.avif`,
     b2bB2c: `${PAGE_ASSETS}/1.avif`,

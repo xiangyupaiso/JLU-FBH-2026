@@ -399,13 +399,6 @@ export const visualDesignNarrativeSections: WikiSection[] = [
         ],
       },
       {
-        type: "prose",
-        paragraphs: [
-          "In the exploration area, **the titles align along two straight edges** beside the central illustration. The lambs sit outside those edges, with space between entries to keep the six choices distinct. We adjust each lamb’s size and position by its visible silhouette and feet, accounting for the transparent margins around the artwork.",
-          "A short preview gives each destination a topic, such as **“Why we chose circRNA”** or **“Tools for circular RNA design.”** The page names remain visible, and the preview appears beside the entry being considered. This continues the navigation’s use of **progressive disclosure**.[11]",
-        ],
-      },
-      {
         type: "feature",
         key: "design-study-08a-exploration",
       },
