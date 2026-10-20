@@ -114,7 +114,7 @@ Inspect the candidate table and the **Evidence Card** below it\. Check different
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=ZTI4ODEyZGYyM2MzNTE0YjM1YWRhYzkzZTEzZTI4YWRfNGZkNzMwODBhMjRmNWFhMjQ4NDhiZGUzYzYxN2MyNmJfSUQ6NzY5ODcyODQxNzQyODU0MDYyMF8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 5 Selecting P16401 displays its information in the Evidence Card\. Add Selected Targets to Cart saves the selected target in the Design list\.*
+*FIG\. **5** Selecting P16401 displays its information in the Evidence Card\. Add Selected Targets to Cart saves the selected target in the Design list\.*
 
 #### Step 3\. Predict and review epitopes
 
@@ -126,11 +126,11 @@ When the prediction finishes, inspect fields such as Peptide, HLA allele, and **
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NGQ3MjA2NTlmOWVjN2RmMjExNDAwM2QwZGE0MDFlNjBfOTZiOTQ0YjEzZDZlMTgxNDgyZjc1Njg2YTIwMmExODhfSUQ6NzY5ODcyODUxNTU5MTc2OTA4MV8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 6 After loading a target from the Design list, set the peptide length and HLA allele, then start epitope prediction\.*
+*FIG\. **6** After loading a target from the Design list, set the peptide length and HLA allele, then start epitope prediction\.*
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=Njk2NjhhNWVlN2Q1Yzg3NDJlZjhiOTVhZDFjNTA0NjVfYmVhNzVhYmFkMjc0YjA0MDk1NmVmZWRiMGM0MmM0MDFfSUQ6NzY5ODcyODU4OTI2OTEyNjE1OF8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 7 Two candidate epitopes are checked in this example\. They enter the Design list when the user clicks Add to design list\.*
+*FIG\. **7** Two candidate epitopes are checked in this example\. They enter the Design list when the user clicks Add to design list\.*
 
 Before assembly, you can click **Review human similarity** to review the selected peptides against human proteins\. Select **NCBI online human BLAST**, **confirm consent to submit the selected peptides to NCBI**, and click **Start review**\. Inspect the returned results and request records, then save the alignment evidence\. To check results later, use the saved job ID\.
 
@@ -140,13 +140,13 @@ Open **Assemble peptides**, check the epitopes and their order in the current in
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=ZWU3MGYwYTg4M2FhNmJjMmQ4MDJhNThkNzZkZDI5NzRfZGQ3NDUwMDNkYzAwZDVhMWUwMzJmYjc4ZGYzZjQ1YTZfSUQ6NzY5ODcyODY3MjE5ODcyNDYzMl8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 9 The two saved epitopes appear on the assembly page\. The user checks the input, ORF name, and linkers before generating the ORF\.*
+*FIG\. **9** The two saved epitopes appear on the assembly page\. The user checks the input, ORF name, and linkers before generating the ORF\.*
 
 Under **Review junction peptides**, select the HLA\-I alleles, **confirm consent to submit the assembled ORF amino\-acid sequence to IEDB**, and click **Run Junction MHC\-I Scan**\. The screenshot shows the settings and peptide windows before the scan\. If the status is `not run`, start the scan, then inspect the returned results and review any flagged junction peptides\.
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=N2FhN2M2ZjA4ZjE2YTNjMWM2MDY2OTVmOTBlMDc2NTBfOGYwMGZkYzBlNDliMjJmMzBiYTdhYjQ0Y2FmYzM4YTdfSUQ6NzY5ODcyODcyODQ4MjE3MjEzOV8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 10 Junction review provides HLA settings, consent for external submission, and a list of peptide windows to scan\. The scan has not started in this screenshot\.*
+*FIG\. **10** Junction review provides HLA settings, consent for external submission, and a list of peptide windows to scan\. The scan has not started in this screenshot\.*
 
 #### Step 5\. Generate and review the construct
 
@@ -154,13 +154,13 @@ Open Build construct and import your team’s backbone under Upload and Read Bac
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NTMwZmY2Y2Q1OGQ0MjJhOWFjZGQ0NWE4MGQzZTU3MTFfZWVjNWVkYzI4MTg4MmEwYzBhNmU0ZDA1NWQ5YmFjNzFfSUQ6NzY5ODcyODc2ODA5MjgzNDgxNl8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 11 Users import a backbone, inspect its feature map, and select the editing method and target region\.*
+*FIG\. **11** Users import a backbone, inspect its feature map, and select the editing method and target region\.*
 
 Click **Apply ORF and Generate New DNA Construct**, then inspect the results under Construct and checks\. Review and confirm the mature circRNA region against your team’s backbone records, and retain the backbone version and confirmation record\.
 
 For Registry annotations, open Registry review to query candidate Parts and compare their DNA sequences with the construct\. Review the matches, confirm the selected Part IDs, and click **Write Selected IDs to Construct** to add the annotations before export\.
 
-*FIG\. 12 Users review Registry DNA matches and confirm the Part IDs to write into construct annotations\.*
+*FIG\. **12** Users review Registry DNA matches and confirm the Part IDs to write into construct annotations\.*
 
 #### Step 6\. Download and save files
 
@@ -179,7 +179,7 @@ For a native SnapGene DNA file, check the backbone's **Native write\-back** stat
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NDc4ZWMxNTYwYWNkOGMxZWI4NDA2MGY0MWFiZDI0OGJfYmUwZWQxZjJkMmJhYzJjZDdiNDkwN2U4NGI3Y2NjMWRfSUQ6NzY5ODcyOTM4NjMyNDg4ODgxNF8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 13 Download files brings together downloads for construct sequences, annotations, result tables, and the validation package\.*
+*FIG\. **13** Download files brings together downloads for construct sequences, annotations, result tables, and the validation package\.*
 
 To save your current work, open **Design list** and click **Save project**\. To resume an existing project, choose the project file and click **Check and load**\. **Activity** shows result status for the current session\. **Service status** shows the status of computing services and external resources\.
 
@@ -193,7 +193,7 @@ For structural modeling, researchers can transfer the mature circRNA sequence ex
 
 For a first look, open the **example viewer**\. Drag to rotate the saved model, change its colors and display style, and use the BSJ marking control to inspect the circular junction\. Clear the marker to return to the whole\-model view\.
 
-*FIG\. 14 Interactive 3D TorusFold RNA model \(viewer captured as an image\): users rotate the saved model, adjust its display, and mark the circular junction\.*
+*FIG\. **14** Interactive 3D TorusFold RNA model \(viewer captured as an image\): users rotate the saved model, adjust its display, and mark the circular junction\.*
 
 A full prediction starts with sequence preparation\. Follow these six steps\.
 
@@ -207,7 +207,7 @@ Follow the installation guide to configure TorusFold, ViennaRNA, and the require
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MGNjYTAwODc3NGFlZGIyOTE2NmUzMTFhODUwZmRmODhfZWU3MjIyNDVmNzlhMTEzOWM3NDcxNjdiNTkxZTM5ZDlfSUQ6NzY5ODczMDY4MzY2MDg2NDc3NF8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 15 Users review installation options and external\-tool requirements before starting a prediction\.*
+*FIG\. 1**5** Users review installation options and external\-tool requirements before starting a prediction\.*
 
 #### Step 3\. Start the prediction
 
@@ -215,7 +215,7 @@ Start the local service and submit the mature RNA, or use the sequence\-running 
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=YjIwZjkwZjc2Yjc3ZjFjNDc1ZTI5Njk4ZjZhOGQ5YmNfZmNhMWI3OTExZTY1OGU1YzY2YjVjZWIwYWRlNDQwY2VfSUQ6NzY5ODczMDcxOTI0OTUwMTQ3NF8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 16 Users follow stage messages and execution details in the run console\.*
+*FIG\. 1**6** Users follow stage messages and execution details in the run console\.*
 
 #### Step 4\. Monitor progress
 
@@ -223,7 +223,7 @@ Check progress through the local interface or status endpoint\. If a run is inte
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=YzJjNWM5YTc3ODJlYjYyMmU3NzA4MGI2NzYwZjcyZGNfNDAyMzg0YTMxMmUwNGRhMGM1YzgyMDkzNWIyNjI3OTRfSUQ6NzY5ODczMDc2Nzk4NzczOTkwMF8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 17 Users inspect the saved stage, configuration, and checkpoint files\.*
+*FIG\. 1**7** Users inspect the saved stage, configuration, and checkpoint files\.*
 
 #### Step 5\. Inspect the model
 
@@ -274,7 +274,7 @@ Within each antigen group, first\-round IFN\-γ ELISpot counts provided a within
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NGM0OGM5YmRhNmZmMTk5MDFlZTc3Zjg5NGMwNzFjNTVfNDZhZDlkMDBjYThmZmI4YzM3YTA2YzdiODUzYWZiMDFfSUQ6NzY5ODczMTc0NTg3MjY0NTEyNV8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 19 First\-round IFN\-γ ELISpot counts guided selection of two coding segments per antigen for Combined\.*
+*FIG\. **19** First\-round IFN\-γ ELISpot counts guided selection of two coding segments per antigen for Combined\.*
 
 The candidate\-to\-coding index records source coordinates, peptide identities, sequence hashes, and the documented construct assignments\. The Combined reference fragments identify the eight selected segments and their order in the supplied reference\. Scientific selection and experimental procedures are described on our [Model](https://2026.igem.wiki/jlu-fbh/model), [Engineering](https://2026.igem.wiki/jlu-fbh/engineering), [Experiments](https://2026.igem.wiki/jlu-fbh/experiments), and [Results](https://2026.igem.wiki/jlu-fbh/results) pages\.
 
@@ -305,21 +305,21 @@ The molecular and functional results below characterize the **Wet Lab Combined r
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NjM2MjI2YzExMzAzNDRiMzk3ZWM1NTI3OGY5YTI5ZmVfOTZjOGQyMGM4MGE4YTE0YzQyYTdlNWVhZTkzZTRiYmJfSUQ6NzY5ODczMjYzNjgxODE2NDk2M18xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 20A BSJ sequencing identifies the ligation junction in the experimentally tested combined RNA\.*
+*FIG\. 2**0**A BSJ sequencing identifies the ligation junction in the experimentally tested *combined* RNA\.*
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MGUzNmZiODNkMzNkN2NjMzE2N2M5MzgzNmJkYTFmZGNfOTQ2ZTc2YmE2ZDIzNGVhMmYwNWUzMzUyY2IyMTljMmNfSUQ6NzY5ODczMjY1NjI5NzAyMDY2NV8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 20B Anti\-FLAG immunoblotting detects expression from the Wet Lab construct, with β\-actin as the loading control\.*
+*FIG\. 2**0**B Anti\-FLAG immunoblotting detects expression from the Wet Lab construct, with β\-actin as the loading control\.*
 
 Second\-round IFN\-γ ELISpot and MDA\-MB\-231 killing assays connect the selected multi\-segment reference design to immune and target\-cell responses\. The figures retain the Blank, single\-segment, dual\-segment, and Combined comparisons used to evaluate that experimental design\.
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NTg1MjA4NjJkOTUyNTVmMDJkNTQwOGJjYzcyNTQxZmJfMTU1NjIwMTgwNjVmMTgxYjdhNjVjNjU3YTkzZDgyM2ZfSUQ6NzY5ODczMjcwMTg4ODc5Mzg2OF8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 21A Second\-round IFN\-γ ELISpot compares the Combined design with the Blank, single\-segment, and dual\-segment designs\.*
+*FIG\. 2**1**A Second\-round IFN\-γ ELISpot compares **the Combined design with the Blank, single\-segment, and dual\-segment designs\.*
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=M2QxNWJjNDdhMzRjMzliMGYyNTU4Yzc5ZWVlNzJhOTBfOGYxMDU5ZjM4MmU1ODlkYWFhYTE1YTRjZWE4MDZjZThfSUQ6NzY5ODczMjcxNzM4NjYxNjA0OV8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 21B Vaccine\-primed T\-cell killing of MDA\-MB\-231 cells was measured across three effector\-to\-target ratios\.*
+*FIG\. 2**1**B Vaccine\-primed T\-cell killing of MDA\-MB\-231 cells was measured across three effector\-to\-target ratios\.*
 
 ### 3\.4 Linking the Reference Construct to the RNA\-Model Input
 
@@ -386,7 +386,7 @@ CircuForge organizes statistical analysis, external\-data retrieval, candidate r
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=MTkzYTQyMWFjMGZkNTE5ZGRmMTMyNjc5YTQ5MjhjMTlfMDhlNDg5N2Y4ZjlkOGM2YmU2YzlhZThiYWM1YzRiNjNfSUQ6NzY5ODczMzMzNDc1MDU0Njk0NV8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 22 CircuForge’s task\-based modules transfer confirmed candidates through the Design Cart\.*
+*FIG\. **22** CircuForge’s task\-based modules transfer confirmed candidates through the Design Cart\.*
 
 ##### Choice 1\. A guided browser workflow
 
@@ -418,7 +418,7 @@ TorusFold organizes its modules around pairing information, fragment prediction,
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NDhkNjI0ZjE4ODY4ZDE4ZDE4ODE1NzBjNmNlMDExODZfZjNjYmI3NjdjNDU4NjI3NGVlODk1MDRjZGU0MTMzMmNfSUQ6NzY5ODczMzQxMjQxMjQ5MzAwNF8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 23 TorusFold connects pairing information, fragment prediction, reconstruction, and refinement, saving outputs at each stage\.*
+*FIG\. **23** TorusFold connects pairing information, fragment prediction, reconstruction, and refinement, saving outputs at each stage\.*
 
 ##### Choice 1\. Retaining full\-sequence pairing information during fragment modeling
 
@@ -454,7 +454,7 @@ CircuForge V1\.0 brought data import, target screening, and epitope prediction i
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=NmIzOGE5ZGQ5ZTBkMjE2M2ZhZmZiYTY5ZTMwZjFkMWJfNTg2N2VjYzljY2M0Y2U2YTQ4YjE1M2Y1OGViNTlhNzdfSUQ6NzY5ODczMzQ5OTA2MjM0MDg3MV8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 24 CircuForge evolved from analysis modules into a connected candidate\-review and construct\-design workflow\.*
+*FIG\. **24** CircuForge evolved from analysis modules into a connected candidate\-review and construct\-design workflow\.*
 
 ##### Iteration 1\. Making candidate identity and researcher decisions explicit
 
@@ -468,7 +468,7 @@ A stage\-specific epitope ID combines sequence, prediction mode, HLA, and target
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=Y2I4OGU2N2FkMGU4ZDE5MGI3ODgwMDcwMjU5NDBjNDFfMDE4NGMyYjc1ZmU1OWExMjVhMmQ5NTQ5MzcxNTg3ODJfSUQ6NzY5ODczMzU1MjUwNjI5MzU0M18xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 25 Participants share software\-development experience at an online exchange involving five iGEM teams\.*
+*FIG\. **25** Participants share software\-development experience at an online exchange involving five iGEM teams\.*
 
 ##### Iteration 2\. Preserving confirmed selections in the Design Cart
 
@@ -482,7 +482,7 @@ The Cart merges entries by ID while retaining the incoming row order\. Project B
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=YzkyY2MxYzAyYjIxYzdhYWVmN2JmYWEwYmY4NTgyOTBfMmNlYmUzZmVlZWFkNGRkYWJmYmQ2ZjUyNjVhMzEyODVfSUQ6NzY5ODczMzU5MjA2MjkwNTM3Ml8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 26 The team discusses the software workflow with Associate Professor Qingtian Guan\.*
+*FIG\. **26** The team discusses the software workflow with Associate Professor Qingtian Guan\.*
 
 ##### Iteration 3\. Connecting task management, deployment, and checked exports
 
@@ -496,7 +496,7 @@ testthat::test\_that\("SBOL3 RDF/XML round\-trip preserves component and DNA seq
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=YmQ4MGQ1NThlNTk1MjZjN2VlYjQ4ZTNjYTI1OGEwYmZfOTVkYTgwZjEzODUwNzI1NWZiM2U0MTc0ZmFkNmJiOWFfSUQ6NzY5ODczMzY3NTQ0OTcxNTk2MF8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 27 The team discusses module responsibilities, task management, and software deployment\.*
+*FIG\. **27** The team discusses module responsibilities, task management, and software deployment\.*
 
 V2\.0 combines these changes into a guided workflow from candidate review to construct export\. The reference\-case evaluation demonstrates how confirmed coding segments become an assembled, sequence\-checked design within a supplied backbone\.
 
@@ -550,7 +550,7 @@ The CircuForge sessions followed the design workflow: importing data, reviewing 
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=OTUyMTRlMzQyNGFkN2VlYTk2YzAwYmVhNWM4MWY5YWNfM2YwMWY3NTU4NjlhMDM4NzU2NzgyZDM4YjAwMDczYjBfSUQ6NzY5ODczMzc0NDgzNjI5OTc5NV8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 28 Team members test CircuForge’s candidate\-review and construct\-design workflow\.*
+*FIG\. **28** Team members test CircuForge’s candidate\-review and construct\-design workflow\.*
 
 Participants needed clearer answers to two questions: whether a submitted request had finished, and which files they should save after generating a construct\. We revised **task\-status messages and export guidance** to distinguish submission, processing, and result review, and to connect the generated design with its downloadable files\. The implementation provides job IDs, status retrieval, and constructs export packages with readback checks\.
 
@@ -574,7 +574,7 @@ TorusFold testing followed the user journey from sequence preparation and task m
 
 ![Image](https://internal-api-drive-stream.feishu.cn/space/api/box/stream/download/authcode/?code=N2MwYjg3MWYwNWY2NGE4YTEwZDE3MDMzOGJmOGU3OWNfMzhjMmNlZTE4NTIwZDJmMDc2YmIwY2RhYjljOGNiMWJfSUQ6NzY5ODczMzk4ODE3MjkwOTU5OF8xNzkyNTAzNDUyOjE3OTI1ODk4NTJfVjM)
 
-*FIG\. 29 Team members inspect the RNA model and review TorusFold’s result\-viewing workflow\.*
+*FIG\. **29** Team members inspect the RNA model and review TorusFold’s result\-viewing workflow\.*
 
 Participants needed a clearer connection between the on\-screen model, its computational stage, and the files used for further inspection\. We improved **stage\-aware model viewing and progress information**: the interface displays saved stage structures and identifies the stage being viewed, while progress and checkpoint controls help users follow the calculation\. The changes include improvements to the stage\-model display and viewer, progress, and checkpoints\. A dedicated demo\-view control also gives first\-time users a direct entry to the project model\.
 
