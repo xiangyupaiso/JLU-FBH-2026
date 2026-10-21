@@ -122,17 +122,19 @@ export const visualDesignNarrativeSections: WikiSection[] = [
   },
   {
     id: "interaction-craft",
+    anchorIds: ["our-wiki-contribution"],
     index: "09",
-    kicker: "09 / Reading & Interaction",
-    navLabel: "Reading & Interaction",
-    title: "Reading Experience & Interaction Craft",
+    kicker: "09 / Our Wiki Contribution",
+    navLabel: "Our Wiki Contribution",
+    title: "Our Wiki Contribution",
     summary:
-      "Artwork, motion, reading pages and navigation each have a part in making the story clear and easy to explore.",
+      "How our artwork, motion, reading pages and navigation developed through successive versions of the wiki.",
     blocks: [
       {
         type: "prose",
         paragraphs: [
-          "Section 8 explains the experience we wanted to create. Here we follow the work that supports it: preparing the artwork and opening, giving motion a reading rhythm, shaping the article pages and making the routes between them clear. The team closing brings that experience back to the people behind CirCure; the design record then shows how the details developed. Figures and small examples sit beside the relevant decisions, with implementation notes available to open.",
+          "Advances in artificial intelligence are making it easier to turn design ideas into web interfaces, including for teams with limited programming experience. Creating a coherent reading experience also requires attention to how visual elements communicate scientific concepts, how much time readers have to follow an explanation, and how easily they can navigate between pages. These details call for careful observation and repeated revision.",
+          "In developing the CirCure wiki, we considered what each scene needed to communicate and how readers would move through it. We refined transitions to preserve the RNA ring’s outline, extended pauses to allow more time for reading, and adjusted navigation to make page names easier to scan. We then read through the page again to assess how these changes worked together. The drawings, comparisons, and implementation notes below document what we tried, the reasons for our revisions, and what we learned in the process. We hope this record offers future iGEM teams practical ideas to adapt and refine in their own wikis.",
         ],
       },
       {
@@ -575,6 +577,14 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "feature",
         key: "design-history-archive",
+      },
+      {
+        type: "prose",
+        paragraphs: [
+          "We kept this record because the reasons for a change can be useful alongside the finished result. The drawings and comparisons show the choices we made for CirCure; the notes explain how we put them into practice. We hope another team facing a similar question can find something here to try, and adjust it to suit their own project.",
+          "Working through these revisions taught us to pay closer attention to the person reading the page. A longer pause can give someone time to finish an explanation; a clearer label can help them find the next page. For us, refining these details is one way of respecting the time and attention people give to understanding our work.",
+          "The drawings and revisions preserve the steps between our first ideas and the finished pages. We hope future iGEM teams find something useful in that process: an idea to develop, a difficulty to avoid, or a detail worth looking at again. If sharing our experience helps another team begin with a little more confidence and carry its own ideas further, we will be glad to have passed it on.",
+        ],
       },
       {
         type: "subheading",

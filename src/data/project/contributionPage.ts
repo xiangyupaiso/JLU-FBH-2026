@@ -18,6 +18,7 @@ import {
  * Contribution page — structured typed content.
  *
  * Provenance: `文案集/project/contribution/3.6 Contribution.md`
+ * Wiki contribution section: user-supplied addition, 21 October 2026.
  * (669 lines: Introduction, seven Contribution chapters, References).
  *
  * Faithful by construction:
@@ -894,8 +895,29 @@ export const contributionPage: WikiPageContent = {
 
     /* =================================================================== 11 */
     {
-      id: "contribution-collaboration",
+      id: "contribution-wiki",
       index: "11",
+      kicker: "Wiki design",
+      navLabel: "Building an Interactive Wiki Through Iteration",
+      title: "Building an Interactive Wiki Through Iteration",
+      summary:
+        "An illustrated record of the artwork, interaction studies, and design decisions behind CirCure’s wiki.",
+      blocks: [
+        prose(
+          "We designed **the wiki’s homepage and overall page framework** to introduce CirCure and guide readers through the project. The homepage connects the project’s clinical motivation, scientific rationale, and visual identity, while the wider site organizes its research and activities into a connected reading experience. To carry this narrative across the wiki, we created **original watercolor artwork**, prepared it as aligned layers, and combined it with animated molecular explanations, scene transitions, chapter navigation, and interactive elements. We also preserved sketches, design studies, and revisions to show how the artwork and interface developed alongside the project.",
+          "By documenting **the alternatives we considered and the reasons for revising them**, we make the design reasoning behind CirCure’s wiki available to the iGEM community. Other teams can follow how **visual continuity, readable pacing, responsive artwork framing, and clear navigation** shaped our presentation of a complex scientific project. This record shares the decisions and trade-offs behind one illustrated wiki, offering examples that future teams can adapt to their own projects.",
+          learnMore(
+            "Our Wiki Contribution",
+            "https://2026.igem.wiki/jlu-fbh/visual-design#our-wiki-contribution",
+          ),
+        ),
+      ],
+    },
+
+    /* =================================================================== 12 */
+    {
+      id: "contribution-collaboration",
+      index: "12",
       kicker: "Collaboration",
       navLabel: "Collaboration",
       title: "Collaboration",
@@ -1007,10 +1029,10 @@ export const contributionPage: WikiPageContent = {
       ],
     },
 
-    /* =================================================================== 12 */
+    /* =================================================================== 13 */
     {
       id: "contribution-references",
-      index: "12",
+      index: "13",
       kicker: "Bibliography",
       navLabel: "References",
       title: "References",

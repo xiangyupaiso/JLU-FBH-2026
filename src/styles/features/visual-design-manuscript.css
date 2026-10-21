@@ -478,14 +478,101 @@
   border-top: 1px solid var(--rule);
   padding-top: 14px;
 }
-.manuscript .ms-ring-sources summary {
-  cursor: pointer;
-  font: 400 12px/1.8 var(--font-sans, sans-serif);
-  color: var(--pencil);
+#design-history-archive .ms-ring-sources > h6 {
+  margin: 0;
+  font: 500 14px/1.7 var(--font-sans, Lexend, sans-serif);
+  font-family: var(--font-sans, Lexend, sans-serif) !important;
+  color: var(--ink);
 }
 .manuscript .ms-ring-sources .ms-print-originals {
   display: grid;
   margin-top: 18px;
+}
+/* One archive disclosure; its studies read continuously below each folio. */
+#design-history-archive .manuscript section.design-live-study {
+  margin-top: calc(24 * var(--site-ui-unit, 1px));
+  padding: calc(20 * var(--site-ui-unit, 1px)) 0 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 0;
+}
+#design-history-archive .design-live-study__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(12 * var(--site-ui-unit, 1px)) calc(24 * var(--site-ui-unit, 1px));
+}
+#design-history-archive .design-live-study__header h6 {
+  flex: 1 1 28ch;
+  margin: 0;
+  color: var(--ink);
+  font: 500 calc(14 * var(--site-ui-unit, 1px))/1.7
+    var(--font-sans, Lexend, sans-serif);
+  font-family: var(--font-sans, Lexend, sans-serif) !important;
+  overflow-wrap: anywhere;
+}
+#design-history-archive .design-live-study__open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(10 * var(--site-ui-unit, 1px));
+  min-height: max(40px, calc(40 * var(--site-ui-unit, 1px)));
+  padding: calc(8 * var(--site-ui-unit, 1px))
+    calc(16 * var(--site-ui-unit, 1px));
+  border: 1px solid var(--rule);
+  border-radius: calc(8 * var(--site-ui-unit, 1px));
+  background: var(--paper);
+  color: var(--ink);
+  font: 500 calc(12 * var(--site-ui-unit, 1px))/1.5
+    var(--font-sans, Lexend, sans-serif);
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+#design-history-archive .design-live-study__open:hover {
+  border-color: var(--pencil);
+  background: #edf1e3;
+}
+#design-history-archive .design-live-study__open:active {
+  background: #e2e8d5;
+}
+#design-history-archive .manuscript section.design-live-study > p {
+  max-width: 78ch;
+  margin: calc(14 * var(--site-ui-unit, 1px)) 0
+    calc(18 * var(--site-ui-unit, 1px));
+  color: var(--pencil);
+  font: 400 calc(13 * var(--site-ui-unit, 1px))/1.85
+    var(--font-sans, Lexend, sans-serif);
+}
+#design-history-archive .manuscript section.design-live-study iframe {
+  height: auto;
+  aspect-ratio: 16 / 10;
+  min-height: calc(420 * var(--site-ui-unit, 1px));
+  max-height: calc(760 * var(--site-ui-unit, 1px));
+  margin-top: 0;
+  border-color: var(--rule);
+}
+#design-history-archive .design-live-study iframe:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 4px;
+}
+@container (max-width: 540px) {
+  #design-history-archive .design-live-study__header {
+    align-items: flex-start;
+  }
+  #design-history-archive .design-live-study__header h6 {
+    flex-basis: 100%;
+  }
+  #design-history-archive .design-live-study__open {
+    min-height: 44px;
+  }
+  #design-history-archive .manuscript section.design-live-study iframe {
+    height: min(620px, 72svh);
+    min-height: 360px;
+    max-height: none;
+    aspect-ratio: auto;
+  }
 }
 @container (max-width: 400px) {
   .manuscript #archive-ring-revision {
@@ -523,6 +610,9 @@
   font: 400 11px/1.8 var(--font-sans, Lexend, sans-serif);
 }
 @media (prefers-reduced-motion: reduce) {
+  #design-history-archive .design-live-study__open {
+    transition: none;
+  }
   .manuscript .ms-ring-study__hint {
     display: none;
   }

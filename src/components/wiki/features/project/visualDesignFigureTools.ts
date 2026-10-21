@@ -254,17 +254,19 @@ export function installVisualDesignFigures() {
   });
   const loadStudy = (event: Event) => {
     const target = event.target;
-    if (
-      !(target instanceof HTMLDetailsElement) ||
-      !target.matches(".design-live-study")
-    )
-      return;
-    const frame = target.querySelector<HTMLIFrameElement>("iframe");
-    if (frame?.dataset.src && target.open) {
-      frame.src = frame.dataset.src!;
-      frame.removeAttribute("data-src");
+    if (!(target instanceof HTMLDetailsElement)) return;
+    if (target.matches(".design-live-study")) {
+      const frame = target.querySelector<HTMLIFrameElement>("iframe");
+      if (frame?.dataset.src && target.open) {
+        frame.src = frame.dataset.src;
+        frame.removeAttribute("data-src");
+      }
+      if (frame) reportStudyVisibility(frame);
+    } else if (target.matches(".design-archive-complete")) {
+      target
+        .querySelectorAll<HTMLIFrameElement>(".design-live-study iframe")
+        .forEach((frame) => reportStudyVisibility(frame));
     }
-    if (frame) reportStudyVisibility(frame);
   };
   document.addEventListener("toggle", loadStudy, true);
 
@@ -284,8 +286,23 @@ export function installVisualDesignFigures() {
       !frame.closest("details:not([open])") &&
       box.width > 0 &&
       visibleHeight >= Math.min(100, box.height * 0.15);
+    // Folio studies are already expanded; entering the reader loads the demo.
+    if (
+      visible &&
+      frame.dataset.src &&
+      frame.closest("section.design-live-study")
+    ) {
+      frame.src = frame.dataset.src;
+      frame.removeAttribute("data-src");
+    }
     if (!force && visibleStudies.get(frame) === visible) return;
     visibleStudies.set(frame, visible);
+    // Standalone sandboxed archives have no shared runtime or same-origin inbox.
+    if (
+      frame.hasAttribute("sandbox") &&
+      !frame.sandbox.contains("allow-same-origin")
+    )
+      return;
     frame.contentWindow?.postMessage(
       {
         type: "visual-design-study-visibility",
