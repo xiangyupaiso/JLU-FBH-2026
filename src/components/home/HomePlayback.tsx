@@ -128,13 +128,25 @@ export function HomePlayback({ root, introPlaying }: HomePlaybackProps) {
     >
       {!introPlaying && artworkStatus !== "ready" && (
         <div className="home-playback-loading" role="status" aria-live="polite">
+          {artworkStatus === "error" && (
+            <svg className="home-playback-loading-icon" viewBox="0 0 28 28" fill="none" stroke="#a58798" strokeWidth="1.15" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <rect x="3.5" y="4.5" width="21" height="19" rx="5" />
+              <circle cx="10" cy="11" r="1.7" />
+              <path d="m5 20 5.5-5.5 3.5 3 4.5-5 5.5 6" />
+            </svg>
+          )}
           <p>{artworkStatus === "error"
             ? "Some scene images are unavailable. You can keep exploring or retry them."
             : "Loading scene images…"}</p>
           <p className="home-playback-loading-scene">{artworkChapter}</p>
           {artworkStatus === "error" && (
             <div className="home-playback-loading-actions">
-              <button type="button" onClick={retryArtwork}>Retry images</button>
+              <button type="button" onClick={retryArtwork}>
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M13 6a5.2 5.2 0 1 0 .1 3.5M13 2.5V6H9.5" />
+                </svg>
+                Retry images
+              </button>
             </div>
           )}
         </div>
@@ -257,22 +269,15 @@ export function HomePlayback({ root, introPlaying }: HomePlaybackProps) {
           <List size={19} strokeWidth={1.5} aria-hidden="true" />
         </button>
         <div
-          className="home-playback-reading"
+          className="home-playback-progress"
           role="progressbar"
           aria-label="Story progress"
-          aria-orientation="horizontal"
+          aria-orientation="vertical"
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuenow={percent}
-          aria-valuetext={`${percent}% · Scene ${chapterIndex + 1} of ${chapters.length}: ${currentChapter.title}`}
-          title={`Story progress · ${percent}% · ${currentChapter.title}`}
         >
-          <span className="home-playback-reading-track" aria-hidden="true">
-            <span style={{ transform: `scaleX(${progress})` }} />
-          </span>
-          <span className="home-playback-reading-value" aria-hidden="true">
-            {percent}%
-          </span>
+          <span style={{ transform: `scaleY(${progress})` }} />
         </div>
       </div>
       <span className="home-playback-sr" role="status" aria-live="polite">

@@ -1,4 +1,4 @@
-import { use } from "echarts/core";
+import { use as registerECharts, type ECharts } from "echarts/core";
 import {
   BarChart,
   CustomChart,
@@ -21,7 +21,7 @@ import { LabelLayout } from "echarts/features";
 import { CanvasRenderer } from "echarts/renderers";
 
 // These are the chart families and controls used by the published manuscripts.
-use([
+registerECharts([
   BarChart,
   CustomChart,
   HeatmapChart,
@@ -39,6 +39,15 @@ use([
   LabelLayout,
   CanvasRenderer,
 ]);
+
+export function disposeChart(chart: ECharts) {
+  if (chart.isDisposed()) return;
+  // Invalidate queued progressive canvas frames before zrender frees its layers.
+  const renderer = chart.getZr();
+  renderer.clear();
+  renderer.refreshImmediately(true);
+  chart.dispose();
+}
 
 export * from "echarts/core";
 export type {

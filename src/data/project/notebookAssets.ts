@@ -92,20 +92,20 @@ export const notebookAssets = {
     height: 586,
   },
   wet_f8: {
-    fileName: "wet-f8.avif",
+    fileName: "engineering-c3-10.avif",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f8.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-10.avif",
     alt: "Empty-LNP DC viability",
-    width: 699,
-    height: 486,
+    width: 897,
+    height: 652,
   },
   wet_f9: {
-    fileName: "wet-f9-1.avif",
+    fileName: "rna-vs-mrna.avif",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f9-1.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/rna-vs-mrna.avif",
     alt: "RNA persistence gel",
-    width: 1280,
-    height: 471,
+    width: 1884,
+    height: 678,
   },
   wet_f10: {
     fileName: "wet-f10.avif",
@@ -180,12 +180,12 @@ export const notebookAssets = {
     height: 451,
   },
   wet_f19: {
-    fileName: "wet-f19.avif",
+    fileName: "trop2-transcript-assessment-in-4t1-cells.avif",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f19.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/trop2-transcript-assessment-in-4t1-cells.avif",
     alt: "TROP2 transcript detection",
-    width: 748,
-    height: 920,
+    width: 872,
+    height: 1134,
   },
   wet_f20: {
     fileName: "wet-f20.avif",
@@ -238,42 +238,42 @@ export const notebookAssets = {
   wet_f26: {
     fileName: "wet-f26.avif",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f26.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06a-splenic-dc-maturation.avif",
     alt: "Splenic DC maturation",
-    width: 1280,
-    height: 422,
+    width: 2048,
+    height: 649,
   },
   wet_f27: {
     fileName: "wet-f27.avif",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f27.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06b-splenic-cd8-activation.avif",
     alt: "Splenic CD8 activation",
-    width: 1280,
-    height: 435,
+    width: 2048,
+    height: 659,
   },
   wet_f28: {
     fileName: "wet-f28.avif",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f28.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06c-splenic-memory-associated-phenotype.avif",
     alt: "Splenic memory-associated phenotype",
-    width: 1280,
-    height: 409,
+    width: 2048,
+    height: 691,
   },
   wet_f29: {
     fileName: "wet-f29.avif",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f29.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06d-splenic-ifn-gamma.avif",
     alt: "Splenic intracellular IFN-γ",
-    width: 1280,
-    height: 398,
+    width: 2048,
+    height: 673,
   },
   wet_f30: {
     fileName: "wet-f30.avif",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/notebook/wet-f30.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06e-splenic-granzyme-b.avif",
     alt: "Splenic intracellular Granzyme B",
-    width: 1280,
-    height: 455,
+    width: 2048,
+    height: 675,
   },
   wet_f31: {
     fileName: "wet-f31.avif",

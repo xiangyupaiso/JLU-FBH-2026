@@ -134,6 +134,18 @@ export function ExperimentProtocolAtlas() {
   const toggleStage = (number: string) => {
     setExpandedStage((current) => (current === number ? null : number));
   };
+  const focusMapControl = (button: HTMLButtonElement | null | undefined) => {
+    if (!button) return;
+    requestAnimationFrame(() => {
+      button.focus({ preventScroll: true });
+      scrollReaderToTarget(
+        button,
+        button.closest<HTMLElement>(".route-frame__scroll"),
+        "instant",
+        { block: "center" },
+      );
+    });
+  };
   const jumpToArticle = () => {
     if (!activePair) return;
     const target = document.getElementById(activePair.targetId);
@@ -155,10 +167,10 @@ export function ExperimentProtocolAtlas() {
         if (event.key !== "Escape" || !showStages || activeKey) return;
         event.preventDefault();
         if (expandedStage) {
-          stageRefs.current.get(expandedStage)?.focus({ preventScroll: true });
+          focusMapControl(stageRefs.current.get(expandedStage));
           setExpandedStage(null);
         } else {
-          centreRef.current?.focus({ preventScroll: true });
+          focusMapControl(centreRef.current);
           setShowStages(false);
         }
       }}
@@ -230,6 +242,57 @@ export function ExperimentProtocolAtlas() {
               </span>
             </span>
           </button>
+          {!showStages ? (
+            <span className="exp-atlas__prompt" aria-hidden="true">
+              <span>Click to explore</span>
+              <svg viewBox="0 0 70 60" focusable="false">
+                <defs>
+                  {/* Notebook's pigment grain, scaled for a fine arrow. */}
+                  <filter
+                    id={`${atlasId}-prompt-wash`}
+                    x="-15%"
+                    y="-20%"
+                    width="130%"
+                    height="140%"
+                    colorInterpolationFilters="sRGB"
+                  >
+                    <feTurbulence
+                      type="fractalNoise"
+                      baseFrequency="0.06 0.24"
+                      numOctaves="2"
+                      seed="17"
+                      result="grain"
+                    />
+                    <feDisplacementMap
+                      in="SourceGraphic"
+                      in2="grain"
+                      scale="0.65"
+                      xChannelSelector="R"
+                      yChannelSelector="G"
+                      result="edge"
+                    />
+                    <feColorMatrix
+                      in="grain"
+                      type="matrix"
+                      values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0.75 0 0.5"
+                      result="paper"
+                    />
+                    <feComposite in="edge" in2="paper" operator="in" />
+                  </filter>
+                </defs>
+                <g filter={`url(#${atlasId}-prompt-wash)`}>
+                  <path
+                    className="exp-atlas__prompt-wash"
+                    d="M61 8C21 -3 1 16 15 44M15 44L3 38M15 44L16 31"
+                  />
+                  <path
+                    className="exp-atlas__prompt-pigment"
+                    d="M61 8.5C21 -2.5 1.5 16 15 44M15 44L3 38M15 44L16 31"
+                  />
+                </g>
+              </svg>
+            </span>
+          ) : null}
         </div>
 
         <div id={stagesId} className="exp-atlas__stages" hidden={!showStages}>
@@ -313,7 +376,7 @@ export function ExperimentProtocolAtlas() {
           ? `${selectedStage.label} · Select a protocol to view its workflow and materials.`
           : showStages
             ? "Select a numbered stage to explore its protocols."
-            : "Start with C, then select a stage to reveal its protocols."}
+            : "Click the circle to explore the experimental stages."}
       </p>
 
       <WikiProtocolModal

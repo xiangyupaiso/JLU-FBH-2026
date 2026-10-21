@@ -22,6 +22,8 @@ import type {
   WikiSection,
 } from "./wikiPageTypes";
 import { linkify, renderInlineFormatting } from "./proseInline";
+import { splitNoteContent } from "../../utils/wikiNoteContent";
+import { citationTableCellKey } from "../../data/citations/citationTypes";
 import { WikiLineSidebar, type WikiLineSidebarItem } from "./WikiLineSidebar";
 import { numberWikiSections, stripWikiHeadingIndex, wikiSubheadingDepth } from "./wikiPageNumbering";
 import { WikiNextRecord } from "./WikiNextRecord";
@@ -100,6 +102,7 @@ export type InlineRenderer = (
   text: string,
   fallback: (t: string) => ReactNode,
   sectionId?: string,
+  locationKey?: string,
 ) => ReactNode;
 
 const InlineRendererContext = createContext<InlineRenderer | null>(null);
@@ -129,6 +132,8 @@ interface WikiRoutePageProps {
    * take the released width. Used by `/games`.
    */
   hideOutline?: boolean;
+  /** Preserve chapter numbers supplied by a reviewed manuscript. */
+  preserveSectionNumbers?: boolean;
   /** When true, omits visual title/lede text inside the hero banner. */
   hideHeroCopy?: boolean;
   /** When true, subheadings within blocks are collapsed into accordion cards */
@@ -186,7 +191,9 @@ function Status({ item }: { item: WikiItem }) {
 }
 
 function ItemCollection({ section }: { section: WikiSection }) {
+  const inline = useContext(InlineRendererContext);
   const [openItems, setOpenItems] = useState<Set<number>>(() => new Set([0]));
+  const render = (text: string) => inline ? inline(text, renderInlineFormatting, section.id) : renderInlineFormatting(text);
 
   if (!section.items?.length) return null;
 
@@ -259,14 +266,14 @@ function ItemCollection({ section }: { section: WikiSection }) {
                     </p>
                   ) : null}
 
-                  <p>{renderInlineFormatting(item.body)}</p>
+                  <p>{render(item.body)}</p>
 
                   {item.evidence?.length ? (
                     <section>
                       <h4>Evidence to include</h4>
                       <ul>
                         {item.evidence.map((point) => (
-                          <li key={point}>{point}</li>
+                          <li key={point}>{render(point)}</li>
                         ))}
                       </ul>
                     </section>
@@ -275,7 +282,7 @@ function ItemCollection({ section }: { section: WikiSection }) {
                   {item.decision ? (
                     <aside>
                       <h4>Decision rule</h4>
-                      <p>{item.decision}</p>
+                      <p>{render(item.decision)}</p>
                     </aside>
                   ) : null}
                 </div>
@@ -320,34 +327,18 @@ function renderTableCell(
   cell: string,
   inline: InlineRenderer | null,
   sectionId: string,
+  locationKey?: string,
 ): ReactNode {
-  const render = (text: string) =>
-    inline ? inline(text, linkify, sectionId) : linkify(text);
+  const render = (text: string, key = locationKey) =>
+    inline ? inline(text, linkify, sectionId, key) : linkify(text);
   if (!cell.includes("<br")) return render(cell);
   const lines = cell.split(/<br\s*\/?>/);
   return lines.map((line, index) => (
     <span key={index}>
-      {render(line)}
+      {render(line, `${locationKey ?? ""}:line-${index}`)}
       {index < lines.length - 1 ? <br /> : null}
     </span>
   ));
-}
-
-function splitNoteContent(body: string): string[] {
-  if (!body) return [];
-  if (body.includes("\n")) {
-    return body
-      .split(/\n+/)
-      .map((s) => s.trim())
-      .filter(Boolean);
-  }
-  if (/1\.\s+.*2\.\s+/.test(body)) {
-    return body
-      .split(/(?=\b\d+\.\s+)/)
-      .map((s) => s.trim())
-      .filter(Boolean);
-  }
-  return [body.trim()];
 }
 
 function renderProseParagraphs(
@@ -460,14 +451,46 @@ function CodeBlock({
 
 /** Render manuscript blocks inside shared tabs and disclosures with the same
  * formatting, citation context and figure semantics as the surrounding page. */
-export function WikiContentBlocks({ blocks, features = {}, sectionId }: {
+export function WikiContentBlocks({ blocks, features = {}, sectionId, scrollContainerRef }: {
   blocks: readonly WikiContentBlock[];
   features?: FeatureMap;
   sectionId: string;
+  scrollContainerRef?: RefObject<HTMLElement | null>;
 }) {
-  return <>{blocks.map((block, index) => (
-    <RouteBlock key={index} block={block} features={features} sectionId={sectionId} />
-  ))}</>;
+  const rendered: ReactNode[] = [];
+  for (let index = 0; index < blocks.length; index++) {
+    const block = blocks[index];
+    if (block.type === "subheading" && block.collapseUntil) {
+      const end = blocks.findIndex((candidate, position) =>
+        position > index && candidate.type === "subheading" && candidate.id === block.collapseUntil,
+      );
+      // A missing endpoint must never hide the remainder of the chapter.
+      if (end !== -1) {
+        rendered.push(
+          <details className="wiki-protocol-drawer wiki-protocol-range" data-wiki-protocol-range key={block.id}>
+            <summary
+              className="wiki-protocol-drawer__header"
+              id={block.id}
+              data-wiki-outline-anchor
+              data-wiki-outline-parent={sectionId}
+              data-wiki-heading-depth={wikiSubheadingDepth(block)}
+            >
+              {block.anchorIds?.map((id) => <span className="wiki-anchor" id={id} key={id} />)}
+              <span className="wiki-protocol-drawer__title">{block.title}</span>
+              <span className="wiki-protocol-drawer__chevron" aria-hidden="true">▼</span>
+            </summary>
+            <div className="wiki-protocol-drawer__body wiki-blocks">
+              <WikiContentBlocks blocks={blocks.slice(index + 1, end)} features={features} sectionId={sectionId} scrollContainerRef={scrollContainerRef} />
+            </div>
+          </details>,
+        );
+        index = end - 1;
+        continue;
+      }
+    }
+    rendered.push(<RouteBlock key={index} block={block} features={features} sectionId={sectionId} scrollContainerRef={scrollContainerRef} />);
+  }
+  return <>{rendered}</>;
 }
 
 function EducationViewportFigureImage({ src, alt, width, height }: { src: string; alt: string; width?: number; height?: number }) {
@@ -543,7 +566,7 @@ function RouteBlock({
     case "quote":
       return (
         <blockquote className="wiki-quote" data-wiki-reveal>
-          {inline ? inline(block.text, linkify) : linkify(block.text)}
+          {inline ? inline(block.text, linkify, sectionId) : linkify(block.text)}
         </blockquote>
       );
     case "list": {
@@ -613,7 +636,7 @@ function RouteBlock({
               ) : null}
             </figcaption>
           ) : block.caption || block.showFigureNumber ? (
-            <figcaption>{block.caption}</figcaption>
+            <figcaption>{block.caption && (inline ? inline(block.caption, renderInlineFormatting, sectionId) : renderInlineFormatting(block.caption))}</figcaption>
           ) : null}
         </figure>
       );
@@ -625,7 +648,7 @@ function RouteBlock({
               <QueuedImage key={img.src} src={img.src} width={img.width} height={img.height} alt={img.alt ?? ""} loading="lazy" decoding="async" />
             ))}
           </div>
-          {block.caption ? <figcaption>{renderInlineFormatting(block.caption)}</figcaption> : null}
+          {block.caption ? <figcaption>{inline ? inline(block.caption, renderInlineFormatting, sectionId) : renderInlineFormatting(block.caption)}</figcaption> : null}
         </figure>
       );
     case "image-placeholder":
@@ -643,7 +666,7 @@ function RouteBlock({
             <strong>{block.filename}</strong>
             <p>{block.instruction}</p>
           </div>
-          {block.caption ? <figcaption>{block.caption}</figcaption> : null}
+          {block.caption ? <figcaption>{inline ? inline(block.caption, renderInlineFormatting, sectionId) : renderInlineFormatting(block.caption)}</figcaption> : null}
         </figure>
       );
     case "table":
@@ -657,13 +680,13 @@ function RouteBlock({
         >
           <table className="wiki-table">
             {block.caption ? (
-              <caption>{renderInlineFormatting(block.caption)}</caption>
+              <caption>{inline ? inline(block.caption, renderInlineFormatting, sectionId) : renderInlineFormatting(block.caption)}</caption>
             ) : null}
             <thead>
               <tr>
                 {block.headers.map((header, columnIndex) => (
                   <th scope="col" key={`${columnIndex}-${header}`}>
-                    {renderInlineFormatting(header)}
+                    {renderTableCell(header, inline, sectionId, citationTableCellKey(block, -1, columnIndex))}
                   </th>
                 ))}
               </tr>
@@ -674,11 +697,11 @@ function RouteBlock({
                   {row.map((cell, cellIndex) =>
                     cellIndex === 0 ? (
                       <th scope="row" key={`${rowIndex}-${cellIndex}`}>
-                        {renderTableCell(cell, inline, sectionId)}
+                        {renderTableCell(cell, inline, sectionId, citationTableCellKey(block, rowIndex, cellIndex))}
                       </th>
                     ) : (
                       <td key={`${rowIndex}-${cellIndex}`}>
-                        {renderTableCell(cell, inline, sectionId)}
+                        {renderTableCell(cell, inline, sectionId, citationTableCellKey(block, rowIndex, cellIndex))}
                       </td>
                     ),
                   )}
@@ -699,19 +722,19 @@ function RouteBlock({
         >
           <table className="wiki-table wiki-table--parts">
             {block.caption ? (
-              <caption>{renderInlineFormatting(block.caption)}</caption>
+              <caption>{inline ? inline(block.caption, renderInlineFormatting, sectionId) : renderInlineFormatting(block.caption)}</caption>
             ) : null}
             <thead>
               <tr>
-                {block.headers.map((header) => (
+                {block.headers.map((header, columnIndex) => (
                   <th scope="col" key={header}>
-                    {renderInlineFormatting(header)}
+                    {renderTableCell(header, inline, sectionId, citationTableCellKey(block, -1, columnIndex))}
                   </th>
                 ))}
               </tr>
             </thead>
             <tbody>
-              {block.rows.map((row) => (
+              {block.rows.map((row, rowIndex) => (
                 <tr key={row.name}>
                   <th scope="row">
                     {/*
@@ -731,7 +754,7 @@ function RouteBlock({
                   </th>
                   {row.cells.map((cell, cellIndex) => (
                     <td key={`${row.name}-${cellIndex}`}>
-                      {renderTableCell(cell, inline, sectionId)}
+                      {renderTableCell(cell, inline, sectionId, citationTableCellKey(block, rowIndex, cellIndex))}
                     </td>
                   ))}
                 </tr>
@@ -767,7 +790,7 @@ function RouteBlock({
           {block.label ? (
             <span className="wiki-callout__label">{block.label}</span>
           ) : null}
-          <p>{inline ? inline(block.body, linkify) : linkify(block.body)}</p>
+          <p>{inline ? inline(block.body, linkify, sectionId) : linkify(block.body)}</p>
         </aside>
       );
     case "subheading": {
@@ -853,7 +876,7 @@ function RouteBlock({
                 key={`${entry.label}-${index}`}
               >
                 <span className="wiki-references__index" aria-hidden="true">
-                  [{index + 1}]
+                  {index + 1}.
                 </span>
                 <span className="wiki-references__body">
                   <span>{entry.text}</span>
@@ -898,7 +921,7 @@ function RouteBlock({
           ) : null}
           <div className="wiki-boundary__body">
             {noteLines.map((line, index) => (
-              <p key={index}>{renderInlineFormatting(line)}</p>
+              <p key={index}>{inline ? inline(line, linkify, sectionId) : linkify(line)}</p>
             ))}
           </div>
         </aside>
@@ -1017,6 +1040,7 @@ function ProtocolSubheadingDrawer({
     <div
       className={`wiki-protocol-drawer ${isOpen ? "is-open" : ""}`}
       id={subheading.id}
+      data-wiki-subheading-fold
       data-wiki-outline-anchor
       data-wiki-outline-parent={sectionId}
     >
@@ -1045,19 +1069,17 @@ function ProtocolSubheadingDrawer({
         </button>
       </h3>
 
-      {isOpen && (
-        <div className="wiki-protocol-drawer__body" id={`${subheading.id}-content`}>
-          {blocks.map((block, idx) => (
-            <RouteBlock
-              key={`${subheading.id}-${block.type}-${idx}`}
-              block={block}
-              features={features}
-              sectionId={sectionId}
-              scrollContainerRef={scrollContainerRef}
-            />
-          ))}
-        </div>
-      )}
+      <div className="wiki-protocol-drawer__body" id={`${subheading.id}-content`} hidden={!isOpen}>
+        {blocks.map((block, idx) => (
+          <RouteBlock
+            key={`${subheading.id}-${block.type}-${idx}`}
+            block={block}
+            features={features}
+            sectionId={sectionId}
+            scrollContainerRef={scrollContainerRef}
+          />
+        ))}
+      </div>
     </div>
   );
 }
@@ -1081,6 +1103,7 @@ function RouteSection({
   openSubheadingIds?: Set<string>;
   onToggleSubheading?: (id: string) => void;
 }) {
+  const inline = useContext(InlineRendererContext);
   const blocks = section.blocks?.length ? section.blocks : null;
 
   const firstSubIndex = useMemo(
@@ -1221,15 +1244,7 @@ function RouteSection({
           </div>
         ) : (
           <div className="wiki-blocks">
-            {blocks.map((block, index) => (
-              <RouteBlock
-                key={`${section.id}-${block.type}-${index}`}
-                block={block}
-                features={features}
-                sectionId={section.id}
-                scrollContainerRef={scrollContainerRef}
-              />
-            ))}
+            <WikiContentBlocks blocks={blocks} features={features} sectionId={section.id} scrollContainerRef={scrollContainerRef} />
           </div>
         )
       ) : (
@@ -1237,7 +1252,7 @@ function RouteSection({
           {section.body?.length ? (
             <div className="wiki-prose" data-wiki-reveal>
               {section.body.map((paragraph) => (
-                <p key={paragraph}>{renderInlineFormatting(paragraph)}</p>
+                <p key={paragraph}>{inline ? inline(paragraph, renderInlineFormatting, section.id) : renderInlineFormatting(paragraph)}</p>
               ))}
             </div>
           ) : null}
@@ -1259,7 +1274,7 @@ function RouteSection({
               ) : null}
               <div className="wiki-boundary__body">
                 {splitNoteContent(section.note.body).map((line, index) => (
-                  <p key={index}>{renderInlineFormatting(line)}</p>
+                  <p key={index}>{inline ? inline(line, renderInlineFormatting, section.id) : renderInlineFormatting(line)}</p>
                 ))}
               </div>
             </aside>
@@ -1283,6 +1298,7 @@ export function WikiRoutePage({
   enableWideFlow = false,
   documentFlow: forceDocumentFlow = false,
   hideOutline = false,
+  preserveSectionNumbers = false,
   hideHeroCopy = false,
   collapsibleSubheadings = false,
   collapsibleSubheadingSections,
@@ -1295,8 +1311,8 @@ export function WikiRoutePage({
   articleLead,
 }: WikiRoutePageProps) {
   const sections = useMemo(
-    () => hideOutline ? content.sections : numberWikiSections(content.sections),
-    [content.sections, hideOutline],
+    () => hideOutline || preserveSectionNumbers ? content.sections : numberWikiSections(content.sections),
+    [content.sections, hideOutline, preserveSectionNumbers],
   );
   const imageSources = useMemo(
     () => [
@@ -1310,7 +1326,8 @@ export function WikiRoutePage({
   );
   const rootRef = useRef<HTMLElement>(null);
   const interfaceRef = useRef<HTMLDivElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const [scrollElement, setScrollElement] = useState<HTMLDivElement | null>(null);
+  const scrollRef = useMemo(() => ({ current: scrollElement }), [scrollElement]);
 
   const [activeProtocolModal, setActiveProtocolModal] = useState<{
     pair: ExperimentProtocolPair;
@@ -1556,7 +1573,7 @@ export function WikiRoutePage({
                 className="wiki-toc-trigger"
                 aria-controls={outlineId}
                 aria-expanded={tocOpen}
-                aria-label="Open table of contents"
+                title="Open table of contents"
                 onClick={() => setTocOpen(true)}
               >
                 <svg
@@ -1590,7 +1607,7 @@ export function WikiRoutePage({
               data-page-background-property="--route-frame-image-ready"
             >
               <div
-                ref={scrollRef}
+                ref={setScrollElement}
                 className="route-frame__scroll"
                 tabIndex={0}
                 aria-label={`${content.title} article`}

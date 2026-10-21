@@ -1,4 +1,4 @@
-import { loadPageImageSerial } from "./pageImageQueue";
+import { loadPageImageSerial, refreshPageImagePriorities } from "./pageImageQueue";
 
 type ArtworkElement = HTMLImageElement | SVGImageElement;
 export type HomeArtworkStatus = "ready" | "loading" | "error";
@@ -117,6 +117,7 @@ export function createHomeArtworkLoader(root: HTMLElement, onChange: () => void)
     });
     // Assigning native sources before these probes finished would bypass serialization.
     added.forEach((art) => start(art));
+    refreshPageImagePriorities();
     activateScenes();
   };
   const status = (scene: Element | null | undefined): HomeArtworkStatus => {

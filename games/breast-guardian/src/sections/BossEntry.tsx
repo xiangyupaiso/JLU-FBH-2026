@@ -1,4 +1,4 @@
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import { BOSSES_BY_PLAYTHROUGH } from '@/data/bossProgression';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -33,7 +33,7 @@ export default function BossEntry() {
   const handleChallenge = (boss: BossType) => {
     const { isUnlocked, canChallenge } = getBossStatus(boss);
     if (!isUnlocked || !canChallenge) return;
-    
+
     startBattle(boss);
   };
 
@@ -85,8 +85,8 @@ export default function BossEntry() {
           return (
             <Card
               key={boss}
-              className={`${status.isDefeated ? 'bg-green-100 border-green-300' : 'bg-red-100 border-red-300'} 
-                ${isClickable ? 'cursor-pointer hover:shadow-lg' : 'opacity-70'} 
+              className={`${status.isDefeated ? 'bg-green-100 border-green-300' : 'bg-red-100 border-red-300'}
+                ${isClickable ? 'cursor-pointer hover:shadow-lg' : 'opacity-70'}
                 transition-all hover:scale-[1.01]`}
               onClick={() => handleChallenge(boss)}
             >
@@ -147,7 +147,7 @@ export default function BossEntry() {
           </span>
         </div>
         <div className="mt-2 h-2 bg-gray-700 rounded-full overflow-hidden">
-          <div 
+          <div
             className="h-full bg-gradient-to-r from-red-500 to-orange-500 transition-all"
             style={{ width: `${(state.defeatedBosses.filter((boss) => activeBosses.includes(boss)).length / activeBosses.length) * 100}%` }}
           />

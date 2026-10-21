@@ -2,7 +2,7 @@ import { DocumentViewer } from "../../../documents/DocumentViewer";
 
 export interface SustainabilityPdfManual {
   title: string;
-  meta: string;
+  meta?: string;
   pdfUrl: string;
   fileName: string;
 }

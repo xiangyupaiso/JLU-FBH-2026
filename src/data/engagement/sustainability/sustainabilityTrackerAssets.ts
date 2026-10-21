@@ -6,7 +6,7 @@ import teamExampleHtml from "../../../assets/wiki/sustainability/tracker/team_ex
 /** Self-contained tools supplied with the second SDG review. */
 export const stakeholderTrackerEmbeds = {
   blank: {
-    title: "Stakeholder Sustainability Tracker — Blank Template",
+    title: "Stakeholder Sustainability Tracker - Blank Template",
     url: blankTemplateUrl,
     html: blankTemplateHtml,
     fileName: "blank_template.html",

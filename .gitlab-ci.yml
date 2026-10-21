@@ -17,6 +17,8 @@ pages:
     - echo 'yarn-offline-mirror-pruning true' >> .yarnrc
     - yarn install --frozen-lockfile
   script:
+    - yarn lint
+    - yarn test:page-loading
     - yarn build
     - cp -a dist/. public/
     - echo '/* /index.html 200' > public/_redirects

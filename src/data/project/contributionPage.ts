@@ -25,7 +25,7 @@ import {
  * - Every prose paragraph is the manuscript's own sentence, in its own order.
  * - The manuscript's `##` chapters become sections; its `###` headings become
  *   subheadings, so the TOC mirrors the source hierarchy exactly.
- * - The 23-row Registry table and all fifteen references are reproduced in
+ * - The 30-row Registry table and all fifteen references are reproduced in
  *   full (see `contributionParts.ts` and `contributionReferences`).
  *
  * Editorial repairs (mechanical only — no claim, number or name was changed):
@@ -240,7 +240,7 @@ export const contributionPage: WikiPageContent = {
     },
     {
       label: "Parts",
-      value: "23 characterized genetic parts in the iGEM Registry.",
+      value: "30 documented genetic parts in the iGEM Registry.",
     },
     {
       label: "Dry lab",
@@ -384,7 +384,7 @@ export const contributionPage: WikiPageContent = {
       navLabel: "Reusable Wet Lab Resources",
       title: "Reusable Wet Lab Resources for circRNA Vaccine Development",
       summary:
-        "A circRNA experimental handbook (Protocol), a circularity measurement and release framework (Measurement), and 23 characterized parts (Parts).",
+        "A circRNA experimental handbook (Protocol), a circularity measurement and release framework (Measurement), and 30 documented parts (Parts).",
       blocks: [
         subheading(
           "contribution-protocol-handbook",
@@ -441,8 +441,8 @@ export const contributionPage: WikiPageContent = {
           contributionPartsHeading.sectionTitle,
         ),
         prose(
-          "JLU-FBH has designed and characterized 23 genetic parts covering key steps in the construction, expression, and evaluation of our multi-antigen circRNA vaccine. These parts support circRNA production and translation, antigen presentation and immune activation, target-antigen expression, and experimental validation. Key parts have been documented and submitted to the iGEM Registry, creating a collection of defined genetic components that can serve as building blocks for circRNA vaccines and related synthetic biology applications.",
-          "Together, these parts form a modular toolkit for constructing and evaluating circRNA-based cancer vaccines. The PIE elements and T7 promoter support precursor transcription and circRNA circularization, while synIRES-RC25 and the PABP-binding spacer facilitate cap-independent translation and provide additional support for RNA stability and translational efficiency (Wesselhoeft et al. 2018). The tPA signal peptide, MITD, 4x mC3d-P28 adjuvant, and GSGGS linker contribute to antigen secretion, intracellular trafficking, immune stimulation, and protein assembly (Kreiter et al. 2008; Bergmann-Leitner et al. 2007; Sharma et al. 2012). We also contributed HLA-A*02:01-restricted CTL epitopes targeting TROP2, LIV-1, B7-H4, and PVRL4/NECTIN4 (Hu et al. 2024; Sun et al. 2025; Zeng et al. 2024; Saravanan et al. 2024). These epitopes can function as individual antigenic modules within a multi-epitope construct, linking tumor-antigen selection to downstream CD8⁺ T-cell recognition. In addition, FLAG tags, copGFP, and the human TROP2 coding sequence provide tools for monitoring protein expression and establishing antigen-positive target cells, while elements such as the HBA1 3'UTR and polyA25 internal segment support RNA stability, precursor purification, and characterization (Wesselhoeft et al. 2018; Terpe 2003; Holtkamp et al. 2006). The collection therefore covers not only vaccine construction, but also the experimental tools needed to evaluate whether each stage of the system is functioning as intended.",
+          "JLU-FBH has assembled a collection of 30 genetic parts covering key steps in the construction, expression, and evaluation of our multi-antigen circular RNA (circRNA) vaccine. These parts support circRNA production and translation, antigen presentation and immune activation, target-antigen expression, and experimental validation. All 30 entries have been documented and submitted to the iGEM Registry, providing defined components for circRNA vaccines and related synthetic biology applications.",
+          "Together, these parts form a modular toolkit for constructing and evaluating circRNA-based cancer vaccines. The T7 promoter and two permuted intron–exon (PIE) halves support precursor transcription and circRNA circularization. synIRES-RC25 supports cap-independent translation through an internal ribosome entry site (IRES) and embeds the separately registered Apt-eIF4G element. The spacer recruits poly(A)-binding protein (PABP), separates the back-splice junction from the IRES, and carries stop codons in all three reading frames. The HBA1 3'UTR contributes to RNA stability and translation (Wesselhoeft et al. 2018). By contrast, polyA25 is excised with the linear by-product and is absent from the mature circRNA. It supports precursor purification and quantification, helps reduce T7-derived 3'-end heterogeneity, and serves as a by-product marker in RNase R controls. The tPA secretion leader and MHC class I trafficking domain (MITD) support secretion and intracellular trafficking, respectively. Four tandem copies of murine C3d-P28 provide the molecular adjuvant component for the BALB/c–4T1 model, while GSGGS linkers connect epitope segments and support antigen processing (Kreiter et al. 2008; Bergmann-Leitner et al. 2007; Sharma et al. 2012). We also contributed eight candidate HLA-A*02:01-restricted CTL epitopes, with two each from TROP2, B7-H4, LIV-1, and PVRL4/NECTIN4 (Hu et al. 2024; Sun et al. 2025; Zeng et al. 2024; Saravanan et al. 2024). The eight-slot array includes one 14-residue PVRL4 segment spanning two overlapping predicted binders. These epitopes can function as individual modules in a multi-epitope construct, linking target selection to expected CD8+ T-cell recognition. FLAG and 3xFLAG tags, copGFP, and the human TROP2 coding sequence support expression monitoring and target-cell validation (Terpe 2003; Holtkamp et al. 2006). The collection also includes a T7-driven PIE precursor cassette, a complete antigen ORF, an empty circRNA chassis, the complete plasmid, and a CMV-driven TROP2-3xFLAG expression cassette.",
           learnMore(
             "JLU-FBH Registry collection",
             "https://registry.igem.org/organisations/d1b6aa0f-bfc0-4f6b-9c69-33347e7ea510",
@@ -450,7 +450,7 @@ export const contributionPage: WikiPageContent = {
         ),
         {
           type: "parts-table",
-          headers: ["Number", "Short Description", "Functional Description"],
+          headers: [...contributionPartsTable.headers],
           rows: contributionPartsTable.rows.map((part) => ({
             name: part.name,
             href: part.registryUrl,
@@ -458,8 +458,8 @@ export const contributionPage: WikiPageContent = {
           })),
         },
         prose(
-          "Rather than providing only a complete vaccine construct, we separated key functions into individually defined components so that different parts of the system can be exchanged without redesigning the entire architecture. For example, the circularization and translation framework can be retained while antigenic sequences are replaced, allowing the same basic circRNA framework to be adapted to different tumor-associated targets. Likewise, individual regulatory, trafficking, or detection elements can be modified when a future project requires changes in expression, intracellular localization, or experimental readout. This separation of functions makes the Parts collection applicable beyond the specific antigen combination and disease model used by JLU-FBH.",
-          "Our contribution to the iGEM community is therefore not limited to depositing 23 sequences in the Registry. We provide a set of functionally defined components that future teams can select, combine, replace, and further optimize according to their own research goals. A team developing a circRNA vaccine for another cancer could retain the core production and translation modules while introducing new epitopes; a team studying RNA expression could modify the regulatory elements while keeping the antigen modules; and teams developing new validation systems could reuse the expression tags and target-cell components. By documenting these parts together with their intended functions and experimental context, JLU-FBH aims to provide a practical starting point for future teams to build on existing circRNA designs rather than repeatedly developing the same foundational components from scratch.",
+          "Rather than providing only a complete vaccine construct, we separated key functions into individually defined components that can be exchanged without redesigning the entire architecture. The empty chassis retains the core circRNA framework, while unique BamHI and XhoI sites flank the antigen-insertion window. This allows the epitope array to be replaced while retaining the production and translation modules. Regulatory, trafficking, or detection elements can likewise be modified to suit future expression, localization, or readout requirements. This modularity extends the collection beyond the specific antigen combination and disease model used by JLU-FBH.",
+          "Our contribution to the iGEM community is therefore not limited to depositing 30 Registry entries. We provide functionally defined components that future teams can select, combine, replace, and further optimize. A team developing a circRNA vaccine for another cancer could retain the core production and translation modules while introducing new epitopes. Teams studying RNA expression could modify regulatory elements while keeping antigen modules, and teams developing validation systems could reuse expression tags and target-cell components. By documenting these parts with their intended functions and experimental context, JLU-FBH aims to provide a practical starting point for future teams to build on existing circRNA designs rather than repeatedly developing foundational components from scratch.",
         ),
       ],
     },
@@ -491,6 +491,10 @@ export const contributionPage: WikiPageContent = {
             "circForge software workflow",
             "https://2026.igem.wiki/jlu-fbh/software",
           ),
+          learnMore(
+            "circForge source code",
+            "https://gitlab.igem.org/2026/software/jlu-fbh/circuforge",
+          ),
         ),
 
         subheading(
@@ -513,6 +517,10 @@ export const contributionPage: WikiPageContent = {
           learnMore(
             "TorusFold structure modeling framework",
             "https://2026.igem.wiki/jlu-fbh/software",
+          ),
+          learnMore(
+            "TorusFold source code",
+            "https://gitlab.igem.org/2026/software/jlu-fbh/torusfold-hybrid",
           ),
         ),
       ],
@@ -811,6 +819,7 @@ export const contributionPage: WikiPageContent = {
           "The Virtual Laboratory therefore contributes to Education through access, continuity, and reusability. It allows learners to approach synthetic biology even when physical laboratory conditions are unavailable, while preserving the relationship between experimental steps, scientific reasoning, and laboratory safety.",
         ),
         feature("contribution-gallery-virtual-lab"),
+        prose("[try our games](https://2026.igem.wiki/jlu-fbh/games)"),
         subheading(
           "contribution-education-classroom",
           "9.2",
@@ -836,6 +845,7 @@ export const contributionPage: WikiPageContent = {
           "The main contribution of Bio Memory Match is its ability to transform abstract terminology into a low-pressure, repeatable learning experience. The accompanying concept guide creates a transition from recognition to further understanding, allowing learners to move from remembering a term to exploring its biological meaning.",
         ),
         fig("bioMemoryCover", "Cover design of the Bio Memory Match game."),
+        prose("[try our games](https://2026.igem.wiki/jlu-fbh/games)"),
         subheading(
           "contribution-education-bio-strategy",
           "9.4",
@@ -981,12 +991,8 @@ export const contributionPage: WikiPageContent = {
           "JLU-FBH also initiated a cross-team health communication project based on Baduanjin, a traditional Chinese exercise practice. Participating iGEM teams recorded assigned movement segments and incorporated team-identifying elements and positive health messages into their videos. JLU-FBH coordinated the integration of the submitted materials into a joint video.",
           "This project extended collaboration beyond scientific discussion. It combined traditional culture, practical health education, youth wellbeing, and iGEM team cooperation in one shared media resource. Instead of presenting health knowledge only through text or lectures, the project encouraged audiences to engage with health education through visible and repeatable physical activity.",
           "The final video provides a reusable format for future teams that wish to combine science communication with public health, traditional culture, or community wellbeing. It also reflects our belief that collaboration can produce not only academic resources, but also activities that support healthier and more connected communities.",
-          "The Baduanjin joint video is still to be filmed (八段锦视频 待拍摄); the assembled result will be published with the team's videos and audios.",
-          learnMore(
-            "Videos and audios",
-            "https://teams.igem.org/6056/deliverables/wiki/videos-and-audios",
-          ),
         ),
+        feature("contribution-video-baduanjin"),
         subheading(
           "contribution-collab-ccic",
           "10.6",
@@ -1051,6 +1057,7 @@ export const contributionPage: WikiPageContent = {
     path: "/visual-design",
     label: "Visual Design",
     title: "Translating Complexity into Visual Clarity",
-    description: "Making our work reusable also means making it understandable. Explore the visual identity, illustrations and interactive design that help readers navigate CirCure.",
+    description:
+      "Making our work reusable also means making it understandable. Explore the visual identity, illustrations and interactive design that help readers navigate CirCure.",
   },
 };

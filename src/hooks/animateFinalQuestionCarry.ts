@@ -49,14 +49,8 @@ export function animateFinalQuestionCarry(
   };
   const measure = () => {
     // Font and viewport changes are measured on refresh, never during scroll.
-    const header =
-      Number.parseFloat(
-        getComputedStyle(finale).getPropertyValue("--header-height"),
-      ) || 0;
-    const pinnedTop =
-      finale.offsetHeight > window.innerHeight - header + 1
-        ? window.innerHeight - finale.offsetHeight
-        : header;
+    // Match the finale's bottom-aligned pin, including taller mobile content.
+    const pinnedTop = window.innerHeight - finale.offsetHeight;
     const landing =
       question.getBoundingClientRect().top -
       finale.getBoundingClientRect().top +

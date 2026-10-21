@@ -27,9 +27,9 @@ export const measurementAssets = {
       "文案集/wetlab/Measurment/measurete图片与附件/dependency-relations-between-the-measurements-in-the-project.avif",
     localSrc: "",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/dependency-relations-between-the-measurements-in-the-project.avif",
-    width: 1280,
-    height: 896,
+      "https://static.igem.wiki/teams/6056/wiki/shared/virtual-lab/measurement-4.avif",
+    width: 3175,
+    height: 2663,
     alt: "Dependency relations between the measurements in the project",
     caption: "Dependency relations between the measurements in the project",
     section: "Measurement",
@@ -116,9 +116,8 @@ export const measurementAssets = {
       "文案集/wetlab/Measurment/measurete图片与附件/workflow-of-the-circularity-release-assay.avif",
     localSrc: "",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/workflow-of-the-circularity-release-assay.avif",
-    width: 1280,
-    height: 896,
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/workflow-for-estimating-the-circular-fraction-after-rnase-r-treatment.avif",
+
     alt: "Workflow for estimating the circular fraction after RNase R treatment",
     caption:
       "Workflow for estimating the circular fraction after RNase R treatment",
@@ -140,15 +139,14 @@ export const measurementAssets = {
     height: 586,
   },
   "in-vitro-stability-of-circrna-versus-linear-precursor-rna-at-37-c-gel": {
-    fileName:
-      "in-vitro-stability-of-circrna-versus-linear-precursor-rna-at-37-c-gel.avif",
+    fileName: "rna-vs-mrna.avif",
     localSourcePath:
       "文案集/wetlab/Measurment/measurete图片与附件/in-vitro-stability-of-circrna-versus-linear-precursor-rna-at-37-c-gel.avif",
     localSrc: "",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/in-vitro-stability-of-circrna-versus-linear-precursor-rna-at-37-c-gel.avif",
-    width: 1280,
-    height: 440,
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/rna-vs-mrna.avif",
+    width: 1884,
+    height: 678,
     alt: "Stability of circRNA and its linear precursor at 37 °C",
     caption: "Stability of circRNA and its linear precursor at 37 °C",
     section: "Measurement",
@@ -159,12 +157,10 @@ export const measurementAssets = {
       "文案集/wetlab/Measurment/measurete图片与附件/wet-image2.avif",
     localSrc: "",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-image2.avif",
-    width: 1518,
-    height: 916,
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/trop2-transcript-assessment-in-4t1-cells.avif",
+
     alt: "Relative TROP2 expression in wild-type and transduced 4T1 cells",
-    caption:
-      "Relative TROP2 expression in wild-type and transduced 4T1 cells",
+    caption: "Relative TROP2 expression in wild-type and transduced 4T1 cells",
     section: "Measurement",
   },
   "flow-cytometric-detection-of-surface-trop2-on-4t1-cells": {
@@ -187,7 +183,7 @@ export const measurementAssets = {
       "文案集/wetlab/Measurment/measurete图片与附件/preparation-workflow-for-dendritic-cells-and-autologous-t-cells.avif",
     localSrc: "",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/preparation-workflow-for-dendritic-cells-and-autologous-t-cells.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/preparation-workflow-for-dendritic-cells-and-autologous-t-cells-2.avif",
     width: 1280,
     height: 749,
     alt: "Preparation workflow for dendritic cells and autologous T cells",
@@ -307,9 +303,9 @@ export const measurementAssets = {
       "文案集/wetlab/Measurment/measurete图片与附件/splenic-dc-cd80-cd86-maturation.avif",
     localSrc: "",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/splenic-dc-cd80-cd86-maturation.avif",
-    width: 1280,
-    height: 395,
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/splenic-dc-cd80-cd86-maturation-2.avif",
+    width: 4000,
+    height: 1245,
     alt: "Splenic immunophenotype across the immune response chain",
     caption: "Splenic immunophenotype across the immune response chain",
     section: "Measurement",
@@ -320,9 +316,9 @@ export const measurementAssets = {
       "文案集/wetlab/Measurment/measurete图片与附件/splenic-cd8-t-cell-cd69-early-activation.avif",
     localSrc: "",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/splenic-cd8-t-cell-cd69-early-activation.avif",
-    width: 1280,
-    height: 402,
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/splenic-cd8-t-cell-cd69-early-activation-2.avif",
+    width: 3925,
+    height: 1230,
     alt: "Splenic immunophenotype across the immune response chain",
     caption: "Splenic immunophenotype across the immune response chain",
     section: "Measurement",
@@ -334,9 +330,9 @@ export const measurementAssets = {
       "文案集/wetlab/Measurment/measurete图片与附件/cd44-cd62l-central-memory-frequencies-within-splenic-cd8-t-cells.avif",
     localSrc: "",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/cd44-cd62l-central-memory-frequencies-within-splenic-cd8-t-cells.avif",
-    width: 1280,
-    height: 376,
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06c-splenic-memory-associated-phenotype.avif",
+    width: 2048,
+    height: 691,
     alt: "Splenic immunophenotype across the immune response chain",
     caption: "Splenic immunophenotype across the immune response chain",
     section: "Measurement",
@@ -347,9 +343,9 @@ export const measurementAssets = {
       "文案集/wetlab/Measurment/measurete图片与附件/ifn-frequencies-within-splenic-cd8-t-cells.avif",
     localSrc: "",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/ifn-frequencies-within-splenic-cd8-t-cells.avif",
-    width: 1280,
-    height: 393,
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/ifn-frequencies-within-splenic-cd8-t-cells-2.avif",
+    width: 3382,
+    height: 1061,
     alt: "Splenic immunophenotype across the immune response chain",
     caption: "Splenic immunophenotype across the immune response chain",
     section: "Measurement",
@@ -360,9 +356,9 @@ export const measurementAssets = {
       "文案集/wetlab/Measurment/measurete图片与附件/granzyme-b-frequencies-within-splenic-cd8-t-cells.avif",
     localSrc: "",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/granzyme-b-frequencies-within-splenic-cd8-t-cells.avif",
-    width: 1280,
-    height: 431,
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/granzyme-b-frequencies-within-splenic-cd8-t-cells-2.avif",
+    width: 3513,
+    height: 1135,
     alt: "Splenic immunophenotype across the immune response chain",
     caption: "Splenic immunophenotype across the immune response chain",
     section: "Measurement",
@@ -382,14 +378,14 @@ export const measurementAssets = {
     section: "Measurement",
   },
   "cd8-granzyme-b-dual-immunofluorescence-of-tumour-tissue": {
-    fileName: "cd8-granzyme-b-dual-immunofluorescence-of-tumour-tissue-actual.avif",
+    fileName:
+      "cd8-granzyme-b-dual-immunofluorescence-of-tumour-tissue-actual.avif",
     localSourcePath:
       "文案集/wetlab/Measurment/measurete图片与附件/cd8-granzyme-b-dual-immunofluorescence-of-tumour-tissue-actual.avif",
     localSrc: "",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/cd8-granzyme-b-dual-immunofluorescence-of-tumour-tissue-actual.avif",
-    width: 1602,
-    height: 1028,
+
     alt: "CD8 and Granzyme B dual immunofluorescence of tumour tissue",
     caption: "CD8 and Granzyme B dual immunofluorescence of tumour tissue",
     section: "Measurement",

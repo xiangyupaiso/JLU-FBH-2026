@@ -589,7 +589,7 @@ export function Navbar() {
               aria-label={
                 isBallMode && !isBallExpanded
                   ? "Expand navigation menu"
-                  : "CirCure home"
+                  : undefined
               }
               title={
                 isBallMode && !isBallExpanded
@@ -600,7 +600,7 @@ export function Navbar() {
               aria-expanded={isBallMode ? isBallExpanded : undefined}
               aria-controls={isBallMode ? "circure-nav-controls" : undefined}
             >
-              <span className="wordmark-stage" aria-hidden="true">
+              <span className="wordmark-stage" aria-hidden={isBallMode && !isBallExpanded || undefined}>
                 <span className="wordmark-crest">
                   <img
                     className="team-crest logo--dark"

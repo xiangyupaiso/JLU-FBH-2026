@@ -391,7 +391,7 @@ export function ExperimentPage({ onBack, onRestart }: ExperimentPageProps) {
     <div className="experiment-shell flex h-screen w-screen flex-col overflow-hidden font-sans text-white">
       <header className="z-50 flex h-12 shrink-0 items-center justify-between lab-topbar px-4">
         <div className="flex min-w-0 items-center gap-3">
-          <ChevronLeft className="shrink-0 cursor-pointer text-blue-200 hover:text-white" onClick={onBack} />
+          <button type="button" className="lab-back-button shrink-0 text-blue-200 hover:text-white" onClick={onBack} aria-label="Back to Experiment Catalog"><ChevronLeft aria-hidden="true" /></button>
           <h1 className="truncate text-xs font-bold uppercase tracking-widest text-white">
             Experiment 4: Gel Extraction of the GFP Gene Fragment
           </h1>

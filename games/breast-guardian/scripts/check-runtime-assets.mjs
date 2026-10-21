@@ -6,11 +6,11 @@ import { transformSync } from 'esbuild';
 const require = createRequire(import.meta.url);
 const root = resolve(process.argv[2] ?? '.');
 
-const reg = JSON.parse(
-  readFileSync('C:/Users/香芋派/AppData/Local/Temp/opencode/registry_game_assets.json', 'utf8'),
-);
+const registryText = readFileSync(resolve(root, '../ASSET_REGISTRY.md'), 'utf8');
 const registry = new Set(
-  reg.filter((r) => r.local.startsWith('public/game-assets/assets/')).map((r) => r.cdn),
+  registryText.split('\n')
+    .filter((line) => line.startsWith('|') && line.includes('public/game-assets/assets/'))
+    .flatMap((line) => Array.from(line.matchAll(/\((https:\/\/static\.igem\.wiki\/[^)]+)\)/g), (match) => match[1])),
 );
 
 const strip = (s) => s.replace(/^import[^;]*;$/gm, '');
@@ -66,7 +66,7 @@ for (const f of walk(join(root, 'src'))) {
   const t = readFileSync(f, 'utf8');
   // Track which perspective key we are inside when reading stories.ts
   const lines = t.split('\n');
-  let ctx = 'any';
+  let ctx = f.match(/(?:^|[\\/])(child|adult|elder)Stories(?:Zh)?\.ts$/)?.[1] ?? 'any';
   for (const line of lines) {
     const persp = line.match(/^\s{2}"?(child|adult|elder)"?:\s*\{/);
     if (persp) ctx = persp[1];
@@ -121,3 +121,4 @@ console.log(`\nregistry assets not exercised: ${unex.length}`);
 for (const u of unex) console.log('   ', u);
 
 rmSync(tmp, { recursive: true, force: true });
+if (problems.length) process.exitCode = 1;

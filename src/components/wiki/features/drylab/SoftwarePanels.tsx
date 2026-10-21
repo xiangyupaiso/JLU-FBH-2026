@@ -1,6 +1,6 @@
 import { QueuedImage } from "../../../common/QueuedImage";
-import type { ReactNode } from "react";
-import { DocumentViewer } from "../../documents/DocumentViewer";
+import { useEffect, type ReactNode } from "react";
+import type { WikiContentBlock } from "../../wikiPageTypes";
 import { WikiContentBlocks } from "../../WikiRoutePage";
 import { ManuscriptFigureGallery } from "../shared/ManuscriptFigureGallery";
 import { JudgingCriteria } from "../shared/JudgingCriteria";
@@ -10,7 +10,6 @@ import { EpitopeStructuralValidationChart } from "../project/EpitopeStructuralVa
 import {
   getSoftwareResource,
   softwareFigures,
-  softwareGuides,
   softwareUsageVideo,
   softwareVideo,
 } from "../../../../data/drylab/softwareAssets";
@@ -19,14 +18,17 @@ import {
   softwareJudgingCriteria,
   softwarePanels,
   softwareReferences,
+  softwareCitationLabels,
   type SoftwarePanel,
 } from "../../../../data/drylab/softwarePage";
 import {
-  buildNumericCitationIndex,
+  buildLabelCitationIndex,
   reportCitationIssues,
 } from "../../../../data/citations/citationIndex";
 import {
-  CitationReferenceList,
+  Backlinks,
+  CitationPreview,
+  flashCitationTarget,
   createCitationRenderer,
   type CitationFlashTint,
 } from "../../citations/CitationRegister";
@@ -39,9 +41,65 @@ const DRY_LAB_CITATION_FLASH: CitationFlashTint = {
   ring: "0 0 0 3px rgba(21, 62, 52, 0.32)",
 };
 
-const softwareCitationIndex = buildNumericCitationIndex(
-  softwarePage.sections,
-  softwareReferences,
+// Use the same indexed citation anchors as Experiments, including Judging.
+// Explicit author-year links become citation text before indexing and rendering.
+const softwareLabels: Record<string, number> = { ...softwareCitationLabels };
+function normalizeSoftwareCitationLinks(text: string): string {
+  return text.replace(/\[([^\]\n]+)\]\((?:https:\/\/2026\.igem\.wiki\/jlu-fbh\/software)?#ref-(\d+)\)/g,
+    (original, label: string, id: string) => {
+      if (!softwareReferences.some((reference) => reference.id === Number(id))) return original;
+      const citation = label.replace(/\*\*/g, "").replace(/^\(|\)$/g, "").trim();
+      softwareLabels[citation] = Number(id);
+      return label;
+    });
+}
+
+function normalizeSoftwareContent<T>(value: T): T {
+  if (typeof value === "string") return normalizeSoftwareCitationLinks(value) as T;
+  if (Array.isArray(value)) return value.map(normalizeSoftwareContent) as T;
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).map(([key, entry]) =>
+      [key, normalizeSoftwareContent(entry)])) as T;
+  }
+  return value;
+}
+
+function softwareCitationBlocks(blocks: readonly WikiContentBlock[]): WikiContentBlock[] {
+  return blocks.flatMap<WikiContentBlock>((block) => {
+    if (block.type === "feature" && block.key === "software-judging-criteria") {
+      return softwareJudgingCriteria.map((criterion) => ({
+        type: "prose", paragraphs: criterion.paragraphs.map(normalizeSoftwareCitationLinks),
+      }));
+    }
+    if (block.type === "feature" && softwarePanels[block.key]) {
+      const panel = softwarePanels[block.key];
+      return panel.kind === "fold" ? softwareCitationBlocks(panel.blocks)
+        : panel.entries.map((entry) => normalizeSoftwareContent(entry.figure));
+    }
+    if (block.type === "table") {
+      return [{ type: "prose", paragraphs: block.rows.flat().map(normalizeSoftwareCitationLinks) }];
+    }
+    if (block.type === "split") {
+      return [{ ...normalizeSoftwareContent(block), prose: softwareCitationBlocks(block.prose) }];
+    }
+    return [normalizeSoftwareContent(block)];
+  });
+}
+
+const indexedSoftwareSections = softwarePage.sections.map((section) => ({
+  ...normalizeSoftwareContent(section),
+  blocks: softwareCitationBlocks(section.blocks ?? []),
+}));
+const softwareCitationIndex = buildLabelCitationIndex(
+  indexedSoftwareSections, softwareReferences, softwareLabels,
+);
+const softwareReferencesInOrder = [
+  ...[...softwareCitationIndex.byRef.keys()].flatMap((id) =>
+    softwareReferences.filter((reference) => reference.id === id)),
+  ...softwareReferences.filter((reference) => !softwareCitationIndex.byRef.has(reference.id)),
+];
+const softwareReferenceNumbers = new Map(
+  softwareReferencesInOrder.map((reference, position) => [reference.id, position + 1]),
 );
 reportCitationIssues("software", softwareCitationIndex);
 
@@ -54,54 +112,42 @@ export function renderSoftwareCitedText(
   text: string,
   fallback: (text: string) => ReactNode,
   sectionId?: string,
+  locationKey?: string,
 ) {
-  // Keep the manuscript's link labels and resolve its relative attachments
-  // here, so the common inline parser and the site's base path stay intact.
-  return renderCitations(
-    text,
-    (value) =>
-      fallback(
-        value.replace(
-          /\]\(((?:evidence|图片和附件)\/[^)\s]+)\)/g,
-          (_, path: string) =>
-            `](${new URL(getSoftwareResource(path), window.location.href).href})`,
-        ),
-      ),
-    sectionId,
-  );
-}
-
-function SoftwareGuide({
-  guide,
-}: {
-  guide: (typeof softwareGuides)[keyof typeof softwareGuides];
-}) {
-  const url = guide.uploadUrl || getSoftwareResource(guide.fileName);
-
-  return (
-    <div className="software-guide-feature">
-      <DocumentViewer
-        document={{
-          caption: guide.caption,
-          url: `${url}#view=FitH`,
-          description: guide.description,
-          openUrl: url,
-          downloadUrl: url,
-          fallbackText: guide.fallback,
-        }}
-      />
-    </div>
-  );
+  return renderCitations(normalizeSoftwareCitationLinks(text), fallback, sectionId, locationKey);
 }
 
 function SoftwareReferenceList() {
+  useEffect(() => {
+    const id = window.location.hash.slice(1);
+    if (!softwareReferences.some((reference) => id === `ref-${reference.id}`)) return;
+    const target = document.getElementById(id);
+    if (target) flashCitationTarget(target, DRY_LAB_CITATION_FLASH);
+  }, []);
+
   return (
-    <CitationReferenceList
-      references={softwareReferences}
-      index={softwareCitationIndex}
-      tint={DRY_LAB_CITATION_FLASH}
-    />
+    <>
+      <ol className="wiki-reference-list" data-citation-style={softwareCitationIndex.style}>
+        {softwareReferencesInOrder.map((reference) => (
+          <li key={reference.id} id={`ref-${reference.id}`} tabIndex={-1} className="wiki-reference-item">
+            <span className="wiki-reference-item__index">{softwareReferenceNumbers.get(reference.id)}.</span>
+            <div className="wiki-reference-item__content" id={`ref-${reference.id}-body`}>
+              {linkify(reference.harvard)}
+              <Backlinks
+                occs={(softwareCitationIndex.byRef.get(reference.id) ?? []).slice(0, 1)}
+                tint={DRY_LAB_CITATION_FLASH}
+              />
+            </div>
+          </li>
+        ))}
+      </ol>
+      <CitationPreview references={softwareReferencesInOrder} style={softwareCitationIndex.style} referenceNumbers={softwareReferenceNumbers} />
+    </>
   );
+}
+
+function renderSoftwareJudgingText(text: string): ReactNode {
+  return renderSoftwareCitedText(text, linkify, "software-judging");
 }
 
 function SoftwareManuscriptPanel({ panel }: { panel: SoftwarePanel }) {
@@ -129,15 +175,6 @@ function SoftwareRegistryVideo() {
         width={2560}
         height={1438}
       />
-      <p className="software-video-actions">
-        <a href={url} target="_blank" rel="noreferrer">
-          Open animation
-        </a>{" "}
-        ·{" "}
-        <a href={url} download>
-          Download animation
-        </a>
-      </p>
       <figcaption>
         <span className="wiki-figure__label">{softwareVideo.figureLabel}</span>
         <span className="wiki-figure__caption">{softwareVideo.caption}</span>
@@ -151,9 +188,7 @@ export function softwareFeatures(): Record<string, ReactNode> {
     "software-judging-criteria": (
       <JudgingCriteria
         items={softwareJudgingCriteria}
-        renderParagraph={(paragraph) =>
-          renderSoftwareCitedText(paragraph, linkify, "software-judging")
-        }
+        renderParagraph={renderSoftwareJudgingText}
       />
     ),
     "software-circuforge-video": (
@@ -168,14 +203,11 @@ export function softwareFeatures(): Record<string, ReactNode> {
         />
       </div>
     ),
-    "software-circuforge-guide": (
-      <SoftwareGuide guide={softwareGuides.circuforge} />
-    ),
     "software-torusfold-video": (
       <div className="software-usage-video">
         <iframe
           title="JLU-FBH: TorusFold-Hybrid Introduction (2026) [English]"
-          src="https://video.igem.org/videos/embed/fGFi6rAF2bQkpYTjDoxc7X?subtitle=en"
+          src="https://video.igem.org/videos/embed/fGFi6rAF2bQkpYTjDoxc7X?subtitle=en&p2p=0"
           allow="fullscreen"
           sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
           loading="lazy"
@@ -183,9 +215,6 @@ export function softwareFeatures(): Record<string, ReactNode> {
           style={{ border: 0 }}
         />
       </div>
-    ),
-    "software-torusfold-guide": (
-      <SoftwareGuide guide={softwareGuides.torusfold} />
     ),
     "software-torusfold-model": (
       <div id="software-torusfold-model">
@@ -199,9 +228,10 @@ export function softwareFeatures(): Record<string, ReactNode> {
     features[key] = <SoftwareManuscriptPanel panel={panel} />;
   features["software-validation-structure-gallery"] = (
     <EpitopeStructuralValidationChart
+      heatmapFigureTitle=""
       captions={[
-        `${softwareFigures["figure-21-epitope-structural-review"].figureLabel}. ${softwareFigures["figure-21-epitope-structural-review"].caption}`,
         `${softwareFigures["figure-21b-epitope-position-burial"].figureLabel}. ${softwareFigures["figure-21b-epitope-position-burial"].caption}`,
+        `${softwareFigures["figure-21-epitope-structural-review"].figureLabel}. ${softwareFigures["figure-21-epitope-structural-review"].caption}`,
       ]}
     />
   );

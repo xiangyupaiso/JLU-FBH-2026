@@ -14,9 +14,11 @@ export function EpitopeStructuralValidationChart({
   captions,
   badges,
   heatmapFigureTitle,
+  showInterpretation = true,
 }: {
   /** A host manuscript can supply its own two captions without the legacy notes. */
   captions?: readonly [string, string];
+  showInterpretation?: boolean;
   /** Explicit FIG badges rendered next to each per-card caption. */
   badges?: readonly [string, string];
   /** Overrides the in-canvas heatmap title prefix (e.g. "Figure 10."). */
@@ -53,7 +55,7 @@ export function EpitopeStructuralValidationChart({
 
     chart.setOption(option, true);
     chart.resize();
-  }, [mode]);
+  }, [mode, heatmapFigureTitle]);
 
   /* --------------------------------------------- Horizontal Bar Chart Setup */
   useEffect(() => {
@@ -101,7 +103,7 @@ export function EpitopeStructuralValidationChart({
       heatmapChartRef.current = null;
       barChartRef.current = null;
     };
-  }, []);
+  }, [mode]);
 
   return (
     <figure
@@ -249,6 +251,7 @@ export function EpitopeStructuralValidationChart({
             </p>
           </div>
 
+          {showInterpretation && (
           <div className="epitope-academic-note">
             <h4>Academic & Structural Interpretation</h4>
             <p>
@@ -262,6 +265,7 @@ export function EpitopeStructuralValidationChart({
               synthesis.
             </p>
           </div>
+          )}
         </figcaption>
       )}
     </figure>
@@ -293,7 +297,7 @@ export function createEpitopeHeatmapOption(
 
     const option: echarts.EChartsOption = {
       title: {
-        text: `${figureTitle} Per-position side-chain burial across 17 candidates`,
+        text: `${figureTitle} Per-position side-chain burial across 17 candidates`.trim(),
         subtext: "Mean of five independent models · hatched = glycine (no side chain)",
         left: "left",
         top: 4,
@@ -335,9 +339,10 @@ export function createEpitopeHeatmapOption(
       },
       grid: {
         top: 70,
-        left: 115,
+        left: 12,
         right: 25,
         bottom: 85,
+        containLabel: true,
       },
       xAxis: {
         type: "category",
@@ -353,17 +358,20 @@ export function createEpitopeHeatmapOption(
         splitArea: { show: true },
         axisLine: { lineStyle: { color: "#d2dcd7" } },
         axisLabel: {
+          interval: 0,
+          hideOverlap: false,
+          margin: 10,
           formatter: (value: string) => {
             const row = rows.find((r) => r.peptide === value);
             if (!row) return value;
             const tag = row.target.slice(0, 1);
-            return `{tgt${tag}|${row.target.slice(0, 4)}} {${row.passed ? "pass" : "fail"}|${value}}`;
+            return `{tgt${tag}|${row.target}} {${row.passed ? "pass" : "fail"}|${value}}`;
           },
           rich: {
-            tgtT: { color: "#207062", fontWeight: 700, fontSize: 9 },
-            tgtB: { color: "#b06b2a", fontWeight: 700, fontSize: 9 },
-            tgtN: { color: "#2c5fa8", fontWeight: 700, fontSize: 9 },
-            tgtL: { color: "#9d384b", fontWeight: 700, fontSize: 9 },
+            tgtT: { color: "#207062", fontWeight: 700, fontSize: 9, width: 48, align: "left" },
+            tgtB: { color: "#b06b2a", fontWeight: 700, fontSize: 9, width: 48, align: "left" },
+            tgtN: { color: "#2c5fa8", fontWeight: 700, fontSize: 9, width: 48, align: "left" },
+            tgtL: { color: "#9d384b", fontWeight: 700, fontSize: 9, width: 48, align: "left" },
             pass: { color: "#20332d", fontWeight: 500, fontSize: 10.5, fontFamily: "monospace" },
             fail: { color: "#b34d3f", fontWeight: 700, fontSize: 10.5, fontFamily: "monospace" },
           },
@@ -498,9 +506,10 @@ export function createEpitopeVolumeOption(): echarts.EChartsOption {
     },
     grid: {
       top: 70,
-      left: 125,
+      left: 12,
       right: 48,
       bottom: 50,
+      containLabel: true,
     },
     xAxis: {
       type: "value",
@@ -511,7 +520,7 @@ export function createEpitopeVolumeOption(): echarts.EChartsOption {
       nameGap: 28,
       nameTextStyle: { color: "#4a5e57", fontSize: 11 },
       splitLine: { lineStyle: { color: "#eef2f0" } },
-      axisLabel: { color: "#4a5e57", fontSize: 10.5 },
+      axisLabel: { color: "#4a5e57", fontSize: 10.5, hideOverlap: true },
     },
     yAxis: {
       type: "category",
@@ -519,6 +528,9 @@ export function createEpitopeVolumeOption(): echarts.EChartsOption {
       inverse: true, // Highest volume at the top
       axisLine: { lineStyle: { color: "#d2dcd7" } },
       axisLabel: {
+        interval: 0,
+        hideOverlap: false,
+        margin: 10,
         formatter: (value: string) => {
           const isFail = value.includes("HILHVSFLA") || value.includes("FLAEASVRG");
           return `{${isFail ? "fail" : "pass"}|${value}}`;

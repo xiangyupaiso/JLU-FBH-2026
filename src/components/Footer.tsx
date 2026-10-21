@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FooterEasterEgg } from "./FooterEasterEgg";
 import { FooterSponsors } from "./FooterSponsors";
+import { homeDestinations } from "../data/homeDestinations";
 import {
   FOOTER_CLINICAL_HOSPITAL_NAME,
   FOOTER_EMAIL,
@@ -35,7 +36,6 @@ function MarkRow({
     <li
       className="circure-footer__mark-row"
       data-mark={kind}
-      role="img"
       aria-label={label}
     >
       {marks.map((mark) => (
@@ -175,9 +175,11 @@ export function Footer() {
             className="circure-footer__navigation"
             aria-label="Footer navigation"
           >
-            <Link to="/description">Description</Link>
-            <Link to="/roster">Rooster</Link>
-            <Link to="/attributions">Attributions</Link>
+            {homeDestinations.map((destination) => (
+              <Link key={destination.key} to={destination.path}>
+                {destination.label}
+              </Link>
+            ))}
           </nav>
           <div className="circure-footer__colophon">
             <p>

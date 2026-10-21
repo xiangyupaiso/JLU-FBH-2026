@@ -235,7 +235,7 @@ export const solutionData = {
     title: "CircRNA Design Module",
     paragraphs: [
       "Once candidate antigens were selected, we asked a second question: **How can several tumor antigens be encoded within one stable RNA molecule?**",
-      "We designed a single circRNA construct containing multiple antigen-coding sequences. **2A peptides** were introduced between antigen sequences to enable their separation during translation, while codon optimization was used to improve compatibility with human cellular translation (Chng et al. 2015).",
+      "We designed a single circRNA construct containing multiple antigen-coding sequences. **A flexible linker** was introduced between antigen sequences to enable their separation during translation, while codon optimization was used to improve compatibility with human cellular translation (Chng et al. 2015).",
       "Because circRNA lacks the conventional 5′ cap and 3′ poly(A) tail, we incorporated **IRES elements** to support cap-independent translation. The design of the IRES regions was also considered in relation to RNA secondary structure, aiming to maintain an appropriate balance between structural stability and translational activity (Chen et al. 2021).",
       "Together, these elements transform multiple antigenic targets into **one programmable circRNA vaccine construct**.",
     ],

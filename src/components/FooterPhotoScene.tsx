@@ -2,10 +2,10 @@ import { useEffect, useId, useRef, useState } from "react";
 import { QueuedImage } from "./common/QueuedImage";
 import { useFooterPhotoReveal } from "../hooks/useFooterPhotoReveal";
 import { useKeepsakeNote } from "../hooks/useKeepsakeNote";
-import teamPhotoUrl from "../assets/footer/team-keepsake.webp";
-import circureEmblemUrl from "../assets/story-nav/circure-emblem.png";
-import hopeHandsUrl from "../assets/home/story/scene-9-layer-2.webp";
-import hopePatientUrl from "../assets/home/story/scene-9-layer-3.webp";
+const teamPhotoUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/team/team-heying-1.avif";
+const circureEmblemUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/circure-emblem.avif";
+const hopeHandsUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-2.webp";
+const hopePatientUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/home/scene-9-layer-3.webp";
 import "../styles/footer-photo-scene.css";
 
 const lambUrl =

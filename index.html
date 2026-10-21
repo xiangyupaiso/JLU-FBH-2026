@@ -512,7 +512,7 @@
           var source = target.getAttribute("data-loader-src") || target.getAttribute("data-loader-href");
           var probe = new Image();
           activeProbe = probe;
-          probe.fetchPriority = "high";
+          probe.fetchPriority = "low";
           var finish = function (loaded) {
             if (activeProbe !== probe || gateReleased) return;
             activeProbe = null;

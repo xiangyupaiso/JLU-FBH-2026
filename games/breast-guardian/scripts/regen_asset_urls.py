@@ -16,7 +16,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 REPO = ROOT.parent.parent
-REGISTRY = REPO / 'IGEM_ASSET_REGISTRY.md'
+REGISTRY = ROOT.parent / 'ASSET_REGISTRY.md'
 ASSET_PREFIX = 'public/game-assets/assets/'
 CDN_BASE = 'https://static.igem.wiki/teams/6056/wiki/files/pages/games/breast-guardian/'
 
@@ -63,13 +63,13 @@ def ts(entries):
     a('/**')
     a(' * Breast Guardian — official iGEM asset URL map.')
     a(' *')
-    a(" * Generated from Official-wiki/IGEM_ASSET_REGISTRY.md, the team's single source")
-    a(' * of truth for uploaded media. Each key is the local path the game historically')
+    a(" * Generated from games/ASSET_REGISTRY.md, archived from the team's source registry")
+    a(' * for uploaded media. Each key is the local path the game historically')
     a(' * referenced under `public/assets/…`; each value is the official static.igem.wiki')
     a(' * URL for that exact file.')
     a(' *')
     a(' * Do not hand-edit or guess URLs. If an image is missing here, re-upload it')
-    a(' * through the iGEM uploads tool, add it to IGEM_ASSET_REGISTRY.md, then run')
+    a(' * through the iGEM uploads tool, record the verified URL in games/ASSET_REGISTRY.md, then run')
     a(' * `npm run assets:regen`.')
     a(' */')
     a('')
@@ -115,7 +115,7 @@ def md(entries):
     a = M.append
     a('# Breast Guardian — asset URL mapping')
     a('')
-    a('Generated from [`IGEM_ASSET_REGISTRY.md`](../../IGEM_ASSET_REGISTRY.md), the')
+    a('Generated from the archived [`ASSET_REGISTRY.md`](../ASSET_REGISTRY.md), the')
     a("team's single source of truth for uploaded media. Every row below is a 1:1")
     a('transcription: the local path the game used to reference, and the official')
     a('`static.igem.wiki` URL for that exact file. No URL was inferred from a filename,')
@@ -152,8 +152,8 @@ def md(entries):
     a('')
     a('### Requested by code but missing from the registry')
     a('')
-    a('None at the time of writing. `npm run check:runtime` fails the build if a code')
-    a('path resolves to `undefined`, so this list cannot silently grow.')
+    a('Known state-name resolution diagnostics are listed in [KNOWN_LIMITATIONS.md](./KNOWN_LIMITATIONS.md).')
+    a('`npm run check:runtime` exits nonzero when a requested portrait cannot be resolved.')
     a('')
     a('### Deduplicated uploads')
     a('')

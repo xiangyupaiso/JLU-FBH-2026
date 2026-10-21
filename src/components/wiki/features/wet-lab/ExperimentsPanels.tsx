@@ -55,11 +55,13 @@ export function renderExperimentText(
   text: string,
   fallback: (text: string) => ReactNode,
   sectionId?: string,
+  locationKey?: string,
 ): ReactNode {
   return renderCitations(
     text,
     (segment) => renderExperimentFormatting(segment, fallback),
     sectionId,
+    locationKey,
   );
 }
 

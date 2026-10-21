@@ -32,6 +32,9 @@ const SYMBOLS: Record<string, string> = {
   leq: "≤",
   geq: "≥",
   neq: "≠",
+  ne: "≠",
+  ell: "ℓ",
+  ldots: "…",
   approx: "≈",
   equiv: "≡",
   sim: "∼",
@@ -244,6 +247,7 @@ export function renderMathLatex(input: string): ReactNode {
       if (name === "mathit") return readArg(true);
       if (name === "left" || name === "right") {
         while (pos < src.length && src[pos] === " ") pos += 1;
+        if (src[pos] === "\\") return parseCommand(false);
         const delim = src[pos] ?? "";
         pos += 1;
         return delim && delim !== "." ? [renderChar(delim, false)] : [];
@@ -259,15 +263,6 @@ export function renderMathLatex(input: string): ReactNode {
   }
 
   return <>{parseNodes(false, true)}</>;
-}
-
-/** A `$…$` segment. `display` centres it as a standalone equation line. */
-export function WikiMath({ latex, display = false }: { latex: string; display?: boolean }) {
-  return (
-    <span className={display ? "wiki-math wiki-math--block" : "wiki-math"} role="math">
-      {renderMathLatex(latex)}
-    </span>
-  );
 }
 
 /**

@@ -1,5 +1,7 @@
 import { QueuedSvgImage } from "../../../../common/QueuedImage";
 import { useId, useLayoutEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { WatercolorCircle } from "../../../WatercolorCircle";
 import { keyAchievements } from "../../../../../data/wet-lab/keyAchievementsData";
 import { keyAchievementsAssets } from "../../../../../data/wet-lab/keyAchievementsAssets";
 import { mountKeyAchievements } from "./keyAchievementsController";
@@ -25,20 +27,41 @@ function ExpandIcon() {
   );
 }
 
+function AchievementWash({ seed }: { seed: number }) {
+  return (
+    <svg
+      className="cc-wash"
+      viewBox="6 6 88 88"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <circle className="cc-wash-paper" cx="50" cy="50" r="42" />
+      <WatercolorCircle
+        cx={50}
+        cy={50}
+        radius={44}
+        seed={seed}
+        className="cc-pigment"
+      />
+    </svg>
+  );
+}
+
 /** Uses the existing React runtime plus native DOM/CSS/SVG animation APIs. */
 export function KeyAchievements({
   className = "",
   overviewSrc = keyAchievementsAssets.overview,
 }: KeyAchievementsProps) {
   const rootRef = useRef<HTMLElement>(null);
+  const navigate = useNavigate();
   const reactId = useId();
   const instanceId = `cc-achievements-${reactId.replace(/[^a-zA-Z0-9_-]/g, "")}`;
 
   useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root) return;
-    return mountKeyAchievements(root, keyAchievements, overviewSrc);
-  }, [overviewSrc]);
+    return mountKeyAchievements(root, keyAchievements, overviewSrc, navigate);
+  }, [navigate, overviewSrc]);
 
   return (
     <section
@@ -53,7 +76,60 @@ export function KeyAchievements({
             aria-label="Explore the seven achievements"
           >
             <div className="cc-orbit">
-              <div className="cc-rotor" data-cc="rotor" />
+              <svg
+                className="cc-orbit-ink"
+                viewBox="0 0 100 100"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <defs>
+                  <filter id={`${instanceId}-orbit-grain`}>
+                    <feTurbulence
+                      type="fractalNoise"
+                      baseFrequency="0.22"
+                      numOctaves="2"
+                      seed="12"
+                      result="grain"
+                    />
+                    <feDisplacementMap
+                      in="SourceGraphic"
+                      in2="grain"
+                      scale="0.55"
+                      xChannelSelector="R"
+                      yChannelSelector="G"
+                    />
+                  </filter>
+                </defs>
+                <g filter={`url(#${instanceId}-orbit-grain)`}>
+                  <path
+                    className="cc-orbit-stroke"
+                    d="M50 12.8C70.4 12.2 87.8 29.7 87.1 50.3C87.6 70.2 70.6 87.6 49.5 87.2C29.5 87.8 12.2 70.1 12.8 49.4C12.1 29.4 30.4 12.3 50 12.8Z"
+                  />
+                  <path
+                    className="cc-orbit-echo"
+                    d="M20.2 27.5C28 17.4 38.6 12.3 51 12.2M86.3 41C90.4 59.6 79.2 78.9 62 85.9M39 86C23.1 81.3 12.2 66 13.4 49"
+                  />
+                </g>
+              </svg>
+              <div className="cc-rotor" data-cc="rotor">
+                {keyAchievements.map((item, index) => (
+                  <div className="cc-node-position" key={item.id}>
+                    <button
+                      className="cc-bubble"
+                      data-achievement={item.id}
+                      type="button"
+                      aria-pressed="false"
+                      aria-controls={`${instanceId}-content`}
+                      aria-label={item.name}
+                    >
+                      <AchievementWash seed={index * 7 + 3} />
+                      <span className="cc-label">
+                        {item.label.map((line) => <span key={line}>{line}</span>)}
+                      </span>
+                    </button>
+                  </div>
+                ))}
+              </div>
               <button
                 className="cc-centre"
                 data-cc="overview-button"
@@ -62,9 +138,12 @@ export function KeyAchievements({
                 aria-controls={`${instanceId}-content`}
                 aria-label="Key Achievements: show visual overview"
               >
-                Key
-                <br />
-                Achievements
+                <AchievementWash seed={8} />
+                <span className="cc-label">
+                  Key
+                  <br />
+                  Achievements
+                </span>
               </button>
             </div>
             <p className="cc-hint">

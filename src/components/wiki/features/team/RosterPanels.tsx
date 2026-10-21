@@ -348,7 +348,9 @@ function GroupGallery({
                   key={role}
                 >
                   {roles.length > 1 ? <h4>{label}</h4> : null}
-                  <div className="roster-people">
+                  <div
+                    className={`roster-people${role === "Team Member" && members.length === 6 ? " roster-people--three-columns" : ""}`}
+                  >
                     {members.map((member) => (
                       <PersonCard
                         key={member.id}

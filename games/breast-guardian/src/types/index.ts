@@ -6,7 +6,7 @@ export type MemoryPoint = 1 | 2 | 3;
 export type EndingType = 'HE' | 'BE';
 export type Playthrough = 1 | 2;
 
-export type GamePhase = 
+export type GamePhase =
   | 'mainMenu'
   | 'perspectiveSelect'
   | 'realityTrigger'
@@ -26,7 +26,7 @@ export type GamePhase =
   | 'endingPage';
 
 // BOSS类型
-export type BossType = 
+export type BossType =
   | 'breastLump'
   | 'lymphNode'
   | 'nippleRetraction'

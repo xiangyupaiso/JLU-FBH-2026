@@ -8,7 +8,7 @@ export const experimentsPage: WikiPageContent = {
   "chapter": "Wet Lab / 02 of 04",
   "eyebrow": "CirCure · Wet Lab Protocol & Verification",
   "title": "Experiments",
-  "lede": "This page records how the CirCure multi-epitope circRNA vaccine was built and tested. The work falls into five stages: constructing the single-epitope circRNAs, screening them for immunogenicity, combining the strongest epitopes into one vaccine, validating that vaccine along the immune chain in vitro, and testing it in tumor-bearing mice. Each stage asks a narrower question than the one before. The in vitro experiments support antigen translation and downstream immune function, then that CD8⁺ T cells are activated, differentiate towards an effector-memory phenotype, and kill TNBC target cells. The in vivo experiments ask whether the same vaccine restrains tumor growth in an immunocompetent animal, and what the immune response inside the tumor and in the spleen looks like at the endpoint. Data for every experiment are on the Results page.",
+  "lede": "This page records how the CirCure multi-epitope circRNA vaccine was built and tested. The work falls into five stages: constructing the single-epitope circRNAs, screening them for immunogenicity, combining the strongest epitopes into one vaccine, validating that vaccine along the immune chain in vitro, and testing it in tumor-bearing mice. Each stage asks a narrower question than the one before. The in vitro experiments ask whether the antigen is translated inside the dendritic cell, whether that cell matures, whether CD8⁺ T cells are then activated and differentiate towards an effector-memory phenotype, and whether they kill TNBC target cells. The in vivo experiments ask whether the same vaccine restrains tumor growth in an immunocompetent animal, and what the immune response inside the tumor and in the spleen looks like at the endpoint. Data for every experiment are on the Results page.",
   "boundary": "This page records the laboratory blueprint, step-by-step protocols, quality gates, and evidence boundaries established for the CirCure project.",
   "visual": "experiment-gates",
   "visualLabel": "Seven-stage CirCure experimental route",
@@ -52,7 +52,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "This page records how the CirCure multi-epitope circRNA vaccine was built and tested. The work falls into five stages: constructing the single-epitope circRNAs, screening them for immunogenicity, combining the strongest epitopes into one vaccine, validating that vaccine along the immune chain in vitro, and testing it in tumor-bearing mice. Each stage asks a narrower question than the one before. The in vitro experiments support antigen translation and downstream immune function, then that CD8⁺ T cells are activated, differentiate towards an effector-memory phenotype, and kill TNBC target cells. The in vivo experiments ask whether the same vaccine restrains tumor growth in an immunocompetent animal, and what the immune response inside the tumor and in the spleen looks like at the endpoint. Data for every experiment are on the Results page."
+            "This page records how the CirCure multi-epitope circRNA vaccine was built and tested. The work falls into five stages: constructing the single-epitope circRNAs, screening them for immunogenicity, combining the strongest epitopes into one vaccine, validating that vaccine along the immune chain in vitro, and testing it in tumor-bearing mice. Each stage asks a narrower question than the one before. The in vitro experiments ask whether the antigen is translated inside the dendritic cell, whether that cell matures, whether CD8⁺ T cells are then activated and differentiate towards an effector-memory phenotype, and whether they kill TNBC target cells. The in vivo experiments ask whether the same vaccine restrains tumor growth in an immunocompetent animal, and what the immune response inside the tumor and in the spleen looks like at the endpoint. Data for every experiment are on the Results page."
           ]
         }
       ]
@@ -164,7 +164,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Assays and controls**: the circular channel (C) uses SJ3910F + SJ3909R, and the residual-linear channel (L) uses SJ3911F + SJ3909R. Both target assays are run on cDNA from the same RNase R-treated preparation. The residual-linear assay detects the assayed precursor-associated interval. Include a no-template control on each plate. Cross-assay quantitative response has not been calibrated with suitable standards, so the base-2 calculation is reported as an estimate.",
+            "**Assays and controls**: the circular channel (C) uses SJ3910F + SJ3909R, and the residual-linear channel (L) uses SJ3911F + SJ3909R. Both target assays are run on cDNA from the same RNase R-treated preparation. The residual-linear channel's forward primer SJ3911F lies within the excised intron, so this channel detects uncircularised precursor only, while the circular channel's forward primer SJ3910F reads across the back-splice junction and so detects closed circles only. The two channels share the reverse primer SJ3909R. Include a no-template control on each plate. Cross-assay quantitative response has not been calibrated with suitable standards, so the base-2 calculation is reported as an estimate.",
             "**Scope of the measurement**: all thirteen constructs followed the same preparation route, including circularisation and RNase R treatment. TROP2-CTL1 was quantified as the Round 1 representative; the other twelve preparations were not quantified individually. The shared backbone and preparation chemistry suggest that the other constructs may have similar circular fractions. BSJ-spanning RT-PCR followed by Sanger sequencing was performed on the Combined preparation (§3.1, step 11) as a separate junction sequence check.",
             "**Replicates**: each target assay is measured at 2, 4 and 6 µL cDNA input, with three technical wells per input. This gives nine wells per target assay and eighteen target-assay wells in total. Calculate fractions from the corresponding Cq records and report mean ± sample SD separately for each input (three technical comparisons per input). These wells are not independent RNA preparations."
           ]
@@ -206,23 +206,12 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Linearise the plasmid completely with NotI-HF in a 50 µL reaction (1 µg plasmid, 5 µL 10× rCutSmart Buffer, 10 U NotI-HF, nuclease-free water to volume) at 37 ℃ for 1 h. NotI-HF is the version supplied in rCutSmart Buffer, where it has full activity; the standard enzyme retains only about a quarter of its activity in that buffer. NotI cuts once, between the polyA25 spacer and the T7 terminator, so transcription runs off the end of the template at the 3′ boundary of the designed transcript."
-                  ]
-                }
-              ]
-            },
-            {
               "number": "2",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Purify by extracting twice with phenol: chloroform and once with chloroform."
+                    "Linearise the plasmid completely with NotI-HF in a 50 µL reaction (1 µg plasmid, 5 µL 10× rCutSmart Buffer, 10 U NotI-HF, nuclease-free water to volume) at 37 ℃ for 1 h."
                   ]
                 }
               ]
@@ -233,13 +222,24 @@ export const experimentsPage: WikiPageContent = {
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Add 1/10 volume of 3 M NaOAc and 2 volumes of absolute ethanol to the aqueous phase, precipitate at −20 ℃ for 30 min, and recover the DNA by centrifugation at 4 ℃ for 15 min."
+                    "Purify by extracting twice with phenol: chloroform and once with chloroform."
                   ]
                 }
               ]
             },
             {
               "number": "4",
+              "blocks": [
+                {
+                  "type": "prose",
+                  "paragraphs": [
+                    "Add 1/10 volume of 3 M NaOAc and 2 volumes of absolute ethanol to the aqueous phase, precipitate at −20 ℃ for 30 min, and recover the DNA by centrifugation at 4 ℃ for 15 min."
+                  ]
+                }
+              ]
+            },
+            {
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -261,7 +261,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -283,7 +283,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -305,7 +305,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "8",
               "blocks": [
                 {
                   "type": "prose",
@@ -316,7 +316,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "9",
               "blocks": [
                 {
                   "type": "prose",
@@ -338,7 +338,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "10",
               "blocks": [
                 {
                   "type": "prose",
@@ -360,7 +360,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "11",
               "blocks": [
                 {
                   "type": "prose",
@@ -382,7 +382,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "12",
               "blocks": [
                 {
                   "type": "prose",
@@ -394,7 +394,7 @@ export const experimentsPage: WikiPageContent = {
                   "type": "prose",
                   "paragraphs": [
                     "$\\Delta Cq_i=Cq_{L,i}-Cq_{C,i},\\qquad F_i(\\%)=\\frac{100}{1+2^{-\\Delta Cq_i}}.$",
-                    "Here C and L denote the circular and residual-linear channels. Calculate each fraction before calculating the arithmetic mean and sample SD (n − 1) across the three technical comparisons at that input. Use unrounded intermediate values. No GFP normalization is used in the reported fractions. The model assumes doubling per cycle and comparable quantitative response between the target assays, including reverse transcription."
+                    "Here C and L denote the circular and residual-linear channels."
                   ]
                 }
               ]
@@ -570,7 +570,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -581,7 +581,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -592,7 +592,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "3",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -614,7 +614,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -625,7 +625,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "8",
               "blocks": [
                 {
                   "type": "prose",
@@ -647,7 +647,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "9",
               "blocks": [
                 {
                   "type": "prose",
@@ -658,7 +658,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "10",
               "blocks": [
                 {
                   "type": "prose",
@@ -771,7 +771,7 @@ export const experimentsPage: WikiPageContent = {
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Take the CD14-negative flow-through retained in 2.1 and add 80 µL MACS Buffer + 20 µL CD3 MicroBeads per 10⁷ cells; incubate at 2–8 ℃ for 15 min."
+                    "Cryopreserve the CD14-negative flow-through from 2.1 on the day of isolation and thaw it on the day of co-culture; add 80 µL MACS Buffer + 20 µL CD3 MicroBeads per 10⁷ cells and incubate at 2–8 ℃ for 15 min."
                   ]
                 }
               ]
@@ -821,7 +821,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -832,12 +832,12 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Co-culture at 37 ℃, 5% CO₂ for downstream ELISpot, flow cytometry or killing assays."
+                    "Co-culture at 37 ℃, 5% CO₂ for 48 h, then take the cells into the ELISpot in 2.3, the killing assay in 2.4 and the flow cytometry in 2.5."
                   ]
                 }
               ]
@@ -855,7 +855,7 @@ export const experimentsPage: WikiPageContent = {
           "start": 1,
           "items": [
             "CD3⁺ T cells should be sorted from the flow-through after CD14 depletion to avoid monocyte contamination; if necessary, residual monocytes can first be removed by adherence.",
-            "Primary antigen sensitization usually requires 3–7 days and can be repeated to expand antigen-specific T cells; a single 24 h co-culture is relatively short and may underestimate the frequency, so priming can be extended if sensitivity is a priority."
+            "Priming ran for 48 h, identical for every construct, so the spot counts are comparable between constructs on one plate."
           ]
         },
         {
@@ -872,7 +872,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "ELISpot counts IFN-γ–secreting T cells one cell at a time, which makes it the primary immunogenicity readout of this project. IFN-γ released by an activated T cell is captured by the plate-bound antibody and developed through biotin, streptavidin, HRP and AEC into an insoluble spot, and the spot count (SFC) tracks the frequency of responding T cells. Round 1 used it to rank the 13 single-epitope constructs, and was run as a ranking screen with no control wells, so its numbers are comparative only. [13]"
+            "ELISpot counts IFN-γ–secreting T cells one cell at a time, which makes it the primary immunogenicity readout of this project. IFN-γ released by an activated T cell is captured by the plate-bound antibody and developed through biotin, streptavidin, HRP and AEC into an insoluble spot, so the spot count (SFC) is the number of IFN-γ-secreting cells in the well. Round 1 used it to rank the 13 single-epitope constructs, and was run as a ranking screen with no control wells, so its numbers are comparative only. [13]"
           ]
         },
         {
@@ -928,7 +928,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Controls**: none, in either direction. Round 1 was designed as a between-construct comparison whose only purpose was to rank the candidates, so no negative control well was seeded, neither empty-vector nor antigen-free, and the kit's PHA positive-control well was not run. SFC is therefore reported as the raw spot count per 1×10⁵ cells with no background subtraction, and no value from this round can be cited as an antigen-specific T-cell frequency. The empty-vector control enters the project at round 2 (4.4).",
+            "**Controls**: none, in either direction. Round 1 was designed as a between-construct comparison whose only purpose was to rank the candidates, so no negative control well was seeded, neither empty-vector nor antigen-free, and the kit's PHA positive-control well was not run. SFC is therefore reported as the raw spot count per 1×10⁵ cells with no background subtraction, so the values rank the constructs against one another. The empty-vector well that lets a count be read against background enters the project at Round 2 (4.4).",
             "**Replicates**: no replicate-well count is on record, so the values are single determinations and carry no statistical test."
           ]
         },
@@ -963,7 +963,7 @@ export const experimentsPage: WikiPageContent = {
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Seed the DC–T co-culture cells at 1×10⁵ per 100 µL per well, together with the control wells defined in the Experimental Design."
+                    "Seed the DC–T co-culture cells at 1×10⁵ per 100 µL per well, one well per construct."
                   ]
                 }
               ]
@@ -991,7 +991,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -1002,7 +1002,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -1024,7 +1024,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -1035,7 +1035,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -1046,7 +1046,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "3",
+              "number": "8",
               "blocks": [
                 {
                   "type": "prose",
@@ -1068,7 +1068,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "9",
               "blocks": [
                 {
                   "type": "prose",
@@ -1091,7 +1091,6 @@ export const experimentsPage: WikiPageContent = {
           "start": 1,
           "items": [
             "High background usually results from insufficient washing or blocking; do not touch the coated area of the plate bottom, and AEC development must be kept dark and strictly timed to prevent spots from merging.",
-            "Plan the control wells before seeding: include the kit PHA positive well, and an antigen-free or empty-vector negative well. Subtract the negative well before reporting any count as an antigen-specific frequency."
           ]
         },
         {
@@ -1216,7 +1215,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -1238,7 +1237,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -1249,7 +1248,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -1271,7 +1270,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -1282,7 +1281,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -1447,7 +1446,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -1458,7 +1457,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -1480,7 +1479,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -1491,7 +1490,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -1622,7 +1621,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Assays and controls**: run the circular channel (SJ3910F + SJ3909R) and residual-linear channel (SJ3911F + SJ3909R) on cDNA from the same RNase R-treated preparation and include a no-template control. The reported calculation uses target Cq values without GFP normalization. The recorded GFP measurements are retained separately. Running the assays on the same plate does not establish a common quantitative scale; the base-2 calculation retains the assumptions stated in §1.1, step 12.",
+            "**Assays and controls**: run the circular channel (SJ3910F + SJ3909R) and residual-linear channel (SJ3911F + SJ3909R) on cDNA from the same RNase R-treated preparation and include a no-template control.  Running the assays on the same plate does not establish a common quantitative scale; the base-2 calculation retains the assumptions stated in §1.1, step 12.",
             "**Scope of the measurement**: Combined was measured at the 4 µL cDNA input selected from the Round 1 comparison (§1.1, note 4), with three technical wells per target assay. Mean ± sample SD describes technical variation within this preparation. The TROP2-CTL1, TROP2-CTL2, TROP2-CTL1+2 and empty-vector preparations followed the same route but were not quantified individually. BSJ Sanger sequencing was performed on Combined as a separate sequence check.",
             "**Release criterion**: a circular fraction ≥ 90%. A preparation below the criterion is re-prepared from the transcription step."
           ]
@@ -1664,7 +1663,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -1686,7 +1685,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -1697,7 +1696,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -1719,7 +1718,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -1741,7 +1740,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -1752,7 +1751,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -1774,7 +1773,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "8",
               "blocks": [
                 {
                   "type": "prose",
@@ -1785,18 +1784,18 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "9",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Measure the circular channel (SJ3910F + SJ3909R) and residual-linear channel (SJ3911F + SJ3909R) on the same plate, loading 4 µL cDNA into three technical wells per target assay. Run 95 °C for 3 min, followed by 40 cycles of 95 °C for 10 s and 60 °C for 30 s. Define ΔCq_i = Cq_L,i − Cq_C,i and calculate F_i (%) = 100 / (1 + 2^(−ΔCq_i)) for each recorded comparison. Use unrounded intermediate values and report the arithmetic mean ± sample SD across the three technical comparisons. No GFP normalization is used. This follows the same base-2 model as §1.1, step 12."
+                    "Measure the circular channel (SJ3910F + SJ3909R) and residual-linear channel (SJ3911F + SJ3909R) on the same plate, loading 4 µL cDNA into three technical wells per target assay. Run 95 °C for 3 min, followed by 40 cycles of 95 °C for 10 s and 60 °C for 30 s. Define ΔCq_i = Cq_L,i − Cq_C,i and calculate F_i (%) = 100 / (1 + 2^(−ΔCq_i)) for each recorded comparison. Use unrounded intermediate values and report the arithmetic mean ± sample SD across the three technical comparisons.  This follows the same base-2 model as §1.1, step 12."
                   ]
                 }
               ]
             },
             {
-              "number": "3",
+              "number": "10",
               "blocks": [
                 {
                   "type": "prose",
@@ -1818,7 +1817,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "11",
               "blocks": [
                 {
                   "type": "prose",
@@ -1899,7 +1898,7 @@ export const experimentsPage: WikiPageContent = {
             ],
             [
               "RPMI-1640 complete medium",
-              "Culture for 24–48 h"
+              "Culture for 24 h"
             ],
             [
               "Fluorochrome-conjugated anti-CD80, anti-CD86",
@@ -1930,7 +1929,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Controls**: the Blank group is electroporated with an equal amount of empty-vector circRNA (complete circRNA backbone and 4×mC3dP28 adjuvant element, no epitope encoded) and is the vector control. This design lets the Blank group subtract three backgrounds at once: the stress of electroporation itself, the innate immune stimulation of the circRNA backbone through intracellular sensors such as RIG-I/MDA5, and the effect of the adjuvant element; each group also has an isotype control tube. Electroporation conditions (cell number, volume, program) are identical across groups.",
+            "Controls: the Blank group is electroporated with an equal amount of empty-vector circRNA, the same backbone with the antigen window empty, and is the vector control. The backbone and the electroporation are therefore the same in every group, so a difference between groups is a difference between constructs. Each group also has an isotype control tube. Electroporation conditions (cell number, volume, program) are identical across groups.",
             "**Replicates**: n = 3, three independently electroporated wells per group, each acquired as a separate flow tube and reported as mean ± SD of the three. ≥2×10⁴ events are acquired per tube."
           ]
         },
@@ -1976,7 +1975,7 @@ export const experimentsPage: WikiPageContent = {
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Transfer to a 6-well plate and culture at 37 ℃, 5% CO₂ for 24–48 h to induce maturation."
+                    "Transfer to a 6-well plate and culture at 37 ℃, 5% CO₂ for 24 h to induce maturation, matching the 24 h interval used before co-culture in 2.2."
                   ]
                 }
               ]
@@ -1993,7 +1992,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -2004,7 +2003,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -2026,7 +2025,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -2049,7 +2048,7 @@ export const experimentsPage: WikiPageContent = {
           "start": 1,
           "items": [
             "A more complete maturation assessment could add CD83, HLA-DR and CCR7; this experiment uses CD80/CD86 as the core markers.",
-            "Use empty-vector circRNA for the Blank group rather than mock electroporation or untreated cells, so that backbone and adjuvant stimulation is identical across groups and subtracted at the baseline."
+            "Use empty-vector circRNA for the Blank group rather than mock electroporation or untreated cells, so that the backbone is identical across groups."
           ]
         },
         {
@@ -2169,7 +2168,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -2180,7 +2179,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -2202,7 +2201,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -2213,7 +2212,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -2235,7 +2234,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -2291,7 +2290,7 @@ export const experimentsPage: WikiPageContent = {
           ],
           "rows": [
             [
-              "DC–T co-culture cells for the four constructs (see 2.1–2.2)",
+              "DC–T co-culture cells for the four constructs plus the Blank, 48 h co-culture as in 2.2",
               "1×10⁶/mL"
             ],
             [
@@ -2359,7 +2358,7 @@ export const experimentsPage: WikiPageContent = {
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Harvest T cells from each group, adjust to 1×10⁶/mL, centrifuge at 300 × g for 5 min and resuspend in about 100 µL."
+                    "After the 48 h DC–T co-culture set up as in 2.2, harvest T cells from each group, adjust to 1×10⁶/mL, centrifuge at 300 × g for 5 min and resuspend in about 100 µL."
                   ]
                 }
               ]
@@ -2387,7 +2386,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -2398,7 +2397,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -2420,7 +2419,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -2431,7 +2430,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -2442,7 +2441,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "3",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -2466,7 +2465,7 @@ export const experimentsPage: WikiPageContent = {
           "items": [
             "CD28 can be downregulated with terminal effector differentiation, so the time point of detection matters; acquire promptly after staining, or fix and store at 4 ℃ in the dark (noting that fixation may affect some epitopes).",
             "CCR7 stains poorly at 4 ℃, which is why Panel ③ is stained at 37 ℃ while the other panels are kept cold; after staining, wash with pre-chilled PBS and acquire them promptly, because surface receptors internalize once the cells are warmed.",
-            "Use an empty-vector circRNA Blank to subtract the innate contribution of the backbone and the adjuvant. For proof of antigen specificity, add pMHC tetramer staining in a matched HLA system (see Outlook O1)."
+            "Use an empty-vector circRNA Blank so that the backbone is the same in every group. For proof of antigen specificity, add pMHC tetramer staining in a matched HLA system (see Outlook O1)."
           ]
         },
         {
@@ -2531,7 +2530,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Control**: the Blank group is DCs electroporated with empty-vector circRNA (complete backbone and 4×mC3dP28 adjuvant, no epitope encoded) and co-cultured with autologous T cells, and it provides the background against which every other group is read. Being a vector control rather than an untreated well is what round 1 lacked (2.3), and it is what lets the round-2 increment be attributed to the epitope-encoding sequence. T-cell input numbers are identical across groups and results are reported as SFC per 1×10⁵ cells.",
+            "Control: the Blank group is DCs electroporated with empty-vector circRNA, the same backbone with the antigen window empty, and co-cultured with autologous T cells, and it provides the background against which every other group is read. Being a vector control rather than an untreated well is what round 1 lacked (2.3), and it is what lets the round-2 increment be read against a matched backbone. T-cell input numbers are identical across groups and results are reported as SFC per 1×10⁵ cells.",
             "**Replicates**: each group is a single well, so this assay yields no error bar and no statistical test, and every value is a single determination. Replicate wells belong in any repeat of the experiment."
           ]
         },
@@ -2583,7 +2582,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -2594,7 +2593,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -2605,7 +2604,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "3",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -2627,7 +2626,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -2666,7 +2665,7 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "Killing a real tumor cell is the functional endpoint of the in vitro work. This step runs the Calcein-AM release assay against the human triple-negative breast cancer line MDA-MB-231 (HLA-A*02:01⁺, TROP2⁺), which carries both the matching HLA type and the target antigen that K562 in 2.4 lacks, so lysis here can be read as antigen-specific. [15][16]"
+            "Killing a real tumor cell is the functional endpoint of the in vitro work. This step runs the Calcein-AM release assay against the human triple-negative breast cancer line MDA-MB-231 (HLA-A*02:01⁺, TROP2⁺), which carries both the matching HLA type and the target antigen that K562 in 2.4 lacks. Lysis on this target is therefore relevant to the intended mechanism. [15][16]"
           ]
         },
         {
@@ -2778,7 +2777,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -2789,7 +2788,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -2811,7 +2810,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -2822,7 +2821,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -2997,7 +2996,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -3008,7 +3007,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -3030,8 +3029,8 @@ export const experimentsPage: WikiPageContent = {
           "ordered": true,
           "start": 1,
           "items": [
-            "Circular RNA migrates anomalously in non-denaturing gels (usually more slowly than linear RNA of the same length), so band position alone is not sufficient to establish circularisation, confirm circularisation by divergent-primer RT-qPCR (1.1/3.1) and BSJ sequencing (3.1 step 11) instead.",
-            "Report densitometry as a relative residual amount, not as a kinetic parameter. Report a half-life or decay constant only from a time course with replicated points and enough points to fit and test a decay model, preferably quantified by divergent-primer RT-qPCR against an internal reference rather than by gel, and preferably inside cells.",
+            "Circular RNA migrates anomalously in non-denaturing gels (usually more slowly than linear RNA of the same length), so band position alone is not sufficient to establish circularisation, confirm circularisation by the two-channel RT-qPCR of 1.1 and 3.1 and by BSJ sequencing (3.1, step 11) instead.",
+            "Report densitometry as a relative residual amount, not as a kinetic parameter. Report a half-life or decay constant only from a time course with replicated points and enough points to fit and test a decay model, preferably quantified by the two-channel RT-qPCR rather than by gel, and preferably inside cells.",
             "The incubation matrix must be specified when interpreting the biological meaning: degradation in nuclease-free buffer, in serum-containing medium and inside a cell are three different questions.",
             "Densitometry in the low-signal range is noise-prone: once a band approaches background, integration error is greatly amplified and a later time point can read higher than an earlier one. Report raw integrated values without smoothing or exclusion, and read any point near the detection limit only as \"at or below the detection limit\" rather than interpreting it individually."
           ]
@@ -3074,7 +3073,7 @@ export const experimentsPage: WikiPageContent = {
               "5×10⁴/mL"
             ],
             [
-              "Combined-vaccine-primed effector T cells (see 2.2)",
+              "Combined-vaccine-primed effector T cells, primed for this assay from a third donor preparation following 2.1–2.2",
               "E:T = 80:1 and 100:1"
             ],
             [
@@ -3173,7 +3172,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -3184,7 +3183,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -3206,7 +3205,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -3217,7 +3216,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -3228,7 +3227,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "3",
+              "number": "8",
               "blocks": [
                 {
                   "type": "prose",
@@ -3253,7 +3252,8 @@ export const experimentsPage: WikiPageContent = {
           "items": [
             "Normal cells are mostly adherent; before labeling and plating, they must be dissociated into a uniform single-cell suspension and their viability confirmed, so that digestion damage does not raise spontaneous release and get misread as \"off-target killing\".",
             "Confirm the HLA type of every normal line before the assay, and match the panel to the restriction element of the epitopes; an unmatched panel cannot test antigen discrimination.",
-            "Measure target-antigen expression on the normal panel as well (flow cytometry suffices). Until it is measured, call the panel an HLA-matched normal cell panel and not an antigen-negative control.",
+            "The panel is an HLA-matched normal cell panel. Measuring target-antigen expression on these four lines, for which flow cytometry suffices, is what would turn it into an antigen-negative control.",
+            "The effectors for this assay were primed separately from those used in 4.5, so absolute killing percentages are not compared between the two experiments; what this assay compares is the normal lines against MDA-MB-231 on the same plate.",
             "This experiment was added after the in vivo work had begun: Human Practices discussions during that stage identified on-target/off-tumour toxicity as the first safety question a clinical reader asks, and the normal-cell panel was assembled in response."
           ]
         },
@@ -3380,7 +3380,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -3391,7 +3391,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -3402,7 +3402,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "3",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -3424,7 +3424,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -3435,7 +3435,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -3446,7 +3446,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "3",
+              "number": "8",
               "blocks": [
                 {
                   "type": "prose",
@@ -3457,7 +3457,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "4",
+              "number": "9",
               "blocks": [
                 {
                   "type": "prose",
@@ -3482,7 +3482,7 @@ export const experimentsPage: WikiPageContent = {
           "items": [
             "CCK-8 is a colorimetric method and the development time must be determined for each cell type in a pilot run; over-incubation saturates the OD and compresses between-group differences. Any bubbles after adding reagent must be popped, or the reading will be badly disturbed.",
             "The safe dose window should be interpreted together with the functional data: the working dose finally chosen must lie within the non-toxic interval and also be sufficient for antigen expression and DC activation.",
-            "Assay the empty carrier first so that any toxicity seen is attributable to the lipid alone, then run the loaded particle alongside it on the same dose series and the same plate. Do not carry a window obtained on the empty carrier over to the loaded particle, and do not convert a per-cell in vitro dose (ng per 10⁴ cells) into a per-animal in vivo dose."
+            "Assay the empty carrier first so that any toxicity seen is attributable to the lipid alone, then run the loaded particle alongside it on the same dose series and the same plate. The window obtained on the empty carrier applies to the carrier. The loaded particle has its own ceiling, which the in vivo dose escalation of Outlook O3 is designed to establish, and the per-cell unit used here (ng per 10⁴ cells) and the per-animal in vivo dose have different denominators."
           ]
         }
       ]
@@ -3612,7 +3612,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -3634,7 +3634,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -3645,7 +3645,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -3667,7 +3667,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -3678,7 +3678,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -3700,12 +3700,12 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Under an inverted fluorescence microscope, observe and capture bright-field, GFP-channel and merged images in turn. Proceed to the sorting in 6.2 only if the fluorescence is bright and dense and the cell morphology is normal; if the signal is weak, read again at 72–96 h."
+                    "Under an inverted fluorescence microscope, observe and capture bright-field, GFP-channel and merged images in turn. GFP was verified at 48 h in this project and the cells went straight into the sorting in 6.2. Proceed to sorting only if the fluorescence is bright and dense and the cell morphology is normal; if the signal is weak, read again at 72–96 h."
                   ]
                 }
               ]
@@ -3844,7 +3844,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -3855,7 +3855,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -3877,7 +3877,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -3888,7 +3888,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -3910,7 +3910,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -4065,7 +4065,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -4076,7 +4076,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -4098,7 +4098,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -4252,7 +4252,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -4274,7 +4274,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -4285,7 +4285,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -4400,8 +4400,8 @@ export const experimentsPage: WikiPageContent = {
             "**Groups and sample size**: Randomly divided into 3 groups (PBS vehicle / empty vector / Combined vaccine), n = 5 per group, 15 experimental units in total, plus 3 reserve mice to replace animals lost at inoculation, giving 18 animals overall; the experimental unit is the individual mouse. [36][37]",
             "**Sample size justification**: The minimum biologically important effect is a ≥50% reduction in mean endpoint tumour volume (TGI ≥ 50%), which at the variability commonly reported for subcutaneous 4T1 models (CV ≈ 30%) corresponds to Cohen d ≈ 1.7. With n = 5, a two-sample t-test (α = 0.05, two-sided) has approximately 80% power to detect d ≈ 2.0 (about 60% TGI) and approximately 65% power at the minimum important effect itself. The resource equation gives E = N − k = 15 − 3 = 12, within the recommended range of 10–20. n = 5 is the smallest group size, within the approved animal allocation, that keeps the resource equation in range while retaining ~80% power for a large antitumor effect (3Rs, Reduction). A non-significant result at the 50% TGI level will be interpreted as inconclusive rather than as evidence of no effect.",
             "Randomization: Complete randomization using a randomization table on the day of inoculation (Day 0), with individual ear-tag coding.",
-            "**Inclusion criteria**: SPF female BALB/cAnNCrl mice, 6–8 weeks old, supplied at 18–22 g and verified against the supplier's certificate on arrival; healthy after a 7-day acclimatization period (normal activity, feeding and drinking, glossy coat, body condition score 3/5, no clinical signs); technically successful tumor cell inoculation.",
-            "Pre-randomization exclusion: Body weight outside the 18–22 g supply specification on arrival; any sign of ill health during acclimatization; visible leakage of the cell suspension, bleeding or misinjection at inoculation. Excluded animals are replaced from the reserve cohort of 3, so that all three groups start with n = 5.",
+            "**Inclusion criteria**: SPF female BALB/cAnNCrl mice, 6–8 weeks old, supplied at 18–22 g and verified against the supplier's certificate on arrival; healthy on arrival (normal activity, feeding and drinking, glossy coat, body condition score 3/5, no clinical signs); technically successful tumor cell inoculation.",
+            "Pre-randomization exclusion: Body weight outside the 18–22 g supply specification on arrival; any sign of ill health on arrival; visible leakage of the cell suspension, bleeding or misinjection at inoculation. Excluded animals are replaced from the reserve cohort of 3, so that all three groups start with n = 5.",
             "**Humane endpoints** (applied pre-emptively and independently of the scheduled endpoint): (i) maximum tumour diameter reaching 1.5 cm (approximately 1500 mm³, the UKCCCR/NCRI upper limit for therapeutic studies); (ii) tumour ulceration or necrosis, or a tumour interfering with locomotion, feeding or drinking; (iii) a body condition score of 1 (emaciated) on the 5-point murine scale (Ullman-Cullere & Foltz, 1999), or a score of 2 combined with any clinical sign; (iv) signs of severe distress such as persistent hunching, immobility, laboured respiration, or failure to eat or drink over 24–48 h. A body condition score of 2 alone does not itself trigger euthanasia but triggers escalation to twice-daily observation and reporting to the project supervisor and veterinary staff.",
             "**Handling of animals with no tumor**: Not excluded. Because dosing begins on the day of inoculation, the absence of a tumor may be a treatment effect rather than a technical failure, and excluding such animals would systematically remove the strongest responders and bias the analysis against the vaccine; these animals are analyzed with an endpoint tumor volume of 0 mm³ and the number of tumor-free animals per group is reported separately.",
             "**Justification for a single sex**: Triple-negative breast cancer occurs overwhelmingly in women, and 4T1 derives from a spontaneously arising mammary carcinoma of female BALB/c origin, so this syngeneic model is conventionally established in female mice, reflecting the clinical target population. Restricting the study to one sex also removes sex as a source of variability and reduces animal use (3Rs, Reduction). Sex as a biological variable can be addressed in later confirmatory studies.",
@@ -4416,25 +4416,15 @@ export const experimentsPage: WikiPageContent = {
         {
           "type": "prose",
           "paragraphs": [
-            "**Acclimation & Grouping**"
+            "**Grouping**"
           ]
         },
         {
           "type": "protocol-steps",
           "steps": [
+
             {
               "number": "1",
-              "blocks": [
-                {
-                  "type": "prose",
-                  "paragraphs": [
-                    "Acclimatize the mice in the SPF facility for 7 days, excluding animals with abnormal weight on arrival or signs of ill health."
-                  ]
-                }
-              ]
-            },
-            {
-              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -4456,7 +4446,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "2",
               "blocks": [
                 {
                   "type": "prose",
@@ -4478,7 +4468,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -4489,7 +4479,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -4500,7 +4490,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "3",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -4522,7 +4512,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -4533,7 +4523,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -4556,8 +4546,7 @@ export const experimentsPage: WikiPageContent = {
           "start": 1,
           "items": [
             "4T1 is highly metastatic and forms tumors rapidly, so humane endpoints (tumor volume/ulceration limits) must be enforced strictly with daily inspection.",
-            "Do not advance the needle beyond the fat pad; the thoracic wall and the axillary vessels lie immediately deeper, and a misplaced bolus changes the growth kinetics of the tumor. Where dosing starts on D0 rather than at a predefined tumor volume, record tumor-free animals and analyze them at 0 mm³ rather than excluding them.",
-            "Match the host MHC to the restriction element of the epitopes. Human HLA-A*02:01–restricted epitopes are unlikely to be presented in wild-type BALB/c (H-2d), so antigen-specific validation requires an HLA-A*02:01 transgenic (e.g. HHD) or humanized host, see Outlook O1."
+            "Do not advance the needle beyond the fat pad; the thoracic wall and the axillary vessels lie immediately deeper, and a misplaced bolus changes the growth kinetics of the tumor. ",
           ]
         },
         {
@@ -4681,7 +4670,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -4699,7 +4688,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -4721,7 +4710,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -4732,7 +4721,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -4743,7 +4732,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "3",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -4754,7 +4743,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "4",
+              "number": "8",
               "blocks": [
                 {
                   "type": "prose",
@@ -4779,7 +4768,6 @@ export const experimentsPage: WikiPageContent = {
             "Caliper readings must be taken by the same operator throughout, blind to group allocation, with the animal gently restrained so that the tumor is not compressed; measure the long and short axes at the widest point and take the mean of repeated readings.",
             "Keep the injection site (tail base) well away from the tumor site, so that local injection-site reaction cannot interfere with tumor measurement or with interpretation of the intratumoural microenvironment.",
             "Bring circRNA-LNP to room temperature and mix by gentle inversion; never vortex, and aliquot per dosing day: freeze–thaw cycles change particle size and encapsulation, so the dose actually delivered stops matching the dose recorded.",
-            "Fix the statistical path before the data are seen, and record which branch was taken. Choosing between a parametric and a non-parametric analysis after inspecting the results invalidates the p-values."
           ]
         },
         {
@@ -4850,7 +4838,7 @@ export const experimentsPage: WikiPageContent = {
           "paragraphs": [
             "**Controls**: the PBS and empty-vector groups serve as parallel controls for the vaccine group; a negative control section (no primary antibody, secondary antibody/isotype only) is included to subtract the strong autofluorescence of necrotic tumor tissue. All three groups of sections are processed, stained and imaged in one batch, in randomized order, under identical exposure, gain and display settings, so the panels can be compared with one another by eye.",
             "**Replicates**: n = 3 animals per group, one field acquired per animal. These 3 animals were selected at random from the 5 tumor-bearing mice of each group, and the same 3 animals provided both this immunofluorescence material and the splenic material for 7.4/7.5, so the two ex vivo assays come from one randomly chosen subsample, with no selection by tumor size. One field per animal is a sparser sample than a between-group comparison of stained area or cell number would need, so this experiment is reported descriptively: the images themselves are the readout.",
-            "**Blinding**: the group labels were coded throughout, as the EDA design report specifies for this section. Field selection at the microscope was made without the operator knowing which group a section belonged to, and the images were reviewed with the labels still coded. The judgment that remains is the selection criterion itself: with one field per animal, the field taken was the one judged most representative of the section, and that is a judgment made by eye even when the group is unknown. Depositing all of the raw images is what lets a reader see the fields that were not printed."
+            "**Blinding**: the group labels were coded throughout, as the EDA design report specifies for this section. Field selection at the microscope was made without the operator knowing which group a section belonged to, and the images were reviewed with the labels still coded. With one field per animal, the field taken was the one judged most representative of the section. All raw images are deposited alongside the page."
           ]
         },
         {
@@ -4901,7 +4889,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "3",
               "blocks": [
                 {
                   "type": "prose",
@@ -4923,7 +4911,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -4945,18 +4933,18 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
                   "paragraphs": [
-                    "Mount with anti-fade mounting medium and acquire images of all groups on the fluorescence microscope under identical exposure, gain and magnification, with uniform field-selection criteria. Record the spatial calibration at this point, so that the figure can carry a scale bar. For this study, the image files carry an embedded scale-bar annotation 100 pixels long, confirmed by the imaging facility to represent 100 µm, giving 1 pixel = 1.00 µm; all nine fields were acquired at the same magnification, and each covers 1368 × 1020 µm. Panels are displayed at an identical linear gain with no group-specific brightness or contrast adjustment."
+                    "Mount with anti-fade mounting medium and acquire images of all groups on the fluorescence microscope under identical exposure, gain and magnification, with uniform field-selection criteria. Record the spatial calibration at this point, so that the figure can carry a scale bar. For this study the scale bar is 100 µm, confirmed by the imaging facility, and all nine fields were acquired at the same magnification. Panels are displayed at an identical linear gain with no group-specific brightness or contrast adjustment."
                   ]
                 }
               ]
             },
             {
-              "number": "2",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -4980,7 +4968,6 @@ export const experimentsPage: WikiPageContent = {
           "items": [
             "Over-retrieval destroys tissue morphology while insufficient retrieval gives a weak signal; the secondary antibody and DAPI steps must be kept dark throughout to prevent quenching.",
             "Process, stain and image all three groups in one batch, in randomized order, under identical exposure, gain and display settings, and keep the group labels coded both at the microscope and when the images are reviewed.",
-            "Limitations of image format and controls: the images are JPEGs (4:2:0 chroma subsampling); all three groups share the same format and compression quality, so the comparison between panels is unaffected. In addition, although a negative control section was included, no single-stain or isotype control was imaged, so it cannot be determined whether the Granzyme B channel signal contains a stromal autofluorescence component."
           ]
         },
         {
@@ -5013,7 +5000,7 @@ export const experimentsPage: WikiPageContent = {
           ],
           "rows": [
             [
-              "Spleens from each group (PBS / circRNA-vector / circRNA-antigens), collected at the D35 endpoint",
+              "Spleens from each group (PBS / empty vector / Combined), collected at the D35 endpoint",
               "3 groups × n = 3"
             ],
             [
@@ -5147,7 +5134,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -5169,7 +5156,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -5180,7 +5167,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -5200,7 +5187,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "3",
+              "number": "8",
               "blocks": [
                 {
                   "type": "prose",
@@ -5222,7 +5209,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "9",
               "blocks": [
                 {
                   "type": "prose",
@@ -5244,7 +5231,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "10",
               "blocks": [
                 {
                   "type": "prose",
@@ -5255,7 +5242,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "11",
               "blocks": [
                 {
                   "type": "prose",
@@ -5280,7 +5267,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "12",
               "blocks": [
                 {
                   "type": "prose",
@@ -5455,7 +5442,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "4",
               "blocks": [
                 {
                   "type": "prose",
@@ -5466,7 +5453,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "5",
               "blocks": [
                 {
                   "type": "prose",
@@ -5488,7 +5475,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "6",
               "blocks": [
                 {
                   "type": "prose",
@@ -5499,7 +5486,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "7",
               "blocks": [
                 {
                   "type": "prose",
@@ -5521,7 +5508,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "8",
               "blocks": [
                 {
                   "type": "prose",
@@ -5532,7 +5519,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "9",
               "blocks": [
                 {
                   "type": "prose",
@@ -5554,7 +5541,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "10",
               "blocks": [
                 {
                   "type": "prose",
@@ -5565,7 +5552,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "11",
               "blocks": [
                 {
                   "type": "prose",
@@ -5576,7 +5563,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "3",
+              "number": "12",
               "blocks": [
                 {
                   "type": "prose",
@@ -5598,7 +5585,7 @@ export const experimentsPage: WikiPageContent = {
           "type": "protocol-steps",
           "steps": [
             {
-              "number": "1",
+              "number": "13",
               "blocks": [
                 {
                   "type": "prose",
@@ -5609,7 +5596,7 @@ export const experimentsPage: WikiPageContent = {
               ]
             },
             {
-              "number": "2",
+              "number": "14",
               "blocks": [
                 {
                   "type": "prose",
@@ -6224,13 +6211,13 @@ export const experimentsReferences: CitationReference[] = [
   {
     "id": 39,
     "authors": "Ullman-Cullere MH, Foltz CJ.",
-    "title": "Body condition scoring: a rapid and accurate method for assessing health status in mice. *Lab Anim Sci.* 1999;49(3):319-323. PMID: 10403450.",
+    "title": "Body condition scoring: a rapid and accurate method for assessing health status in mice. *Lab Anim Sci.* 1999;49(3):319-323.",
     "journal": "",
     "volumeYear": "",
     "links": [
       {
-        "href": "https://pubmed.ncbi.nlm.nih.gov/10403450/",
-        "label": "https://pubmed.ncbi.nlm.nih.gov/10403450/"
+        "href": "https://research.unc.edu/wp-content/uploads/2012/11/CCM1_030253.pdf",
+        "label": "https://research.unc.edu/wp-content/uploads/2012/11/CCM1_030253.pdf"
       }
     ]
   },

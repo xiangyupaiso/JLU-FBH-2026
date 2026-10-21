@@ -96,25 +96,25 @@ export const hardwareReferences: CitationReference[] = [
     authors: "LGC Biosearch Technologies (Epicentre/Lucigen).",
     title: "*Ribonuclease R (RNase R) Manual*",
     journal: "",
-    volumeYear: "(NRR07250).",
+    volumeYear: "(LGCRNR07250).",
     links: [
       {
-        href: "https://biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R",
+        href: "https://www.sigmaaldrich.cn/deepweb/assets/sigmaaldrich/product/documents/249/341/manual-nxgenz-010-rnase-r.pdf",
         label:
-          "biosearchtech.a.bigcontent.io/v1/static/manual_RNR07250_RNase-R",
+          "sigmaaldrich.cn/deepweb/assets/sigmaaldrich/product/documents/249/341/manual-nxgenz-010-rnase-r.pdf",
       },
     ],
   },
   {
     id: 6,
     authors: "Bio-Rad Laboratories.",
-    title: "*T100™ Thermal Cycler Instrument Guide*",
+    title: "*T100™ Thermal Cycler Instruction Manual*",
     journal: "",
-    volumeYear: "(Catalog #1861096).",
+    volumeYear: "(Catalog #186-1096).",
     links: [
       {
-        href: "https://www.bio-rad.com/sites/default/files/2021-08/10000145577.pdf",
-        label: "bio-rad.com/sites/default/files/2021-08/10000145577.pdf",
+        href: "https://manuallib.com/download/pdf8/BIO-RAD-T100-THERMAL-CYCLER-INSTRUCTION-MANUAL.PDF",
+        label: "manuallib.com/download/pdf8/BIO-RAD-T100-THERMAL-CYCLER-INSTRUCTION-MANUAL.PDF",
       },
     ],
   },

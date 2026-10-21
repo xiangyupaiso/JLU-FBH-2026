@@ -518,7 +518,7 @@ function inlineLoaderEnvironment() {
   };
 }
 
-test("managed readers cannot pass their first-six and hero gate through the optional deadline", async () => {
+test("managed readers cannot pass their critical image gate through the optional deadline", async () => {
   const env = environment();
   const critical = deferred();
   const footer = new env.Image("footer-must-not-start-concurrently.webp");
@@ -538,7 +538,7 @@ test("managed readers cannot pass their first-six and hero gate through the opti
   assert.equal(footer.loading, "lazy");
   critical.resolve();
   await tick();
-  assert.equal(queue.remainingCalls, 1);
+  assert.equal(queue.remainingCalls, 0, "background images do not extend the cover");
   assert.equal(env.loader.hidden, true);
   assert.equal(queue.disposeCount, 0, "the live queue survives entry to serve subsequent interactions");
 });
@@ -555,7 +555,7 @@ test("a failed managed hero settles its slot and lets the rest of the page enter
   assert.equal(env.loader.dataset.retryable, undefined);
   assert.ok(!env.loaderEvents.includes("loadererror"));
   assert.equal(first.disposeCount, 0);
-  assert.equal(first.remainingCalls, 1);
+  assert.equal(first.remainingCalls, 0);
   assert.equal(env.optionalTimers.size, 0);
   assert.equal(env.loader.hidden, true);
 });
@@ -600,7 +600,7 @@ test("the static loader deadline releases pending managed critical images", asyn
   assert.ok(!env.loaderEvents.includes("loadererror"));
 });
 
-test("managed reader optional images receive at most 25 seconds after critical success", async () => {
+test("managed readers enter after critical success without waiting for background images", async () => {
   const env = environment();
   const critical = deferred();
   const remaining = deferred();
@@ -610,11 +610,7 @@ test("managed reader optional images receive at most 25 seconds after critical s
   assert.equal(env.optionalTimers.size, 0);
   critical.resolve();
   await tick();
-  assert.equal(queue.remainingCalls, 1);
-  assert.equal(env.optionalTimers.size, 1);
-  assert.equal(env.loader.hidden, false);
-  env.expireOptional();
-  await tick();
+  assert.equal(queue.remainingCalls, 0);
   assert.equal(env.loader.hidden, true);
   assert.equal(queue.disposeCount, 0);
   assert.equal(env.optionalTimers.size, 0);
@@ -623,6 +619,7 @@ test("managed reader optional images receive at most 25 seconds after critical s
 test("the static deadline can finish optional reader work after its required artwork is ready", async () => {
   const env = environment();
   const queue = env.reader(Promise.resolve(), new Promise(() => {}));
+  env.context.document.fonts.ready = new Promise(() => {});
   env.ready();
   await tick();
   assert.equal(env.optionalTimers.size, 1);
@@ -817,16 +814,20 @@ test("Home does not wait for a missing loaderplay event or an unfinished loader 
   }
 });
 
-test("other routes still wait for the loader entrance after their artwork is ready", async () => {
-  const env = environment();
-  const entrance = deferred();
-  env.loader.getAnimations = () => [{ effect: { getTiming: () => ({ iterations: 1 }) }, finished: entrance.promise }];
-  env.ready();
-  await tick();
-  assert.equal(env.loader.hidden, false);
-  entrance.resolve();
-  await tick();
-  assert.equal(env.loader.hidden, true);
+test("reader entry waits for real artwork but not loaderplay or an unfinished loader entrance", async () => {
+  for (const playing of [false, true]) {
+    const env = environment();
+    if (!playing) env.loader.classList.remove("is-playing");
+    env.loader.getAnimations = () => [{ effect: { getTiming: () => ({ iterations: 1 }) }, finished: new Promise(() => {}) }];
+    const critical = deferred();
+    env.reader(critical.promise);
+    env.ready();
+    await tick();
+    assert.equal(env.loader.hidden, false, "the actual page resources still gate entry");
+    critical.resolve();
+    await tick();
+    assert.equal(env.loader.hidden, true, "decorative playback cannot extend a ready page's wait");
+  }
 });
 
 test("Home's absolute readiness deadline starts before its stylesheet applies", async () => {

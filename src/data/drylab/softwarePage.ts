@@ -1,4 +1,4 @@
-// Generated from the final Markdown by scripts/generate_software_page.py.
+// Software manuscript content, updated against the reviewed 20 October 2026 instructions.
 import type {
   WikiPageContent,
   WikiContentBlock,
@@ -45,19 +45,99 @@ export type SoftwarePanel =
       entries: { title: string; figure: FigureBlock }[];
     };
 
-export const softwareReferences: CitationReference[] = [
+export const softwareReferences: (CitationReference & { harvard: string })[] = [
+  {
+    id: 13,
+    authors:
+      "McLaughlin, J.A., Beal, J., Mısırlı, G., Grünberg, R., Bartley, B.A., Scott-Brown, J., Vaidyanathan, P., Fontanarrosa, P., Oberortner, E., Wipat, A., Gorochowski, T.E. and Myers, C.J.",
+    title:
+      "The Synthetic Biology Open Language (SBOL) Version 3: Simplified Data Exchange for Bioengineering.",
+    journal: "Frontiers in Bioengineering and Biotechnology.",
+    volumeYear: "2020;8:1009.",
+    links: [
+      {
+        href: "https://doi.org/10.3389/fbioe.2020.01009",
+        label: "10.3389/fbioe.2020.01009",
+      },
+    ],
+    harvard:
+      "McLaughlin, J.A., Beal, J., Mısırlı, G., Grünberg, R., Bartley, B.A., Scott-Brown, J., Vaidyanathan, P., Fontanarrosa, P., Oberortner, E., Wipat, A., Gorochowski, T.E. and Myers, C.J. (2020) ‘The Synthetic Biology Open Language (SBOL) Version 3: Simplified Data Exchange for Bioengineering’, *Frontiers in Bioengineering and Biotechnology*, 8, article 1009. doi: [10.3389/fbioe.2020.01009](https://doi.org/10.3389/fbioe.2020.01009).",
+  },
+  {
+    id: 30,
+    authors:
+      "Sayers, E.W., Cavanaugh, M., Frisse, L., Pruitt, K.D., Schneider, V.A., Underwood, B.A., Yankie, L. and Karsch-Mizrachi, I.",
+    title: "GenBank 2025 update.",
+    journal: "Nucleic Acids Research.",
+    volumeYear: "2025;53(D1):D56–D61.",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkae1114",
+        label: "10.1093/nar/gkae1114",
+      },
+    ],
+    harvard:
+      "Sayers, E.W., Cavanaugh, M., Frisse, L., Pruitt, K.D., Schneider, V.A., Underwood, B.A., Yankie, L. and Karsch-Mizrachi, I. (2025) ‘GenBank 2025 update’, *Nucleic Acids Research*, 53(D1), pp. D56–D61. doi: [10.1093/nar/gkae1114](https://doi.org/10.1093/nar/gkae1114).",
+  },
+  {
+    id: 29,
+    authors: "National Center for Biotechnology Information.",
+    title: "FASTA Format for Nucleotide Sequences.",
+    journal: "",
+    volumeYear: "n.d.",
+    links: [
+      {
+        href: "https://www.ncbi.nlm.nih.gov/genbank/fastaformat/",
+        label: "NCBI FASTA format documentation",
+      },
+    ],
+    harvard:
+      "National Center for Biotechnology Information (n.d.) *FASTA Format for Nucleotide Sequences*. Available at: [NCBI FASTA format documentation](https://www.ncbi.nlm.nih.gov/genbank/fastaformat/) (Accessed: 21 October 2026).",
+  },
+  {
+    id: 28,
+    authors: "Bray, T. (ed.)",
+    title: "The JavaScript Object Notation (JSON) Data Interchange Format.",
+    journal: "",
+    volumeYear: "2017. RFC 8259. Internet Engineering Task Force.",
+    links: [
+      {
+        href: "https://www.rfc-editor.org/rfc/rfc8259",
+        label: "RFC 8259",
+      },
+    ],
+    harvard:
+      "Bray, T. (ed.) (2017) *The JavaScript Object Notation (JSON) Data Interchange Format*. RFC 8259. Internet Engineering Task Force. Available at: [RFC 8259](https://www.rfc-editor.org/rfc/rfc8259) (Accessed: 21 October 2026).",
+  },
+  {
+    id: 31,
+    authors: "SnapGene.",
+    title: "Convert File Formats.",
+    journal: "",
+    volumeYear: "n.d.",
+    links: [
+      {
+        href: "https://www.snapgene.com/features/convert-file-formats",
+        label: "SnapGene file format documentation",
+      },
+    ],
+    harvard:
+      "SnapGene (n.d.) *Convert File Formats*. Available at: [SnapGene file format documentation](https://www.snapgene.com/features/convert-file-formats) (Accessed: 21 October 2026).",
+  },
   {
     id: 1,
     authors: "iGEM Foundation.",
     title: "iGEM Registry of Standard Biological Parts.",
     journal: "",
-    volumeYear: "n.d. Accessed 19 October 2026.",
+    volumeYear: "n.d. Accessed 21 October 2026.",
     links: [
       {
         href: "https://registry.igem.org/",
-        label: "Official website",
+        label: "iGEM Registry",
       },
     ],
+    harvard:
+      "iGEM Foundation (n.d.) *iGEM Registry of Standard Biological Parts*. Available at: [iGEM Registry](https://registry.igem.org/) (Accessed: 21 October 2026).",
   },
   {
     id: 2,
@@ -71,6 +151,8 @@ export const softwareReferences: CitationReference[] = [
         label: "doi:10.1126/science.1136231",
       },
     ],
+    harvard:
+      "Robertson, M.P. and Scott, W.G. (2007) ‘The structural basis of ribozyme-catalyzed RNA assembly’, *Science*, 315(5818), pp. 1549–1553. doi: [10.1126/science.1136231](https://doi.org/10.1126/science.1136231).",
   },
   {
     id: 3,
@@ -84,22 +166,11 @@ export const softwareReferences: CitationReference[] = [
         label: "Official website",
       },
     ],
+    harvard:
+      "IEDB (n.d.) *IEDB. Immune Epitope Database*. Available at: [Official website](https://www.iedb.org/) (Accessed: 21 October 2026).",
   },
   {
     id: 4,
-    authors: "",
-    title: "UniProt.",
-    journal: "",
-    volumeYear: "",
-    links: [
-      {
-        href: "https://www.uniprot.org/",
-        label: "Official website",
-      },
-    ],
-  },
-  {
-    id: 5,
     authors: "The UniProt Consortium.",
     title: "UniProt: the Universal Protein Knowledgebase in 2025.",
     journal: "Nucleic Acids Research.",
@@ -110,9 +181,11 @@ export const softwareReferences: CitationReference[] = [
         label: "doi:10.1093/nar/gkae1010",
       },
     ],
+    harvard:
+      "The UniProt Consortium (2025) ‘UniProt: the Universal Protein Knowledgebase in 2025’, *Nucleic Acids Research*, 53(D1), pp. D609–D617. doi: [10.1093/nar/gkae1010](https://doi.org/10.1093/nar/gkae1010).",
   },
   {
-    id: 6,
+    id: 5,
     authors: "Vita R, Mahajan S, Overton JA, et al.",
     title: "The Immune Epitope Database (IEDB): 2018 update.",
     journal: "Nucleic Acids Research.",
@@ -123,22 +196,11 @@ export const softwareReferences: CitationReference[] = [
         label: "doi:10.1093/nar/gky1006",
       },
     ],
+    harvard:
+      "Vita, R., Mahajan, S., Overton, J.A., et al. (2019) ‘The Immune Epitope Database (IEDB): 2018 update’, *Nucleic Acids Research*, 47(D1), pp. D339–D343. doi: [10.1093/nar/gky1006](https://doi.org/10.1093/nar/gky1006).",
   },
   {
     id: 7,
-    authors: "",
-    title: "ViennaRNA.",
-    journal: "",
-    volumeYear: "",
-    links: [
-      {
-        href: "https://www.tbi.univie.ac.at/RNA/",
-        label: "Official website",
-      },
-    ],
-  },
-  {
-    id: 8,
     authors: "Lorenz R, Bernhart SH, Höner zu Siederdissen C, et al.",
     title: "ViennaRNA Package 2.0.",
     journal: "Algorithms for Molecular Biology.",
@@ -149,48 +211,11 @@ export const softwareReferences: CitationReference[] = [
         label: "doi:10.1186/1748-7188-6-26",
       },
     ],
+    harvard:
+      "Lorenz, R., Bernhart, S.H., Höner zu Siederdissen, C., et al. (2011) ‘ViennaRNA Package 2.0’, *Algorithms for Molecular Biology*, 6, pp. 26. doi: [10.1186/1748-7188-6-26](https://doi.org/10.1186/1748-7188-6-26).",
   },
   {
-    id: 9,
-    authors: "",
-    title: "RhoFold+.",
-    journal: "",
-    volumeYear: "",
-    links: [
-      {
-        href: "https://github.com/ml4bio/RhoFold",
-        label: "Source code",
-      },
-    ],
-  },
-  {
-    id: 10,
-    authors: "",
-    title: "trRosettaRNA2.",
-    journal: "",
-    volumeYear: "",
-    links: [
-      {
-        href: "https://yanglab.qd.sdu.edu.cn/trRosettaRNA/download/",
-        label: "Official website",
-      },
-    ],
-  },
-  {
-    id: 11,
-    authors: "",
-    title: "RNAbpFlow.",
-    journal: "",
-    volumeYear: "",
-    links: [
-      {
-        href: "https://github.com/Bhattacharya-Lab/RNAbpFlow",
-        label: "Source code",
-      },
-    ],
-  },
-  {
-    id: 12,
+    id: 8,
     authors: "Shen T, Hu Z, Sun S, et al.",
     title:
       "Accurate RNA 3D structure prediction using a language model-based deep learning approach.",
@@ -202,9 +227,11 @@ export const softwareReferences: CitationReference[] = [
         label: "doi:10.1038/s41592-024-02487-0",
       },
     ],
+    harvard:
+      "Shen, T., Hu, Z., Sun, S., et al. (2024) ‘Accurate RNA 3D structure prediction using a language model-based deep learning approach’, *Nature Methods*, 21, pp. 2287–2298. doi: [10.1038/s41592-024-02487-0](https://doi.org/10.1038/s41592-024-02487-0).",
   },
   {
-    id: 13,
+    id: 9,
     authors: "Wang W, Peng Z, Yang J.",
     title:
       "Predicting RNA 3D structure and conformers using a pre-trained secondary structure model and structure-aware attention.",
@@ -216,9 +243,11 @@ export const softwareReferences: CitationReference[] = [
         label: "doi:10.1038/s42256-026-01223-x",
       },
     ],
+    harvard:
+      "Wang, W., Peng, Z. and Yang, J. (2026) ‘Predicting RNA 3D structure and conformers using a pre-trained secondary structure model and structure-aware attention’, *Nature Machine Intelligence*, 8, pp. 722–734. doi: [10.1038/s42256-026-01223-x](https://doi.org/10.1038/s42256-026-01223-x).",
   },
   {
-    id: 14,
+    id: 10,
     authors: "Tarafder S, Bhattacharya D.",
     title:
       "RNAbpFlow: base pair-augmented SE(3) flow matching for conditional RNA 3D structure generation.",
@@ -230,36 +259,11 @@ export const softwareReferences: CitationReference[] = [
         label: "doi:10.1038/s41592-026-03128-4",
       },
     ],
+    harvard:
+      "Tarafder, S. and Bhattacharya, D. (2026) ‘RNAbpFlow: base pair-augmented SE(3) flow matching for conditional RNA 3D structure generation’, *Nature Methods*, 23(7), pp. 1349–1358. doi: [10.1038/s41592-026-03128-4](https://doi.org/10.1038/s41592-026-03128-4).",
   },
   {
-    id: 15,
-    authors: "Chen CK, Cheng R, Demeter J, et al.",
-    title: "Structured elements drive extensive circular RNA translation.",
-    journal: "Molecular Cell.",
-    volumeYear: "2021;81(20):4300–4318.e13.",
-    links: [
-      {
-        href: "https://doi.org/10.1016/j.molcel.2021.07.042",
-        label: "doi:10.1016/j.molcel.2021.07.042",
-      },
-    ],
-  },
-  {
-    id: 16,
-    authors: "Ng CKY, Dazert E, Boldanova T, et al.",
-    title:
-      "Integrative proteogenomic characterization of hepatocellular carcinoma across etiologies and stages.",
-    journal: "Nature Communications.",
-    volumeYear: "2022;13:2436.",
-    links: [
-      {
-        href: "https://doi.org/10.1038/s41467-022-29960-8",
-        label: "doi:10.1038/s41467-022-29960-8",
-      },
-    ],
-  },
-  {
-    id: 17,
+    id: 11,
     authors: "GTEx Consortium.",
     title:
       "The GTEx Consortium atlas of genetic regulatory effects across human tissues.",
@@ -271,78 +275,89 @@ export const softwareReferences: CitationReference[] = [
         label: "doi:10.1126/science.aaz1776",
       },
     ],
+    harvard:
+      "GTEx Consortium (2020) ‘The GTEx Consortium atlas of genetic regulatory effects across human tissues’, *Science*, 369(6509), pp. 1318–1330. doi: [10.1126/science.aaz1776](https://doi.org/10.1126/science.aaz1776).",
+  },
+  {
+    id: 12,
+    authors: "Trygoniaris D, Korda A, Paraskeva A, et al.",
+    title:
+      "VaccineDesigner: A Web-Based Tool for Streamlined Multi-Epitope Vaccine Design.",
+    journal: "Biology.",
+    volumeYear: "2025;14(8):1019.",
+    links: [
+      {
+        href: "https://doi.org/10.3390/biology14081019",
+        label: "doi:10.3390/biology14081019",
+      },
+    ],
+    harvard:
+      "Trygoniaris, D., Korda, A., Paraskeva, A., et al. (2025) ‘VaccineDesigner: A Web-Based Tool for Streamlined Multi-Epitope Vaccine Design’, *Biology*, 14(8), pp. 1019. doi: [10.3390/biology14081019](https://doi.org/10.3390/biology14081019).",
+  },
+  {
+    id: 14,
+    authors: "Chen CK, Cheng R, Demeter J, et al.",
+    title: "Structured elements drive extensive circular RNA translation.",
+    journal: "Molecular Cell.",
+    volumeYear: "2021;81(20):4300–4318.e13.",
+    links: [
+      {
+        href: "https://doi.org/10.1016/j.molcel.2021.07.042",
+        label: "doi:10.1016/j.molcel.2021.07.042",
+      },
+    ],
+    harvard:
+      "Chen, C.K., Cheng, R., Demeter, J., et al. (2021) ‘Structured elements drive extensive circular RNA translation’, *Molecular Cell*, 81(20), pp. 4300–4318.e13. doi: [10.1016/j.molcel.2021.07.042](https://doi.org/10.1016/j.molcel.2021.07.042).",
+  },
+  {
+    id: 15,
+    authors: "Zhang Y, Wang J, Xiao Y.",
+    title: "3dRNA: 3D structure prediction from linear to circular RNAs.",
+    journal: "Journal of Molecular Biology.",
+    volumeYear: "2022;434(11):167452.",
+    links: [
+      {
+        href: "https://doi.org/10.1016/j.jmb.2022.167452",
+        label: "doi:10.1016/j.jmb.2022.167452",
+      },
+    ],
+    harvard:
+      "Zhang, Y., Wang, J. and Xiao, Y. (2022) ‘3dRNA: 3D structure prediction from linear to circular RNAs’, *Journal of Molecular Biology*, 434(11), pp. 167452. doi: [10.1016/j.jmb.2022.167452](https://doi.org/10.1016/j.jmb.2022.167452).",
+  },
+  {
+    id: 16,
+    authors: "Jiang H, Xu Y, Tong Y, Zhang D, Zhou R.",
+    title:
+      "IsRNAcirc: 3D structure prediction of circular RNAs based on coarse-grained molecular dynamics simulation.",
+    journal: "PLoS Computational Biology.",
+    volumeYear: "2024;20(10):e1012293.",
+    links: [
+      {
+        href: "https://doi.org/10.1371/journal.pcbi.1012293",
+        label: "doi:10.1371/journal.pcbi.1012293",
+      },
+    ],
+    harvard:
+      "Jiang, H., Xu, Y., Tong, Y., Zhang, D. and Zhou, R. (2024) ‘IsRNAcirc: 3D structure prediction of circular RNAs based on coarse-grained molecular dynamics simulation’, *PLoS Computational Biology*, 20(10), article e1012293. doi: [10.1371/journal.pcbi.1012293](https://doi.org/10.1371/journal.pcbi.1012293).",
+  },
+  {
+    id: 17,
+    authors: "Ng CKY, Dazert E, Boldanova T, et al.",
+    title:
+      "Integrative proteogenomic characterization of hepatocellular carcinoma across etiologies and stages.",
+    journal: "Nature Communications.",
+    volumeYear: "2022;13:2436.",
+    links: [
+      {
+        href: "https://doi.org/10.1038/s41467-022-29960-8",
+        label: "doi:10.1038/s41467-022-29960-8",
+      },
+    ],
+    harvard:
+      "Ng, C.K.Y., Dazert, E., Boldanova, T., et al. (2022) ‘Integrative proteogenomic characterization of hepatocellular carcinoma across etiologies and stages’, *Nature Communications*, 13, pp. 2436. doi: [10.1038/s41467-022-29960-8](https://doi.org/10.1038/s41467-022-29960-8).",
   },
   {
     id: 18,
-    authors: "Sehnal D, Bittrich S, Deshpande M, et al.",
-    title:
-      "Mol* Viewer: modern web app for 3D visualization and analysis of large biomolecular structures.",
-    journal: "Nucleic Acids Research.",
-    volumeYear: "2021;49(W1):W431–W437.",
-    links: [
-      {
-        href: "https://doi.org/10.1093/nar/gkab314",
-        label: "doi:10.1093/nar/gkab314",
-      },
-    ],
-  },
-  {
-    id: 19,
-    authors: "Posit Software, PBC.",
-    title: "Welcome to Shiny.",
-    journal: "Shiny for R documentation.",
-    volumeYear: "Accessed 19 October 2026.",
-    links: [
-      {
-        href: "https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/",
-        label: "Official documentation",
-      },
-    ],
-  },
-  {
-    id: 20,
-    authors: "Ritchie ME, Phipson B, Wu D, et al.",
-    title:
-      "limma powers differential expression analyses for RNA-sequencing and microarray studies.",
-    journal: "Nucleic Acids Research.",
-    volumeYear: "2015;43(7):e47.",
-    links: [
-      {
-        href: "https://doi.org/10.1093/nar/gkv007",
-        label: "doi:10.1093/nar/gkv007",
-      },
-    ],
-  },
-  {
-    id: 21,
-    authors: "Chen Y, Chen L, Lun ATL, Baldoni PL, Smyth GK.",
-    title:
-      "edgeR v4: powerful differential analysis of sequencing data with expanded functionality and improved support for small counts and larger datasets.",
-    journal: "Nucleic Acids Research.",
-    volumeYear: "2025;53(2):gkaf018.",
-    links: [
-      {
-        href: "https://doi.org/10.1093/nar/gkaf018",
-        label: "doi:10.1093/nar/gkaf018",
-      },
-    ],
-  },
-  {
-    id: 22,
-    authors: "Omnes L, Angel E, Tahi F.",
-    title:
-      "DivideFold+: an AI-based tool for RNA secondary structure prediction with subdomains identification and visualization and data augmentation.",
-    journal: "Journal of Molecular Biology.",
-    volumeYear: "2026;438(18):169865.",
-    links: [
-      {
-        href: "https://doi.org/10.1016/j.jmb.2026.169865",
-        label: "doi:10.1016/j.jmb.2026.169865",
-      },
-    ],
-  },
-  {
-    id: 23,
     authors: "Calis JJA, Maybeno M, Greenbaum JA, et al.",
     title:
       "Properties of MHC Class I Presented Peptides That Enhance Immunogenicity.",
@@ -354,9 +369,11 @@ export const softwareReferences: CitationReference[] = [
         label: "doi:10.1371/journal.pcbi.1003266",
       },
     ],
+    harvard:
+      "Calis, J.J.A., Maybeno, M., Greenbaum, J.A., et al. (2013) ‘Properties of MHC Class I Presented Peptides That Enhance Immunogenicity’, *PLoS Computational Biology*, 9(10), article e1003266. doi: [10.1371/journal.pcbi.1003266](https://doi.org/10.1371/journal.pcbi.1003266).",
   },
   {
-    id: 24,
+    id: 19,
     authors: "Abramson J, Adler J, Dunger J, et al.",
     title:
       "Accurate structure prediction of biomolecular interactions with AlphaFold 3.",
@@ -368,22 +385,74 @@ export const softwareReferences: CitationReference[] = [
         label: "doi:10.1038/s41586-024-07487-w",
       },
     ],
+    harvard:
+      "Abramson, J., Adler, J., Dunger, J., et al. (2024) ‘Accurate structure prediction of biomolecular interactions with AlphaFold 3’, *Nature*, 630, pp. 493–500. doi: [10.1038/s41586-024-07487-w](https://doi.org/10.1038/s41586-024-07487-w).",
   },
   {
-    id: 25,
-    authors: "",
-    title: "OpenMM.",
-    journal: "",
-    volumeYear: "",
+    id: 20,
+    authors: "Posit Software, PBC.",
+    title: "Welcome to Shiny.",
+    journal: "Shiny for R documentation.",
+    volumeYear: "Accessed 19 October 2026.",
     links: [
       {
-        href: "https://openmm.org/",
-        label: "Official website",
+        href: "https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/",
+        label: "Official documentation",
       },
     ],
+    harvard:
+      "Posit Software and PBC (n.d.) *Welcome to Shiny*. Shiny for R documentation. Available at: [Official documentation](https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/) (Accessed: 21 October 2026).",
   },
   {
-    id: 26,
+    id: 21,
+    authors: "Ritchie ME, Phipson B, Wu D, et al.",
+    title:
+      "limma powers differential expression analyses for RNA-sequencing and microarray studies.",
+    journal: "Nucleic Acids Research.",
+    volumeYear: "2015;43(7):e47.",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkv007",
+        label: "doi:10.1093/nar/gkv007",
+      },
+    ],
+    harvard:
+      "Ritchie, M.E., Phipson, B., Wu, D., et al. (2015) ‘limma powers differential expression analyses for RNA-sequencing and microarray studies’, *Nucleic Acids Research*, 43(7), article e47. doi: [10.1093/nar/gkv007](https://doi.org/10.1093/nar/gkv007).",
+  },
+  {
+    id: 22,
+    authors: "Chen Y, Chen L, Lun ATL, Baldoni PL, Smyth GK.",
+    title:
+      "edgeR v4: powerful differential analysis of sequencing data with expanded functionality and improved support for small counts and larger datasets.",
+    journal: "Nucleic Acids Research.",
+    volumeYear: "2025;53(2):gkaf018.",
+    links: [
+      {
+        href: "https://doi.org/10.1093/nar/gkaf018",
+        label: "doi:10.1093/nar/gkaf018",
+      },
+    ],
+    harvard:
+      "Chen, Y., Chen, L., Lun, A.T.L., Baldoni, P.L. and Smyth, G.K. (2025) ‘edgeR v4: powerful differential analysis of sequencing data with expanded functionality and improved support for small counts and larger datasets’, *Nucleic Acids Research*, 53(2), pp. gkaf018. doi: [10.1093/nar/gkaf018](https://doi.org/10.1093/nar/gkaf018).",
+  },
+  {
+    id: 23,
+    authors: "Omnes L, Angel E, Tahi F.",
+    title:
+      "DivideFold+: an AI-based tool for RNA secondary structure prediction with subdomains identification and visualization and data augmentation.",
+    journal: "Journal of Molecular Biology.",
+    volumeYear: "2026;438(18):169865.",
+    links: [
+      {
+        href: "https://doi.org/10.1016/j.jmb.2026.169865",
+        label: "doi:10.1016/j.jmb.2026.169865",
+      },
+    ],
+    harvard:
+      "Omnes, L., Angel, E. and Tahi, F. (2026) ‘DivideFold+: an AI-based tool for RNA secondary structure prediction with subdomains identification and visualization and data augmentation’, *Journal of Molecular Biology*, 438(18), pp. 169865. doi: [10.1016/j.jmb.2026.169865](https://doi.org/10.1016/j.jmb.2026.169865).",
+  },
+  {
+    id: 24,
     authors: "Eastman P, Galvelis R, Peláez RP, et al.",
     title:
       "OpenMM 8: Molecular Dynamics Simulation with Machine Learning Potentials.",
@@ -395,9 +464,11 @@ export const softwareReferences: CitationReference[] = [
         label: "doi:10.1021/acs.jpcb.3c06662",
       },
     ],
+    harvard:
+      "Eastman, P., Galvelis, R., Peláez, R.P., et al. (2024) ‘OpenMM 8: Molecular Dynamics Simulation with Machine Learning Potentials’, *The Journal of Physical Chemistry B*, 128(1), pp. 109–116. doi: [10.1021/acs.jpcb.3c06662](https://doi.org/10.1021/acs.jpcb.3c06662).",
   },
   {
-    id: 27,
+    id: 25,
     authors: "",
     title: "PyRosetta.",
     journal: "",
@@ -408,9 +479,11 @@ export const softwareReferences: CitationReference[] = [
         label: "Official website",
       },
     ],
+    harvard:
+      "PyRosetta (n.d.) *PyRosetta*. Available at: [Official website](https://www.pyrosetta.org/) (Accessed: 21 October 2026).",
   },
   {
-    id: 28,
+    id: 26,
     authors: "",
     title: "3Dmol.js.",
     journal: "",
@@ -421,22 +494,11 @@ export const softwareReferences: CitationReference[] = [
         label: "Official website",
       },
     ],
+    harvard:
+      "3Dmol.js (n.d.) *3Dmol.js*. Available at: [Official website](https://3dmol.org/) (Accessed: 21 October 2026).",
   },
   {
-    id: 29,
-    authors: "",
-    title: "pako.",
-    journal: "",
-    volumeYear: "",
-    links: [
-      {
-        href: "https://github.com/nodeca/pako",
-        label: "Source code",
-      },
-    ],
-  },
-  {
-    id: 30,
+    id: 27,
     authors: "iGEM Munich.",
     title:
       "igem_registry_api: A high-level Python interface for the new iGEM Registry REST API (2025 Beta).",
@@ -448,8 +510,65 @@ export const softwareReferences: CitationReference[] = [
         label: "Source code",
       },
     ],
+    harvard:
+      "iGEM Munich (2025) *igem_registry_api: A high-level Python interface for the new iGEM Registry REST API (2025 Beta)*. GitHub repository. Available at: [Source code](https://github.com/igem-munich/igem_registry_api) (Accessed: 21 October 2026).",
   },
 ];
+
+export const softwareCitationLabels: Readonly<Record<string, number>> = {
+  "**iGEM Foundation, n.d.**": 1,
+  "iGEM Foundation, n.d.": 1,
+  "**Robertson and Scott, 2007**": 2,
+  "Robertson and Scott, 2007": 2,
+  "**The UniProt Consortium, 2025**": 4,
+  "The UniProt Consortium, 2025": 4,
+  "**Vita et al., 2019**": 5,
+  "Vita et al., 2019": 5,
+  "**Lorenz et al., 2011**": 7,
+  "Lorenz et al., 2011": 7,
+  "**Shen et al., 2024**": 8,
+  "Shen et al., 2024": 8,
+  "**Wang et al., 2026**": 9,
+  "Wang et al., 2026": 9,
+  "**Tarafder & Bhattacharya, 2026**": 10,
+  "Tarafder & Bhattacharya, 2026": 10,
+  "**Chen et al., 2021**": 14,
+  "Chen et al., 2021": 14,
+  "**Ng et al., 2022**": 17,
+  "Ng et al., 2022": 17,
+  "**GTEx Consortium, 2020**": 11,
+  "GTEx Consortium, 2020": 11,
+  "**Posit Software, PBC, n.d.**": 20,
+  "Posit Software, PBC, n.d.": 20,
+  "**Ritchie et al., 2015**": 21,
+  "Ritchie et al., 2015": 21,
+  "**Chen et al., 2025**": 22,
+  "Chen et al., 2025": 22,
+  "**Omnes et al., 2026**": 23,
+  "Omnes et al., 2026": 23,
+  "**Calis et al., 2013**": 18,
+  "Calis et al., 2013": 18,
+  "**Abramson et al., 2024**": 19,
+  "Abramson et al., 2024": 19,
+  "**Eastman et al., 2024**": 24,
+  "Eastman et al., 2024": 24,
+  "**iGEM Munich, 2025**": 27,
+  "iGEM Munich, 2025": 27,
+  "**Trygoniaris et al., 2025**": 12,
+  "Trygoniaris et al., 2025": 12,
+  "**McLaughlin et al., 2020**": 13,
+  "McLaughlin et al., 2020": 13,
+  "**Jiang et al., 2024**": 16,
+  "Jiang et al., 2024": 16,
+  "IEDB, n.d.": 3,
+  "**IEDB, n.d.**": 3,
+  "Zhang et al., 2022": 15,
+  "**Zhang et al., 2022**": 15,
+  "PyRosetta, n.d.": 25,
+  "**PyRosetta, n.d.**": 25,
+  "3Dmol.js, n.d.": 26,
+  "**3Dmol.js, n.d.**": 26,
+};
 
 export const softwarePanels: Record<string, SoftwarePanel> = {
   "software-implementation-1": {
@@ -811,12 +930,12 @@ EventBus.on('sse:heartbeat', function (data) {
     title: "Candidate structural review",
     entries: [
       {
-        title: "Terminal anchor",
-        figure: softwareFigure("figure-21-epitope-structural-review"),
+        title: "Per-position side-chain burial",
+        figure: softwareFigure("figure-21b-epitope-position-burial"),
       },
       {
-        title: "Position-by-position",
-        figure: softwareFigure("figure-21b-epitope-position-burial"),
+        title: "Terminal-anchor review",
+        figure: softwareFigure("figure-21-epitope-structural-review"),
       },
     ],
   },
@@ -854,76 +973,78 @@ EventBus.on('sse:heartbeat', function (data) {
 
 export const softwareJudgingCriteria: WikiJudgingCriterion[] = [
   {
-    id: "software-judging-how-compatible-is-the-software-with-existing-synthetic-biology-standards-such-as-sbol-other-rfcs-and-data-formats-does-it-make-full-use-of-these-standards",
-    question:
-      "How well is the software compatible with, and does it leverage, existing synthetic biology standards? (e.g. SBOL, other RFCs, data formats, etc.)",
-    anchorIds: [
-      "how-compatible-is-the-software-with-existing-synthetic-biology-standards-such-as-sbol-other-rfcs-and-data-formats-does-it-make-full-use-of-these-standards",
+    "id": "software-judging-how-compatible-is-the-software-with-existing-synthetic-biology-standards-such-as-sbol-other-rfcs-and-data-formats-does-it-make-full-use-of-these-standards",
+    "question": "How well is the software compatible with, and does it leverage, existing synthetic biology standards? (e.g. SBOL, other RFCs, data formats, etc.)",
+    "anchorIds": [
+      "how-compatible-is-the-software-with-existing-synthetic-biology-standards-such-as-sbol-other-rfcs-and-data-formats-does-it-make-full-use-of-these-standards"
     ],
-    paragraphs: [
-      "CircuForge supports **SBOL3, GenBank, FASTA, and JSON** for saving and transferring reviewed construct designs. SBOL3 records components, sequences, and their relationships; GenBank carries sequence features for downstream design tools; FASTA provides sequence input for further analysis; and JSON retains the application's design record. For formats that support annotations, CircuForge can also include researcher-confirmed iGEM Registry Part IDs (**iGEM Foundation, n.d.**). Format-specific readback checks compare the exported sequences and supported annotations with the source design before users continue their work.",
+    "paragraphs": [
+      "CircuForge supports **SBOL3 (.rdf), GenBank (.gbk), FASTA (.fasta), JSON (.json), and SnapGene (.dna)** for saving and transferring reviewed construct designs. SBOL3 represents the construct and its DNA sequence **([McLaughlin et al., 2020](#ref-13))**; GenBank carries sequence features for downstream design tools **([Sayers et al., 2025](#ref-30))**; FASTA provides sequence input for further analysis **([National Center for Biotechnology Information, n.d.](#ref-29))**; and JSON provides a structured format for the application's design record **([Bray, 2017](#ref-28))**. Native SnapGene export is available for constructs built from an uploaded SnapGene backbone, allowing the annotated design to be transferred for further editing **([SnapGene, n.d.](#ref-31))**. CircuForge is engineered specifically for the iGEM community, bridging construct design with the iGEM Registry of Standard Biological Parts **([iGEM Foundation, n.d.](#ref-1))**. The software compares construct elements with Registry Part records and writes confirmed Part IDs into GenBank and native SnapGene feature annotations. Format-specific readback checks then compare exported sequences and selected identifiers with the compiled design, helping future iGEM teams review, share, and reuse their constructs.",
       "TorusFold accepts mature RNA sequences and outputs **PDB models and JSON diagnostics**. Molecular viewers and analysis scripts can read these files, allowing researchers to inspect the structures, compare modeling stages, and continue analysis in their preferred tools.",
-      "See [Verifiable design exports](#cf-verified-export) and [Integration and API](#integration-api).",
-    ],
+      "See [**Verifiable design exports**](#cf-verified-export) and [**Integration and API**](#integration-api)."
+    ]
   },
   {
-    id: "software-judging-has-the-software-been-validated-experimentally",
-    question:
-      "How well was the software validated (e.g., through experimental work, test data, or benchmarking)?",
-    anchorIds: ["has-the-software-been-validated-experimentally"],
-    paragraphs: [
-      "CircuForge was evaluated against the experimentally tested Combined design from our TNBC project. Project screening narrowed 17 reviewed candidates to 15 retained epitopes. Wet Lab merged two overlapping pairs into continuous sequences, producing 13 coding designs that covered all 15 epitopes. IFN-γ ELISpot results guided the selection of two coding segments from each antigen source for Combined. CircuForge turned the eight experimentally selected coding segments into **a sequence-checked Combined construct design**. It assembled the segments in the researcher-confirmed order with GSGGS linkers, generated the corresponding DNA, and replaced the epitope-coding region within the supplied backbone while preserving the surrounding backbone sequence. It then verified the encoded peptide sequence and checked the exported files against the generated design. This demonstrated CircuForge's ability to carry experimentally informed selections through sequence assembly, backbone integration, and verified export.",
-      "We evaluated TorusFold using the project's 2,013 nt mature circRNA. We checked that ten overlapping fragments covered the complete sequence and retained their original positions. For a 200 nt test fragment, we compared the initial structure, an intermediate repair stage, and the final refined structure. Unusually close contacts between backbone phosphorus atoms decreased from 8 to 4 to 3, showing fewer crowded positions in the tested backbone. We separately retained a full-length computational model for inspection of the circular junction and fragment joins. We checked TorusFold's refinement settings against the L1 ribozyme structure determined by X-ray crystallography, PDB 2OIU (Robertson and Scott, 2007). After **refinement starting from the crystal coordinates**, the model had a phosphorus-atom RMSD of 1.83 Å relative to the experimental structure. This indicates that the refined model remained close to the experimental structure, demonstrating **good preservation of the known RNA backbone during refinement**.",
-      "See [Validation](#validation) for the experimental selection, reference reconstruction, and structure checks.",
+    "id": "software-judging-has-the-software-been-validated-experimentally",
+    "question": "How well was the software validated (e.g., through experimental work, test data, or benchmarking)?",
+    "anchorIds": [
+      "has-the-software-been-validated-experimentally"
     ],
+    "paragraphs": [
+      "CircuForge was rigorously evaluated against the experimentally validated Combined design from our TNBC vaccine project. Using eight experimentally selected epitope-coding segments and a circRNA plasmid backbone as inputs, we selected GSGGS linkers and confirmed the assembly order within CircuForge. The software then automatically assembled the payload, seamlessly integrated it into the backbone, verified the full translation and reading frame integrity, and exported the sequence-checked construct design. **The biological activity of Combined** was supported by our Wet Lab’s comprehensive molecular and functional assays: back-splice junction (BSJ) sequencing confirmed accurate circRNA circularization, anti-FLAG immunoblotting demonstrated clear protein expression, and IFN-γ ELISpot together with MDA-MB-231 cytotoxicity assays showed higher immune responses and tumor-cell killing than the empty-vector control. Together, these wet-lab results and computational sequence checks demonstrate CircuForge’s ability to faithfully reconstruct an experimentally supported coding design and export sequence-verified construct designs. Building on this evaluation, we also used our team’s published iGEM Registry parts to validate the software’s construct annotation functionality. The original feature map identified 17 of 21 basic parts; after we added four whole-unit annotations, CircuForge successfully identified and annotated **all 21 Part IDs**, with no exact matches to three negative-control sequences absent from the plasmid.",
+      "For TorusFold, non-adjacent phosphorus-atom close-contact pairs in a 200 nt test fragment dropped from **8 to 4 to 3** across initial reconstruction, PPR repair, and Amber physical refinement, demonstrating a progressive reduction in excessively close backbone contacts. Furthermore, TorusFold’s refinement pipeline was evaluated in a crystal-started refinement check using the L1 ribozyme structure, PDB 2OIU [**(Robertson and Scott, 2007)**](#ref-2). **Starting from crystallographic coordinates**, the refined model achieved a phosphorus-atom RMSD of **1.83 Å** relative to the experimental structure, demonstrating good preservation of the known RNA backbone geometry during computational relaxation.",
+      "See [**Validation**](#validation) for the experimental selection, reference reconstruction, Registry annotation tests, and structure checks."
+    ]
   },
   {
-    id: "software-judging-can-the-software-be-applied-to-other-projects",
-    question: "Can the software be useful to other projects?",
-    anchorIds: ["can-the-software-be-applied-to-other-projects"],
-    paragraphs: [
-      "Other teams can use **their own expression data, antigens, HLA settings, and backbones** in CircuForge. They can begin with expression-based target screening, a known protein, or reviewed peptides, then retain candidate sources and confirmed choices through assembly and export. For their own peptide combinations, they can inspect junction-spanning windows and request binding predictions through the configured IEDB service.",
-      "TorusFold can take mature circRNA sequences from other design workflows and use overlapping fragment predictions to reconstruct circular models. Teams can use either tool independently or connect them by transferring the mature RNA sequence file. This lets them adopt the parts of the workflow that fit their research question and available inputs.",
-      "See [Usage guide](#usage) and [User guidance and community reuse](#community-reuse).",
+    "id": "software-judging-can-the-software-be-applied-to-other-projects",
+    "question": "Can the software be useful to other projects?",
+    "anchorIds": [
+      "can-the-software-be-applied-to-other-projects"
     ],
+    "paragraphs": [
+      "CircuForge is purpose-built for any researcher utilizing differential expression analysis to identify target candidates and engineer immune-related therapeutics. For novice cancer and synthetic biology teams, its **zero-code, fully graphical interface** removes the steep bioinformatics barrier, eliminating the tedious and error-prone need to constantly hop between different databases. For nucleic acid vaccine developers, CircuForge delivers a dedicated pipeline for **multi-epitope assembly and IEDB-based junction peptide screening**[(IEDB, n.d.)](#ref-3). Its construct assembly and export were checked against the **experimentally tested Combined design**. Crucially, all iGEM teams across any track can leverage CircuForge’s **built-in Registry integration** to query official BioBricks, align construct DNA with Part records, and export standardized **SBOL3 and GenBank files**.",
+      "TorusFold can take mature circRNA sequences from other design workflows and use **overlapping fragment predictions to reconstruct circular models**. Teams can use either tool independently or connect them by **transferring the mature RNA sequence file**. This lets them adopt the parts of the workflow that fit their research questions and available inputs.",
+      "See [**Usage**](#software-usage-guide) and [**Open Source and Reuse**](#software-open-source-and-reuse)."
+    ]
   },
   {
-    id: "software-judging-how-well-does-the-software-integrate-with-external-tools-or-software-applications-including-apis-and-packages",
-    question:
-      "How well can the software be integrated with external tools/software applications? (APIs, packages, etc.)",
-    anchorIds: [
-      "how-well-does-the-software-integrate-with-external-tools-or-software-applications-including-apis-and-packages",
+    "id": "software-judging-how-well-does-the-software-integrate-with-external-tools-or-software-applications-including-apis-and-packages",
+    "question": "How well can the software be integrated with external tools/software applications? (APIs, packages, etc.)",
+    "anchorIds": [
+      "how-well-does-the-software-integrate-with-external-tools-or-software-applications-including-apis-and-packages"
     ],
-    paragraphs: [
-      "CircuForge connects **UniProt** (**The UniProt Consortium, 2025**), IEDB, and the iGEM Registry to candidate and construct review. UniProt supplies protein sequences and source records; IEDB supplies epitope predictions (**Vita et al., 2019**); and Registry review compares construct DNA with Part records and writes researcher-confirmed IDs into construct annotations. These connections carry source information into the design rather than leaving it in separate search results.",
-      "TorusFold uses ViennaRNA pairing information to guide later modeling stages (**Lorenz et al., 2011**). It can call configured **RhoFold+, trRosettaRNA2, and RNAbpFlow** predictors to generate structures for overlapping fragments (**Shen et al., 2024**; **Wang et al., 2026**; **Tarafder & Bhattacharya, 2026**). TorusFold then aligns shared regions, reconstructs the full-length circular model, and applies physical relaxation and refinement to address fragment joins and steric clashes.",
-      "Users can export mature RNA from CircuForge and provide that sequence as TorusFold input. Local APIs also expose construct compilation, junction-window enumeration, prediction submission, and job status, while standard files connect both tools to downstream applications.",
-      "See [Architecture and design choices](#architecture), [External tools and models](#external-models), and [Integration and API](#integration-api).",
-    ],
+    "paragraphs": [
+      "CircuForge connects to the **UniProt REST API** [**(The UniProt Consortium, 2025)**](#ref-4), **IEDB NextGen API**, and **iGEM Registry REST API** to review candidates and constructs. UniProt supplies protein sequences and source records; IEDB supplies epitope predictions [**(Vita et al., 2019)**](#ref-5); and Registry review compares construct DNA with Part records and writes our confirmed IDs into construct annotations. The R **packages `httr` and `jsonlite`** support API requests and JSON processing, carrying source information into the design.",
+      "TorusFold integrates the **ViennaRNA and OpenMM Python packages**. ViennaRNA supplies pairing information to guide later modeling stages [**(Lorenz et al., 2011)**](#ref-7), while OpenMM supports physical relaxation and refinement [**(Eastman et al., 2024)**](#ref-24). Configured **RhoFold+, trRosettaRNA2, and RNAbpFlow** predictors generate structures for overlapping fragments **([Shen et al., 2024](#ref-8); [Wang et al., 2026](#ref-9); [Tarafder and Bhattacharya, 2026](#ref-10))**. TorusFold then aligns shared regions and reconstructs the full-length circular model.",
+      "See [**Architecture and Design Choices**](#architecture), [**External Tools and Attribution**](#external-models), and [**Integration and API**](#integration-api)."
+    ]
   },
   {
-    id: "software-judging-is-the-software-easy-to-use",
-    question: "Is the software user-friendly?",
-    anchorIds: ["is-the-software-easy-to-use"],
-    paragraphs: [
-      "CircuForge provides a built-in example and **a six-step browser workflow** from data preparation to downloads. Researchers can review candidates, confirm their Design Cart, assemble a payload, and generate and export a construct without writing analysis scripts. Source records, user confirmations, and task status remain visible throughout the workflow. Saved project files allow users to keep their selections and return to the design later. Users can also switch between light and dark modes and between English and Chinese.",
-      "TorusFold's example viewer lets users rotate a saved model, change its display, and mark the circular junction without installing the prediction environment. For a new calculation, the usage guide explains sequence preparation, configuration, and run controls. Logs, stage outputs, and checkpoint information help users follow the calculation and inspect its progress.",
-      "See [Usage guide](#usage) and [User guidance and community reuse](#community-reuse).",
+    "id": "software-judging-is-the-software-easy-to-use",
+    "question": "Is the software user-friendly?",
+    "anchorIds": [
+      "is-the-software-easy-to-use"
     ],
+    "paragraphs": [
+      "CircuForge transforms a fragmented bioinformatics workflow into an intuitive, **zero-code browser experience** once the application is installed and configured. Traditionally, researchers must switch between UniProt for protein sequences and feature coordinates, GTEx [**(GTEx Consortium, 2020)**](#ref-11) for normal-tissue expression, and IEDB for epitope-binding predictions. Manually transferring sequences, thresholds, and coordinates is time-consuming and error-prone. CircuForge reduces this burden by unifying candidate screening, immunogenicity prediction, Design Cart curation, and construct assembly in one browser interface. Wet-lab biologists can move from expression data to sequence-checked construct exports without writing analysis scripts. The interface retains available sequence and source records, supports saving and reloading design states through Project Bundles, and offers English/Chinese language switching and dark/light themes.",
+      "TorusFold makes circRNA 3D modeling more accessible through two user-focused designs. First, its **zero-install interactive 3D web viewer** lets users inspect saved full-length computational models, customize rendering styles, and highlight the circular back-splice junction (BSJ) with one click, without installing molecular graphics software or a GPU environment. Second, once the prediction environment is configured, TorusFold automates overlapping-fragment prediction, 3D alignment, and Amber physical refinement, with real-time progress logging and built-in **stage checkpointing**. Interrupted calculations can resume from valid saved checkpoints, reducing repeated computation and allowing inspection of intermediate structures.",
+      "See [**Usage**](#software-usage-guide) and [**Open Source and Reuse**](#software-open-source-and-reuse)."
+    ]
   },
   {
-    id: "software-judging-how-well-is-the-software-written-and-documented-so-future-teams-can-extend-and-improve-it",
-    question:
-      "How well is the software written and documented for future groups to extend and improve? (Code documentation, comments in the code, performance evaluation, architecture diagrams, installation and execution scripts, etc.)",
-    anchorIds: [
-      "how-well-is-the-software-written-and-documented-so-future-teams-can-extend-and-improve-it",
+    "id": "software-judging-how-well-is-the-software-written-and-documented-so-future-teams-can-extend-and-improve-it",
+    "question": "How well is the software written and documented for future groups to extend and improve? (Code documentation, comments in the code, performance evaluation, architecture diagrams, installation and execution scripts, etc.)",
+    "anchorIds": [
+      "how-well-is-the-software-written-and-documented-so-future-teams-can-extend-and-improve-it"
     ],
-    paragraphs: [
-      "CircuForge separates the browser interface, analysis functions, external-resource adapters, construct compiler, and exporters. Architecture diagrams and module descriptions help future teams locate the code for the capability they want to change. TorusFold documents **external-tool configuration, run entry points, checkpoints, and intermediate outputs**, allowing developers to inspect individual modeling stages and adapt their interfaces.",
-      "Both projects provide source code under the Apache License 2.0, with repository examples, dependency records, running instructions, and test materials. The Wiki adds an illustrated walkthrough, API request and response examples, and downloadable reference-case files. Teams can begin with a documented example, identify the relevant module, and use the corresponding checks to assess their changes.",
-      "See [Architecture and design choices](#architecture), [Installation and API](#installation), and [Open source and reuse](#open-source).",
-    ],
-  },
+    "paragraphs": [
+      "CircuForge was built to high software engineering standards, combining **inline comments with comprehensive documentation**. Key functions, variables, and data pipelines use **descriptive, standardized naming**, helping students and researchers unfamiliar with the project understand its logic. The Wiki displays **architecture diagrams, installation instructions, and execution scripts**, including `run.bat`, `setup_renv.R`, and Docker Compose deployment configurations, helping biology and computer science students install and run the system. Our **task-based user evaluations received positive feedback** from wet-lab researchers, particularly regarding stability, UI responsiveness, and transparent progress tracking.",
+      "TorusFold applies the same engineering rigor to 3D circRNA modeling. Its codebase combines **comprehensive documentation and explanatory comments** with **clear naming conventions**, making its structural algorithms easier to understand. The Wiki displays **architecture diagrams and installation and execution instructions**, covering fragment modeling, circular closure, and Amber refinement. Supporting scripts (`tools/install_deps.py`, `run_2013nt.py`, and `serve.py`) help students reproduce documented benchmarks after configuring the required environment. Alongside hardware and memory evaluations, the repository reports **20/20 reproducibility checks passing**, helping future teams verify the supplied results. **User testing with independent participants received positive feedback** on stage-based 3D visualization, circular-junction inspection, and **stage-level resumption from valid checkpoints**.",
+      "Both tools are released under the permissive **Apache License 2.0** on official iGEM GitLab repositories ([**CircuForge**](https://gitlab.igem.org/2026/software/jlu-fbh/circuforge) · [**TorusFold**](https://gitlab.igem.org/2026/software/jlu-fbh/torusfold-hybrid)), with **version-pinned dependencies and downloadable reference datasets**.",
+      "See [**Architecture and Design Choices**](#software-architecture-and-design-choices), [**Installation and Reuse**](#software-installation-and-api), and [**Open Source and Reuse**](#software-open-source-and-reuse)."
+    ]
+  }
 ];
 
 export const softwarePage: WikiPageContent = {
@@ -966,11 +1087,11 @@ export const softwarePage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Designing a circular RNA (circRNA) vaccine for triple-negative breast cancer (TNBC) meant turning candidate targets and epitopes into constructs we could test in the lab. Which targets should proceed to epitope screening, and which epitopes should enter experiments? When epitopes are combined, should we also **review the new peptides formed at their junctions**? How can we ensure that the final construct sequence matches the design we have reviewed and confirmed? The information needed to answer these questions was spread across different tools. We needed to **connect target analysis, epitope prediction, sequence assembly, and experimental results**, while keeping track of each candidate’s source and the reasons for its selection.",
-            "We developed CircuForge to help researchers **review candidates and turn confirmed selections into construct designs in one browser**. Its Design Cart retains selected epitopes, their sources, and the assembly order confirmed by the researcher. After combining epitopes into an open reading frame (ORF), users can check newly formed junction peptides. CircuForge then supports construct generation and export. CircuForge can also compare construct sequences with iGEM Registry Parts and add researcher-confirmed Part IDs to the construct annotations before export. For supported export formats, it reads the files back to check that the preserved sequences and annotations match the source design. In our TNBC vaccine project, this workflow provides a way to organize candidate review and reconstruct the selected coding segments of the **Combined design**.",
-            "Because RNA folding can influence translation initiation, we wanted to explore the three-dimensional organization of our mature circRNA after sequence design (**Chen et al., 2021**). Direct full-length modeling of our 2,013 nt sequence was not feasible with the prediction workflow available to us. We therefore developed TorusFold to **reconstruct and refine a full-length circular RNA model** from overlapping fragment predictions. It aligns the fragments through their shared regions and saves **intermediate structures and geometric diagnostics**, allowing researchers to inspect the modeled circular junction, fragment joins, and steric clashes, and compare structures across modeling stages.",
-            "**The mature RNA sequence file connects the two tools**: users export it from CircuForge and provide it as input to TorusFold. Other teams can use either tool independently or follow this workflow with their own candidates and sequences. Both tools are released under the Apache License 2.0, with source code and running instructions available on iGEM GitLab.",
-            "Source code: [CircuForge](https://gitlab.igem.org/2026/software/jlu-fbh/circuforge) · [TorusFold](https://gitlab.igem.org/2026/software/jlu-fbh/torusfold-hybrid)",
+            "Our TNBC circRNA vaccine project required us to turn candidate targets and epitopes into constructs ready for laboratory testing. That process exposed **two recurring gaps** in current bioinformatics workflows.",
+            "The first is **fragmented database navigation and construct preparation**. Researchers often move candidates among disconnected web resources: using UniProt to verify protein identifiers, gene symbols, and functional annotations; checking baseline RNA expression across normal tissues in GTEx to inform candidate review; and submitting sequences to IEDB to predict peptide-MHC binding affinities. Manually transferring sequences, coordinates, and thresholds between these interfaces is tedious and error-prone. It also makes it difficult to retain selection rationales and track sequence provenance (**Trygoniaris et al., 2025**). After selecting epitopes, researchers still need to arrange linkers, insert the assembled coding sequence into an experimental plasmid backbone, and check the translation reading frame while confirming that unedited backbone regions remain unchanged. These checks can help prevent costly cloning failures.",
+            "The second gap is the **computational cost of modeling full-length circRNA structures**. RNA structure can influence internal ribosome entry site (IRES)-mediated translation (**Chen et al., 2021**), but large-scale 3D circRNA modeling is computationally demanding. Specialized methods include the template-based 3dRNA (**Zhang et al., 2022**) and the simulation-based IsRNAcirc (**Jiang et al., 2024**). IsRNAcirc’s extensive conformational sampling required approximately 1,593 CPU hours for a single 249 nt circRNA. Within the tested range, runtime scaled roughly linearly with sequence length. A proportional extrapolation to our 2,013 nt sequence exceeds 10,000 CPU hours. This estimate extends beyond the study’s tested range, but it indicates the potential computational cost of iterative vaccine design. Reconstructing a full molecule from fragment predictions also requires attention to backbone entanglement, atomic clashes, and circular closure.",
+            "We developed an integrated, two-stage suite to address these workflow and modeling challenges. **CircuForge is the design engine**. It combines three data and prediction resources, including UniProt, in a browser-based workflow for candidate review, epitope selection, junction peptide inspection, and plasmid construct design. Its Design Cart records researcher decisions, while the tool verifies translation reading frames and checks that the unedited backbone sequence remains unchanged. Researchers can then export the mature circRNA sequence as input to **TorusFold, the structural reconstruction engine**. TorusFold combines overlapping fragment predictions with spatial alignment, handles circular closure explicitly, and applies targeted geometric refinement to support full-length reconstruction and reduce geometric clashes.",
+            "In our TNBC project, CircuForge reconstructed the experimentally tested combined design from eight selected coding segments and seven GSGGS linkers, preserving its 112 aa payload sequence within the supplied backbone. TorusFold provided a full-length computational model of the 2,013 nt mature circular RNA. Both tools are open-sourced under the Apache License 2.0. Source code: [CircuForge](https://gitlab.igem.org/2026/software/jlu-fbh/circuforge) · [TorusFold](https://gitlab.igem.org/2026/software/jlu-fbh/torusfold-hybrid).",
           ],
         },
         {
@@ -984,25 +1105,34 @@ export const softwarePage: WikiPageContent = {
       id: "software-usage-guide",
       index: "2",
       kicker: "",
-      navLabel: "Usage guide",
-      title: "Usage guide",
+      navLabel: "Usage",
+      title: "Usage",
       summary: "",
       blocks: blocks([
         {
           type: "subheading",
           level: 3,
-          id: "software-usage-guide-circuforge",
+          id: "software-usage-workflow-overview",
           index: "2.1",
-          title: "CircuForge",
+          title: "Workflow Overview",
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "CircuForge supports entry from expression data, a target protein, or candidate peptides, connecting candidate review with peptide assembly and construct export through the Design Cart. Researchers can then transfer the mature circRNA sequence to TorusFold for fragment-based modeling and inspection of the resulting structures.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 3,
+          id: "software-usage-guide-circuforge",
+          index: "2.2",
+          title: "CircuForge User Guide",
           anchorIds: ["31-circuforge"],
         },
         {
           type: "feature",
           key: "software-circuforge-video",
-        },
-        {
-          type: "feature",
-          key: "software-circuforge-guide",
         },
         {
           type: "prose",
@@ -1055,7 +1185,7 @@ export const softwarePage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Inspect the candidate table and the **Evidence Card** below it. Check differential expression, GTEx annotations (**GTEx Consortium, 2020**), UniProt status, and sequence information. This example selects **P16401**. Click **Add Selected Targets to Cart** to save it in the Design list.",
+            "Inspect the candidate table and the **Evidence Card** below it. Check differential expression, GTEx annotations, UniProt status, and sequence information. This example selects **P16401**. Click **Add Selected Targets to Cart** to save it in the Design list.",
           ],
         },
         {
@@ -1165,6 +1295,8 @@ export const softwarePage: WikiPageContent = {
         },
         {
           type: "table",
+          caption:
+            "Table 1. Available download options and their downstream uses.",
           headers: ["Download control", "Use"],
           rows: [
             ["Results workbook", "Save result tables for further review"],
@@ -1199,22 +1331,24 @@ export const softwarePage: WikiPageContent = {
           type: "subheading",
           level: 3,
           id: "software-usage-guide-torusfold",
-          index: "2.2",
-          title: "TorusFold",
+          index: "2.3",
+          title: "TorusFold User Guide",
           anchorIds: ["32-torusfold"],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "For structural modeling, researchers can transfer the mature circRNA sequence exported from CircuForge to TorusFold, retaining the construct ID and sequence hash. The saved example below provides a starting point for model inspection before configuring a new run.",
+          ],
         },
         {
           type: "feature",
           key: "software-torusfold-video",
         },
         {
-          type: "feature",
-          key: "software-torusfold-guide",
-        },
-        {
           type: "prose",
           paragraphs: [
-            "For a first look, open the **example viewer**. Drag to rotate the saved model, change its colors and display style, and use the BSJ marking control to inspect the circular junction. Clear the marker to return to the whole-model view (**Sehnal et al., 2021**).",
+            "For a first look, use the [interactive RNA model](#software-torusfold-model) below. Drag to rotate the saved model, change its colors and display style, and use the BSJ marking control to inspect the circular junction. Clear the marker to return to the whole-model view.",
           ],
         },
         {
@@ -1238,7 +1372,7 @@ export const softwarePage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Prepare your own mature circRNA sequence or use the project's 2,013 nt example sequence. Save it in the input file required by the runner. For a sequence exported from CircuForge, retain the **construct ID and sequence hash** with it.",
+            "Prepare your own mature circRNA sequence or use the project's 2,013 nt example sequence. Save it in the input file required by the runner. If you export a sequence from CircuForge, keep the **construct ID and sequence hash** with it.",
           ],
         },
         {
@@ -1327,517 +1461,8 @@ export const softwarePage: WikiPageContent = {
       anchorIds: ["usage", "3-usage-guide"],
     },
     {
-      id: "software-architecture-and-design-choices",
-      index: "3",
-      kicker: "",
-      navLabel: "Architecture and design choices",
-      title: "Architecture and design choices",
-      summary: "",
-      blocks: blocks([
-        {
-          type: "subheading",
-          level: 3,
-          id: "software-architecture-and-design-choices-circuforge",
-          index: "3.1",
-          title: "CircuForge",
-          anchorIds: ["41-circuforge"],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "CircuForge organizes statistical analysis, external-data retrieval, candidate review, and sequence design around research tasks. The **Design Cart stores confirmed targets and epitopes**, connecting analysis results to later assembly.",
-          ],
-        },
-        {
-          type: "figure",
-          asset: "figure-13-circuforge-modules",
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-architecture-and-design-choices-choice-1-a-guided-browser-workflow",
-          index: "",
-          title: "Choice 1. A guided browser workflow",
-          anchorIds: ["choice-1-a-guided-browser-workflow"],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "We chose Shiny to put analysis tables, plots, and design controls in a browser that researchers can use directly (**Posit Software, PBC, n.d.**). limma, edgeR, and the sequence-handling and visualization packages support analysis, data processing, and result review (**Ritchie et al., 2015**; **Chen et al., 2025**).",
-            "The guided workflow **reduces the need to write scripts**. We prioritized a defined sequence of research tasks so users can review results, confirm selections, and carry a design through assembly and export in one interface.",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-architecture-and-design-choices-choice-2-separating-interactive-analysis-from-longer-tasks",
-          index: "",
-          title: "Choice 2. Separating interactive analysis from longer tasks",
-          anchorIds: [
-            "choice-2-separating-interactive-analysis-from-longer-tasks",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Longer prediction jobs need status tracking, while interactive result review needs to remain responsive. Shiny handles interactive analysis, and a local FastAPI service manages tasks that benefit from separate tracking. Docker Compose starts both services together. This makes jobs easier to track, while requiring developers to maintain two runtime environments.",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-architecture-and-design-choices-choice-3-transferring-confirmed-candidates-through-the-design-cart",
-          index: "",
-          title:
-            "Choice 3. Transferring confirmed candidates through the Design Cart",
-          anchorIds: [
-            "choice-3-transferring-confirmed-candidates-through-the-design-cart",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Candidates need to retain their peptide sequences, HLA alleles, sources, and review records as they move to the next stage. The Design Cart uses **stable IDs, deduplication, and preserved order** to transfer confirmed candidates. Project Bundles support saving and restoring work across sessions.",
-            "We keep user confirmation as a separate step so software recommendations and researchers’ design decisions are recorded separately. KEEP, REVIEW, and REJECT display QC recommendations. Researchers confirm which candidates to use before proceeding to assembly.",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-architecture-and-design-choices-choice-4-retaining-sources-and-retrieval-records",
-          index: "",
-          title: "Choice 4. Retaining sources and retrieval records",
-          anchorIds: ["choice-4-retaining-sources-and-retrieval-records"],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Candidate review draws on biological resources that return information in different formats. Source adapters organize the required fields and retain available source identifiers, request states, and raw records. Saved responses support later review, while retrieval times and refresh controls help users decide when to update the information.",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-architecture-and-design-choices-choice-5-verifiable-design-exports",
-          index: "",
-          title: "Choice 5. Verifiable design exports",
-          anchorIds: [
-            "cf-verified-export",
-            "choice-5-verifiable-design-exports",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Other software must be able to read the sequence and features correctly after export. CircuForge **reads core export formats back** and checks the information each format preserves against the source design. Format-specific verification checks sequences and supported annotations, giving researchers checked files to pass to downstream tools and collaborators.",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 3,
-          id: "software-architecture-and-design-choices-torusfold",
-          index: "3.2",
-          title: "TorusFold",
-          anchorIds: ["42-torusfold"],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "TorusFold organizes its modules around pairing information, fragment prediction, full-length reconstruction, and refinement. This lets long-RNA modeling run and be checked one stage at a time. Our reconstruction module uses fragment positions and shared residues to place local coordinates on the same circular RNA molecule.",
-          ],
-        },
-        {
-          type: "figure",
-          asset: "figure-14-torusfold-stages",
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-architecture-and-design-choices-choice-1-retaining-full-sequence-pairing-information-during-fragment-modeling",
-          index: "",
-          title:
-            "Choice 1. Retaining full-sequence pairing information during fragment modeling",
-          anchorIds: [
-            "choice-1-retaining-full-sequence-pairing-information-during-fragment-modeling",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "TorusFold retains **pairing information for the whole sequence** when dividing it into fragments, so later stages can use it to model the full molecule. We integrate ViennaRNA and configurable DivideFold+ information, passing candidate base pairs and their supporting information into modeling (**Lorenz et al., 2011**; **Omnes et al., 2026**). We retain the sources of the proposed pairs and records of which pairs were used. Researchers can compare suggestions from different sources and inspect the modeling settings.",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-architecture-and-design-choices-choice-2-using-overlapping-fragments-as-alignment-references",
-          index: "",
-          title:
-            "Choice 2. Using overlapping fragments as alignment references",
-          anchorIds: [
-            "choice-2-using-overlapping-fragments-as-alignment-references",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "To let 3D prediction tools process a long input, we divide the sequence into **overlapping fragments** and use their overlaps as alignment references. The documented example runner uses a 200 nt segment setting with 30 nt overlaps. Configured predictors generate candidate structures for these fragments.",
-            "The overlaps give neighboring fragments shared residues that the program uses to recover their relative positions. This alignment information comes at the cost of some repeated prediction work in the overlapping regions.",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-architecture-and-design-choices-choice-3-repairing-joins-and-refining-the-reconstructed-structure",
-          index: "",
-          title:
-            "Choice 3. Repairing joins and refining the reconstructed structure",
-          anchorIds: [
-            "choice-3-repairing-joins-and-refining-the-reconstructed-structure",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Joining fragment models requires handling fragment boundaries, circular closure, and steric clashes. TorusFold aligns shared residues and reconstructs full-length coordinates. It then uses structural constraints and physical refinement to repair joins and reduce steric clashes.",
-            "We save the reconstructed coordinates and their check results so researchers can locate joins and compare structures before and after repair.",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-architecture-and-design-choices-choice-4-saving-stage-results-and-checkpoints",
-          index: "",
-          title: "Choice 4. Saving stage results and checkpoints",
-          anchorIds: ["choice-4-saving-stage-results-and-checkpoints"],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Long-RNA modeling has several time-consuming stages. Researchers need to monitor progress and reuse completed results after an interruption. TorusFold saves **intermediate structures, diagnostic files, and checkpoints** to support stage comparisons and recovery from saved checkpoints. We allocate additional storage and file management for these records so future teams can inspect or modify individual stages.",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 3,
-          id: "software-architecture-and-design-choices-continuing-from-construct-design-to-structural-modeling",
-          index: "3.3",
-          title: "Continuing from construct design to structural modeling",
-          anchorIds: [
-            "43-continuing-from-construct-design-to-structural-modeling",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Researchers pass the mature RNA file exported by CircuForge to TorusFold to model the corresponding RNA sequence. Saving the construct ID and sequence hash with the sequence links the model and its run records to the original design.",
-          ],
-        },
-      ]),
-      anchorIds: ["architecture", "4-architecture-and-design-choices"],
-    },
-    {
-      id: "software-engineering-iterations",
-      index: "4",
-      kicker: "",
-      navLabel: "Engineering iterations",
-      title: "Engineering iterations",
-      summary: "",
-      blocks: blocks([
-        {
-          type: "subheading",
-          level: 3,
-          id: "software-engineering-iterations-circuforge-carrying-project-decisions-into-construct-design",
-          index: "4.1",
-          title: "CircuForge: carrying project decisions into construct design",
-          anchorIds: [
-            "51-circuforge-carrying-project-decisions-into-construct-design",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "CircuForge V1.0 brought data import, target screening, and epitope prediction into one application. As our project moved from candidate analysis to construct design, we needed selected records, supporting evidence, and researcher decisions to remain connected through assembly and export. The following iterations turned that requirement into the V2.0 workflow.",
-          ],
-        },
-        {
-          type: "figure",
-          asset: "figure-15-workflow-evolution",
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-engineering-iterations-iteration-1-making-candidate-identity-and-researcher-decisions-explicit",
-          index: "",
-          title:
-            "Iteration 1. Making candidate identity and researcher decisions explicit",
-          anchorIds: [
-            "iteration-1-making-candidate-identity-and-researcher-decisions-explicit",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "We presented V1.0 at an online exchange involving five iGEM teams. The exchange prompted us to reflect on how to distinguish software recommendations from researchers’ final selections. We added **stage-specific IDs and Evidence Cards** to connect candidate identities with their supporting information. KEEP, REVIEW, and REJECT present software QC recommendations, while a separate confirmation step records which candidates the researcher selects for continued design.",
-          ],
-        },
-        {
-          type: "feature",
-          key: "software-implementation-1",
-        },
-        {
-          type: "figure",
-          asset: "figure-16-software-exchange",
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-engineering-iterations-iteration-2-preserving-confirmed-selections-in-the-design-cart",
-          index: "",
-          title:
-            "Iteration 2. Preserving confirmed selections in the Design Cart",
-          anchorIds: [
-            "iteration-2-preserving-confirmed-selections-in-the-design-cart",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Associate Professor Qingtian Guan suggested saving selected records before taking further action. We implemented the **Design Cart** to retain confirmed targets and epitopes, compare entries, remove duplicates, and preserve their assembly order. Project Bundles save these records across sessions, allowing researchers to continue a design with its sources and confirmed selections intact.",
-          ],
-        },
-        {
-          type: "feature",
-          key: "software-implementation-2",
-        },
-        {
-          type: "figure",
-          asset: "figure-17-consultation",
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-engineering-iterations-iteration-3-connecting-task-management-deployment-and-checked-exports",
-          index: "",
-          title:
-            "Iteration 3. Connecting task management, deployment, and checked exports",
-          anchorIds: [
-            "iteration-3-connecting-task-management-deployment-and-checked-exports",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Professor Xiangyu Meng’s software-engineering feedback informed the separation of module responsibilities, visible status tracking for longer jobs, and runtime documentation. We separated interactive analysis from task services, provided Docker Compose startup, and added export readback checks. Task records show how requests progress, while format-specific checks verify the sequences and supported annotations delivered to downstream tools.",
-          ],
-        },
-        {
-          type: "feature",
-          key: "software-implementation-3",
-        },
-        {
-          type: "figure",
-          asset: "figure-18-team-discussion",
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "V2.0 combines these changes into a guided workflow from candidate review to construct export. The [reference-case evaluation](#reference-case) demonstrates how confirmed coding segments become an assembled, sequence-checked design in a supplied backbone.",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 3,
-          id: "software-engineering-iterations-torusfold-connecting-fragment-prediction-reconstruction-and-refinement",
-          index: "4.2",
-          title:
-            "TorusFold: connecting fragment prediction, reconstruction, and refinement",
-          anchorIds: [
-            "52-torusfold-connecting-fragment-prediction-reconstruction-and-refinement",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-engineering-iterations-iteration-1-preparing-the-project-sequence-for-fragment-prediction",
-          index: "",
-          title:
-            "Iteration 1. Preparing the project sequence for fragment prediction",
-          anchorIds: [
-            "iteration-1-preparing-the-project-sequence-for-fragment-prediction",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Our 2,013 nt mature circRNA required a modeling route that could use the predictors and computing resources available to us. We implemented **overlapping segmentation with recorded sequence positions**, allowing local predictions to retain their relationship to the complete RNA. Shared residues between neighboring fragments supply the alignment references for reconstruction.",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-engineering-iterations-iteration-2-establishing-consistent-reconstruction-coordinates",
-          index: "",
-          title:
-            "Iteration 2. Establishing consistent reconstruction coordinates",
-          anchorIds: [
-            "iteration-2-establishing-consistent-reconstruction-coordinates",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Full-length reconstruction requires local predictions to share a consistent coordinate system. We corrected reconstruction anchors, rebuilt local coordinate frames, and passed pairing information through the reconstruction steps. These changes connected fragment positions, alignment references, and structural constraints in the assembled model. Saved stage structures allow researchers to inspect fragment joins and compare coordinates across reconstruction and repair.",
-          ],
-        },
-        {
-          type: "feature",
-          key: "software-implementation-4",
-        },
-        {
-          type: "feature",
-          key: "software-implementation-5",
-        },
-        {
-          type: "feature",
-          key: "software-implementation-6",
-        },
-        {
-          type: "subheading",
-          level: 4,
-          id: "software-engineering-iterations-iteration-3-evaluating-refinement-through-structural-measurements",
-          index: "",
-          title:
-            "Iteration 3. Evaluating refinement through structural measurements",
-          anchorIds: [
-            "iteration-3-evaluating-refinement-through-structural-measurements",
-          ],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "We revised the base-pair guidance parameter `K_BPP` from 600 to 13.4. A separate 200 nt fragment test recorded **a reduction in non-adjacent phosphorus-atom close-contact pairs from eight to three** across reconstruction, PPR, and Amber refinement. The 2OIU comparison checked refinement starting from crystal coordinates against the known experimental structure.",
-          ],
-        },
-        {
-          type: "feature",
-          key: "software-implementation-7",
-        },
-      ]),
-      anchorIds: ["engineering", "5-engineering-iterations"],
-    },
-    {
-      id: "software-user-testing-and-community-reuse",
-      index: "5",
-      kicker: "",
-      navLabel: "User testing and community reuse",
-      title: "User testing and community reuse",
-      summary: "",
-      blocks: blocks([
-        {
-          type: "prose",
-          paragraphs: [
-            "We conducted **internal task-based user testing** of CircuForge and TorusFold. Participants were mainly team members with limited bioinformatics experience, including students from our Wet Lab and Human Practices (HP) groups. They worked through representative design and model-inspection tasks, allowing us to identify where task states, result organization, and guidance needed to be clearer. Their feedback informed the following improvements.",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 3,
-          id: "software-user-testing-and-community-reuse-circuforge-user-testing",
-          index: "5.1",
-          title: "CircuForge user testing",
-          anchorIds: ["61-circuforge-user-testing"],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "The CircuForge sessions followed the design workflow: importing data, reviewing a target, selecting epitopes, checking assembly order and junction peptides, generating a construct, and locating the exported files. Participants used the browser interface and Design list to carry their selections between stages.",
-          ],
-        },
-        {
-          type: "figure",
-          asset: "figure-19-circuforge-user-testing",
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Participants needed clearer answers to two questions: had a submitted request finished, and which files should they save after generating a construct? We revised **task-status messages and export guidance** to distinguish submission, processing, and result review, and to connect the generated design with its downloadable files. The implementation provides job IDs and status retrieval and construct export packages with readback checks.",
-          ],
-        },
-        {
-          type: "feature",
-          key: "software-implementation-8",
-        },
-        {
-          type: "feature",
-          key: "software-implementation-9",
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Follow-up sessions revisited these tasks, focusing on continuing through the workflow, identifying the returned results, and locating the corresponding exports. The V2.0 workflow keeps confirmed selections in the Design Cart and brings sequence files and validation materials together at the download step.",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 3,
-          id: "software-user-testing-and-community-reuse-torusfold-user-testing",
-          index: "5.2",
-          title: "TorusFold user testing",
-          anchorIds: ["62-torusfold-user-testing"],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "TorusFold testing followed the user journey from sequence preparation and task monitoring to model inspection and output retrieval. Participants worked with the project example, located model and diagnostic files, rotated the RNA structure, changed its display, and inspected the back-splice junction. Stage structures provided material for comparing reconstruction and refinement.",
-          ],
-        },
-        {
-          type: "figure",
-          asset: "figure-20-torusfold-user-testing",
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Participants needed a clearer connection between the model on screen, its computational stage, and the files used for further inspection. We improved **stage-aware model viewing and progress information**: the interface displays saved stage structures and identifies the stage being viewed, while progress and checkpoint controls help users follow the calculation. The corresponding changes include stage-model display and viewer, progress, and checkpoint improvements. A dedicated demo-view control also gives first-time users a direct entry to the project model.",
-          ],
-        },
-        {
-          type: "feature",
-          key: "software-implementation-10",
-        },
-        {
-          type: "feature",
-          key: "software-implementation-11",
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "Follow-up testing focused on finding the final model, identifying the structures used for reconstruction–refinement comparison, and locating the circular junction. We aligned the result guidance with these tasks so users could move from model viewing to stage comparisons and diagnostic files.",
-          ],
-        },
-        {
-          type: "subheading",
-          level: 3,
-          id: "software-user-testing-and-community-reuse-getting-started-as-another-team",
-          index: "5.3",
-          title: "Getting started as another team",
-          anchorIds: ["63-getting-started-as-another-team"],
-        },
-        {
-          type: "prose",
-          paragraphs: [
-            "The official iGEM GitLab repositories provide source code, installation instructions, example inputs, and test materials for [CircuForge](https://gitlab.igem.org/2026/software/jlu-fbh/circuforge) and [TorusFold](https://gitlab.igem.org/2026/software/jlu-fbh/torusfold-hybrid). The [Usage guide](#usage) illustrates the browser workflows, and [Installation and API](#installation) provides the execution paths and programmatic interfaces.",
-            "Teams can begin CircuForge with compatible expression data, a known protein, or reviewed peptides, then supply their own backbone for construct design. TorusFold’s [saved-model viewer](#software-torusfold-model) provides an immediate starting point for structure inspection; teams can then configure the prediction environment for their own mature RNA sequences.",
-            "Both tools can be used independently or connected through the mature RNA file. Keeping the construct ID, software version, parameters, and sequence hash with the outputs preserves the link between the reviewed design and the subsequent analysis. Standard-format exports, diagnostic files, and the [reference-case materials](#reference-case) support continued inspection, transfer, and adaptation by other researchers.",
-          ],
-        },
-      ]),
-      anchorIds: ["community-reuse", "6-user-testing-and-community-reuse"],
-    },
-    {
       id: "software-validation",
-      index: "6",
+      index: "3",
       kicker: "",
       navLabel: "Validation",
       title: "Validation",
@@ -1846,15 +1471,15 @@ export const softwarePage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "We evaluated CircuForge against the experimentally tested Combined design and checked TorusFold through a crystal-started refinement comparison and verification of its delivered model. Together, these checks connect **experimentally informed selection, sequence-checked assembly, and inspectable computational outputs**.",
+            "To assess the workflow illustrated above, we evaluated CircuForge against the experimentally tested combined design and checked TorusFold through a crystal-started refinement comparison and verification of its delivered model. Together, these checks connect **experimentally informed selection, sequence-checked assembly, and inspectable computational outputs**.",
           ],
         },
         {
           type: "subheading",
           level: 3,
           id: "software-validation-from-candidate-epitopes-to-the-combined-design",
-          index: "6.1",
-          title: "From candidate epitopes to the Combined design",
+          index: "3.1",
+          title: "From Candidate Epitopes to the Combined Design",
           anchorIds: [
             "project-selection",
             "71-from-candidate-epitopes-to-the-combined-design",
@@ -1868,6 +1493,8 @@ export const softwarePage: WikiPageContent = {
         },
         {
           type: "table",
+          caption:
+            "Table 2. Epitope screening and construct selection across four target antigens, from candidate windows to coding segments selected for the Combined construct.",
           headers: [
             "Stage",
             "TROP2",
@@ -1954,6 +1581,8 @@ export const softwarePage: WikiPageContent = {
         },
         {
           type: "table",
+          caption:
+            "Table 3. Overlapping predicted epitopes encoded as continuous coding segments, with shared residues, encoded sequences, and lengths.",
           headers: [
             "Coding segment",
             "Original predicted epitopes",
@@ -1981,7 +1610,7 @@ export const softwarePage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Within each antigen group, first-round IFN-γ ELISpot counts provided a within-run ranking for selecting two coding segments for Combined. The resulting eight-segment design includes the merged Nectin4 CTL1 sequence and therefore covers nine original predicted epitopes. Sequencing, protein-expression, and subsequent functional assays provided biological evidence for the Wet Lab Combined construct. CircuForge carried the selected coding design through the assembly, backbone-integration, and export checks described below.",
+            "Within each antigen group, first-round IFN-γ ELISpot counts provided a within-run ranking for selecting two coding segments for Combined. The resulting eight-segment design includes the merged Nectin4 CTL1 sequence and therefore covers nine original predicted epitopes. Sequencing, protein expression, and subsequent functional assays provided biological evidence for the Wet Lab Combined construct. CircuForge carried the selected coding design through the assembly, backbone-integration, and export checks described below.",
           ],
         },
         {
@@ -1998,8 +1627,8 @@ export const softwarePage: WikiPageContent = {
           type: "subheading",
           level: 3,
           id: "software-validation-sequence-checked-assembly-and-export-of-combined",
-          index: "6.2",
-          title: "Sequence-checked assembly and export of Combined",
+          index: "3.2",
+          title: "Sequence-Checked Assembly and Export of Combined",
           anchorIds: [
             "reference-case",
             "72-sequence-checked-assembly-and-export-of-combined",
@@ -2008,11 +1637,13 @@ export const softwarePage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "CircuForge turned the eight selected coding segments into **an assembled, sequence-checked construct in the supplied backbone**. Using the 5,267 bp Combined reference plasmid, the compiler joined the segments in their recorded order with seven GSGGS linkers, generated the coding DNA, and replaced the 336 bp antigen-cassette interval at bases 1606–1941 (one-based, inclusive). The checks confirmed the payload translation, linker arrangement, surrounding backbone, and exported design files.",
+            "Using the eight coding segments selected through the experimental review above, CircuForge reconstructed the combined coding design in the supplied backbone and checked its translation and exports. Using the 5,267 bp combined reference plasmid, the compiler joined the segments in their recorded order with seven GSGGS linkers, generated the coding DNA, and replaced the 336 bp antigen-cassette interval at bases 1606–1941 (one-based, inclusive). The checks confirmed the payload translation, linker arrangement, surrounding backbone, and exported design files.",
           ],
         },
         {
           type: "table",
+          caption:
+            "Table 4. Recorded checks of construct integrity, export readback, and evidence archive consistency, with the scope of each result.",
           headers: ["Check", "Recorded result", "What this establishes"],
           rows: [
             [
@@ -2060,22 +1691,23 @@ export const softwarePage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The DNA reference-case records identify compiler `CIRCURE-CONSTRUCT-2.3.0`, exporter `CIRCURE-EXPORT-2.2.0`, and R 4.5.3. The local compiler call took 1.61 s. The resulting design preserves the selected protein sequence while generating a synonymous DNA realization; further codon-optimization options are discussed in [Future improvements](#future-improvements).",
+            "The DNA reference-case records identify compiler `CIRCURE-CONSTRUCT-2.3.0`, exporter `CIRCURE-EXPORT-2.2.0`, and R 4.5.3. The local compiler call took 1.61 s. The resulting design preserves the selected protein sequence while generating a synonymous DNA realization; Further codon-optimization options are discussed in [Future improvements](#future-improvements).",
             "The reference-case evidence contains reference and generated sequences, comparison tables, and a standalone archived-file verifier. These materials let other teams inspect the edit and check the recorded sequence relationships directly.",
+            "We also checked Registry annotation against our team’s published Part sequences. Exact matching against the original feature map identified 17 of 21 basic parts. After we added four whole-unit annotations, CircuForge identified and annotated all 21 Part IDs, with no exact matches to three control sequences absent from the plasmid.",
           ],
         },
         {
           type: "subheading",
-          level: 4,
+          level: 3,
           id: "software-validation-biological-evidence-for-the-reference-design",
-          index: "",
-          title: "Biological evidence for the reference design",
+          index: "3.3",
+          title: "Biological Evidence for the Reference Design",
           anchorIds: ["biological-evidence-for-the-reference-design"],
         },
         {
           type: "prose",
           paragraphs: [
-            "The molecular and functional results below characterize the **Wet Lab Combined reference whose selected coding design CircuForge reconstructed**. BSJ sequencing identifies the circular RNA junction, and anti-FLAG immunoblotting detects protein expression. These assays establish the biological context of the reference design; the sequence comparison and export checks above measure the software’s reconstruction of that design.",
+            "The molecular and functional results below characterize the **Wet Lab Combined reference** that CircuForge reconstructed from the selected coding design. BSJ sequencing identifies the circular RNA junction, and anti-FLAG immunoblotting detects protein expression. These assays establish the biological context of reference design; the sequence comparison and export checks above measure the software’s reconstruction of that design.",
           ],
         },
         {
@@ -2096,8 +1728,8 @@ export const softwarePage: WikiPageContent = {
           type: "subheading",
           level: 3,
           id: "software-validation-linking-the-reference-construct-to-the-rna-model-input",
-          index: "6.3",
-          title: "Linking the reference construct to the RNA-model input",
+          index: "3.4",
+          title: "Linking the Reference Construct to the RNA-Model Input",
           anchorIds: [
             "73-linking-the-reference-construct-to-the-rna-model-input",
           ],
@@ -2105,7 +1737,7 @@ export const softwarePage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "We compared reference plasmid bases 723–2735 with TorusFold’s saved 2,013 nt input. After removing whitespace, uppercasing, and converting T to U, the two sequences **matched exactly**, with zero position differences and no rotation or reversal. Both have the normalized RNA SHA-256:",
+            "To connect the reference design with the saved RNA model, we compared reference plasmid bases 723–2735 with TorusFold’s saved 2,013 nt input. After removing whitespace, uppercasing, and converting T to U, the two sequences **matched exactly**, with zero position differences and no rotation or reversal. Both have the normalized RNA SHA-256:",
           ],
         },
         {
@@ -2123,8 +1755,8 @@ export const softwarePage: WikiPageContent = {
           type: "subheading",
           level: 3,
           id: "software-validation-torusfold-refinement-and-delivered-model-verification",
-          index: "6.4",
-          title: "TorusFold refinement and delivered-model verification",
+          index: "3.5",
+          title: "TorusFold Refinement and Delivered-Model Verification",
           anchorIds: [
             "torusfold-validation",
             "74-torusfold-refinement-and-delivered-model-verification",
@@ -2133,13 +1765,18 @@ export const softwarePage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "**Crystal-started refinement check.** We checked TorusFold’s refinement settings against the L1 ribozyme structure determined by X-ray crystallography, PDB 2OIU (**Robertson and Scott, 2007**). After refinement starting from the crystal coordinates, the repository reports an RMSD of **1.83 Å** relative to the experimental structure. This refinement preservation check provides a reference for calibrating the settings against a known starting structure.",
+            "With the model input linked to the reference sequence, we next examined refinement behavior and the consistency of the delivered structural files.",
+            "In a 200 nt test fragment, non-adjacent phosphorus-atom close-contact pairs decreased from 8 to 4 to 3 across initial reconstruction, PPR repair, and Amber refinement. These measurements provide evidence of improved backbone geometry in the tested fragment.",
+            "**Crystal-started refinement check.** We checked TorusFold’s refinement settings against the L1 ribozyme structure determined by X-ray crystallography, PDB 2OIU. After refinement starting from the crystal coordinates, the repository reports an RMSD of **1.83 Å** relative to the experimental structure. This refinement preservation check provides a reference for calibrating the settings against a known starting structure.",
             "**Inspectable model delivery.** The repository supplies the 2,013 nt input sequence, PDB coordinates, an interactive viewer, and provenance records for the saved PPR-repaired stage. Researchers can inspect the model, locate the circular junction, and relate the coordinates to the recorded sequence and computational stage.",
-            "We verified the delivered artifacts with NumPy 2.3.5. The original-LF sequence reproduced 20/32 checks; the Windows-CRLF sequence reproduced 19/32.",
+            "We verified the delivered artifacts with NumPy 2.3.5. Both the original-LF and Windows-CRLF sequence representations reproduced 20/20 checks with zero failures.",
+            "These comprise eight artifact/panel checks and twelve joint_J self-consistency checks; historical per-coordinate sim_ref checks are excluded from this total.",
           ],
         },
         {
           type: "table",
+          caption:
+            "Table 5. Verification results for sequence files with LF and Windows-converted CRLF line endings.",
           headers: [
             "Sequence-file representation",
             "Checks reproduced",
@@ -2147,50 +1784,49 @@ export const softwarePage: WikiPageContent = {
             "Exit status",
           ],
           rows: [
-            ["Original LF bytes", "20/32", "12", "1"],
-            ["Windows-converted CRLF bytes", "19/32", "13", "1"],
+            ["Original LF bytes", "20/20", "0", "0"],
+            ["Windows-converted CRLF bytes", "20/20", "0", "0"],
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "The extra CRLF failure is the file-byte hash; the normalized nucleotide sequence is unchanged. The twelve shared failures concern the recorded `intra_pc` statistic across twelve runs. The verification log retains those failures and the additional coordinate diagnostics, while the resource notes identify the saved measurements. Metric reconciliation and sequence-to-structure benchmarking are priorities in [Future improvements](#future-improvements).",
+            "The CRLF raw byte hash differs only by line endings; after normalization, the sequence hash is identical. All twelve `joint_J` checks pass. The corrected histogram-based estimates are about 3–4% lower than the recorded sim/ref values for the main runs and about 15% lower for the table arms.",
           ],
         },
         {
           type: "subheading",
           level: 3,
           id: "software-validation-software-checks-and-measured-execution",
-          index: "6.5",
-          title: "Software checks and measured execution",
+          index: "3.6",
+          title: "Software Checks and Measured Execution",
           anchorIds: ["75-software-checks-and-measured-execution"],
         },
         {
           type: "prose",
           paragraphs: [
+            "Software checks and recorded resource measurements help other teams assess what was tested and what computing setup may be needed for reuse.",
             "The recorded evaluation yielded **32/32 passing CircuForge API tests** and **17/17 passing archived-file consistency checks**. The API suite exercised local API behavior in an isolated Python 3.13.7 environment using offline fixtures and test doubles. The archived-file check independently examined the supplied sequences, coding relationships, archive integrity, and reference-to-model input match. These are separate evaluations with their own recorded scopes.",
           ],
         },
         {
           type: "table",
+          caption:
+            "Table 6. Recorded results for CircuForge API checks, archived reference-file consistency, and TorusFold artifact verification.",
           headers: ["Evaluation", "Recorded result"],
           rows: [
-            [
-              "CircuForge API behavior",
-              "32 passed; 0 failed",
-            ],
-            [
-              "Archived reference-file consistency",
-              "17 passed; 0 failed",
-            ],
+            ["CircuForge API behavior", "32 passed; 0 failed"],
+            ["Archived reference-file consistency", "17 passed; 0 failed"],
             [
               "TorusFold delivered-artifact verification",
-              "Original LF: 20 reproduced; 12 failed",
+              "20 passed; 0 failed",
             ],
           ],
         },
         {
           type: "table",
+          caption:
+            "Table 7. Recorded runtime and memory measurements for CircuForge and TorusFold, with their environments and measurement scopes.",
           headers: ["Task", "Recorded measurement", "Measurement scope"],
           rows: [
             [
@@ -2205,7 +1841,7 @@ export const softwarePage: WikiPageContent = {
             ],
             [
               "TorusFold recorded GPU path",
-              "Approximately 60 GB peak unified memory on the reference APU",
+              "Approximately 30 GB peak unified memory on the reference APU",
               "Repository-reported hardware-specific resource measurement",
             ],
           ],
@@ -2220,23 +1856,557 @@ export const softwarePage: WikiPageContent = {
       anchorIds: ["validation", "7-validation"],
     },
     {
-      id: "software-installation-and-api",
-      index: "7",
+      id: "software-development",
+      index: "4",
       kicker: "",
-      navLabel: "Installation and API",
-      title: "Installation and API",
+      navLabel: "Development",
+      title: "Development",
+      summary: "",
+      blocks: blocks([
+        {
+          type: "prose",
+          paragraphs: [
+            "The following sections explain the design choices, engineering changes, and user feedback behind the workflows and checks described above.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 3,
+          id: "software-architecture-and-design-choices",
+          index: "4.1",
+          title: "Architecture and Design Choices",
+          anchorIds: ["architecture", "4-architecture-and-design-choices"],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-architecture-and-design-choices-circuforge",
+          index: "",
+          title: "CircuForge",
+          anchorIds: ["41-circuforge"],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "CircuForge organizes statistical analysis, external-data retrieval, candidate review, and sequence design around research tasks. The **Design Cart stores confirmed targets and epitopes**, connecting analysis results to later assembly.",
+          ],
+        },
+        {
+          type: "figure",
+          asset: "figure-13-circuforge-modules",
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-architecture-and-design-choices-choice-1-a-guided-browser-workflow",
+          index: "",
+          title: "Choice 1. A guided browser workflow",
+          anchorIds: ["choice-1-a-guided-browser-workflow"],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "We chose Shiny to put analysis tables, plots, and design controls in a browser that researchers can use directly (**Posit Software, PBC, n.d.**). limma, edgeR, and the sequence-handling and visualization packages support analysis, data processing, and result review (**Ritchie et al., 2015; Chen et al., 2025**).",
+            "The guided workflow **reduces the need to write scripts**. We prioritized a defined sequence of research tasks so users can review results, confirm selections, and carry a design through assembly and export in one interface.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-architecture-and-design-choices-choice-2-separating-interactive-analysis-from-longer-tasks",
+          index: "",
+          title: "Choice 2. Separating interactive analysis from longer tasks",
+          anchorIds: [
+            "choice-2-separating-interactive-analysis-from-longer-tasks",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Longer prediction jobs need status tracking, while interactive result review needs to remain responsive. Shiny handles interactive analysis, and a local FastAPI service manages tasks that benefit from separate tracking. Docker Compose starts both services together. This makes jobs easier to track, while requiring developers to maintain two runtime environments.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-architecture-and-design-choices-choice-3-transferring-confirmed-candidates-through-the-design-cart",
+          index: "",
+          title:
+            "Choice 3. Transferring confirmed candidates through the Design Cart",
+          anchorIds: [
+            "choice-3-transferring-confirmed-candidates-through-the-design-cart",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Candidates need to retain their peptide sequences, HLA alleles, sources, and review records as they move to the next stage. The Design Cart uses **stable IDs, deduplication, and preserved order** to transfer confirmed candidates. Project Bundles support saving and restoring work across sessions.",
+            "We keep user confirmation as a separate step so software recommendations and researchers’ design decisions are recorded separately. KEEP, REVIEW, and REJECT display QC recommendations. Researchers confirm which candidates to use before proceeding to assembly.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-architecture-and-design-choices-choice-4-retaining-sources-and-retrieval-records",
+          index: "",
+          title: "Choice 4. Retaining sources and retrieval records",
+          anchorIds: ["choice-4-retaining-sources-and-retrieval-records"],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Candidate review draws on biological resources that return information in different formats. Source adapters organize the required fields and retain available source identifiers, request states, and raw records. Saved responses support later review, while retrieval times and refresh controls help users decide when to update the information.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-architecture-and-design-choices-choice-5-verifiable-design-exports",
+          index: "",
+          title: "Choice 5. Verifiable design exports",
+          anchorIds: [
+            "cf-verified-export",
+            "choice-5-verifiable-design-exports",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Other software must be able to read the sequence and features correctly after export. CircuForge **reads core export formats back** and checks the information each format preserves against the source design. Format-specific verification checks sequences and supported annotations, giving researchers checked files to pass to downstream tools and collaborators.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-architecture-and-design-choices-torusfold",
+          index: "",
+          title: "TorusFold",
+          anchorIds: ["42-torusfold"],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "TorusFold organizes its modules around pairing information, fragment prediction, full-length reconstruction, and refinement. This lets long-RNA modeling run and be checked one stage at a time. Our reconstruction module uses fragment positions and shared residues to place local coordinates on the same circular RNA molecule.",
+          ],
+        },
+        {
+          type: "figure",
+          asset: "figure-14-torusfold-stages",
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-architecture-and-design-choices-choice-1-retaining-full-sequence-pairing-information-during-fragment-modeling",
+          index: "",
+          title:
+            "Choice 1. Retaining full-sequence pairing information during fragment modeling",
+          anchorIds: [
+            "choice-1-retaining-full-sequence-pairing-information-during-fragment-modeling",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "TorusFold retains **pairing information for the whole sequence** when dividing it into fragments, so later stages can use it to model the full molecule. We integrate ViennaRNA and configurable DivideFold+ information, passing candidate base pairs and their supporting information into modeling (**Omnes et al., 2026**). We retain the sources of the proposed pairs and records of which pairs were used. Researchers can compare suggestions from different sources and inspect the modeling settings.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-architecture-and-design-choices-choice-2-using-overlapping-fragments-as-alignment-references",
+          index: "",
+          title:
+            "Choice 2. Using overlapping fragments as alignment references",
+          anchorIds: [
+            "choice-2-using-overlapping-fragments-as-alignment-references",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "To let 3D prediction tools process a long input, we divide the sequence into **overlapping fragments** and use their overlaps as alignment references. The documented example runner uses a 200 nt segment setting with 30 nt overlaps. Configured predictors generate candidate structures for these fragments.",
+            "The overlaps give neighboring fragments shared residues that the program uses to recover their relative positions. This alignment information comes at the cost of some repeated prediction work in the overlapping regions.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-architecture-and-design-choices-choice-3-repairing-joins-and-refining-the-reconstructed-structure",
+          index: "",
+          title:
+            "Choice 3. Repairing joins and refining the reconstructed structure",
+          anchorIds: [
+            "choice-3-repairing-joins-and-refining-the-reconstructed-structure",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Joining fragment models requires handling fragment boundaries, circular closure, and steric clashes. TorusFold aligns shared residues and reconstructs full-length coordinates. It then uses structural constraints and physical refinement to repair joins and reduce steric clashes.",
+            "We save the reconstructed coordinates and their check results so researchers can locate joins and compare structures before and after repair.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-architecture-and-design-choices-choice-4-saving-stage-results-and-checkpoints",
+          index: "",
+          title: "Choice 4. Saving stage results and checkpoints",
+          anchorIds: ["choice-4-saving-stage-results-and-checkpoints"],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Long-RNA modeling has several time-consuming stages. Researchers need to monitor progress and reuse completed results after an interruption. TorusFold saves **intermediate structures, diagnostic files, and checkpoints** to support stage comparisons and recovery from saved checkpoints. We allocate additional storage and file management for these records so future teams can inspect or modify individual stages.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-architecture-and-design-choices-continuing-from-construct-design-to-structural-modeling",
+          index: "",
+          title: "Continuing from construct design to structural modeling",
+          anchorIds: [
+            "43-continuing-from-construct-design-to-structural-modeling",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Researchers pass the mature RNA file exported by CircuForge to TorusFold to model the corresponding RNA sequence. Saving the construct ID and sequence hash with the sequence links the model and its run records to the original design.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 3,
+          id: "software-engineering-iterations",
+          index: "4.2",
+          title: "Engineering Iterations",
+          anchorIds: ["engineering", "5-engineering-iterations"],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-engineering-iterations-circuforge-carrying-project-decisions-into-construct-design",
+          index: "",
+          title: "CircuForge: carrying project decisions into construct design",
+          anchorIds: [
+            "51-circuforge-carrying-project-decisions-into-construct-design",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "CircuForge V1.0 brought data import, target screening, and epitope prediction into one application. As our project moved from candidate analysis to construct design, we needed selected records, supporting evidence, and researcher decisions to remain connected through assembly and export. The following iterations became the V2.0 workflow.",
+          ],
+        },
+        {
+          type: "figure",
+          asset: "figure-15-workflow-evolution",
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-engineering-iterations-iteration-1-making-candidate-identity-and-researcher-decisions-explicit",
+          index: "",
+          title:
+            "Iteration 1. Making candidate identity and researcher decisions explicit",
+          anchorIds: [
+            "iteration-1-making-candidate-identity-and-researcher-decisions-explicit",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "We presented V1.0 at an online exchange involving five iGEM teams. The exchange prompted us to reflect on how to distinguish software recommendations from researchers’ final selections. We added **stage-specific IDs and Evidence Cards** to connect candidate identities with their supporting information. KEEP, REVIEW, and REJECT present software QC recommendations, while a separate confirmation step records which candidates the researcher selects for continued design.",
+          ],
+        },
+        {
+          type: "feature",
+          key: "software-implementation-1",
+        },
+        {
+          type: "figure",
+          asset: "figure-16-software-exchange",
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-engineering-iterations-iteration-2-preserving-confirmed-selections-in-the-design-cart",
+          index: "",
+          title:
+            "Iteration 2. Preserving confirmed selections in the Design Cart",
+          anchorIds: [
+            "iteration-2-preserving-confirmed-selections-in-the-design-cart",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Associate Professor Qingtian Guan suggested saving selected records before taking further action. We implemented the **Design Cart** to retain confirmed targets and epitopes, compare entries, remove duplicates, and preserve their assembly order. Project Bundles save these records across sessions, allowing researchers to continue a design with its sources and confirmed selections intact.",
+          ],
+        },
+        {
+          type: "feature",
+          key: "software-implementation-2",
+        },
+        {
+          type: "figure",
+          asset: "figure-17-consultation",
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-engineering-iterations-iteration-3-connecting-task-management-deployment-and-checked-exports",
+          index: "",
+          title:
+            "Iteration 3. Connecting task management, deployment, and checked exports",
+          anchorIds: [
+            "iteration-3-connecting-task-management-deployment-and-checked-exports",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Professor Xiangyu Meng’s software-engineering feedback informed separating module responsibilities, adding visible status tracking for longer jobs, and improving runtime documentation. We separated interactive analysis from task services, provided Docker Compose startup, and added export readback checks. Task records show request progress, while format-specific checks verify the sequences and supported annotations sent to downstream tools.",
+          ],
+        },
+        {
+          type: "feature",
+          key: "software-implementation-3",
+        },
+        {
+          type: "figure",
+          asset: "figure-18-team-discussion",
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "V2.0 combines these changes into a guided workflow from candidate review to construct export. The [reference-case evaluation](#reference-case) demonstrates how confirmed coding segments become an assembled, sequence-checked design within a supplied backbone.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-engineering-iterations-torusfold-connecting-fragment-prediction-reconstruction-and-refinement",
+          index: "",
+          title:
+            "TorusFold: connecting fragment prediction, reconstruction, and refinement",
+          anchorIds: [
+            "52-torusfold-connecting-fragment-prediction-reconstruction-and-refinement",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-engineering-iterations-iteration-1-preparing-the-project-sequence-for-fragment-prediction",
+          index: "",
+          title:
+            "Iteration 1. Preparing the project sequence for fragment prediction",
+          anchorIds: [
+            "iteration-1-preparing-the-project-sequence-for-fragment-prediction",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Our 2,013 nt mature circRNA required a modeling route that could use the predictors and computing resources available to us. We implemented **overlapping segmentation with recorded sequence positions**, allowing local predictions to retain their relationship to the complete RNA. Shared residues between neighboring fragments supply the alignment references for reconstruction.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-engineering-iterations-iteration-2-establishing-consistent-reconstruction-coordinates",
+          index: "",
+          title:
+            "Iteration 2. Establishing consistent reconstruction coordinates",
+          anchorIds: [
+            "iteration-2-establishing-consistent-reconstruction-coordinates",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Full-length reconstruction requires local predictions to share a consistent coordinate system. We corrected reconstruction anchors, rebuilt local coordinate frames, and passed pairing information through the reconstruction steps. These changes connected fragment positions, alignment references, and structural constraints in the assembled model. Saved stage structures allow researchers to inspect fragment joins and compare coordinates across reconstruction and repair.",
+          ],
+        },
+        {
+          type: "feature",
+          key: "software-implementation-4",
+        },
+        {
+          type: "feature",
+          key: "software-implementation-5",
+        },
+        {
+          type: "feature",
+          key: "software-implementation-6",
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-engineering-iterations-iteration-3-evaluating-refinement-through-structural-measurements",
+          index: "",
+          title:
+            "Iteration 3. Evaluating refinement through structural measurements",
+          anchorIds: [
+            "iteration-3-evaluating-refinement-through-structural-measurements",
+          ],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "We revised the base-pair guidance parameter `K_BPP` from 600 to 13.4. A separate 200 nt fragment test recorded **a reduction in non-adjacent phosphorus-atom close-contact pairs from eight to three** across reconstruction, PPR, and Amber refinement. The 2OIU comparison checked refinement starting from crystal coordinates against the known experimental structure.",
+          ],
+        },
+        {
+          type: "feature",
+          key: "software-implementation-7",
+        },
+        {
+          type: "subheading",
+          level: 3,
+          id: "software-user-testing-and-community-reuse",
+          index: "4.3",
+          title: "User Testing and Feedback",
+          anchorIds: ["6-user-testing-and-community-reuse"],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "We conducted **internal task-based user testing** of CircuForge and TorusFold. Participants were mainly team members with limited bioinformatics experience, including students from our Wet Lab and Human Practices (HP) groups. They worked through representative design and model-inspection tasks, allowing us to identify where task states, result organization, and guidance needed to be clearer. Their feedback informed the following improvements.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-user-testing-and-community-reuse-circuforge-user-testing",
+          index: "",
+          title: "CircuForge user testing",
+          anchorIds: ["61-circuforge-user-testing"],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "The CircuForge sessions followed the design workflow: importing data, reviewing a target, selecting epitopes, checking assembly order and junction peptides, generating a construct, and locating the exported files. Participants used the browser interface and Design list to carry their selections between stages.",
+          ],
+        },
+        {
+          type: "figure",
+          asset: "figure-19-circuforge-user-testing",
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Participants needed clearer answers to two questions: whether a submitted request had finished, and which files they should save after generating a construct. We revised **task-status messages and export guidance** to distinguish submission, processing, and result review, and to connect the generated design with its downloadable files. The implementation provides job IDs, status retrieval, and constructs export packages with readback checks.",
+          ],
+        },
+        {
+          type: "feature",
+          key: "software-implementation-8",
+        },
+        {
+          type: "feature",
+          key: "software-implementation-9",
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Follow-up sessions revisited these tasks, focusing on continuing through the workflow, identifying the returned results, and locating the corresponding exports. The V2.0 workflow keeps confirmed selections in the Design Cart and brings sequence files and validation materials together at the download step.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
+          id: "software-user-testing-and-community-reuse-torusfold-user-testing",
+          index: "",
+          title: "TorusFold user testing",
+          anchorIds: ["62-torusfold-user-testing"],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "TorusFold testing followed the user journey from sequence preparation and task monitoring to model inspection and output retrieval. Participants worked with the project example, located model and diagnostic files, rotated the RNA structure, changed its display, and inspected the back-splice junction. Stage structures provided material for comparing reconstruction and refinement.",
+          ],
+        },
+        {
+          type: "figure",
+          asset: "figure-20-torusfold-user-testing",
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Participants needed a clearer connection between the on-screen model, its computational stage, and the files used for further inspection. We improved **stage-aware model viewing and progress information**: the interface displays saved stage structures and identifies the stage being viewed, while progress and checkpoint controls help users follow the calculation. The changes include improvements to the stage-model display and viewer, progress, and checkpoints. A dedicated demo-view control also gives first-time users a direct entry to the project model.",
+          ],
+        },
+        {
+          type: "feature",
+          key: "software-implementation-10",
+        },
+        {
+          type: "feature",
+          key: "software-implementation-11",
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Follow-up testing focused on finding the final model, identifying the structures used for reconstruction–refinement comparison, and locating the circular junction. We aligned the result guidance with these tasks so users could move from model viewing to stage comparisons and diagnostic files.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 3,
+          id: "software-future-improvements",
+          index: "4.4",
+          title: "Future Improvements",
+          anchorIds: ["future-improvements", "9-future-improvements"],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Our next steps focus on helping researchers turn reviewed vaccine designs into experimental constructs and explore RNA structure with clearer guidance. Building on our project experience and internal user feedback, we plan to develop the following features.",
+            "**Optimize codons for the intended expression host.** We plan to let researchers choose their expression host and optimize the DNA encoding their selected peptide combination while keeping the amino acid sequence unchanged. CircuForge would consider user-specified codon preferences, GC content, and restriction sites. Researchers could compare the original and optimized sequences before choosing the DNA for their experiments.",
+            "**Review epitopes in their biological context.** We plan to show each peptide’s position on its source protein alongside signal-peptide and transmembrane regions. Researchers can inspect these regions when choosing epitopes and record the reason for each selection or exclusion. Saved screening conditions would also make it easier to repeat a defined selection procedure with another antigen or HLA background.",
+            "**Improve NCBI searches for human-protein similarity review.** We plan to improve how CircuForge submits NCBI BLASTP searches and retrieves their results, reducing repeated requests and making long waits easier to follow. Users would see whether a search has been submitted, is still running, or has finished, and could reopen saved matches without resubmitting the same search. Clearer handling of interruptions and timeouts would help researchers continue reviewing peptide similarities to human proteins without restarting every step.",
+            "**Make RNA structures easier to assess.** We plan to provide clearer explanations of fragment joins, close contacts between atoms, proposed base pairs, and refinement changes. Measurements in the viewer and downloadable reports would use consistent definitions and be checked against the saved structures. We also plan to test predictions on RNAs with experimentally determined structures, allowing researchers to assess how closely the predicted models match those structures. This would extend the current check of how refinement preserves a known starting structure.",
+            "**Help more teams run and use the tools.** We plan to provide simpler installation options, more small examples, and a complete demonstration from input preparation to result interpretation. For TorusFold, measurements across RNA lengths and computers would help teams estimate the time and memory needed for their own sequences. Further testing with researchers who have limited bioinformatics experience will cover installation, construct design, viewing saved models, and running new predictions. Their feedback will help us improve the steps that most affect practical use.",
+          ],
+        },
+      ]),
+    },
+    {
+      id: "software-installation-and-api",
+      index: "5",
+      kicker: "",
+      navLabel: "Installation and Reuse",
+      title: "Installation and Reuse",
       summary: "",
       blocks: blocks([
         {
           type: "subheading",
           level: 3,
+          id: "software-installation",
+          index: "5.1",
+          title: "Installation",
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "Teams can choose the setup that matches their task: using CircuForge, inspecting the saved TorusFold model, checking its delivered files, or computing a model for a new sequence.",
+          ],
+        },
+        {
+          type: "subheading",
+          level: 4,
           id: "software-installation-and-api-choose-the-task-first",
-          index: "7.1",
+          index: "",
           title: "Choose the task first",
           anchorIds: ["81-choose-the-task-first"],
         },
         {
           type: "table",
+          caption:
+            "Table 8. Requirements and starting points for using CircuForge, viewing and verifying TorusFold artifacts, and computing new models.",
           headers: ["Task", "What is needed", "Starting point"],
           rows: [
             [
@@ -2247,12 +2417,12 @@ export const softwarePage: WikiPageContent = {
             [
               "Inspect the existing TorusFold model",
               "A modern browser",
-              "Download and open the [self-contained viewer](图片和附件/torusfold-example-viewer.html)",
+              "Inspect the [interactive RNA model](#software-torusfold-model) on this page",
             ],
             [
               "Verify TorusFold artifacts",
               "Python and NumPy",
-              "`python scripts/verify_headline.py`; known failures are documented in Validation",
+              "`python scripts/verify_headline.py`",
             ],
             [
               "Compute a new TorusFold model",
@@ -2263,9 +2433,9 @@ export const softwarePage: WikiPageContent = {
         },
         {
           type: "subheading",
-          level: 3,
+          level: 4,
           id: "software-installation-and-api-circuforge",
-          index: "7.2",
+          index: "",
           title: "CircuForge",
           anchorIds: ["82-circuforge"],
         },
@@ -2293,22 +2463,22 @@ export const softwarePage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Open CircuForge, the API documentation or the OpenAPI specification. Load the demo and follow the illustrated steps to check the interface. Service startup, remote prediction and construct approval are separate states. Docker startup was not independently exercised during this document revision.",
+            "Open CircuForge, the API documentation, or the OpenAPI specification. Load the demo and follow the illustrated steps to check the interface. Service startup, remote prediction, and construct approval are separate states. Docker startup was not independently exercised during this document revision.",
             "CircuForge commits `renv.lock` and `api/requirements.lock`. Restore the matching environment for a source installation rather than mixing package versions from another run. The API lock pins its listed packages; it does not by itself freeze all transitive packages or container images.",
           ],
         },
         {
           type: "subheading",
-          level: 3,
+          level: 4,
           id: "software-installation-and-api-torusfold",
-          index: "7.3",
+          index: "",
           title: "TorusFold",
           anchorIds: ["83-torusfold"],
         },
         {
           type: "prose",
           paragraphs: [
-            "The saved viewer needs no prediction installation. For a new run, follow the repository’s [deployment guide](https://gitlab.igem.org/2026/software/jlu-fbh/torusfold-hybrid/-/blob/b6c4171ee2a4d68ff69954eee90144542e5f0569/docs/DEPLOY_EXTERNAL.md) in a dedicated Python 3.11+ environment.",
+            "The [interactive RNA model](#software-torusfold-model) needs no prediction installation. For a new run, follow the repository’s [deployment guide](https://gitlab.igem.org/2026/software/jlu-fbh/torusfold-hybrid/-/blob/b6c4171ee2a4d68ff69954eee90144542e5f0569/docs/DEPLOY_EXTERNAL.md) in a dedicated Python 3.11+ environment.",
             "For the core package and secondary-structure extra, the following command applies the committed constraints to the packages it installs:",
           ],
         },
@@ -2320,7 +2490,8 @@ export const softwarePage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "This prepares only that dependency layer; it does not install every predictor, optional stage or model weight. The lock records NumPy 2.4.3, SciPy 1.17.1, OpenMM 8.5.2 and ViennaRNA 2.7.2, but its GPU entries are specific to the reference ROCm/APU environment. `pyproject.toml` still leaves NumPy and SciPy unversioned, so `pip install -e .` alone does not reproduce the locked environment. Portable CPU/GPU installation profiles remain an improvement item.",
+            "This prepares only that dependency layer; it does not install every predictor, optional stage, or model weight. The lock records NumPy 2.4.3, SciPy 1.17.1, OpenMM 8.5.2, and ViennaRNA 2.7.2. TorusFold is developed using PyTorch and is compatible with most GPUs, including NVIDIA and AMD GPUs, as well as Huawei Ascend AI accelerators. `pyproject.toml` still leaves NumPy and SciPy unversioned, so `pip install -e .` alone does not reproduce the locked environment.",
+            "We also added a “One-Click Environment Setup” option to the graphical interface. It offers two download modes—Mainland China and Other Regions—and automatically connects to nodes to download the required base model weights and dependencies.",
             "Configure the external paths and weights, then start the local interface:",
           ],
         },
@@ -2343,19 +2514,27 @@ export const softwarePage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The runner uses a local `sequence.txt` when supplied, otherwise the committed `artifacts/2013nt/sequence.txt`. Full-run configuration and resource costs differ from simply starting the web server. Successful submission or creation of an output file is not proof that all predictors or refinement stages completed. Very short debugging sequences can produce noncircular outputs; they are not reliable circular-model test cases.",
+            "The runner uses a local `sequence.txt` when supplied; otherwise, it uses the committed `artifacts/2013nt/sequence.txt`. Full-run configuration and resource costs differ from simply starting the web server. Successful submission or creation of an output file is not proof that all predictors or refinement stages completed. Very short debugging sequences can produce noncircular outputs; They are not reliable circular-model test cases.",
           ],
         },
         {
           type: "subheading",
           level: 3,
           id: "software-installation-and-api-integration-and-api",
-          index: "7.4",
+          index: "5.2",
           title: "Integration and API",
           anchorIds: ["integration-api", "84-integration-and-api"],
         },
         {
+          type: "prose",
+          paragraphs: [
+            "For teams connecting these tasks to their own analysis scripts, the local interfaces below support construct compilation, sequence submission, and status retrieval.",
+          ],
+        },
+        {
           type: "table",
+          caption:
+            "Table 9. API endpoints and their purposes in CircuForge and TorusFold.",
           headers: ["Tool", "Endpoint", "Purpose"],
           rows: [
             [
@@ -2453,49 +2632,28 @@ export const softwarePage: WikiPageContent = {
           type: "subheading",
           level: 3,
           id: "software-installation-and-api-network-modes",
-          index: "7.5",
-          title: "Network modes",
+          index: "5.3",
+          title: "Network Modes",
           anchorIds: ["85-network-modes"],
         },
         {
           type: "prose",
           paragraphs: [
-            "CircuForge’s `CIRCURE_NETWORK_MODE` accepts `auto`, `online` or `offline`; the default is `auto`. Offline mode disables new IEDB and NCBI requests. Saved data and local compilation have different prerequisites from fresh remote results. Check Service status and retain the run’s request, model settings and returned output. A timeout, missing prediction or queued job is not a negative biological result.",
+            "CircuForge’s `CIRCURE_NETWORK_MODE` accepts `auto`, `online`, or `offline`; the default is `auto`. Offline mode disables new IEDB and NCBI requests. Saved data and local compilation have different prerequisites from fresh remote results. Check Service status and retain the run’s request, model settings, and returned output. A timeout, missing prediction, or queued job is not a negative biological result.",
           ],
         },
-      ]),
-      anchorIds: ["installation", "8-installation-and-api"],
-    },
-    {
-      id: "software-future-improvements",
-      index: "8",
-      kicker: "",
-      navLabel: "Future improvements",
-      title: "Future improvements",
-      summary: "",
-      blocks: blocks([
         {
-          type: "prose",
-          paragraphs: [
-            "Our next steps focus on helping researchers turn reviewed vaccine designs into experimental constructs and explore RNA structure with clearer guidance. Building on our project experience and internal user feedback, we plan to develop the following features.",
-            "**Optimize codons for the intended expression host.** We plan to let researchers choose their expression host and optimize the DNA encoding their selected peptide combination while keeping the amino-acid sequence unchanged. CircuForge would consider codon preferences, GC content, and restriction sites specified by the user. Researchers could compare the original and optimized sequences before choosing the DNA for their experiments.",
-            "**Review epitopes in their biological context.** We plan to show each peptide’s position on its source protein alongside signal-peptide and transmembrane regions. Researchers could inspect these regions while choosing epitopes and save the reason for each selection or exclusion. Saved screening conditions would also make it easier to repeat a defined selection procedure with another antigen or HLA background.",
-            "**Improve NCBI searches for human-protein similarity review.** We plan to improve how CircuForge submits NCBI BLASTP searches and retrieves their results, reducing repeated requests and making long waits easier to follow. Users would see whether a search has been submitted, is still running, or has finished, and could reopen saved matches without submitting the same search again. Clearer handling of interruptions and timeouts would help researchers continue reviewing peptide similarities to human proteins without restarting every step.",
-            "**Make RNA structures easier to assess.** We plan to give clearer explanations of fragment joins, close contacts between atoms, proposed base pairs, and changes during refinement. Measurements in the viewer and downloadable reports would use consistent definitions and be checked against the saved structures. We also plan to test predictions on RNAs with experimentally determined structures, allowing researchers to assess how closely the predicted models match those structures. This would extend the current check of how refinement preserves a known starting structure.",
-            "**Help more teams run and use the tools.** We plan to provide simpler installation options, more small examples, and a complete demonstration from input preparation to result interpretation. For TorusFold, measurements across RNA lengths and computers would help teams estimate the time and memory needed for their own sequences. Further testing with researchers who have limited bioinformatics experience will cover installation, construct design, viewing saved models, and running new predictions. Their feedback will help us improve the steps that most affect practical use.",
+          type: "subheading",
+          level: 3,
+          id: "software-open-source-and-reuse",
+          index: "5.4",
+          title: "Open Source and Reuse",
+          anchorIds: [
+            "open-source",
+            "10-open-source-and-reuse",
+            "community-reuse",
           ],
         },
-      ]),
-      anchorIds: ["future-improvements", "9-future-improvements"],
-    },
-    {
-      id: "software-open-source-and-reuse",
-      index: "9",
-      kicker: "",
-      navLabel: "Open source and reuse",
-      title: "Open source and reuse",
-      summary: "",
-      blocks: blocks([
         {
           type: "prose",
           paragraphs: [
@@ -2504,16 +2662,18 @@ export const softwarePage: WikiPageContent = {
         },
         {
           type: "table",
+          caption:
+            "Table 10. Source repositories, documentation, and licenses for CircuForge and TorusFold.",
           headers: ["Tool", "Source and documentation", "License"],
           rows: [
             [
               "CircuForge",
-              "[Repository and README](https://gitlab.igem.org/2026/software/jlu-fbh/circuforge) · [Setup and use](#installation)",
+              "[Repository and README](https://gitlab.igem.org/2026/software/jlu-fbh/circuforge)·Setup and use",
               "[Apache-2.0](https://gitlab.igem.org/2026/software/jlu-fbh/circuforge/-/blob/main/LICENSE)",
             ],
             [
               "TorusFold",
-              "[Repository and README](https://gitlab.igem.org/2026/software/jlu-fbh/torusfold-hybrid) · [Setup and use](#installation)",
+              "[Repository and README](https://gitlab.igem.org/2026/software/jlu-fbh/torusfold-hybrid)·Setup and use",
               "[Apache-2.0](https://gitlab.igem.org/2026/software/jlu-fbh/torusfold-hybrid/-/blob/main/LICENSE)",
             ],
           ],
@@ -2527,10 +2687,26 @@ export const softwarePage: WikiPageContent = {
         },
         {
           type: "subheading",
+          level: 4,
+          id: "software-user-testing-and-community-reuse-getting-started-as-another-team",
+          index: "",
+          title: "Getting started as another team",
+          anchorIds: ["63-getting-started-as-another-team"],
+        },
+        {
+          type: "prose",
+          paragraphs: [
+            "The official iGEM GitLab repositories provide source code, installation instructions, example inputs, and test materials for [CircuForge](https://gitlab.igem.org/2026/software/jlu-fbh/circuforge) and [TorusFold](https://gitlab.igem.org/2026/software/jlu-fbh/torusfold-hybrid). Usage illustrates the browser workflows, and Installation and Reuse provide execution paths and programmatic interfaces.",
+            "Teams can begin CircuForge with compatible expression data, a known protein, or reviewed peptides, then supply their own backbone for construct design. TorusFold’s [saved-model viewer](#software-torusfold-model) provides an immediate starting point for structure inspection; teams can then configure the prediction environment for their own mature RNA sequences.",
+            "You can use both tools independently or connect them through a mature RNA file. Keeping the construct ID, software version, parameters, and sequence hash with the outputs preserves the link between the reviewed design and the subsequent analysis. Standard-format exports, diagnostic files, and [reference-case materials](#reference-case) support continued inspection, transfer, and adaptation by other researchers.",
+          ],
+        },
+        {
+          type: "subheading",
           level: 3,
           id: "software-open-source-and-reuse-external-tools-models-and-attribution",
-          index: "9.1",
-          title: "External tools, models and attribution",
+          index: "5.5",
+          title: "External Tools and Attribution",
           anchorIds: [
             "external-models",
             "external-tools-models-and-attribution",
@@ -2544,6 +2720,8 @@ export const softwarePage: WikiPageContent = {
         },
         {
           type: "table",
+          caption:
+            "Table 11. External resources and software used in the workflow, with their contributions and reuse information.",
           headers: [
             "Resource",
             "Contribution to the workflow",
@@ -2562,7 +2740,7 @@ export const softwarePage: WikiPageContent = {
             ],
             [
               "OpenMM",
-              "Relaxes structures using physical restraints (**Eastman et al., 2024**)",
+              "Relaxes structures using physical restraints ",
               "Reference environment: 8.5.2; keep the computing platform and settings with each run",
             ],
             [
@@ -2581,31 +2759,31 @@ export const softwarePage: WikiPageContent = {
               "Pretrained model files and their terms are provided by the upstream project",
             ],
             [
-              "PyRosetta and other optional stages",
+              "PyRosetta (**PyRosetta, n.d.**) and other optional stages",
               "Additional structural refinement",
               "Optional installation under the applicable upstream license",
             ],
             [
-              "3Dmol.js and pako",
+              "3Dmol.js (**3Dmol.js, n.d.**)",
               "Displays saved RNA structures and decompresses viewer data",
-              "The viewer is accompanied by the [3Dmol](evidence/third-party/3Dmol-LICENSE.txt) and [pako](evidence/third-party/pako-LICENSE.txt) notices",
+              "The viewer is accompanied by the [3Dmol](https://static.igem.wiki/teams/6056/wiki/files/docs/3dmol-license.pdf) notices",
             ],
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Third-party software, datasets, and pretrained model files retain their own licenses. TorusFold integrates upstream predictors with our reconstruction and refinement stages; predictor authorship and training-data sources are attributed to the corresponding upstream projects. The resource notes provide the available source information for the delivered example. We plan to extend future run records with the exact predictor versions and pretrained model files used for each result.",
-            "We thank the iGEM Foundation and the iGEM Registry team for providing and maintaining the Registry and its public API. CircuForge’s Registry client acknowledges the request-cooldown approach used by the **iGEM Munich 2025 Registry client** (**iGEM Munich, 2025**). The **upstream license and copyright notice** accompany this acknowledgement.",
-            "We welcome other teams to test the examples, adapt the tools to their own projects, and share improvements through the repositories. Begin with the [Usage guide](#usage), keep the input sequence and software version with the results, and use the repository issue trackers to report problems or suggest features. The official project page is [2026.igem.wiki/jlu-fbh/software](https://2026.igem.wiki/jlu-fbh/software).",
+            "Third-party software, datasets, and pretrained model files retain their own licenses. TorusFold integrates upstream predictors with our reconstruction and refinement stages; we attribute predictor authorship and training-data sources to the corresponding upstream projects. The resource notes provide the available source information for the delivered example. We plan to extend future run records with the exact predictor versions and pretrained model files used for each result.",
+            "We thank the iGEM Foundation and the iGEM Registry team for providing and maintaining the Registry and its public API. CircuForge’s Registry client acknowledges the request-cooldown approach used by the **iGEM Munich Registry client** (**iGEM Munich, 2025**). The **upstream license and copyright notice** accompany this acknowledgment.",
+            "We welcome other teams to test the examples, adapt the tools to their own projects, and share improvements through the repositories. Begin with the Usage, keep the input sequence and software version with the results, and use the repository issue trackers to report problems or suggest features. The official project page is [2026.igem.wiki/jlu-fbh/software](https://2026.igem.wiki/jlu-fbh/software).",
           ],
         },
       ]),
-      anchorIds: ["open-source", "10-open-source-and-reuse"],
+      anchorIds: ["installation", "8-installation-and-api"],
     },
     {
       id: "software-references",
-      index: "10",
+      index: "",
       kicker: "",
       navLabel: "References",
       title: "References",
@@ -2617,18 +2795,32 @@ export const softwarePage: WikiPageContent = {
         },
       ]),
       anchorIds: ["references"],
+      hideSectionNumber: true,
     },
   ],
   links: [
-    { path: "/model", label: "Computational Biophysics" },
-    { path: "/hardware", label: "CirCore Hardware Device" },
-    { path: "/design", label: "Construct Architecture" },
-    { path: "/contribution", label: "Open-Source Repository" },
+    {
+      path: "/model",
+      label: "Computational Biophysics",
+    },
+    {
+      path: "/hardware",
+      label: "CirCore Hardware Device",
+    },
+    {
+      path: "/design",
+      label: "Construct Architecture",
+    },
+    {
+      path: "/contribution",
+      label: "Open-Source Repository",
+    },
   ],
-  "next": {
-    "path": "/hardware",
-    "label": "Hardware",
-    "title": "Designing the Conditions for Circularisation",
-    "description": "Sequence design is one part of the workflow. Explore CirCore, our design-stage reaction device for integrating temperature control, mixing and sealed handling during circRNA circularisation."
-  }
+  next: {
+    path: "/hardware",
+    label: "Hardware",
+    title: "Designing the Conditions for Circularisation",
+    description:
+      "Sequence design is one part of the workflow. Explore CirCore, our design-stage reaction device for integrating temperature control, mixing and sealed handling during circRNA circularisation.",
+  },
 };

@@ -1,4 +1,4 @@
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import { Button } from '@/components/ui/button';
 import { getPerspectiveData } from '@/types';
 import { getCharacterAssetPath, getSceneAssetPath } from '@/data/assets';
@@ -6,7 +6,7 @@ import { getCharacterAssetPath, getSceneAssetPath } from '@/data/assets';
 // HE Ending (Benign Outcome) Screen - Displayed after Playthrough 1 completion
 export default function HEEnding() {
   const { state, dispatch, openExitMenu } = useGame();
-  
+
   const perspective = state.currentPerspective!;
   const isZh = state.language === 'zh';
   const possessive = getPerspectiveData(perspective, state.language).possessive;

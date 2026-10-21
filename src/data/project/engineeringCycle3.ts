@@ -213,6 +213,7 @@ export const cycle3Section: WikiSection = {
           width: 733,
           height: 549,
           alt: "Figure C3-01A｜Plasmid verification by PCR｜质粒PCR核验",
+          figureLabel: "Figure C3-01A",
           caption: "Agarose-gel electrophoresis of target-region PCR products used to verify the four antigen-encoding plasmids."
         },
         {
@@ -239,6 +240,7 @@ export const cycle3Section: WikiSection = {
           width: 1585,
           height: 726,
           alt: "Figure C3-01B",
+          figureLabel: "Figure C3-01B",
           caption: "Sanger chromatogram of the Combined junction-spanning amplification product. The marked junction connects the expected 3′- and 5′-side sequences."
         }
           ]
@@ -320,10 +322,11 @@ export const cycle3Section: WikiSection = {
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-02a.avif",
-          width: 1297,
-          height: 537,
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/rna-vs-mrna.avif",
+          width: 1884,
+          height: 678,
           alt: "Figure C3-02A",
+          figureLabel: "Figure C3-02A",
           caption: "Combined circRNA and its linear precursor were compared by electrophoresis after incubation at 37 °C for 0, 24, 48 and 72 h."
         },
         {
@@ -332,6 +335,7 @@ export const cycle3Section: WikiSection = {
           width: 1302,
           height: 730,
           alt: "Figure C3-02B",
+          figureLabel: "Figure C3-02B",
           caption: "Relative band intensities were normalised to each RNA’s own 0 h value. Lines connect the measured time points."
         }
           ]
@@ -349,7 +353,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — 8.1 In vitro resistance of circRNA to degradation, compared with its linear precursor](https://2026.igem.wiki/jlu-fbh/results#results-5-1)"
+          "[Further details: Results — 7.1 In vitro resistance of circRNA to degradation, compared with its linear precursor](https://2026.igem.wiki/jlu-fbh/results#results-5-1)"
 ]
         }
           ]
@@ -411,6 +415,7 @@ export const cycle3Section: WikiSection = {
           width: 1854,
           height: 610,
           alt: "Figure C3-03",
+          figureLabel: "Figure C3-03",
           caption: "The 2,013 nt Combined sequence was divided into ten overlapping fragments. Hatched regions indicate shared sequence between neighbouring fragments. The diagram uses 0-based half-open coordinates; Table C3-02 lists the corresponding 1-based inclusive positions."
         }
           ]
@@ -524,6 +529,7 @@ export const cycle3Section: WikiSection = {
           width: 1018,
           height: 369,
           alt: "Figure C3-04A",
+          figureLabel: "Figure C3-04A",
           caption: "P-atom views of the same 200 nt Combined fragment before refinement (left) and after final Amber refinement (right). Both views originate from all-atom models of the same run."
         },
         {
@@ -553,6 +559,7 @@ export const cycle3Section: WikiSection = {
           width: 480,
           height: 369,
           alt: "Figure C3-04B",
+          figureLabel: "Figure C3-04B",
           caption: "The separately retained full-length Combined model represents 2,013 nt and contains 42,831 atoms. It is presented as a sequence-specific structural hypothesis."
         }
           ]
@@ -646,6 +653,7 @@ export const cycle3Section: WikiSection = {
           width: 1480,
           height: 812,
           alt: "Figure C3-05A",
+          figureLabel: "Figure C3-05A",
           caption: "Anti-FLAG Western blot with β-actin as the loading reference. The original circRNA and Blank lane labels are retained."
         },
         {
@@ -654,6 +662,7 @@ export const cycle3Section: WikiSection = {
           width: 1340,
           height: 441,
           alt: "Figure C3-05B",
+          figureLabel: "Figure C3-05B",
           caption: "Representative flow-cytometry plots show CD80⁺CD86⁺ DCs across the five circRNA groups."
         },
         {
@@ -662,6 +671,7 @@ export const cycle3Section: WikiSection = {
           width: 828,
           height: 766,
           alt: "Figure C3-05C",
+          figureLabel: "Figure C3-05C",
           caption: "CD80⁺CD86⁺ DC frequencies are shown as mean ± SD; *** denotes P < 0.001 for Blank versus Combined."
         }
           ]
@@ -759,6 +769,7 @@ export const cycle3Section: WikiSection = {
           width: 1360,
           height: 1250,
           alt: "Figure C3-06A",
+          figureLabel: "Figure C3-06A",
           caption: "Representative flow-cytometry plots (top) and quantitative comparison (bottom) of CD8⁺CD69⁺ cells across the five circRNA groups, assessing the activation-associated T-cell response."
         },
         {
@@ -767,6 +778,7 @@ export const cycle3Section: WikiSection = {
           width: 1360,
           height: 1250,
           alt: "Figure C3-06B",
+          figureLabel: "Figure C3-06B",
           caption: "Representative flow-cytometry plots (top) and quantitative comparison (bottom) of CD8⁺CD28⁺ cells across the five circRNA groups, assessing the co-stimulation-associated phenotype."
         },
         {
@@ -775,6 +787,7 @@ export const cycle3Section: WikiSection = {
           width: 1360,
           height: 1250,
           alt: "Figure C3-06C",
+          figureLabel: "Figure C3-06C",
           caption: "Representative flow-cytometry plots (top) and quantitative comparison (bottom) of the CD45RO⁺CCR7⁻ population across the five circRNA groups, assessing the effector-memory-associated phenotype."
         }
           ]
@@ -792,7 +805,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — 6.3 T-cell activation and co-stimulation: CD69 and CD28](https://2026.igem.wiki/jlu-fbh/results#results-4-3)"
+          "[Further details: Results — 5.3 T-cell activation and co-stimulation: CD69 and CD28](https://2026.igem.wiki/jlu-fbh/results#results-4-3)"
 ]
         }
           ]
@@ -860,6 +873,7 @@ export const cycle3Section: WikiSection = {
           width: 736,
           height: 214,
           alt: "Figure C3-07",
+          figureLabel: "Figure C3-07",
           caption: "IFN-γ ELISpot comparison across the five second-round circRNA groups. Combined produced the highest recorded spot count, followed by the paired TROP2 CTL1+2 design."
         }
           ]
@@ -877,7 +891,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — 6.5 Round 2 ELISpot: the immunogenicity advantage of multi-epitope design](https://2026.igem.wiki/jlu-fbh/results#results-4-5)"
+          "[Further details: Results — 5.5 Round 2 ELISpot: the immunogenicity advantage of multi-epitope design](https://2026.igem.wiki/jlu-fbh/results#results-4-5)"
 ]
         }
           ]
@@ -951,6 +965,7 @@ export const cycle3Section: WikiSection = {
           width: 756,
           height: 451,
           alt: "Figure C3-08",
+          figureLabel: "Figure C3-08",
           caption: "Killing of MDA-MB-231 TNBC cells by T cells stimulated through DCs receiving Blank, TROP2 CTL1, TROP2 CTL2, TROP2 CTL1+2 or Combined circRNA, at effector-to-target ratios of 20:1, 40:1 and 80:1. Killing increased with the effector-to-target ratio, with Combined showing the highest recorded activity at all three ratios."
         }
           ]
@@ -968,7 +983,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — 6.6 Specific killing of TNBC target cells: MDA-MB-231](https://2026.igem.wiki/jlu-fbh/results#results-4-6)"
+          "[Further details: Results — 5.6 Specific killing of TNBC target cells: MDA-MB-231](https://2026.igem.wiki/jlu-fbh/results#results-4-6)"
 ]
         }
           ]
@@ -1025,6 +1040,7 @@ export const cycle3Section: WikiSection = {
           width: 694,
           height: 450,
           alt: "Figure C3-09",
+          figureLabel: "Figure C3-09",
           caption: "Combined-primed T cells showed substantially higher killing of MDA-MB-231 than of four HLA-A*02:01-positive non-tumour cell lines at both tested ratios. Values are mean±SD across three technical replicate wells per condition."
         }
           ]
@@ -1107,9 +1123,10 @@ export const cycle3Section: WikiSection = {
         {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c3-10.avif",
-          width: 699,
-          height: 486,
+          width: 897,
+          height: 652,
           alt: "Figure C3-10",
+          figureLabel: "Figure C3-10",
           caption: "Immature monocyte-derived DCs received empty LNP without circRNA cargo for 24 h. Relative viability remained near baseline at 50–200 ng per well and decreased at 400 ng. Values are mean±SD across four replicate wells, normalised to the 0 ng control."
         }
           ]
@@ -1127,7 +1144,7 @@ export const cycle3Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — 8.3 Safe dose window of the LNP delivery system](https://2026.igem.wiki/jlu-fbh/results#results-5-3)"
+          "[Further details: Results — 7.3 Safe dose window of the LNP delivery system](https://2026.igem.wiki/jlu-fbh/results#results-5-3)"
 ]
         }
           ]

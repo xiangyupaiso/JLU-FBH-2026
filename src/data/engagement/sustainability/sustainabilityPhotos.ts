@@ -57,22 +57,22 @@ const liChengli: StakeholderPhotoSet = [
 const tianRunhui: StakeholderPhotoSet = [
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/02-runhui-tian-1.avif",
-    alt: "Interview with Runhui Tian — photograph 1",
+    alt: "Interview with Runhui Tian - photograph 1",
     caption: "Runhui Tian",
   },
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/02-runhui-tian-2.avif",
-    alt: "Interview with Runhui Tian — photograph 2",
+    alt: "Interview with Runhui Tian - photograph 2",
     caption: "Runhui Tian",
   },
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/02-runhui-tian-3.avif",
-    alt: "Interview with Runhui Tian — photograph 3",
+    alt: "Interview with Runhui Tian - photograph 3",
     caption: "Runhui Tian",
   },
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/02-runhui-tian-4.avif",
-    alt: "Interview with Runhui Tian — photograph 4",
+    alt: "Interview with Runhui Tian - photograph 4",
     caption: "Runhui Tian",
   },
 ];
@@ -80,17 +80,17 @@ const tianRunhui: StakeholderPhotoSet = [
 const tnbcPatients: StakeholderPhotoSet = [
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/03-tnbc-patients-1.avif",
-    alt: "TNBC Patients — photograph 1",
+    alt: "TNBC Patients - photograph 1",
     caption: "TNBC Patients",
   },
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/03-tnbc-patients-2.avif",
-    alt: "TNBC Patients — photograph 2",
+    alt: "TNBC Patients - photograph 2",
     caption: "TNBC Patients",
   },
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/03-tnbc-patients-3.avif",
-    alt: "TNBC Patients — photograph 3",
+    alt: "TNBC Patients - photograph 3",
     caption: "TNBC Patients",
   },
 ];
@@ -98,22 +98,22 @@ const tnbcPatients: StakeholderPhotoSet = [
 const wangJianguo: StakeholderPhotoSet = [
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/05-jianguo-wang-1.avif",
-    alt: "Jianguo Wang — photograph 1",
+    alt: "Jianguo Wang - photograph 1",
     caption: "Jianguo Wang",
   },
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/05-jianguo-wang-2.avif",
-    alt: "Jianguo Wang — photograph 2",
+    alt: "Jianguo Wang - photograph 2",
     caption: "Jianguo Wang",
   },
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/05-jianguo-wang-3.avif",
-    alt: "Jianguo Wang — photograph 3",
+    alt: "Jianguo Wang - photograph 3",
     caption: "Jianguo Wang",
   },
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/05-jianguo-wang-4.avif",
-    alt: "Jianguo Wang — photograph 4",
+    alt: "Jianguo Wang - photograph 4",
     caption: "Jianguo Wang",
   },
 ];
@@ -121,12 +121,12 @@ const wangJianguo: StakeholderPhotoSet = [
 const wenJing: StakeholderPhotoSet = [
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/06-jing-wen-1.avif",
-    alt: "Jing Wen — photograph 1",
+    alt: "Jing Wen - photograph 1",
     caption: "Jing Wen",
   },
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/06-jing-wen-2.avif",
-    alt: "Jing Wen — photograph 2",
+    alt: "Jing Wen - photograph 2",
     caption: "Jing Wen",
   },
 ];
@@ -134,17 +134,17 @@ const wenJing: StakeholderPhotoSet = [
 const wangLei: StakeholderPhotoSet = [
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/07-lei-wang-1.avif",
-    alt: "Lei Wang — photograph 1",
+    alt: "Lei Wang - photograph 1",
     caption: "Lei Wang",
   },
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/07-lei-wang-2.avif",
-    alt: "Lei Wang — photograph 2",
+    alt: "Lei Wang - photograph 2",
     caption: "Lei Wang",
   },
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/07-lei-wang-3.avif",
-    alt: "Lei Wang — photograph 3",
+    alt: "Lei Wang - photograph 3",
     caption: "Lei Wang",
   },
 ];
@@ -269,12 +269,12 @@ const globalYouth: StakeholderPhotoSet = [
 const cuiJiuwei: StakeholderPhotoSet = [
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/10-jiuwei-cui-1.avif",
-    alt: "Jiuwei Cui — photograph 1",
+    alt: "Jiuwei Cui - photograph 1",
     caption: "Jiuwei Cui",
   },
   {
     src: "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg3/10-jiuwei-cui-2.avif",
-    alt: "Jiuwei Cui — photograph 2",
+    alt: "Jiuwei Cui - photograph 2",
     caption: "Jiuwei Cui",
   },
 ];

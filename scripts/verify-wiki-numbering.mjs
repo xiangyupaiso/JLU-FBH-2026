@@ -58,6 +58,20 @@ try {
       if (!routeFile.includes("<WikiRoutePage") || /\bhideOutline\b/.test(routeFile)) continue;
 
       const original = JSON.stringify(page.sections);
+      if (/\bpreserveSectionNumbers\b/.test(routeFile)) {
+        // Reviewed manuscripts retain their authored chapter numbers.
+        pages.set(page.route, page.sections);
+        const numbered = page.sections.filter(section => section.index);
+        assert.deepEqual(numbered.map(section => section.index), numbered.map((_, index) => String(index + 1)));
+        for (const section of page.sections) {
+          for (const heading of (section.blocks ?? []).filter(block => block.type === "subheading")) {
+            headingCount++;
+            if (heading.index) assert(heading.index.startsWith(`${section.index}.`), `${page.route}: heading outside its chapter`);
+          }
+        }
+        assert.equal(JSON.stringify(page.sections), original, `${page.route}: reviewed manuscript mutated`);
+        continue;
+      }
       const sections = numberWikiSections(page.sections);
       pages.set(page.route, sections);
       assert.equal(JSON.stringify(page.sections), original, `${page.route}: source data mutated`);
@@ -119,16 +133,21 @@ try {
   assert.equal(stripWikiHeadingIndex("**4.1.2 Heading**", "4.1.2"), "**Heading**");
   assert.equal(stripWikiHeadingIndex("105 Days of Learning", "3.6.1.1.1"), "105 Days of Learning");
   assert.equal(stripWikiHeadingIndex("4T1-TROP2 Model", "4"), "4T1-TROP2 Model");
-  const software = pages.get("/software").find(section => section.id === "software-architecture-and-design-choices");
+  const software = pages.get("/software").find(section => section.id === "software-development");
   const softwareHeadings = software.blocks.filter(block => block.type === "subheading");
-  assert.deepEqual(softwareHeadings.slice(0, 7).map(wikiSubheadingDepth), [2, 3, 3, 3, 3, 3, 2]);
+  const architecture = softwareHeadings.findIndex(block => block.id === "software-architecture-and-design-choices");
+  const nextSection = softwareHeadings.findIndex((block, index) => index > architecture && wikiSubheadingDepth(block) === 2);
+  const architectureHeadings = softwareHeadings.slice(architecture, nextSection);
+  assert.equal(wikiSubheadingDepth(architectureHeadings[0]), 2);
+  assert(architectureHeadings.slice(1).every(block => wikiSubheadingDepth(block) === 3));
+  assert(architectureHeadings.some(block => block.title === "CircuForge"));
+  assert(architectureHeadings.some(block => block.title === "TorusFold"));
   const children = softwareHeadings.map(block => ({ ...block, depth: wikiSubheadingDepth(block) }));
-  const choice = children[5];
+  const choice = children.find(block => block.id === "software-architecture-and-design-choices-choice-5-verifiable-design-exports");
   const grouped = groupOutline(children, choice.id);
   assert(grouped.some(row => row.child.id === choice.id && row.tertiary));
-  assert.deepEqual(grouped.filter(row => !row.tertiary).slice(0, 2).map(row => row.child.title), ["CircuForge", "TorusFold"]);
-  assert.equal(grouped.filter(row => !row.tertiary).length, 3);
-  assert(!grouped.some(row => row.child.id === children[7].id), "TorusFold choices expanded under CircuForge");
+  assert(grouped.some(row => row.child.id === "software-architecture-and-design-choices" && !row.tertiary));
+  assert(!grouped.some(row => row.child.id === "software-engineering-iterations-circuforge-carrying-project-decisions-into-construct-design"), "Different chapter expanded under Architecture");
   console.log(`Wiki numbering verified: ${pages.size} pages, ${headingCount} subheadings; front matter excluded, chapter hierarchy continuous, title numbers synchronized, source text and anchors preserved.`);
 } finally {
   await unlink(temporary).catch(() => {});

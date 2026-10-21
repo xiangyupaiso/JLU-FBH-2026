@@ -24,16 +24,16 @@
   .judging-criteria
   .highlights-record__item
   + .highlights-record__item {
-  margin-top: 12px;
+  margin-top: calc(12 * var(--site-ui-unit));
 }
 
 .wiki-page .judging-criteria .highlights-record__toggle {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: calc(18 * var(--site-ui-unit));
   width: 100%;
-  min-height: 56px;
-  padding: 18px 20px;
+  min-height: calc(56 * var(--site-ui-unit));
+  padding: calc(18 * var(--site-ui-unit)) calc(20 * var(--site-ui-unit));
   border: 0;
   border-radius: 11px;
   background: none;
@@ -63,7 +63,7 @@
   flex: 1;
   min-width: 0;
   color: var(--route-heading-ink);
-  font-size: 15.5px;
+  font-size: calc(15.5 * var(--site-ui-unit));
   font-weight: 600;
   line-height: 1.55;
 }
@@ -72,9 +72,9 @@
   flex: none;
   align-self: center;
   box-sizing: content-box;
-  width: 16px;
-  height: 16px;
-  padding: 7px;
+  width: calc(16 * var(--site-ui-unit));
+  height: calc(16 * var(--site-ui-unit));
+  padding: calc(7 * var(--site-ui-unit));
   border-radius: 50%;
   background: color-mix(in srgb, var(--route-subheading-ink) 7%, transparent);
   fill: none;
@@ -94,12 +94,12 @@
 }
 
 .wiki-page .judging-criteria .highlights-record__answer {
-  padding: 0 20px 20px;
+  padding: 0 calc(20 * var(--site-ui-unit)) calc(20 * var(--site-ui-unit));
 }
 
 .wiki-page .judging-criteria .highlights-record__answer p {
-  margin: 0 0 12px;
-  font-size: 15.5px;
+  margin: 0 0 calc(12 * var(--site-ui-unit));
+  font-size: calc(15.5 * var(--site-ui-unit));
   line-height: 1.75;
 }
 

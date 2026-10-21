@@ -1,4 +1,5 @@
 import type { KeyAchievement } from "../../../../../data/wet-lab/keyAchievementsData";
+import { scrollReaderToId } from "../../../../../utils/scrollReaderToTarget";
 
 interface ScreenRect {
   left: number;
@@ -12,6 +13,7 @@ export function mountKeyAchievements(
   root: HTMLElement,
   achievements: readonly KeyAchievement[],
   imageSrc: string,
+  navigate: (href: string) => void,
 ): () => void {
   const document = root.ownerDocument;
   const view = document.defaultView;
@@ -50,6 +52,27 @@ export function mountKeyAchievements(
 
   const controller = new AbortController();
   const { signal } = controller;
+  root.addEventListener(
+    "click",
+    (event) => {
+      if (
+        event.defaultPrevented || event.button !== 0 ||
+        event.metaKey || event.ctrlKey || event.shiftKey || event.altKey ||
+        !(event.target instanceof Element)
+      ) return;
+      const link = event.target.closest<HTMLAnchorElement>("a[data-cc-href]");
+      const href = link?.dataset.ccHref;
+      if (!link || !href || !root.contains(link)) return;
+      if (href.startsWith("#")) {
+        event.preventDefault();
+        scrollReaderToId(href.slice(1), link);
+      } else if (href.startsWith("/")) {
+        event.preventDefault();
+        navigate(href);
+      }
+    },
+    { signal },
+  );
   // Keep the reader's page-navigation listener from hijacking button keys.
   root.addEventListener(
     "keydown",
@@ -82,29 +105,18 @@ export function mountKeyAchievements(
   let active = true;
   let running: Animation[] = [];
 
-  // The scaffold gives this engine exclusive ownership of these two containers.
-  rotor.replaceChildren();
+  // React owns the painted buttons; the engine owns their motion and detail copy.
   detailText.replaceChildren();
   const buttons = achievements.map((item, index) => {
     const angle = -90 + index * step;
-    const position = document.createElement("div");
-    position.className = "cc-node-position";
+    const button = rotor.querySelector<HTMLButtonElement>(
+      `[data-achievement="${item.id}"]`,
+    );
+    const position = button?.parentElement;
+    if (!button || !position) throw new Error(`Missing achievement: ${item.id}`);
     position.style.left = `${37.3 * Math.cos((angle * Math.PI) / 180)}cqw`;
     position.style.top = `${37.3 * Math.sin((angle * Math.PI) / 180)}cqw`;
 
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "cc-bubble";
-    button.dataset.achievement = item.id;
-    button.setAttribute("aria-pressed", "false");
-    if (panel.id) button.setAttribute("aria-controls", panel.id);
-    button.setAttribute("aria-label", item.name);
-    const label = document.createElement("span");
-    item.label.forEach((line, lineIndex) => {
-      if (lineIndex) label.append(document.createElement("br"));
-      label.append(document.createTextNode(line));
-    });
-    button.append(label);
     button.addEventListener("click", () => select(index), { signal });
     button.addEventListener(
       "keydown",
@@ -129,8 +141,6 @@ export function mountKeyAchievements(
       },
       { signal },
     );
-    position.append(button);
-    rotor.append(position);
     return button;
   });
 
@@ -260,12 +270,30 @@ export function mountKeyAchievements(
         ...item.paragraphs.map((runs) => {
           const paragraph = document.createElement("p");
           runs.forEach((run) => {
+            let content: Node = document.createTextNode(run.text);
             if (run.format) {
               const formatted = document.createElement(run.format);
               formatted.textContent = run.text;
-              paragraph.append(formatted);
+              content = formatted;
+            }
+            if (run.href) {
+              const link = document.createElement("a");
+              link.className = "cc-reference-link";
+              link.dataset.ccHref = run.href;
+              link.href = run.href.startsWith("/")
+                ? `${import.meta.env.BASE_URL.replace(/\/$/, "")}${run.href}`
+                : run.href;
+              if (run.href.startsWith("https://")) {
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+              }
+              if (run.href.startsWith("/experiments#") && /^\d/.test(run.text)) {
+                link.setAttribute("aria-label", `Experiments Section ${run.text}`);
+              }
+              link.append(content);
+              paragraph.append(link);
             } else {
-              paragraph.append(document.createTextNode(run.text));
+              paragraph.append(content);
             }
           });
           return paragraph;
@@ -437,7 +465,6 @@ export function mountKeyAchievements(
     if (dialog.open) dialog.close();
     selected = -1;
     render(-1);
-    rotor.replaceChildren();
     detailText.replaceChildren();
     detailTitle.textContent = "";
     cropTitle.textContent = "";

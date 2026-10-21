@@ -62,6 +62,13 @@ const fig = (key: SustainabilityImageAssetKey): WikiContentBlock => {
     src: sustainabilityImage(key),
     alt: entry.alt,
     caption: entry.alt,
+    className: key === "overviewReusableToolkit"
+      ? "sust-figure--toolkit"
+      : key === "overviewContributionPathways"
+        ? "sust-figure--contribution-pathways"
+        : ["overviewMapOfStakeholders", "overviewScaleModel", "overviewSstQnNetwork"].includes(key)
+          ? "sust-figure--overview-compact"
+          : undefined,
     width: entry.width,
     height: entry.height,
   };
@@ -91,7 +98,7 @@ function chapterBlocks(chapter: SdgChapter): WikiContentBlock[] {
     subheading(
       scaleAnchorId(chapter, scaleSteps[i].key),
       `${chapter.index}.${i + 1}`,
-      `${scaleSteps[i].letter} — ${i === 0 ? chapter.stakeholders.heading ?? scaleSteps[i].name : scaleSteps[i].name}`,
+      `${scaleSteps[i].letter} - ${i === 0 ? chapter.stakeholders.heading ?? scaleSteps[i].name : scaleSteps[i].name}`,
     );
 
   return [
@@ -185,7 +192,7 @@ const sstQnSection: WikiSection = {
   id: "sst-qn",
   index: "02",
   kicker: "02 / SST-QN",
-  navLabel: "SST-QN",
+  navLabel: "SDG Synergy-Trade-off Quantification Network (SST-QN)",
   title: sstqnSection.title,
   summary: "",
   blocks: [
@@ -207,6 +214,7 @@ const sstQnSection: WikiSection = {
     feature("sdg-interaction-heatmap"),
     prose(sstqnSection.indirectPropagation),
     prose(sstqnSection.alignmentScreening, sstqnSection.reproducibility),
+    feature("pdf-sst-qn"),
     prose(sstqnSection.transition),
   ],
 };
@@ -235,7 +243,7 @@ const setCoreChallenges: WikiSection = {
   id: "set-core-challenges",
   index: "04",
   kicker: "04 / SET",
-  navLabel: "SET — Addressing Core Challenges",
+  navLabel: "SET: Addressing Core Challenges",
   title: setCoreChallengesSection.title,
   summary: "",
   blocks: [
@@ -259,7 +267,7 @@ const developBroaderImpact: WikiSection = {
   id: "develop-broader-impact",
   index: "05",
   kicker: "05 / DEVELOP",
-  navLabel: "DEVELOP — Expanding Broader Impact",
+  navLabel: "DEVELOP: Expanding Broader Impact",
   title: developSection.title,
   summary: "",
   blocks: [

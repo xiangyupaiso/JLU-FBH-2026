@@ -1,6 +1,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HOME_REST_RATIO } from "./homeMotion";
+import { TNBC_COPY_READABLE_PROGRESS } from "./animateTnbcBridge";
 
 // The patient's question leads into a concise marker-by-marker explanation.
 export function animateTnbcReading(
@@ -144,10 +145,16 @@ export function animateTnbcReading(
         const phaseEnd = phaseTrigger.start +
           (phaseTrigger.end - phaseTrigger.start) *
           (cell.labels[label] / cell.duration());
+        // The diagram can finish revealing behind the shared-word wash on a
+        // phone. A reading stop also needs its parent panel fully visible.
+        const bridge = ScrollTrigger.getById("home-tnbc-copy-bridge");
+        const copyVisible = bridge
+          ? bridge.start + (bridge.end - bridge.start) * TNBC_COPY_READABLE_PROGRESS
+          : phaseEnd;
         const progress = gsap.utils.clamp(
           0,
           1,
-          (phaseEnd - start) / (end - start),
+          (Math.max(phaseEnd, copyVisible) - start) / (end - start),
         );
         reading.addLabel(label, progress * reading.duration());
       });

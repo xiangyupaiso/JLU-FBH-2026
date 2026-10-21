@@ -274,9 +274,9 @@ export const businessModelCanvas: {
       id: "customer-segments",
       title: "Customer Segments",
       paragraphs: [
-        "At CirCure, we have clearly defined our customer segments to ensure that the project reaches those who truly need the product and those who can support its continued development. CirCure ultimately aims to serve patients with triple-negative breast cancer (TNBC) who have residual invasive disease following neoadjuvant therapy and surgery, remain at high risk of recurrence, and meet the requirements for candidate tumor-associated antigen (TAA) expression and human leukocyte antigen (HLA) matching. These patients have clear needs regarding further treatment options, safety, treatment burden, and long-term disease management. Understanding these needs allows us to incorporate patient stratification and eligibility criteria directly into vaccine design, aligning product development more closely with real-world clinical settings.",
+        "At CirCure, we have clearly defined our customer segments to ensure the project reaches those who truly need the product and can support its continued development. CirCure ultimately aims to serve patients with triple-negative breast cancer (TNBC) who have residual invasive disease following neoadjuvant therapy and surgery, remain at high risk of recurrence, and meet the requirements for candidate tumor-associated antigen (TAA) expression and human leukocyte antigen (HLA) matching. These patients have clear needs regarding further treatment options, safety, treatment burden, and long-term disease management. Understanding these needs allows us to incorporate patient stratification and eligibility criteria directly into vaccine design, aligning product development more closely with real-world clinical settings.",
         "In the **B2B** segment, we primarily target **R&D and business development (BD) teams at biopharmaceutical companies** specializing in cancer immunotherapy, RNA therapeutics, and vaccines. These companies continually seek candidate assets with the potential to stand out, while also prioritizing R&D efficiency, pipeline strategy, and the ability to translate technologies into products. Through vaccine candidates, R&D data, technology licensing, and joint development, CirCure offers partner companies new opportunities for pipeline collaboration. Research hospitals, breast cancer centers, and research institutions are also key partners for validation and application, providing real-world clinical settings for patient screening, clinical research, and product translation.",
-        "Under our long-term **B2C** model, CirCure will serve patients with TNBC through hospitals and specialized healthcare systems, while improving product accessibility through long-term follow-up, patient education, and support services. By clearly distinguishing commercial customers, validation partners, and ultimate beneficiaries, we can develop tailored strategies for collaborative development, clinical translation, and patient support, keeping our business model centered on the real needs of each group.",
+        "Under our long-term **B2C** model, CirCure will serve patients with TNBC through hospitals and specialized healthcare systems, while improving product accessibility through long-term follow-up, patient education, and support services. By clearly distinguishing commercial customers, validation partners, and ultimate beneficiaries, we can develop tailored strategies for collaborative development, clinical translation, and patient support, keeping our business model centered on each group's real needs.",
       ],
     },
     {
@@ -284,7 +284,7 @@ export const businessModelCanvas: {
       title: "Value Propositions",
       paragraphs: [
         "CirCure has developed a **multi-epitope circRNA therapeutic vaccine candidate** for patients with high-risk TNBC. We incorporate postoperative risk stratification, TAA expression, and HLA matching into product design. By encoding multiple candidate epitopes within a single circRNA, we establish a clearer link between vaccine design, patient screening, and the eligible patient population.",
-        "Rather than adopting a uniform treatment approach for a broad patient population, CirCure builds its product development pathway around patient screening. TAA expression and HLA matching criteria define the eligible population, while the multi-epitope design balances patient matching with the reuse of vaccine candidates across eligible patients. In parallel, our **CircRNA Vaccine Design System** integrates data processing, target screening, epitope prediction, and vaccine design into a unified workflow. Traceable design records and standardized materials support the review, comparison, and iterative refinement of candidates.",
+        "Rather than adopting a uniform treatment approach for a broad patient population, CirCure builds its product development pathway around patient screening. TAA expression and HLA-matching criteria define the eligible population, while the multi-epitope design balances patient matching with reusing vaccine candidates across eligible patients. In parallel, our **CircRNA Vaccine Design System** integrates data processing, target screening, epitope prediction, and vaccine design into a unified workflow. Traceable design records and standardized materials support reviewing, comparing, and iteratively refining candidates.",
         "CirCure extends beyond vaccine design to provide a development framework built around target patients, candidate design, and product translation. We position it as a potential complementary immunotherapy that fits into existing standard treatment pathways. By connecting clinical needs, product development, and commercialization, CirCure establishes a product framework with both a clear clinical focus and commercial translation potential.",
       ],
     },
@@ -295,7 +295,7 @@ export const businessModelCanvas: {
         "At CirCure, our channels connect the project with potential customers, clinical partners, and industry resources, ensuring that our work reaches stakeholders who can understand and evaluate it, make decisions, and pursue collaborations. **Targeted business outreach** enables us to engage directly with R&D/BD teams at pharmaceutical companies. Through candidate presentations, data packages, and one-to-one discussions, we identify company needs and advance opportunities for technology licensing and joint development.",
         "**Building collaborative networks with hospitals and research institutions** further strengthens CirCure’s clinical and research connections. Drawing on the First Hospital of Jilin University and collaborating research institutions, we can align candidate design with real-world clinical pathways and continually refine the product through research collaborations, patient screening, and clinical studies.",
         "**Academic conferences, publications, and professional industry exchanges** are also important channels for building awareness of CirCure within the scientific and industry communities. By presenting our research and engaging with oncology experts, researchers, and biopharmaceutical companies, we can obtain expert feedback and expand our research and industry networks. Our business plan also identifies academic conferences, professional communications, and face-to-face (F2F) business development as key routes to industry partners.",
-        "In addition, technology transfer offices (TTOs), research commercialization platforms, and industry incubators help connect technology transfer with commercial collaboration. Standardized data packages and the review of technical materials support potential partners in evaluating our technology, helping initial engagement progress toward R&D collaboration and commercialization.",
+        "In addition, technology transfer offices (TTOs), research commercialization platforms, and industry incubators help connect technology transfer with commercial collaboration. Standardized data packages and technical material reviews help potential partners evaluate our technology, moving initial engagement toward R&D collaboration and commercialization.",
       ],
     },
     {
@@ -304,14 +304,14 @@ export const businessModelCanvas: {
       paragraphs: [
         "At CirCure, building and maintaining **long-term, trusted partnerships** is essential to the project’s continued development. For pharmaceutical and biotechnology companies, we emphasize professional communication grounded in data and evidence. Through one-to-one discussions, document reviews, and technical exchanges, we help partners gain a comprehensive understanding of our candidate design, R&D findings, and the value of collaboration.",
         "As partnerships deepen, we will progress from information exchange to data review, collaborative validation, and joint development. **Non-disclosure agreements (NDAs) and material transfer agreements (MTAs)** will define the terms governing data, materials, intellectual property, and each party’s responsibilities. Development objectives and milestones will enable both parties to track progress, allowing initial exchanges to grow into long-term R&D collaborations.",
-        "We also provide ongoing technical and data support for our core vaccine candidate. Our **CircRNA Vaccine Design System**, together with our candidate screening and data analysis capabilities, can support technical services for research institutions and industry partners. For patients, CirCure will establish patient education, safety monitoring, and long-term follow-up systems to strengthen ongoing communication among patients, healthcare teams, and the project. Our business plan also incorporates technical consulting, data services, and support throughout the development and treatment lifecycle.",
+        "We also provide ongoing technical and data support for our core vaccine candidate. Our **CircRNA Vaccine Design System**, along with our candidate screening and data analysis capabilities, can provide technical services to research institutions and industry partners. For patients, CirCure will establish patient education, safety monitoring, and long-term follow-up systems to strengthen ongoing communication among patients, healthcare teams, and the project. Our business plan also incorporates technical consulting, data services, and support throughout the development and treatment lifecycle.",
       ],
     },
     {
       id: "key-activities",
       title: "Key Activities",
       paragraphs: [
-        "Key activities underpin CirCure’s **continued development, validation, and translation**. Technology development remains at the core of the project, encompassing the design and optimization of multi-epitope circRNA candidates, assessment of patient coverage based on TAA expression and HLA matching, epitope screening, and candidate validation. Delivery system development, chemistry, manufacturing, and controls (CMC), quality control, safety evaluation, and process optimization are also integral to product development.",
+        "Key activities underpin CirCure’s **continued development, validation, and translation**. Technology development remains at the core of the project, encompassing the design and optimization of multi-epitope circRNA candidates, assessment of patient coverage based on TAA expression and HLA matching, epitope screening, and candidate validation. Product development also includes delivery system development, chemistry, manufacturing, and controls (CMC), quality control, safety evaluation, and process optimization.",
         "**Intellectual property and regulatory planning** are embedded throughout the development process. We continue to pursue patent and software protection, freedom-to-operate (FTO) analysis, and regulatory pathway planning. Standardized data and document management supports technical collaboration, asset licensing, and regulatory submissions.",
         "Ongoing collaboration with hospitals, specialized laboratories, contract research organizations (CROs), contract development and manufacturing organizations (CDMOs), and biopharmaceutical companies brings their expertise into a shared development pathway. Together, these partners support manufacturing, quality control, safety evaluation, process scale-up, and industrial development. Technology R&D, external collaboration, and asset licensing thus form an integrated framework for translation and commercialization.",
       ],
@@ -321,7 +321,7 @@ export const businessModelCanvas: {
       title: "Key Resources",
       paragraphs: [
         "Key resources are the core assets that enable CirCure to **develop, validate, and expand** its product value. Our most important resource is the multi-epitope circRNA vaccine candidate, together with the associated framework for patient stratification, TAA/HLA screening, and candidate design. These assets form the technical foundation of CirCure’s product development.",
-        "Our research infrastructure and expertise are also core resources. The First Hospital of Jilin University provides a clinical and research environment that keeps the project connected to real-world disease needs and experimental research. The expertise of our team and advisors in tumor immunology, molecular biology, and bioinformatics supports vaccine R&D and product optimization.",
+        "Our research infrastructure and expertise are also core resources. The First Hospital of Jilin University provides a clinical and research environment that keeps the project connected to real-world disease needs and experimental research. Our team's and advisors' expertise in tumor immunology, molecular biology, and bioinformatics supports vaccine R&D and product optimization.",
         "**Data and digital tools** further strengthen CirCure’s R&D capabilities. The CircRNA Vaccine Design System supports the complete workflow, from data processing and target screening to epitope prediction and candidate design. Experimental data and standardized review materials support R&D decisions, external evaluation, and industry collaboration.",
         "In addition, patent applications, software copyrights, R&D know-how, and collaborative networks spanning hospitals, biopharmaceutical companies, and specialized institutions together provide an essential resource base for CirCure’s continued R&D, clinical translation, and industry partnerships.",
       ],
@@ -330,8 +330,8 @@ export const businessModelCanvas: {
       id: "key-partners",
       title: "Key Partners",
       paragraphs: [
-        "Key partners strengthen CirCure’s R&D, clinical translation, and commercialization capabilities by providing **specialized expertise, resources, and access to industry**. Collaboration among clinical, research, manufacturing, and industry partners creates a comprehensive network linking research and development with practical application.",
-        "The First Hospital of Jilin University provides an important clinical and research foundation for CirCure, enabling the project to remain grounded in real-world clinical needs. We have reached preliminary cooperation agreements with **Jilin Jika Biotechnology Co., Ltd. and Jilin Province Jien Zhihe Biotherapy Technology Co., Ltd.**, establishing a basis for process validation, pilot-scale production, and subsequent industrial development.",
+        "Key partners strengthen CirCure’s R&D, clinical translation, and commercialization capabilities by providing **specialized expertise, resources, and access to industry**. Collaboration among clinical, research, manufacturing, and industry partners creates a comprehensive network that links research and development to practical application.",
+        "The First Hospital of Jilin University provides a strong clinical and research foundation for CirCure, keeping the project grounded in real-world clinical needs. We have reached preliminary cooperation agreements with **Jilin Jika Biotechnology Co., Ltd. and Jilin Province Jien Zhihe Biotherapy Technology Co., Ltd.**, establishing a basis for process validation, pilot-scale production, and subsequent industrial development.",
         "CROs/CDMOs and specialized laboratories can collaborate on delivery system development, CMC, quality evaluation, and safety assessment. Biopharmaceutical companies can participate in joint development, clinical advancement, and commercialization. TTOs, along with intellectual property, legal, and regulatory professionals, provide specialized support for establishing technology ownership, FTO analysis, asset licensing, and product registration. Through these partnerships, CirCure builds a collaborative development framework connecting **industry, academia, research, and clinical practice**.",
       ],
     },
@@ -339,8 +339,8 @@ export const businessModelCanvas: {
       id: "cost-structure",
       title: "Cost Structure",
       paragraphs: [
-        "CirCure’s cost structure is essential to maintaining **R&D continuity and efficient resource use**. Fixed costs primarily cover team and project operations, data and software platform maintenance, intellectual property maintenance, and research infrastructure. By making full use of existing research facilities and shared resources at Jilin University and the First Hospital of Jilin University, we can improve facility utilization and optimize fixed expenditure.",
-        "Variable costs are primarily associated with specific R&D and translation activities. These include experimental materials, candidate construction and testing, TAA/HLA-related analyses, animal studies, third-party testing, CRO/CDMO services, delivery system development, CMC, pharmacology and toxicology studies, pilot-scale production, and quality evaluation across multiple batches. Our business plan allocates funding to preclinical research, CMC, activities supporting an investigational new drug (IND) application, and pilot-scale process development.",
+        "CirCure’s cost structure is essential to maintaining **R&D continuity and**using resources efficiently. Fixed costs primarily cover team and project operations, data and software platform maintenance, intellectual property maintenance, and research infrastructure. By fully using existing research facilities and shared resources at Jilin University and the First Hospital of Jilin University, we can improve facility utilization and optimize fixed costs.",
+        "Variable costs primarily support specific R&D and translation activities. These include experimental materials, candidate construction and testing, TAA/HLA-related analyses, animal studies, third-party testing, CRO/CDMO services, delivery system development, CMC, pharmacology and toxicology studies, pilot-scale production, and quality evaluation across multiple batches. Our business plan allocates funding to preclinical research, CMC, activities supporting an investigational new drug (IND) application, and pilot-scale process development.",
         "Intellectual property, regulatory consulting, IND preparation, and industry collaboration are also important components of our cost structure. CirCure follows a **phased investment** approach, aligning funding with R&D activities and milestone outcomes. This focuses resources on the key steps that advance product development and translation, improving overall funding efficiency.",
       ],
     },
@@ -348,8 +348,8 @@ export const businessModelCanvas: {
       id: "revenue-streams",
       title: "Revenue Streams",
       paragraphs: [
-        "CirCure builds long-term commercial value through several interconnected revenue streams. **Technology and asset licensing** are among our core revenue sources. Licensing vaccine candidates, associated technologies, and intellectual property to biopharmaceutical companies can generate revenue while drawing on partners’ industry resources to expand the value of our technology.",
-        "**Joint development and milestone payments** represent another important revenue stream. CirCure can collaborate with industry partners to advance preclinical research, process optimization, and clinical development, securing joint development funding, upfront payments, and milestone payments tied to different development stages. Our business plan likewise identifies technology licensing and joint development as key revenue models.",
+        "CirCure builds long-term commercial value through several interconnected revenue streams. **Technology and asset licensing** are among our core revenue sources. Licensing vaccine candidates, associated technologies, and intellectual property to biopharmaceutical companies can generate revenue while leveraging partners’ industry resources to expand our technology's value.",
+        "**Joint development and milestone payments** represent another important revenue stream. CirCure can collaborate with industry partners to advance preclinical research, optimize processes, and support clinical development, securing joint development funding, upfront payments, and milestone payments tied to different development stages. Our business plan likewise identifies technology licensing and joint development as key revenue models.",
         "The **CircRNA Vaccine Design System, target screening, and data analysis** capabilities create additional opportunities for software licensing, technical consulting, and data services. Product commercialization can also generate licensing fees, a share of sales revenue, and product sales revenue, gradually extending CirCure’s business model from technology transfer to product value and long-term returns from collaboration.",
         "Together, **technology licensing, joint development, data and technical services, and product commercialization** form a diversified revenue structure that supports CirCure’s continued R&D and long-term development.",
       ],
@@ -366,10 +366,10 @@ export const entrepreneurshipThankYouNote: {
   background: entrepreneurshipAssets.illustrations.thankYouPaper,
   title: "A heartfelt thank you from the JLU-FBH Team",
   paragraphs: [
-    "We extend our deepest and most sincere gratitude to every individual and organisation who has supported our project, CirCure. This ambitious journey — to turn the recurrence risk that standard treatment leaves behind into something the immune system can be taught to recognise — would not have been possible without your invaluable contributions, unwavering belief, and expert guidance.",
-    "From the very beginning, you shared our vision: a future in which the risk that remains after surgery, and the distance between one-size-fits-all cancer vaccines and those rebuilt for every individual patient, could be met with a single, carefully designed candidate. Your faith in our mission to build a multi-epitope circular RNA therapeutic vaccine around the patients it is meant to serve has been a constant source of inspiration and motivation for our entire team.",
+    "We extend our deepest gratitude to every individual and organization that has supported our project, CirCure. This ambitious journey—turning the recurrence risk that standard treatment leaves behind into something the immune system can be taught to recognize—would not have been possible without your invaluable contributions, unwavering belief, and expert guidance.",
+    "From the very beginning, you shared our vision: a future in which a single, carefully designed candidate could address the risk that remains after surgery and the gap between one-size-fits-all cancer vaccines and those rebuilt for every individual patient. Your faith in our mission to build a multi-epitope circular RNA therapeutic vaccine for the patients it is meant to serve has consistently inspired and motivated our entire team.",
     "Whether you helped us see which patients we should be designing for, offered the scientific guidance and laboratory support that shaped our experiments, gave a sample so that our epitopes could be measured rather than predicted, or brought the industry perspective that told us what a candidate must carry before anyone will evaluate it, your role has been integral to our success. The partnerships we have forged are the cornerstones of this project, enabling us to turn a bold idea into a tangible candidate and proving that clinical realism and cutting-edge biotechnology can go hand in hand.",
-    "The path forward is filled with new milestones, and we are thrilled to continue this journey alongside you. Together, we are not just developing one vaccine candidate for one group of patients; we are helping to shape a way of designing therapies that begins with the people who will receive them, and writing a new chapter for patient-stratified RNA medicine.",
+    "The path forward brings new milestones, and we are thrilled to continue this journey alongside you. Together, we are not just developing one vaccine candidate for one group of patients; We are helping to shape a way of designing therapies that begins with the people who will receive them, and writing a new chapter for patient-stratified RNA medicine.",
     "Thank you for being such an essential and cherished part of the CirCure story.",
   ],
   signOff: ["With our warmest regards,", "**The JLU-FBH Team**"],
@@ -388,19 +388,19 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
     question:
       "Has the team discovered their first potential customers and identified any unmet needs not yet covered by other existing solutions?",
     paragraphs: [
-      "**Yes.** Our team discovered **Jilin Jika Biotechnology Co., Ltd.** and **Jilin Jien Zhihe Biotherapy Technology Co., Ltd.** as our first potential customers — both have signed a letter of intent with us — through a patient-first process: conversations with **Dr. Lei Wang** (Department of Oncology, the First Hospital of Jilin University) narrowed \"TNBC\" into one specific clinical decision point, and we then worked outward to the companies able to carry such a candidate forward. Research hospitals are our validation tier; the patients below are the end beneficiaries (see [Primary Customer Segment](#primary-customer-segment)).",
-      "The unmet need is equally specific: TNBC patients still carrying **residual invasive disease after neoadjuvant therapy and surgery**, whose recurrence risk does not end when their treatment does. Pembrolizumab, capecitabine and olaparib each help part of this group, but eligibility stays gated by treatment stage and molecular features. Shared-antigen vaccines such as STEMVAC and ITI-5000 fix their antigens without patient-level HLA matching; personalised neoantigen vaccines buy that fit with per-patient manufacture. **In the programmes we could identify, none combines post-surgical risk stratification, TAA and HLA matching, and multi-epitope circRNA design to serve one defined population** — the gap CirCure occupies, as an addition to standard of care, not a replacement (see [Unmet Needs](#unmet-needs-first-customers)).",
+      "Yes. We identified **Jilin Jika Biotechnology Co., Ltd.**and **Jilin Jien Zhihe Biotherapy Technology Co., Ltd.** as our first prospective industry customers and collaboration partners; both signed letters of intent with the team. Discussions with **Dr. Lei Wang** (Department of Oncology, the First Hospital of Jilin University) helped narrow a broad TNBC concept to a specific post-neoadjuvant, post-surgical clinical setting. We then engaged potential industry partners with the capabilities needed to further assess and develop candidates. Research hospitals are prospective validation partners, and patients are the ultimate beneficiaries. (see [Primary Customer Segment](#primary-customer-segment))",
+      "The unmet need is equally specific: TNBC patients still carrying **residual invasive disease after neoadjuvant therapy and surgery**, whose recurrence risk does not end when their treatment does. Pembrolizumab, capecitabine, and olaparib each help part of this group, but treatment stage and molecular features still gate eligibility. Shared-antigen vaccines such as STEMVAC and ITI-5000 fix their antigens without patient-level HLA matching; personalized neoantigen vaccines buy that fit with per-patient manufacture. **In the programs we could identify, none combines post-surgical risk stratification, TAA and HLA matching, and multi-epitope circRNA design to serve one defined population** — the gap CirCure occupies, as an addition to standard of care, not a replacement. (see [Unmet Needs](#unmet-needs-first-customers))"
     ],
   },
   {
     id: "q2",
     question:
-      "Has the team shown that their solution is possible, scalable and inventive?",
+      "Has the team shown that their solution is possible, scalable, and inventive?",
     paragraphs: [
-      "**Yes.** We have considered all three in full: feasibility tested against experimental evidence and clinical judgement, scalability across production, technology, demand, opportunity, risk and finance, and originality that runs through the whole development path.",
-      "**Possible:** CirCure exists as a tested construct, not a proposal. Circularisation is confirmed three independent ways — RNase R resistance, divergent- versus convergent-primer RT-qPCR, and sequencing across the back-splice junction — and all 15 candidate epitopes were ranked by measured IFN-γ ELISpot response rather than by prediction. Clinical and industry advisers, among them **Prof. Jiuwei Cui** and **Prof. Fei Ma**, have reviewed the route, and the clinical entry point CirCure targets already exist in post-surgical care, using tests a breast centre can already run (see [Technology](#technology)).",
-      "**Scalable:** We tested this on every axis scalability has. Production: the circularisation reaction is enzyme-free and runs in a device we designed to keep it consistent as batch size grows. Technology: design, TAA/HLA matching and epitope selection are standardised, so a new antigen set does not mean a new platform. Demand: the high-risk post-surgical TNBC population is defined, and it is reached through tests breast centres already run. Opportunity: those same capabilities transfer to further candidates and indications once the first is validated. Risk: TAA/HLA coverage and CMC maturity are the binding limits, and we set out how each is verified and controlled. Finance: licensing and co-development revenue arrives at milestones long before any product revenue (see [Scalability](#scalability)).",
-      "**Inventive:** The original idea in CirCure is not circRNA but an inversion: pathology, recurrence risk, TAA expression and HLA background do not filter patients after a vaccine is designed — they define the product before it exists. That places us deliberately between fixed shared-antigen vaccines and per-patient neoantigen vaccines, on a route neither school occupies. The skill is in restraint: \"multi-epitope\" means curated, not accumulated, and an epitope that adds construct, analysis and quality-control burden without adding patient coverage is cut. The imagination is refusing to stop at the molecule —The invention extends into the **CircRNA Vaccine Design System**, which records why a candidate was chosen and why it later changed, and into a **circularisation device** that turns a bench reaction into a repeatable one (see [Inventive](#inventive)).",
+      "**Yes.** We have considered all three fully: feasibility tested against experimental evidence and clinical judgment; scalability across production, technology, demand, opportunity, risk, and finance; and originality running through the whole development path.",
+      "**Possible:** CirCure has progressed beyond a proposal to a constructed eight-fragment, multi-epitope circRNA vaccine candidate. Fifteen peptides passed dry-lab filtering; thirteen single-epitope circRNA constructs underwent the Round 1 experimental screen, informing selection of the combined candidate. We verified the combined RNA by back-splice-junction sequencing and a representative RT-qPCR circular-fraction measurement. Human-cell assays assessed translation, dendritic-cell maturation, T-cell activation, IFN-γ responses, and tumor-cell killing. An exploratory TROP2-overexpressing 4T1 mouse study also showed tumor-growth inhibition, although the murine model does not establish human HLA-A*02:01-restricted efficacy. Clinical and industry advisers have reviewed the development direction. (see [Technology](#technology))",
+      "**Scalable:** We assessed CirCure across six dimensions: production, technology, demand, opportunity, risk, and finance. Production: PIE self-splicing enables circularization without adding an exogenous RNA ligase; our integrated reaction-device design is intended to improve process control, but manufacturing scale-up remains to be demonstrated. Technology: the modular epitope cassette and traceable design workflow may support subsequent candidates. Demand: the intended post-surgical TNBC population is clinically defined, although tumor-antigen assessment and HLA typing must be incorporated into a feasible screening pathway. Opportunity: the framework may be adapted to other indications after validation. Risk: coverage, safety, CMC, and reproducibility remain critical development gates. Finance: potential licensing and co-development receipts are conditional on future agreements and milestones, not established revenue. (see [Scalability](#scalability))",
+      "**Inventive:** The original idea in CirCure is not circRNA, but an inversion: pathology, recurrence risk, TAA expression, and HLA background do not filter patients after a vaccine is designed — they define the product before it exists. This positions CirCure between fixed shared-antigen vaccines and fully personalized neoantigen vaccines, offering a distinct approach to patient-stratified vaccine development. The skill is in restraint: \"multi-epitope\" means curated, not accumulated, and an epitope that adds construct, analysis, and quality-control burden without adding patient coverage is cut. The imagination refuses to stop at the molecule — the invention extends into the **CircRNA Vaccine Design System**, which records why a candidate was chosen and why it later changed, and into a **circularisation device** that turns a bench reaction into a repeatable one. (see [Inventive](#inventive))"
     ],
   },
   {
@@ -408,9 +408,9 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
     question:
       "Has the team presented logical product development plans with realistic milestones, timelines, resources and risks?",
     paragraphs: [
-      "Yes. We have set out a **five-year development path**.The roadmap runs from late 2025 to 2030 in six parallel streams, so entrepreneurship and partnership work advances alongside the science rather than after it — from platform construction through candidate validation and IND preparation to early clinical exploration.",
-      "The First Hospital of Jilin University supplies the early site, funding and clinical platform; specialist laboratories, CRO/CDMO and industry partners enter as delivery, CMC, quality and regulatory work begins, with funding released against technical progress rather than committed in advance.",
-      "**Risks** are scored by impact and likelihood across five domains — candidate identity, manufacturability, TAA/HLA coverage, safety and funding continuity — and each carries both a mitigation and a decision rule (see [Milestone](#milestone), [Risk Analysis](#risk-analysis), [Key Resources](#key-resources)).",
+      "Yes. We have set out a **five-year development path**. The roadmap runs from late 2025 to 2030 in six parallel streams, so entrepreneurship and partnership work advances alongside the science rather than after it — from platform construction through candidate validation and IND preparation to early clinical exploration.",
+      "The First Hospital of Jilin University supplies the early site, funding, and clinical platform; specialist laboratories, CRO/CDMO, and industry partners enter as delivery, CMC, quality, and regulatory work begins, with funding released against technical progress rather than committed in advance.",
+      "Risks are scored by impact and likelihood across five domains — candidate identity, manufacturability, TAA/HLA coverage, safety, and advance continuity —, and each carries both a mitigation and a decision rule. (see [Milestone](#milestone), [Risk Analysis](#risk-analysis),  [Key Resources](#key-resources))"
     ],
   },
   {
@@ -419,7 +419,7 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
       "Has the team outlined the skills, capabilities, and stakeholders required to be credible in developing their solution further?",
     paragraphs: [
       "We investigated the capabilities needed to develop CirCure from an early-stage candidate into a real product and compared them with our team’s existing capabilities. This helped us identify gaps and prompted us to actively gain experience in product development and entrepreneurship. With support from Bethune First Hospital of Jilin University, participation in the iGEM Entrepreneurship Workshop, and ongoing discussions with clinical and industry professionals, we have gradually built a professional network to support CirCure’s continued development.",
-      "We also identified and contacted external stakeholders needed for the project’s development, enabling CirCure to access support beyond our team’s existing capabilities, from specialized validation to industrial translation and business development (see [Skills, Capabilities & Stakeholders](#skills-capabilities-stakeholders)).",
+      "We also identified and contacted external stakeholders needed for the project’s development, enabling CirCure to access support beyond our team’s existing capabilities, from specialized validation to industrial translation and business development. (see [Skills, Capabilities & Stakeholders](#skills-capabilities-stakeholders))"
     ],
   },
   {
@@ -428,7 +428,7 @@ export const entrepreneurshipHighlights: EntrepreneurshipHighlight[] = [
       "Has the team considered the positive and negative long-term impacts of their fully developed solution?",
     paragraphs: [
       "Yes. We assessed what a fully developed CirCure could contribute. For high-risk TNBC patients meeting the screening conditions, it would add an antigen-specific option alongside standard care and make patient–candidate matching explicit rather than assumed; the approach itself is reusable, and the clinic–laboratory–industry collaboration behind it is an outcome in its own right (SDG 3, 9 and 17).",
-      "However, like any new therapeutic technology, it raises scientific and social challenges — cross-reactivity, the long-term safety of circRNA and its delivery, and the manufacturing complexity of a multi-epitope construct; then the testing burden screening creates, the patients it may exclude, the sensitivity of the data, and the trust an early-stage vaccine must earn. Each has a defined response built into our development decisions (see [Long-Term Impacts](#long-term-impacts), [Potential Problems & Their Solutions](#potential-problems-and-solutions)).",
+      "However, like any new therapeutic technology, it raises scientific and social challenges — cross-reactivity, the long-term safety of circRNA and its delivery, and the manufacturing complexity of a multi-epitope construct; then the testing burden screening creates, the patients it may exclude, the sensitivity of the data, and the trust an early-stage vaccine must earn. Each has a defined response built into our development decisions. (see [Long-Term Impacts](#long-term-impacts), [Potential Problems & Their Solutions](#potential-problems-and-solutions))"
     ],
   },
 ];
@@ -522,7 +522,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "CirCure aims to develop a multi-epitope circular RNA therapeutic vaccine for patients with triple-negative breast cancer (TNBC) who remain at high risk of recurrence and have residual invasive disease after neoadjuvant therapy and surgery. We combine clinical risk stratification, tumor-associated antigen (TAA) expression screening and human leukocyte antigen (HLA) matching to define the intended patient population and guide vaccine design. Experimentally selected epitopes are encoded within a single circRNA construct and delivered through lipid nanoparticles, with the aim of inducing antigen-specific T-cell responses against tumor cells. Through continued validation and industry collaboration, we seek to develop CirCure as a potential additional treatment option alongside standard care.",
+            "CirCure is a preclinical, multi-epitope circular RNA (circRNA) therapeutic vaccine candidate intended for patients with triple-negative breast cancer (TNBC) who have residual invasive disease after neoadjuvant therapy and surgery and remain at high risk of recurrence. Clinical risk, tumor-associated antigen (TAA) expression, and human leukocyte antigen (HLA) compatibility guide the proposed patient-selection strategy. We constructed an eight-fragment circRNA candidate from four tumor-associated antigens, evaluated its immune activity in human-cell assays, and obtained in vivo platform proof-of-concept data in an exploratory mouse tumor model. Further work is required to establish human HLA-restricted antigen presentation, clinical safety and efficacy, and a regulatory development route. CirCure is being developed as a potential addition to standard care, not a substitute.",
           ],
         },
       ],
@@ -550,21 +550,21 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "callout",
           tone: "neutral",
-          body: "She had completed chemotherapy and surgery, but her life did not immediately return to its familiar rhythm. Fatigue lingered even after a night’s sleep; numbness in her fingers slowed familiar movements such as fastening buttons and using chopsticks; and the arm on the side of her surgery occasionally felt tight and heavy. It was only when she raised her arm or carried something that she discovered the new limitations her body had been left with.[1–3] Hair loss, surgical scars, and physical changes required adjustment. Returning to school or work, resuming exercise, and meeting friends—once ordinary parts of life—also had to be planned anew.[1,2] What was harder for others to see was the waiting. For some patients with triple-negative breast cancer, residual invasive disease may still be found after chemotherapy and surgery, meaning that the risk of recurrence does not disappear when these treatments end.[4–6] A follow-up examination, a new pain, or an unfamiliar discomfort could bring the question “Has it come back?” to mind once again. This is precisely the issue we hope to address: could we design a multi-epitope circRNA therapeutic vaccine for patients whose tumor antigen expression and HLA profiles meet the relevant criteria, helping the immune system recognize potential tumor cells more specifically and providing an additional candidate for postoperative intervention that warrants further validation?",
+          body: "She had completed chemotherapy and surgery, but her life did not immediately return to its familiar rhythm. Fatigue lingered even after a night’s sleep; numbness in her fingers slowed familiar movements such as fastening buttons and using chopsticks; and the arm on the side of her surgery occasionally felt tight and heavy. She only discovered her new limitations when she raised her arm or carried something.[1–3] Hair loss, surgical scars, and physical changes required adjustment. Returning to school or work, resuming exercise, and meeting friends—once ordinary parts of life—also had to be planned anew.[1,2] What was harder for others to see was the waiting. For some patients with triple-negative breast cancer, residual invasive disease may still be found after chemotherapy and surgery, meaning that the risk of recurrence does not disappear when these treatments end.[4–6] A follow-up examination, new pain, or unfamiliar discomfort could bring the question “Has it come back?” back to mind. This is precisely the issue we hope to address: could we design a multi-epitope circRNA therapeutic vaccine for patients whose tumor antigen expression and HLA profiles meet the relevant criteria, helping the immune system recognize potential tumor cells more specifically and providing an additional candidate for postoperative intervention that warrants further validation?",
         },
         {
           type: "prose",
           paragraphs: [
             "These real-life circumstances strengthened our team’s conviction that what we wanted to develop could not remain merely a laboratory technology. It should serve real women who still need more options and, from the outset, be evaluated in terms of clinical pathways, safety, treatment burden, and feasibility.",
-            "We are from Bethune First Hospital of Jilin University. In addressing this challenge, we hoped to begin with a candidate that could be tested: could a single circRNA carry multiple candidate epitopes to explore antigen-specific immune intervention for patients selected according to risk, antigen expression, and HLA criteria?",
-            "This idea later acquired a name—CirCure. “Cir” comes from “circular RNA,” representing the core technological vehicle of our project; “Cure” embodies our hope of achieving a cure for patients and our scientific mission. CirCure sounds similar to “circular,” echoing the molecular nature of circular RNA while also expressing our project’s vision: to build on a circular RNA technology platform to bring new hope for a cure to patients with triple-negative breast cancer.",
-            "Once we had given the idea a name, the truly difficult questions were only beginning to emerge: Which patients should it serve? How should candidates be selected? What evidence would be needed to move forward? And which tasks would need to be entrusted to partners with more specialized expertise? Every subsequent discussion and validation effort continued to reshape our answers.",
+            "We are from Bethune First Hospital of Jilin University. To address this challenge, we hoped to start with a candidate we could test: could a single circRNA carry multiple candidate epitopes to explore antigen-specific immune intervention for patients selected based on risk, antigen expression, and HLA criteria?",
+            "This idea later acquired a name—CirCure. “Cir” comes from “circular RNA,” based on the core technological vehicle of our project; “Cure” embodies our hope of achieving a cure for patients and our scientific mission. CirCure sounds like “circular,” echoing the molecular nature of circular RNA while expressing our project’s vision: to build a circular RNA technology platform that brings new hope for a cure to patients with triple-negative breast cancer.",
+            "Once we gave the idea a name, the truly difficult questions began to emerge: Which patients should it serve? How should candidates be selected? What evidence would be needed to move forward? Which tasks should we entrust to partners with more specialized expertise? Every subsequent discussion and validation effort continued to reshape our answers.",
           ],
         },
         {
           type: "callout",
           tone: "neutral",
-          body: "**Core Question:** Given the substantial toxicity and side effects of treatments such as chemotherapy and radiotherapy, could there be a therapy with relatively low toxicity and fewer side effects that offers longer-lasting effects, greater affordability, and more complete disease eradication than CAR-T therapy?",
+          body: "**Core Question:** Given the substantial toxicity and side effects of treatments such as chemotherapy and radiotherapy, could a therapy with relatively low toxicity and fewer side effects offer longer-lasting effects, greater affordability, and more complete disease eradication than CAR-T therapy?",
         },
         {
           type: "subheading",
@@ -575,7 +575,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "For CirCure, stakeholder analysis provides an essential foundation for connecting patient needs, clinical judgment, and subsequent translation into clinical practice. The traditional 2I model primarily considers Interest and Influence, which can overlook groups with limited decision-making influence who may nevertheless be directly affected by the project. CirCure involves multiple stakeholders, including patients, clinicians, research hospitals, testing teams, industry partners, regulators, and payers. We therefore added Impact to adopt a 3I framework, identifying stakeholders more comprehensively across three dimensions: who is interested in the project, who can influence it, and who will be affected by it.",
+            "For CirCure, stakeholder analysis provides an essential foundation for connecting patient needs and clinical judgment to subsequent translation into clinical practice. The traditional 2I model focuses on Interest and Influence, which can overlook groups with limited decision-making influence who may still be directly affected by the project. CirCure involves multiple stakeholders, including patients, clinicians, research hospitals, testing teams, industry partners, regulators, and payers. We therefore added Impact to adopt a 3I framework, identifying stakeholders more comprehensively across three dimensions: who is interested in the project, who can influence it, and who will be affected by it.",
             "In the three-dimensional matrix, the X-axis represents Interest, the Y-axis represents Influence, and the Z-axis represents Impact—the extent to which stakeholders are affected. This framework helps us identify key collaborators and decision-makers while also incorporating patient rights, treatment burden, equity, and accessibility into project decisions, making CirCure’s development more comprehensive and ensuring that it remains patient-centered throughout.",
           ],
         },
@@ -596,7 +596,8 @@ export const entrepreneurshipPage: WikiPageContent = {
           type: "prose",
           paragraphs: [
             "CirCure initially targeted a broad population of patients with TNBC, but defining the population solely by disease was insufficient to establish clear product and market positioning. Patients with TNBC differ in their treatment pathways, postoperative pathological findings, and subsequent risks. We therefore further segmented the target population by considering the clinical settings in which the candidate product could offer potential value.",
-            "Drawing on clinical evidence linking residual cancer burden to long-term prognosis, as well as discussions with **Dr. Lei Wang from the Department of Oncology at the First Hospital of Jilin University**, we narrowed our current target population to patients with TNBC who have residual invasive disease after completing neoadjuvant systemic therapy and surgery, are at high risk of recurrence, and meet the criteria for candidate TAA expression and HLA matching. This refinement moved CirCure from a broad TNBC vaccine concept toward a defined treatment stage and patient population, while also making TAA/HLA screening an integral part of product design and subsequent market assessment.",
+            "Drawing on clinical evidence linking residual cancer burden to long-term prognosis, as well as discussions with **Dr. Lei Wang from the Department of Oncology at the First Hospital of Jilin University**, we narrowed our current target population to patients with TNBC who have residual invasive disease after completing neoadjuvant systemic therapy and surgery, are at high risk of recurrence, and meet the criteria for candidate TAA expression and HLA matching. This refinement shifted CirCure from a broad TNBC vaccine concept to a defined treatment stage and patient population, while also making TAA/HLA screening integral to product design and subsequent market assessment.",
+            "[See more in Integrated Human Practices.](/human-practices)",
           ],
         },
         {
@@ -616,14 +617,14 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "To develop CirCure into a project with real potential for clinical translation, we must thoroughly understand the circumstances and needs of our target patients. Our research indicates that patients with TNBC who have residual invasive disease after completing neoadjuvant therapy and surgery and are at high risk of recurrence face a range of interconnected challenges. Their subsequent decisions concern not only whether further treatment options are available, but also how to understand their own risk, whether they meet screening criteria, and what burdens additional testing, follow-up, and treatment may impose. Disease characteristics and technical feasibility alone are therefore insufficient to determine whether a candidate truly meets patient needs.",
-            "To address this, we introduced an **Empathy Map** to systematically understand patients’ circumstances and decisions at this specific treatment stage from their perspective. By mapping stakeholders’ goals, external environment, statements, behaviors, information sources, and inner thoughts and feelings, an Empathy Map helps the team identify needs, concerns, and factors influencing decisions that technical analysis alone may miss. For CirCure, it reframes patient screening, treatment choices, and follow-up burden as issues that must be reconsidered through patients’ lived experiences, rather than merely as considerations in product design. This process helped us clarify patients’ concerns about recurrence risk, treatment suitability, additional testing and follow-up, and the evidence supporting new treatments. We then used these insights to refine CirCure’s patient screening, information communication, integration into treatment pathways, and subsequent product design.",
+            "To develop CirCure into a project with real potential for clinical translation, we must thoroughly understand our target patients' circumstances and needs. Our research indicates that patients with TNBC who have residual invasive disease after completing neoadjuvant therapy and surgery and are at high risk of recurrence face a range of interconnected challenges. Their subsequent decisions concern not only whether further treatment options are available, but also how to understand their own risk, whether they meet screening criteria, and what burdens additional testing, follow-up, and treatment may impose. Disease characteristics and technical feasibility alone therefore cannot determine whether a candidate truly meets patient needs.",
+            "To address this, we introduced an **Empathy Map** to systematically understand patients’ circumstances and decisions at this specific treatment stage from their perspective. By mapping stakeholders’ goals, external environment, statements, behaviors, information sources, and inner thoughts and feelings, an Empathy Map helps the team identify needs, concerns, and decision-influencing factors that technical analysis alone may miss. For CirCure, it reframes patient screening, treatment choices, and follow-up burden as issues to reconsider through patients’ lived experiences, rather than merely as product design considerations. This process helped us clarify patients’ concerns about recurrence risk, treatment suitability, additional testing and follow-up, and the evidence supporting new treatments. We then used these insights to refine CirCure’s patient screening, information communication, integration into treatment pathways, and subsequent product design.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Please explore the Empathy Map we developed as a tool to help us understand our target patients’ circumstances and treatment environment, as well as the pain points and expectations we identified in seeking to meet their needs.",
+            "Please explore the Empathy Map we developed to help us understand our target patients’ circumstances and treatment environment, as well as the pain points and expectations we identified in meeting their needs.",
           ],
         },
         {
@@ -643,7 +644,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "CirCure’s Value Proposition Canvas helps us understand the needs of our target patients and clinicians and align product design with the practical challenges faced by patients with TNBC who are at high risk after surgery. By identifying the ongoing risk of recurrence, patient screening and treatment burdens, and the clinical need for a clearly defined eligible patient population and potential new treatment options, the canvas helps us further refine patient stratification, TAA/HLA matching, and multi-epitope circRNA vaccine design. This approach also enables us to continually adapt the product based on feedback from patients, clinicians, and industry stakeholders, bringing CirCure’s development into closer alignment with real clinical needs and future pathways to clinical translation.",
+            "CirCure’s Value Proposition Canvas helps us understand the needs of our target patients and clinicians and align product design with the practical challenges faced by patients with TNBC who are at high risk after surgery. By identifying the ongoing risk of recurrence, patient screening and treatment burdens, and the clinical need for a clearly defined eligible patient population and potential new treatment options, the canvas helps us further refine patient stratification, TAA/HLA matching, and multi-epitope circRNA vaccine design. This approach also lets us continually adapt the product based on feedback from patients, clinicians, and industry stakeholders, aligning CirCure’s development more closely with real clinical needs and future pathways to clinical translation.",
           ],
         },
         {
@@ -663,8 +664,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "In the first half of 2026, the biopharmaceutical industry in Changchun New Area generated an output value of RMB 18.07 billion, representing year-on-year growth of 9%. The area is currently home to 210 pharmaceutical and healthcare companies, forming an industrial cluster centered on biologics, with distinctive strengths in medical devices and modern traditional Chinese medicine.[7,8] Changchun High-Tech Zone ranks 14th nationally and first in Northeast China in the overall industrial competitiveness of biopharmaceutical parks. Meanwhile, with Jilin University at its core, the high-tech section of “Changchun Pharmaceutical Valley” draws on regional research resources to develop a center for basic biopharmaceutical research and a source of innovation in new drug development.[9,10]",
-            "CirCure emerged from this industrial and research environment and draws on the resources of the First Hospital of Jilin University to conduct early-stage research. As the project has progressed, we have established initial industry contacts with Jilin Jika Biotechnology Co., Ltd.  and Jilin Jien Zhihe Biotherapy Technology Co., Ltd. . These connections provide a starting point for understanding companies’ practical requirements for early-stage candidate assets, validation data, and subsequent development capabilities.",
+            "In the first half of 2026, the biopharmaceutical industry in Changchun New Area generated RMB 18.07 billion in output value, representing 9% year-on-year growth. The area is home to 210 pharmaceutical and healthcare companies, forming a biologics-centered industrial cluster with distinctive strengths in medical devices and modern traditional Chinese medicine.[7,8] Changchun High-Tech Zone ranks 14th nationally and first in Northeast China in overall biopharmaceutical park competitiveness. Meanwhile, with Jilin University at its core, the high-tech section of “Changchun Pharmaceutical Valley” draws on regional research resources to develop a center for basic biopharmaceutical research and a source of innovation in new drug development.[9,10]",
+            "CirCure emerged from this industrial and research environment and draws on the First Hospital of Jilin University's resources to conduct early-stage research. As the project has progressed, we have established initial industry contacts with Jilin Jika Biotechnology Co., Ltd.  and Jilin Jien Zhihe Biotherapy Technology Co., Ltd. . These connections provide a starting point for understanding companies’ practical requirements for early-stage candidate assets, validation data, and subsequent development capabilities.",
             "Changchun therefore serves not only as the starting point for CirCure’s research and development, but also as a practical foundation for connecting with biopharmaceutical companies with capabilities in cancer immunotherapy, RNA therapeutics, or vaccine development; identifying our first potential customers; and exploring collaborations in candidate evaluation, joint validation, and subsequent development.",
           ],
         },
@@ -682,7 +683,7 @@ export const entrepreneurshipPage: WikiPageContent = {
             "Several clinically validated treatment options are currently available for high-risk early-stage TNBC. Pembrolizumab can be combined with chemotherapy as neoadjuvant treatment and continued after surgery; capecitabine can be used as further adjuvant therapy for some patients with residual invasive disease after neoadjuvant chemotherapy; and olaparib provides a targeted treatment option for high-risk patients with HER2-negative disease who meet the germline BRCA1/2 eligibility criteria.[11–13] These regimens have improved outcomes for some patients, but their applicability is limited by treatment stage, prior treatment, and molecular characteristics.",
             "Therapeutic cancer vaccines offer another approach. Shared-antigen vaccines use a preselected set of tumor-associated antigens, allowing the same candidate to be used in a group of patients. For example, STEMVAC uses a multi-antigen DNA vaccine strategy for early-stage TNBC, while ITI-5000 uses self-amplifying RNA in clinical research involving stage II–III TNBC.[14,15] These approaches more readily lend themselves to standardized candidates, but the extent of patient coverage offered by fixed antigen combinations and their ability to elicit sufficient antitumor immunity require further validation.",
             "Personalized neoantigen vaccines take this a step further by tailoring vaccine design to mutations in each patient’s tumor. This typically involves obtaining a tumor sample, identifying patient-specific targets through sequencing and neoantigen screening, and then producing a personalized vaccine based on those targets. Such strategies have entered clinical research in TNBC and other cancers.[16] This approach improves the match between individual patients and vaccine antigens, but also increases the complexity of sampling, analysis, design, and manufacturing for each patient.",
-            "Our solution seeks a balance between shared-antigen and fully personalized vaccines. CirCure first defines its target patient population based on residual invasive disease and recurrence risk, then screens patients according to candidate TAA expression and HLA criteria, with plans to encode multiple candidate epitopes within a single circRNA. This design retains the ability to use a shared candidate across a group of patients while incorporating patient stratification directly into vaccine design. However, its TAA/HLA coverage, epitope presentation, delivery, safety, and added clinical value still require further validation. CirCure is therefore currently positioned as a potential add-on candidate to standard treatment, rather than a replacement for existing therapies.",
+            "Our approach aims to bridge shared-antigen and fully individualized vaccine strategies. CirCure defines a post-neoadjuvant, post-surgical high-risk TNBC setting and uses candidate TAA expression and HLA compatibility to inform a stratified eligibility concept. We constructed a shared eight-fragment multi-epitope circRNA candidate and obtained in vitro functional evidence, along with preliminary animal proof-of-concept results. Human-cell studies support antigen-associated immune activity, but we still need to directly identify each peptide–MHC complex, establish population-level eligibility, and demonstrate clinical safety and added value. Accordingly, CirCure is a preclinical adjunctive candidate, not a replacement for standard treatment.",
           ],
         },
         {
@@ -774,7 +775,7 @@ export const entrepreneurshipPage: WikiPageContent = {
           type: "prose",
           paragraphs: [
             "**Jilin (SOM):** As mentioned above, Jilin Province had 11.63 million female residents at the end of 2024 [17], corresponding to approximately 6,000 new cases of female breast cancer annually at China's national incidence [18]. Based on the clinical criteria that define the target indication — 15% triple-negative, 55% treated by neoadjuvant therapy followed by surgery, and 45% left with residual invasive disease [19] — approximately 225 patients in the province reach this treatment point each year, giving a provincial market of approximately RMB 64 million (approximately USD 9.0 million) at a course price of USD 40,000. Assuming an initial target market share of 45%, the SOM would be calculated to be approximately **RMB 28.8 million (approximately USD 4.05 million)**.",
-            "**China (SAM):** China records more new cases of female breast cancer than any other country, with 357,161 women newly diagnosed in 2022 [20]. Applying the same clinical criteria, approximately 13,300 patients reach this treatment point annually, and at the same course price the SAM segment is calculated to be approximately **RMB 3.78 billion (approximately USD 530 million)**.",
+            "**China (SAM):** China records more new cases of female breast cancer than any other country, with 357,161 women newly diagnosed in 2022 [20]. Applying the same clinical criteria, approximately 13,300 patients reach this treatment point annually; at the same course price, the SAM segment is estimated at **RMB 3.78 billion (approximately USD 530 million)**.",
             "**Global (TAM):** Worldwide, 2.3 million women are diagnosed with breast cancer each year [18]. Applying the same clinical criteria, approximately 85,400 patients reach the post-surgical treatment point that a therapeutic vaccine addresses; at a course price of USD 40,000, a conservative estimate places the Total Addressable Market (TAM) at approximately **USD 3.42 billion**.",
           ],
         },
@@ -802,7 +803,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "CirCure’s technical choices began with “Who are we designing for?” rather than “Which new technology should we use?” Once the target population was narrowed to patients with TNBC who have residual invasive disease after completing neoadjuvant systemic therapy and surgery and meet the criteria for candidate TAA expression and HLA matching, the technical requirements became concrete: the candidate needed to sustain a sufficiently long window of antigen availability, cover multiple tumor-associated antigens to reduce the risk of single-antigen escape, and follow a reusable production process rather than one rebuilt for each patient. Every decision below was made in response to these three requirements.",
+            "CirCure’s technical choices began with “Who are we designing for?” rather than “Which new technology should we use?” Once the target population was narrowed to patients with TNBC who have residual invasive disease after completing neoadjuvant systemic therapy and surgery and meet the criteria for candidate TAA expression and HLA matching, the technical requirements became concrete: the candidate needed to sustain a sufficiently long window of antigen availability, cover multiple tumor-associated antigens to reduce the risk of single-antigen escape, and follow a reusable production process rather than one rebuilt for each patient. We made every decision below in response to these three requirements.",
           ],
         },
         {
@@ -814,7 +815,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "We selected circular RNA rather than linear mRNA as the vaccine vector. circRNA is covalently closed and lacks free 5′ and 3′ ends, making it resistant to degradation by intracellular exonucleases.Our in vitro time-course experiments directly confirmed this: linear RNA was almost completely degraded by 24 hours, whereas circRNA remained clearly detectable at 72 hours. This choice also eliminated the need for 5′ cap analogs—among the most expensive raw materials used in linear mRNA production.",
+            "We selected circular RNA rather than linear mRNA as the vaccine vector. circRNA is covalently closed and lacks free 5′ and 3′ ends, which generally makes circRNA less susceptible to exonuclease-mediated degradation than comparable linear RNA. Our in vitro time-course experiments directly confirmed this: linear RNA was almost completely degraded by 24 hours, whereas circRNA remained clearly detectable at 72 hours. This choice also eliminated the need for 5′ cap analogs—among the most expensive raw materials used in linear mRNA production.",
           ],
         },
         {
@@ -826,7 +827,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Circularization uses a permuted intron–exon (PIE) self-splicing strategy derived from the group I intron of the T4 bacteriophage *td* gene, rather than RNA ligase or chemical ligation.Once precursor RNA transcription is complete, only GTP and Mg²⁺ need to be added. During incubation at 55 °C for 10–15 minutes, the intron mediates end-to-end ligation through two transesterification reactions, with no proteases introduced at any stage. Circularization was cross-validated using three approaches: parallel controls with and without RNase R treatment, RT-qPCR quantification using divergent and convergent primers, and Sanger sequencing across the back-splice junction (BSJ) as direct evidence. To maintain reaction consistency during scale-up, we also designed an integrated nucleic acid circularization reaction device.",
+            "Circularization uses a permuted intron–exon (PIE) self-splicing strategy based on the T4 bacteriophage td group I intron rather than an externally added RNA ligase. After enzymatic in vitro transcription produces and purifies the precursor RNA, GTP and Mg²⁺ support the subsequent self-splicing reaction. This means the circularization step is ligase-free; it does not mean that the entire RNA manufacturing process is enzyme-free. Under the tested reaction conditions, incubation at 55 °C for 10–15 minutes promotes PIE-mediated transesterification. We assessed Round 1 material by RT-qPCR on a representative construct; for the completed eight-fragment vaccine, BSJ Sanger sequencing directly checked the junction, and RT-qPCR estimated the RNase R-treated preparation's circular fraction at 99.3% (three technical wells). We designed an integrated circularization reaction device, but we still need to validate reproducible performance at manufacturing scale.",
           ],
         },
         {
@@ -838,8 +839,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The vaccine payload is determined by experimental measurements rather than predictions alone. IEDB binding predictions and VaxiJen antigenicity filtering yielded 17 candidate peptides. After merging two pairs of naturally adjacent epitopes, we constructed 15 single-epitope circRNAs and tested each individually using IFN-γ ELISpot in an autologous moDC–T-cell co-culture system derived from HLA-A*02:01-typed volunteers. For each antigen, we retained the two epitopes that elicited the strongest measured responses.",
-            "Experimental results changed our assessment on several occasions: CTL2 and CTL3 were ultimately selected for LIV-1, rather than CTL1, which had ranked highest in the predictions. For B7-H4, we deliberately excluded the most immunogenic peptide, ILFWSIISI, because it lies within the signal peptide region and lacks tumor specificity. For all four antigens, the wells containing a mixture of all epitopes from a given antigen produced weaker responses than that antigen’s strongest individual epitope. This suggested competition or dilution among epitopes and provided experimental support for selecting a small number of epitopes rather than including as many as possible.",
+            "We selected the vaccine payload using both computational screening and measured experimental responses. Dry-lab filtering reduced 1,838 possible 9-mer peptides to 15 structurally retained candidates; after consolidating overlapping sequences, we generated thirteen single-epitope circRNA constructs for Round 1 laboratory screening. We evaluated each construct in an autologous monocyte-derived dendritic-cell (moDC)–T-cell system using HLA-A*02:01-typed donor cells. Round 1 IFN-γ ELISpot provided a comparative ranking of the thirteen constructs; Because that round lacked a vector-background control and used a single determination per construct, we should not interpret its readouts as independently validated epitope-specific response frequencies. The ranking informed the selection of two epitope-bearing fragments from each of four antigens for the completed combined vaccine.",
+            "Experimental results changed our assessment several times: we ultimately selected CTL2 and CTL3 for LIV-1, rather than CTL1, which ranked highest in the predictions. For B7-H4, we deliberately excluded the most immunogenic peptide, ILFWSIISI, because it lies within the signal peptide region and lacks tumor specificity. For all four antigens, the wells containing a mixture of all epitopes from a given antigen produced weaker responses than the strongest individual epitope from that antigen. These findings suggest possible epitope competition or dilution effects and support a more selective epitope design strategy.",
           ],
         },
         {
@@ -851,8 +852,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Eight epitopes are linked in tandem within a single circRNA using flexible GS linkers. The seven internal linkers encode the same pentapeptide but use distinct codon sequences to eliminate the risk of homologous recombination caused by repetitive sequences during cloning and passaging. Because circular RNA lacks a 5′ cap, translation relies entirely on an internal ribosome entry site. We use an IRES element derived from the human rhinovirus 5′ UTR to drive cap-independent translation.",
-            "A tPA signal peptide is fused upstream of the epitope cassette to direct the nascent peptide into the secretory pathway, while an MHC class I trafficking domain is fused downstream to increase the proportion of antigen entering the MHC-I loading pathway.Four tandem copies of the C3d-P28 molecular adjuvant are encoded in the same reading frame,allowing the adjuvant to be delivered with the bulk drug substance without being added separately to the formulation. The construct’s FLAG tag was used to directly verify that the expression system was functional: anti-FLAG immunoblotting yielded a specific band at 50 kDa.",
+            "We constructed a complete multi-epitope circRNA candidate containing eight epitope-bearing fragments derived from four tumor-associated antigens, separated by flexible GS linkers. One merged Nectin-4 fragment spans two overlapping predicted 9-mers. Synonymous codon variation in the seven internal linkers reduces repeated DNA sequence motifs and the associated cloning risk. Cap-independent translation is supported by an internal ribosome entry site (IRES) derived from the human rhinovirus 5′ UTR. The completed cassette is not merely a future design proposal: its sequence and downstream expression were included in the Round 2 experimental evaluation.",
+            "The construct includes an upstream tPA signal sequence, a downstream MHC class I trafficking domain, and four tandem copies of the mC3dP28 molecular-adjuvant module in the encoded product. Anti-FLAG Western blotting supported translation of the combined construct. Functional readouts in human-cell experiments included dendritic-cell maturation, CD8⁺ T-cell activation, effector-memory phenotype, IFN-γ secretion, and killing of HLA-A*02:01-positive MDA-MB-231 TNBC cells relative to an empty-vector circRNA control. These results support activity along the expression-to-effector pathway, but the anti-FLAG blot is not direct evidence of cell-surface peptide–MHC presentation; Direct pMHC measurements and independent functional replication remain priorities.",
           ],
         },
         {
@@ -864,7 +865,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The candidate is encapsulated in lipid nanoparticles. We selected LNPs because they are currently the only nucleic acid delivery system validated through large-scale use in humans, providing established precedents for regulatory and chemistry, manufacturing, and controls (CMC) pathways. In vivo studies use subcutaneous injection at the base of the tail, allowing antigens to reach the draining lymph nodes for uptake by dendritic cells. The working dose range was also determined experimentally: in the dendritic cell co-culture system, cell viability remained stable over the 0–200 ng range but declined markedly at 400 ng. Accordingly, 200 ng is the current upper dose limit.",
+            "The experimental candidate was formulated with lipid nanoparticles (LNPs), an established non-viral RNA delivery platform. In the completed in vivo proof-of-concept study, we administered 10 μg of circRNA-LNP subcutaneously at the tail base in a TROP2-overexpressing 4T1 tumor model in wild-type BALB/c mice. The study observed lower endpoint tumor burden than both PBS and empty-vector controls (n = 5 mice per group); the reported tumor-growth-inhibition estimates were 89.6% relative to PBS and 73.2% relative to the empty vector. These model-specific results do not establish postoperative recurrence prevention or efficacy restricted to human HLA-A*02:01. Separately, a 24-hour CCK-8 assay on moDCs tested EMPTY LNP carrier at 0–400 ng per well; viability was not markedly reduced through 200 ng but declined at 400 ng. This defines an in vitro carrier-only observation, not a safe dose limit for the loaded vaccine or for in vivo administration.",
           ],
         },
         {
@@ -876,7 +877,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "None of these decisions was made solely within the laboratory. The narrowing of the target patient population arose from discussions with Dr. Lei Wang from the Department of Oncology at the First Hospital of Jilin University. Discussions with Dr. Yefan Hu from Beiwan Biotech  prompted us to address candidate identity traceability and production considerations earlier in the development pathway. Our technical approach has therefore remained grounded in a specific clinical question, rather than representing an isolated technological choice.",
+            "None of these decisions was made solely within the laboratory. We narrowed the target patient population after discussing it with Dr. Lei Wang in the Department of Oncology at the First Hospital of Jilin University. Discussions with Dr. Yefan Hu from Beiwan Biotech  prompted us to address candidate identity traceability and production considerations earlier in the development pathway. Our technical approach therefore remains grounded in a specific clinical question rather than an isolated technological choice.",
           ],
         },
         {
@@ -897,7 +898,7 @@ export const entrepreneurshipPage: WikiPageContent = {
           type: "prose",
           paragraphs: [
             "**MVP (Minimum Viable Product)**",
-            "The following picture showcases a mockup of our MVP (Minimum Viable Product), i.e., our technical approach to the project.",
+            "The following illustration summarizes our current MVP as an integrated research workflow, not as a fully qualified GMP manufacturing line. We distinguish the experimentally demonstrated elements from the components still requiring scale-up validation below.",
           ],
         },
         {
@@ -911,25 +912,25 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "We built a circRNA vaccine design-and-production system capable of turning a tumour expression dataset into a circularised, self-adjuvanted, LNP-formulated multi-epitope construct. To make that system usable by a laboratory holding vaccine targets but no RNA platform, we adopted a four-pronged strategy:",
+            "We built a circRNA vaccine design-and-production system that turns a tumor expression dataset into a circularised, self-adjuvanted, LNP-formulated multi-epitope construct. To make that system usable by a laboratory holding vaccine targets but no RNA platform, we adopted a four-pronged strategy:",
           ],
         },
         {
           type: "list",
           ordered: true,
           items: [
-            "Replacing enzymatic ligation with PIE self-splicing, so that circularisation needs only GTP and magnesium at 55 °C, introduces no protein enzyme, and dispenses with the 5′ cap analogue — the costliest raw material in linear mRNA production;",
+            "Applying PIE-mediated self-splicing to circularize purified precursor RNA without adding an exogenous RNA ligase in the circularization step, while retaining the enzymatic transcription and purification steps required by the broader manufacturing process;",
             "Encoding presentation and adjuvanticity into the construct itself, with an IRES driving cap-independent translation, a tPA signal peptide and an MHC-I trafficking domain routing the product, and a C3d-P28 adjuvant carried in the same reading frame, so that the adjuvant travels with the drug substance and no separate formulation step is required;",
-            "Keeping the vector modular, with promoter, IRES and flanking PIE elements fixed and the epitope cassette exchangeable, so that a different antigen set — or a different tumour — can be loaded without rebuilding the construct;",
+            "Keeping the vector modular, with promoter, IRES and flanking PIE elements fixed and the epitope cassette exchangeable, so that a different antigen set — or a different tumor — can be loaded without rebuilding the construct;",
             "Pairing the design software with the reaction hardware, so that the sequences returned by the CircRNA Vaccine Design System pass directly into plasmid construction, while a three-module reaction kit and an integrated circularisation device hold the reaction consistent as batch size grows.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Our system transforms a tumour expression dataset into a formulated multi-epitope circRNA vaccine, embodying a route that is stable, simple to prepare, and quick to re-adapt — achieving both a traceable design record and a reusable production route.",
-            "Among the projects we have so far been able to identify, none combines post-surgical residual-disease and recurrence-risk screening, TAA expression and HLA matching, and multi-epitope design on a single circRNA in the way ours does, using technology registered under software copyright 2026SR0543219 and utility model application 2026204425615. However, given its nature as a technology — or rather, a route to producing circRNA vaccine rather than a therapy in itself — our team may encounter challenges in commercializing the product.",
-            "Therefore, beyond technology transfer and patent licensing, CirCure is committed to the direct supply of research-grade circRNA vaccines to better meet market demands — whether for hospital and university research groups, domestic biopharmaceutical companies, or partners carrying a candidate towards the clinic.",
+            "The MVP therefore provides an experimentally supported candidate and a traceable route for redesign and evaluation; it should not yet be described as an end-to-end, industrially validated vaccine production service.",
+            "Among the projects we have identified so far, none combines post-surgical residual-disease and recurrence-risk screening, TAA expression and HLA matching, and multi-epitope design on a single circRNA as ours does, using technology registered under software copyright 2026SR0543219 and utility model application 2026204425615. However, because it is a technology—or rather, a route to producing a circRNA vaccine rather than a therapy in itself—our team may face challenges commercializing the product.",
+            "Therefore, beyond technology transfer and patent licensing, CirCure is committed to directly supplying research-grade circRNA vaccines to better meet market demand—whether for hospital and university research groups, domestic biopharmaceutical companies, or partners carrying a candidate toward the clinic.",
           ],
         },
         {
@@ -941,7 +942,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "For CirCure, scalability determines whether the project can evolve from its current TNBC therapeutic vaccine into a reproducible and sustainable development system. By establishing standardized processes for product design, patient screening, and validation, we can maintain evidence quality and consistency in development while laying the groundwork for future technical scale-up, expansion into additional clinical pathways, and external collaboration. Meanwhile, replicable collaboration and business models can help integrate external resources from hospitals, CROs/CDMOs, and biopharmaceutical companies, strengthening the project’s capacity to progress through different stages of development. Once the first product has been thoroughly validated, the existing design and development framework may also support the exploration of additional therapeutic programs and potential indications. By systematically assessing the potential for expansion—and its limitations—across technical, clinical, operational, commercial, and platform dimensions, we aim to establish a clearer, more sustainable path for CirCure from early-stage research and development toward long-term clinical translation.",
+            "For CirCure, scalability determines whether the project can evolve from its current TNBC therapeutic vaccine into a reproducible and sustainable development system. By establishing standardized processes for product design, patient screening, and validation, we can maintain evidence quality and consistency in development while laying the groundwork for future technical scale-up, expansion into additional clinical pathways, and external collaboration. Meanwhile, replicable collaboration and business models can help integrate external resources from hospitals, CROs/CDMOs, and biopharmaceutical companies, strengthening the project’s capacity to progress through different stages of development. Once the first product is thoroughly validated, the existing design and development framework may also support exploring additional therapeutic programs and potential indications. By systematically assessing the potential for expansion—and its limitations—across technical, clinical, operational, commercial, and platform dimensions, we aim to establish a clearer, more sustainable path for CirCure from early-stage research and development toward long-term clinical translation.",
+            "At this stage, scalability rests on a modular design framework and a standardized circularisation strategy, not on demonstrated large-scale manufacturing. Establishing batch-to-batch consistency, critical quality attributes, and a reproducible CMC process remains essential before industrial scale-up.",
           ],
         },
         {
@@ -960,7 +962,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "CirCure’s innovation lies not only in its use of **circRNA** as a vaccine vector, but also in integrating **clinical patient stratification, TAA/HLA matching, and multi-epitope vaccine design** into a single development pathway. From the outset, vaccine design is guided by three questions: **“Who is it designed for, what should it recognize, and how should the candidate be developed?”**",
+            "CirCure’s innovation lies not only in using **circRNA** as a vaccine vector, but also in integrating **clinical patient stratification, TAA/HLA matching, and multi-epitope vaccine design** into a single development pathway. From the outset, vaccine design is guided by three questions: **“Who is it designed for, what should it recognize, and how should the candidate be developed?”**",
           ],
         },
         {
@@ -978,25 +980,25 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "CirCure does not broadly target all patients with TNBC. We first focus on **patients who have residual invasive disease after completing neoadjuvant systemic therapy and surgery and are at high risk of recurrence**, then incorporate candidate TAA expression and HLA criteria into patient screening. In other words, pathological findings, clinical risk, antigen expression, and HLA profiles are not additional criteria applied after vaccine design is complete; They directly shape the product definition.",
+            "CirCure does not broadly target all patients with TNBC. We first focus on **patients who have residual invasive disease after completing neoadjuvant systemic therapy and surgery and are at high risk of recurrence**, then incorporate candidate TAA expression and HLA criteria into patient screening. In other words, pathological findings, clinical risk, antigen expression, and HLA profiles are not additional criteria applied after vaccine design is complete; Instead, they directly shape the product definition.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Building on this foundation, we have chosen a design approach that sits **between fixed shared-antigen vaccines and fully personalized neoantigen vaccines**. Shared TAAs preserve the possibility of using the same candidate across a group of patients, while HLA matching improves the alignment between candidate epitopes and the target population. We also plan to integrate multiple candidate epitopes into a single circRNA. Compared with a single-antigen approach, this design aims to reduce the risk of excessive reliance on one antigen; compared with neoantigen vaccines customized for each patient, it retains a more standardized development approach.",
+            "Building on this foundation, we pursued a shared-candidate strategy that combines **fixed antigen panels with individualized neoantigen manufacturing**. Our current combined circRNA encodes eight epitope-bearing fragments derived from four antigens, selected from experimental screening in HLA-A*02:01-typed human donor-cell systems. Public-dataset analysis suggested complementary expression across the antigen panel, but it does not provide a measured population-level estimate of eligibility after HLA and clinical screening. Direct surface peptide–MHC confirmation and evaluation in broader HLA backgrounds remain future tasks. As designed, the current candidate is HLA-A*02:01-oriented; Expanding its applicability will require additional candidate-specific work.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Here, “multi-epitope” does not simply mean adding more epitopes. We **consider both gains in patient coverage and construct complexity in our design decisions**, continually screening candidates based on combined TAA/HLA coverage, normal tissue expression, potential cross-reactivity, and antigen processing and presentation results. If an additional epitope increases the complexity of construction, analysis, and quality control without providing a corresponding gain in coverage, we will remove or replace it to keep the candidate amenable to validation and development.",
+            "Here, “multi-epitope” does not simply mean adding more epitopes. We **consider both gains in patient coverage and construct complexity in our design decisions**, continually screening candidates based on combined TAA/HLA coverage, normal tissue expression, potential cross-reactivity, and antigen processing and presentation results. If an additional epitope increases the complexity of construction, analysis, and quality control complexity without providing a corresponding gain in coverage, we will remove or replace it to keep the candidate amenable to validation and development.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "CirCure’s innovation also extends to **how candidates are generated and iteratively refined**. To reduce the fragmentation of information caused by distributing expression data analysis, target screening, and epitope prediction across different tools, we independently developed the **CircRNA Vaccine Design System**, which organizes these steps into a unified digital workflow.",
+            "CirCure’s innovation also extends to **how we generate and iteratively refine candidates**. To reduce information fragmentation of information caused by distributing expression data analysis, target screening, and epitope prediction across different tools, we independently developed the **CircRNA Vaccine Design System**, which organizes these steps into a unified digital workflow.",
           ],
         },
         {
@@ -1014,13 +1016,13 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The software does not replace researchers’ judgment. Instead, it helps the team record data sources, analysis parameters, screening results, and decisions made by researchers, making it possible to trace why a candidate was selected and why it was subsequently modified. The vaccine candidate remains CirCure’s core product, while the software and standardized data package make the candidate easier to review internally and provide a clearer basis for future external review by hospitals and industry partners.",
+            "The software does not replace researchers’ judgment. Instead, it helps the team record data sources, analysis parameters, screening results, and researchers' decisions, making it possible to trace why a candidate was selected and why it was later modified. The vaccine candidate remains CirCure’s core product, while the software and standardized data package make the candidate easier to review internally and provide a clearer basis for future external review by hospitals and industry partners.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "Meanwhile, we have extended our innovation from digital design to production. The project has developed a **patent application for an integrated nucleic acid circularization reaction device related to circRNA vaccine production** and completed software copyright registration for the CircRNA Vaccine Design System, gradually building a portfolio of technical assets spanning candidate design and production.",
+            "Meanwhile, we have extended our innovation from digital design to production. The project has filed a **utility model patent application for an integrated nucleic acid circularization reaction device related to circRNA vaccine production** and completed software copyright registration for the CircRNA Vaccine Design System, gradually building a portfolio of technical assets spanning candidate design and production.",
           ],
         },
         {
@@ -1047,7 +1049,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "The SWOT analysis helps us better understand CirCure’s current position and the key factors shaping its future development. By systematically examining strengths, weaknesses, opportunities, and threats, we can clarify our existing foundations, identify key capabilities that still need to be developed, and anticipate external changes that may affect the project’s progress. These insights allow us to refine our development priorities and maintain flexibility in responding to future challenges.",
+            "The SWOT analysis helps us better understand CirCure’s current position and the key factors shaping its future development. By systematically examining strengths, weaknesses, opportunities, and threats, we can clarify our foundations, identify capabilities that still need development, and anticipate external changes that may affect the project’s progress. These insights let us refine our development priorities and stay flexible in responding to future challenges.",
           ],
         },
         {
@@ -1079,7 +1081,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Direct competitors are projects or organizations that use **therapeutic cancer vaccine strategies**, serve patients with early-stage or high-risk TNBC, and target clinical settings similar to those of CirCure. CirCure focuses on high-risk TNBC, combining TAA expression, HLA matching, and multi-epitope circRNA design to develop a vaccine approach guided by patient stratification. The following projects are representative competitors in the TNBC therapeutic vaccine field.",
+            "Direct competitors are projects or organizations that use **therapeutic cancer vaccine strategies**, serve patients with early-stage or high-risk TNBC, and target clinical settings similar to those of CirCure. CirCure focuses on high-risk TNBC, combining TAA expression, HLA matching, and multi-epitope circRNA design to develop a patient-stratified vaccine approach. The following projects are representative competitors in the TNBC therapeutic vaccine field.",
           ],
         },
         {
@@ -1099,14 +1101,14 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "**University of Washington — STEMVAC:** STEMVAC is a multi-antigen DNA therapeutic vaccine for early-stage TNBC. It uses a polyepitope plasmid to simultaneously target multiple breast cancer-associated antigens and has entered Phase II clinical investigation.",
+            "**University of Washington — STEMVAC:** STEMVAC is a multi-antigen DNA therapeutic vaccine for early-stage TNBC. It uses a polyepitope plasmid to target multiple breast cancer-associated antigens simultaneously and has entered Phase II clinical trials.",
           ],
         },
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorUniversityOfWashingtonStemvac,
           width: 3840,
-          height: 2160,
+          height: 837,
           alt: "University of Washington — STEMVAC",
           caption: "University of Washington — STEMVAC.",
         },
@@ -1114,13 +1116,14 @@ export const entrepreneurshipPage: WikiPageContent = {
           type: "prose",
           paragraphs: [
             "**Cleveland Clinic — α-Lactalbumin Vaccine:** This project has developed an α-lactalbumin therapeutic vaccine for patients with non-metastatic TNBC at high risk of recurrence, with particular inclusion of patients with residual disease. It targets a breast-associated antigen to induce antitumor immunity.",
+            "Based on the publicly available programs we reviewed, CirCure differs from the selected comparators by combining a defined post-surgical TNBC population, TAA/HLA-guided candidate design, and a multi-epitope circRNA platform within one proposed development pathway.",
           ],
         },
         {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorClevelandClinic,
           width: 3840,
-          height: 2160,
+          height: 629,
           alt: "Cleveland Clinic — α-Lactalbumin Vaccine",
           caption: "Cleveland Clinic — α-Lactalbumin Vaccine.",
         },
@@ -1145,7 +1148,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "**AstraZeneca — LYNPARZA®:** LYNPARZA (olaparib) is approved for patients with germline BRCA-mutated, HER2-negative, high-risk early-stage breast cancer who have received neoadjuvant or adjuvant chemotherapy. It provides a targeted postoperative adjuvant treatment option for the subset of patients with TNBC who meet the molecular criteria.",
+            "**AstraZeneca — LYNPARZA®:** LYNPARZA (olaparib) is approved for patients with germline BRCA-mutated, HER2-negative, high-risk early-stage breast cancer who have received neoadjuvant or adjuvant chemotherapy. It provides a targeted postoperative adjuvant treatment option for TNBC patients who meet the molecular criteria.",
+            "Although these therapies represent established alternatives for managing recurrence risk, they also define the clinical pathways into which CirCure would need to integrate as a potential adjunctive treatment. Its future commercial value will therefore depend on demonstrating added benefit beyond existing standard-of-care options.",
           ],
         },
         {
@@ -1160,7 +1164,7 @@ export const entrepreneurshipPage: WikiPageContent = {
           type: "figure",
           src: entrepreneurshipAssets.illustrations.competitorAstraZeneca,
           width: 4000,
-          height: 2250,
+          height: 1026,
           alt: "AstraZeneca — LYNPARZA (olaparib)",
           caption: "AstraZeneca — LYNPARZA (olaparib).",
         },
@@ -1173,13 +1177,13 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Future competitors are potential direct or indirect competitors that may enter CirCure’s market. With rapid advances in **circular RNA, RNA delivery, and therapeutic cancer vaccines**, an increasing number of companies and research institutions are advancing these technologies toward clinical application. For example, Therorna has advanced its circular RNA therapeutic cancer vaccine, TI-0093, into Phase I.",
+            "Future competitors are potential direct or indirect competitors that may enter CirCure’s market. With rapid advances in **circular RNA, RNA delivery, and therapeutic cancer vaccines**, more companies and research institutions are advancing these technologies toward clinical application. For example, Therorna has advanced its circular RNA therapeutic cancer vaccine, TI-0093, into Phase I.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "These emerging participants may further expand into breast cancer and cancer vaccines guided by patient stratification, creating a more diverse competitive landscape. To maintain our competitive advantage, CirCure will continue strengthening its distinctive combination of **patient stratification, TAA/HLA matching, and multi-epitope circRNA design**. Through continued technological innovation, strategic intellectual property protection, and industry collaboration, we will further distinguish its value in the field of therapeutic vaccines for high-risk TNBC.",
+            "These emerging participants may expand into breast cancer and patient-stratified cancer vaccines, creating a more diverse competitive landscape. To maintain our competitive advantage, CirCure will continue strengthening its distinctive combination of **patient stratification, TAA/HLA matching, and multi-epitope circRNA design**. Through continued technological innovation, strategic intellectual property protection, and industry collaboration, we will further distinguish our value in therapeutic vaccines for high-risk TNBC.",
           ],
         },
         {
@@ -1192,7 +1196,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "A business model is essential: it defines how a project creates, delivers, and captures value and provides clear direction for its subsequent operations and development. For CirCure, the Business Model Canvas helps us connect research outcomes, clinical needs, and industry collaboration, guiding the project from early-stage candidate validation toward co-development and future clinical translation.",
+            "A business model is essential: it defines how a project creates, delivers, and captures value and provides clear direction for its subsequent operations and development. For CirCure, the Business Model Canvas connects research outcomes, clinical needs, and industry collaboration, guiding the project from early-stage candidate validation to co-development and future clinical translation.",
           ],
         },
         { type: "feature", key: "business-model-canvas" },
@@ -1205,9 +1209,9 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "At CirCure, we have clearly defined our customer segments to ensure that the project reaches those who truly need the product and those who can support its continued development. CirCure ultimately serves patients with TNBC who have residual invasive disease after completing neoadjuvant therapy and surgery, are at high risk of recurrence, and meet the criteria for candidate TAA expression and HLA matching. These patients have clear needs regarding further treatment options, safety, treatment burden, and long-term disease management. Understanding these needs allows us to incorporate patient stratification and eligibility criteria directly into vaccine design, bringing product development closer to real clinical settings.",
-            "In the **B2B** segment, we primarily target **R&D and business development (BD) teams at biopharmaceutical companies** working in cancer immunotherapy, RNA therapeutics, and vaccines. These companies continually seek candidate assets with the potential to stand out, while also focusing on R&D efficiency, pipeline strategy, and the ability to translate technologies into products. Through its vaccine candidate, R&D data, technology licensing, and joint development, CirCure offers partner companies new opportunities for pipeline collaboration. Research hospitals, breast cancer centers, and research institutions are also important validation and implementation partners, providing real-world clinical settings for patient screening, clinical research, and product translation.",
-            "Under its long-term **B2C** model, CirCure will serve patients with TNBC through hospitals and professional healthcare systems, while improving product accessibility through long-term follow-up, patient education, and support services. By clearly distinguishing commercial customers, validation partners, and ultimate beneficiaries, we can develop tailored strategies for collaborative development, clinical translation, and patient support, ensuring that our business model remains centered on the actual needs of each group.",
+            "At CirCure, we have clearly defined our customer segments to ensure the project reaches those who truly need the product and can support its continued development. CirCure ultimately serves patients with TNBC who have residual invasive disease after completing neoadjuvant therapy and surgery, are at high risk of recurrence, and meet the criteria for candidate TAA expression and HLA matching. These patients have clear needs regarding further treatment options, safety, treatment burden, and long-term disease management. Understanding these needs allows us to incorporate patient stratification and eligibility criteria directly into vaccine design, bringing product development closer to real clinical settings.",
+            "In the **B2B** segment, we primarily target **R&D and business development (BD) teams at biopharmaceutical companies** working in cancer immunotherapy, RNA therapeutics, and vaccines. These companies continually seek candidate assets with the potential to stand out, while also focusing on R&D efficiency, pipeline strategy, and the ability to translate technologies into products. Through its vaccine candidate, R&D data, technology licensing, and joint development, CirCure offers partner companies new opportunities for pipeline collaboration. Research hospitals, breast cancer centers, and research institutions also serve as key validation and implementation partners, providing real-world clinical settings for patient screening, clinical research, and product translation.",
+            "Under its long-term **B2C** model, CirCure will serve patients with TNBC through hospitals and professional healthcare systems, while improving product accessibility through long-term follow-up, patient education, and support services. By clearly distinguishing commercial customers, validation partners, and ultimate beneficiaries, we can develop tailored strategies for collaborative development, clinical translation, and patient support, ensuring our business model remains centered on each group's actual needs.",
           ],
         },
         {
@@ -1227,7 +1231,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "A beachhead strategy is an approach to market entry and expansion. Simply put, it involves first selecting the most promising and accessible market segment as the product’s initial entry point, then concentrating resources on establishing clinical, technical, and collaborative foundations within that market. Progress in this initial market then provides a basis for gradual expansion into other patient populations and regional markets.",
+            "A beachhead strategy is a market-entry and expansion approach. Simply put, it involves selecting the most promising and accessible market segment as the product’s initial entry point, then concentrating resources on building clinical, technical, and collaborative foundations in that market. Progress in this initial market then provides a basis for gradual expansion into other patient populations and regional markets.",
             "Building on the market and user analyses above, we identified different needs for CirCure’s application across patient populations and stages of market development. Our initial market entry will therefore focus on **the clinical and industry ecosystem for high-risk TNBC in Jilin Province**. Drawing on the clinical research resources of the First Hospital of Jilin University and regional biopharmaceutical collaboration networks, we will prioritize product development and clinical translation for patients with TNBC who have residual invasive disease after completing neoadjuvant therapy and surgery, are at high risk of recurrence, and meet the TAA/HLA criteria.",
             "Building on this foundation, we plan to expand to major breast cancer centers across Northeast China and nationwide, broadening CirCure’s market reach through technology licensing, joint development, and industry collaboration. As the TNBC product development pathway becomes more established, we will gradually extend this patient stratification-driven circRNA vaccine development framework to other breast cancer subtypes and solid tumors, ultimately establishing a broader network of domestic and international collaborators.",
           ],
@@ -1249,16 +1253,16 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "An exit strategy is a strategic plan through which a company or investor realizes investment value and exits a project at a certain stage of its development through the transfer of equity, assets, or technology. It also includes exit pathways planned in advance by early investors to achieve their expected returns.",
-            "Developing an exit strategy is equally important for CirCure. In assessing the project’s current foundations and future path toward commercialization, we recognized that advancing a biopharmaceutical product from candidate development to clinical development, manufacturing, and commercialization requires the continuous integration of R&D, manufacturing, regulatory, and market resources. Rather than relying solely on building a complete value chain independently, CirCure is better positioned to realize the core value of its vaccine candidate, R&D data, intellectual property, and design framework through industry collaboration, advancing the project toward broader development and application. Our business plan also identifies acquisitions by industry partners, asset acquisitions, and technology licensing as important pathways for realizing project value and enabling investor exits.",
-            "We will also continue strengthening CirCure’s intellectual property portfolio and actively explore strategic partnerships and acquisition opportunities with major pharmaceutical and biotechnology companies. Through a corporate or asset acquisition, CirCure’s vaccine candidate, patents, R&D data, and associated technologies could be integrated with a larger company’s clinical development, manufacturing, and commercialization resources, expanding the product’s market reach and continuing to realize the project’s value.",
+            "Given the capital intensity and long development timelines of therapeutic vaccines, CirCure considers strategic acquisition, asset licensing, and co-development partnerships as potential pathways to realize future value.",
+            "Developing an exit strategy is equally important for CirCure. In assessing the project’s current foundations and future path toward commercialization, we recognized that advancing a biopharmaceutical product from candidate development to clinical development, manufacturing, and commercialization requires the continuous integration of R&D, manufacturing, regulatory, and market resources. Rather than relying solely on building a complete value chain independently, CirCure is better positioned to realize the core value of its vaccine candidate, R&D data, intellectual property, and design framework through industry collaboration, advancing the project toward broader development and application. Our business plan also identifies acquisitions by industry partners, asset acquisitions, and technology licensing as key pathways to realize project value and enable investor exits.",
+            "We will also continue strengthening CirCure’s intellectual property portfolio and actively explore strategic partnerships and acquisition opportunities with major pharmaceutical and biotechnology companies. Through a corporate or asset acquisition, CirCure’s vaccine candidate, patents, R&D data, and associated technologies could integrate into a larger company’s clinical development, manufacturing, and commercialization resources, expanding the product’s market reach and continuing to realize the project’s value.",
             "A second option is **out-licensing** CirCure’s candidate assets, associated patents, and technological developments, granting industry partners the corresponding development and commercialization rights. Our business plan identifies vaccine patent licensing and collaboration with major pharmaceutical companies as core commercial pathways. This approach would draw on both parties’ specialized strengths, facilitate technology transfer, and generate ongoing financial returns through upfront payments, milestone payments, and subsequent licensing revenue.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "For more details, please refer to our Business Plan in the Business Documents.",
+            "**For more details, please refer to our Business Plan in the Business Documents.**",
           ],
         },
         { type: "feature", key: "doc-business-plan" },
@@ -1278,14 +1282,14 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "To assess the financial feasibility of CirCure’s development, we prepared detailed projections for 2026–2030 based on explicit assumptions about revenue, expenditure and financing. We estimated potential income from technology licensing, co-development, data services and future product commercialization, alongside expenditure on R&D, materials, clinical studies, platform maintenance, administration and business development. These estimates informed projected income statements and balance sheets, helping us examine how financial requirements and potential profitability may evolve throughout development.",
-            "We also developed a staged financing plan and allocated proposed funding to candidate validation, preclinical research, IND preparation, pilot manufacturing and subsequent clinical development. Complementary cash-flow scenarios examined the timing of expenditure and potential receipts from licensing and collaboration, including upfront and milestone payments. Together, these analyses helped us identify periods requiring external financial support and align resource allocation with development milestones. The projections remain planning scenarios, subject to research progress, regulatory requirements, financing availability and negotiated partnership terms.",
+            "To assess the financial feasibility of CirCure’s development, we prepared detailed projections for 2026–2030 based on explicit assumptions about revenue, expenditure, and financing. We estimated potential income from technology licensing, co-development, data services, and future product commercialization, alongside expenditure on R&D, materials, clinical studies, platform maintenance, administration, and business development. These estimates informed projected income statements and balance sheets, helping us examine how financial requirements and potential profitability may evolve throughout development.",
+            "We also developed a staged financing plan and allocated proposed funding to candidate validation, preclinical research, IND preparation, pilot manufacturing, and subsequent clinical development. Complementary cash-flow scenarios examined expenditure timing and potential licensing and collaboration receipts, including upfront and milestone payments. Together, these analyses helped us identify periods requiring external financial support and align resource allocation with development milestones. The projections remain planning scenarios, subject to research progress, regulatory requirements, financing availability, and negotiated partnership terms.",
           ],
         },
         {
           type: "prose",
           paragraphs: [
-            "For more details, please refer to our Business Plan in the Business Documents.",
+            "**For more details, please refer to our Business Plan in the Business Documents.**",
           ],
         },
         { type: "feature", key: "doc-business-plan" },
@@ -1313,7 +1317,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Through in-depth discussions with **Yongli Jia, a manager at Hualan Biological Engineering, Inc.**, we gained a more systematic understanding of risk management, particularly risk quantification, risk management practices, and response planning. Mr. Jia emphasized that modern businesses face a wide range of risks and that effectively identifying and addressing these risks has become critical to success, especially for technology-driven innovative companies.",
+            "Through in-depth discussions with **Yongli Jia, a manager at Hualan Biological Engineering, Inc.**, we gained a more systematic understanding of risk management, particularly risk quantification, risk management practices, and response planning. Mr. Jia emphasized that modern businesses face a wide range of risks and that effectively identifying and addressing them has become critical to success, especially for innovative, technology-driven companies.",
+            "[See more in Integrated Human Practices.](/human-practices)",
           ],
         },
         {
@@ -1325,11 +1330,11 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "To identify the key risks CirCure may face during subsequent development more systematically, we established a **risk assessment matrix** and used quantitative scoring to prioritize risk management. Compared with relying solely on qualitative judgments, this approach helps us compare risks across technology, funding, intellectual property, collaboration, regulation, and the market more clearly, directing limited resources toward the issues that most urgently need to be addressed.",
-            "Specifically, we assess each risk across three dimensions: **Impact **and** Likelihood**. Each dimension is scored on a five-point scale, ranging from 1 (low) to 5 (high). Impact measures the consequences of a risk for candidate development, funding, collaboration, or the commercialization pathway. Likelihood reflects the probability of the risk occurring at the current development stage.",
+            "To more systematically identify the key risks CirCure may face during subsequent development, we established a **risk assessment matrix** and used quantitative scoring to prioritize risk management. Compared with relying solely on qualitative judgments, this approach helps us compare risks across technology, funding, intellectual property, collaboration, regulation, and the market more clearly, directing limited resources toward the issues that most urgently need to be addressed.",
+            "Specifically, we assess each risk across two dimensions: Impact and Likelihood. We score each dimension on a five-point scale, from 1 (low) to 5 (high). Impact measures a risk's consequences for candidate development, funding, collaboration, or the commercialization pathway. Likelihood reflects the probability that the risk will occur at the current development stage.",
             "We then calculate the **Risk Priority Index (RPI)** by multiplying the scores across the two dimensions:",
             "**RPI = Impact × Likelihood**",
-            "A higher RPI indicates greater potential impact, a higher likelihood of occurrence, or greater difficulty in managing the risk, warranting priority monitoring and targeted mitigation measures. Lower-scoring risks remain under continuous review and are reassessed as the project progresses.",
+            "A higher RPI indicates a higher combined impact and likelihood score, helping us prioritize risks for further review and mitigation. Lower-scoring risks remain under continuous review and are reassessed as the project progresses.",
           ],
         },
         {
@@ -1450,7 +1455,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Based on the risk assessment results, we developed corresponding mitigation measures for key issues that fell within the high-risk zone. For CirCure, risk management does not mean eliminating all uncertainty. Instead, it means identifying critical issues wherever possible before advancing to the next stage and preventing further risk accumulation through validation, adjustments, or mechanisms for halting development.",
+            "Based on the risk assessment results, we developed corresponding mitigation measures for key issues in the high-risk zone. For CirCure, risk management does not mean eliminating all uncertainty. Instead, it means identifying critical issues early and preventing further risk accumulation through validation, adjustments, or mechanisms to halt development.",
           ],
         },
         {
@@ -1461,10 +1466,10 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "list",
           items: [
-            "**Multi-Level Candidate Identity Verification** Building on existing validation, establish direct verification of the back-splice junction (BSJ), include linear RNA and negative controls, and introduce at least one orthogonal validation method to cross-confirm the candidate’s identity, integrity, and circularity. Proceed to subsequent expression, antigen presentation, and functional evaluation only when candidate identity can be consistently traced.",
+            "**Multi-Level Candidate Identity Verification** Building on existing validation, directly verify the back-splice junction (BSJ), include linear RNA and negative controls, and add at least one orthogonal validation method to cross-confirm the candidate’s identity, integrity, and circularity. Proceed to subsequent expression, antigen presentation, and functional evaluation only when you can consistently trace candidate identity.",
             "**Staged Functional Validation** Separate “Is the candidate present?”, “Can the candidate be expressed and its antigens presented?”, and “Does the candidate warrant further development?” into distinct validation stages, avoiding reliance on a single experimental result to determine the candidate’s overall feasibility.",
             "**Go / Revise / No-Go Decision Framework** Define decision criteria for key experimental results in advance. Proceed when results meet development requirements. Enter the Revise stage if issues can be resolved through changes to the sequence, epitopes, or construct design. If core identity or functional issues remain unresolved despite repeated efforts, discontinue the current candidate and pursue an alternative.",
-            "**R&D Data Traceability** Standardize candidate versioning, Dry Lab records, software versioning, screening parameters, and experimental results so that every candidate modification can be traced to specific data and the rationale behind the decision, reducing repeated experiments and incorrect judgments caused by version confusion.",
+            "**R&D Data Traceability** Standardize candidate versioning, Dry Lab records, software versioning, screening parameters, and experimental results so you can trace every candidate modification to specific data and the rationale behind the decision, reducing repeated experiments and incorrect judgments caused by version confusion.",
           ],
         },
         {
@@ -1475,7 +1480,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "list",
           items: [
-            "**Early Integration of Critical Quality Attributes** Establish a framework for the candidate’s critical quality attributes early in development, progressively evaluating identity, purity, integrity, impurities, potency, stability, and batch consistency. This ensures that manufacturing reproducibility and functional performance are assessed alongside each other.",
+            "**Early Integration of Critical Quality Attributes** Establish a framework for the candidate’s critical quality attributes early in development, progressively evaluating identity, purity, integrity, impurities, potency, stability, and batch consistency. This ensures that manufacturing reproducibility and functional performance are assessed together.",
             "**Parallel Validation of Delivery and Manufacturing Processes** Compare different delivery and production approaches in stages without committing to a single technical route early on. Continuously optimize circularization, purification, and delivery conditions based on the candidate’s properties, stability, and quality requirements, allowing the process to be adjusted promptly in response to experimental results.",
             "**External Expert Validation** Collaborate with specialized laboratories and CROs/CDMOs with expertise in RNA processing, analytics, and quality to externally validate key production and analytical steps. Begin with clearly defined, small-scale validation tasks, then determine whether to expand investment based on the results.",
             "**Alternative Processes and Supply Arrangements** Establish alternatives for critical raw materials, circularization methods, purification processes, and delivery platforms to avoid excessive reliance on a single technology or partner. If the current approach cannot establish a reliable manufacturing operating window, promptly switch to or reassess alternative routes.",
@@ -1545,7 +1550,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Given CirCure’s technical features in circRNA vaccine production and development, **patent protection is an important component of our intellectual property strategy**. We have submitted a utility model patent application for an **integrated nucleic acid circularization reaction device** related to circRNA vaccine production. The application number is **2026204425615**, and the application was **formally accepted on April 3, 2026**. This patent application extends the project’s intellectual property protection to the engineering aspects of circRNA production, establishing a clearly defined technical asset base for subsequent process development, technology collaboration, and industrial translation.",
+            "Given CirCure’s technical features in circRNA vaccine production and development, **patent protection is a key part of our intellectual property strategy**. We have submitted a utility model patent application for an **integrated nucleic acid circularization reaction device** related to circRNA vaccine production. The application number is **2026204425615**, and the application was **formally accepted on April 3, 2026**. This patent application extends the project’s intellectual property protection to the engineering aspects of circRNA production, establishing a clearly defined technical asset base for subsequent process development, technology collaboration, and industrial translation.",
             "Meanwhile, candidate sequences, screening logic, critical process parameters, experimental data, and R&D know-how also constitute important technical assets for CirCure. We will apply tiered management to this sensitive information and use **non-disclosure agreements (NDAs), material transfer agreements (MTAs), data access controls, and confidentiality measures** during external collaboration and technical review to define the permitted uses of materials and technologies, facilitating collaboration while protecting our core R&D outcomes.",
           ],
         },
@@ -1576,7 +1581,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "In addition to the patent application covering production equipment, we protect CirCure’s digital R&D tools through software copyright. Our independently developed **CircRNA Vaccine Design System V1.0** completed **software copyright registration on April 9, 2026, under registration number 2026SR0543219**. The system integrates expression data processing, candidate target screening, epitope prediction, and vaccine design workflows, providing ongoing support for CirCure’s candidate design and iterative R&D.",
+            "In addition to the patent application covering production equipment, we protect CirCure’s digital R&D tools through software copyright. We completed software copyright registration for our independently developed **CircRNA Vaccine Design System V1.0 on April 9, 2026, under registration number 2026SR0543219**. The system integrates expression data processing, candidate target screening, epitope prediction, and vaccine design workflows, supporting CirCure’s candidate design and iterative R&D.",
             "Through a combined protection strategy of **a production device patent, software copyright, and trade secrets**, we extend CirCure’s intellectual property coverage across key stages from digital candidate design to circRNA production, providing a more comprehensive intellectual property foundation for future technology licensing, co-development, and commercialization.",
           ],
         },
@@ -1645,7 +1650,7 @@ export const entrepreneurshipPage: WikiPageContent = {
           paragraphs: [
             "The JLU-FBH team brings together members from diverse academic backgrounds, including medicine, life sciences, physics, mathematics, computer science, and veterinary medicine. Our work focuses on optimizing CirCure’s research and development, advancing clinical translation, exploring the market, and pursuing long-term commercialization.",
             "Our backgrounds in medicine and life sciences enable us to understand TNBC’s disease characteristics, treatment pathways, and patient needs in depth, helping us identify key unmet clinical needs and define our target population and product value. Members with expertise in computer science and physics improve the efficiency of vaccine design, patient screening, and R&D management through software development, data processing, and computational analysis, while also supporting market analysis and technological scale-up. Veterinary medicine members help assess the product’s development potential and key risks through preclinical validation and translational evaluation. Mathematics members provide a quantitative basis for business model design and strategic decisions through statistical analysis, market estimation, and risk assessment.",
-            "However, we also recognize limitations in our team’s composition. For example, some members must take on responsibilities across additional fields, such as legal and regulatory matters and business model development. Overall, our team covers key areas including clinical needs identification, scientific research and development, data analysis, preclinical validation, and business planning. This capacity for multidisciplinary collaboration, combined with our shared enthusiasm for advancing CirCure toward clinical translation and commercialization, provides a solid foundation for the startup’s continued development.",
+            "However, we also recognize limitations in our team’s composition. For example, some members must take on responsibilities across additional fields, such as legal and regulatory matters and business model development. Overall, our team covers key areas including clinical needs identification, scientific research and development, data analysis, preclinical validation, and business planning. This multidisciplinary collaboration, combined with our shared enthusiasm for advancing CirCure toward clinical translation and commercialization, provides a strong foundation for the startup’s continued development.",
           ],
         },
         {
@@ -1671,7 +1676,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "CirCure is a multi-epitope circRNA therapeutic vaccine designed for a defined group of high-risk TNBC patients with residual invasive disease after neoadjuvant therapy and surgery. As the ultimate beneficiaries, patients would be directly affected by its eligibility screening, treatment process, and follow-up requirements. Therefore, understanding their needs, concerns, and treatment decisions is essential for the responsible development and future clinical translation of CirCure.",
+            "CirCure is a multi-epitope circRNA therapeutic vaccine designed for a defined group of high-risk TNBC patients with residual invasive disease after neoadjuvant therapy and surgery. As the ultimate beneficiaries, patients would be directly affected by its eligibility screening, treatment process, and follow-up requirements. Therefore, understanding their needs, concerns, and treatment decisions is essential to responsibly develop and translate CirCure into clinical practice.",
           ],
         },
         {
@@ -1683,7 +1688,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Academic researchers can assess the feasibility of CirCure from the perspectives of scientific validity, experimental design, and translational potential, and provide us with rigorous and constructive suggestions for optimizing our research strategy.",
+            "Academic researchers can assess CirCure's feasibility in terms of scientific validity, experimental design, and translational potential, and provide rigorous, constructive suggestions to optimize our research strategy.",
           ],
         },
         {
@@ -1695,7 +1700,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Clinicians are directly involved in evaluating patients’ disease status, treatment options, and eligibility for further intervention. Their clinical experience can help us assess whether CirCure has a clear position within the existing TNBC treatment pathway and whether its patient selection and application process are practical. Therefore, communication with clinicians is essential for refining the clinical positioning and translational feasibility of our project.",
+            "Clinicians directly evaluate patients’ disease status, treatment options, and eligibility for further intervention. Their clinical experience can help us assess whether CirCure has a clear position within the existing TNBC treatment pathway and whether its patient selection and application process are practical. Therefore, communicating with clinicians is essential to refine the project's clinical positioning and translational feasibility.",
           ],
         },
         {
@@ -1707,7 +1712,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "CirCure is situated within a complex RNA therapeutics industry involving biopharmaceutical companies, CRO/CDMO providers, and other supporting sectors. Conducting in-depth research on this industrial chain will help us more accurately assess the technical value, development feasibility, and commercialization potential of CirCure.",
+            "CirCure is situated within a complex RNA therapeutics industry involving biopharmaceutical companies, CRO/CDMO providers, and other supporting sectors. In-depth research on this industrial chain will help us more accurately assess CirCure's technical value, development feasibility, and commercialization potential.",
           ],
         },
         {
@@ -1738,7 +1743,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Turning innovative ideas into successful ventures requires more than creativity and persistence; it also depends on gaining recognition and validation from the broader entrepreneurial ecosystem.",
+            "Turning innovative ideas into successful ventures takes more than creativity and persistence; it also requires recognition and validation from the broader entrepreneurial ecosystem.",
           ],
         },
         {
@@ -1770,7 +1775,7 @@ export const entrepreneurshipPage: WikiPageContent = {
             },
             {
               src: entrepreneurshipAssets.illustrations.actionSouthChina,
-              alt: "Southern China Retional Meeting",
+              alt: "Southern China Regional Meeting",
               width: 1920,
               height: 1280,
             },
@@ -1782,7 +1787,7 @@ export const entrepreneurshipPage: WikiPageContent = {
             },
             {
               src: entrepreneurshipAssets.illustrations.actionApic,
-              alt: "The 1st Gramd APiC Conference for Asia-Pracific iGEMer Community",
+              alt: "The 1st Grand APiC Conference for Asia-Pacific iGEMer Community",
               width: 2568,
               height: 1926,
             },
@@ -1808,7 +1813,7 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "In terms of direct impact, CirCure focuses on patients with TNBC who remain at high risk of recurrence after surgery. Through patient stratification, TAA expression screening, and HLA matching, we explore more precisely targeted potential treatment options beyond standard treatment. This aligns closely with SDG 3 (Good Health and Well-being), aiming to address the ongoing treatment needs of patients with cancer and advance more personalized health interventions.",
+            "In terms of direct impact, CirCure focuses on patients with TNBC who remain at high risk of recurrence after surgery. Through patient stratification, TAA expression screening, and HLA matching, we aim to develop a patient-stratified therapeutic vaccine candidate whose eligibility criteria are informed by clinical risk, TAA expression, and HLA compatibility. This aligns closely with SDG 3 (Good Health and Well-being) by addressing the ongoing treatment needs of cancer patients and advancing more personalized health interventions.",
             "Indirectly, CirCure advances innovation and translation in therapeutic RNA vaccines by integrating clinical needs, patient stratification, and multi-epitope circRNA vaccine design, while fostering closer collaboration among clinical practice, research, and industry. This further aligns with SDG 9 (Industry, Innovation and Infrastructure) and SDG 17 (Partnerships for the Goals), extending the project’s long-term value beyond a single candidate product to a broader framework for innovation and collaboration.",
           ],
         },
@@ -1835,8 +1840,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Looking ahead, we are committed not only to advancing the validation of CirCure in TNBC, but also to gradually exploring the broader application of multi-epitope circRNA vaccines guided by patient stratification in cancer immunotherapy. We will continue collaborating with clinicians, research institutions, biopharmaceutical companies, and specialized development partners to refine candidate identity characterization, delivery, CMC, and quality and safety assessments, while advancing the project along an established preclinical development pathway.",
-            "Although uncertainties remain in technical validation, market competition, intellectual property, and regulation, we will work to reduce these risks through continued research and development, external validation, and responsible product iteration. Only after the TNBC candidate has been thoroughly validated will we explore extending this design framework to other cancers, gradually building reusable development experience in patient stratification, multi-epitope design, and circRNA technology. Meanwhile, patient safety, equity, privacy, and accessibility will remain integral to the project’s development. Through these efforts, CirCure will continue connecting scientific innovation with real clinical needs, advancing toward long-term translation and development through careful validation.",
+            "Looking ahead, we are committed not only to advancing CirCure validation in TNBC, but also to gradually exploring broader applications of multi-epitope circRNA vaccines guided by patient stratification in cancer immunotherapy. We will continue collaborating with clinicians, research institutions, biopharmaceutical companies, and specialized development partners to refine candidate identity characterization, delivery, CMC, and quality and safety assessments, while advancing the project along an established preclinical development pathway.",
+            "Although uncertainties remain around technical validation, market competition, intellectual property, and regulation, we will reduce these risks through continued research and development, external validation, and responsible product iteration. Only after thoroughly validating the TNBC candidate will we explore extending this design framework to other cancers, gradually building reusable development experience in patient stratification, multi-epitope design, and circRNA technology. Meanwhile, patient safety, equity, privacy, and accessibility will remain integral to the project’s development. Through these efforts, CirCure will continue connecting scientific innovation with real clinical needs, advancing toward long-term translation and development through careful validation.",
           ],
         },
         {
@@ -1848,8 +1853,8 @@ export const entrepreneurshipPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Entrepreneurship is an important force in turning scientific exploration into real-world value. For CirCure, our decision to pursue entrepreneurship reflects not only our hope of bringing research on a multi-epitope circRNA therapeutic vaccine beyond the laboratory, but also our commitment to making this work truly responsive to patient needs. We remain focused on patients with TNBC who face a high risk of recurrence after completing existing treatments, seeking to explore additional potential treatment options for them through continued research, development, and clinical translation. To us, the value of scientific innovation lies not only in introducing a new technology, but also in whether it reflects a true understanding of the uncertainty, treatment burden, and practical needs patients face—and whether it can ultimately become a solution that offers value to them.",
-            "Entrepreneurship also encourages us to move beyond a purely research-focused perspective toward a more comprehensive understanding of product development and clinical translation. We have begun actively investigating patient and clinical needs, analyzing the market and industry landscape, assessing potential challenges in technology development, manufacturing, regulation, and commercialization, and continually considering the key steps still needed to bring CirCure into practice. Discussions with patients, clinicians, researchers, industry partners, and other stakeholders have prompted us to reassess our initial assumptions and helped us progressively clarify our target population, product positioning, validation priorities, and future pathways for collaboration. Through this feedback and iteration, CirCure has gradually evolved from a scientific concept in the laboratory into a project with a clearer development direction.",
+            "Entrepreneurship is an important force in turning scientific exploration into real-world value. For CirCure, pursuing entrepreneurship reflects not only our hope of bringing research on a multi-epitope circRNA therapeutic vaccine beyond the laboratory, but also our commitment to making this work truly responsive to patient needs. We remain focused on patients with TNBC who face a high risk of recurrence after completing existing treatments, and we seek to explore additional treatment options through continued research, development, and clinical translation. To us, the value of scientific innovation lies not only in introducing a new technology, but also in whether it reflects a true understanding of the uncertainty, treatment burden, and practical needs patients face—and whether it can ultimately become a solution that offers value to them.",
+            "Entrepreneurship also encourages us to move beyond a purely research-focused perspective toward a more comprehensive understanding of product development and clinical translation. We have begun actively investigating patient and clinical needs, analyzing the market and industry landscape, assessing potential challenges in technology development, manufacturing, regulation, and commercialization, and continually considering the key steps still needed to bring CirCure into practice. Discussions with patients, clinicians, researchers, industry partners, and other stakeholders have prompted us to reassess our initial assumptions and progressively clarify our target population, product positioning, validation priorities, and future collaboration pathways. Through this feedback and iteration, CirCure has gradually evolved from a scientific concept in the laboratory into a project with a clearer development direction.",
             "For CirCure, entrepreneurship is therefore both a means of sustaining the project’s development and an important way of putting our patient-centered commitment into practice. It connects patient needs, scientific validation, clinical judgment, and translation into industry, encouraging us to consider not only “Can the technology be developed?” but also “Will it truly be needed, accepted, and ultimately serve patients?” Through this process, we hope to keep improving CirCure while ensuring that it continues to advance toward creating meaningful value in healthcare.",
           ],
         },

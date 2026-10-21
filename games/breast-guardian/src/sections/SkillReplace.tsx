@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight, Check, Sparkles, AlertTriangle, Lock } from 'lucide-react';
@@ -17,14 +17,14 @@ export default function SkillReplace() {
   const isZh = state.language === 'zh';
   const perspective = state.currentPerspective!;
   const memoryPoint = state.currentMemoryPoint;
-  
+
   // Get current Memory Point result
   const result = state.perspectivesData[perspective].memories[memoryPoint] ?? null;
-  
+
   // Get new skill (by current language)
   const skills = getSkillsByMemory(perspective, memoryPoint, state.language);
   const newSkill = result === 'HE' ? skills.he : skills.be;
-  
+
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
   const [confirmed, setConfirmed] = useState(false);
   const [showLockDialog, setShowLockDialog] = useState(false);
@@ -39,14 +39,14 @@ export default function SkillReplace() {
   const isSkillLocked = (skillId: string): boolean => {
     if (state.playthrough !== 1) return false;
     if (!isNegativeSkill(skillId)) return false;
-    
+
     const beSourceMemoryPoint = state.beSkillSources[skillId];
     if (!beSourceMemoryPoint) return false;
-    
+
     if (result === 'HE' && beSourceMemoryPoint === memoryPoint) {
       return false;
     }
-    
+
     return true;
   };
 
@@ -60,13 +60,13 @@ export default function SkillReplace() {
 
   const handleConfirm = () => {
     if (!selectedSkill) return;
-    
+
     unlockSkill(newSkill.id);
-    
+
     if (result === 'BE') {
       dispatch({ type: 'RECORD_BE_SKILL_SOURCE', payload: { skillId: newSkill.id, memoryPoint } });
     }
-    
+
     equipSkill(newSkill.id, selectedSkill);
     setConfirmed(true);
   };
@@ -83,7 +83,7 @@ export default function SkillReplace() {
   // If already possessed, show skip notice
   if (alreadyHasSkill && !confirmed) {
     return (
-      <div 
+      <div
         className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center p-4"
         onClick={handleContinue}
       >
@@ -212,7 +212,7 @@ export default function SkillReplace() {
               ? '你最多只能携带4个技能，请选择要替换的技能'
               : 'You can equip at most 4 skills. Choose one to replace with the new skill.'}
           </p>
-          
+
           <div className="space-y-2">
             {state.equippedSkills.map((skillId) => {
               const skill = getSkillById(skillId, state.language);
@@ -227,8 +227,8 @@ export default function SkillReplace() {
                   className={`w-full p-4 rounded-xl text-left transition-all border-2 relative overflow-hidden ${
                     locked
                       ? 'border-red-300 bg-red-50 cursor-not-allowed'
-                      : isSelected 
-                        ? 'border-blue-500 bg-blue-50' 
+                      : isSelected
+                        ? 'border-blue-500 bg-blue-50'
                         : 'border-gray-200 bg-white hover:border-blue-300'
                   }`}
                   onClick={() => handleSkillClick(skillId)}
@@ -279,7 +279,7 @@ export default function SkillReplace() {
             {isZh ? '确认替换' : 'Confirm Replacement'}
           </Button>
         </div>
-        
+
         <p className="text-center text-xs text-gray-400 mt-4">
           {isZh
             ? '必须从当前携带的4个技能中替换1个'
@@ -289,7 +289,7 @@ export default function SkillReplace() {
 
       {/* 锁定提示弹窗 */}
       {showLockDialog && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
           onClick={() => setShowLockDialog(false)}
         >

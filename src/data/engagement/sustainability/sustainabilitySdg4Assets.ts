@@ -21,7 +21,7 @@ const photoSet = (
 ): StakeholderPhotoSet =>
   files.map((file, index) => ({
     src: `${SDG4_PAGES}/${file}`,
-    alt: `${label} — photograph ${index + 1}`,
+    alt: `${label} - photograph ${index + 1}`,
     caption: label,
   }));
 
@@ -163,7 +163,7 @@ export const sdg4ImageAssets = {
     localSourcePath: "",
     uploadUrl: `${SDG4_PAGES}/01-virtual-laboratory.avif`,
     alt: "Virtual laboratory with nine experiments across three difficulty levels",
-    section: "SDG 4 — Educational Resources",
+    section: "SDG 4 - Educational Resources",
     width: 1600,
     height: 900,
   },
@@ -173,7 +173,7 @@ export const sdg4ImageAssets = {
     localSourcePath: "",
     uploadUrl: `${SDG4_PAGES}/02-bio-memory-match.avif`,
     alt: "Bio Memory Match physical cards and bilingual concept guide",
-    section: "SDG 4 — Educational Resources",
+    section: "SDG 4 - Educational Resources",
     width: 1600,
     height: 900,
   },
@@ -183,7 +183,7 @@ export const sdg4ImageAssets = {
     localSourcePath: "",
     uploadUrl: `${SDG4_PAGES}/03-breast-guardian-rpg.avif`,
     alt: "Breast Guardian RPG interactive story game",
-    section: "SDG 4 — Educational Resources",
+    section: "SDG 4 - Educational Resources",
     width: 2560,
     height: 1440,
   },
@@ -194,7 +194,7 @@ export const sdg4ImageAssets = {
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg4/evidence-0-1.avif",
     alt: "Feedback from three stakeholder groups informing educational design",
-    section: "SDG 4 — Evidence",
+    section: "SDG 4 - Evidence",
     width: 3106,
     height: 1029,
   },
@@ -205,7 +205,7 @@ export const sdg4ImageAssets = {
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/sustainability/sdg4/evidence-1-2.avif",
     alt: "Reach of the 14 educational activities across schools and audiences",
-    section: "SDG 4 — Evidence",
+    section: "SDG 4 - Evidence",
     width: 3604,
     height: 1997,
   },
@@ -215,7 +215,7 @@ export const sdg4ImageAssets = {
     localSourcePath: "",
     uploadUrl: `${SDG4_PAGES}/evidence-2.avif`,
     alt: "SDG 4-shaped word cloud of educational priorities",
-    section: "SDG 4 — Evidence",
+    section: "SDG 4 - Evidence",
     width: 2010,
     height: 694,
   },

@@ -328,6 +328,9 @@ export function ExperimentPage({experimentId='exp3',onBack,onRestart}:Experiment
   const {frameRef:canvasFrameRef,canvasStyle}=useFixedCanvasSize();
 
   const action=actions[phase];
+  // Scene remount cleanup reads the current target without running on every phase.
+  const activeItemRef = useRef(action?.item);
+  activeItemRef.current = action?.item;
   const currentStep=action?.step??steps.length;
   const complete=phase>=actions.length;
   const stepData=experiment.steps[currentStep];
@@ -902,13 +905,13 @@ const handleStepNavigation=useCallback((stepIndex:number)=>{
     setClockLabel(null);
     setScene({...stepStartScenes[stepIndex]});
     setSceneRevision((revision)=>revision+1);
-  },[currentStep, animating, stepSnapshots, cancelPendingWaits]);
+  },[currentStep, animating, stepSnapshots]);
 
   useLayoutEffect(()=>{
     // 仅在侧栏跳转 remount 后清理残留 inline filter，避免吞掉 class 黄光。
     const canvas=document.querySelector('#experiment-canvas');
     if(canvas)gsap.set(canvas.querySelectorAll('*'),{clearProps:'filter'});
-    const item=actions[phase]?.item;
+    const item=activeItemRef.current;
     if(!item)return;
     const target=document.getElementById(item);
     if(target)gsap.set(target,{clearProps:'filter'});
@@ -952,7 +955,7 @@ const handleStepNavigation=useCallback((stepIndex:number)=>{
   </div>;
   return <div className="experiment-shell flex h-screen w-screen flex-col overflow-hidden font-sans text-white">
     <header className="z-50 flex h-12 shrink-0 items-center justify-between lab-topbar px-4">
-      <div className="flex items-center gap-3"><ChevronLeft className="cursor-pointer text-blue-200 hover:text-white" onClick={onBack}/><h1 className="text-xs font-bold uppercase tracking-widest text-white">{experiment.title}</h1></div>
+      <div className="flex items-center gap-3"><button type="button" className="lab-back-button shrink-0 text-blue-200 hover:text-white" onClick={onBack} aria-label="Back to Experiment Catalog"><ChevronLeft aria-hidden="true" /></button><h1 className="text-xs font-bold uppercase tracking-widest text-white">{experiment.title}</h1></div>
       <RestartExperimentButton onRestart={onRestart} />
     </header>
     <div className="flex flex-1 overflow-hidden">

@@ -1,7 +1,7 @@
 import { bindHomeArtwork } from "../utils/homeArtworkSource";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { HOME_EASE, HOME_SCRUB, stillHold, settleHomeScrubEndpoint } from "./homeMotion";
+import { HOME_EASE, HOME_REST_RATIO, HOME_SCRUB, stillHold, settleHomeScrubEndpoint } from "./homeMotion";
 import { createClinicalParticleMorph } from "./createClinicalParticleMorph";
 import { createNurseMotion } from "./createNurseMotion";
 import { resetTnbcCopyOpacity, setTnbcCopyOpacity } from "./tnbcCopyOpacity";
@@ -9,7 +9,6 @@ import { resetTnbcCopyOpacity, setTnbcCopyOpacity } from "./tnbcCopyOpacity";
 // Reserve scroll distance for reading the original nurse illustration.
 export const CLINICAL_ILLUSTRATION_HOLD = 0.8;
 export const CLINICAL_QUESTION_HOLD = 0.35;
-const SUMMARY_HOLD = 0.55;
 
 // The completed doctor's reading span must precede this incoming overlap.
 export const clinicalGalleryLead = (compact: boolean) =>
@@ -82,7 +81,8 @@ export function animateClinicalSequence(
   const challengeAt = 0.8;
   const nurseVisibleAt = challengeAt + challengeArt.labels["nurse-visible"];
   const challengeEnd = challengeAt + challengeArt.duration();
-  const transitionAt = challengeEnd + SUMMARY_HOLD;
+  const summaryHold = challengeArt.duration() * HOME_REST_RATIO;
+  const transitionAt = challengeEnd + summaryHold;
   const transitionDuration = 1.15;
   const vaccineAt = transitionAt + transitionDuration;
   const vaccineEnd = vaccineAt + vaccineArt.duration();
@@ -187,7 +187,7 @@ export function animateClinicalSequence(
     "treatment-illustration-readable",
     challengeAt + CLINICAL_ILLUSTRATION_HOLD * 0.75,
   );
-  timeline.addLabel("treatment-summary-readable", challengeEnd + SUMMARY_HOLD * 0.25);
+  timeline.addLabel("treatment-summary-readable", challengeEnd + summaryHold * 0.5);
   timeline.addLabel(
     "vaccine-question-readable",
     vaccineAt + vaccineArt.labels["vaccine-question-readable"],
@@ -239,7 +239,7 @@ export function animateClinicalSequence(
   timeline.add(vaccineArt, vaccineAt);
   let rest = 0.65;
   const addedReading = CLINICAL_ILLUSTRATION_HOLD +
-    (SUMMARY_HOLD - 0.12) + Math.max(0, vaccineArt.duration() - 1);
+    (summaryHold - 0.12) + Math.max(0, vaccineArt.duration() - 1);
   const originalScale =
     Number.parseFloat(
       getComputedStyle(sequence).getPropertyValue("--home-scroll-scale"),
@@ -255,8 +255,8 @@ export function animateClinicalSequence(
     const hold = stillHold(
       sequence.offsetHeight - stage.offsetHeight,
       rest / vaccineEnd,
-      clinicalGalleryLead(compact) + window.innerHeight * 0.45,
-      0,
+      clinicalGalleryLead(compact),
+      vaccineArt.duration() * HOME_REST_RATIO / vaccineEnd,
     );
     rest = vaccineEnd * hold.rest;
     const scale =

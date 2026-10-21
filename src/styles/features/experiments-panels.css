@@ -699,10 +699,6 @@
   padding-left: 1.4em;
 }
 
-.wiki-page--experiments .wiki-content-heading .wiki-cite {
-  font-size: 0.8em;
-  font-weight: 400;
-}
 
 .wiki-page--experiments .wiki-reference-item__link {
   overflow-wrap: anywhere;
@@ -823,6 +819,10 @@
   color: #ffffff;
 }
 
+.wiki-protocol-drawer__body[hidden] {
+  display: none;
+}
+
 .wiki-protocol-drawer__body {
   padding: 18px 22px 22px;
   display: flex;
@@ -865,6 +865,8 @@
 }
 
 .wiki-protocol-popover {
+  max-height: calc(100dvh - 32px);
+  overflow-y: auto;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);

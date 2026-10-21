@@ -1,4 +1,4 @@
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import { Button } from '@/components/ui/button';
 import { getPerspectiveData } from '@/types';
 import { getBossAssetPath, getSceneAssetPath } from '@/data/assets';
@@ -6,7 +6,7 @@ import { getBossAssetPath, getSceneAssetPath } from '@/data/assets';
 // BE Ending (Malignant Outcome) Screen
 export default function BEEnding() {
   const { state, dispatch, openExitMenu } = useGame();
-  
+
   const perspective = state.currentPerspective!;
   const isZh = state.language === 'zh';
   const possessive = getPerspectiveData(perspective, state.language).possessive;
@@ -14,7 +14,7 @@ export default function BEEnding() {
   const handleRestart = () => {
     // Jump to corresponding Memory Point based on last negative skill source
     const targetMemoryPoint = state.lastUsedNegativeSkillSource || state.currentMemoryPoint;
-    
+
     dispatch({ type: 'SET_MEMORY_POINT', payload: targetMemoryPoint });
     dispatch({ type: 'SET_PHASE', payload: 'visualNovel' });
   };

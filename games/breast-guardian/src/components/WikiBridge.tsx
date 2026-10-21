@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 
 const MESSAGE_SOURCE = 'breast-guardian-game';
 

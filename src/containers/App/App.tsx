@@ -18,15 +18,9 @@ import "../../styles/route-palette-project.css";
 import "../../styles/route-palette-wetlab.css";
 import "../../styles/route-palette-drylab.css";
 import "../../styles/route-palette-engagement.css";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import { getPathMapping, stringToSlug } from "../../utils";
-import {
-  Suspense,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  type ReactNode,
-} from "react";
+import { matchRoutes, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { getPathMapping } from "../../utils";
+import { Suspense, useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Navbar } from "../../components/Navbar";
@@ -109,9 +103,6 @@ const App = () => {
   const { pathname } = useLocation();
   const previousPath = useRef(pathname);
   const pathMapping = getPathMapping();
-  const currentPath =
-    pathname.split(`${stringToSlug(import.meta.env.VITE_TEAM_NAME)}`).pop() ||
-    "/";
 
   // Each route loads its own art on demand, so every route change is covered
   // by the static loader from index.html until that route is presentable.
@@ -161,10 +152,7 @@ const App = () => {
         // A link handler can cancel navigation after this capture listener.
         // The mounted page still needs to release the cover in that case.
         window.setTimeout(() => {
-          if (
-            event.defaultPrevented &&
-            window.location.pathname === previousPath
-          )
+          if (event.defaultPrevented && window.location.pathname === previousPath)
             hidePageLoaderWhenReady();
         }, 0);
       }
@@ -184,7 +172,10 @@ const App = () => {
 
   // Set Page Title
   const title =
-    currentPath in pathMapping ? pathMapping[currentPath].title : "Not Found";
+    matchRoutes(
+      Object.entries(pathMapping).map(([path, { title }]) => ({ path, title })),
+      pathname,
+    )?.at(-1)?.route.title ?? "Not Found";
 
   useEffect(() => {
     document.title = `${title || ""} | ${import.meta.env.VITE_TEAM_NAME} - iGEM ${import.meta.env.VITE_TEAM_YEAR}`;
@@ -215,7 +206,7 @@ const App = () => {
       <Navbar />
 
       {/* Header and PageContent */}
-      <Suspense fallback={null}>
+      <Suspense fallback={<div className="page-route-placeholder" aria-hidden="true" />}>
         <PageReady key={pathname}>
           <Routes>
             {Object.entries(pathMapping).map(

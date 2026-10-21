@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import { BOSSES_BY_PLAYTHROUGH } from '@/data/bossProgression';
 import { Card, CardContent } from '@/components/ui/card';
 import { Brain, Compass, Sword, X } from 'lucide-react';
@@ -117,7 +117,7 @@ export default function MicroWorldMain() {
 
       {/* 核心功能入口 */}
       <div className="max-w-md mx-auto space-y-4">
-        <Card 
+        <Card
           className="cursor-pointer hover:shadow-lg transition-all hover:scale-[1.02] bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200"
           onClick={() => dispatch({ type: 'SET_PHASE', payload: 'memoryCenter' })}
         >
@@ -136,7 +136,7 @@ export default function MicroWorldMain() {
           </CardContent>
         </Card>
 
-        <Card 
+        <Card
           className="cursor-pointer hover:shadow-lg transition-all hover:scale-[1.02] bg-gradient-to-r from-red-50 to-red-100 border-red-200"
           onClick={() => dispatch({ type: 'SET_PHASE', payload: 'bossEntry' })}
         >

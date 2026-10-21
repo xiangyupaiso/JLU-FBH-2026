@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import { BOSSES_BY_PLAYTHROUGH } from '@/data/bossProgression';
 import { Button } from '@/components/ui/button';
 import { getSkillById } from '@/data/skills';
@@ -17,7 +17,7 @@ interface FeedbackState {
 }
 
 export default function BossBattle() {
-  const { state, dispatch, useSkillInBattle, defeatBoss, openExitMenu } = useGame();
+  const { state, dispatch, useSkillInBattle: applySkillInBattle, defeatBoss, openExitMenu } = useGame();
   const isZh = state.language === 'zh';
   const [boss] = useState<BossType>(state.currentBoss!);
   const [showResult, setShowResult] = useState(false);
@@ -64,14 +64,14 @@ export default function BossBattle() {
   // 点击继续反馈
   const handleContinueFeedback = () => {
     if (!feedback.show) return;
-    
+
     setFeedback({ show: false, text: '', type: null });
-    
+
     if (feedback.type === 'boss') {
       setIsPlayerTurn(true);
     } else if (feedback.type === 'player') {
       const usedSkillCount = (state.battleState?.usedSkills.length || 0);
-      
+
       if (usedSkillCount >= 4) {
         if (!hasDefeatedBoss) {
           setHasDefeatedBoss(true);
@@ -118,7 +118,7 @@ export default function BossBattle() {
         type: 'negative'
       });
       const negativeSkillSource = getNegativeSkillSource(skill.id);
-      useSkillInBattle(skill.id, true, negativeSkillSource);
+      applySkillInBattle(skill.id, true, negativeSkillSource);
     } else {
       setFeedback({
         show: true,
@@ -127,7 +127,7 @@ export default function BossBattle() {
           : `You cast [${skill.name}]!\n${skill.effect}\n\n${skill.description}`,
         type: 'player'
       });
-      useSkillInBattle(skill.id, false);
+      applySkillInBattle(skill.id, false);
     }
   };
 
@@ -155,7 +155,7 @@ export default function BossBattle() {
     }
   };
 
-  const bossHealthPercent = state.battleState 
+  const bossHealthPercent = state.battleState
     ? Math.max(0, 100 - state.battleState.usedSkills.length * 25)
     : 100;
 
@@ -173,7 +173,7 @@ export default function BossBattle() {
   };
 
   return (
-    <div 
+    <div
       className="min-h-screen bg-gradient-to-b from-gray-900 via-red-950 to-gray-900 p-4 relative"
       onClick={feedback.show && !showNegativeContinue ? handleContinueFeedback : undefined}
     >
@@ -246,7 +246,7 @@ export default function BossBattle() {
                 <span>{bossHealthPercent}%</span>
               </div>
               <div className="h-3 bg-gray-700 rounded-full overflow-hidden">
-                <div 
+                <div
                   className="h-full bg-gradient-to-r from-red-500 to-red-600 transition-all duration-500"
                   style={{ width: `${bossHealthPercent}%` }}
                 />
@@ -276,7 +276,7 @@ export default function BossBattle() {
 
         {/* 下方：全屏宽度反馈对话框或技能选择区 */}
         {feedback.show ? (
-          <div 
+          <div
             className={`mx-4 mb-4 rounded-2xl p-6 border-2 ${getFeedbackStyle()} backdrop-blur-sm animate-in slide-in-from-bottom duration-300`}
             onClick={(e) => e.stopPropagation()}
           >
@@ -291,7 +291,7 @@ export default function BossBattle() {
                    feedback.type === 'boss' ? '👹' : '⚠️'}
                 </span>
               </div>
-              
+
               <div className="flex-1">
                 <p className={`text-sm font-medium mb-2 ${
                   feedback.type === 'player' ? 'text-blue-300' :
@@ -309,7 +309,7 @@ export default function BossBattle() {
                 </p>
               </div>
             </div>
-            
+
             {feedback.type !== 'negative' && (
               <div className="mt-6 text-center">
                 <p className="text-white/60 text-sm animate-pulse">
@@ -323,8 +323,8 @@ export default function BossBattle() {
             {/* 回合提示 */}
             <div className="text-center mb-3">
               <span className={`text-sm px-4 py-1 rounded-full ${
-                isPlayerTurn 
-                  ? 'bg-blue-500/30 text-blue-300' 
+                isPlayerTurn
+                  ? 'bg-blue-500/30 text-blue-300'
                   : 'bg-red-500/30 text-red-300'
               }`}>
                 {isPlayerTurn
@@ -332,11 +332,11 @@ export default function BossBattle() {
                   : (isZh ? '◆ BOSS回合' : '◆ BOSS Turn')}
               </span>
             </div>
-            
+
             <div className="grid grid-cols-2 gap-3 mb-4">
               {playerSkills.map((skill) => {
                 const isUsed = state.battleState?.usedSkills.includes(skill.id);
-                
+
                 return (
                   <button
                     key={skill.id}

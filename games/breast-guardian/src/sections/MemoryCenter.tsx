@@ -1,4 +1,4 @@
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ArrowLeft, Check, Lock, Sparkles, RotateCcw, Package } from 'lucide-react';
@@ -49,28 +49,28 @@ export default function MemoryCenter() {
       color: meta?.color || 'bg-white border-gray-200'
     };
   });
-  
+
   const [draggedSkill, setDraggedSkill] = useState<string | null>(null);
   const [dragOverSlot, setDragOverSlot] = useState<number | null>(null);
   const [showSkillLibrary, setShowSkillLibrary] = useState(false);
 
   const getMemoryStatus = (index: number) => {
     const result = state.perspectivesData[perspective].memories[index + 1] ?? null;
-    
+
     if (state.playthrough === 2) {
       if (result === 'HE') return { status: 'completed', label: isZh ? 'HE已通关 (可重玩)' : 'HE Cleared (Replayable)', color: 'text-green-600 bg-green-100', canReplay: true };
       if (result === 'BE') return { status: 'failed', label: isZh ? 'BE已通关 (可重玩)' : 'BE Cleared (Replayable)', color: 'text-red-600 bg-red-100', canReplay: true };
       return { status: 'unlocked', label: isZh ? '可挑战' : 'Available', color: 'text-blue-600 bg-blue-100', canReplay: true };
     }
-    
+
     if (result === 'HE') return { status: 'completed', label: isZh ? 'HE已通关 (已锁定)' : 'HE Cleared (Locked)', color: 'text-green-600 bg-green-100', canReplay: false };
     if (result === 'BE') return { status: 'failed', label: isZh ? 'BE已通关 (已锁定)' : 'BE Cleared (Locked)', color: 'text-red-600 bg-red-100', canReplay: false };
-    
+
     if (index === 0) return { status: 'unlocked', label: isZh ? '可挑战' : 'Available', color: 'text-blue-600 bg-blue-100', canReplay: true };
-    
+
     const prevResult = state.perspectivesData[perspective].memories[index] ?? null;
     if (prevResult) return { status: 'unlocked', label: isZh ? '可挑战' : 'Available', color: 'text-blue-600 bg-blue-100', canReplay: true };
-    
+
     return { status: 'locked', label: isZh ? '未解锁' : 'Locked', color: 'text-gray-400 bg-gray-100', canReplay: false };
   };
 
@@ -78,7 +78,7 @@ export default function MemoryCenter() {
     const status = getMemoryStatus(index);
     if (status.status === 'locked') return;
     if (!status.canReplay && (status.status === 'completed' || status.status === 'failed')) return;
-    
+
     dispatch({ type: 'SET_MEMORY_POINT', payload: index + 1 });
     dispatch({ type: 'SET_PHASE', payload: 'visualNovel' });
   };
@@ -104,7 +104,7 @@ export default function MemoryCenter() {
   const handleDrop = (e: React.DragEvent, targetIndex: number) => {
     e.preventDefault();
     if (!draggedSkill) return;
-    
+
     const targetSkill = state.equippedSkills[targetIndex];
     const sourceIndex = state.equippedSkills.indexOf(draggedSkill);
     if (sourceIndex !== -1) {
@@ -112,14 +112,14 @@ export default function MemoryCenter() {
       newEquipped[sourceIndex] = targetSkill;
       newEquipped[targetIndex] = draggedSkill;
       dispatch({ type: 'EQUIP_SKILL', payload: { newSkill: draggedSkill, oldSkill: targetSkill } });
-      dispatch({ 
-        type: 'SET_EQUIPPED_SKILLS', 
-        payload: newEquipped 
+      dispatch({
+        type: 'SET_EQUIPPED_SKILLS',
+        payload: newEquipped
       });
     } else {
       equipSkill(draggedSkill, targetSkill);
     }
-    
+
     setDraggedSkill(null);
     setDragOverSlot(null);
   };
@@ -150,7 +150,7 @@ export default function MemoryCenter() {
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-b from-indigo-50 to-purple-50 p-4">
       <img src={assetUrl('assets/ui/memory-bg.jpg')} alt="" className="absolute inset-0 h-full w-full object-cover" />
-      
+
       {/* 返回按钮 */}
       <Button
         variant="ghost"
@@ -195,7 +195,7 @@ export default function MemoryCenter() {
             return (
               <Card
                 key={index}
-                className={`${memory.color} ${isClickable ? 'cursor-pointer hover:shadow-lg' : 'opacity-70'} 
+                className={`${memory.color} ${isClickable ? 'cursor-pointer hover:shadow-lg' : 'opacity-70'}
                   transition-all hover:scale-[1.01]`}
                 onClick={() => handleEnterMemory(index)}
               >
@@ -244,7 +244,7 @@ export default function MemoryCenter() {
               </Button>
             )}
           </div>
-          
+
           {/* 技能槽 */}
           <div className="grid grid-cols-2 gap-3">
             {state.equippedSkills.map((skillId, index) => {
@@ -296,13 +296,13 @@ export default function MemoryCenter() {
                 {isZh ? '拖拽替换' : 'Drag to Replace'}
               </span>
             </div>
-            
+
             <p className="text-xs text-amber-700 mb-3">
               {isZh
                 ? '将下方技能拖拽到上方技能槽，或点击技能后点击目标位置进行替换'
                 : 'Drag a skill below to an equipped slot above, or click a skill then click a target slot to replace.'}
             </p>
-            
+
             <div className="grid grid-cols-2 gap-3">
               {INITIAL_SKILL_IDS.map((skillId) => {
                 const skill = getSkillById(skillId, state.language);
@@ -348,7 +348,7 @@ export default function MemoryCenter() {
         <div className="max-w-lg mx-auto mt-6 p-4 bg-indigo-50 rounded-lg">
           <p className="text-xs text-indigo-700">
             <strong>{isZh ? '提示：' : 'Tip: '}</strong>
-            {state.playthrough === 1 
+            {state.playthrough === 1
               ? (isZh
                   ? '一周目：通关记忆点可解锁对应BOSS挑战。HE结局获得正向技能，BE结局获得负面技能。记忆点通关后锁定，不可重玩。'
                   : 'Playthrough 1: Clearing Memory Points unlocks corresponding BOSS encounters. HE outcomes grant positive skills; BE outcomes grant negative skills. Memory Points are locked once cleared.')

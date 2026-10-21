@@ -255,7 +255,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
   return (
     <div className="experiment-shell flex h-screen w-screen flex-col overflow-hidden font-sans text-white">
       <header className="z-50 flex h-12 shrink-0 items-center justify-between lab-topbar px-4">
-        <div className="flex items-center gap-3"><ChevronLeft className="cursor-pointer text-blue-200 hover:text-white" onClick={onBack} /><h1 className="text-xs font-bold uppercase tracking-widest">Experiment 7: Ligation of the Digested Vector and GFP Fragment</h1></div>
+        <div className="flex items-center gap-3"><button type="button" className="lab-back-button shrink-0 text-blue-200 hover:text-white" onClick={onBack} aria-label="Back to Experiment Catalog"><ChevronLeft aria-hidden="true" /></button><h1 className="text-xs font-bold uppercase tracking-widest">Experiment 7: Ligation of the Digested Vector and GFP Fragment</h1></div>
         <RestartExperimentButton onRestart={onRestart} />
       </header>
 

@@ -44,6 +44,13 @@
   object-fit: contain;
 }
 
+/* Give the device schematic and impact framework (FIG. 02–03) more room. */
+.wiki-page--contribution
+  :is(#contribution-hardware, #contribution-sustainability)
+  .wiki-figure img {
+  max-height: clamp(280px, 48vh, 500px);
+}
+
 /* --- 2. Photograph sets --------------------------------------------------- */
 
 .wiki-page--contribution .contribution-gallery {

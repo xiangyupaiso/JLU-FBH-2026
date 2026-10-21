@@ -11,6 +11,7 @@
  * All response counts live in the pure data layer (`sustainabilitySdg4.ts`).
  */
 import {
+  useLayoutEffect,
   useRef,
   useState,
   type KeyboardEvent as ReactKeyboardEvent,
@@ -201,10 +202,70 @@ export function EduFeedbackCards({
   questions?: ReadonlyArray<Sdg4FeedbackQuestion>;
 }) {
   const [active, setActive] = useState(0);
+  const [canAnimate, setCanAnimate] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLElement>(null);
   const tabsRef = useRef<Array<HTMLButtonElement | null>>([]);
   const navigateRef = useRef<((index: number) => void) | null>(null);
+
+  useLayoutEffect(() => {
+    const element = rootRef.current;
+    const card = cardRef.current;
+    if (!element || !card) return;
+    const inner = element.closest<HTMLElement>(".route-frame__scroll");
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      const viewportHeight = window.visualViewport?.height ?? window.innerHeight;
+      const headerHeight =
+        document.querySelector<HTMLElement>(".site-header")?.getBoundingClientRect().height ?? 0;
+      // Use the reader's capacity even while the questionnaire is off screen.
+      const availableHeight = Math.min(
+        inner?.clientHeight ?? viewportHeight,
+        Math.max(0, viewportHeight - headerHeight),
+      );
+      const capacity = Math.max(0, availableHeight - 48);
+      const borderHeight = card.offsetHeight - card.clientHeight;
+      let requiredHeight = Math.max(
+        620,
+        (card.querySelector<HTMLElement>(".ef-rail")?.scrollHeight ?? 0) + borderHeight,
+      );
+      const content = card.querySelector<HTMLElement>(".ef-content");
+      if (content) {
+        // Use one stable stage for every question. Long answers scroll inside
+        // the card before their boundary gesture advances the document deck.
+        card.querySelectorAll<HTMLElement>(".ef-panel").forEach((panel) => {
+          const previousStyle = panel.getAttribute("style");
+          panel.style.setProperty("position", "absolute");
+          panel.style.setProperty("visibility", "hidden");
+          panel.style.setProperty("width", `${content.clientWidth}px`);
+          panel.style.setProperty("display", "block", "important");
+          requiredHeight = Math.max(requiredHeight, panel.offsetHeight + borderHeight);
+          if (previousStyle === null) panel.removeAttribute("style");
+          else panel.setAttribute("style", previousStyle);
+        });
+      }
+      element.style.setProperty("--ef-stage-height", `${Math.min(requiredHeight, capacity)}px`);
+      const usable = capacity >= 480;
+      setCanAnimate((previous) => previous === usable ? previous : usable);
+    };
+    const requestMeasure = () => {
+      if (!frame) frame = requestAnimationFrame(measure);
+    };
+    const observer = new ResizeObserver(requestMeasure);
+    observer.observe(card);
+    if (inner) observer.observe(inner);
+    window.addEventListener("resize", requestMeasure, { passive: true });
+    window.visualViewport?.addEventListener("resize", requestMeasure, { passive: true });
+    measure();
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("resize", requestMeasure);
+      window.visualViewport?.removeEventListener("resize", requestMeasure);
+      element.style.removeProperty("--ef-stage-height");
+    };
+  }, [questions.length]);
 
   useGSAP(
     () => {
@@ -223,7 +284,7 @@ export function EduFeedbackCards({
             "(max-width: 980px), (max-height: 699px), (prefers-reduced-motion: reduce)",
         },
         (context) => {
-          if (!context.conditions?.animated) {
+          if (!context.conditions?.animated || !canAnimate) {
             navigateRef.current = null;
             return;
           }
@@ -231,7 +292,10 @@ export function EduFeedbackCards({
           const projected = Boolean(
             inner && getComputedStyle(inner).overflowY === "hidden",
           );
-          const scroller = projected && inner ? inner : undefined;
+          const scroller = inner && (projected || /auto|scroll/.test(getComputedStyle(inner).overflowY))
+            ? inner
+            : undefined;
+          const content = card.querySelector<HTMLElement>(".ef-content");
           const headerHeight = () =>
             Number.parseFloat(
               getComputedStyle(document.documentElement).getPropertyValue(
@@ -244,7 +308,7 @@ export function EduFeedbackCards({
           const totalTravel = (questions.length - 1) * stepSpan;
 
           const measure = () => {
-            const top = projected ? 24 : headerHeight() + 24;
+            const top = scroller ? 24 : headerHeight() + 24;
             const cardHeight = card.offsetHeight || 620;
             element.style.setProperty("--ef-top", `${top}px`);
             element.style.setProperty("--ef-height", `${cardHeight}px`);
@@ -265,6 +329,7 @@ export function EduFeedbackCards({
             );
             if (index !== previous) {
               previous = index;
+              if (content) content.scrollTop = 0;
               setActive(index);
             }
           };
@@ -273,7 +338,7 @@ export function EduFeedbackCards({
             id: "edu-feedback-scroll",
             trigger: element,
             scroller,
-            start: () => `top ${projected ? 24 : headerHeight() + 24}px`,
+            start: () => `top ${scroller ? 24 : headerHeight() + 24}px`,
             end: () => `+=${Math.max(1, totalTravel)}`,
             onUpdate: update,
             onRefresh: update,
@@ -294,11 +359,34 @@ export function EduFeedbackCards({
                 top: readerTrackStart(track) + targetPos,
                 behavior: "instant",
               });
+            } else if (scroller) {
+              scroller.scrollTo({ top: targetPos, behavior: "instant" });
             } else {
               window.scrollTo({ top: targetPos, behavior: "instant" });
             }
             trigger.update();
           };
+
+          const leaveContent = (event: WheelEvent) => {
+            if (!content || event.ctrlKey || Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+            const remaining = content.scrollHeight - content.clientHeight - content.scrollTop;
+            if (event.deltaY > 0 ? remaining > 1 : content.scrollTop > 1) return;
+            // Native chaining cannot reliably pass an overflow-hidden reader.
+            event.preventDefault();
+            event.stopPropagation();
+            const delta = event.deltaY * (event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? content.clientHeight : 1);
+            (projected || !scroller ? window : scroller).scrollBy({ top: delta, behavior: "instant" });
+          };
+          const readContent = (event: KeyboardEvent) => {
+            if (!content || event.ctrlKey || event.metaKey || event.altKey) return;
+            const direction = event.key === " " ? (event.shiftKey ? -1 : 1)
+              : /^(ArrowDown|PageDown)$/.test(event.key) ? 1
+              : /^(ArrowUp|PageUp)$/.test(event.key) ? -1 : 0;
+            if (direction > 0 ? content.scrollHeight - content.clientHeight - content.scrollTop > 1
+              : direction < 0 && content.scrollTop > 1) event.stopPropagation();
+          };
+          content?.addEventListener("wheel", leaveContent, { passive: false });
+          content?.addEventListener("keydown", readContent);
 
           let frame = 0;
           let alive = true;
@@ -328,6 +416,8 @@ export function EduFeedbackCards({
             alive = false;
             if (frame) cancelAnimationFrame(frame);
             observer.disconnect();
+            content?.removeEventListener("wheel", leaveContent);
+            content?.removeEventListener("keydown", readContent);
             window.removeEventListener("resize", requestMeasure);
             navigateRef.current = null;
             delete element.dataset.scrollDeck;
@@ -345,7 +435,7 @@ export function EduFeedbackCards({
     },
     {
       scope: rootRef,
-      dependencies: [questions.length],
+      dependencies: [questions.length, canAnimate],
       revertOnUpdate: true,
     },
   );

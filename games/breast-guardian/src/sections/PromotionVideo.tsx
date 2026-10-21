@@ -1,8 +1,9 @@
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import { Button } from '@/components/ui/button';
 import { SkipForward } from 'lucide-react';
 import { getSceneAssetPath, getCharacterAssetPath } from '@/data/assets';
-import { StoryControlBar, StoryLogDrawer, useStoryPlayback } from '@/components/storyControls';
+import { StoryControlBar, StoryLogDrawer } from '@/components/storyControls';
+import { useStoryPlayback } from '@/hooks/useStoryPlayback';
 
 // Promotion scene type definition
 interface PromoScene {

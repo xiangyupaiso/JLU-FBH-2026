@@ -28,7 +28,11 @@ import type {
   CitationIndex,
   CitationOccurrence,
   CitationReference,
+  CitationStyle,
 } from "../../../data/citations/citationTypes";
+import { citationParagraphKey, citationReferenceId } from "../../../data/citations/citationTypes";
+import { formatReferenceNumber } from "../../../data/citations/citationFormatting";
+import { inlineFormattingMatches } from "../proseInline";
 import "../../../styles/wiki-citations.css";
 
 /* Host pages only need this module: the tint they pass in is one of its inputs. */
@@ -96,6 +100,20 @@ export function jumpToAnchor(id: string, tint?: CitationFlashTint): void {
   const el = target?.closest<HTMLElement>(".wiki-cite") ?? target;
   if (!el) return;
 
+  const judgingAnswer = el.closest<HTMLElement>(".highlights-record__answer[hidden]");
+  if (judgingAnswer) {
+    const toggle = judgingAnswer.closest(".highlights-record__item")
+      ?.querySelector<HTMLButtonElement>(".highlights-record__toggle");
+    if (toggle?.getAttribute("aria-expanded") === "false") {
+      toggle.click();
+      window.requestAnimationFrame(() => jumpToAnchor(id, tint));
+      return;
+    }
+  }
+  for (let ancestor = el.parentElement; ancestor; ancestor = ancestor.parentElement) {
+    if (ancestor instanceof HTMLDetailsElement) ancestor.open = true;
+  }
+
   const closedSubheading = el.closest<HTMLElement>(
     "[data-wiki-subheading-fold]:not(.is-open)",
   );
@@ -128,6 +146,7 @@ export function jumpToAnchor(id: string, tint?: CitationFlashTint): void {
 
 interface PreviewState {
   refIds: readonly number[];
+  namespace?: string;
   top: number;
   left: number;
   width: number;
@@ -158,6 +177,7 @@ function clearTimers() {
 function positionFor(
   refIds: readonly number[],
   anchor: HTMLElement,
+  namespace?: string,
 ): PreviewState {
   const rect = anchor.getBoundingClientRect();
   const width = Math.min(MAX_WIDTH, window.innerWidth - EDGE * 2);
@@ -174,6 +194,7 @@ function positionFor(
     spaceBelow < estimatedHeight + GAP && rect.top > spaceBelow;
   return {
     refIds,
+    namespace,
     width,
     left,
     placement: placeAbove ? "top" : "bottom",
@@ -200,13 +221,15 @@ export const citationPreview = {
   getServerSnapshot() {
     return current;
   },
-  show(refId: number | readonly number[], anchor: HTMLElement) {
+  show(refId: number | readonly number[], anchor: HTMLElement, namespace?: string) {
     clearTimers();
     showTimer = window.setTimeout(() => {
-      if (!window.matchMedia("(hover: hover)").matches) return;
+      // Mouse entry and keyboard focus are filtered by CitationLink; keyboard
+      // previews also work on a device whose primary pointer cannot hover.
       current = positionFor(
         typeof refId === "number" ? [refId] : refId,
         anchor,
+        namespace,
       );
       emit();
     }, SHOW_DELAY);
@@ -235,8 +258,14 @@ export const citationPreview = {
  */
 export function CitationPreview({
   references,
+  style,
+  namespace,
+  referenceNumbers,
 }: {
   references: readonly CitationReference[];
+  style: CitationStyle;
+  namespace?: string;
+  referenceNumbers?: ReadonlyMap<number, number>;
 }) {
   const state = useSyncExternalStore(
     citationPreview.subscribe,
@@ -252,6 +281,17 @@ export function CitationPreview({
         event.target.closest(".wiki-cite-preview")
       )
         return;
+      // Focusing a citation can scroll the pinned reader. Keep the keyboard
+      // preview attached to its focused link while that scroll settles.
+      const focused = document.activeElement;
+      if (event?.type === "scroll" && focused instanceof HTMLElement
+        && focused.matches(".wiki-cite:focus-visible")) {
+        if (current && current.namespace === namespace) {
+          current = positionFor(current.refIds, focused, current.namespace);
+          emit();
+        }
+        return;
+      }
       citationPreview.hide();
     };
     const onKeyDown = (event: KeyboardEvent) => {
@@ -265,9 +305,9 @@ export function CitationPreview({
       window.removeEventListener("resize", dismiss);
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, []);
+  }, [namespace]);
 
-  if (!state) return null;
+  if (!state || state.namespace !== namespace) return null;
   const previewReferences = state.refIds.flatMap((refId) => {
     const reference = references.find((item) => item.id === refId);
     return reference ? [reference] : [];
@@ -277,6 +317,7 @@ export function CitationPreview({
   return createPortal(
     <div
       className="wiki-cite-preview"
+      data-citation-style={style}
       data-placement={state.placement}
       aria-hidden="true"
       style={{
@@ -290,7 +331,7 @@ export function CitationPreview({
     >
       {previewReferences.map((reference) => (
         <div className="wiki-cite-preview__entry" key={reference.id}>
-          <span className="wiki-cite-preview__index">[{reference.id}]</span>{" "}
+          <span className="wiki-cite-preview__index">{formatReferenceNumber(referenceNumbers?.get(reference.id) ?? reference.displayNumber ?? reference.id, style)}</span>{" "}
           {reference.authors ? <span><CitationText text={reference.authors} /> </span> : null}
           <span><CitationText text={reference.title} /> </span>
           {reference.journal ? <em>{reference.journal} </em> : null}
@@ -309,35 +350,41 @@ function CitationLink({
   additionalOccs = [],
   tint,
   children,
+  style,
+  namespace,
 }: {
   occ: CitationOccurrence;
   additionalOccs?: readonly CitationOccurrence[];
   tint?: CitationFlashTint;
   children?: ReactNode;
+  style: CitationStyle;
+  namespace?: string;
 }) {
   const refIds = [occ, ...additionalOccs].map((occurrence) => occurrence.refId);
-  return (
+  const targetId = citationReferenceId({ namespace }, occ.refId);
+  const link = (
     <a
       id={occ.occId}
-      href={`#ref-${occ.refId}`}
+      href={`#${targetId}`}
       className="wiki-cite"
+      data-citation-style={style}
       role="doc-biblioref"
-      aria-describedby={refIds.map((refId) => `ref-${refId}-body`).join(" ")}
+      aria-describedby={refIds.map((refId) => `${citationReferenceId({ namespace }, refId)}-body`).join(" ")}
       onClick={(event) => {
         if (MODIFIER_KEYS(event)) return; // let the browser open the anchor
         event.preventDefault();
         citationPreview.hide();
-        jumpToAnchor(`ref-${occ.refId}`, tint);
+        jumpToAnchor(targetId, tint);
       }}
       onPointerEnter={(event) => {
         if (event.pointerType === "mouse") {
-          citationPreview.show(refIds, event.currentTarget);
+          citationPreview.show(refIds, event.currentTarget, namespace);
         }
       }}
       onPointerLeave={citationPreview.scheduleHide}
       onFocus={(event) => {
         if (event.currentTarget.matches(":focus-visible")) {
-          citationPreview.show(refIds, event.currentTarget);
+          citationPreview.show(refIds, event.currentTarget, namespace);
         }
       }}
       onBlur={citationPreview.hide}
@@ -353,6 +400,7 @@ function CitationLink({
       {children ?? `[${occ.refId}]`}
     </a>
   );
+  return style === "numeric" ? <sup className="wiki-citation-sup">{link}</sup> : link;
 }
 
 /**
@@ -364,35 +412,67 @@ function CitationLink({
 export function createCitationRenderer(
   index: CitationIndex,
   tint?: CitationFlashTint,
+  options: { linkCitations?: boolean } = {},
 ): InlineRenderer {
-  return (text, fallback, sectionId) => {
-    const entry = (sectionId ? index.byScopedParagraph?.get(`${sectionId}\0${text}`) : undefined)
+  return (text, fallback, sectionId, locationKey) => {
+    const entry = (sectionId ? index.byScopedParagraph?.get(citationParagraphKey(sectionId, text, locationKey)) : undefined)
       ?? index.byParagraph.get(text);
     if (!entry) return fallback(text);
 
     let occurrenceIndex = 0;
-    return entry.segments.map((segment, segmentIndex) => {
-      if (segment.kind === "text") {
-        return <Fragment key={segmentIndex}>{fallback(segment.text)}</Fragment>;
-      }
-      const occurrences = entry.occs.slice(
-        occurrenceIndex,
-        occurrenceIndex + (segment.refIds?.length ?? 1),
-      );
+    let offset = 0;
+    const runs = entry.segments.map((segment) => {
+      const start = offset;
+      offset += segment.text.length;
+      const occurrences = segment.kind === "cite"
+        ? entry.occs.slice(occurrenceIndex, occurrenceIndex + (segment.refIds?.length ?? 1)) : [];
       occurrenceIndex += occurrences.length;
-      return (
-        <CitationLink
-          key={segmentIndex}
-          occ={occurrences[0]}
-          additionalOccs={occurrences.slice(1)}
-          tint={tint}
-        >
-          {/* The link shows exactly what the author wrote: an author-year group,
-              a bracketed numeral, or whatever the next manuscript uses. */}
-          {fallback(segment.text)}
-        </CitationLink>
-      );
+      return { segment, occurrences, start, end: offset };
     });
+    const plain = (from: number, to: number): ReactNode => runs.flatMap((run) => {
+      if (run.end <= from || run.start >= to) return [];
+      const { segment, occurrences } = run;
+      if (segment.kind === "text") {
+        const chunk = run.start >= from && run.end <= to && segment.displayText
+          ? segment.displayText : text.slice(Math.max(from, run.start), Math.min(to, run.end));
+        return [<Fragment key={run.start}>{fallback(chunk)}</Fragment>];
+      }
+      if (options.linkCitations === false) {
+        return [<span key={run.start} id={occurrences[0]?.occId}>
+          {occurrences.slice(1).map((occ) => <span key={occ.occId} id={occ.occId} />)}
+          {fallback(segment.displayText ?? segment.text)}
+        </span>];
+      }
+      return [<CitationLink key={run.start} occ={occurrences[0]} additionalOccs={occurrences.slice(1)}
+        tint={tint} style={index.style} namespace={index.namespace}>
+        {fallback(segment.displayText ?? segment.text)}
+      </CitationLink>];
+    });
+    // Preserve a bold/italic sentence around a citation instead of splitting its
+    // Markdown delimiters into unrelated fallback calls.
+    const renderRange = (from: number, to: number): ReactNode => {
+      const nodes: ReactNode[] = [];
+      let last = from;
+      for (const match of inlineFormattingMatches(text.slice(from, to))) {
+        if (match[0].startsWith("`")) continue;
+        const width = match[0].startsWith("**") ? 2 : 1;
+        const start = from + match.index!;
+        const end = start + match[0].length;
+        const contained = runs.some((run) => (run.segment.kind === "cite" || run.segment.displayText)
+          && run.start >= start + width && run.end <= end - width);
+        const crossing = runs.some((run) => (run.segment.kind === "cite" || run.segment.displayText)
+          && run.start < end && run.end > start && !(run.start >= start + width && run.end <= end - width));
+        if (!contained || crossing) continue;
+        nodes.push(<Fragment key={`t-${last}`}>{plain(last, start)}</Fragment>);
+        nodes.push(width === 2
+          ? <strong key={`b-${start}`}>{renderRange(start + width, end - width)}</strong>
+          : <em key={`i-${start}`}>{renderRange(start + width, end - width)}</em>);
+        last = end;
+      }
+      nodes.push(<Fragment key={`t-${last}`}>{plain(last, to)}</Fragment>);
+      return nodes;
+    };
+    return renderRange(0, text.length);
   };
 }
 
@@ -426,7 +506,7 @@ export function Backlinks({
             jumpToAnchor(occ.occId, tint);
           }}
         >
-          {index === 0 ? "↩" : String.fromCharCode(96 + index)}
+          ↩
         </a>
       ))}
     </span>
@@ -475,7 +555,7 @@ export function CitationReferenceList({
      put the reader here happened before this register mounted. */
   useEffect(() => {
     const hash = window.location.hash.replace(/^#/, "");
-    if (!/^ref-\d+$/.test(hash)) return;
+    if (!hash || !references.some((reference) => citationReferenceId(index, reference.id) === hash)) return;
     const el = document.getElementById(hash);
     if (el) flashCitationTarget(el, tint);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- mount only
@@ -483,18 +563,18 @@ export function CitationReferenceList({
 
   return (
     <>
-      <ol className="wiki-reference-list">
+      <ol className="wiki-reference-list" data-citation-style={index.style}>
         {references.map((reference) => (
           <li
             key={reference.id}
-            id={`ref-${reference.id}`}
+            id={citationReferenceId(index, reference.id)}
             tabIndex={-1}
             className="wiki-reference-item"
           >
-            <span className="wiki-reference-item__index">[{reference.id}]</span>
+            <span className="wiki-reference-item__index">{formatReferenceNumber(reference.displayNumber ?? reference.id, index.style)}</span>
             <div
               className="wiki-reference-item__content"
-              id={`ref-${reference.id}-body`}
+              id={`${citationReferenceId(index, reference.id)}-body`}
             >
               {reference.authors ? (
                 <span className="wiki-reference-item__authors">
@@ -533,7 +613,7 @@ export function CitationReferenceList({
           </li>
         ))}
       </ol>
-      <CitationPreview references={references} />
+      <CitationPreview references={references} style={index.style} namespace={index.namespace} />
     </>
   );
 }

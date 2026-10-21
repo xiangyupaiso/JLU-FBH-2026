@@ -33,7 +33,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
     keyInsight:
       "For patients with TNBC who have undergone surgery, recurrence and metastasis remain major concerns. A new adjuvant treatment must therefore offer meaningful clinical benefits. Safety matters, but reducing side effects should not come at the expense of efficacy.",
     whatChanged:
-      "We sharpened CirCure’s focus on **adjuvant treatment for TNBC after surgery**, identifying reduced recurrence and metastasis risk and improved long-term survival as the key outcomes to pursue. This established our guiding principle: **prioritize efficacy, optimize safety**.",
+      "We sharpened CirCure's focus on **adjuvant treatment for TNBC after surgery**, identifying reduced recurrence and metastasis risk and improved long-term survival as the key outcomes to pursue. This established our guiding principle: **prioritize efficacy, optimize safety**.",
     currentStatus: "Incorporated",
     sdgs: [3, 9],
     article: {
@@ -49,23 +49,23 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
           blocks: [
             "Dr. Li began by emphasizing that **the clinical needs of patients with TNBC vary with the stage of their disease.**",
             "For patients who have undergone surgery, removal of the primary tumor does not eliminate the risk of recurrence and metastasis. The key question at this stage is whether a new adjuvant therapy can build on existing treatment to **further reduce recurrence and metastasis and deliver more sustained disease control and long-term benefits**, rather than whether it can shrink the tumor. Once cancer has recurred or metastasized, the focus shifts toward controlling disease progression and finding additional effective treatment options.",
-            "This distinction led us to reconsider CirCure’s intended clinical setting. We narrowed our focus from patients with TNBC in general to **those who have undergone surgery but remain at risk of recurrence and metastasis**, positioning CirCure as a potential adjuvant therapeutic strategy following surgery.",
+            "This distinction led us to reconsider CirCure's intended clinical setting. We narrowed our focus from patients with TNBC in general to **those who have undergone surgery but remain at risk of recurrence and metastasis**, positioning CirCure as a potential adjuvant therapeutic strategy following surgery.",
             photo("sdg3-li-chengli", 0),
           ],
         },
         {
-          heading: "02 “Fewer Side Effects” Is Not Enough",
+          heading: "02 \"Fewer Side Effects\" Is Not Enough",
           blocks: [
-            "When we first introduced CirCure, we emphasized the possibility that circRNA vaccines might cause “fewer side effects.” Dr. Li’s response was direct: **for patients with cancer, the first question is whether a treatment works.** A new adjuvant therapy that offers clear improvements in disease control and reduces the risk of recurrence and metastasis may be worth considering despite some side effects, provided the risks are acceptable. Safety remains important, but **the possibility of fewer side effects alone does not establish a treatment’s value when its efficacy is still uncertain.**",
+            "When we first introduced CirCure, we emphasized the possibility that circRNA vaccines might cause \"fewer side effects.\" Dr. Li's response was direct: **for patients with cancer, the first question is whether a treatment works.** A new adjuvant therapy that offers clear improvements in disease control and reduces the risk of recurrence and metastasis may be worth considering despite some side effects, provided the risks are acceptable. Safety remains important, but **the possibility of fewer side effects alone does not establish a treatment's value when its efficacy is still uncertain.**",
           ],
         },
         {
           heading: "03 Reordering Our Evaluation Priorities",
           blocks: [
-            "After this discussion, we shifted our emphasis from “fewer side effects” to **prioritizing efficacy and optimizing safety**. Demonstrating antigen expression from circRNA and the induction of an immune response are experimental validation tasks for CirCure at its current stage. From a patient perspective, the more important question is whether these findings could ultimately support **a therapeutic approach that reduces recurrence and metastasis after surgery and improves long-term outcomes**. We cannot demonstrate these outcomes at this stage. They are **directions for future evaluation** that Dr. Li helped us define.",
+            "After this discussion, we shifted our emphasis from \"fewer side effects\" to **prioritizing efficacy and optimizing safety**. Demonstrating antigen expression from circRNA and the induction of an immune response are experimental validation tasks for CirCure at its current stage. From a patient perspective, the more important question is whether these findings could ultimately support **a therapeutic approach that reduces recurrence and metastasis after surgery and improves long-term outcomes**. We cannot demonstrate these outcomes at this stage. They are **directions for future evaluation** that Dr. Li helped us define.",
             "The interview therefore prompted us to clarify two fundamental questions:",
-            "**Whom do we ultimately want CirCure to serve?** — Patients with TNBC who remain at risk of recurrence and metastasis after surgery.",
-            "**What should we assess first when judging its value?** — Whether it can deliver sufficient therapeutic benefit, while pursuing further improvements in safety and patient acceptability.",
+            "**Whom do we ultimately want CirCure to serve?** - Patients with TNBC who remain at risk of recurrence and metastasis after surgery.",
+            "**What should we assess first when judging its value?** - Whether it can deliver sufficient therapeutic benefit, while pursuing further improvements in safety and patient acceptability.",
             "These questions defined what we needed to learn next from patients. Before approaching patients and their families, however, we also considered how these sensitive conversations should be conducted responsibly. This led us to consult Runhui Tian on patient communication and humanistic care.",
             photo("sdg3-li-chengli", 2),
           ],
@@ -82,7 +82,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
       "Experienced in patient communication, helping us understand how to approach sensitive conversations with patients and their families.",
     challenge: "How can we engage patients without causing additional emotional distress?",
     keyInsight:
-      "Sensitive topics should be discussed with respect for patients’ emotional boundaries, avoiding intrusive questions and allowing them to decline topics they do not wish to discuss.",
+      "Sensitive topics should be discussed with respect for patients' emotional boundaries, avoiding intrusive questions and allowing them to decline topics they do not wish to discuss.",
     whatChanged:
       "Before interviewing patients and their families, we adjusted our communication approach by using open, non-judgmental questions and incorporating humanistic care into our engagement principles.",
     currentStatus: "Incorporated",
@@ -106,12 +106,12 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
         {
           heading: "02 Give Patients Control Over the Conversation",
           blocks: [
-            "Another important principle was to allow patients and family members to decide how much they wished to share. During later interviews, we used more open-ended and non-judgmental questions, avoided suggesting what the “right” answer should be, and made it clear that sensitive questions could be skipped.",
+            "Another important principle was to allow patients and family members to decide how much they wished to share. During later interviews, we used more open-ended and non-judgmental questions, avoided suggesting what the \"right\" answer should be, and made it clear that sensitive questions could be skipped.",
             "The goal was not to obtain the maximum amount of information, but to create a conversation in which participants could express what they considered important at their own pace.",
           ],
         },
         {
-          heading: "03 What Changed | From “Collecting Feedback” to Respectful Engagement",
+          heading: "03 What Changed | From \"Collecting Feedback\" to Respectful Engagement",
           blocks: [
             "This conversation changed the way we understood patient engagement. We initially focused mainly on **what we wanted to learn from patients**. Afterward, we also began asking **how the process of asking might affect them**.",
             "We therefore incorporated respect, emotional sensitivity, voluntary participation, and the right not to answer into our patient and family interviews. These principles subsequently guided our discussions about recurrence, quality of life, treatment burden, affordability, and family impact.",
@@ -127,12 +127,12 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
     name: "TNBC Patients",
     role: "Target Patients",
     relevantStakeholder:
-      "As CirCure’s potential users and direct beneficiaries, patients can offer firsthand perspectives on whether an additional treatment after surgery is worth pursuing.",
+      "As CirCure's potential users and direct beneficiaries, patients can offer firsthand perspectives on whether an additional treatment after surgery is worth pursuing.",
     challenge: "What makes an additional postoperative treatment worth accepting?",
     keyInsight:
-      "Patients’ main priorities remain reducing the risk of recurrence and metastasis and improving long-term survival. Their willingness to undergo additional treatment also depends on **side effects, quality of life, cost, the impact on their families, and trust in new technologies**.",
+      "Patients' main priorities remain reducing the risk of recurrence and metastasis and improving long-term survival. Their willingness to undergo additional treatment also depends on **side effects, quality of life, cost, the impact on their families, and trust in new technologies**.",
     whatChanged:
-      "We recognized that efficacy is a prerequisite for patients to consider additional treatment after surgery, but **“effective” does not automatically mean “worth accepting.”** Patients also weigh the expected benefits against the **physical, practical, and financial burdens** of treatment.",
+      "We recognized that efficacy is a prerequisite for patients to consider additional treatment after surgery, but **\"effective\" does not automatically mean \"worth accepting.\"** Patients also weigh the expected benefits against the **physical, practical, and financial burdens** of treatment.",
     currentStatus: "Incorporated",
     photos: sdg3PhotoSets["sdg3-tnbc-patients"],
     sdgs: [3, 9, 10],
@@ -152,11 +152,11 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
               quotes: [
                 {
                   speaker: "Patient A",
-                  text: "“Of course I would worry about side effects, but I am more afraid of the cancer coming back. If a treatment could really lower that risk and help me live longer, I would accept it as long as I could manage the side effects.”",
+                  text: "\"Of course I would worry about side effects, but I am more afraid of the cancer coming back. If a treatment could really lower that risk and help me live longer, I would accept it as long as I could manage the side effects.\"",
                 },
                 {
                   speaker: "Patient C",
-                  text: "“After treatment ends, what worries me most is not knowing whether or when the cancer might come back. If a new treatment could substantially reduce the chance of it returning or spreading, I might be more willing to accept some short-term side effects.”",
+                  text: "\"After treatment ends, what worries me most is not knowing whether or when the cancer might come back. If a new treatment could substantially reduce the chance of it returning or spreading, I might be more willing to accept some short-term side effects.\"",
                 },
               ],
             },
@@ -165,50 +165,50 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
           ],
         },
         {
-          heading: "02 “Prioritizing Efficacy” Does Not Mean Ignoring Other Burdens",
+          heading: "02 \"Prioritizing Efficacy\" Does Not Mean Ignoring Other Burdens",
           blocks: [
             "When we asked what side effects they would be willing to accept in exchange for treatment benefits, their answers became more nuanced.",
             {
               quotes: [
                 {
                   speaker: "Patient B",
-                  text: "“I do not think living longer makes every side effect acceptable. If a treatment left me very weak, in pain for a long time, or completely unable to look after myself, I would question whether it was worth it.”",
+                  text: "\"I do not think living longer makes every side effect acceptable. If a treatment left me very weak, in pain for a long time, or completely unable to look after myself, I would question whether it was worth it.\"",
                 },
                 {
                   speaker: "Patient D",
-                  text: "“I might be able to accept short-term discomfort. But if the side effects meant I could not work or care for my children and family for a long time, that would really concern me.”",
+                  text: "\"I might be able to accept short-term discomfort. But if the side effects meant I could not work or care for my children and family for a long time, that would really concern me.\"",
                 },
               ],
             },
             "The patients distinguished between temporary discomfort they could recover from and lasting effects on their work, family responsibilities, and everyday lives. Their decision was not simply a choice between efficacy and safety. It was a question of **how much they stood to gain and what they would have to bear in return**.",
-            "This deepened our understanding of “prioritizing efficacy and optimizing safety”: **efficacy is essential, but willingness to undergo treatment also depends on whether the benefits justify the risks and the impact on daily life.**",
+            "This deepened our understanding of \"prioritizing efficacy and optimizing safety\": **efficacy is essential, but willingness to undergo treatment also depends on whether the benefits justify the risks and the impact on daily life.**",
           ],
         },
         {
           heading: "03 The Burden Extends Beyond Physical Risks",
           blocks: [
-            "Treatment decisions also reflect patients’ financial and family circumstances. Costs, family burdens, and uncertainty about whether a new technology has been adequately tested can all influence their choices.",
+            "Treatment decisions also reflect patients' financial and family circumstances. Costs, family burdens, and uncertainty about whether a new technology has been adequately tested can all influence their choices.",
             {
               quotes: [
                 {
                   speaker: "Patient C",
-                  text: "“Besides the side effects, I would think about the price. Even if the medicine worked very well, I would have to turn it down if my family could not afford it.”",
+                  text: "\"Besides the side effects, I would think about the price. Even if the medicine worked very well, I would have to turn it down if my family could not afford it.\"",
                 },
                 {
                   speaker: "Patient A",
-                  text: "“If it were a new vaccine or treatment, I would want to know whether it had been thoroughly tested. Of course it needs to work, but I would also worry about long-term side effects that have not been discovered yet.”",
+                  text: "\"If it were a new vaccine or treatment, I would want to know whether it had been thoroughly tested. Of course it needs to work, but I would also worry about long-term side effects that have not been discovered yet.\"",
                 },
               ],
             },
             "These responses showed us that **an effective treatment is not automatically one that patients are willing or able to access**.",
-            "An additional treatment after surgery can place new demands on patients’ bodies, time, and finances. With a newer technology, patients also need sufficient trust before they can consider it a viable treatment option.",
+            "An additional treatment after surgery can place new demands on patients' bodies, time, and finances. With a newer technology, patients also need sufficient trust before they can consider it a viable treatment option.",
             photo("sdg3-tnbc-patients", 2),
           ],
         },
         {
-          heading: "04 What Changed | From “Does It Work?” to “Is It Worthwhile, and Can Patients Access It?”",
+          heading: "04 What Changed | From \"Does It Work?\" to \"Is It Worthwhile, and Can Patients Access It?\"",
           blocks: [
-            "The patient interviews clarified a central lesson: **a treatment must be effective, but patients must also feel that its benefits justify the burdens they would bear.** We therefore understood Dr. Chengli Li’s emphasis on “prioritizing efficacy” as a starting point, not as placing efficacy above all other considerations. The benefit must be meaningful, side effects must not unduly compromise quality of life, and financial burdens must not put treatment beyond the reach of patients who would otherwise accept it. Repeated concerns about costs also sharpened our understanding of affordability: what mattered to these patients was not simply the treatment’s price, but **how much they would ultimately have to pay out of pocket**.",
+            "The patient interviews clarified a central lesson: **a treatment must be effective, but patients must also feel that its benefits justify the burdens they would bear.** We therefore understood Dr. Chengli Li's emphasis on \"prioritizing efficacy\" as a starting point, not as placing efficacy above all other considerations. The benefit must be meaningful, side effects must not unduly compromise quality of life, and financial burdens must not put treatment beyond the reach of patients who would otherwise accept it. Repeated concerns about costs also sharpened our understanding of affordability: what mattered to these patients was not simply the treatment's price, but **how much they would ultimately have to pay out of pocket**.",
           ],
         },
       ],
@@ -220,35 +220,35 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
     name: "Family Caregivers",
     role: "Family Burden & Long-term Care",
     relevantStakeholder:
-      "As a primary source of support during treatment and recovery, family caregivers witness changes in patients’ daily lives. They also share **treatment costs, caregiving responsibilities, work adjustments, and the ongoing emotional strain of possible recurrence**.",
+      "As a primary source of support during treatment and recovery, family caregivers witness changes in patients' daily lives. They also share **treatment costs, caregiving responsibilities, work adjustments, and the ongoing emotional strain of possible recurrence**.",
     challenge: "When treatment affects the whole family, what makes it truly worth accepting?",
     keyInsight:
-      "Families also prioritize **effective treatment and a lower risk of recurrence and metastasis**. But they weigh other factors too: whether patients can return to work and everyday life, whether long-term care will be needed, whether additional treatment is affordable, and how uncertainty about recurrence affects the family’s emotional well-being.",
+      "Families also prioritize **effective treatment and a lower risk of recurrence and metastasis**. But they weigh other factors too: whether patients can return to work and everyday life, whether long-term care will be needed, whether additional treatment is affordable, and how uncertainty about recurrence affects the family's emotional well-being.",
     whatChanged:
-      "Caregiver feedback highlighted that treatment benefits extend beyond the patient. We broadened CirCure’s long-term impact assessment to consider **financial burden, caregiving demands, return to work and daily life, and family anxiety about recurrence**. This expanded our understanding of treatment acceptability to include the whole family’s experience.",
+      "Caregiver feedback highlighted that treatment benefits extend beyond the patient. We broadened CirCure's long-term impact assessment to consider **financial burden, caregiving demands, return to work and daily life, and family anxiety about recurrence**. This expanded our understanding of treatment acceptability to include the whole family's experience.",
     currentStatus: "Incorporated",
     sdgs: [3, 10],
     article: {
-      title: "Interviews with Patients’ Family Members | Treatment Affects More Than the Patient",
+      title: "Interviews with Patients' Family Members | Treatment Affects More Than the Patient",
       sections: [
         {
           blocks: [
-            "Our patient interviews showed how patients weigh efficacy, side effects, quality of life, and financial burdens. Illness and treatment, however, also affect the people around them. Surgery, subsequent treatment, follow-up examinations, and ongoing worries about recurrence become part of the whole family’s life.",
-            "We therefore gathered perspectives from patients’ family members, drawing on their caregiving experiences to ask: **what matters most to families when a new adjuvant therapy following surgery is added to existing treatment?**",
+            "Our patient interviews showed how patients weigh efficacy, side effects, quality of life, and financial burdens. Illness and treatment, however, also affect the people around them. Surgery, subsequent treatment, follow-up examinations, and ongoing worries about recurrence become part of the whole family's life.",
+            "We therefore gathered perspectives from patients' family members, drawing on their caregiving experiences to ask: **what matters most to families when a new adjuvant therapy following surgery is added to existing treatment?**",
           ],
         },
         {
-          heading: "01 Efficacy Remains the Family’s First Consideration",
+          heading: "01 Efficacy Remains the Family's First Consideration",
           blocks: [
             "Like patients, family members first want to know whether a treatment can deliver meaningful benefits, particularly by reducing recurrence and metastasis.",
             {
               quotes: [
                 {
-                  text: "“Of course, what we want most is for the treatment to work, lower the chance of the cancer coming back, and help her live longer. But we also think about whether she will be able to live normally afterward. If the side effects are severe and she needs us to care for her for a long time, that would put a lot of pressure on the whole family.”",
+                  text: "\"Of course, what we want most is for the treatment to work, lower the chance of the cancer coming back, and help her live longer. But we also think about whether she will be able to live normally afterward. If the side effects are severe and she needs us to care for her for a long time, that would put a lot of pressure on the whole family.\"",
                 },
               ],
             },
-            "For family members, **treatment efficacy remains a prerequisite**. Their concerns also extend beyond clinical outcomes to the patient’s life after treatment.",
+            "For family members, **treatment efficacy remains a prerequisite**. Their concerns also extend beyond clinical outcomes to the patient's life after treatment.",
           ],
         },
         {
@@ -258,10 +258,10 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
             {
               quotes: [
                 {
-                  text: "“If it really works, we would certainly try to find a way to get her treated. But we have to think about the cost too. If she needs an expensive treatment for a long time, for an ordinary family it may not be about whether we want it, but whether we can actually afford it.”",
+                  text: "\"If it really works, we would certainly try to find a way to get her treated. But we have to think about the cost too. If she needs an expensive treatment for a long time, for an ordinary family it may not be about whether we want it, but whether we can actually afford it.\"",
                 },
                 {
-                  text: "“Her illness has changed life for all of us, not just her. Of course we want the treatment to work and stop the cancer from coming back, but we also worry about whether the side effects will affect her everyday life and work. Controlling the disease matters to us, and so does helping her get back to her previous life as much as possible.”",
+                  text: "\"Her illness has changed life for all of us, not just her. Of course we want the treatment to work and stop the cancer from coming back, but we also worry about whether the side effects will affect her everyday life and work. Controlling the disease matters to us, and so does helping her get back to her previous life as much as possible.\"",
                 },
               ],
             },
@@ -275,7 +275,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
             {
               quotes: [
                 {
-                  text: "“Even after treatment ends, we still worry about the cancer coming back. We get very anxious before every follow-up appointment. If a new treatment could really lower the chance of the cancer returning or spreading, we might accept it even if the treatment process were a little more complicated.”",
+                  text: "\"Even after treatment ends, we still worry about the cancer coming back. We get very anxious before every follow-up appointment. If a new treatment could really lower the chance of the cancer returning or spreading, we might accept it even if the treatment process were a little more complicated.\"",
                 },
               ],
             },
@@ -283,16 +283,16 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
           ],
         },
         {
-          heading: "04 What Changed｜From Patient Benefits to Family Impacts",
+          heading: "04 What Changed|From Patient Benefits to Family Impacts",
           blocks: [
-            "Family members’ feedback reinforced CirCure’s principle of **prioritizing efficacy and optimizing safety**, while broadening the scope of our evaluation of long-term health value.",
-            "If an additional treatment after surgery becomes part of patients’ lives, its effects may extend beyond therapeutic benefits to **household spending, caregiving needs, work arrangements, and long-term psychological stress**. Our analysis of CirCure’s potential social and economic impacts therefore expanded from the burdens on individual patients to their wider effects on families. **Treatment costs** again emerged as a recurring concern shared by patients and family members. This led us to ask: **how much of the treatment’s price would patients and families ultimately have to pay themselves?**",
+            "Family members' feedback reinforced CirCure's principle of **prioritizing efficacy and optimizing safety**, while broadening the scope of our evaluation of long-term health value.",
+            "If an additional treatment after surgery becomes part of patients' lives, its effects may extend beyond therapeutic benefits to **household spending, caregiving needs, work arrangements, and long-term psychological stress**. Our analysis of CirCure's potential social and economic impacts therefore expanded from the burdens on individual patients to their wider effects on families. **Treatment costs** again emerged as a recurring concern shared by patients and family members. This led us to ask: **how much of the treatment's price would patients and families ultimately have to pay themselves?**",
             "Together, these conversations showed that **the value of an adjuvant therapy following surgery extends beyond efficacy into the everyday lives of patients and families.** Patients weigh side effects, quality of life, and costs. Family members may also face additional expenses, caregiving responsibilities, changes to work arrangements, and the psychological strain of prolonged uncertainty about recurrence. Affordability therefore involves more than a price tag. It depends on whether patients and families can bear the additional treatment burden and whether treatment is a realistic option for them. Drawing on the perspectives of clinicians, patients, and family members, we identified three real-world issues that CirCure aims to address:",
             {
               bullets: [
                 "**Recurrence and metastasis after surgery remain persistent concerns for patients and families.** Surgery does not end the need for treatment. For patients with TNBC, the risk of recurrence and metastasis continues to affect future health and creates lasting uncertainty for families. Further reducing these risks remains a primary goal of adjuvant therapy.",
                 "**Long-term patient benefits matter more than any single experimental result.** Antigen expression, immune activation, and other experimental indicators are not the ultimate goal. Their value lies in whether they could eventually support **more sustained disease control, a lower risk of recurrence and metastasis, and long-term survival benefits**, while helping patients return as fully as possible to work, family life, and daily activities.",
-                "**Treatment must be effective, acceptable, affordable, and accessible to patients and families.** Additional treatment can bring side effects, disruption to daily life, new expenses, and caregiving demands. Whether a technology delivers real-world health value depends on patients’ willingness to undergo treatment, families’ ability to bear its burdens, and the support available through health insurance, supplementary coverage, and healthcare resources. We therefore incorporated **safety, quality of life, patient acceptability, family burden, and treatment accessibility** into CirCure’s long-term evaluation.",
+                "**Treatment must be effective, acceptable, affordable, and accessible to patients and families.** Additional treatment can bring side effects, disruption to daily life, new expenses, and caregiving demands. Whether a technology delivers real-world health value depends on patients' willingness to undergo treatment, families' ability to bear its burdens, and the support available through health insurance, supplementary coverage, and healthcare resources. We therefore incorporated **safety, quality of life, patient acceptability, family burden, and treatment accessibility** into CirCure's long-term evaluation.",
               ],
             },
             "Patients and families helped us understand whether an additional postoperative treatment would be worth accepting. We next asked a different question: even if patients considered it worthwhile, could they realistically afford and access it? This shifted our attention from treatment value itself to the conditions that determine whether that value can actually reach patients. We therefore consulted stakeholders involved in healthcare payment, insurance, and resource access.",
@@ -309,9 +309,9 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
     relevantStakeholder:
       "With expertise in health insurance policy, medical billing, and reimbursement, he helped us understand how treatment prices translate into actual costs for patients.",
     keyInsight:
-      "A new treatment’s availability does not guarantee adequate insurance coverage. What patients ultimately pay depends on **coverage, reimbursement policies, eligibility requirements, and cost-sharing arrangements**.",
+      "A new treatment's availability does not guarantee adequate insurance coverage. What patients ultimately pay depends on **coverage, reimbursement policies, eligibility requirements, and cost-sharing arrangements**.",
     whatChanged:
-      "We shifted from assessing affordability by treatment price alone to considering **patients’ actual out-of-pocket costs after insurance reimbursement**. Until CirCure’s pricing and insurance coverage are clear, we cannot assume it will be affordable for patients.",
+      "We shifted from assessing affordability by treatment price alone to considering **patients' actual out-of-pocket costs after insurance reimbursement**. Until CirCure's pricing and insurance coverage are clear, we cannot assume it will be affordable for patients.",
     currentStatus: "Incorporated",
     photos: sdg3PhotoSets["sdg3-wang-jianguo"],
     sdgs: [3, 10],
@@ -320,14 +320,14 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
       sections: [
         {
           blocks: [
-            "Treatment costs came up repeatedly in our patient interviews. Further discussion revealed that patients were often less concerned with a medicine’s listed price than with **how much they would ultimately have to pay out of pocket after insurance reimbursement**. For patients with TNBC who have already undergone surgery and standard treatment, adding another adjuvant therapy could create expenses that directly influence whether they can take it up.",
-            "We therefore consulted hospital staff involved in health insurance administration to understand how far insurance could help cover patients’ costs once a new treatment enters clinical use.",
+            "Treatment costs came up repeatedly in our patient interviews. Further discussion revealed that patients were often less concerned with a medicine's listed price than with **how much they would ultimately have to pay out of pocket after insurance reimbursement**. For patients with TNBC who have already undergone surgery and standard treatment, adding another adjuvant therapy could create expenses that directly influence whether they can take it up.",
+            "We therefore consulted hospital staff involved in health insurance administration to understand how far insurance could help cover patients' costs once a new treatment enters clinical use.",
           ],
         },
         {
           heading: "01 Treatment Availability Does Not Guarantee Insurance Coverage",
           blocks: [
-            "The discussions clarified that a treatment can enter clinical use before it is covered by basic medical insurance. Coverage depends on further evaluation and policy processes. In the meantime, patients may have to pay a substantial share of the costs themselves, even when the treatment is available. Nor does coverage result in the same financial burden for everyone: the amount patients pay depends on **specific reimbursement policies, coverage conditions, and individual circumstances**. We therefore separated what we had broadly called “treatment costs” into two questions: **How much does the treatment cost?** And **how much will the patient actually pay?** The second is more directly relevant to whether patients can access it.",
+            "The discussions clarified that a treatment can enter clinical use before it is covered by basic medical insurance. Coverage depends on further evaluation and policy processes. In the meantime, patients may have to pay a substantial share of the costs themselves, even when the treatment is available. Nor does coverage result in the same financial burden for everyone: the amount patients pay depends on **specific reimbursement policies, coverage conditions, and individual circumstances**. We therefore separated what we had broadly called \"treatment costs\" into two questions: **How much does the treatment cost?** And **how much will the patient actually pay?** The second is more directly relevant to whether patients can access it.",
           ],
         },
         {
@@ -339,8 +339,8 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
         {
           heading: "03 What Changed",
           blocks: [
-            "The discussion prompted us to revise a key assumption: **a treatment’s price alone does not establish whether patients can afford it**.",
-            "What more directly shapes patients’ financial burden is the amount they must pay out of pocket after insurance reimbursement. Without actual pricing and coverage information, we therefore do not claim that CirCure is affordable based solely on potential production costs, anticipated prices, or the possibility of future insurance coverage.",
+            "The discussion prompted us to revise a key assumption: **a treatment's price alone does not establish whether patients can afford it**.",
+            "What more directly shapes patients' financial burden is the amount they must pay out of pocket after insurance reimbursement. Without actual pricing and coverage information, we therefore do not claim that CirCure is affordable based solely on potential production costs, anticipated prices, or the possibility of future insurance coverage.",
             "The conversation also raised a further question: **what other forms of support could help patients meet treatment costs beyond basic medical insurance?**",
             "If basic medical insurance does not fully cover the additional costs and patients still face substantial out-of-pocket expenses, could supplementary coverage help? To explore this possibility, we spoke with Jing Wen, a commercial health insurance professional.",
           ],
@@ -368,28 +368,28 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
       sections: [
         {
           blocks: [
-            "Our discussion with hospital insurance administrators showed us that a treatment’s price is not the same as what patients actually pay. Coverage and reimbursement under basic medical insurance determine how much patients must pay out of pocket. We then spoke with **Jing Wen**, a private health insurance professional, to explore how much additional support private insurance could provide.",
+            "Our discussion with hospital insurance administrators showed us that a treatment's price is not the same as what patients actually pay. Coverage and reimbursement under basic medical insurance determine how much patients must pay out of pocket. We then spoke with **Jing Wen**, a private health insurance professional, to explore how much additional support private insurance could provide.",
           ],
         },
         {
-          heading: "01 — Additional Coverage, but Not for Everyone",
+          heading: "01 - Additional Coverage, but Not for Everyone",
           blocks: [
             "Jing Wen explained that some private health insurance policies include **specialty drug coverage**. Under these policies, certain innovative medicines may qualify for partial reimbursement. This could ease the financial pressure on patients whose treatment is not adequately covered by basic medical insurance. **However, this support comes with specific conditions.**",
             "Patients must hold a suitable policy, the policy must include the relevant benefits, and the drug and claim must meet its coverage requirements. These factors determine whether patients receive support and how much. Private insurance can therefore supplement basic medical insurance, but patients cannot assume this support will be available to them.",
           ],
         },
         {
-          heading: "02 — The Same Treatment Can Mean Different Costs for Different Patients",
+          heading: "02 - The Same Treatment Can Mean Different Costs for Different Patients",
           blocks: [
-            "The discussion also highlighted how patients’ insurance arrangements can differ. Some have both basic medical insurance and private coverage; others rely on basic medical insurance alone. Even among privately insured patients, benefits and claims requirements vary.",
-            "**The same treatment price does not mean the same out-of-pocket cost for every patient.** For an additional treatment after surgery, these differences may affect both patients’ willingness and their ability to proceed.",
+            "The discussion also highlighted how patients' insurance arrangements can differ. Some have both basic medical insurance and private coverage; others rely on basic medical insurance alone. Even among privately insured patients, benefits and claims requirements vary.",
+            "**The same treatment price does not mean the same out-of-pocket cost for every patient.** For an additional treatment after surgery, these differences may affect both patients' willingness and their ability to proceed.",
             photo("sdg3-wen-jing", 0),
           ],
         },
         {
-          heading: "03 — What Changed",
+          heading: "03 - What Changed",
           blocks: [
-            "Jing Wen’s feedback challenged an assumption we had made too broadly: **the existence of private insurance does not mean that patients can access financial support.**",
+            "Jing Wen's feedback challenged an assumption we had made too broadly: **the existence of private insurance does not mean that patients can access financial support.**",
             "Private health insurance can offer additional protection, but only when patients meet the relevant policy and coverage requirements. For CirCure, **it may improve affordability for some patients, but it cannot resolve wider disparities in treatment costs and access.**",
             photo("sdg3-wen-jing", 1),
           ],
@@ -406,9 +406,9 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
       "Experienced in healthcare services and resource allocation, helping us consider whether new treatment options can realistically reach different patients.",
     challenge: "Can a treatment truly benefit patients if access depends on available healthcare resources?",
     keyInsight:
-      "Treatment access depends not only on efficacy and affordability, but also on healthcare capacity, service availability, and patients’ opportunities to receive care.",
+      "Treatment access depends not only on efficacy and affordability, but also on healthcare capacity, service availability, and patients' opportunities to receive care.",
     whatChanged:
-      "We expanded our understanding of accessibility from whether patients can afford treatment to whether they can realistically obtain it, incorporating healthcare resources and health equity into CirCure’s long-term evaluation.",
+      "We expanded our understanding of accessibility from whether patients can afford treatment to whether they can realistically obtain it, incorporating healthcare resources and health equity into CirCure's long-term evaluation.",
     currentStatus: "Incorporated",
     photos: sdg3PhotoSets["sdg3-wang-lei"],
     sdgs: [3, 10],
@@ -416,16 +416,16 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
     // out to be only half the question, so the next round of interviews moved
     // from who pays to who can actually reach care.
     leadIn: [
-      "**Yet being able to afford treatment does not necessarily mean being able to access it.** Healthcare resources, the practical requirements for delivering treatment, and differences in access across regions and populations also shape who can benefit from a new adjuvant therapy. We therefore sought perspectives from experts in medicine, oncology, and public health to better understand CirCure’s potential implications for **patient benefit, treatment access, and health equity**.",
+      "**Yet being able to afford treatment does not necessarily mean being able to access it.** Healthcare resources, the practical requirements for delivering treatment, and differences in access across regions and populations also shape who can benefit from a new adjuvant therapy. We therefore sought perspectives from experts in medicine, oncology, and public health to better understand CirCure's potential implications for **patient benefit, treatment access, and health equity**.",
     ],
   },
   {
     id: "sdg3-yang-shujuan",
     index: "08",
     name: "Shujuan Yang",
-    role: "Women’s Health & Disease Prevention",
+    role: "Women's Health & Disease Prevention",
     relevantStakeholder:
-      "Experienced in women’s health and disease prevention, offering a broader perspective beyond treatment alone.",
+      "Experienced in women's health and disease prevention, offering a broader perspective beyond treatment alone.",
     challenge: "Can improving breast cancer outcomes rely on treatment alone?",
     keyInsight:
       "Long-term health outcomes are influenced not only by treatment, but also by appropriate screening and earlier disease detection.",
@@ -476,7 +476,7 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
     keyInsight:
       "A new therapy cannot be considered in isolation; its target patients, timing, clinical purpose, and relationship with existing treatments and follow-up all need to be defined.",
     whatChanged:
-      "We extended CirCure’s clinical positioning from simply asking “when would it be used?” to considering who should receive it, what problem it should address, and how it could eventually integrate into existing TNBC care.",
+      "We extended CirCure's clinical positioning from simply asking \"when would it be used?\" to considering who should receive it, what problem it should address, and how it could eventually integrate into existing TNBC care.",
     currentStatus: "Incorporated",
     sdgs: [3, 9],
   },
@@ -493,21 +493,21 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
     currentStatus: "Incorporated",
     sdgs: [3, 5, 9, 10, 17],
     leadIn: [
-      "Our earlier discussions explored the health challenges relevant to CirCure through patient needs, treatment value, insurance coverage, and healthcare resources. As these conversations developed, we began to see how health connects with technology, education, equity, and the wider social environment. In June 2026, JLU-FBH was invited to the UNICEF-organized **2026 Acceleration Week for Global Youth Development Programps**. We saw this as an opportunity to explore the relationship between health and sustainable development through the perspectives of young people from around the world.",
+      "Our earlier discussions explored the health challenges relevant to CirCure through patient needs, treatment value, insurance coverage, and healthcare resources. As these conversations developed, we began to see how health connects with technology, education, equity, and the wider social environment. In June 2026, JLU-FBH was invited to the **2026 Acceleration Week for Global Youth Development Programs**, co-hosted by the All-China Youth Federation, UNICEF, and China Youth Daily. We saw this as an opportunity to explore the relationship between health and sustainable development through the perspectives of young people from around the world.",
     ],
     article: {
       title: "Connecting Health with Broader Sustainable Development Issues",
       sections: [
         {
           blocks: [
-            "In June 2026, JLU-FBH **was invited to participate in the 2026 Acceleration Week for Global Youth Development Programps, organized by UNICEF**. Team member Zecun Li joined the **“Health and Well-being”** thematic group. The event brought together young people from different countries, professional backgrounds, and fields of practice to explore health, technology, education, and sustainable development through mentor-led lectures, project pitches, case discussions, company visits, and project exchanges. It gave us an opportunity to look beyond CirCure and reconsider the contexts in which health projects operate: **a shared goal of improving health can involve very different challenges across countries, resource settings, and social environments.**",
+            "In June 2026, JLU-FBH was invited to the **2026 Acceleration Week for Global Youth Development Programs**, co-hosted by the All-China Youth Federation, UNICEF, and China Youth Daily. Team member Zecun Li joined the **\"Health and Well-being\"** thematic group. The event brought together young people from different countries, professional backgrounds, and fields of practice to explore health, technology, education, and sustainable development through mentor-led lectures, project pitches, case discussions, company visits, and project exchanges. It gave us an opportunity to look beyond CirCure and reconsider the contexts in which health projects operate: **a shared goal of improving health can involve very different challenges across countries, resource settings, and social environments.**",
             photo("sdg3-global-youth", 0),
           ],
         },
         {
           heading: "01 A Shared Health Goal, Different Challenges",
           blocks: [
-            "The “Health and Well-being” thematic group focused on **disease prevention, digital health technologies, and access to healthcare resources**. We shared our team’s iGEM work from 2025 and 2026 and learned from young practitioners running health projects in other regions. Their experiences highlighted substantial differences in local needs and conditions. Some regions placed greater emphasis on disease prevention and health education, while others faced shortages of healthcare resources. Some projects had already developed new technologies but still needed to determine who could realistically access them. These discussions reinforced that **improving health depends not only on new treatments or technologies, but also on their social context and the conditions under which they are used.**",
+            "The \"Health and Well-being\" thematic group focused on **disease prevention, digital health technologies, and access to healthcare resources**. We shared our team's iGEM work from 2025 and 2026 and learned from young practitioners running health projects in other regions. Their experiences highlighted substantial differences in local needs and conditions. Some regions placed greater emphasis on disease prevention and health education, while others faced shortages of healthcare resources. Some projects had already developed new technologies but still needed to determine who could realistically access them. These discussions reinforced that **improving health depends not only on new treatments or technologies, but also on their social context and the conditions under which they are used.**",
             photo("sdg3-global-youth", 3),
           ],
         },
@@ -522,8 +522,8 @@ const sdg3Profiles: ReadonlyArray<StakeholderProfile> = [
         {
           heading: "03 From Individual Goals to Relationships Between Goals",
           blocks: [
-            "The exchange did not directly change CirCure’s experimental design. It broadened the scope of our impact analysis.",
-            "Previously, we had focused primarily on how CirCure could contribute to **SDG 3 — Good Health and Well-being**. Engaging with young people from different countries and fields encouraged us to consider how progress toward a health goal can also depend on **technological innovation, disease prevention, access to resources, and social equity**. We moved beyond asking which SDGs were relevant to CirCure and began examining **why these goals are connected, whether those connections always hold, and how they might change with implementation conditions**. We later organized these reflections into a more structured approach, helping lay the foundation for our use of **SST-QN** to systematically analyze potential synergies, trade-offs, and conditional relationships among SDGs.",
+            "The exchange did not directly change CirCure's experimental design. It broadened the scope of our impact analysis.",
+            "Previously, we had focused primarily on how CirCure could contribute to **SDG 3 - Good Health and Well-being**. Engaging with young people from different countries and fields encouraged us to consider how progress toward a health goal can also depend on **technological innovation, disease prevention, access to resources, and social equity**. We moved beyond asking which SDGs were relevant to CirCure and began examining **why these goals are connected, whether those connections always hold, and how they might change with implementation conditions**. We later organized these reflections into a more structured approach, helping lay the foundation for our use of **SST-QN** to systematically analyze potential synergies, trade-offs, and conditional relationships among SDGs.",
           ],
         },
       ],
@@ -539,13 +539,13 @@ export const sdg3Chapter: SdgChapter = {
   id: "sdg3",
   headingId: "sdg3-health",
   index: "4.1",
-  title: "SDG3: Good Health and Well-being",
+  title: "SDG 3: Good Health and Well-being",
   intro: [
-    "For patients with TNBC, uncertainty about recurrence can persist long after surgery, while additional treatment may bring physical, practical, and financial burdens. We chose SDG 3 to guide our exploration of a **postoperative therapeutic vaccine strategy**, keeping **long-term benefit, quality of life, and access** central to how we evaluate its potential—so that our research responds to patients’ hopes of planning their lives with greater confidence.",
+    "For patients with TNBC, uncertainty about recurrence can persist long after surgery, while additional treatment may bring physical, practical, and financial burdens. We chose SDG 3 to guide our exploration of a **postoperative therapeutic vaccine strategy**, keeping **long-term benefit, quality of life, and access** central to how we evaluate its potential-so that our research responds to patients' hopes of planning their lives with greater confidence.",
   ],
   stakeholders: {
     lead: [
-      "To understand what meaningful health value would look like for CirCure, we engaged stakeholders across the patient journey. Clinicians helped us define the clinical need and target population; patients and families helped us understand treatment value and burden; Professionals in payment and healthcare access helped us consider affordability and accessibility; and other health-related stakeholders further informed communication, prevention, and long-term implementation. Together, these perspectives progressively shaped whom CirCure aims to serve, how we evaluate its potential value, and what conditions would be necessary for that value to reach patients.",
+      "To understand what meaningful health value would look like for CirCure, we engaged stakeholders across the patient journey. Clinicians helped us define the clinical need and target population; patients and families helped us understand treatment value and burden; professionals in payment and healthcare access helped us consider affordability and accessibility; and other health-related stakeholders further informed communication, prevention, and long-term implementation. Together, these perspectives progressively shaped whom CirCure aims to serve, how we evaluate its potential value, and what conditions would be necessary for that value to reach patients.",
     ],
     profiles: sdg3Profiles,
   },
@@ -556,7 +556,7 @@ export const sdg3Chapter: SdgChapter = {
     shortTerm: {
       heading: "Short-Term Impacts",
       paragraphs: [
-        "At this stage, the clearest impact of Circure has been shaping how we define the patients we aim to serve, the outcomes that matter, and the way we engage with people affected by the disease—not demonstrating improved patient health outcomes.",
+        "At this stage, the clearest impact of CirCure has been shaping how we define the patients we aim to serve, the outcomes that matter, and the way we engage with people affected by the disease-not demonstrating improved patient health outcomes.",
         "**Clinicians** helped us focus on **patients with TNBC who have undergone surgery but remain at risk of recurrence or metastasis**, and adopt the principle of **prioritizing efficacy while optimizing safety**. **Patients and their families** broadened our understanding of treatment value to include quality of life, treatment burden, and real-world access. Before speaking with patients, we also adapted our interview approach in response to communication guidance, with an emphasis on **respecting personal boundaries** and **showing compassion**.",
         "This input has shaped both our therapeutic priorities and our approach to stakeholder engagement.",
       ],
@@ -571,7 +571,7 @@ export const sdg3Chapter: SdgChapter = {
         id: "social",
         title: "Social Impacts",
         benefit:
-          "If CirCure effectively reduces recurrence and metastasis after surgery for TNBC, it could provide an additional adjuvant treatment option and improve long-term disease control and quality of life. Greater disease stability could help patients return to work and everyday activities, while reducing the disruption that uncertainty about recurrence brings to their own and their families’ long-term plans.",
+          "If CirCure effectively reduces recurrence and metastasis after surgery for TNBC, it could provide an additional adjuvant treatment option and improve long-term disease control and quality of life. Greater disease stability could help patients return to work and everyday activities, while reducing the disruption that uncertainty about recurrence brings to their own and their families' long-term plans.",
         risk:
           "Additional adjuvant therapy may also involve ongoing treatment, side effects, and caregiving needs. If patients require prolonged family care or experience substantial disruption to work and daily life, these burdens could extend to family members. Regional differences in healthcare resources, ability to pay, and treatment opportunities could also lead to unequal access to potential benefits.",
         boundary:
@@ -581,11 +581,11 @@ export const sdg3Chapter: SdgChapter = {
         id: "economic",
         title: "Economic Impacts",
         intro:
-          "For a potential adjuvant therapy added to standard treatment following surgery, a central economic consideration is **the balance between additional treatment burdens and potential long-term health benefits**. Family members’ feedback highlighted that these burdens extend beyond medical expenses to caregiving, time away from work, and the time families devote to care.",
+          "For a potential adjuvant therapy added to standard treatment following surgery, a central economic consideration is **the balance between additional treatment burdens and potential long-term health benefits**. Family members' feedback highlighted that these burdens extend beyond medical expenses to caregiving, time away from work, and the time families devote to care.",
         benefit:
-          "If CirCure reduces recurrence and the need for further treatment, it could lower some patients’ medical expenses associated with repeat hospitalizations, subsequent treatment, and long-term disease management. It could also ease indirect family burdens arising from ongoing care and interruptions to work.",
+          "If CirCure reduces recurrence and the need for further treatment, it could lower some patients' medical expenses associated with repeat hospitalizations, subsequent treatment, and long-term disease management. It could also ease indirect family burdens arising from ongoing care and interruptions to work.",
         risk:
-          "Adding CirCure to postoperative treatment would incur additional costs. Patients’ eventual out-of-pocket costs would depend on **pricing, basic medical insurance coverage, supplementary coverage, and their ability to pay out of pocket**. Prolonged treatment, inability to work, or a need for ongoing family care could also increase indirect burdens through **lost income, caregiving, and time commitments**.",
+          "Adding CirCure to postoperative treatment would incur additional costs. Patients' eventual out-of-pocket costs would depend on **pricing, basic medical insurance coverage, supplementary coverage, and their ability to pay out of pocket**. Prolonged treatment, inability to work, or a need for ongoing family care could also increase indirect burdens through **lost income, caregiving, and time commitments**.",
         boundary:
           "There is currently no clinical or pharmacoeconomic evidence that any reduction in recurrence achieved with CirCure would offset the additional treatment and family burdens. Its long-term economic impacts require validation of future real-world data.",
       },
@@ -593,7 +593,7 @@ export const sdg3Chapter: SdgChapter = {
         id: "environmental",
         title: "Environmental Impacts",
         intro:
-          "At current research stage of CirCure, direct environmental impacts arise primarily from laboratory reagents, single-use consumables, biomedical waste, and the resources and energy required to operate laboratory equipment.",
+          "At CirCure's current research stage, direct environmental impacts arise primarily from laboratory reagents, single-use consumables, biomedical waste, and the resources and energy required to operate laboratory equipment.",
         benefit:
           "More stable production processes and fewer unnecessary repeat production runs could reduce some resource waste in the future.",
         risk:
@@ -605,7 +605,7 @@ export const sdg3Chapter: SdgChapter = {
   },
   alignment: {
     lead: [
-      "Using the potential relationships identified through SST-QN as a starting point, we examined CirCure’s **project design, stakeholder feedback, experimental results, and actions undertaken** to assess whether these relationships occur within the project and the extent to which they are supported by current evidence.",
+      "Using the potential relationships identified through SST-QN as a starting point, we examined CirCure's **project design, stakeholder feedback, experimental results, and actions undertaken** to assess whether these relationships occur within the project and the extent to which they are supported by current evidence.",
     ],
     // The source table's Why column is shifted one row down (row 1 empty, a
     // trailing orphan row); each Why below is matched to its relationship as
@@ -617,13 +617,13 @@ export const sdg3Chapter: SdgChapter = {
           "SDG 3 ↔ SDG 9",
           "Core (C)",
           "Positive",
-          "Postoperative TNBC patients’ need to reduce recurrence and achieve long-term benefits directly shaped CirCure’s focus and technical design. Experimental testing also progressed from assessing immune activation to evaluating functional antitumor activity in vitro. Health needs define what the technology must address, while reliable functional evidence determines whether there is a sound basis for pursuing that health goal.",
+          "Postoperative TNBC patients' need to reduce recurrence and achieve long-term benefits directly shaped CirCure's focus and technical design. Experimental testing also progressed from assessing immune activation to evaluating functional antitumor activity in vitro. Health needs define what the technology must address, while reliable functional evidence determines whether there is a sound basis for pursuing that health goal.",
         ],
         [
           "SDG 3 → SDG 4",
           "Core (C)",
           "Positive",
-          "Advice from women’s health experts on breast health, appropriate screening, and early detection was translated directly into public education materials and activities. These health needs have already led to concrete educational action.",
+          "Advice from women's health experts on breast health, appropriate screening, and early detection was translated directly into public education materials and activities. These health needs have already led to concrete educational action.",
         ],
         [
           "SDG 3 ↔ SDG 10",
@@ -635,27 +635,27 @@ export const sdg3Chapter: SdgChapter = {
           "SDG 3 ↔ SDG 12",
           "Conditional (±)",
           "Context-dependent",
-          "Scaling up CirCure’s production and use could give more patients access to a new treatment option, while also increasing demand for raw materials, disposable supplies, energy, storage, and transport, and generating more waste. The overall impact will depend on production efficiency and resource management.",
+          "Scaling up CirCure's production and use could give more patients access to a new treatment option, while also increasing demand for raw materials, disposable supplies, energy, storage, and transport, and generating more waste. The overall impact will depend on production efficiency and resource management.",
         ],
         [
           "SDG 17 → SDG 3",
           "Exploratory (E)",
           "Positive",
-          "Input from clinicians, patients and caregivers, healthcare financing professionals, public health experts, and young practitioners worldwide has already shaped CirCure’s treatment focus, assessment of treatment value, access analysis, and health communication. We can confirm that collaboration has improved project decisions, but cannot yet conclude that it has directly improved patients’ long-term health outcomes.",
+          "Input from clinicians, patients and caregivers, healthcare financing professionals, public health experts, and young practitioners worldwide has already shaped CirCure's treatment focus, assessment of treatment value, access analysis, and health communication. We can confirm that collaboration has improved project decisions, but cannot yet conclude that it has directly improved patients' long-term health outcomes.",
         ],
         [
           "SDG 3 → SDG 5",
           "Excluded (0)",
           "None",
-          "CirCure focuses on TNBC and women’s health. However, better treatment for diseases affecting women and greater breast health awareness do not, by themselves, demonstrate progress on structural gender inequalities in resource allocation, decision-making, or participation in society.",
+          "CirCure focuses on TNBC and women's health. However, better treatment for diseases affecting women and greater breast health awareness do not, by themselves, demonstrate progress on structural gender inequalities in resource allocation, decision-making, or participation in society.",
         ],
       ],
     },
     findings: [
-      "**SDG 3 ↔ SDG 9 and SDG 3 → SDG 4 currently have the clearest evidence supporting their classification as Positive Core Interactions.** The former is reflected in our project positioning, technical design, and functional experimental validation to date. The latter is supported by educational activities on breast health, screening, and early detection developed directly in response to women’s health needs.",
+      "**SDG 3 ↔ SDG 9 and SDG 3 → SDG 4 currently have the clearest evidence supporting their classification as Positive Core Interactions.** The former is reflected in our project positioning, technical design, and functional experimental validation to date. The latter is supported by educational activities on breast health, screening, and early detection developed directly in response to women's health needs.",
       "**The directions of SDG 3 ↔ SDG 10 and SDG 3 ↔ SDG 12 depend on future implementation conditions.** For SDG 10, the relationship hinges on whether pricing, insurance coverage, and healthcare resources allow different patients to access treatment. For SDG 12, the analysis must consider both expanded access to healthcare and the additional resources required for production. Both relationships therefore remain **Conditional (±)**; we do not assume in advance that either will result in synergy or a trade-off.",
       "For **SDG 17 → SDG 3**, current evidence supports the role of participation by multiple stakeholders in improving problem identification and project decisions. These process improvements, however, do not yet establish benefits for patient health outcomes. We therefore retain the **Exploratory (E)** classification.",
-      "For **SDG 3 → SDG 5**, we retain **Excluded(0)**. CirCure addresses women’s health, but we currently lack direct evidence of an impact on gender equality at a structural level. Our focus on women’s health alone does not establish such an impact.",
+      "For **SDG 3 → SDG 5**, we retain **Excluded (0)**. CirCure addresses women's health, but we currently lack direct evidence of an impact on gender equality at a structural level. Our focus on women's health alone does not establish such an impact.",
     ],
   },
   legacy: {
@@ -671,11 +671,11 @@ export const sdg3Chapter: SdgChapter = {
         bestFor:
           "Interviews with patients, clinicians, public health professionals, healthcare financing stakeholders, and other groups requiring tailored or sensitive communication.",
         whatItDoes:
-          "Tailor core questions, follow-up prompts, and methods for cross-checking findings to each stakeholder’s role, helping the team identify real needs more precisely.",
+          "Tailor core questions, follow-up prompts, and methods for cross-checking findings to each stakeholder's role, helping the team identify real needs more precisely.",
         pdfs: pdfPair("stakeholder-interview-guide"),
       },
       {
-        title: "Stakeholder–SDG Mapping Guide",
+        title: "Stakeholder-SDG Mapping Guide",
         why: "A single piece of feedback may relate to several SDGs. Mapping feedback solely by stakeholder role can lead to duplication or misclassification.",
         whatItHelpsWith: "Identifying the **primary SDG, related SDGs, and rationale for each link**.",
         bestFor:
@@ -710,17 +710,17 @@ export const sdg3Chapter: SdgChapter = {
   },
   evidence: {
     intro: [
-      "CirCure’s current contribution to SDG 3 lies in integrating patient and family needs into research decisions, exploring therapeutic potential through preliminary experiments, and sharing reusable tools to support future evaluation of health benefits.",
+      "CirCure's current contribution to SDG 3 lies in integrating patient and family needs into research decisions, exploring therapeutic potential through preliminary experiments, and sharing reusable tools to support future evaluation of health benefits.",
     ],
     stats: [
-      { id: "stakeholders", value: 49, label: "Stakeholders across five groups" },
+      { id: "stakeholders", value: 49, label: "Reported total across five stakeholder groups" },
       { id: "improvements", value: 8, label: "Traceable project improvements" },
       { id: "dc-maturation", value: 22.37, decimals: 2, unit: "%", label: "Mature dendritic cells (CD80⁺CD86⁺)" },
       { id: "tumor-volume", value: 89.6, decimals: 1, unit: "%", label: "Lower endpoint tumor volume than PBS" },
     ],
     measurable: [
       {
-        text: "Engaged **49 stakeholders across five groups**: patients, family caregivers, clinical and medical professionals, healthcare payer representatives, and sustainability practitioners.",
+        text: "Reported counts across five stakeholder groups total **49**: 4 patients, 4 family caregivers, 7 clinical and medical professionals, 2 healthcare payment and insurance stakeholders, and 32 sustainability practitioners.",
         figure: "sdg3StakeholdersDistribution",
       },
       {
@@ -747,10 +747,10 @@ export const sdg3Chapter: SdgChapter = {
       },
     ],
     significant: [
-      "CirCure’s contribution to SDG 3 is meaningful because **the needs of patients and families have shaped both our research direction and how we assess therapeutic value**. Stakeholder feedback led to eight traceable project improvements, bringing those needs into concrete research decisions.",
-      "Clinical input focused the project on postoperative adjuvant therapy for TNBC, with reducing recurrence and metastasis and achieving lasting benefit as goals for future investigation. Patients and caregivers also highlighted how additional treatment could affect work, caregiving, and household finances. We therefore incorporated quality of life and access into our assessment, asking whether a potential treatment could help patients plan their lives again—and whether its benefits would justify the burdens they and their families would bear.",
+      "CirCure's contribution to SDG 3 is meaningful because **the needs of patients and families have shaped both our research direction and how we assess therapeutic value**. Stakeholder feedback led to eight traceable project improvements, bringing those needs into concrete research decisions.",
+      "Clinical input focused the project on postoperative adjuvant therapy for TNBC, with reducing recurrence and metastasis and achieving lasting benefit as goals for future investigation. Patients and caregivers also highlighted how additional treatment could affect work, caregiving, and household finances. We therefore incorporated quality of life and access into our assessment, asking whether a potential treatment could help patients plan their lives again-and whether its benefits would justify the burdens they and their families would bear.",
       "**Our experimental findings provide an initial basis for pursuing this strategy.** Dendritic-cell maturation, CD8⁺ T-cell responses, and reduced tumor growth in the tested model support further investigation at different levels. However, the mismatch between HLA-restricted epitopes and wild-type mice limits interpretation. These findings do not yet demonstrate reduced postoperative recurrence or improved survival in patients.",
-      "Finally, four bilingual tools make our approach to patient interviews, needs mapping, feedback integration, and impact documentation available for reuse, **helping other teams keep patients’ voices central to their research**. CirCure’s current contribution is a patient-informed research foundation, supported by preliminary experiments and methods others can build upon. Whether this foundation can lead to affordable, accessible health benefits remains to be established.",
+      "Finally, four bilingual tools make our approach to patient interviews, needs mapping, feedback integration, and impact documentation available for reuse, **helping other teams keep patients' voices central to their research**. CirCure's current contribution is a patient-informed research foundation, supported by preliminary experiments and methods others can build upon. Whether this foundation can lead to affordable, accessible health benefits remains to be established.",
     ],
   },
 };

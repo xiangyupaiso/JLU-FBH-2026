@@ -153,10 +153,11 @@ export const cycle4Section: WikiSection = {
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-01a.avif",
-          width: 748,
-          height: 977,
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-01a-1.avif",
+          width: 872,
+          height: 1134,
           alt: "Figure C4-01A",
+          figureLabel: "Figure C4-01A",
           caption: "Semi-quantitative RT-PCR compared TROP2 transcript signals between wild-type and TROP2-expressing 4T1 cells. Values are mean ± SD from three independent RNA extractions; **** denotes P < 0.0001. The relative signal supports markedly increased transcription."
         },
         {
@@ -165,6 +166,7 @@ export const cycle4Section: WikiSection = {
           width: 1340,
           height: 742,
           alt: "Figure C4-01B",
+          figureLabel: "Figure C4-01B",
           caption: "Surface TROP2 staining compared wild-type 4T1 cells (left) with the sorted and puromycin-selected TROP2-expressing population (right). The recorded TROP2-positive fractions were 0% and 99.9%, respectively."
         },
         {
@@ -173,6 +175,7 @@ export const cycle4Section: WikiSection = {
           width: 1340,
           height: 847,
           alt: "Figure C4-01C",
+          figureLabel: "Figure C4-01C",
           caption: "Representative 4T1 cell fields 48–72 h after lentiviral transduction. Columns show bright-field, GFP-channel and merged images. GFP fluorescence was visible in the transduced cells. Scale bars: 200 µm."
         },
         {
@@ -181,6 +184,7 @@ export const cycle4Section: WikiSection = {
           width: 2323,
           height: 853,
           alt: "Figure C4-01D",
+          figureLabel: "Figure C4-01D",
           caption: "Sequential gates identified the cell population using FSC-A/SSC-A, selected singlets using FSC-A/FSC-H and identified GFP-positive cells. The respective gates retained 68.8%, 89.3% and 84.1% of their parent populations; the final value represents GFP positivity within the singlet gate."
         }
           ]
@@ -279,10 +283,11 @@ export const cycle4Section: WikiSection = {
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-02.avif",
-          width: 1280,
-          height: 591,
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-125.avif",
+          width: 3000,
+          height: 1625,
           alt: "Figure C4-02",
+          figureLabel: "Figure C4-02",
           caption: "Schematic of the PBS, empty-vector circRNA–LNP and Combined circRNA–LNP comparison, with five mice per group. The workflow includes tumour-cell inoculation, administration, tumour measurements and endpoint tumour and spleen collection."
         }
           ]
@@ -382,6 +387,7 @@ export const cycle4Section: WikiSection = {
           width: 2048,
           height: 1209,
           alt: "Figure C4-03A",
+          figureLabel: "Figure C4-03A",
           caption: "Empty-LNP CCK-8 measurements were fitted to estimate the viability-response parameters `E50` and `h`. Orange points show observed measurements, the blue line shows the posterior median response, and shading indicates the 95% conditional mean interval. The red dashed line marks 80% of the median baseline."
         },
         {
@@ -390,6 +396,7 @@ export const cycle4Section: WikiSection = {
           width: 2048,
           height: 1209,
           alt: "Figure C4-03B",
+          figureLabel: "Figure C4-03B",
           caption: "Blank-corrected Combined killing measurements were fitted to estimate the effector-to-target response parameter `K_ET`. Orange points show corrected means, with error bars representing propagated observation uncertainty. The blue line shows the posterior median response, and shading indicates the 95% conditional mean interval."
         },
         {
@@ -398,6 +405,7 @@ export const cycle4Section: WikiSection = {
           width: 2516,
           height: 1659,
           alt: "Figure C4-03C",
+          figureLabel: "Figure C4-03C",
           caption: "The Cell2Dose architecture connects experimentally calibrated response functions with delivery, circRNA expression, immune responses and tumour control to support dose exploration."
         }
           ]
@@ -472,6 +480,7 @@ export const cycle4Section: WikiSection = {
           width: 2064,
           height: 1462,
           alt: "Figure C4-04",
+          figureLabel: "Figure C4-04",
           caption: "Cell2Dose evaluated 301 doses from 0 to 30 µg per injection using 1,024 shared parameter sets. Blue shows the efficacy-criterion pass fraction; orange shows the fraction passing all three proxy screens for viability, systemic exposure and innate activation; green shows the fraction satisfying all four criteria simultaneously. The dashed line marks the 80% threshold, and the vertical line identifies the highest grid value at 10.2 µg, with a joint pass probability of 81.45%."
         }
           ]
@@ -546,6 +555,7 @@ export const cycle4Section: WikiSection = {
           width: 1125,
           height: 610,
           alt: "Figure C4-05A",
+          figureLabel: "Figure C4-05A",
           caption: "Group-mean tumour volumes during the study, with five mice per group. Control denotes empty-vector circRNA–LNP, and circRNA vaccine denotes Combined circRNA–LNP. Curves describe the growth trajectories; endpoint tumour volume was the primary outcome."
         },
         {
@@ -554,11 +564,12 @@ export const cycle4Section: WikiSection = {
           width: 520,
           height: 436,
           alt: "Figure C4-05B",
+          figureLabel: "Figure C4-05B",
           caption: "Excised tumours collected at the study endpoint. Rows from top to bottom represent PBS, empty-vector circRNA–LNP and Combined circRNA–LNP, with five tumours per group. Background grid spacing: 1 cm."
         },
         {
           type: "table",
-          caption: "Table C4-02｜Endpoint tumour volumes",
+          caption: "Table C4-01｜Endpoint tumour volumes",
           headers: ["Group", "Individual volumes (mm³)", "Mean±SD (mm³)"],
           rows: [
             ["PBS", "224.0、196.0、225.0、267.2、256.0", "233.64±28.33"],
@@ -568,7 +579,7 @@ export const cycle4Section: WikiSection = {
         },
         {
           type: "note",
-          label: "Table C4-02 note",
+          label: "Table C4-01 note",
           body: "Each value represents one animal; five animals were analysed per group."
         }
           ]
@@ -586,7 +597,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — 9.2 In vivo tumour growth inhibition](https://2026.igem.wiki/jlu-fbh/results#results-6-2)"
+          "[Further details: Results — 8.2 In vivo tumour growth inhibition](https://2026.igem.wiki/jlu-fbh/results#results-6-2)"
 ]
         }
           ]
@@ -645,42 +656,47 @@ export const cycle4Section: WikiSection = {
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06a.avif",
-          width: 1340,
-          height: 495,
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06a-splenic-dc-maturation.avif",
+          width: 2048,
+          height: 649,
           alt: "Figure C4-06A",
+          figureLabel: "Figure C4-06A",
           caption: "Representative CD80/CD86 flow plots (left) and quantification of CD80⁺CD86⁺ cells within the splenic dendritic-cell population (right), assessing the maturation-associated response at the study endpoint."
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06b.avif",
-          width: 1340,
-          height: 502,
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06b-splenic-cd8-activation.avif",
+          width: 2048,
+          height: 659,
           alt: "Figure C4-06B",
+          figureLabel: "Figure C4-06B",
           caption: "Representative CD69 flow plots (left) and quantification of CD69-positive cells within the splenic CD8 T-cell population (right), assessing early activation at the study endpoint."
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06c.avif",
-          width: 1340,
-          height: 476,
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06c-splenic-memory-associated-phenotype.avif",
+          width: 2048,
+          height: 691,
           alt: "Figure C4-06C",
+          figureLabel: "Figure C4-06C",
           caption: "Representative CD44/CD62L flow plots (left) and quantification of the CD44⁺CD62L⁺ population within splenic CD8 T cells (right), assessing the central-memory-associated phenotype at the study endpoint."
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06d.avif",
-          width: 1340,
-          height: 493,
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06d-splenic-ifn-gamma.avif",
+          width: 2048,
+          height: 673,
           alt: "Figure C4-06D",
+          figureLabel: "Figure C4-06D",
           caption: "Representative intracellular IFN-γ flow plots (left) and quantification of IFN-γ-positive cells within the splenic CD8 T-cell population (right) at the study endpoint."
         },
         {
           type: "figure",
-          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06e.avif",
-          width: 1340,
-          height: 531,
+          src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06e-splenic-granzyme-b.avif",
+          width: 2048,
+          height: 675,
           alt: "Figure C4-06E",
+          figureLabel: "Figure C4-06E",
           caption: "Representative intracellular Granzyme B flow plots (left) and quantification of Granzyme B-positive cells within the splenic CD8 T-cell population (right) at the study endpoint."
         },
         {
@@ -703,7 +719,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — 9.4 Splenic systemic immune response: the complete chain from presentation to effector molecules](https://2026.igem.wiki/jlu-fbh/results#results-6-4)"
+          "[Further details: Results — 8.4 Splenic systemic immune response: the complete chain from presentation to effector molecules](https://2026.igem.wiki/jlu-fbh/results#results-6-4)"
 ]
         }
           ]
@@ -760,6 +776,7 @@ export const cycle4Section: WikiSection = {
           width: 954,
           height: 596,
           alt: "Figure C4-07",
+          figureLabel: "Figure C4-07",
           caption: "Representative tumour sections stained for CD8 and Granzyme B, with merged views. circRNA-vector denotes empty-vector circRNA–LNP, and circRNA-antigens denotes Combined circRNA–LNP. Combined showed stronger CD8-associated signals in the displayed fields; the images provide a qualitative comparison of local immune infiltration."
         }
           ]
@@ -777,7 +794,7 @@ export const cycle4Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "[Further details: Results — 9.3 Tumour immune microenvironment: CD8⁺ T infiltration and Granzyme B](https://2026.igem.wiki/jlu-fbh/results#results-6-3) and [Integrated Human Practices — In Vivo — Summary](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vivo-4)"
+          "[Further details: Results — 8.3 Tumour immune microenvironment: CD8⁺ T infiltration and Granzyme B](https://2026.igem.wiki/jlu-fbh/results#results-6-3) and [Integrated Human Practices — In Vivo — Summary](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vivo-4)"
 ]
         }
           ]
@@ -818,7 +835,7 @@ export const cycle4Section: WikiSection = {
         },
         {
           type: "table",
-          caption: "Table C4-01｜Evidence supporting the final interpretation",
+          caption: "Table C4-02｜Evidence supporting the final interpretation",
           headers: ["Evidence object", "Direct record", "Supported conclusion", "Evidence scope"],
           rows: [
             ["4T1–TROP2 model cells", "Semi-quantitative transcript signal: 75.83±3.27-fold; surface-positive fraction: 99.9%", "The established cell population expressed human TROP2", "Antigen expression in the murine tumour-cell background"],
@@ -830,7 +847,7 @@ export const cycle4Section: WikiSection = {
         },
         {
           type: "note",
-          label: "Table C4-01 note",
+          label: "Table C4-02 note",
           body: "Tumour volumes are mean±SD for five animals per group. The semi-quantitative RT-PCR value describes the recorded transcript-signal increase. Cell2Dose probabilities describe the fraction of sampled model scenarios meeting the specified criteria."
         }
           ]
@@ -851,6 +868,7 @@ export const cycle4Section: WikiSection = {
           width: 3000,
           height: 2100,
           alt: "Figure C4-08",
+          figureLabel: "Figure C4-08",
           caption: "The evidence map connects Combined’s tumour-control and immune-response observations with model-cell verification and Cell2Dose calculations. The accompanying analysis distinguishes core calibration data, immune-response inputs and outcome comparisons."
         }
           ]

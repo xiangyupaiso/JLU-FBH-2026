@@ -5,8 +5,8 @@ import { NAV_ICONS } from "../navIcons";
 import { useWikiNextCompanion } from "../../hooks/useWikiNextCompanion";
 import { wikiDestinationPreviews } from "../../data/wikiDestinationPreviews";
 import { QueuedImage } from "../common/QueuedImage";
-import lambUrl from "../../assets/loading/lamb.webp";
-import ribbonUrl from "../../assets/wiki/next-record-ribbon-watercolor.png";
+const lambUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/lamb.webp";
+const ribbonUrl = "https://static.igem.wiki/teams/6056/wiki/files/pages/shared/next-record-ribbon-watercolor.avif";
 import "./WikiNextRecord.css";
 
 // Resolve the illustration by route, even when the page's display label differs.
@@ -104,7 +104,6 @@ export const WikiNextRecord = memo(function WikiNextRecord({
           ref={actionRef}
           className={`wiki-next__action${showPreview ? " is-previewing" : ""}`}
           to={path}
-          aria-label={`Continue to ${label}`}
           aria-describedby={preview ? previewId : undefined}
           onPointerEnter={(event) => {
             if (event.pointerType === "mouse") setShowPreview(true);

@@ -59,7 +59,7 @@ export const entrepreneurshipAssets = {
     jikaLetterOfIntent: `${DOC_ASSETS}/entrepreneurship/jika.pdf`,
     jienzhiheLetterOfIntent: `${DOC_ASSETS}/entrepreneurship/jienzhihe.pdf`,
     scalability: `${DOC_ASSETS}/scalability.pdf`,
-    businessPlan: `${DOC_ASSETS}/entrepreneurship/bussines-plan.pdf`,
+    businessPlan: `${DOC_ASSETS}/entrepreneurship/business-plan-jlu-fbh.pdf`,
     legalPlan: `${DOC_ASSETS}/entrepreneurship/legal-plan.pdf`,
   },
 } as const;

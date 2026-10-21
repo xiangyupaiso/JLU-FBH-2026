@@ -136,7 +136,7 @@
 .hp-origin-flow__heading strong { font-family: var(--font-editorial); font-size: clamp(16px, 1.4vw, 20px); font-weight: 600; line-height: 1.25; text-align: left; }
 .hp-origin-flow__sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
 
-.hp-origin-flow__tree { position: absolute; top: 8%; bottom: 3%; left: 2%; width: 40%; }
+.hp-origin-flow__tree { position: absolute; top: max(100px, 14%); bottom: max(40px, 6%); left: 2%; width: 40%; }
 .hp-origin-flow__links { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 .hp-origin-flow__links > path { fill: none; stroke: rgb(200 113 44 / 43%); stroke-width: 2.8; vector-effect: non-scaling-stroke; transition: stroke 380ms ease, filter 380ms ease; }
 .hp-origin-flow__links > path.is-lit { stroke: var(--hp-flow-orange); stroke-width: 3.5; }
@@ -260,7 +260,7 @@
   .hp-origin-flow__intro-heading,
   .hp-origin-flow__heading { top: 2%; }
   .hp-origin-flow__intro-network { top: 13%; bottom: 5%; }
-  .hp-origin-flow__tree { top: 7%; bottom: 2%; }
+  .hp-origin-flow__tree { top: max(100px, 14%); bottom: max(40px, 6%); }
   .hp-origin-flow__card { top: 7%; bottom: 4%; padding-block: 14px; }
   .hp-origin-flow__card-head h3 { font-size: 18px; }
   .hp-origin-flow__card-head p { font-size: 11px; }
@@ -288,7 +288,7 @@
   .hp-origin-flow__intro-node { width: 62px; height: 62px; }
   .hp-origin-flow__intro-tooltip { width: 23%; }
   .hp-origin-flow__intro-prompt { left: 4%; right: 4%; bottom: 1%; font-size: 10px; text-align: center; }
-  .hp-origin-flow__tree { top: 15%; bottom: 3%; left: 2%; width: 38%; }
+  .hp-origin-flow__tree { top: max(88px, 15%); bottom: max(32px, 5%); left: 2%; width: 38%; }
   .hp-origin-flow__person { width: 53px; height: 53px; }
   .hp-origin-flow__person-front, .hp-origin-flow__person-back { border-radius: 9px; }
   .hp-origin-flow__person-front { padding: 3px; }

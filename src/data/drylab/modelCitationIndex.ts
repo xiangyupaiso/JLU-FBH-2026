@@ -1,15 +1,13 @@
-import type {
-  CitationIndex,
-  CitationSegment,
-} from "../citations/citationTypes";
+import type { CitationIndex, CitationOccurrence } from "../citations/citationTypes";
+import { buildAuthorYearKeys, tokenizeAuthorYearCitations } from "../citations/citationIndex";
+import { citationParagraphKey, citationTableCellKey } from "../citations/citationTypes";
 import type { WikiContentBlock } from "../../components/wiki/wikiPageTypes";
 import {
   modelPage,
   modelPanels,
-  modelReferences,
-  modelReferenceLabels,
   modelJudging,
 } from "./modelPage";
+import { modelCitationReferences as modelReferences, modelCitationLabels as modelReferenceLabels } from "./modelCitationReferences";
 
 /** Recognize caption labels only; prose references such as "Figure 16 summarizes" stay prose. */
 export function parseModelFigureCaption(text: string) {
@@ -26,12 +24,12 @@ export function parseModelFigureCaption(text: string) {
  * Match its own bibliography labels without rewriting any displayed copy. */
 export function buildModelCitationIndex(): CitationIndex {
   const index: CitationIndex = {
+    style: "author-year",
     byParagraph: new Map(),
     byScopedParagraph: new Map(),
     byRef: new Map(),
     issues: [],
   };
-  const escape = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   // Repeated generic labels (e.g. different trial registrations from the same
   // database) cannot identify one paper. Keep those bibliography entries without
   // silently linking an ambiguous author/year citation to the wrong study.
@@ -49,50 +47,26 @@ export function buildModelCitationIndex(): CitationIndex {
       );
       if (!urls[0] || !urls.every((url) => url === urls[0])) return [];
     }
-    return {
-      id,
-      pattern: new RegExp(
-        `(?:\\*\\*\\s*)?${escape(name)}\\s*[,()]?\\s*${escape(year)}(?!\\w)(?:\\s*\\))?(?:\\.?\\s*\\*\\*)?`,
-        "gu",
-      ),
-    };
+    return [[`${name}, ${year}`, id] as const];
   });
-  const visit = (text: string, sectionId: string) => {
+  const keys = buildAuthorYearKeys(modelReferences, Object.fromEntries(labels));
+  const visit = (text: string, sectionId: string, locationKey?: string) => {
     text = parseModelFigureCaption(text)?.text ?? text;
-    const scopedKey = `${sectionId}\0${text}`;
+    const scopedKey = citationParagraphKey(sectionId, text, locationKey);
     if (index.byScopedParagraph!.has(scopedKey)) return;
-    const matches = labels
-      .flatMap(({ id, pattern }) =>
-        [...text.matchAll(pattern)].map((m) => ({
-          id,
-          start: m.index!,
-          text: m[0],
-        })),
-      )
-      .sort((a, b) => a.start - b.start || b.text.length - a.text.length);
-    const segments: CitationSegment[] = [];
-    const occs = [];
-    let cursor = 0;
-    for (const match of matches) {
-      if (match.start < cursor) continue;
-      if (match.start > cursor)
-        segments.push({ kind: "text", text: text.slice(cursor, match.start) });
-      segments.push({ kind: "cite", refId: match.id, text: match.text });
-      const list = index.byRef.get(match.id) ?? [];
-      const occurrence = {
-        occId: `cite-${match.id}-${list.length + 1}`,
-        refId: match.id,
-        ordinal: list.length + 1,
-        sectionId,
-      };
-      list.push(occurrence);
-      index.byRef.set(match.id, list);
-      occs.push(occurrence);
-      cursor = match.start + match.text.length;
+    const segments = tokenizeAuthorYearCitations(text, keys, (issue) => index.issues.push(issue));
+    const occs: CitationOccurrence[] = [];
+    for (const segment of segments) {
+      if (segment.kind !== "cite") continue;
+      for (const refId of segment.refIds ?? [segment.refId]) {
+        const list = index.byRef.get(refId) ?? [];
+        const occurrence = { occId: `cite-${refId}-${list.length + 1}`, refId, ordinal: list.length + 1, sectionId };
+        list.push(occurrence);
+        index.byRef.set(refId, list);
+        occs.push(occurrence);
+      }
     }
-    if (!occs.length) return;
-    if (cursor < text.length)
-      segments.push({ kind: "text", text: text.slice(cursor) });
+    if (!segments.some((segment) => segment.kind === "cite" || segment.displayText)) return;
     index.byScopedParagraph!.set(scopedKey, { segments, occs });
     if (!index.byParagraph.has(text))
       index.byParagraph.set(text, { segments, occs });
@@ -105,10 +79,11 @@ export function buildModelCitationIndex(): CitationIndex {
         block.paragraphs.forEach((text) => visit(text, sectionId));
       if (block.type === "list")
         block.items.forEach((text) => visit(text, sectionId));
-      if (block.type === "table")
-        [...block.headers, ...block.rows.flat()].forEach((text) =>
-          visit(text, sectionId),
-        );
+      if (block.type === "table") {
+        block.headers.forEach((text, column) => visit(text, sectionId, citationTableCellKey(block, -1, column)));
+        block.rows.forEach((row, index) => row.forEach((text, column) => visit(text, sectionId, citationTableCellKey(block, index, column))));
+        if (block.caption) visit(block.caption, sectionId);
+      }
       if (block.type === "split") {
         blocks(block.prose, sectionId);
         blocks([block.aside], sectionId);

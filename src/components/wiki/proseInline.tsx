@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { scrollReaderToId } from "../../utils/scrollReaderToTarget";
-import { WikiMath, splitMathSegments } from "./mathText";
+import { splitMathSegments } from "./mathText";
+import { WikiMath } from "./WikiMath";
 import "../../styles/wiki-math.css";
 
 /**
@@ -104,6 +105,10 @@ export function linkify(text: string): ReactNode {
 
 const INLINE_FORMATTING_RE =
   /(`[^`]+`|\*\*[\s\S]+?\*\*|(?<![\w*])\*(?!\*)(?:[^*\n]|\*(?!\*))+?\*(?!\*))/g;
+
+export function inlineFormattingMatches(text: string) {
+  return [...text.matchAll(INLINE_FORMATTING_RE)];
+}
 
 /** Render Markdown bold and italic markers without mistaking scientific `*` tokens for emphasis. */
 function renderEmphasisAndCode(text: string): ReactNode {

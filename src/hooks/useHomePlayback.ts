@@ -28,7 +28,7 @@ const CHAPTERS = [
 
 type Anchor = {
   chapter: number;
-  kind?: "reading" | "bridge";
+  kind?: "reading" | "bridge" | "overview";
   progress: number;
   label?: string;
 };
@@ -39,25 +39,26 @@ type Beat = Anchor & { travel: number; hold?: number; antigen?: number };
 const BEATS: readonly Beat[] = [
   { chapter: 0, progress: 0.24, travel: 4 },
   { chapter: 0, progress: 0.66, label: "portrait-closeup", travel: 3 },
-  { chapter: 0, progress: 0.98, travel: 2, hold: 3 },
+  { chapter: 0, progress: 0.8, label: "prologue-readable", travel: 2, hold: 3 },
   { chapter: 1, progress: 0, travel: 2 },
-  { chapter: 1, progress: 0.42, travel: 4 },
-  // Hold the patient's question before moisture starts gathering. A chapter
-  // percentage can already overlap the bridge and freeze the drop mid-growth.
-  { chapter: 2, kind: "bridge", progress: 0, travel: 4, hold: 3 },
+  { chapter: 1, progress: 0.42, label: "patient-settled", travel: 4 },
+  { chapter: 1, progress: 0.8, label: "ward-question-readable", travel: 2, hold: 3 },
+  { chapter: 2, kind: "bridge", progress: 0, travel: 1 },
   // Resolve the tear's own bridge rather than racing through it on the way
   // to the first reading cue. Growth gets a visible beat at every viewport.
   { chapter: 2, kind: "bridge", progress: 0.52, travel: 3 },
-  { chapter: 2, kind: "bridge", progress: 0.94, travel: 5, hold: 0.8 },
+  { chapter: 2, kind: "bridge", progress: 1, travel: 5 },
   { chapter: 2, progress: 0.29, label: "wish-readable", travel: 2.5, hold: 2 },
   { chapter: 2, progress: 0.5, label: "question-readable", travel: 3, hold: 3 },
-  { chapter: 2, progress: 0.84, travel: 5, hold: 2 },
+  { chapter: 2, progress: 0.8, label: "art-reading-complete", travel: 5, hold: 3 },
   { chapter: 3, progress: 0, travel: 5 },
-  { chapter: 3, progress: 0, label: "map-gather-start", travel: 7, hold: 2 },
+  { chapter: 3, progress: 0, label: "map-gather-start", travel: 7 },
   { chapter: 3, progress: 0, label: "map-gathered", travel: 4, hold: 2 },
   { chapter: 3, kind: "bridge", progress: 0, travel: 1 },
-  { chapter: 3, kind: "bridge", progress: 1, travel: 3, hold: 1 },
-  { chapter: 3, kind: "reading", progress: 0.2, label: "cell-visible", travel: 2, hold: 1 },
+  // Flowing mobile copy can reveal its cell before the title carry ends.
+  // Follow that reading cue directly instead of overshooting and waiting for
+  // a target that is already behind the camera.
+  { chapter: 3, kind: "reading", progress: 0.2, label: "cell-visible", travel: 5, hold: 1 },
   { chapter: 3, kind: "reading", progress: 0.5, label: "markers-visible", travel: 4, hold: 1 },
   { chapter: 3, kind: "reading", progress: 0.94, label: "reading-complete", travel: 5, hold: 4 },
   { chapter: 4, progress: 0.08, travel: 2 },
@@ -65,15 +66,16 @@ const BEATS: readonly Beat[] = [
   { chapter: 4, progress: 0.4, label: "treatment-summary-readable", travel: 3, hold: 3 },
   { chapter: 5, progress: 0.72, label: "vaccine-question-readable", travel: 5, hold: 3 },
   { chapter: 5, progress: 0.88, label: "vaccine-answer-readable", travel: 4, hold: 4 },
-  { chapter: 5, kind: "bridge", progress: 0, travel: 4, hold: 2 },
+  { chapter: 5, kind: "bridge", progress: 0, travel: 1 },
   { chapter: 6, progress: 0.38, label: "choices-visible", travel: 4, hold: 3 },
   { chapter: 6, progress: 0.88, label: "circ-selected", travel: 4, hold: 3 },
   { chapter: 7, progress: 0, travel: 5 },
   { chapter: 7, progress: 0.2, label: "stability-readable", travel: 4, hold: 1 },
-  { chapter: 7, progress: 0.2, label: "why-readable", travel: 3, hold: 3 },
+  { chapter: 7, progress: 0.2, label: "expression-readable", travel: 3, hold: 1 },
+  { chapter: 7, progress: 0.2, label: "why-readable", travel: 1.5, hold: 3 },
   { chapter: 8, progress: 0.47, travel: 5 },
   { chapter: 8, progress: 0.9, label: "advantages-readable", travel: 10, hold: 4 },
-  { chapter: 9, progress: 0.12, travel: 3, hold: 2 },
+  { chapter: 9, kind: "overview", progress: 0.12, travel: 3, hold: 2 },
   {
     chapter: 9,
     progress: 0.5,
@@ -96,12 +98,12 @@ const BEATS: readonly Beat[] = [
     antigen: 2,
   },
   { chapter: 9, progress: 0.96, travel: 4, hold: 2 },
-  { chapter: 10, progress: 0.88, travel: 5, hold: 3 },
+  { chapter: 10, progress: 0.8, label: "art-reading-complete", travel: 5, hold: 3 },
   { chapter: 11, progress: 0.82, label: "hope-readable", travel: 5, hold: 4 },
   { chapter: 12, progress: 0, label: "question-readable", travel: 4, hold: 2 },
   { chapter: 12, progress: 0.15, label: "answer-readable", travel: 2, hold: 1.5 },
   { chapter: 12, progress: 0.4, label: "circle-to-care", travel: 5, hold: 3 },
-  { chapter: 12, progress: 0.98, travel: 7, hold: 3 },
+  { chapter: 12, progress: 0.98, label: "care-complete", travel: 7, hold: 3 },
 ];
 
 const DEFAULT_RATE = 1.5;
@@ -156,6 +158,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     let holdElapsed = 0;
     let holding = false;
     let origin = 0;
+    let destination = 0;
     let travel = 0;
     let ownReplay = false;
     let measuredWidth = window.innerWidth;
@@ -166,7 +169,6 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     let paintedChapter = 0;
     let disposed = false;
     let preloadedChapter = -1;
-    let visitorActive = false;
 
     const clamp = (value: number) => Math.max(0, Math.min(1, value));
     const maxScroll = () =>
@@ -206,6 +208,9 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       });
     };
     const findTrigger = (anchor: Anchor) => {
+      if (anchor.kind === "overview") {
+        return ScrollTrigger.getById("home-antigen-overview-transition");
+      }
       if (anchor.kind === "bridge") {
         return ScrollTrigger.getById(
           anchor.chapter === 2
@@ -231,14 +236,11 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
                 ? "home-circrna-platform"
                 : anchor.chapter === 12
                   ? "home-finale-reading"
-                  : undefined;
-      if (id) return ScrollTrigger.getById(id);
-      const track = section(anchor.chapter)?.querySelector(
-        ".story-scene-track",
-      );
-      return ScrollTrigger.getAll().find(
-        (trigger) => trigger.vars.trigger === track,
-      );
+                  : `home-${CHAPTERS[anchor.chapter].id}-art`;
+      // A track can also own a geometry-only entry marker. Resolve its actual
+      // animation by ID so reading labels never fall back to that marker's
+      // viewport-entry range (which can leave the prologue half off screen).
+      return ScrollTrigger.getById(id);
     };
     const position = (anchor: Anchor) => {
       const flowAntigen = window.matchMedia(
@@ -252,8 +254,20 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
           '.home-antigen-switch[data-antigen-view="mechanism"]',
         );
         if (overview && mechanism) {
-          const overviewTop =
+          let overviewTop =
             overview.getBoundingClientRect().top + window.scrollY - 96;
+          const overviewCopy = overview.querySelector<HTMLElement>(
+            ".home-antigen-switch__copy",
+          );
+          if (overviewCopy) {
+            // Tall phone compositions can put the densest explanation below
+            // the fold. Frame that text above the floating bottom controls.
+            overviewTop = Math.max(
+              overviewTop,
+              overviewCopy.getBoundingClientRect().bottom + window.scrollY -
+                window.innerHeight + 68,
+            );
+          }
           const mechanismTop =
             mechanism.getBoundingClientRect().top + window.scrollY - 96;
           const extra = Math.max(
@@ -300,7 +314,9 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
           0,
           Math.min(
             maxScroll(),
-            trigger.start + (trigger.end - trigger.start) * clamp(p),
+            // Native scroll rounds to CSS pixels. Reach the cue rather than
+            // stopping just before discrete changes such as unlocking links.
+            Math.ceil(trigger.start + (trigger.end - trigger.start) * clamp(p)),
           ),
         );
       }
@@ -334,26 +350,32 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     });
     const seekAnchor = (index: number): Anchor => ({
       ...entry(index),
-      kind: index === 3 ? "bridge" : undefined,
+      kind: index === 3 ? "bridge" : index === 9 ? "overview" : undefined,
       progress: [
         0.24, 0.9, 0.5, 0, 0.27, 0.91, 0.38, 0.2, 0.9, 0.12, 0.88, 0.82, 0.15,
       ][index],
       label:
-        index === 2
-          ? "question-readable"
-          : index === 4
-            ? "treatment-illustration-readable"
-            : index === 5
-              ? "vaccine-answer-readable"
-              : index === 6
-                ? "choices-visible"
-                : index === 7
-                  ? "why-readable"
-                  : index === 8
-                    ? "advantages-readable"
-                    : index === 12
-                      ? "question-readable"
-                      : undefined,
+        index === 1
+          ? "ward-question-readable"
+          : index === 2
+            ? "question-readable"
+            : index === 4
+              ? "treatment-illustration-readable"
+              : index === 5
+                ? "vaccine-answer-readable"
+                : index === 6
+                  ? "choices-visible"
+                  : index === 7
+                    ? "why-readable"
+                    : index === 8
+                      ? "advantages-readable"
+                      : index === 10
+                        ? "art-reading-complete"
+                        : index === 11
+                          ? "hope-readable"
+                          : index === 12
+                            ? "question-readable"
+                            : undefined,
     });
     const paint = () => {
       let chapterIndex = 0;
@@ -370,13 +392,13 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
           if (y < start - 4) break;
           chapterIndex = index;
         }
-        const end = position({ chapter: 12, progress: 0.98 });
+        const end = position(BEATS[BEATS.length - 1]);
         progress = clamp(y / Math.max(1, end));
       }
       paintedChapter = chapterIndex;
       // Manual scrolling and instant chapter jumps use the same small window
       // of requests as autoplay. Keep distant chapters off the network.
-      if (visitorActive && introComplete()) preload(chapterIndex);
+      if (introComplete()) preload(chapterIndex);
       setView({
         mode,
         rate,
@@ -506,7 +528,8 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       holdElapsed = 0;
       holding = false;
       origin = window.scrollY;
-      travel = BEATS[index].travel;
+      destination = position(BEATS[index]);
+      travel = destination > origin + 1 ? BEATS[index].travel : 0;
       preload(BEATS[index].chapter);
     };
     const chooseBeat = () => {
@@ -533,12 +556,11 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       }
       if (index < 0) return false;
       beginBeat(index);
-      // Resuming inside the tear bridge should keep its original scroll speed.
-      // Replaying the full beat's time for a short remaining distance stalls it.
-      if (index > 0 && BEATS[index].chapter === 2 && BEATS[index].kind === "bridge") {
-        const start = position(BEATS[index - 1]);
-        const end = position(BEATS[index]);
-        if (end > start) travel *= clamp((end - origin) / (end - start));
+      // Keep every scene's speed when resuming after manual scrolling. A few
+      // remaining pixels must not replay a whole beat's travel time.
+      const start = index > 0 ? position(BEATS[index - 1]) : 0;
+      if (destination > start) {
+        travel *= clamp((destination - origin) / (destination - start));
       }
       return true;
     };
@@ -556,12 +578,6 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
         : 0;
       lastTime = time;
       const introDone = introComplete();
-      // An idle page (including a script-rendering crawler) should not walk
-      // through the entire story and download every chapter on its own.
-      if (introDone && !visitorActive) {
-        lastTime = 0;
-        return;
-      }
       if (introDone && beatIndex < 0 && !chooseBeat()) {
         ended = true;
         changeMode("paused");
@@ -580,7 +596,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
           elapsed += delta;
           const fraction = travel > 0 ? clamp(elapsed / travel) : 1;
           scrollTo(
-            origin + (Math.max(origin, position(beat)) - origin) * fraction,
+            origin + (Math.max(origin, destination) - origin) * fraction,
           );
           if (fraction >= 1) {
             holding = true;
@@ -747,6 +763,7 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       paint();
     };
     const refresh = () => {
+      if (beatIndex >= 0) destination = position(BEATS[beatIndex]);
       // An expanded diagram changes downstream geometry. Rebase the remaining
       // movement on the current frame without restarting the scene clock.
       if (mode === "playing" && beatIndex >= 0 && !holding) {
@@ -764,16 +781,6 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     };
     const onScroll = () => {
       if (mode !== "playing") paint();
-    };
-    const intentEvents = ["pointermove", "pointerdown", "touchstart", "keydown", "wheel"] as const;
-    const activateVisitor = () => {
-      if (visitorActive) return;
-      visitorActive = true;
-      document.documentElement.dataset.homeVisitorActive = "true";
-      intentEvents.forEach((event) => window.removeEventListener(event, activateVisitor, true));
-      if (document.getElementById("page-loader")?.hidden) preload(paintedChapter);
-      paint();
-      if (mode === "playing") requestTick();
     };
     const onPreference = () => {
       changeMode("manual");
@@ -796,16 +803,12 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
     document.addEventListener("visibilitychange", visibility);
     preference.addEventListener("change", onPreference);
     ScrollTrigger.addEventListener("refresh", refresh);
-    intentEvents.forEach((event) => window.addEventListener(event, activateVisitor, {
-      capture: true,
-      passive: true,
-    }));
     // Give the opening its own bandwidth. While the inline signature plays,
     // fetch the next two chapters, then advance that window while reading.
     const opening = section(0);
     if (opening) artwork.warm(opening);
     void Promise.resolve().then(() => whenPageLoaderLeaves()).then(() => {
-      if (!disposed && visitorActive) preload(0);
+      if (!disposed) preload(0);
     });
     if (artwork.status(section(0)) === "ready") waitingChapter = null;
     publishPlayback();
@@ -816,8 +819,6 @@ export function useHomePlayback(root: RefObject<HTMLDivElement | null>) {
       cancelAnimationFrame(frame);
       cancelAnimationFrame(artworkFrame);
       artwork.dispose();
-      intentEvents.forEach((event) => window.removeEventListener(event, activateVisitor, true));
-      delete document.documentElement.dataset.homeVisitorActive;
       section(9)?.style.removeProperty("--home-playback-phase-offset");
       window.removeEventListener("wheel", scrollInput, true);
       window.removeEventListener("touchmove", scrollInput, true);

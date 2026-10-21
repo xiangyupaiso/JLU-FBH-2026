@@ -14,6 +14,7 @@ export function Software() {
       theme="dry-lab"
       pageClassName="wiki-page--dry-lab wiki-page--software"
       hideHeroCopy
+      preserveSectionNumbers
       features={softwareFeatures()}
       inlineRenderer={renderSoftwareCitedText}
     />

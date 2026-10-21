@@ -445,3 +445,22 @@
 }
 
 
+
+/* Give paragraphs and Scope notes enough separation on this page. */
+.wiki-page[data-wiki-route="/alternative-platform"] .wiki-prose {
+  display: grid;
+  row-gap: 22px;
+}
+
+.wiki-page[data-wiki-route="/alternative-platform"] .wiki-prose > p {
+  margin-block: 0;
+}
+
+.wiki-page[data-wiki-route="/alternative-platform"] .wiki-prose + .wiki-prose {
+  margin-top: 22px;
+}
+
+.wiki-page[data-wiki-route="/alternative-platform"] .wiki-quote {
+  margin-block: 24px;
+  padding: 16px 20px;
+}

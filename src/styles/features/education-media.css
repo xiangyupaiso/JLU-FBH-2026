@@ -1,3 +1,16 @@
+/* Education copy uses upright text, including manuscript emphasis and captions. */
+.wiki-page.wiki-page--education em,
+.wiki-page.wiki-page--education cite,
+.wiki-page.wiki-page--education blockquote,
+.wiki-page--education .wiki-prose,
+.wiki-page--education .wiki-subheading__title,
+.wiki-page--education .wiki-section__heading-body h2,
+.wiki-page--education .wiki-protocol-drawer__title,
+.wiki-page--education .wiki-table td,
+.wiki-page--education .wiki-table th {
+  font-style: normal;
+}
+
 .education-interactive {
   width: 100%;
   margin: 0;
@@ -11,6 +24,75 @@
   width: 100%;
   margin: 0;
   background: transparent;
+}
+
+.education-stations {
+  width: 100%;
+  margin: var(--wiki-space-block, 24px) 0;
+}
+
+.education-stations__labels {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: end;
+  gap: 4px;
+}
+
+.education-stations__label {
+  min-width: 0;
+  padding: 7px 2px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: #57635a;
+  cursor: pointer;
+  font: inherit;
+  font-size: clamp(10px, 1.2vw, 14px);
+  font-weight: 650;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.education-stations__label--active,
+.education-stations__label:is(:hover, :focus-visible) {
+  background: #e8f0e7;
+  color: #24594c;
+}
+
+.education-stations__label:focus-visible,
+.education-stations__range:focus-visible {
+  outline: 3px solid #d89d4c;
+  outline-offset: 3px;
+}
+
+.education-stations__range {
+  display: block;
+  width: 80%;
+  height: 10px;
+  margin: 13px auto 28px;
+  border-radius: 999px;
+  appearance: none;
+  background: linear-gradient(to right, #35675d 0 var(--education-station-progress), #dacdbb var(--education-station-progress) 100%);
+  cursor: grab;
+}
+
+.education-stations__range:active { cursor: grabbing; }
+.education-stations__range::-webkit-slider-thumb {
+  width: 24px;
+  height: 24px;
+  border: 3px solid #fffaf1;
+  border-radius: 50%;
+  appearance: none;
+  background: #35675d;
+  box-shadow: 0 2px 8px #21483e55;
+}
+.education-stations__range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fffaf1;
+  border-radius: 50%;
+  background: #35675d;
+  box-shadow: 0 2px 8px #21483e55;
 }
 
 .wiki-page--education .wiki-article .wiki-prose-link--route[href$="/games"],
@@ -307,4 +389,51 @@
   .education-gallery__card { width: 76%; height: 84%; }
   .education-gallery__arrow { width: 36px; height: 36px; font-size: 26px; }
   .education-interactive__head { flex-wrap: wrap; }
+}
+
+/* Match Official-wiki's blue figure badges, using the manuscript's numbering. */
+.wiki-page--education .wiki-figure--labelled .wiki-figure__label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5px 8px;
+  margin-right: 10px;
+  border: 1px solid rgba(22, 43, 76, 0.25);
+  border-radius: 4px;
+  background: var(--brand-navy, #162b4c);
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(22, 43, 76, 0.12);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.25;
+  vertical-align: 1.5px;
+}
+
+.wiki-page--education .wiki-figure--labelled .wiki-figure__caption {
+  display: inline;
+  font-size: 13.5px;
+  font-style: normal;
+  line-height: 1.6;
+}
+
+.wiki-page--education .wiki-figure--education-material figcaption::before {
+  display: none;
+  content: none;
+}
+
+.wiki-page--route.wiki-page--education .wiki-figure--ethics-poster img {
+  width: min(100%, 760px);
+  height: auto;
+}
+
+.wiki-page--route.wiki-page--education .wiki-figure--ethics-participation-poster {
+  width: min(100%, 360px);
+  margin-inline: auto;
+}
+
+.wiki-page--route.wiki-page--education .wiki-figure--ethics-participation-poster img {
+  width: 100%;
+  height: auto;
 }

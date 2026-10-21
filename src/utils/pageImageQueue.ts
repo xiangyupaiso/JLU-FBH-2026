@@ -31,37 +31,56 @@ interface Job {
   bindings: Set<Binding>;
   hinted: boolean;
   status: "pending" | "loading" | "loaded" | "failed";
-  settled: Promise<void>;
-  resolve: () => void;
-  reject: (error: Error) => void;
+  rank: number;
 }
 
 const ROUTE_SELECTOR = "main.wiki-page--route";
 const SOURCE_SELECTOR = "img[data-page-src], image[data-page-src], [data-page-background-src]";
-// One hung URL must release the shared slot so the rest of the first screen
-// still gets a turn well before the page's two-minute cover limit.
+// Bound transfers and decoding together. Background work leaves two slots
+// available for the opening or a newly visible image, even when it stalls.
 const IMAGE_DEADLINE_MS = 15_000;
 const NETWORK_RETRIES = 2;
-const INTERACTION_EVENTS = ["pointermove", "pointerdown", "touchstart", "keydown", "wheel"] as const;
+const MAX_DOWNLOADS = 3;
+const MAX_BACKGROUND_DOWNLOADS = 1;
+const BACKGROUND_RANK = 3;
 const decodedSources = new Map<string, DecodedSource>();
 const loadedElements = new WeakMap<Element, string>();
-// Home lookahead never overtakes a newly requested first screen.
-const pendingDownloads: { priority: "high" | "low"; start: () => Promise<void> }[] = [];
-let downloading = false;
+// A null rank holds optional work until that route's critical images settle.
+const pendingDownloads: { rank: () => number | null; start: (priority: "high" | "low") => Promise<void> }[] = [];
+let downloading = 0;
+let backgroundDownloads = 0;
 const inFlightDownloads = new Map<
   string,
   { promise: Promise<DecodedSource>; signal: AbortSignal }
 >();
 
 function pumpDownloads() {
-  if (downloading || !pendingDownloads.length) return;
-  const high = pendingDownloads.findIndex((request) => request.priority === "high");
-  const [request] = pendingDownloads.splice(high < 0 ? 0 : high, 1);
-  downloading = true;
-  void request.start().finally(() => {
-    downloading = false;
-    pumpDownloads();
-  });
+  while (downloading < MAX_DOWNLOADS) {
+    let next = -1;
+    let best = Infinity;
+    pendingDownloads.forEach((request, index) => {
+      const rank = request.rank();
+      if (rank === null || rank >= best) return;
+      if (rank >= BACKGROUND_RANK && backgroundDownloads >= MAX_BACKGROUND_DOWNLOADS) return;
+      next = index;
+      best = rank;
+    });
+    if (next < 0) return;
+    const [request] = pendingDownloads.splice(next, 1);
+    const background = best >= BACKGROUND_RANK;
+    downloading++;
+    if (background) backgroundDownloads++;
+    void request.start(background ? "low" : "high").finally(() => {
+      downloading--;
+      if (background) backgroundDownloads--;
+      pumpDownloads();
+    });
+  }
+}
+
+/** Reconsider queued Home artwork when its scene becomes current. */
+export function refreshPageImagePriorities() {
+  queueMicrotask(pumpDownloads);
 }
 
 export class PageImageQueueError extends Error {
@@ -106,14 +125,36 @@ function artworkSource(element: ArtworkElement): Source {
 }
 
 function isContentImage(element: Element, route: Element) {
-  if (!route.contains(element) || element.closest('nav, footer, .wiki-hero, .activities-hero, .route-frame, [data-page-critical="true"]')) return false;
+  // The frame owns a decorative background, but its descendants are the article.
+  if (!route.contains(element) || element.matches(".route-frame") ||
+    element.closest('nav, footer, .wiki-hero, .activities-hero, [data-page-critical="true"]')) return false;
   for (let ancestor: Element | null = element; ancestor && ancestor !== route.parentElement; ancestor = ancestor.parentElement) {
     if (ancestor.hasAttribute("inert") || ancestor.hasAttribute("hidden") || ancestor.getAttribute("aria-hidden") === "true") return false;
     if (ancestor instanceof HTMLDialogElement && !ancestor.open) return false;
     if (ancestor.getAttribute("role") === "tabpanel" &&
       (ancestor.getAttribute("data-state") === "inactive" || ancestor.getAttribute("aria-expanded") === "false")) return false;
   }
-  return true;
+  return element.getClientRects().length > 0 && getComputedStyle(element).visibility !== "hidden";
+}
+
+/** Respect both the window and the reader's clipped/projected viewport. */
+function viewportDistance(element: Element) {
+  if (!element.getClientRects().length || element.closest("[hidden], [inert]")) return Infinity;
+  const style = getComputedStyle(element);
+  if (style.display === "none" || style.visibility === "hidden") return Infinity;
+  const rect = element.getBoundingClientRect();
+  if (!rect.width || !rect.height) return Infinity;
+  let top = 0, bottom = window.innerHeight, left = 0, right = window.innerWidth;
+  const reader = element.closest(".route-frame__scroll");
+  if (reader && /^(auto|scroll|hidden|clip)$/.test(getComputedStyle(reader).overflowY)) {
+    const bounds = reader.getBoundingClientRect();
+    top = Math.max(top, bounds.top);
+    bottom = Math.min(bottom, bounds.bottom);
+    left = Math.max(left, bounds.left);
+    right = Math.min(right, bounds.right);
+  }
+  if (bottom <= top || right <= left) return Infinity;
+  return Math.max(top - rect.bottom, rect.top - bottom, left - rect.right, rect.left - right, 0);
 }
 
 function retryUrl(url: string, attempt: number) {
@@ -123,7 +164,7 @@ function retryUrl(url: string, attempt: number) {
 }
 
 /** One probe owns the network slot until load AND decoding have completed. */
-function probe(source: Source, signal: AbortSignal, deadline: number): Promise<DecodedSource> {
+function probe(source: Source, signal: AbortSignal, deadline: number, priority: "high" | "low"): Promise<DecodedSource> {
   if (signal.aborted) return Promise.reject(new PageImageQueueError(source.url, "cancelled"));
   if (Date.now() >= deadline) return Promise.reject(new PageImageQueueError(source.url, "timeout"));
   return new Promise((resolve, reject) => {
@@ -173,7 +214,7 @@ function probe(source: Source, signal: AbortSignal, deadline: number): Promise<D
     }
     if (source.crossOrigin !== null) image.crossOrigin = source.crossOrigin;
     image.loading = "eager";
-    image.fetchPriority = "high";
+    image.fetchPriority = priority;
     if (source.sizes) image.sizes = source.sizes;
     if (source.srcSet) image.srcset = source.srcSet;
     image.src = source.url;
@@ -181,7 +222,7 @@ function probe(source: Source, signal: AbortSignal, deadline: number): Promise<D
   });
 }
 
-async function download(source: Source, fallback: string, signal: AbortSignal) {
+async function download(source: Source, fallback: string, signal: AbortSignal, priority: "high" | "low") {
   const key = sourceKey(source);
   const previous = decodedSources.get(key);
   if (previous) return previous;
@@ -191,7 +232,7 @@ async function download(source: Source, fallback: string, signal: AbortSignal) {
     try {
       // A retry changes only an explicitly failed URL, never a slow transfer.
       const requested = attempt ? { ...source, url: retryUrl(source.url, attempt), srcSet: "" } : source;
-      const decoded = await probe(requested, signal, deadline);
+      const decoded = await probe(requested, signal, deadline, priority);
       decodedSources.set(key, decoded);
       return decoded;
     } catch (error) {
@@ -201,14 +242,20 @@ async function download(source: Source, fallback: string, signal: AbortSignal) {
     }
   }
   if (fallback && fallback !== source.url) {
-    const decoded = await probe({ ...source, url: fallback, srcSet: "" }, signal, deadline);
+    const decoded = await probe({ ...source, url: fallback, srcSet: "" }, signal, deadline, priority);
     decodedSources.set(key, decoded);
     return decoded;
   }
   throw lastError ?? new PageImageQueueError(source.url, "network");
 }
 
-function downloadSerial(source: Source, fallback: string, signal: AbortSignal, priority: DownloadPriority = "high") {
+function downloadQueued(
+  source: Source,
+  fallback: string,
+  signal: AbortSignal,
+  rank: () => number | null,
+  onStart?: () => void,
+) {
   const key = sourceKey(source);
   if (signal.aborted) return Promise.reject(new PageImageQueueError(source.url, "cancelled"));
   const existing = inFlightDownloads.get(key);
@@ -223,15 +270,15 @@ function downloadSerial(source: Source, fallback: string, signal: AbortSignal, p
       pendingDownloads.splice(index, 1);
       signal.removeEventListener("abort", cancelled);
       reject(new PageImageQueueError(source.url, "cancelled"));
+      queueMicrotask(pumpDownloads);
     };
     const request = {
-      // Home may enter a scene after its lookahead requests were enqueued.
-      // Read its current priority when selecting the next transfer slot.
-      get priority() { return typeof priority === "function" ? priority() : priority; },
-      start: async () => {
+      rank,
+      start: async (priority: "high" | "low") => {
         try {
           if (signal.aborted) throw new PageImageQueueError(source.url, "cancelled");
-          resolve(await download(source, fallback, signal));
+          onStart?.();
+          resolve(await download(source, fallback, signal, priority));
         } catch (error) {
           reject(error);
         } finally {
@@ -244,15 +291,10 @@ function downloadSerial(source: Source, fallback: string, signal: AbortSignal, p
     if (signal.aborted) cancelled();
     queueMicrotask(pumpDownloads);
   });
-  // index.html paints its six loading layers before the app starts any other
-  // image transfer. The gate is already open on later route navigations.
-  const loaderArtReady = (window as Window & { __circureLoaderArtReady?: Promise<void> }).__circureLoaderArtReady;
-  const promise = loaderArtReady
-    ? loaderArtReady.then(() => {
-        if (signal.aborted) throw new PageImageQueueError(source.url, "cancelled");
-        return enqueue();
-      })
-    : enqueue();
+  // Page artwork can start alongside the loader illustration. The shared
+  // pool still bounds transfers; decorative loader layers have their own
+  // single low-priority request in index.html.
+  const promise = enqueue();
   inFlightDownloads.set(key, { promise, signal });
   const forget = () => {
     if (inFlightDownloads.get(key)?.promise === promise) inFlightDownloads.delete(key);
@@ -264,7 +306,7 @@ function downloadSerial(source: Source, fallback: string, signal: AbortSignal, p
   return promise;
 }
 
-/** Home probes can share the same physical network slot and successful cache. */
+/** Retain the caller API; Home and readers share the bounded pool and cache. */
 export function loadPageImageSerial(
   url: string,
   options: {
@@ -284,7 +326,8 @@ export function loadPageImageSerial(
     srcSet: options.srcSet || "",
     sizes: options.sizes || "",
   };
-  return downloadSerial(source, options.fallback || "", options.signal ?? new AbortController().signal, options.priority)
+  return downloadQueued(source, options.fallback || "", options.signal ?? new AbortController().signal,
+    () => (typeof options.priority === "function" ? options.priority() : options.priority) === "low" ? BACKGROUND_RANK : 0)
     .then((decoded) => decoded.resolvedUrl);
 }
 
@@ -311,39 +354,15 @@ export function createPageImageQueue(root: HTMLElement) {
   const bindings = new Map<Element, Binding>();
   const jobs = new Map<string, Job>();
   let disposed = false;
-  let halted = false;
-  let running = false;
-  let interacted = false;
   let criticalFinished = false;
   let scanQueued = false;
-  let activeJob: Job | undefined;
-  let activeController: AbortController | undefined;
+  let viewportFrame = 0;
+  const controllers = new Map<Job, AbortController>();
 
   const isCritical = (job: Job) => [...job.bindings].some((binding) => binding.critical && bindings.get(binding.element) === binding);
   const liveBindings = (job: Job) => [...job.bindings].filter((binding) => bindings.get(binding.element) === binding && root.contains(binding.element));
-  const ordinaryOrder = (a: Job, b: Job) => {
-    const aElements = liveBindings(a).map((binding) => binding.element);
-    const bElements = liveBindings(b).map((binding) => binding.element);
-    const route = root.querySelector(ROUTE_SELECTOR);
-    const activeContent = Number(!!route && bElements.some((element) => isContentImage(element, route))) -
-      Number(!!route && aElements.some((element) => isContentImage(element, route)));
-    if (activeContent) return activeContent;
-    if (!aElements.length || !bElements.length) return Number(!aElements.length) - Number(!bElements.length);
-    const position = aElements[0].compareDocumentPosition(bElements[0]);
-    return position & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : position & Node.DOCUMENT_POSITION_PRECEDING ? 1 : 0;
-  };
-  const removeInteractionListeners = () => {
-    for (const event of INTERACTION_EVENTS) window.removeEventListener(event, interaction, true);
-  };
-  const failPending = (error: PageImageQueueError) => {
-    for (const job of jobs.values()) {
-      if (job.status !== "pending") continue;
-      job.status = "failed";
-      job.reject(error);
-    }
-  };
   const updateReady = () => {
-    if (criticalFinished || disposed || halted) return;
+    if (criticalFinished || disposed) return;
     const critical = [...jobs.values()].filter(isCritical);
     // Critical means "attempt before entry", not "must succeed or block the
     // page". A failed image keeps its reserved space and must not prevent the
@@ -354,57 +373,78 @@ export function createPageImageQueue(root: HTMLElement) {
     }
   };
 
-  async function run() {
-    if (running || disposed || halted) return;
-    running = true;
-    try {
-      while (!disposed && !halted) {
-        updateReady();
-        const pending = [...jobs.values()].filter((job) => job.status === "pending" && (liveBindings(job).length || job.hinted));
-        const job = pending.find(isCritical) ?? (criticalFinished && interacted ? pending.sort(ordinaryOrder)[0] : undefined);
-        if (!job) return;
-        job.status = "loading";
-        for (const binding of liveBindings(job)) {
-          binding.element.dataset.pageImageState = "loading";
-        }
-        try {
-          activeJob = job;
-          activeController = new AbortController();
-          const fallback = liveBindings(job).find((binding) => binding.fallback)?.fallback || "";
-          const decoded = await downloadSerial(job.source, fallback, activeController.signal, isCritical(job) ? "high" : "low");
-          if (disposed) return;
-          for (const binding of liveBindings(job)) paint(binding, decoded);
-          job.status = "loaded";
-          job.resolve();
-        } catch {
-          job.status = "failed";
-          for (const binding of liveBindings(job)) {
-            binding.element.dataset.pageLoaded = "false";
-            binding.element.dataset.pageImageState = "error";
-          }
-          // Settle this image and continue serially. In particular, one
-          // unavailable hero must not starve the other critical images.
-          job.resolve();
-          updateReady();
-        } finally {
-          activeJob = undefined;
-          activeController = undefined;
-        }
+  // Measure once per collection/scroll frame, not for every scheduler comparison.
+  function updateRanks() {
+    const route = root.querySelector(ROUTE_SELECTOR);
+    for (const job of jobs.values()) {
+      if (job.status !== "pending") continue;
+      const live = liveBindings(job);
+      job.rank = 6;
+      for (const binding of live) {
+        if (binding.hero) { job.rank = 0; break; }
+        if (binding.critical) { job.rank = Math.min(job.rank, 1); continue; }
+        const element = binding.element;
+        const content = !!route && isContentImage(element, route);
+        if (content) job.rank = Math.min(job.rank, 4);
+        const distance = viewportDistance(element);
+        if (!Number.isFinite(distance)) continue;
+        const rank = distance === 0 ? 2 : content && distance < window.innerHeight ? 3 : content ? 4 : 5;
+        job.rank = Math.min(job.rank, rank);
       }
-    } finally {
-      running = false;
     }
   }
 
+  function run() {
+    if (disposed) return;
+    updateReady();
+    updateRanks();
+    for (const job of jobs.values()) {
+      if (job.status !== "pending" || controllers.has(job)) continue;
+      if (!liveBindings(job).length && !job.hinted) continue;
+      const controller = new AbortController();
+      controllers.set(job, controller);
+      const fallback = liveBindings(job).find((binding) => binding.fallback)?.fallback || "";
+      void downloadQueued(job.source, fallback, controller.signal,
+        () => !criticalFinished && !isCritical(job) ? null : job.rank,
+        () => {
+          job.status = "loading";
+          for (const binding of liveBindings(job)) binding.element.dataset.pageImageState = "loading";
+        },
+      ).then((decoded) => {
+        if (disposed || controller.signal.aborted) return;
+        for (const binding of liveBindings(job)) paint(binding, decoded);
+        job.status = "loaded";
+      }, () => {
+        if (disposed || controller.signal.aborted) return;
+        job.status = "failed";
+        for (const binding of liveBindings(job)) {
+          binding.element.dataset.pageLoaded = "false";
+          binding.element.dataset.pageImageState = "error";
+        }
+      }).finally(() => {
+        controllers.delete(job);
+        updateReady();
+        // Starting background work does not require a pointer or scroll event.
+        queueMicrotask(pumpDownloads);
+      });
+    }
+    queueMicrotask(pumpDownloads);
+  }
+
   function collect() {
-    if (disposed || halted) return;
+    if (disposed) return;
+    for (const [element, binding] of bindings) {
+      if (root.contains(element) && element.matches(SOURCE_SELECTOR)) continue;
+      bindings.delete(element);
+      jobs.get(binding.key)?.bindings.delete(binding);
+    }
     for (const job of jobs.values()) job.hinted = false;
     const elements = [
       ...(root.matches(SOURCE_SELECTOR) ? [root] : []),
       ...root.querySelectorAll<ArtworkElement>(SOURCE_SELECTOR),
     ];
     const route = root.querySelector(ROUTE_SELECTOR);
-    const contentUrls = new Set<string>();
+    let firstContentUrl = "";
     for (const element of elements) {
       const source = artworkSource(element);
       if (!source.url || source.url.startsWith("#")) {
@@ -416,12 +456,15 @@ export function createPageImageQueue(root: HTMLElement) {
         element.getAttribute("data-page-critical") === "true" ||
         element.getAttribute("data-page-priority") === "critical";
       const content = !!route && !hero && isContentImage(element, route);
-      const withinFirstSix = content && (contentUrls.has(source.url) || contentUrls.size < 6);
-      if (withinFirstSix) contentUrls.add(source.url);
-      const critical = hero || withinFirstSix;
+      // Keep the first article figure ready even when a tall Hero places it
+      // below the fold. Other visible figures join the gate; distant figures
+      // no longer hold the cover just because they appear early in DOM order.
+      if (content && !firstContentUrl) firstContentUrl = source.url;
+      const critical = hero || (content && (source.url === firstContentUrl || viewportDistance(element) === 0));
       const key = sourceKey(source);
       let binding = bindings.get(element);
       if (binding?.key !== key) {
+        if (binding) jobs.get(binding.key)?.bindings.delete(binding);
         binding = { element, source, key, background, hero, backgroundProperty: element.getAttribute("data-page-background-property") || "--route-hero-image", critical, fallback: element.getAttribute("data-page-fallback-src") || "" };
         bindings.set(element, binding);
         element.dataset.pageLoaded = loadedElements.get(element) === key ? "true" : "false";
@@ -434,16 +477,14 @@ export function createPageImageQueue(root: HTMLElement) {
       }
       let job = jobs.get(key);
       if (!job) {
-        const settled = deferred();
-        job = { key, source, bindings: new Set(), hinted: false, status: "pending", settled: settled.promise, resolve: settled.resolve, reject: settled.reject };
+        job = { key, source, bindings: new Set(), hinted: false, status: "pending", rank: 6 };
         jobs.set(key, job);
       }
       job.bindings.add(binding);
       const cached = decodedSources.get(key);
-      if (cached && job.status !== "loading") {
+      if (cached && !controllers.has(job)) {
         paint(binding, cached);
         job.status = "loaded";
-        job.resolve();
       }
     }
     for (const hint of root.querySelectorAll<HTMLElement>("[data-page-image-hints]")) {
@@ -460,38 +501,35 @@ export function createPageImageQueue(root: HTMLElement) {
         const key = sourceKey(source);
         let job = jobs.get(key);
         if (!job) {
-          const settled = deferred();
-          job = { key, source, bindings: new Set(), hinted: true, status: decodedSources.has(key) ? "loaded" : "pending", settled: settled.promise, resolve: settled.resolve, reject: settled.reject };
+          job = { key, source, bindings: new Set(), hinted: true, status: decodedSources.has(key) ? "loaded" : "pending", rank: 6 };
           jobs.set(key, job);
-          if (job.status === "loaded") job.resolve();
         }
         job.hinted = true;
       }
     }
     for (const job of jobs.values()) {
       if (liveBindings(job).length || job.hinted) continue;
-      if (job === activeJob) activeController?.abort();
-      if (job.status === "pending") {
-        job.status = "failed";
-        job.resolve();
-      }
+      controllers.get(job)?.abort();
+      jobs.delete(job.key);
     }
-    // A Hero always precedes the six content resources, even if placed later in DOM.
+    // A Hero always precedes content resources, even if placed later in DOM.
     const ordered = [...jobs.values()].sort((a, b) =>
       Number([...b.bindings].some((binding) => binding.hero)) -
       Number([...a.bindings].some((binding) => binding.hero)),
     );
     jobs.clear();
     for (const job of ordered) jobs.set(job.key, job);
-    updateReady();
-    void run();
+    run();
   }
 
-  function interaction() {
-    if (disposed || interacted) return;
-    interacted = true;
-    removeInteractionListeners();
-    void run();
+  function viewportChanged() {
+    if (disposed || viewportFrame) return;
+    viewportFrame = requestAnimationFrame(() => {
+      viewportFrame = 0;
+      if (disposed) return;
+      updateRanks();
+      pumpDownloads();
+    });
   }
 
   const observer = new MutationObserver(() => {
@@ -508,24 +546,25 @@ export function createPageImageQueue(root: HTMLElement) {
     attributes: true,
     attributeFilter: ["data-page-src", "data-page-srcset", "data-page-background-src", "data-page-background-property", "data-page-critical", "data-page-priority", "data-page-fallback-src", "data-page-image-hints", "crossorigin", "sizes", "hidden", "inert", "aria-hidden", "data-state"],
   });
-  for (const event of INTERACTION_EVENTS) window.addEventListener(event, interaction, { capture: true, passive: true });
+  window.addEventListener("scroll", viewportChanged, { capture: true, passive: true });
+  window.addEventListener("resize", viewportChanged, { passive: true });
   collect();
 
   return {
     criticalReady: ready.promise,
-    remainingReady: () => interacted
-      ? Promise.allSettled([...jobs.values()].filter((job) => !isCritical(job)).map((job) => job.settled)).then(() => {})
-      : Promise.resolve(),
     dispose: () => {
       if (disposed) return;
       disposed = true;
       observer.disconnect();
-      removeInteractionListeners();
-      activeController?.abort();
+      window.removeEventListener("scroll", viewportChanged, true);
+      window.removeEventListener("resize", viewportChanged);
+      cancelAnimationFrame(viewportFrame);
+      for (const controller of controllers.values()) controller.abort();
+      controllers.clear();
       const cancelled = new PageImageQueueError("route", "cancelled");
       ready.reject(cancelled);
-      failPending(cancelled);
       bindings.clear();
+      jobs.clear();
     },
   };
 }

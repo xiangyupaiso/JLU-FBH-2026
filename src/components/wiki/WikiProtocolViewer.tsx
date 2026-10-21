@@ -2,6 +2,7 @@ import { QueuedImage } from "../common/QueuedImage";
 import {
   useEffect,
   useId,
+  useLayoutEffect,
   useRef,
   useState,
   type CSSProperties,
@@ -43,23 +44,48 @@ export function WikiProtocolHoverCard({
   onMouseLeave?: () => void;
 }) {
   const [activeTab, setActiveTab] = useState<"flow" | "inventory">("flow");
+  const popoverRef = useRef<HTMLDivElement>(null);
   const popoverWidth = 320;
-  const popoverHeight = 270;
   const padding = 12;
+
+  useLayoutEffect(() => {
+    const popover = popoverRef.current;
+    if (!popover) return;
+    const position = () => {
+      const viewport = window.visualViewport;
+      const viewportTop = viewport?.offsetTop ?? 0;
+      const viewportLeft = viewport?.offsetLeft ?? 0;
+      const width = Math.min(320, Math.max(0, (viewport?.width ?? window.innerWidth) - 32));
+      const viewportBottom = viewportTop + (viewport?.height ?? window.innerHeight);
+      const right = viewportLeft + (viewport?.width ?? window.innerWidth) - 16;
+      popover.style.width = `${width}px`;
+      popover.style.maxHeight = `${Math.max(0, viewportBottom - viewportTop - 32)}px`;
+      let left = anchorRect.right + padding;
+      if (left + width > right) left = anchorRect.left - width - padding;
+      popover.style.left = `${Math.round(Math.max(viewportLeft + 16, Math.min(left, right - width)))}px`;
+      // Titles wrap to different heights; clamp the measured surface, not an estimate.
+      popover.style.top = `${Math.round(Math.max(viewportTop + 16, Math.min(anchorRect.top - 20, viewportBottom - popover.offsetHeight - 16)))}px`;
+    };
+    const observer = new ResizeObserver(position);
+    observer.observe(popover);
+    window.addEventListener("resize", position);
+    window.visualViewport?.addEventListener("resize", position);
+    position();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", position);
+      window.visualViewport?.removeEventListener("resize", position);
+    };
+  }, [anchorRect]);
 
   let left = anchorRect.right + padding;
   if (left + popoverWidth > window.innerWidth - 16) {
     left = Math.max(16, anchorRect.left - popoverWidth - padding);
   }
 
-  let top = anchorRect.top - 20;
-  if (top + popoverHeight > window.innerHeight - 16) {
-    top = Math.max(16, window.innerHeight - popoverHeight - 16);
-  }
-
   const style: CSSProperties = {
     position: "fixed",
-    top: `${Math.round(top)}px`,
+    top: `${Math.round(Math.max(16, anchorRect.top - 20))}px`,
     left: `${Math.round(left)}px`,
     width: `${popoverWidth}px`,
     zIndex: 9999,
@@ -70,6 +96,7 @@ export function WikiProtocolHoverCard({
 
   return createPortal(
     <div
+      ref={popoverRef}
       className="wiki-protocol-popover"
       style={style}
       role="tooltip"

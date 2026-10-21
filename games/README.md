@@ -1,58 +1,61 @@
-# Games — source code
+# Reusable game source snapshots
 
-Complete, buildable source for the two interactive games published on the iGEM wiki.
+Buildable source for the two standalone games used by the JLU-FBH wiki:
 
-| Game | Path | Stack | Images |
-| :--- | :--- | :--- | :--- |
-| 乳腺守护者 / Breast Guardian | [`breast-guardian/`](./breast-guardian/) | React 19, TypeScript, Vite 7, Tailwind 3 | 201 assets → official iGEM CDN |
-| circRNA 爆炸猫 / Bomb Cat | [`bomb-cat/`](./bomb-cat/) | React 19, TypeScript, Vite 5, Tailwind 3 | none (native CSS / SVG / emoji) + 4 wiki fonts |
+| Game | Source | Build output used by the wiki |
+| --- | --- | --- |
+| Breast Guardian | `breast-guardian/` | `public/game-assets/` |
+| circRNA Bomb Cat | `bomb-cat/` | `public/game-assets/bomb-cat/` |
 
-Each directory is a self-contained project with its own lockfile, config and
-`README.md`. They are **not** part of the wiki's own npm project and are not built by
-the wiki's CI — the wiki consumes their `dist/` output, which is committed separately
-under `public/game-assets/`.
+These are independent npm projects. The wiki root build serves the checked-in game
+bundles; it does not build these source projects automatically. Bio Memory is served
+as HTML in `public/game-assets/bio-memory/`. Virtual Laboratory's complete subproject
+is in `virtual-lab/`; its iframe bridge is in `src/components/VirtualLaboratory/`.
 
-## Quick start
+## Build either project
 
-```bash
-cd games/breast-guardian   # or: cd games/bomb-cat
+Use Node.js 20.19+ or 22.12+ (verified with Node 24.16.0 and npm 12.2.0):
+
+```sh
+cd games/breast-guardian # or games/bomb-cat
 npm ci
-npm run dev
+npm run build
+npm run preview
 ```
 
-Both default to `base: './'`, so `npm run build` produces a `dist/` you can serve from
-any path. See each README for the wiki-embed build (`GAME_BASE_PATH`).
+Each project includes its lockfile, TypeScript and Vite configuration. Output uses
+relative URLs and can be served under the wiki's `/jlu-fbh/` path. These commands do
+not replace the wiki's deployed bundles.
 
-## Where the images come from
+## Assets and license
 
-Breast Guardian used to ship a 270 MB `public/assets/` tree. It now has **no image
-binaries**: every portrait, scene and UI plate resolves through
-`games/breast-guardian/src/data/assetUrls.ts` to an official `static.igem.wiki` URL.
+This GitHub checkout retains its local media sources. Breast Guardian resolves its
+art through `src/data/assetUrls.ts`; Bomb Cat uses its official CDN cover, four wiki
+fonts, CSS, inline SVG and emoji. The exact uploaded URLs are preserved in
+[`ASSET_REGISTRY.md`](./ASSET_REGISTRY.md), a 206-row game-only excerpt of the team's
+source registry. All downloaded dependencies retain their own licenses. Project
+source follows the repository's [CC BY 4.0 license](./LICENSE).
 
-That map is **generated** from [`../IGEM_ASSET_REGISTRY.md`](../IGEM_ASSET_REGISTRY.md),
-the team's single source of truth for uploaded media. It is never hand-edited and no
-URL is ever inferred from a filename:
+For Breast Guardian, asset checks and regeneration also work from this archive:
 
-```bash
-cd games/breast-guardian
-npm run assets:regen     # rebuild assetUrls.ts + ASSET_MAPPING.md from the registry
-npm run check:assets     # fail if the checked-in map drifted from the registry
-npm run check:runtime    # exercise every real call site, assert it resolves
+```sh
+npm run check:assets   # Python 3.9+, compare map with the archived registry
+npm run check:runtime  # resolve actual scene/portrait/preload call sites
+npm run assets:regen   # regenerate only after adding verified uploaded URLs
 ```
 
-Full path → URL table: [`breast-guardian/ASSET_MAPPING.md`](./breast-guardian/ASSET_MAPPING.md).
+## Provenance and published version comparison
 
-Bomb Cat has no image assets at all — see [`bomb-cat/README.md`](./bomb-cat/README.md)
-for the evidence and the reasoning.
+Archived 2026-10-21 from Official-wiki, last game-source commit
+`f76d5f220c29a48820cdae57c260c3e724a0ef53`. Both original snapshots passed a clean
+lockfile installation and production build. After normalizing Windows line endings,
+all six Breast Guardian output files matched the published files. Bomb Cat's main
+JavaScript and PeerJS chunk matched the current bundle including its CDN cover
+correction; its rebuilt CSS only added the unused `.static{position:static}` rule.
+Vite output filenames can differ after the cover URL change even when script text
+matches. See [`SOURCE_PROVENANCE.json`](./SOURCE_PROVENANCE.json) for hashes.
 
-## Relationship to the deployed wiki
-
-The wiki serves the **compiled** artifacts, committed at:
-
-- Breast Guardian → `public/game-assets/index.html` + `public/game-assets/assets/`
-- Bomb Cat → `public/game-assets/bomb-cat/`
-
-This directory is a **downloadable source snapshot**. Those compiled artifacts were
-**not** regenerated and were **not** modified — the live site keeps serving the
-known-good build. Each game's README has an optional "Deploying" section if you ever
-want to replace them.
+The archive then received type annotations, helper-module splits, declaration scopes
+and portable asset-check paths needed for the repository's lint gate. The game rules,
+story data, state transitions and assets were preserved. The archive is a reusable
+source snapshot; the original archive did not replace published bundles. On 2026-10-22 the GitHub integration rebuilt both active Wiki entries from the integrated source while retaining Bomb Cat online play and its locked PeerJS dependency. The original archive hashes above are historical; current output hashes are in the `github_integration` entry of `SOURCE_PROVENANCE.json`.

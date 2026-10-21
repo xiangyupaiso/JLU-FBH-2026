@@ -17,6 +17,7 @@ import { SdgBoundaryMatrix } from "../engagement/sustainability/SdgBoundaryMatri
 import { SdgInteractionHeatmap } from "../engagement/sustainability/SdgInteractionHeatmap";
 import { SdgDimensionChord } from "../engagement/sustainability/SdgDimensionChord";
 import { SdgContributionBubbles } from "../engagement/sustainability/SdgContributionBubbles";
+import { ModelSdgNetwork } from "./ModelSdgNetwork";
 import {
   ModelBurialHeatmap,
   ModelConfidenceScatter,
@@ -26,11 +27,11 @@ import {
 import {
   modelDownloads,
   modelPanels,
-  modelReferences,
   modelJudging,
   modelStructuralConfirmation,
   modelModuleLinks,
 } from "../../../../data/drylab/modelPage";
+import { modelCitationReferences as modelReferences } from "../../../../data/drylab/modelCitationReferences";
 import {
   getModelImage,
   getModelDoseScanDownload,
@@ -51,16 +52,32 @@ const tint = {
   ring: "0 0 0 3px rgba(21,62,52,0.32)",
 };
 const renderCitedText = createCitationRenderer(citationIndex, tint);
+const referenceUrls = new Set(modelReferences.flatMap((reference) => reference.links?.map((link) => link.href.replace(/\/$/, "")) ?? []));
+function isReferenceUrl(href: string) {
+  return referenceUrls.has(href.replace(/\/$/, "")) || /(?:^|\/)doi\.org\//.test(href);
+}
+function withoutReferenceLinks(text: string) {
+  return text
+    .replace(/\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)/g, (match, label: string, href: string) => {
+      if (!isReferenceUrl(href)) return match;
+      return /^(?:https?:\/\/|doi(?:\.org)?(?:\b|:))/i.test(label) ? "" : label;
+    })
+    .replace(/https?:\/\/[^\s<>]+/g, (href) => isReferenceUrl(href) ? "" : href);
+}
+
 export function renderModelCitedText(
   text: string,
   fallback: (text: string) => ReactNode,
   sectionId?: string,
+  locationKey?: string,
 ) {
   const caption = parseModelFigureCaption(text);
-  if (!caption) return renderCitedText(text, fallback, sectionId);
+  const plainFallback = (value: string) => fallback(withoutReferenceLinks(value));
+  if (!caption) return renderCitedText(text, plainFallback, sectionId, locationKey);
   return (
     <span className="model-figure-caption">
-      {renderCitedText(caption.text, fallback, sectionId)}
+      <span className="wiki-figure__label">{caption.label}</span>
+      {renderCitedText(caption.text, plainFallback, sectionId, locationKey)}
     </span>
   );
 }
@@ -74,11 +91,11 @@ function ModelFold({
 }) {
   useEffect(() => {
     const reveal = (event: MouseEvent) => {
-      const link = (event.target as Element).closest(
-        'a[href^="#"]',
-      );
+      const link = (event.target as Element).closest('a[href^="#"]');
       if (!link) return;
-      const target = document.getElementById(link.getAttribute("href")!.slice(1));
+      const target = document.getElementById(
+        link.getAttribute("href")!.slice(1),
+      );
       let parent = target?.parentElement;
       while (parent) {
         if (parent instanceof HTMLDetailsElement) parent.open = true;
@@ -123,6 +140,7 @@ function TransposableTable({
         aria-label="SVCWCVNSV measurements across five models"
       >
         <table className="wiki-table">
+          {table.caption && <caption>{linkify(table.caption)}</caption>}
           <thead>
             <tr>
               {displayed[0].map((cell, i) => (
@@ -208,22 +226,38 @@ function ModelPanelContent({
   features: Record<string, ReactNode>;
 }) {
   if (panel.kind === "sdg-chart") {
-    const caption = parseModelFigureCaption(panel.caption)?.text ?? panel.caption;
+    const caption =
+      parseModelFigureCaption(panel.caption)?.text ?? panel.caption;
     if (panel.chart === "dimensions")
-      return <SdgDimensionChord numbered={false} scrollable caption={caption} />;
+      return (
+        <SdgDimensionChord numbered={false} scrollable caption={caption} figureLabel={parseModelFigureCaption(panel.caption)?.label} />
+      );
     const matrix = panel.chart === "boundary" || panel.chart === "interactions";
     return (
-      <figure className={`model-sdg-chart${matrix ? " model-sdg-chart--matrix" : ""}`}>
+      <figure
+        className={`model-sdg-chart${matrix ? " model-sdg-chart--matrix" : ""}`}
+      >
         {matrix ? (
-          <div className="model-sdg-chart__scroll" tabIndex={0} role="region" aria-label={caption}>
+          <div
+            className="model-sdg-chart__scroll"
+            tabIndex={0}
+            role="region"
+            aria-label={caption}
+          >
             <div className="model-sdg-chart__matrix">
-              {panel.chart === "boundary" ? <SdgBoundaryMatrix /> : <SdgInteractionHeatmap />}
+              {panel.chart === "boundary" ? (
+                <SdgBoundaryMatrix />
+              ) : (
+                <SdgInteractionHeatmap />
+              )}
             </div>
           </div>
+        ) : panel.chart === "network" ? (
+          <ModelSdgNetwork />
         ) : (
           <SdgContributionBubbles />
         )}
-        <figcaption className="sust-chart-caption">{caption}</figcaption>
+        <figcaption className="sust-chart-caption">{renderModelCitedText(panel.caption, linkify, panelKey)}</figcaption>
       </figure>
     );
   }
@@ -259,47 +293,47 @@ function ModelPanelContent({
         <ManuscriptTabs
           title={panel.title}
           orientation="horizontal"
-          entries={panel.entries.map((entry) => {
-            const figureBlock = entry.blocks.find((b) => b.type === "figure");
-            const otherBlocks = entry.blocks.filter(
-              (b) =>
-                b.type !== "figure" &&
-                !(
-                  b.type === "subheading" &&
-                  b.title.includes("Representative Published Tissue Images")
-                ),
-            );
-            return {
-              title: entry.title,
-              content: (
-                <div className="model-ihc-layout">
-                  {figureBlock ? (
-                    <div className="model-ihc-layout__left">
-                      <WikiContentBlocks
-                        blocks={[figureBlock]}
-                        features={features}
-                        sectionId={panelKey}
-                      />
-                    </div>
-                  ) : null}
-                  <div className="model-ihc-layout__right">
-                    <h4 className="model-ihc-layout__antigen-title">{entry.title}</h4>
-                    <WikiContentBlocks
-                      blocks={otherBlocks}
-                      features={features}
-                      sectionId={panelKey}
-                    />
-                  </div>
-                </div>
-              ),
-            };
-          })}
+          skipTarget="model-ihc-summary"
+          entries={panel.entries.map((entry) => ({
+            title: entry.title,
+            content: (
+              <div className="model-ihc-layout">
+                <h4 className="model-ihc-layout__antigen-title">
+                  {entry.title}
+                </h4>
+                <WikiContentBlocks
+                  blocks={entry.blocks
+                    .filter((block) => !(block.type === "subheading" && block.title.includes("Representative Published Tissue Images")))
+                    .map((block) => block.type === "figure" ? { ...block, className: "model-ihc-figure" } : block)}
+                  features={features}
+                  sectionId={panelKey}
+                />
+              </div>
+            ),
+          }))}
         />
       );
     }
     return (
       <ManuscriptTabs
         title={panel.title}
+        flowLabels={
+          panelKey === "model-panel-7"
+            ? [
+                "Input · GSE176078",
+                "Quality\nControl",
+                "Normalization &\nIntegration",
+                "Clustering & Annotation",
+                "Gene Detection\nAnalysis",
+                "Pseudobulk\nDifferential Analysis",
+              ]
+            : panelKey === "model-panel-10"
+              ? ["Input", "IEDB Prediction", "Topology Review"]
+              : undefined
+        }
+        flowInputSource={panelKey === "model-panel-10" ? "4 Protein Sequences + HLA-A*02:01" : undefined}
+        flowNodeDetails={panelKey === "model-panel-10" ? ["", "Generate 1,838 9-mer peptides\nBinding Affinity + Immunogenicity\n→ 51 peptides", "Exclude signal/TM regions\n→ 17 peptides"] : undefined}
+        flowOutputLabel={panelKey === "model-panel-10" ? "17 Candidate Epitopes" : undefined}
         entries={panel.entries.map((entry) => ({
           title: entry.title,
           content: (
@@ -317,9 +351,9 @@ function ModelPanelContent({
     return <TransposableTable table={panel.table} />;
   if (panel.kind === "antigen-table")
     return <AntigenTable table={panel.table} />;
-  if (panel.chart === "confidence-scatter") return <ModelConfidenceScatter />;
+  if (panel.chart === "confidence-scatter") return <ModelConfidenceScatter tableCaption={linkify(panel.tableCaption!.replace(/^(Table \d+\.)/, "**$1**"))} figureCaption={renderModelCitedText(panel.caption!, linkify, panelKey)} />;
   if (panel.chart === "p9-volume") return <ModelP9Volume />;
-  if (panel.chart === "burial-heatmap") return <ModelBurialHeatmap />;
+  if (panel.chart === "burial-heatmap") return <ModelBurialHeatmap tableCaption={linkify(panel.tableCaption!.replace(/^(Table \d+\.)/, "**$1**"))} figureCaption={renderModelCitedText(panel.caption!, linkify, panelKey)} />;
   return (
     <ModelVolcano
       cohort={panel.chart === "volcano-024322" ? "024322" : "028102"}
@@ -330,7 +364,7 @@ function ModelPanelContent({
 export function modelFeatures(): Record<string, ReactNode> {
   const features: Record<string, ReactNode> = {
     "model-figure-1-navigation": (
-      <figure className="wiki-figure" data-wiki-reveal>
+      <figure className="wiki-figure wiki-figure--labelled" data-wiki-reveal>
         <ImageAnchorMap
           src={getModelImage("AEIP structure.png")}
           alt="Overview of the Antigen-Epitope Integration Pipeline (AEIP) workflow."
@@ -380,11 +414,14 @@ export function modelFeatures(): Record<string, ReactNode> {
     ),
     "model-structural-confirmation": (
       <div className="model-structural-viewer">
-        <h5 id="model-structural-confirmation" className="model-structural-viewer__title">
+        <h5
+          id="model-structural-confirmation"
+          className="model-structural-viewer__title"
+        >
           {modelStructuralConfirmation.title} in{" "}
           <span>{modelStructuralConfirmation.complex}</span>
         </h5>
-        <Trop2ComplexViewer />
+        <Trop2ComplexViewer figureLabel={modelStructuralConfirmation.figureLabel} />
       </div>
     ),
     "model-judging": (
@@ -396,11 +433,15 @@ export function modelFeatures(): Record<string, ReactNode> {
       />
     ),
     "model-dose-explorer": (
+      <div className="model-dose-figure">
       <DosePredictionExplorer
+        compact
         rows={modelDoseScan.rows}
         draws={modelDoseScan.draws}
         downloadUrl={getModelDoseScanDownload()}
       />
+      <p className="model-chart-caption"><span className="wiki-figure__label">FIG. 40</span>Interactive dose scan: efficacy, viability and exposure screening, and joint pass fractions.</p>
+      </div>
     ),
     "model-graphical-abstracts": (
       <nav
@@ -474,7 +515,9 @@ export function modelFeatures(): Record<string, ReactNode> {
               Reproducibility Package & Dataset Downloads
             </h4>
             <p className="model-download-card__desc">
-              All raw batch execution logs, AlphaFold 3 model files, contact network tables, SASA determinations, and differential expression CSV outputs.
+              All raw batch execution logs, AlphaFold 3 model files, contact
+              network tables, SASA determinations, and differential expression
+              CSV outputs.
             </p>
           </div>
         </div>
@@ -491,7 +534,12 @@ export function modelFeatures(): Record<string, ReactNode> {
               download
               title={`Download ${file.label}`}
             >
-              <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor">
+              <svg
+                viewBox="0 0 16 16"
+                width="14"
+                height="14"
+                fill="currentColor"
+              >
                 <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
                 <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
               </svg>

@@ -62,13 +62,13 @@ export const experiment7SidebarData = {
       id: 'vector-dna',
       name: "Double-digested pET-28a vector (vector DNA)",
       englishName: 'Double Digested pET-28a Vector (Vector DNA)',
-      image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image19.avif',
+      image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/new25h/double-digested-pet-28a-vector-vector-dna.avif',
     },
     {
       id: 'gfp-fragment',
       name: "Double-digested GFP fragment (insert DNA)",
       englishName: 'Double Digested GFP Fragment (Insert Fragment)',
-      image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/experiment7/image22.avif',
+      image: 'https://static.igem.wiki/teams/6056/wiki/virtual-lab/new25h/double-digested-gfp-fragment-insert-dna.avif',
     },
     {
       id: 'sterile-water',

@@ -3,6 +3,7 @@
 export interface KeyAchievementTextRun {
   readonly text: string;
   readonly format?: 'strong' | 'code';
+  readonly href?: string;
 }
 export interface KeyAchievement {
   readonly id: string;
@@ -13,6 +14,10 @@ export interface KeyAchievement {
   readonly alt: string;
   readonly paragraphs: readonly (readonly KeyAchievementTextRun[])[];
 }
+
+const registryPartsUrl =
+  "https://registry.igem.org/organisations/d1b6aa0f-bfc0-4f6b-9c69-33347e7ea510";
+
 export const keyAchievements = [
   {
     id: "modular-backbone",
@@ -41,7 +46,21 @@ export const keyAchievements = [
       ],
       [
         {
-          text: "See the element-by-element map in Section 6 and the Parts page."
+          text: "See the element-by-element map in "
+        },
+        {
+          text: "Section 3",
+          href: "#inside-the-backbone"
+        },
+        {
+          text: " and the "
+        },
+        {
+          text: "Parts page",
+          href: registryPartsUrl
+        },
+        {
+          text: "."
         }
       ]
     ]
@@ -64,7 +83,14 @@ export const keyAchievements = [
       ],
       [
         {
-          text: "The boundaries are exact. The T7 promoter part is bases 402–434, the PIE 5′ half is 465–766, the PABP spacer is 767–816, through to the polyA25 spacer at 2947–2971. The backbone can be rebuilt element by element from the Registry and checked against our map, which is what makes the coupling claim in Section 6 something a judge can verify rather than take on trust."
+          text: "The boundaries are exact. The T7 promoter part is bases 402–434, the PIE 5′ half is 465–766, the PABP spacer is 767–816, through to the polyA25 spacer at 2947–2971. The backbone can be rebuilt element by element from the Registry and checked against our map, which is what makes the coupling claim in "
+        },
+        {
+          text: "Section 3",
+          href: "#inside-the-backbone"
+        },
+        {
+          text: " something a judge can verify rather than take on trust."
         }
       ],
       [
@@ -79,17 +105,38 @@ export const keyAchievements = [
       ],
       [
         {
-          text: "See the Parts page, the Part Collection and the Registry page for JLU-FBH 2026."
+          text: "See the "
+        },
+        {
+          text: "Parts page",
+          href: registryPartsUrl
+        },
+        {
+          text: ", the "
+        },
+        {
+          text: "Part Collection",
+          href: registryPartsUrl
+        },
+        {
+          text: " and the "
+        },
+        {
+          text: "Registry page for JLU-FBH 2026",
+          href: registryPartsUrl
+        },
+        {
+          text: "."
         }
       ]
     ]
   },
   {
     id: "encoded-adjuvant",
-    name: "Encoded Adjuvant",
+    name: "Encoded Elements",
     label: [
       "Encoded",
-      "Adjuvant"
+      "Elements"
     ],
     y: 626,
     h: 261,
@@ -102,7 +149,7 @@ export const keyAchievements = [
       ],
       [
         {
-          text: "The adjuvant is encoded. Four tandem copies of C3d-P28 sit in frame downstream of the cassette, so it is translated as part of the antigen fusion. A co-formulated adjuvant has to reach the same cell as the antigen; one translated from the same molecule reaches it by construction. Potency scales with copy number (Bergmann-Leitner et al., 2007; Bower and Ross, 2006; Wang et al., 2004), which is why there are four."
+          text: "The adjuvant is encoded. Four tandem copies of C3d-P28 sit in frame downstream of the cassette, so it is translated as part of the antigen fusion. A co-formulated adjuvant has to reach the same cell as the antigen; one translated from the same molecule reaches it by construction. Potency scales with copy number (Bergmann-Leitner et al., 2007), which is why there are four."
         }
       ],
       [
@@ -117,7 +164,21 @@ export const keyAchievements = [
       ],
       [
         {
-          text: "See Section 5.3 and the Results page."
+          text: "See "
+        },
+        {
+          text: "Section 2.3",
+          href: "#why-this-platform-what-the-backbone-encodes-besides-the-antigen"
+        },
+        {
+          text: " and the "
+        },
+        {
+          text: "Results page",
+          href: "/results"
+        },
+        {
+          text: "."
         }
       ]
     ]
@@ -150,7 +211,28 @@ export const keyAchievements = [
       ],
       [
         {
-          text: "See Experiments Sections 1.1 and 3.1 and Section 7.1 of this page."
+          text: "See "
+        },
+        {
+          text: "Experiments Sections 1.1",
+          href: "/experiments#exp-1-1"
+        },
+        {
+          text: " and "
+        },
+        {
+          text: "3.1",
+          href: "/experiments#exp-3-1"
+        },
+        {
+          text: " and "
+        },
+        {
+          text: "Section 4.1 of this page",
+          href: "#evidence-construction-and-release"
+        },
+        {
+          text: "."
         }
       ]
     ]
@@ -183,7 +265,28 @@ export const keyAchievements = [
       ],
       [
         {
-          text: "See Experiments Sections 2, 4 and 6."
+          text: "See "
+        },
+        {
+          text: "Experiments Sections 2",
+          href: "/experiments#sec-round1-screen"
+        },
+        {
+          text: ", "
+        },
+        {
+          text: "4",
+          href: "/experiments#sec-round2-validation"
+        },
+        {
+          text: " and "
+        },
+        {
+          text: "6",
+          href: "/experiments#sec-trop2-model"
+        },
+        {
+          text: "."
         }
       ]
     ]
@@ -207,7 +310,21 @@ export const keyAchievements = [
           format: "strong"
         },
         {
-          text: ", a browser-based workflow that shortlists targets, analyses epitopes, assembles a frame-checked cassette into a supplied annotated backbone, exports the construct in six formats with a manifest and checksums, and annotates features against the iGEM Registry. It is released under the Apache License 2.0. Section 9 describes what it does and what we validated it against; the Software page carries the methods and benchmarks."
+          text: ", a browser-based workflow that shortlists targets, analyses epitopes, assembles a frame-checked cassette into a supplied annotated backbone, exports the construct in six formats with a manifest and checksums, and annotates features against the iGEM Registry. It is released under the Apache License 2.0. "
+        },
+        {
+          text: "Section 6",
+          href: "#reuse-it"
+        },
+        {
+          text: " describes what it does and what we validated it against; the "
+        },
+        {
+          text: "Software page",
+          href: "/software"
+        },
+        {
+          text: " carries the methods and benchmarks."
         }
       ],
       [
@@ -247,7 +364,14 @@ export const keyAchievements = [
       ],
       [
         {
-          text: "See Section 8."
+          text: "See "
+        },
+        {
+          text: "Section 5",
+          href: "#what-didn-t-work"
+        },
+        {
+          text: "."
         }
       ]
     ]

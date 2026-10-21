@@ -5,7 +5,7 @@
  */
 
 import type {
-  GameState, Player, CardKey, NetworkAction,
+  GameState, Player, CardKey, GameAction,
   NopeState, NopeEffect, LogEntry, Localized,
 } from '../types/game';
 import {
@@ -149,7 +149,7 @@ export function createInitialGame(playerDefs: PlayerDef[]): GameState {
 export function applyPlayerAction(
   state: GameState,
   playerId: number,
-  action: NetworkAction,
+  action: GameAction,
 ): GameState {
   if (state.over) return state;
 
@@ -274,7 +274,7 @@ function resolveAction(s: GameState, pidx: number, k: NopeEffect): GameState {
 
 // ───────── resolvePending（挂起状态回应） ─────────
 
-function resolvePending(s: GameState, pidx: number, a: NetworkAction): GameState {
+function resolvePending(s: GameState, pidx: number, a: GameAction): GameState {
   const pend = s.pending;
   if (!pend) return s;
 

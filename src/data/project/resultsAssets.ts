@@ -190,12 +190,12 @@ export const resultsAssets = {
     fileName: "round-1-elispot-wells-and-counts.avif",
     localSourcePath: "文案集/project/results/3.3 Results.md",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/round-1-elispot-wells-and-counts.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-image3.avif",
     alt: "Figure 13. Round 1 ELISpot wells and counts",
     caption: "Round 1 ELISpot wells and counts",
     section: "Round 1: Screening Single-Epitope Immunogenicity",
-    width: 1280,
-    height: 434,
+    width: 1098,
+    height: 1090,
   },
   fig14: {
     fileName:
@@ -422,16 +422,16 @@ export const resultsAssets = {
     height: 502,
   },
   fig34: {
-    fileName: "wet-126.avif",
+    fileName: "rna-vs-mrna.avif",
     localSourcePath: "文案集/project/results/3.3 Results.md",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-126.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/rna-vs-mrna.avif",
     alt: "Figure 34. In vitro stability of circRNA versus linear precursor RNA at 37 °C — gel",
     caption:
       "In vitro stability of circRNA versus linear precursor RNA at 37 °C — gel",
     section: "Safety: Defining the Boundaries",
-    width: 1350,
-    height: 453,
+    width: 1884,
+    height: 678,
   },
   fig35: {
     fileName: "relative-remaining-rna-over-time.avif",
@@ -461,12 +461,12 @@ export const resultsAssets = {
     fileName: "dose-viability-curve-of-empty-lnp-on-dcs-after-24-h.avif",
     localSourcePath: "文案集/project/results/3.3 Results.md",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/dose-viability-curve-of-empty-lnp-on-dcs-after-24-h.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-image.avif",
     alt: "Figure 37. Dose–viability curve of empty LNP on DCs after 24 h",
     caption: "Dose–viability curve of empty LNP on DCs after 24 h",
     section: "Safety: Defining the Boundaries",
-    width: 986,
-    height: 675,
+    width: 1342,
+    height: 852,
   },
   fig38: {
     fileName:
@@ -542,12 +542,12 @@ export const resultsAssets = {
     fileName: "immunisation-scheme-for-the-three-groups.avif",
     localSourcePath: "文案集/project/results/3.3 Results.md",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/immunisation-scheme-for-the-three-groups.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/wet-125.avif",
     alt: "Figure 44. Immunization scheme for the three groups",
     caption: "Immunization scheme for the three groups",
     section: "In Vivo: Efficacy and Immune Mechanism",
-    width: 1280,
-    height: 591,
+    width: 3000,
+    height: 1625,
   },
   fig45: {
     fileName: "tumour-growth-curves-for-the-three-groups.avif",
@@ -576,58 +576,58 @@ export const resultsAssets = {
     fileName: "splenic-dc-cd80-cd86-maturation.avif",
     localSourcePath: "文案集/project/results/3.3 Results.md",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/splenic-dc-cd80-cd86-maturation.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/splenic-dc-cd80-cd86-maturation-2.avif",
     alt: "Figure 47. Splenic DC CD80⁺CD86⁺ maturation",
     caption: "Splenic DC CD80⁺CD86⁺ maturation",
     section: "In Vivo: Efficacy and Immune Mechanism",
-    width: 1280,
-    height: 395,
+    width: 4000,
+    height: 1245,
   },
   fig48: {
     fileName: "splenic-cd8-t-cell-cd69-early-activation.avif",
     localSourcePath: "文案集/project/results/3.3 Results.md",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/splenic-cd8-t-cell-cd69-early-activation.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/splenic-cd8-t-cell-cd69-early-activation-2.avif",
     alt: "Figure 48. Splenic CD8⁺ T-cell CD69⁺ early activation",
     caption: "Splenic CD8⁺ T-cell CD69⁺ early activation",
     section: "In Vivo: Efficacy and Immune Mechanism",
-    width: 1280,
-    height: 402,
+    width: 3925,
+    height: 1230,
   },
   fig49: {
     fileName:
       "cd44-cd62l-central-memory-frequencies-within-splenic-cd8-t-cells.avif",
     localSourcePath: "文案集/project/results/3.3 Results.md",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/cd44-cd62l-central-memory-frequencies-within-splenic-cd8-t-cells.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c4-06c-splenic-memory-associated-phenotype.avif",
     alt: "Figure 49. CD44⁺CD62L⁺ central-memory frequencies within splenic CD8⁺ T cells",
     caption:
       "CD44⁺CD62L⁺ central-memory frequencies within splenic CD8⁺ T cells",
     section: "In Vivo: Efficacy and Immune Mechanism",
-    width: 1280,
-    height: 376,
+    width: 2048,
+    height: 691,
   },
   fig50: {
     fileName: "ifn-frequencies-within-splenic-cd8-t-cells.avif",
     localSourcePath: "文案集/project/results/3.3 Results.md",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/ifn-frequencies-within-splenic-cd8-t-cells.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/ifn-frequencies-within-splenic-cd8-t-cells-2.avif",
     alt: "Figure 50. IFN-γ⁺ frequencies within splenic CD8⁺ T cells",
     caption: "IFN-γ⁺ frequencies within splenic CD8⁺ T cells",
     section: "In Vivo: Efficacy and Immune Mechanism",
-    width: 1280,
-    height: 393,
+    width: 3382,
+    height: 1061,
   },
   fig51: {
     fileName: "granzyme-b-frequencies-within-splenic-cd8-t-cells.avif",
     localSourcePath: "文案集/project/results/3.3 Results.md",
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/granzyme-b-frequencies-within-splenic-cd8-t-cells.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/granzyme-b-frequencies-within-splenic-cd8-t-cells-2.avif",
     alt: "Figure 51. Granzyme B⁺ frequencies within splenic CD8⁺ T cells",
     caption: "Granzyme B⁺ frequencies within splenic CD8⁺ T cells",
     section: "In Vivo: Efficacy and Immune Mechanism",
-    width: 1280,
-    height: 431,
+    width: 3513,
+    height: 1135,
   },
 } as const satisfies Record<string, ResultsAssetEntry>;
 export type ResultsAssetKey = keyof typeof resultsAssets;

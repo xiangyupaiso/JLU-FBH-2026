@@ -1,5 +1,5 @@
 const humanPracticesHero =
-  "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/engagement-human-practices-hero.webp";
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/engagement-humans-practices-hero.webp";
 
 const educationHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/games/education-page-hero-01f9811aecb2.webp";
 const entrepreneurshipHero = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/engagement-entrepreneurship-hero-v2-efb0a019ee72.webp";

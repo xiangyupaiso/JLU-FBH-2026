@@ -478,6 +478,7 @@ export const safetyAssets = {
       width: 944,
       height: 153,
       alt: "The tert butyllithium fire incident at the university of california 2008 bow tie model",
+      caption: "Bow-Tie Model of The tert-butyllithium Fire Incident",
     },
   "2-1-1-1-explosion-and-fire-at-the-municipal-and-environmental-engineering-laboratory-beijing-jiaotong-university-december-26-2018-bow-tie-model.avif":
     {
@@ -490,6 +491,7 @@ export const safetyAssets = {
       width: 857,
       height: 242,
       alt: "Explosion and fire at the municipal and environmental engineering laboratory beijing jiaotong university december 26 2018 bow tie model",
+      caption: "Bow-Tie Model of Explosion and Fire",
     },
   "2-1-1-1-taiyuan-university-of-science-and-technology-explosion-incident-may-22-2025-bow-tie-model.avif":
     {
@@ -502,6 +504,7 @@ export const safetyAssets = {
       width: 960,
       height: 223,
       alt: "Taiyuan university of science and technology explosion incident may 22 2025 bow tie model",
+      caption: "Bow-Tie Model of Explosion Incident",
     },
   "2-1-1-2-28-faculty-and-students-at-northeast-agricultural-university-contracted-infectious-diseases-due-to-animal-experiments-december-19-2010-bow-tie-model.avif":
     {
@@ -514,6 +517,8 @@ export const safetyAssets = {
       width: 905,
       height: 267,
       alt: "Faculty and students at northeast agricultural university contracted infectious diseases due to animal experiments december 19 2010 bow tie model",
+      caption:
+        "Bow-Tie Model of Infectious Diseases Due to Animal Experiments",
     },
   "2-1-1-2-a-researcher-at-the-university-of-chicago-was-hospitalized-due-to-a-bacterial-infection-september-2011-bow-tie-model.avif":
     {
@@ -526,6 +531,7 @@ export const safetyAssets = {
       width: 957,
       height: 290,
       alt: "A researcher at the university of chicago was hospitalized due to a bacterial infection september 2011 bow tie model",
+      caption: "Bow-Tie Model of Bacterial Infection",
     },
   "2-1-1-3-death-by-oxygen-deprivation-of-an-employee-at-kanglong-chemical-beijing-new-drug-technology-co-ltd-in-the-beijing-economic-and-technological-development-zone-june-2025-bow-tie-model.avif":
     {
@@ -538,6 +544,8 @@ export const safetyAssets = {
       width: 906,
       height: 190,
       alt: "Death by oxygen deprivation of an employee at kanglong chemical beijing new drug technology co ltd in the beijing economic and technological development zone june 2025 bow tie model",
+      caption:
+        "Bow-Tie Model of Death by Oxygen Deprivation of an Employee",
     },
   "3-1-1-1-1-biological-safety-cabinet-en.avif": {
     fileName: "3-1-1-1-1-biological-safety-cabinet-en.avif",
@@ -665,8 +673,8 @@ export const safetyAssets = {
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:884",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/3-2-laboratory-safety-facilities-and-inspection-schedule-v2.avif",
-    width: 1280,
-    height: 566,
+    width: 3419,
+    height: 1726,
     alt: "Laboratory safety facilities and inspection schedule",
     caption: "Laboratory Safety Facilities and Inspection Schedule",
   },
@@ -735,6 +743,7 @@ export const safetyAssets = {
     width: 814,
     height: 358,
     alt: "Animal use form",
+    caption: "Approved Animal Use Form",
   },
   "4-1-2-2-2-animal-use-form.avif": {
     fileName: "4-1-2-2-2-animal-use-form.avif",
@@ -745,6 +754,7 @@ export const safetyAssets = {
     width: 1414,
     height: 256,
     alt: "Animal use form",
+    caption: "Approved Animal Use Form",
   },
   "white-paper-on-implementation-and-risk-prevention-of-experimental-animal-model-technology-en.pdf":
     {
@@ -1022,8 +1032,8 @@ export const safetyAssets = {
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1495",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/5-1-four-level-laboratory-safety-training-system-form-v2.avif",
-    width: 1280,
-    height: 602,
+    width: 4000,
+    height: 1941,
     alt: "Four level laboratory safety training system form",
     caption: "Four-Level Laboratory Safety Training System Form",
   },
@@ -1105,8 +1115,8 @@ export const safetyAssets = {
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1636",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-1-2-1-photos-of-endocrine-health-seminar-professor-guo-weiying.avif",
-    width: 1080,
-    height: 721,
+    width: 777,
+    height: 558,
     alt: "Photos of endocrine health seminar professor guo weiying",
   },
   "6-1-2-photos-of-endocrine-health-seminar-professor-guo-weiying.avif": {
@@ -1116,8 +1126,8 @@ export const safetyAssets = {
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1638",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-1-2-photos-of-endocrine-health-seminar-professor-guo-weiying.avif",
-    width: 1080,
-    height: 721,
+    width: 1280,
+    height: 960,
     alt: "Photos of endocrine health seminar professor guo weiying",
   },
   "6-1-3-1-photos-of-health-run.avif": {
@@ -1311,8 +1321,8 @@ export const safetyAssets = {
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1837",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-2-3-1-photos-of-xinghua-festival.avif",
-    width: 1080,
-    height: 721,
+    width: 1280,
+    height: 960,
     alt: "Photos of xinghua festival",
   },
   "6-2-3-2-photos-of-xinghua-festival.avif": {
@@ -1321,8 +1331,8 @@ export const safetyAssets = {
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1839",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-2-3-2-photos-of-xinghua-festival.avif",
-    width: 1080,
-    height: 721,
+    width: 1280,
+    height: 853,
     alt: "Photos of xinghua festival",
   },
   "6-2-3-3-photos-of-xinghua-festival.avif": {
@@ -1331,8 +1341,8 @@ export const safetyAssets = {
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1841",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-2-3-3-photos-of-xinghua-festival.avif",
-    width: 1080,
-    height: 721,
+    width: 1280,
+    height: 960,
     alt: "Photos of xinghua festival",
   },
   "6-2-3-4-photos-of-xinghua-festival.avif": {
@@ -1342,7 +1352,7 @@ export const safetyAssets = {
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-2-3-4-photos-of-xinghua-festival.avif",
     width: 1080,
-    height: 721,
+    height: 607,
     alt: "Photos of xinghua festival",
   },
   "6-2-3-photos-of-xinghua-festival.avif": {
@@ -1351,8 +1361,8 @@ export const safetyAssets = {
     sourceReference: "文案集/project/safe/3.4 Safety and Security.md:1845",
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-2-3-photos-of-xinghua-festival.avif",
-    width: 1080,
-    height: 721,
+    width: 993,
+    height: 557,
     alt: "Photos of xinghua festival",
   },
   "6-2-4-1-photos-of-grassland-music-festival.avif": {
@@ -1422,7 +1432,7 @@ export const safetyAssets = {
     uploadUrl:
       "https://static.igem.wiki/teams/6056/wiki/files/pages/safety-and-security/6-2-5-4-photos-of-synbio-classroom.avif",
     width: 1080,
-    height: 721,
+    height: 809,
     alt: "Photos of synbio classroom",
   },
   "6-2-5-photos-of-synbio-classroom.avif": {

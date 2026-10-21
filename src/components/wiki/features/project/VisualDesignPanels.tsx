@@ -1,5 +1,4 @@
 import { QueuedImage } from "../../../common/QueuedImage";
-import type { ReactNode } from "react";
 import { visualDesignFigures } from "../../../../data/project/visualDesignAssets";
 import "../../../../styles/features/visual-design-panels.css";
 
@@ -295,16 +294,4 @@ export function LumiCursorShowcase() {
       </figcaption>
     </figure>
   );
-}
-
-/* -------------------------------------------------------------------------- */
-/* 4. Features Map Export                                                     */
-/* -------------------------------------------------------------------------- */
-
-export function visualDesignFeatures(): Record<string, ReactNode> {
-  return {
-    "palette-swatches": <PaletteSwatches />,
-    "architecture-flowchart": <ArchitectureFlowchart />,
-    "lumi-cursor-showcase": <LumiCursorShowcase />,
-  };
 }

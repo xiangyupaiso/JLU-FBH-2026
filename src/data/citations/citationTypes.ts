@@ -26,6 +26,8 @@ export interface CitationIdentifier {
  */
 export interface CitationReference {
   id: number;
+  /** Bibliography position when stable anchor IDs are sparse or reordered. */
+  displayNumber?: number;
   authors: string;
   title: string;
   journal: string;
@@ -33,9 +35,11 @@ export interface CitationReference {
   links?: readonly CitationIdentifier[];
 }
 
+export type CitationStyle = "author-year" | "numeric";
+
 export type CitationSegment =
-  | { kind: "text"; text: string }
-  | { kind: "cite"; text: string; refId: number; refIds?: readonly number[] };
+  | { kind: "text"; text: string; displayText?: string }
+  | { kind: "cite"; text: string; displayText?: string; refId: number; refIds?: readonly number[] };
 
 export interface CitationOccurrence {
   occId: string;
@@ -50,11 +54,27 @@ export interface CitationEntry {
 }
 
 export interface CitationIndex {
+  style: CitationStyle;
+  /** Independent registers on one page (Engineering stages) need unique anchors. */
+  namespace?: string;
   byParagraph: Map<string, CitationEntry>;
   /** Resolve repeated passages in different chapters without duplicate anchor IDs. */
   byScopedParagraph?: Map<string, CitationEntry>;
   byRef: Map<number, CitationOccurrence[]>;
   issues: string[];
+}
+
+export function citationParagraphKey(sectionId: string, text: string, locationKey?: string) {
+  return `${sectionId}\0${text}${locationKey ? `\0${locationKey}` : ""}`;
+}
+
+/** Identical citation text in different table cells represents distinct occurrences. */
+export function citationTableCellKey(table: object, row: number, column: number) {
+  return JSON.stringify([table, row, column]);
+}
+
+export function citationReferenceId(index: Pick<CitationIndex, "namespace">, id: number) {
+  return `${index.namespace ? `${index.namespace}-` : ""}ref-${id}`;
 }
 
 /** Landing-highlight colours, so each module's flash belongs to its palette. */

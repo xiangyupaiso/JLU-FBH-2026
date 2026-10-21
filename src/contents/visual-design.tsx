@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
 import type { WikiContentBlock } from "../components/wiki/wikiPageTypes";
-import { visualDesignFeatures } from "../components/wiki/features/project/VisualDesignPanels";
+import { visualDesignFeatures } from "../components/wiki/features/project/visualDesignFeatures";
 import { VisualDesignNarrativeFeature } from "../components/wiki/features/project/VisualDesignNarrativePanels";
 import { installVisualDesignFigures } from "../components/wiki/features/project/visualDesignFigureTools";
 import { createCitationRenderer } from "../components/wiki/citations/CitationRegister";

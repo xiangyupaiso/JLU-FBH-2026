@@ -114,6 +114,10 @@
   margin: 0 auto;
 }
 
+.roster-people--three-columns {
+  max-width: calc(var(--roster-portrait-width) * 3 + var(--roster-gap) * 2);
+}
+
 .roster-people--teachers {
   max-width: calc(var(--roster-portrait-width) * 3 + var(--roster-gap) * 2);
 }
@@ -734,13 +738,13 @@ html {
   border: 0;
   background: transparent;
   font-family: "Newsreader", "Fraunces", Georgia, serif !important;
-  font-size: clamp(18.5px, 1.8vw, 22.5px);
+  font-size: clamp(18.5px, 1.8vw, 21px);
   font-style: italic;
   font-weight: 500;
   line-height: 1.42;
   color: var(--route-heading-ink, var(--ink, #1b1719));
   text-align: left;
-  text-wrap: balance;
+  text-wrap: pretty;
 }
 
 .roster-dialog .roster-dialog__quote-text {
@@ -825,6 +829,7 @@ html {
     box-shadow: none;
   }
   .roster-dialog__editorial {
+    flex: 0 0 auto;
     padding: 20px 22px 26px;
     overflow: visible;
   }

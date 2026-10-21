@@ -1,3 +1,5 @@
+import { hpPresentation, renderHumanPracticesCitedText } from "../components/wiki/features/HpMedia";
+import "../styles/features/hp-collaboration.css";
 import { WikiRoutePage } from "../components/wiki/WikiRoutePage";
 import { HumanPracticesOriginTree } from "../components/wiki/features/HumanPracticesOriginTree";
 import { HumanPracticesStageTree } from "../components/wiki/features/HumanPracticesStageTree";
@@ -17,15 +19,17 @@ const preloadImages = [...new Set([...allHumanPracticesImages, ...humanPractices
 export function HumanPractices() {
   return (
     <WikiRoutePage
-      content={humanPracticesPage}
+      content={{ ...humanPracticesPage, sections: hpPresentation.sections }}
       heroImage={getEngagementHeroImage(humanPracticesPage.route)}
       heroFallbackImage={humanPracticesHeroFallback}
       preloadImages={preloadImages}
       theme="engagement"
       pageClassName="wiki-page--engagement wiki-page--human-practices"
       hideHeroCopy
+      inlineRenderer={renderHumanPracticesCitedText}
       leadSection={<HpInteractiveWaterfall />}
       features={{
+        ...hpPresentation.features,
         "hp-origin-tree": <HumanPracticesOriginTree />,
         "hp-plasmid-tree": <HumanPracticesStageTree variant="plasmid" />,
         "hp-in-vitro-tree": <HumanPracticesStageTree variant="in-vitro" />,

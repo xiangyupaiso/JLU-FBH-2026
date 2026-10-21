@@ -5,7 +5,6 @@ import type { Vec3, Vec4 } from "molstar/lib/mol-math/linear-algebra";
 import type { PluginStateObject } from "molstar/lib/mol-plugin-state/objects";
 import type { StateObjectSelector } from "molstar/lib/mol-state";
 import type { Color } from "molstar/lib/mol-util/color";
-import trop2Pdb from "../../../assets/structures/trop2-ctl1.pdb?raw";
 import { TROP2_COMPLEX_DATA } from "../../../data/trop2ComplexData";
 import { loadLocalMolstar } from "./shared/localMolstar";
 import { MolecularViewerFrame } from "./shared/MolecularViewerFrame";
@@ -16,8 +15,9 @@ type ReprSelector = StateObjectSelector<PluginStateObject.Molecule.Structure.Rep
 
 // Mol* colors are branded numbers; Color(hex) is an identity function at runtime.
 const color = (hex: number) => hex as Color;
+const trop2PdbUrl = "https://static.igem.wiki/teams/6056/wiki/files/structures/trop2-ctl1.pdb";
 
-export function Trop2ComplexViewer() {
+export function Trop2ComplexViewer({ figureLabel = "Fig. M-01" }: { figureLabel?: string }) {
   const figureRef = useRef<HTMLElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<Viewer | null>(null);
@@ -31,6 +31,7 @@ export function Trop2ComplexViewer() {
   const contactRefs = useRef<(SVGGElement | null)[]>([]);
   const cameraSubsRef = useRef<{ unsubscribe: () => void }[]>([]);
 
+  const [active, setActive] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showPolarContacts, setShowPolarContacts] = useState(true);
@@ -39,6 +40,24 @@ export function Trop2ComplexViewer() {
   const [activeSegment, setActiveSegment] = useState<ActiveSegment>("all");
 
   const showPolarContactsRef = useRef(true);
+
+  // Defer the renderer and PDB together until the reader reaches this figure.
+  // Once activated, keep the same viewer while scrolling away and back.
+  useEffect(() => {
+    const figure = figureRef.current;
+    if (!figure) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setActive(true);
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      setActive(true);
+    }, { rootMargin: "300px 0px" });
+    observer.observe(figure);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     showPolarContactsRef.current = showPolarContacts;
@@ -111,10 +130,18 @@ export function Trop2ComplexViewer() {
 
   // Initialize Mol*
   useEffect(() => {
+    if (!active) return;
     let isMounted = true;
+    const controller = new AbortController();
 
-    loadLocalMolstar()
-      .then(async (molstar) => {
+    Promise.all([
+      loadLocalMolstar(),
+      fetch(trop2PdbUrl, { signal: controller.signal }).then((response) => {
+        if (!response.ok) throw new Error(`Unable to load the TROP2 structure (${response.status}).`);
+        return response.text();
+      }),
+    ])
+      .then(async ([molstar, trop2Pdb]) => {
         if (!isMounted || !containerRef.current) return;
 
         // Cleanup existing viewer
@@ -279,6 +306,7 @@ export function Trop2ComplexViewer() {
 
     return () => {
       isMounted = false;
+      controller.abort();
       cameraSubsRef.current.forEach((sub) => sub.unsubscribe());
       cameraSubsRef.current = [];
       if (rafIdRef.current !== null) {
@@ -294,7 +322,7 @@ export function Trop2ComplexViewer() {
         }
       }
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [active]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Handle Reset View
   const handleResetView = useCallback(() => {
@@ -383,7 +411,7 @@ export function Trop2ComplexViewer() {
       label="3D Molecular Complex"
       loading={isLoading}
       error={error ? `Error: ${error}` : undefined}
-      caption={<><strong>Fig. M-01 · </strong>Structural conformation of Trop2-CTL1 (<code>{TROP2_COMPLEX_DATA.epitopeSequence}</code>) complexed within the HLA-A*02:01 / β2M binding groove, stabilized by 17 polar interaction contacts.</>}
+      caption={<><span className="wiki-figure-caption-label">{figureLabel}</span>Structural conformation of Trop2-CTL1 (<code>{TROP2_COMPLEX_DATA.epitopeSequence}</code>) complexed within the HLA-A*02:01 / β2M binding groove, stabilized by 17 polar interaction contacts.</>}
     >
         {/* 2D Vector Projection Overlay for Polar Contacts */}
         <svg

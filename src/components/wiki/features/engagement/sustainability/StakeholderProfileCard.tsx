@@ -332,7 +332,7 @@ export function StakeholderProfileCard({
                 className="sust-stake-modal"
                 role="dialog"
                 aria-modal="true"
-                aria-label={`${profile.name} — interview`}
+                aria-label={`${profile.name} - interview`}
                 onClick={(e) => e.stopPropagation()}
               >
                 <button

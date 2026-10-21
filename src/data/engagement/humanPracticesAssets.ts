@@ -48,7 +48,7 @@ export const stageMedia: Record<string, Record<string, StakeholderMedia>> = {
     yang: { portrait: image("yangshujuan"), interview: [image("ysj1")] },
     hu: { portrait: image("huyuanchao"), interview: [image("huyuanchao-cai1")] },
     tian: { portrait: image("tianrunhui"), interview: [image("trh2")] },
-    wang: { portrait: image("wangjianguo"), interview: [image("wjg1"), image("wjg2")] },
+    wang: { portrait: image("wangjianguo"), interview: [image("wjg1"), image("ysj3")] },
     patients: { portrait: image("patients-and-patient-representatives"), interview: [image("huanzhe-cai2")] },
     family: { portrait: image("patients-and-patient-representatives") },
     jing: { portrait: image("wenjing"), interview: [image("jw1")] },
@@ -61,7 +61,7 @@ export const stageMedia: Record<string, Record<string, StakeholderMedia>> = {
 
 // Some return interviews revisit the same stakeholder for distinct feedback.
 export const interviewMediaByCopyKey: Record<string, string[]> = {
-  "return-12": [image("wjg2")],
+  "return-12": [image("ysj3")],
   "return-13": [image("ysj2")],
 };
 

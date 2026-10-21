@@ -1,8 +1,9 @@
 import type { WikiSection } from "../../components/wiki/wikiPageTypes";
 
 import { educationAssetUrl, replaceEducationAssetLinks } from "./educationRemoteAssets";
+import { getEducationFigureCaption } from "./educationFigureCaptions";
 
-// Generated from education-source.md by scripts/import-education.py.
+// Education manuscript, updated from the paragraph-by-paragraph highlighted revision.
 const rawSections: WikiSection[] = [
   {
     "id": "overview",
@@ -11,6 +12,8 @@ const rawSections: WikiSection[] = [
     "title": "Overview",
     "summary": "",
     "masthead": {
+      "image": "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/education/figures/11-tou.avif",
+      "imageAlt": "",
       "quote": "Education, therefore, is a process of living and not a preparation for future living.",
       "attribution": "John Dewey",
       "attributionRole": "My Pedagogic Creed, 1897"
@@ -19,19 +22,19 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Synthetic biology education does not address a single, homogeneous “public.” Different people may face different barriers arising from gaps in prior knowledge, perceptions of risk, access to resources, lived experiences, or opportunities for participation. We therefore began with a simple conviction: Different barriers require different educational responses."
+          "Synthetic biology education does not address a single, homogeneous “public.” People face different barriers, including gaps in prior knowledge, perceptions of risk, access to resources, lived experiences, or opportunities for participation. We therefore began with a simple conviction: Different barriers require different educational responses."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Throughout the year, we brought Education into classrooms, laboratory settings, public spaces, creative and narrative environments, and digital platforms. Our practices included classroom teaching, public health education, laboratory learning, games, medical humanities, and sustained digital engagement. Rather than expecting everyone to learn in the same way, we sought to create different entry points for people of different ages, backgrounds, and circumstances."
+          "Throughout the year, we brought Education into classrooms, laboratory settings, public spaces, creative and narrative environments, and digital platforms. Our practices included classroom teaching, public health education, laboratory learning, games, medical humanities, and sustained digital engagement. Rather than expecting everyone to learn the same way, we created different entry points for people of different ages, backgrounds, and circumstances."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Our approach began with understanding the people we hoped to reach and the contexts in which they learn. These encounters guided us in choosing educational approaches, preserving meaningful experiences and relationships, and adapting our designs to real-world constraints. As participants asked questions, made choices, and engaged with our resources, their responses also informed how our Education could continue to develop."
+          "Our approach began with understanding the people we hoped to reach and the contexts in which they learn. These encounters guided our choice of educational approaches, helped us preserve meaningful experiences and relationships, and shaped our designs to real-world constraints. As participants asked questions, made choices, and engaged with our resources, their responses also informed how our Education could continue to develop."
         ]
       },
       {
@@ -95,7 +98,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "We address these questions through three connected design considerations. **Recursive Care** guides what should be preserved as Education expands. **Community & Educational Functions** helps us understand learners through Audience × Context and identify the learning functions most relevant to each setting. **Education Portfolio Optimization** brings these needs together with available resources and essential requirements to select an appropriate combination of educational approaches."
+          "We address these questions through three connected design considerations. **Recursive Care** guides what to preserve as Education expands. **Community & Educational Functions** helps us understand learners through Audience × Context and identify the learning functions most relevant to each setting. **Education Portfolio Optimization** brings these needs together with available resources and essential requirements to select an appropriate combination of educational approaches."
         ]
       },
       {
@@ -126,7 +129,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "A child discussing vaccines may already remember needles, pain, and explanations offered by their parents. An adult entering a breast health activity may carry concerns about work, family responsibilities, and health information encountered in the past. A student entering the Virtual Laboratory brings their own expectations about experiments, mistakes, and learning."
+          "A child discussing vaccines may already remember needles, pain, and explanations their parents offered. An adult entering a breast health activity may carry concerns about work, family responsibilities, and health information encountered in the past. A student entering the Virtual Laboratory brings their own expectations about experiments, mistakes, and learning."
         ]
       },
       {
@@ -150,19 +153,19 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "**Mutual Care** emerges as learning enters relationships. Through dialogue, mutual learning, and support, participants can question, respond, explain, and contribute rather than simply receive information."
+          "**Mutual Care** emerges as learning enters relationships. Through dialogue, mutual learning, and support, participants can question, respond, explain, and contribute rather than receive information."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "**Access** concerns the conditions that allow learning to continue. Educational resources, teachers, professional guidance, language, experimental facilities, and opportunities to return all influence whether people can meaningfully participate."
+          "**Access** concerns the conditions that allow learning to continue. Educational resources, teachers, professional guidance, language, experimental facilities, and opportunities to return all shape whether people can participate meaningfully."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "These dimensions are not a fixed sequence. An activity may engage all three at once, while another may place greater emphasis on one according to its context."
+          "These dimensions are not a fixed sequence. An activity may engage all three at once, while another may emphasize one more, depending on its context."
         ]
       },
       {
@@ -196,13 +199,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Recursive Care reminds us what should be preserved, but educational design must also respond to the people and circumstances immediately in front of us."
+          "Recursive Care reminds us what to preserve, but educational design must also respond to the people and circumstances right in front of us."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Age alone cannot determine the most appropriate educational approach. The needs of secondary school students attending an introductory lecture may differ from those of students performing experiments, even when they belong to the same age group. Similarly, a public health activity may involve participants who want basic information, others who have personal concerns, and others who need access to professional support."
+          "Age alone cannot determine the most appropriate educational approach. The needs of secondary school students attending an introductory lecture may differ from those of students doing experiments, even when they are in the same age group. Similarly, a public health activity may involve participants who want basic information, others who have personal concerns, and others who need access to professional support."
         ]
       },
       {
@@ -226,7 +229,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "**Affective** — connect knowledge with personal experiences, relationships, attitudes, and values."
+          "**Affective** — connecting knowledge with personal experiences, relationships, attitudes, and values."
         ]
       },
       {
@@ -244,13 +247,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "For example, an introductory synthetic biology lecture may primarily support Cognitive learning, while a narrative health game can combine Cognitive understanding with Affective reflection. A laboratory course may place greater emphasis on Experiential learning while still requiring accurate scientific explanations and opportunities for discussion."
+          "For example, an introductory synthetic biology lecture may primarily support Cognitive learning, while a narrative health game can combine Cognitive understanding with Affective reflection. A laboratory course may emphasize Experiential learning while still requiring accurate scientific explanations and opportunities for discussion."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The purpose of this distinction is not to assign every activity a rigid label. It is to help us understand what an educational experience should enable learners to do, understand, or reflect upon."
+          "This distinction is not meant to assign every activity a rigid label. It helps us understand what an educational experience should enable learners to do, understand, or reflect on."
         ]
       },
       {
@@ -262,7 +265,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The interactive **Community & Educational Function Map** allows readers to explore this relationship. By selecting different audiences and contexts, visitors can examine how the relative emphasis on Cognitive, Affective, and Experiential functions changes, and which practices in our Education portfolio address similar needs."
+          "The interactive **Community & Educational Function Map** allows readers to explore this relationship. By selecting different audiences and contexts, visitors can see how the emphasis shifts among Cognitive, Affective, and Experiential functions, and which practices in our Education portfolio address similar needs."
         ]
       },
       {
@@ -278,7 +281,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Once Audience, Context, and Educational Functions have been identified, the next step is not to search for the single “best activity.” Instead, we ask: Which combination of educational formats is most appropriate for this particular context?"
+          "Once we've identified the audience, Context, and educational functions, the next step isn't to search for the single “best activity.” Instead, we ask: Which combination of educational formats is most appropriate for this particular context?"
         ]
       },
       {
@@ -326,13 +329,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "We are not searching for one educational format that is universally superior. Instead, we compare the functions different formats can serve and consider whether combining them can better respond to the needs of the current context."
+          "We are not searching for one universally superior educational format. Instead, we compare the functions different formats can serve and consider whether combining them can better respond to the needs of the current context."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "First, let $x_i$ indicate whether educational format $i$ is selected:"
+          "First, let $x_i$ indicate whether an educational format $i$ is selected:"
         ]
       },
       {
@@ -348,7 +351,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Let $a_{ik}$ represent the extent to which educational format $i$ covers function $k$, and let $y_k$ represent the overall coverage of that function achieved by the final portfolio:"
+          "Let $a_{ik}$ represent the extent to which an educational format $i$ covers a function $k$, and let $y_k$ represent the overall coverage of that function achieved by the final portfolio:"
         ]
       },
       {
@@ -364,7 +367,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "In other words, our priority is to address the learning needs that matter most in a particular setting, rather than simply increasing the number of activities."
+          "In other words, we prioritize addressing the learning needs that matter most in a particular setting, rather than simply increasing the number of activities."
         ]
       },
       {
@@ -404,7 +407,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Scientific Accuracy, Safety, Privacy, and Accessibility are not treated as scoring criteria whose shortcomings can be offset by strengths elsewhere. Instead, they are essential conditions that must be satisfied before educational portfolios are compared."
+          "Scientific Accuracy, Safety, Privacy, and Accessibility are not treated as scoring criteria whose shortcomings can be offset by strengths elsewhere. Instead, they are essential conditions that must be satisfied before comparing educational portfolios."
         ]
       },
       {
@@ -454,7 +457,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Ideas become Education only when they meet real people, places and constraints. Only when educational design encounters real people, specific contexts, and practical constraints does it truly become Education."
+          "Ideas become Education only when they meet real people, places, and constraints. Only when educational design encounters real people, specific contexts, and practical constraints does it truly become Education."
         ]
       }
     ]
@@ -469,14 +472,14 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "*Ideas become Education only when they meet real people, places, and constraints.*"
+          "Ideas become Education only when they meet real people, places, and constraints."
         ]
       },
       {
         "type": "subheading",
         "id": "practice-map-where-education-happened",
         "index": "3.1",
-        "title": "Practice Map：Where Education Happened"
+        "title": "Practice Map: Where Education Happened"
       },
       {
         "type": "prose",
@@ -499,7 +502,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "These categories are not rigid boundaries. Some practices were deliberately designed to cross multiple contexts. The classification simply indicates where each practice originally or primarily took place, rather than restricting it to a single educational format."
+          "These categories are not rigid boundaries. Some practices were deliberately designed to cross multiple contexts. The classification indicates where each practice originally or primarily took place, rather than restricting it to a single educational format."
         ]
       },
       {
@@ -518,6 +521,22 @@ const rawSections: WikiSection[] = [
         "type": "prose",
         "paragraphs": [
           "We therefore adopt a flexible organizational approach, using Context, Design, Participation, Evidence, and Continuation as reading cues. They are signposts on a map, not rails that every practice must follow. They help readers understand each activity without requiring identical structures, sequences, or lengths."
+        ]
+      },
+      {
+        "type": "table",
+        "headers": [
+          "Primary Learning Context",
+          "Who Often Enters Here",
+          "What This Context Enables",
+          "Practices"
+        ],
+        "rows": [
+          ["Classroom & Guided Learning", "School learners", "Structured entry, guided discussion and progressive learning", "Winter Outreach · Vaccine Classroom · Air-to-Bread Classroom · Synbio Classroom"],
+          ["Experimental & Interactive Learning", "Learners entering experimental processes", "Practice, operation and procedural understanding", "Virtual Laboratory"],
+          ["Public Health & Mobile Learning", "Public participants and young adults", "Accessible health information, action and professional support", "Xinghua Festival · Health Run"],
+          ["Creative & Reflective Learning", "Learners entering through narrative, emotion and expression", "Reflection, values, personal connection and judgement", "Music Festival · Breast Guardian · Letters to My Body · Ethics Debate"],
+          ["Digital & Long-term Participation", "Distributed and returning learners", "Re-entry, repeated learning, response and contribution", "105 Days Digital Engagement · Bio Memory Match · Digital Content"]
         ]
       },
       {
@@ -553,7 +572,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Experimental learning is inherently constrained by real-world conditions. Laboratories require suitable facilities, equipment, consumables, and professional supervision. Some molecular biology experiments take several hours or even days to complete, while a typical school lesson lasts only a few dozen minutes. To finish a course on schedule, teachers often need to complete cultivation, preparation, or intermediate procedures in advance, leaving students with only a fragment of the overall research process. Laboratory conditions also vary considerably between schools, while safety regulations and laboratory access requirements further determine which procedures can actually be included in classroom teaching."
+          "Real-world conditions inherently constrain experimental learning. Laboratories require suitable facilities, equipment, consumables, and professional supervision. Some molecular biology experiments take several hours or even days to complete, while a typical school lesson lasts only a few dozen minutes. To finish a course on schedule, teachers often need to complete cultivation, preparation, or intermediate procedures in advance, leaving students with only a fragment of the overall research process. Laboratory conditions also vary considerably between schools, while safety regulations and laboratory access requirements further determine which procedures can actually be included in classroom teaching."
         ]
       },
       {
@@ -565,7 +584,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "A student may have encountered PCR, gel electrophoresis, restriction digestion, ligation, and transformation as separate concepts, or even performed some of these procedures, yet still struggle to experience the complete progression from initial experimental materials to the verification of a final construct. Time divides a continuous research process into individual lessons, while space and resources determine which parts of that process can actually be made accessible."
+          "A student may have encountered PCR, gel electrophoresis, restriction digestion, ligation, and transformation as separate concepts, or even performed some of these procedures, yet still struggle to experience the complete progression from initial experimental materials to the verification of a final construct. Time breaks a continuous research process into individual lessons, while space and resources determine which parts of that process are accessible."
         ]
       },
       {
@@ -583,20 +602,20 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The digital environment therefore offers a capability that is difficult to reproduce in a physical laboratory: the same experiment can be paused, revisited, and repeated, while the relationships between successive experiments remain visible within a single learning environment."
+          "The digital environment therefore offers a capability difficult to reproduce in a physical laboratory: learners can pause, revisit, and repeat the same experiment, while the relationships between successive experiments remain visible within a single learning environment."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "This also gives Access a particularly concrete meaning within the Virtual Laboratory. For learners who cannot yet participate in a complete experimental process, engaging with science can begin by seeing the entire workflow, understanding the role of each step, and practicing repeatedly."
+          "This also gives Access a particularly concrete meaning within the Virtual Laboratory. Learners who cannot yet participate in a complete experimental process can begin engaging with science by seeing the entire workflow, understanding each step's role, and practicing repeatedly."
         ]
       },
       {
         "type": "subheading",
         "id": "design",
         "index": "3.2.1.2",
-        "title": "DESIGN："
+        "title": "DESIGN:"
       },
       {
         "type": "subheading",
@@ -613,13 +632,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The initial stage focuses on preparing and checking experimental materials. The intermediate stages involve obtaining the vector and target DNA fragment, followed by PCR, restriction digestion, and ligation. The resulting candidate constructs are then introduced into a cloning host for positive-clone identification. Once verified, the constructs proceed to a suitable T7 expression host for GFP expression and verification."
+          "The initial stage focuses on preparing and checking experimental materials. The intermediate stages involve obtaining the vector and target DNA fragment, followed by PCR, restriction digestion, and ligation. The resulting candidate constructs are then introduced into a cloning host to identify positive clones. Once verified, the constructs proceed to a suitable T7 expression host for GFP expression and verification."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The results generated at each stage become conditions for subsequent experiments."
+          "Results from each stage become conditions for subsequent experiments."
         ]
       },
       {
@@ -637,13 +656,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "PCR, electrophoresis, restriction digestion, and transformation are no longer simply experimental terms to be memorized separately. They begin to form a connected workflow."
+          "PCR, electrophoresis, restriction digestion, and transformation are no longer just experimental terms to memorize separately. They begin to form a connected workflow."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "We also preserve a central principle from our earlier course design: because experiments in real scientific research depend on one another, experimental education should help learners understand these relationships of interdependence."
+          "We also preserve a central principle from our earlier course design. Because experiments in real scientific research depend on one another, experimental education should help learners understand these relationships of interdependence."
         ]
       },
       {
@@ -674,13 +693,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The current operation is displayed at the bottom of the interface, while complete step-by-step navigation remains available on the left. During each experimental action, the relevant equipment is highlighted with a fixed yellow outline. Learners can also review previous steps to confirm the experimental procedure from their current position."
+          "The current operation is displayed at the bottom of the interface, while complete step-by-step navigation remains available on the left. During each experimental action, the relevant equipment is highlighted with a fixed yellow outline. Learners can also review previous steps from their current position to confirm the experimental procedure."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "This interaction design addresses the question of how learners can begin operating within the environment. However, completing a series of clicks does not necessarily mean understanding an experiment."
+          "This interaction design addresses how learners can begin operating in the environment. However, completing a series of clicks does not necessarily mean understanding an experiment."
         ]
       },
       {
@@ -692,7 +711,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "When learners encounter a particular procedure, they can simultaneously examine why the step is necessary, which materials or instruments are being used, and what precautions should be taken. Scientific explanations are therefore connected to specific experimental contexts rather than postponed until after the experiment has ended."
+          "When learners encounter a procedure, they can examine why the step is necessary, which materials or instruments are used, and what precautions to take. Scientific explanations are therefore tied to specific experimental contexts rather than postponed until after the experiment ends."
         ]
       },
       {
@@ -704,7 +723,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "To connect laboratory standards with actual procedures, we placed safety reminders at the steps where they become relevant. Aseptic technique, microbial cultivation, laboratory cleanup, and waste disposal are addressed within their corresponding experimental contexts."
+          "To connect laboratory standards with actual procedures, we placed safety reminders at the steps where they become relevant. We address aseptic technique, microbial cultivation, laboratory cleanup, and waste disposal within their corresponding experimental contexts."
         ]
       },
       {
@@ -734,7 +753,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The platform provides necessary navigation and explanations, but it is the learners' own actions that help them establish relationships between experimental steps."
+          "The platform provides necessary navigation and explanations, but learners' own actions help them establish relationships between experimental steps."
         ]
       },
       {
@@ -753,19 +772,19 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Digital environments can extend learning time and overcome spatial barriers, but they cannot reproduce real laboratory practice in its entirety."
+          "Digital environments can extend learning time and overcome spatial barriers, but they cannot fully reproduce real laboratory practice."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Actual pipetting involves physical handling and experimental error. Reagents carry real hazards. Cultures can become contaminated. Experiments require waiting, and several hours of work may ultimately produce results entirely different from those expected."
+          "Actual pipetting involves physical handling and the potential for error. Reagents carry real hazards. Cultures can become contaminated. Experiments require waiting, and several hours of work may ultimately produce results very different from expectations."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "An operation on a screen can be restarted, but real experimental materials and results cannot be restored simply by clicking a back button."
+          "You can restart an operation on a screen, but you cannot restore real experimental materials and results simply by clicking a back button."
         ]
       },
       {
@@ -783,13 +802,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "It can help beginners become familiar with laboratory environments and procedures before their first practical experience. It can allow students to see how experiments separated by classroom schedules connect to one another. It can also help those who have already conducted experiments revisit particular steps and reconsider why they were necessary."
+          "It can help beginners become familiar with laboratory environments and procedures before their first practical experience. It lets students see how experiments separated by classroom schedules connect. It can also help those who have already conducted experiments revisit particular steps and reconsider why they were necessary."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Once learners enter a real laboratory, however, the material nature of experiments, uncertainty, safety responsibilities, and experimental failure must still be experienced firsthand."
+          "However, once learners enter a real laboratory, they must still experience the material nature of experiments, uncertainty, safety responsibilities, and experimental failure firsthand."
         ]
       },
       {
@@ -802,7 +821,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "continuation",
         "index": "3.2.1.3",
-        "title": "CONTINUATION："
+        "title": "CONTINUATION:"
       },
       {
         "type": "subheading",
@@ -813,7 +832,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Our connection with Hailun No. 1 Senior High School began during Winter Outreach. Alongside the introductory activities on synthetic biology and iGEM, we brought an early version of the Virtual Laboratory to the school, introducing students to the first experiment available at that stage of development."
+          "Our connection with Hailun No. 1 Senior High School began during Winter Outreach. Alongside introductory activities on synthetic biology and iGEM, we brought an early version of the Virtual Laboratory to the school. We introduced students to the first experiment available at that stage of development."
         ]
       },
       {
@@ -843,7 +862,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "This second engagement revealed something that the initial demonstration alone could not establish: the educational resource could be taken up and used independently by a teacher within the school's own learning environment."
+          "This second engagement revealed something the initial demonstration alone could not establish: a teacher could take up and use the educational resource independently within the school's own learning environment."
         ]
       },
       {
@@ -873,13 +892,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "We do not treat these two engagements alone as evidence of two completed product-iteration cycles. Instead, they demonstrate how the development of an educational resource and its use within a community can progress together."
+          "We do not treat these two engagements alone as evidence of two completed product-iteration cycles. Instead, they show how an educational resource can develop and be used within a community together."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Within our **Education Lineage**, Hailun therefore represents **Continuity**: an initial connection established through Winter Outreach became a pathway for later digital learning, while the teacher gained an active role in sustaining that learning beyond our team's direct involvement."
+          "Within our **Education Lineage**, Hailun therefore represents **Continuity**: an initial connection established through Winter Outreach became a pathway for later digital learning. At the same time, the teacher gained an active role in sustaining that learning beyond our team's direct involvement."
         ]
       },
       {
@@ -897,7 +916,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Our educational outreach in Pilu Town in July brought further changes to the Virtual Laboratory itself."
+          "Our July educational outreach in Pilu Town further changed the Virtual Laboratory itself."
         ]
       },
       {
@@ -915,7 +934,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Before learners began operating the program, it implicitly assumed that they already understood where they were, why the experiment needed to be performed, and what roles the materials in front of them served."
+          "Before learners began using the program, it implicitly assumed they already understood where they were, why they needed to experiment, and what roles the materials in front of them played."
         ]
       },
       {
@@ -949,19 +968,19 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Beginning with questions such as “What are bacteria?” and observations of bacterial colonies, the lesson gradually introduced inoculating loops, microscope slides, crystal violet, iodine solution, decolorizing agents, safranin, and microscopic observation."
+          "Starting with questions like “What are bacteria?” and observations of bacterial colonies, the lesson gradually introduced inoculating loops, microscope slides, crystal violet, iodine solution, decolorizing agents, safranin, and microscopic observation."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Previously unfamiliar laboratory materials and staining procedures were transformed into a sequence of recognizable tasks."
+          "The lesson transformed previously unfamiliar laboratory materials and staining procedures into a sequence of recognizable tasks."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Students then entered the corresponding experiment in the Virtual Laboratory, allowing their classroom understanding to continue into digital operations."
+          "Students then entered the corresponding experiment in the Virtual Laboratory, allowing them to continue their classroom understanding through digital operations."
         ]
       },
       {
@@ -997,13 +1016,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Separate preparatory lessons can support learners before they enter an experiment, but the digital tool itself must still take responsibility for providing sufficient orientation."
+          "Separate preparatory lessons can support learners before they enter an experiment, but the digital tool must still provide sufficient orientation."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The pauses students encountered after entering the program were therefore not attributed simply to age. Instead, they prompted us to move Safety, Theory, Instruments, and Reagents to the beginning of each experiment in the Virtual Laboratory."
+          "We therefore did not attribute the pauses students encountered after entering the program simply to age. Instead, they prompted us to move Safety, Theory, Instruments, and Reagents to the beginning of each experiment in the Virtual Laboratory."
         ]
       },
       {
@@ -1027,7 +1046,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "To begin learning at the point where understanding was genuinely needed, we moved Safety, Theory, Instruments, and Reagents into the introductory stage of each experiment while retaining access to these materials for review during operation."
+          "To start learning where understanding was genuinely needed, we moved Safety, Theory, Instruments, and Reagents into the introductory stage of each experiment while keeping these materials available for review during operation."
         ]
       },
       {
@@ -1039,7 +1058,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Both groups nevertheless continued to encounter the same scientific core of the experiment."
+          "Both groups still encountered the same scientific core of the experiment."
         ]
       },
       {
@@ -1051,25 +1070,25 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Our initial design concentrated primarily on experimental operations. After completing the program and introducing it to real learners, the Pilu Town sessions exposed a problem with the structure of the experimental entry point."
+          "Our initial design concentrated primarily on experimental operations. After completing the program and introducing it to real learners, the Pilu Town sessions revealed a problem with the structure of the experimental entry point."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "These observations informed a revised design, moving the starting point of instruction earlier in the learning process."
+          "These observations informed a revised design that moved the instructional starting point earlier in the learning process."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "What participants ultimately changed was not simply a sentence or a button, but what learners encountered first when entering the Virtual Laboratory."
+          "Participants ultimately changed not just a sentence or a button, but what learners encountered first when entering the Virtual Laboratory."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The revised structure was subsequently used in later teaching contexts. Pilu Town therefore became a case we could explicitly document as Shape."
+          "We later used the revised structure in other teaching contexts. Pilu Town therefore became a case we could explicitly document as Shape."
         ]
       },
       {
@@ -1108,7 +1127,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "[Explore our games](/games)"
+          "[→ Explore Our Games](/games)"
         ]
       },
       {
@@ -1144,7 +1163,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "We therefore built upon their existing knowledge, allowing textbook concepts to enter real experimental practice, scientific reasoning, and synthetic biology design."
+          "We built on their existing knowledge by moving textbook concepts into hands-on experimental practice, scientific reasoning, and synthetic biology design."
         ]
       },
       {
@@ -1175,14 +1194,14 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Professional guidance, experimental facilities, and sustained supervision together formed the Access provided by this course, allowing students to enter an authentic scientific research environment."
+          "Professional guidance, experimental facilities, and sustained supervision together formed the access this course provided, allowing students to enter an authentic scientific research environment."
         ]
       },
       {
         "type": "subheading",
         "id": "design-2",
         "index": "3.2.2.2",
-        "title": "DESIGN："
+        "title": "DESIGN:"
       },
       {
         "type": "subheading",
@@ -1199,7 +1218,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "PCR and electrophoresis helped students understand how DNA information can be amplified and analyzed. Crude DNA extraction transformed genetic material from an abstract textbook concept into something students could observe through their own hands-on work."
+          "PCR and electrophoresis helped students understand how DNA information can be amplified and analyzed. Crude DNA extraction turned genetic material from an abstract textbook concept into something students could observe through hands-on work."
         ]
       },
       {
@@ -1223,7 +1242,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Individual judgments were preserved as the starting point, then brought into dialogue / mutual learning through cooperation within teams and communication between groups."
+          "Individual judgments remained the starting point, then entered dialogue / mutual learning through cooperation within teams and communication between groups."
         ]
       },
       {
@@ -1235,7 +1254,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Individual judgment was not replaced by collective discussion. Instead, it was explained, questioned, and reconsidered through relationships with others."
+          "Collective discussion did not replace individual judgment. Instead, students explained, questioned, and reconsidered it through relationships with others."
         ]
       },
       {
@@ -1289,7 +1308,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The original arrangement could no longer adequately address the direction in which their questions had developed."
+          "The original arrangement could no longer adequately address the direction their questions had taken."
         ]
       },
       {
@@ -1301,7 +1320,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The nine-experiment Virtual Laboratory had already been developed before this session. What changed that day was the teaching route and the role of the Virtual Laboratory within the classroom."
+          "The instructors had already developed the nine-experiment Virtual Laboratory before this session. That day, the teaching route and the Virtual Laboratory's role in the classroom changed."
         ]
       },
       {
@@ -1359,7 +1378,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "design-3",
         "index": "3.2.3.1",
-        "title": "DESIGN："
+        "title": "DESIGN:"
       },
       {
         "type": "subheading",
@@ -1370,7 +1389,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Bio-Heroes transforms concepts, biological components, and relationships from synthetic biology into an interconnected system of competitive game rules."
+          "Bio-Heroes transforms synthetic biology concepts, components, and relationships into an interconnected system of competitive game rules."
         ]
       },
       {
@@ -1382,13 +1401,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The current rules include eight character cards and 108 game cards. Players use basic cards, skill cards, equipment cards, and faction abilities to gradually defeat the opposing faction."
+          "The current rules include eight character cards and 108 game cards. Players use basic cards, skill cards, equipment cards, and faction abilities to defeat the opposing faction gradually."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Its most valuable feature is not simply giving conventional playing cards a biological appearance. Rather, the game attempts to embed different biological relationships directly into its rules."
+          "Its most valuable feature is not simply giving conventional playing cards a biological appearance. Instead, the game embeds different biological relationships directly into its rules."
         ]
       },
       {
@@ -1406,7 +1425,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "In this way, players do not encounter terms such as PCR, resistance, and horizontal gene transfer as isolated facts to memorize. Instead, they repeatedly encounter these concepts through relationships embedded in gameplay."
+          "This way, players don't encounter terms such as PCR, resistance, and horizontal gene transfer as isolated facts to memorize. Instead, they repeatedly encounter these concepts through relationships embedded in gameplay."
         ]
       },
       {
@@ -1424,19 +1443,19 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The game also incorporates faction-wide bonuses and cooperative mechanisms such as Signal Amplification, making collaboration between players part of the rules themselves."
+          "The game also includes faction-wide bonuses and cooperative mechanisms such as Signal Amplification, making collaboration part of the rules."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The reason Bio-Heroes belongs within Education is therefore that it offers an entry point for understanding scientific concepts through relationships expressed as game rules."
+          "Bio-Heroes belongs in Education because it offers an entry point for understanding scientific concepts through relationships expressed as game rules."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Players must continually consider what a particular mechanism can accomplish, how it interacts with other mechanisms, how resources should be allocated, when cooperation is beneficial, and when a cost must be accepted."
+          "Players must continually consider what a particular mechanism can accomplish, how it interacts with other mechanisms, how to allocate resources, when cooperation helps, and when a cost is worth it."
         ]
       },
       {
@@ -1458,7 +1477,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Analogies within the game should therefore be accompanied by scientific explanations. Whenever a game effect simplifies an actual biological mechanism for the sake of playability, learners should also be able to recognize where that simplification occurs."
+          "Scientific explanations should therefore accompany in-game analogies. When a game effect simplifies a biological mechanism for playability, learners should be able to recognize where that simplification occurs."
         ]
       },
       {
@@ -1483,7 +1502,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "context-3",
         "index": "3.3.1.1",
-        "title": "CONTEXT:"
+        "title": "CONTEXT："
       },
       {
         "type": "subheading",
@@ -1506,13 +1525,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Our aim was not simply to introduce another scientific topic beyond the school curriculum. We wanted students to discover that synthetic biology connects familiar biological knowledge with engineering design, scientific research, and problems encountered in everyday life."
+          "Our aim was not simply to introduce another scientific topic beyond the school curriculum. We wanted students to see that synthetic biology connects familiar biological knowledge with engineering design, scientific research, and everyday problems."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "For many secondary school students, biology is first encountered through textbooks, examinations, and established scientific facts. Modern biotechnology, however, also involves making decisions, designing biological systems, working across disciplines, and learning from unsuccessful attempts."
+          "Many secondary school students first encounter biology through textbooks, examinations, and established scientific facts. Modern biotechnology, however, also involves making decisions, designing biological systems, working across disciplines, and learning from unsuccessful attempts."
         ]
       },
       {
@@ -1524,7 +1543,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Although the five sessions shared common scientific themes, they took place in different school communities. We therefore treated the students' existing knowledge and questions as starting points rather than assuming that all learners would approach synthetic biology in exactly the same way."
+          "Although the five sessions shared common scientific themes, they took place in different school communities. We therefore treated students' existing knowledge and questions as starting points, rather than assuming all learners would approach synthetic biology the same way."
         ]
       },
       {
@@ -1548,13 +1567,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "To make this idea more approachable, we used the analogy of building blocks."
+          "To make this idea more approachable, we used a building-block analogy."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Just as individual building blocks can be assembled into different structures, biological components can be considered, combined, and organized to achieve particular functions."
+          "Just as individual building blocks can form different structures, biological components can be combined and organized to achieve specific functions."
         ]
       },
       {
@@ -1578,25 +1597,25 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "We then explored how synthetic biology can connect with familiar aspects of everyday life."
+          "We then explored how synthetic biology connects to familiar aspects of everyday life."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Examples from medicine, environmental protection, food production, and industrial biotechnology illustrated how biological research can contribute to addressing practical challenges."
+          "Examples from medicine, environmental protection, food production, and industrial biotechnology illustrated how biological research can help address practical challenges."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Scientific applications were not presented as guaranteed solutions. Instead, they provided opportunities to discuss what biological technologies might make possible, what limitations remain, and why experimental evidence matters."
+          "Scientific applications were not presented as guaranteed solutions. Instead, they offered opportunities to discuss what biological technologies might enable, what limitations remain, and why experimental evidence matters."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "These examples helped extend the discussion beyond individual biological concepts toward the relationship between scientific research and society."
+          "These examples broadened the discussion beyond individual biological concepts to the relationship between scientific research and society."
         ]
       },
       {
@@ -1614,7 +1633,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "We introduced the origins and development of iGEM, its international community, different participation categories, and the ways students from different educational backgrounds can become involved."
+          "We introduced iGEM's origins and development, its international community, participation categories, and ways students from different educational backgrounds can get involved."
         ]
       },
       {
@@ -1638,19 +1657,19 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Students were invited to consider how researchers move from identifying a problem to proposing a design, constructing a biological system, evaluating its performance, and using experimental findings to improve subsequent designs."
+          "Students considered how researchers move from identifying a problem to proposing a design, building a biological system, evaluating its performance, and using experimental findings to improve later designs."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The cycle also provided a way to explain why scientific research rarely proceeds exactly as planned."
+          "The cycle also explains why scientific research rarely proceeds exactly as planned."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Unexpected results, unsuccessful experiments, and changing assumptions are not necessarily the end of a project. They can become information that informs the next round of design."
+          "Unexpected results, unsuccessful experiments, and changing assumptions are not necessarily the end of a project. They can become information that shapes the next design round."
         ]
       },
       {
@@ -1698,13 +1717,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Beyond explaining the structure of the competition, we introduced examples of projects developed by iGEM teams."
+          "Beyond explaining the competition's structure, we introduced examples of projects developed by iGEM teams."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The examples explored how synthetic biology can be applied to biomedical challenges, molecular monitoring, environmental protection, and engineered biological systems."
+          "The examples showed how synthetic biology can address biomedical challenges, enable molecular monitoring, support environmental protection, and build engineered biological systems."
         ]
       },
       {
@@ -1716,7 +1735,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "A meaningful project begins with a problem worth investigating. It then requires an understanding of the biological mechanisms involved, an appropriate design strategy, and a plan for testing whether the proposed system works."
+          "A meaningful project begins with a problem worth investigating. It then requires understanding the biological mechanisms involved, choosing an appropriate design strategy, and planning how to test whether the proposed system works."
         ]
       },
       {
@@ -1752,14 +1771,14 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The Wiki was presented not simply as a record of competition results, but as a place where teams can explain their design choices, document their work, and enable others to learn from or build upon it."
+          "We presented the Wiki not simply as a record of competition results, but as a place where teams can explain their design choices, document their work, and enable others to learn from or build on it."
         ]
       },
       {
         "type": "subheading",
         "id": "participation",
         "index": "3.3.1.3",
-        "title": "PARTICIPATION:"
+        "title": "PARTICIPATION："
       },
       {
         "type": "subheading",
@@ -1782,7 +1801,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "In Hailun, the introductory scientific content was accompanied by **Dream circRNA**, a hands-on creative activity inspired by the circular appearance of circRNA."
+          "In Hailun, the introductory scientific content was paired with **Dream circRNA**, a hands-on creative activity inspired by circRNA's circular shape."
         ]
       },
       {
@@ -1794,7 +1813,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The activity did not attempt to model the molecular mechanisms of circRNA. Instead, it allowed students to connect an unfamiliar scientific shape with their own experiences and aspirations."
+          "The activity did not attempt to model circRNA's molecular mechanisms. Instead, it let students connect an unfamiliar scientific shape to their own experiences and aspirations."
         ]
       },
       {
@@ -1836,7 +1855,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The presentation connected biological knowledge with applications in medicine, the environment, and biotechnology, illustrating how scientific concepts can contribute to questions beyond the classroom."
+          "The presentation connected biological knowledge to applications in medicine, the environment, and biotechnology, showing how scientific concepts can address questions beyond the classroom."
         ]
       },
       {
@@ -1914,7 +1933,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The discussion of iGEM was particularly useful in this respect."
+          "The iGEM discussion was particularly useful in this respect."
         ]
       },
       {
@@ -1926,7 +1945,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "This broader picture challenged the assumption that scientific participation belongs exclusively to a narrow group of specialists."
+          "This broader picture challenged the assumption that only a narrow group of specialists participates in science."
         ]
       },
       {
@@ -1938,31 +1957,31 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Learners do not enter a classroom without prior experiences or expectations. Their interests, academic backgrounds, and ideas about the future influence how they encounter scientific information."
+          "Learners do not enter a classroom without prior experiences or expectations: their interests, academic backgrounds, and ideas about the future influence how they encounter scientific information."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Activities such as Dream circRNA made this connection visible by allowing personal experiences to become part of the learning process."
+          "Activities such as Dream circRNA made this connection visible by bringing personal experiences into the learning process."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "At the same time, introducing interdisciplinary collaboration and openly shared scientific resources expanded the range of ways students could imagine participating in science."
+          "At the same time, interdisciplinary collaboration and openly shared scientific resources expanded the ways students could imagine participating in science."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "These were opportunities for **Cognitive** learning through concepts and examples, **Affective** engagement through personal interests and future aspirations, and, where hands-on activities were available, **Experiential** learning through direct participation."
+          "These opportunities supported cognitive learning through concepts and examples, **Affective** engagement through personal interests and future aspirations, and, where hands-on activities were available, **Experiential** learning through direct participation."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The relative importance of these functions depended on the particular activity and learning context rather than a fixed sequence applied to every school."
+          "The relative importance of these functions depended on the activity and learning context, not a fixed sequence applied to every school."
         ]
       },
       {
@@ -1992,7 +2011,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "What the outreach established was a series of opportunities for students to encounter synthetic biology, engineering thinking, interdisciplinary research, and the collaborative culture of iGEM."
+          "The outreach created a series of opportunities for students to encounter synthetic biology, engineering thinking, interdisciplinary research, and the collaborative culture of iGEM."
         ]
       },
       {
@@ -2040,7 +2059,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "An accessible first encounter can open the possibility of further questions, renewed connections, and continued participation."
+          "An accessible first encounter can spark further questions, renew connections, and sustain participation."
         ]
       },
       {
@@ -2082,7 +2101,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "starting-from-brea",
         "index": "3.3.2.1.1",
-        "title": "Starting from Brea"
+        "title": "Starting from Bread"
       },
       {
         "type": "prose",
@@ -2105,7 +2124,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Starting with bread and wheat, students revisited what they had already learned about plant growth and photosynthesis. From there, they gradually explored where organic matter comes from, how microorganisms can participate in material transformation, and why researchers are investigating ways to use living systems to produce useful substances."
+          "Starting with bread and wheat, students revisited what they had already learned about plant growth and photosynthesis. From there, they gradually explored where organic matter comes from, how microorganisms can transform materials, and why researchers are investigating ways to use living systems to produce useful substances."
         ]
       },
       {
@@ -2118,7 +2137,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "design-5",
         "index": "3.3.2.2",
-        "title": "DESIGN："
+        "title": "DESIGN:"
       },
       {
         "type": "subheading",
@@ -2153,7 +2172,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "These analogies helped students establish initial relationships between concepts, but they were not intended to replace actual biological mechanisms."
+          "These analogies helped students form initial connections between concepts, but they were not meant to replace actual biological mechanisms."
         ]
       },
       {
@@ -2189,7 +2208,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The lesson did not ask students simply to accept a predetermined conclusion."
+          "The lesson did not ask students to accept a predetermined conclusion."
         ]
       },
       {
@@ -2207,13 +2226,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "World Book Day provided another entry point for the lesson. When encountering an intriguing scientific headline, we can continue asking: How was the research conducted? What evidence supports its conclusions? What conditions must be satisfied before the technology can be applied in practice?"
+          "World Book Day provided another entry point for the lesson. When we encounter an intriguing scientific headline, we can keep asking: How was the research conducted? What evidence supports its conclusions? What conditions must be satisfied before the technology can be applied in practice?"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "What we hoped students would take away, therefore, was not merely the surprising idea of making “bread from air,” but a way of approaching emerging science: continuing to ask questions, seeking evidence, and recognizing the limits of scientific claims."
+          "So we hoped students would take away not just the surprising idea of making “bread from air,” but a way of approaching emerging science: keep asking questions, seek evidence, and recognize the limits of scientific claims."
         ]
       },
       {
@@ -2266,7 +2285,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "They remembered needles and pain. They knew that vaccination could sometimes be followed by a fever. Adults had told them that vaccines were given to help prevent illness."
+          "They remembered needles and pain. They knew that a fever could sometimes follow vaccination. Adults had told them vaccines helped prevent illness."
         ]
       },
       {
@@ -2278,13 +2297,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "We therefore did not begin with a slide defining what a vaccine is."
+          "So we didn't begin with a slide defining what a vaccine is."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The first two parts of the lesson allowed these experiences to enter the classroom before gradually introducing pathogens, the body's defenses, immune recognition, and why vaccination can help the body prepare in advance."
+          "The first two parts of the lesson let these experiences enter the classroom before gradually introducing pathogens, the body's defenses, immune recognition, and why vaccination helps the body prepare in advance."
         ]
       },
       {
@@ -2302,7 +2321,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "If a child already knows that someone can still become ill after vaccination, simply telling them that “vaccines prevent disease” does not automatically resolve their uncertainty."
+          "If a child already knows someone can still get sick after vaccination, simply telling them that “vaccines prevent disease” does not automatically resolve their uncertainty."
         ]
       },
       {
@@ -2321,7 +2340,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "design-6",
         "index": "3.3.3.2",
-        "title": "DESIGN："
+        "title": "DESIGN:"
       },
       {
         "type": "subheading",
@@ -2338,25 +2357,25 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The children were divided into groups and entered a game called “Sheriff Catches the Bad Guys.”"
+          "We divided the children into groups and started a game called “Sheriff Catches the Bad Guys.”"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Two rounds focused on the same recognition task. In one round, students had no clear clues from a “wanted poster.” In the other, additional distinguishing information was provided to help them make decisions."
+          "Two rounds focused on the same recognition task. In one round, students had no clear clues from a “wanted poster.” In the other, we provided additional distinguishing information to help them make decisions."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Students had to make choices based on the clues available to them and explain their reasoning to their group members."
+          "Students made choices based on the clues available to them and explained their reasoning to their group members."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "A clear difference emerged between the two rounds. After the wanted-poster clues were introduced, students collectively identified more targets."
+          "A clear difference emerged between the two rounds. After we introduced the wanted-poster clues, students collectively identified more targets."
         ]
       },
       {
@@ -2368,7 +2387,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The result meant that “preparation in advance” was no longer simply something explained by the teacher. It became an experience students could directly compare through their own decisions across the two rounds."
+          "The result meant that “preparation in advance” was no longer something the teacher explained. Students could compare their experiences directly through their own decisions across the two rounds."
         ]
       },
       {
@@ -2386,13 +2405,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "A compelling story can make a children's lesson easier to enter. For precisely this reason, the limitations of a metaphor must be designed alongside the metaphor itself."
+          "A compelling story can make a children's lesson easier to enter. For this reason, you must design a metaphor's limitations alongside the metaphor itself."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The sheriff, the bad guys, and the wanted poster make advance recognition intuitive. However, the sheriff is not a complete representation of an immune cell, and the bad guys cannot capture all the complex relationships among pathogens, infection, and disease."
+          "The sheriff, the bad guys, and the wanted poster make advance recognition intuitive. However, the sheriff does not fully represent an immune cell, and the bad guys cannot capture all the complex relationships among pathogens, infection, and disease."
         ]
       },
       {
@@ -2404,7 +2423,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Vaccination can help the immune system prepare for recognition and defense, but this does not mean that infection will never occur after vaccination, nor does it mean that all diseases can be prevented through the same mechanism."
+          "Vaccination can help the immune system prepare to recognize and defend against pathogens. Still, it does not mean infection will never occur after vaccination, nor does it mean the same mechanism can prevent all diseases."
         ]
       },
       {
@@ -2416,13 +2435,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "If an analogy helps students remember something but cannot guide them back toward a more accurate explanation, it may remain no more than a memorable story."
+          "If an analogy helps students remember something but cannot guide them toward a more accurate explanation, it may remain just a memorable story."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Education needs to accomplish more. It should allow learners to enter through a story, while also helping them move beyond that story when a more precise scientific understanding is needed."
+          "Education needs to accomplish more. It should let learners enter through a story while also helping them move beyond it when a more precise scientific understanding is needed."
         ]
       },
       {
@@ -2494,14 +2513,14 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "What this lesson ultimately made clear to us was that age-appropriate education is not simply about making scientific content easier. It is about finding a path that children can enter, along which they can make judgments, and through which they can ultimately return to the boundaries of scientific explanation."
+          "This lesson ultimately made clear that age-appropriate education is not simply about making scientific content easier. It is about finding a path children can enter, along which they can make judgments and ultimately return to the boundaries of scientific explanation."
         ]
       },
       {
         "type": "subheading",
         "id": "continuation-3",
         "index": "3.3.3.4",
-        "title": "CONTINUATION："
+        "title": "CONTINUATION:"
       },
       {
         "type": "subheading",
@@ -2518,13 +2537,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Its four-part structure, wanted-poster game, return to scientific explanation, and teaching materials were organized into a reusable Teaching Pack."
+          "We organized its four-part structure, wanted-poster game, return to scientific explanation, and teaching materials into a reusable Teaching Pack."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "This allowed the activity to move beyond a single teaching session and become an educational resource that teachers or future teams could deploy again."
+          "This let the activity move beyond a single teaching session and become an educational resource teachers or future teams could deploy again."
         ]
       },
       {
@@ -2560,7 +2579,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Different teachers can replace the examples, visual materials, and interactive activities while continuing to use this underlying approach."
+          "Different teachers can replace the examples, visual materials, and interactive activities while keeping this underlying approach."
         ]
       },
       {
@@ -2607,19 +2626,19 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Xinghua Festival presented a very different set of time constraints from the classroom activities described earlier. Participants were constantly moving through the event. Some were willing to stop for only a few minutes, others stayed longer because they had specific questions, and some wanted to speak directly with a doctor from the outset."
+          "Xinghua Festival presented a very different set of time constraints from the classroom activities described earlier. Participants were constantly moving through the event. Some stopped for only a few minutes, others stayed longer because they had specific questions, and some wanted to speak directly with a doctor from the outset."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "To make breast health education suitable for this open public setting, we needed to transform a relatively long learning pathway into an on-site experience that people could enter quickly while still having opportunities to explore more deeply."
+          "To make breast health education work in this open public setting, we needed to turn a relatively long learning pathway into an on-site experience people could enter quickly while still allowing deeper exploration."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The microscopic breast world developed in Breast Guardian provided the content foundation for this activity, but a lengthy narrative game could not simply be transferred to a festival setting."
+          "The microscopic breast world developed in Breast Guardian provided the content foundation for this activity, but we couldn't simply transfer a lengthy narrative game to a festival setting."
         ]
       },
       {
@@ -2631,7 +2650,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Knowledge that had previously been encountered through the progression of a game narrative was thus transformed into a printed resource suited to public spaces."
+          "We transformed knowledge previously encountered through the progression of a game narrative into a printed resource suited to public spaces."
         ]
       },
       {
@@ -2644,7 +2663,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "design-7",
         "index": "3.4.1.2",
-        "title": "DESIGN："
+        "title": "DESIGN:"
       },
       {
         "type": "subheading",
@@ -2661,7 +2680,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Participants first colored bookmarks, then moved on to a breast health quiz. After completing five core questions, they could leave their own messages on sticky notes or ribbons at the Care Wall."
+          "Participants first colored bookmarks, then took a breast health quiz. After completing five core questions, they could leave their own messages on sticky notes or ribbons at the Care Wall."
         ]
       },
       {
@@ -2679,13 +2698,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Participants did not have to complete every activity before asking a question. They could choose where to spend their time according to their interests, schedules, and actual needs."
+          "Participants did not have to complete every activity before asking a question. They could choose where to spend their time based on their interests, schedules, and needs."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "This design preserved an important aspect of Self-Care: Education can provide direction while allowing learners to retain control over how they enter and navigate the learning experience."
+          "This design preserved an important aspect of Self-Care: education can provide direction while letting learners retain control over how they enter and navigate the learning experience."
         ]
       },
       {
@@ -2722,13 +2741,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Other participants asked about health risks on behalf of their mothers, friends, and family members. Some older visitors brought information about treatments or health products they had encountered through unofficial sources and wanted to know how to evaluate its reliability."
+          "Other participants asked about health risks for their mothers, friends, and family members. Some older visitors shared information about treatments or health products they had encountered through unofficial sources and asked how to evaluate their reliability."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "These questions involved scientific knowledge, fear, and real-life relationships at the same time. Simply adding another educational display board would not have been enough to address them fully."
+          "These questions involved scientific knowledge, fear, and real-life relationships. Simply adding another educational display board would not have fully addressed them."
         ]
       },
       {
@@ -2740,7 +2759,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Faculty advisors and clinical doctors also participated in on-site consultations, allowing questions requiring further professional judgment to be directed toward appropriate medical support."
+          "Faculty advisors and clinical doctors also participated in on-site consultations, allowing us to direct questions requiring further professional judgment to appropriate medical support."
         ]
       },
       {
@@ -2752,19 +2771,19 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Access therefore came to mean more than distributing educational materials."
+          "Access therefore meant more than distributing educational materials."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The tri-fold brochure allowed information to be taken home. Team members provided explanations. Doctors could respond to questions requiring further expertise. Participants could also understand where to seek help when on-site education could no longer provide an adequate answer."
+          "The tri-fold brochure let people take information home. Team members provided explanations. Doctors could answer questions that required further expertise. Participants could also understand where to seek help when on-site education could no longer provide an adequate answer."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "By connecting resources, understanding, and professional support within the same public space, knowledge had a genuine opportunity to move from something merely displayed to something people could actually use."
+          "By connecting resources, understanding, and professional support in the same public space, knowledge had a real chance to move from something merely displayed to something people could use."
         ]
       },
       {
@@ -2776,7 +2795,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The messages left on the Care Wall further shaped the direction of the event."
+          "The messages left on the Care Wall further shaped the event's direction."
         ]
       },
       {
@@ -2794,7 +2813,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "This made the outward expansion of Recursive Care particularly visible within the activity."
+          "This made Recursive Care's outward expansion particularly visible in the activity."
         ]
       },
       {
@@ -2824,7 +2843,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Through their questions, family experiences, and messages on the Care Wall, they participated and contributed, allowing the voices of the community to become part of the public health education experience."
+          "Through their questions, family experiences, and messages on the Care Wall, they participated and contributed, allowing the community's voices to become part of the public health education experience."
         ]
       },
       {
@@ -2837,7 +2856,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "continuation-4",
         "index": "3.4.1.4",
-        "title": "CONTINUATION ："
+        "title": "CONTINUATION:"
       },
       {
         "type": "subheading",
@@ -2860,25 +2879,25 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Participants were no longer gathering around a stationary booth. Instead, they were moving along a running route and passing through different locations."
+          "Participants were no longer gathering around a stationary booth. Instead, they moved along a running route and passed through different locations."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "To adapt to these new conditions of time and space, we divided the content of the tri-fold brochure into separate checkpoints along the route, where different team members provided explanations and interactive activities."
+          "To adapt to these new time and space conditions, we divided the tri-fold brochure content into checkpoints along the route, where different team members provided explanations and interactive activities."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Thus, from the digital world of Breast Guardian to the tri-fold brochures at Xinghua Festival and finally to the checkpoints of Health Run, the same knowledge was not simply reproduced and redistributed."
+          "Thus, from the digital world of Breast Guardian to the tri-fold brochures at Xinghua Festival and finally to the Health Run checkpoints, we didn't simply reproduce and redistribute the same knowledge."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Its medium and the actions through which participants encountered it were redesigned for each new setting."
+          "We redesigned the medium and the ways participants encountered it in each new setting."
         ]
       },
       {
@@ -2890,7 +2909,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "What needed to be preserved was the underlying knowledge, its relationships, and its educational purpose. The specific format could be redesigned in response to the real context."
+          "We preserved the underlying knowledge, its relationships, and its educational purpose. We could redesign the specific format to fit the real context."
         ]
       },
       {
@@ -2941,19 +2960,19 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The foundational knowledge, information about risks and warning signs, healthy behaviors, and pathways to professional medical support developed for the tri-fold brochure were all retained."
+          "We retained the foundational knowledge, information on risks and warning signs, healthy behaviors, and pathways to professional medical support developed for the tri-fold brochure."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "However, May 1 presented a different public setting."
+          "However, May 1 took place in a different public setting."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Participants were completing a 5.4 km health run. They were unlikely to remain in front of a display board or table for an extended period. Instead, learning took place through continuous movement, brief stops, and repeated departures."
+          "Participants were completing a 5.4 km health run. They were unlikely to stay in front of a display board or table for long. Instead, learning took place through continuous movement, brief stops, and repeated departures."
         ]
       },
       {
@@ -3014,19 +3033,19 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "For many younger participants, breast health was not a distant subject concerned only with disease. It was connected to their daily routines, emotions, exercise habits, and ways of understanding their own bodies."
+          "For many younger participants, breast health was not a distant subject concerned only with disease. It connected to their daily routines, emotions, exercise habits, and how they understood their own bodies."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "We therefore did not design the checkpoints as a simple relay of knowledge quizzes."
+          "We therefore did not design the checkpoints as simple knowledge-relay quizzes."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "While introducing breast health information, team members also responded to questions raised by participants along the route."
+          "While introducing breast health information, team members also answered questions participants raised along the route."
         ]
       },
       {
@@ -3038,7 +3057,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Participants could gain information about health risks and healthy behaviors while also relating that information to their own everyday choices."
+          "Participants could learn about health risks and healthy behaviors while also connecting that information to their everyday choices."
         ]
       },
       {
@@ -3051,7 +3070,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "design-8",
         "index": "3.4.2.3",
-        "title": "DESIGN："
+        "title": "DESIGN:"
       },
       {
         "type": "subheading",
@@ -3068,13 +3087,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "At Xinghua Festival, a tri-fold brochure could be unfolded, read, examined, and taken home."
+          "At Xinghua Festival, participants could unfold, read, examine, and take home a tri-fold brochure."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Along the running route, however, information had to be divided into shorter segments. Participants' physical movement began to determine when and in what order learning occurred."
+          "Along the running route, however, information had to be divided into shorter segments. Participants' movement determined when and in what order they learned."
         ]
       },
       {
@@ -3098,13 +3117,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "What truly shaped the design was the manner of movement."
+          "Movement shaped the design."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Knowledge no longer waited for participants to remain in one place and finish reading. Instead, it was divided, revisited, and reconnected as participants moved."
+          "Knowledge no longer waited for participants to remain in one place and finish reading. Instead, participants divided, revisited, and reconnected knowledge as they moved."
         ]
       },
       {
@@ -3123,7 +3142,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "continuation-5",
         "index": "3.4.2.4",
-        "title": "CONTINUATION："
+        "title": "CONTINUATION:"
       },
       {
         "type": "subheading",
@@ -3134,7 +3153,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "From Breast Guardian to Xinghua Festival and then to Health Run, we gradually established a clear relationship of Migration."
+          "From Breast Guardian to Xinghua Festival and then to Health Run, we gradually established a clear migration relationship."
         ]
       },
       {
@@ -3158,7 +3177,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The core knowledge was preserved, while the actions through which participants engaged with it changed according to the context."
+          "The core knowledge was preserved, while participants' ways of engaging with it changed with context."
         ]
       },
       {
@@ -3176,7 +3195,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Instead, elements that remained useful were preserved, while new ways of engaging with the content were introduced to suit the needs of each community."
+          "Instead, we preserved elements that remained useful while introducing new ways of engaging with the content to suit each community's needs."
         ]
       },
       {
@@ -3188,7 +3207,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "What changed was how that knowledge was organized and experienced."
+          "What changed was how we organized and experienced that knowledge."
         ]
       },
       {
@@ -3287,14 +3306,14 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The three activities did not serve identical purposes. Together, they provided different ways of entering science."
+          "The three activities served different purposes. Together, they offered different ways to enter science."
         ]
       },
       {
         "type": "subheading",
         "id": "design-9",
         "index": "3.5.1.2",
-        "title": "DESIGN："
+        "title": "DESIGN:"
       },
       {
         "type": "subheading",
@@ -3305,7 +3324,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Molecular Rhythm drew directly from the experimental content of our Virtual Laboratory."
+          "Molecular Rhythm drew directly from our Virtual Laboratory's experimental content."
         ]
       },
       {
@@ -3323,13 +3342,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Experimental interactions that had originally taken place through clicks on a screen were therefore given a new physical form. The sequence of experimental procedures was experienced again through rhythm and bodily coordination."
+          "Experimental interactions that had originally taken place through clicks on a screen therefore took on a new physical form. Participants experienced the experimental procedure sequence again through rhythm and bodily coordination."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "What we preserved was the order and relationship of the experimental steps."
+          "We preserved the order and relationship of the experimental steps."
         ]
       },
       {
@@ -3347,7 +3366,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Here, Access meant increasing the number of possible entry points. The same scientific content could be approached through a physical laboratory, a digital platform, or even a bodily movement lasting only a few dozen seconds."
+          "Here, Access meant increasing the number of possible entry points. Participants could approach the same scientific content through a physical laboratory, a digital platform, or even a bodily movement lasting only a few dozen seconds."
         ]
       },
       {
@@ -3372,13 +3391,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Transcript Plan used the directional flow of the central dogma as the basis for a creative activity. Musical notes were arranged into sequences, which participants then interpreted and colored to express their emotions."
+          "Transcript Plan used the central dogma's directional flow as the basis for a creative activity. Participants arranged musical notes into sequences, then interpreted and colored them to express their emotions."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "To achieve this, we preserved the structural relationship in which information is read in a particular direction and gives rise to a new form of expression. At the same time, participants were free to complete their bookmarks according to their own feelings."
+          "To achieve this, we preserved the structural relationship in which information is read in a particular direction and gives rise to a new form of expression. At the same time, participants could complete their bookmarks according to their own feelings."
         ]
       },
       {
@@ -3390,7 +3409,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Musical notes are not equivalent to nucleotides, and the interpretation of music does not simulate actual transcription and translation inside a cell."
+          "Musical notes are not equivalent to nucleotides, and interpreting music does not simulate transcription and translation inside a cell."
         ]
       },
       {
@@ -3408,7 +3427,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The same template could be completed in entirely different colors by different participants. The scientific structure provided a common starting point, while the finished creations preserved each person's emotions and individual expression."
+          "Different participants could complete the same template in entirely different colors. The scientific structure provided a common starting point, while the finished creations preserved each person's emotions and individual expression."
         ]
       },
       {
@@ -3432,7 +3451,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Participants could begin with a familiar song, discuss the everyday situations, emotions, or memories associated with it, and leave behind their own written reflections."
+          "Participants could start with a familiar song, discuss the everyday situations, emotions, or memories it evokes, and leave behind their own written reflections."
         ]
       },
       {
@@ -3456,20 +3475,20 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Mutual Care did not depend on a formal discussion-based lesson. It could begin with listening to another person's expression, responding to a melody, or sharing one's own understanding."
+          "Mutual Care didn't rely on a formal, discussion-based lesson. It could begin with listening to another person's expression, responding to a melody, or sharing one's own understanding."
         ]
       },
       {
         "type": "subheading",
         "id": "continuation-6",
         "index": "3.5.1.4",
-        "title": "CONTINUATION："
+        "title": "CONTINUATION:"
       },
       {
         "type": "subheading",
         "id": "a-mechanism-that-travelled",
         "index": "3.5.1.4.1",
-        "title": "A Mechanism That Travelled"
+        "title": "A Mechanism That Traveled"
       },
       {
         "type": "prose",
@@ -3492,7 +3511,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The core scientific relationships and interaction mechanism were preserved, while the context of use and the ways participants engaged with the activity could be rearranged to suit the new setting."
+          "The core scientific relationships and interaction mechanisms were preserved, while the context of use and how participants engaged with the activity could be rearranged to suit the new setting."
         ]
       },
       {
@@ -3504,7 +3523,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Migration emphasizes how educational content is redesigned for a new medium. Redeployment, by contrast, demonstrates how a relatively stable mechanism can be brought into another setting and used again."
+          "Migration emphasizes how educational content is redesigned for a new medium. Redeployment, by contrast, shows how a relatively stable mechanism can be brought into another setting and reused."
         ]
       },
       {
@@ -3516,7 +3535,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The music festival ultimately offered us a simple reminder: different people do not have to enter science through the same doorway."
+          "The music festival ultimately reminded us that people don't have to enter science through the same doorway."
         ]
       },
       {
@@ -3528,7 +3547,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "For Education, the value of creating additional entry points lies in allowing more people to begin with familiar perceptions and experiences, and then decide whether to continue toward a deeper scientific understanding."
+          "For Education, creating additional entry points lets more people start with familiar perceptions and experiences, then decide whether to continue toward a deeper scientific understanding."
         ]
       },
       {
@@ -3562,7 +3581,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "context-9",
         "index": "3.5.2.1",
-        "title": "CONTEXT:"
+        "title": "CONTEXT："
       },
       {
         "type": "subheading",
@@ -3579,7 +3598,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Children may understand breast health through their mothers, peers, and the bodily changes associated with growing up."
+          "Children may learn about breast health through their mothers, peers, and the bodily changes that come with growing up."
         ]
       },
       {
@@ -3615,7 +3634,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "This design continued a fundamental principle of Recursive Care: learners can begin with experiences that feel familiar before gradually developing an understanding of other people's circumstances."
+          "This design continued a fundamental principle of Recursive Care: learners can begin with familiar experiences before gradually developing an understanding of other people's circumstances."
         ]
       },
       {
@@ -3635,7 +3654,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "design-10",
         "index": "3.5.2.2",
-        "title": "DESIGN："
+        "title": "DESIGN:"
       },
       {
         "type": "subheading",
@@ -3652,7 +3671,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Players begin with conflicts drawn from everyday life and enter the brain's memory center, where they confront choices made in the past."
+          "Players begin with everyday conflicts and enter the brain's memory center, where they confront past choices."
         ]
       },
       {
@@ -3670,13 +3689,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Choices in the story are always shaped by real-life circumstances."
+          "Real-life circumstances always shape the story's choices."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "A person may understand that staying up late can be harmful to health while still facing work that must be completed the next day. Someone may recognize the importance of medical examinations while worrying about the burden that illness could place on their family."
+          "A person may understand that staying up late can harm their health while still having work to complete the next day. Someone may recognize the importance of medical examinations while worrying about the burden that illness could place on their family."
         ]
       },
       {
@@ -3730,7 +3749,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "This design allows players to deliberately experiment with different choices and return to the same questions after seeing their consequences."
+          "This design lets players experiment with different choices and return to the same questions after seeing their consequences."
         ]
       },
       {
@@ -3742,7 +3761,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "> “I deliberately chose the wrong options to see the bad endings, and ended up remembering those consequences.” > >"
+          "> “I deliberately chose the wrong options to see the bad endings, and ended up remembering those consequences.”"
         ]
       },
       {
@@ -3754,19 +3773,19 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Mistakes can leave behind experiences, while the opportunity to choose again allows those experiences to inform subsequent judgments."
+          "Mistakes can leave behind experiences, while the chance to choose again lets those experiences inform later judgments."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The three life-stage routes are also not restricted according to the player's actual age."
+          "The player's actual age does not restrict the three life-stage routes."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "A familiar life stage may provide an initial entry point, but the other two routes remain available, allowing players to explore health decisions shaped by different ages, family relationships, and real-world constraints."
+          "A familiar life stage may provide an initial entry point. Still, the other two routes remain available, allowing players to explore health decisions shaped by different ages, family relationships, and real-world constraints."
         ]
       },
       {
@@ -3802,7 +3821,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The average gameplay duration was 42.5 minutes, with a standard deviation of 9.8 minutes and a range of 28–65 minutes."
+          "The average gameplay duration was 42.5 minutes (SD = 9.8; range = 28–65 minutes)."
         ]
       },
       {
@@ -3820,7 +3839,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Except for the question concerning appropriate professional medical care, which already had a relatively high pre-test score, the pre-test to post-test differences for the other five knowledge questions all reached p < 0.05."
+          "Except for the question on appropriate professional medical care, which already had a relatively high pre-test score, the other five knowledge questions all showed pre-test to post-test differences at p < 0.05."
         ]
       },
       {
@@ -3838,7 +3857,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The mean self-reported understanding of the role of synthetic biology in breast cancer treatment increased from 3.04 to 3.63, while perceptions of the potential value of RNA-based medicines, including circRNA, increased from 2.71 to 3.46."
+          "The mean self-reported understanding of the role of synthetic biology in breast cancer treatment increased from 3.04 to 3.63. In contrast, perceptions of the potential value of RNA-based medicines, including circRNA, increased from 2.71 to 3.46."
         ]
       },
       {
@@ -3862,7 +3881,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "To make this evidence accessible beyond a written summary, we developed an interactive Breast Guardian Evidence Room, bringing together the paired questionnaire results, open-ended feedback, key findings, and limitations of the evidence."
+          "To make this evidence accessible beyond a written summary, we developed an interactive Breast Guardian Evidence Room that brings together paired questionnaire results, open-ended feedback, key findings, and evidence limitations."
         ]
       },
       {
@@ -3900,7 +3919,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "[Explore our games](/games)"
+          "[→ Explore Our Games](/games)"
         ]
       },
       {
@@ -3919,7 +3938,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "context-10",
         "index": "3.5.3.1",
-        "title": "CONTEXT:"
+        "title": "CONTEXT："
       },
       {
         "type": "subheading",
@@ -3930,7 +3949,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The Education offered by Letters to My Body begins at a different pace from classrooms and games."
+          "The education Letters to My Body offers begins at a different pace than classrooms and games."
         ]
       },
       {
@@ -3960,7 +3979,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Images can quickly establish recognizable objects, while a novel allows certain meanings to remain open."
+          "Images can quickly establish recognizable objects, while a novel leaves certain meanings open."
         ]
       },
       {
@@ -3972,14 +3991,14 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "For Letters to My Body, Self-Care therefore becomes a position from which to read: science and disease can first be approached through how a person experiences their own body, while personal experience remains part of the process of understanding."
+          "For Letters to My Body, Self-Care therefore becomes a position from which to read: science and disease can first be approached through how a person experiences their own body. In contrast, personal experience remains part of understanding."
         ]
       },
       {
         "type": "subheading",
         "id": "design-11",
         "index": "3.5.3.2",
-        "title": "DESIGN："
+        "title": "DESIGN:"
       },
       {
         "type": "subheading",
@@ -3990,13 +4009,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Literature can bring people closer to a subject, but the fictional bodily world must still remain connected to accurate medical explanations."
+          "Literature can bring people closer to a subject, but the fictional bodily world must remain connected to accurate medical explanations."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "To preserve both the integrity of the narrative and its scientific boundaries, we developed a system of medical footnotes."
+          "To preserve both the narrative's integrity and its scientific boundaries, we developed a system of medical footnotes."
         ]
       },
       {
@@ -4020,7 +4039,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Emotion provides a reason to approach a question, while medical explanations help readers refine their understanding."
+          "Emotion gives readers a reason to approach a question, while medical explanations help them refine their understanding."
         ]
       },
       {
@@ -4032,13 +4051,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Within the earlier Community & Educational Functions section, Letters to My Body represents precisely this combination."
+          "In the earlier Community & Educational Functions section, Letters to My Body embodies this combination."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "It first establishes a connection between readers and scientific questions through narrative, then leaves a reliable pathway into medical knowledge for those who wish to explore further."
+          "It first connects readers to scientific questions through narrative, then offers a reliable pathway into medical knowledge for those who want to explore further."
         ]
       },
       {
@@ -4050,25 +4069,25 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Within the novel, the Unmarked became an important figure connecting literature with the science of our project."
+          "In the novel, the Unmarked becomes an important figure connecting literature to the science of our project."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Triple-negative breast cancer cells lack several commonly used receptor markers. In the novel, this scientific characteristic was transformed into the image of beings who had “lost the marks of their identity.”"
+          "Triple-negative breast cancer cells lack several commonly used receptor markers. In the novel, this scientific characteristic becomes the image of beings who have “lost the marks of their identity.”"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "This image first brings receptor absence, difficulties of recognition, and the circumstances of disease into the story."
+          "This image introduces receptor absence, recognition difficulties, and the circumstances of disease into the story."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The medical footnotes then return readers to the scientific background of TNBC."
+          "The medical footnotes then return readers to TNBC's scientific background."
         ]
       },
       {
@@ -4080,13 +4099,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The Unmarked are connected to disease mechanisms, but readers may also interpret them as a metaphor for identity, namelessness, vulnerability, and the experience of being defined by others."
+          "The Unmarked connect to disease mechanisms, but readers may also interpret them as a metaphor for identity, namelessness, vulnerability, and being defined by others."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Scientific explanations establish the medical boundaries, while literature allows the same image to carry the experiences of different readers."
+          "Scientific explanations set the medical boundaries, while literature lets the same image carry different readers' experiences."
         ]
       },
       {
@@ -4128,7 +4147,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Others were more interested in the order and interdependence of the body's internal world."
+          "Others focused more on the order and interdependence of the body's internal world."
         ]
       },
       {
@@ -4146,13 +4165,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Some readers reflected on vulnerability, self-love, and caring for themselves. Others were more interested in the relationship between being defined and having no name."
+          "Some readers reflected on vulnerability, self-love, and self-care. Others focused more on the relationship between being defined and having no name."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The characters and passages that attracted readers' attention did not always match the creators' original expectations."
+          "The characters and passages that drew readers' attention didn't always match the creators' original expectations."
         ]
       },
       {
@@ -4234,7 +4253,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Synthetic biology is increasingly able to answer questions about how life can be changed."
+          "Synthetic biology increasingly answers questions about how we can change life."
         ]
       },
       {
@@ -4283,7 +4302,7 @@ const rawSections: WikiSection[] = [
         "type": "subheading",
         "id": "design-12",
         "index": "3.5.4.2",
-        "title": "DESIGN："
+        "title": "DESIGN:"
       },
       {
         "type": "subheading",
@@ -4294,7 +4313,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Vaccines, gene therapy, and ecological intervention involving water hyacinths became recurring examples throughout the debate."
+          "Vaccines, gene therapy, and ecological interventions involving water hyacinths recurred throughout the debate."
         ]
       },
       {
@@ -4324,7 +4343,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The side favoring active intervention placed greater emphasis on the responsibility to act."
+          "The side favoring active intervention emphasized the responsibility to act."
         ]
       },
       {
@@ -4342,7 +4361,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "These exchanges moved the discussion beyond factual recall toward the use of evidence and judgments about boundaries."
+          "These exchanges moved the discussion beyond factual recall toward evidence and judgments about boundaries."
         ]
       },
       {
@@ -4373,7 +4392,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Throughout the debate, students needed to respond to opposing arguments, revise their own definitions, and explain why a principle might be appropriate in one case but encounter difficulties in another."
+          "Throughout the debate, students needed to respond to opposing arguments, revise their definitions, and explain why a principle might fit one case but face difficulties in another."
         ]
       },
       {
@@ -4391,13 +4410,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "We did not define reaching a final consensus as the goal of the activity."
+          "We did not define reaching a final consensus as the activity's goal."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The ability to seek evidence, identify value assumptions, understand how different conclusions emerge, and provide reasons for one's provisional position is itself an important part of participating in scientific and social issues."
+          "The ability to seek evidence, identify value assumptions, understand how different conclusions emerge, and support one's provisional position is itself an important part of engaging with scientific and social issues."
         ]
       },
       {
@@ -4409,7 +4428,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Their differing perspectives also opened directions for discussion that our team could not have fully provided in advance."
+          "Their differing perspectives also opened discussion directions our team could not have fully provided in advance."
         ]
       },
       {
@@ -4421,13 +4440,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The Virtual Laboratory allowed students to enter experimental processes through direct operations."
+          "The Virtual Laboratory let students engage in experimental processes through direct action."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Breast Guardian allowed choices to produce consequences within a narrative."
+          "Breast Guardian let students make choices that produced consequences within a narrative."
         ]
       },
       {
@@ -4499,7 +4518,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Diagrams, visual articles, and knowledge-based posts primarily help learners establish conceptual understanding. Narratives, picture books, and medical humanities content can bring scientific questions closer to personal experiences. Games, comments, polls, creative activities, and collaborative editing further increase opportunities for learners to participate directly."
+          "Diagrams, visual articles, and knowledge-based posts primarily help learners establish conceptual understanding. Narratives, picture books, and medical humanities content can connect scientific questions to personal experience. Games, comments, polls, creative activities, and collaborative editing further increase opportunities for learners to participate directly."
         ]
       },
       {
@@ -4565,7 +4584,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Finally, from August 3 to August 23, Pass It On brought together reflections on the year's activities and encouraged the continuation of the relay into another season."
+          "Finally, from August 3 to August 23, Pass It On brought together reflections on the year's activities and encouraged the relay to continue into another season."
         ]
       },
       {
@@ -4583,7 +4602,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Early content was primarily organized by our team to communicate scientific information. Over time, an increasing number of questions began to give readers more opportunities to express their own ideas."
+          "Our team primarily organized early content to communicate scientific information. Over time, more questions gave readers opportunities to express their own ideas."
         ]
       },
       {
@@ -4629,7 +4648,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Some people read an educational post and leave. Others ask questions in the comments, participate in polls, or submit their own ideas and creative works."
+          "Some people read an educational post and leave. Others ask questions in the comments, take part in polls, or submit their own ideas and creative work."
         ]
       },
       {
@@ -4641,7 +4660,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "This allows participation to be described through observable actions rather than treated as a single undifferentiated category."
+          "This lets us describe participation through observable actions rather than treating it as a single, undifferentiated category."
         ]
       },
       {
@@ -4665,7 +4684,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "When these contributions were selected, organized, and published again by the team, a complete pathway of Respond → Contribute → Re-publication emerged."
+          "When the team selected, organized, and republished these contributions, a complete pathway of Respond → Contribute → Re-publication emerged."
         ]
       },
       {
@@ -4701,7 +4720,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Long-term digital participation did not take place exclusively on social media platforms."
+          "Long-term digital participation didn't happen exclusively on social media platforms."
         ]
       },
       {
@@ -4713,7 +4732,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "For topics requiring learners to establish a knowledge structure quickly, we made greater use of diagrams and long-form visual content."
+          "For topics that require learners to build a knowledge structure quickly, we used more diagrams and long-form visual content."
         ]
       },
       {
@@ -4737,13 +4756,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The number of formats has no inherent value. A medium is worth retaining only when it serves a clear educational function."
+          "The number of formats has no inherent value. Retain a medium only when it serves a clear educational function."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "An important judgment established in our earlier design continues to apply here: images, writing, games, and digital tools change how learners approach educational content."
+          "An important judgment from our earlier design still applies here: images, writing, games, and digital tools change how learners approach educational content."
         ]
       },
       {
@@ -4771,13 +4790,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Lightweight digital tools serve shorter learning tasks that learners can return to repeatedly."
+          "Lightweight digital tools support shorter learning tasks that learners can revisit repeatedly."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Bio Memory Match is built around memory-matching mechanics. It supports switching between Chinese and English, accommodates one to four players, and offers different game sizes with 8, 16, 20, or 36 cards."
+          "Bio Memory Match centers on memory-matching mechanics. It supports switching between Chinese and English, accommodates one to four players, and offers different game sizes with 8, 16, 20, or 36 cards."
         ]
       },
       {
@@ -4789,7 +4808,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Players must rely on spatial memory to locate corresponding cards. As the difficulty increases, they need to remember more card positions and associated information simultaneously."
+          "Players must use spatial memory to locate matching cards. As difficulty increases, players must remember more card positions and associated information at once."
         ]
       },
       {
@@ -4813,7 +4832,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Players must remember not only the cards they reveal themselves but also information exposed by other players, using it to adjust their subsequent decisions."
+          "Players must remember not only the cards they reveal but also what other players reveal, using that information to adjust their subsequent decisions."
         ]
       },
       {
@@ -4831,13 +4850,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The digital version supports bilingual use, adjustable difficulty, and independent practice, while the physical version is more suitable for face-to-face participation among multiple players."
+          "The digital version supports bilingual use, adjustable difficulty, and independent practice, while the physical version is better suited to face-to-face participation among multiple players."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "For a tool of this kind, we do not need to expand it into a separate, large-scale Education project."
+          "For a tool like this, we don't need to expand it into a separate, large-scale Education project."
         ]
       },
       {
@@ -4856,7 +4875,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "[Explore our games](/games)"
+          "[→ Explore Our Games](/games)"
         ]
       },
       {
@@ -4910,13 +4929,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "If they use a vaccine, the immediate crisis can be temporarily resolved. However, the used vaccine enters the Immune Memory Zone and does not return to the deck."
+          "If they use a vaccine, they can temporarily resolve the immediate crisis. However, the used vaccine enters the Immune Memory Zone and does not return to the deck."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Protection is therefore not a button that can be pressed indefinitely. It is a limited resource."
+          "Protection is not a button you can press indefinitely. It is a limited resource."
         ]
       },
       {
@@ -4946,13 +4965,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The interface also displays the number of remaining Tumor Outbreak cards and the current size of the deck."
+          "The interface also displays the number of remaining Tumor Outbreak cards and the deck's current size."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Risk is therefore no longer entirely hidden. It becomes something players can observe, compare, and incorporate into their decisions."
+          "Risk is therefore no longer entirely hidden. Players can observe, compare, and incorporate it into their decisions."
         ]
       },
       {
@@ -4982,7 +5001,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "[Explore our games](/games)"
+          "[→ Explore Our Games](/games)"
         ]
       },
       {
@@ -5000,7 +5019,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Scientific knowledge published by the team can also find new forms of expression through readers' responses."
+          "Readers' responses can also give the team's scientific knowledge new forms of expression."
         ]
       },
       {
@@ -5027,7 +5046,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "What truly matters is whether these inputs inform what happens next: how they are interpreted, whether they lead to changes in a course, tool, or approach to implementation, and whether those changes subsequently return to real settings for further use or examination."
+          "What truly matters is whether these inputs inform what happens next: how they are interpreted, whether they lead to changes in a course, tool, or implementation approach, and whether those changes then return to real settings for further use or examination."
         ]
       },
       {
@@ -5085,7 +5104,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "When we compared these two experiences, we found that the underlying problem was concentrated at the same point: before performing their first operation, learners had not yet developed a sufficient understanding of the experimental purpose, environment, materials, and safety boundaries."
+          "When we compared these two experiences, we found the same underlying problem: before performing their first operation, learners had not yet developed a sufficient understanding of the experimental purpose, environment, materials, and safety boundaries."
         ]
       },
       {
@@ -5121,7 +5140,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "It was the responsibility of the designers to interpret these observations and translate that interpretation into a concrete change that could be used again."
+          "The designers were responsible for interpreting these observations and translating that interpretation into a concrete change they could use again."
         ]
       },
       {
@@ -5169,13 +5188,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "What changed that day was the teaching route, the pace of instruction, and the role the tool played within the classroom."
+          "That day, the teaching route, the pace of instruction, and the tool's role in the classroom changed."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The revised route was immediately introduced to the same group of students. As they progressed through the complete workflow, they continued asking which experimental steps could be affected by particular design choices and where they should begin investigating when an experiment failed."
+          "The revised route was immediately introduced to the same group of students. As they progressed through the full workflow, they kept asking which experimental steps particular design choices could affect and where to start investigating when an experiment failed."
         ]
       },
       {
@@ -5217,13 +5236,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The progression from Breast Guardian → Xinghua Festival → Health Run formed a clear example of Migration."
+          "The progression from Breast Guardian → Xinghua Festival → Health Run clearly illustrates migration."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "When the breast health knowledge and relationships between risks and actions developed in the game entered Xinghua Festival, they were reorganized into a tri-fold brochure that allowed participants to locate information quickly, receive face-to-face explanations, and take the material home."
+          "When the breast health knowledge and relationships between risks and actions developed in the game entered Xinghua Festival, we reorganized them into a tri-fold brochure that let participants find information quickly, receive face-to-face explanations, and take the material home."
         ]
       },
       {
@@ -5235,7 +5254,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "The core knowledge was preserved, while the actions through which participants encountered it changed according to the setting."
+          "The core knowledge was preserved, while the ways participants encountered it changed with the setting."
         ]
       },
       {
@@ -5247,13 +5266,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "After the initial connection established through Winter Outreach, a teacher in Hailun independently introduced the Virtual Laboratory into the classroom without our team being present, and continued using it during subsequent self-study periods."
+          "After the initial connection through Winter Outreach, a teacher in Hailun independently introduced the Virtual Laboratory into the classroom without our team present and continued using it during subsequent self-study periods."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The most important change occurred on the side of the users."
+          "The most important change happened on the users' side."
         ]
       },
       {
@@ -5265,13 +5284,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Molecular Rhythm provided an example of Redeployment."
+          "Molecular Rhythm exemplified Redeployment."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The fixed rhythmic sequence and core interactive mechanism used during the campus music festival in May were brought into a new setting at CCiC / SynBioPunk on July 25."
+          "We brought the fixed rhythmic sequence and core interactive mechanism used during the campus music festival in May into a new setting at CCiC / SynBioPunk on July 25."
         ]
       },
       {
@@ -5335,19 +5354,19 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "In the Virtual Laboratory, the use of the program in Pilu Town allowed a round of Test to generate new Learn outcomes, which subsequently informed the next round of Design."
+          "In the Virtual Laboratory, using the program in Pilu Town generated a Test round that produced new Learn outcomes, which then informed the next Design round."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "In Synbio Classroom, the real classroom likewise provided information beyond what had been anticipated in the original plan, leading to an immediate adjustment of the teaching design."
+          "In Synbio Classroom, the real classroom likewise provided information beyond what the original plan anticipated, leading to an immediate adjustment of the teaching design."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Here, DBTL describes a concrete pathway for iteration. It allows information generated by participants to inform subsequent design decisions."
+          "Here, DBTL describes a concrete pathway for iteration. It lets participants' generated information inform subsequent design decisions."
         ]
       },
       {
@@ -5377,13 +5396,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "At this point, the three strands of design discussed earlier come together again."
+          "At this point, the three design strands discussed earlier come together again."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Recursive Care helps us determine whose experiences, relationships, and conditions of access should continue to be preserved as Education expands."
+          "Recursive Care helps us determine whose experiences, relationships, and access conditions should continue to be preserved as Education expands."
         ]
       },
       {
@@ -5431,7 +5450,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "On July 12, during a discussion at the CCiF Poster Session, Ambassador Teri raised a question that had a direct influence on our work."
+          "On July 12, during a discussion at the CCiF Poster Session, Ambassador Teri raised a question that directly influenced our work."
         ]
       },
       {
@@ -5455,7 +5474,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Instead, we distinguished between participate, contribute, and shape."
+          "Instead, we distinguished between participating, contributing, and shaping."
         ]
       },
       {
@@ -5485,7 +5504,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "When we emphasize learners' experiences, bodies, and agency, can these genuinely serve as a sound starting point for the design of medical education?"
+          "When we emphasize learners' experiences, bodies, and agency, can these genuinely serve as a sound starting point for designing medical education?"
         ]
       },
       {
@@ -5497,7 +5516,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Professor Yu is a professor at the School of Public Health, Jilin University, a Distinguished Teaching Expert of Jilin Province, and a member of the Ministry of Education's Teaching Steering Committee for Medical Humanities Education and General Practice. He has long been involved in teaching and research related to medical education and the medical humanities."
+          "Professor Yu is a professor at the School of Public Health, Jilin University, a Distinguished Teaching Expert of Jilin Province, and a member of the Ministry of Education's Teaching Steering Committee for Medical Humanities Education and General Practice. He has long taught and researched medical education and the medical humanities."
         ]
       },
       {
@@ -5515,7 +5534,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "> “Medical education is directed first toward real people, rather than abstract recipients of knowledge.” > >"
+          "> “Medical education is directed first toward real people, rather than abstract recipients of knowledge.”"
         ]
       },
       {
@@ -5545,7 +5564,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Where learners begin, whether they retain the ability to make choices, and whether they can access the understanding and support needed to move forward are all matters that deserve deliberate design, just as scientific knowledge itself does."
+          "Where learners begin, whether they can make choices, and whether they can access the understanding and support needed to move forward all deserve deliberate design, just as scientific knowledge itself does."
         ]
       },
       {
@@ -5557,7 +5576,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Professor Yu's consultation helped us further clarify the kind of person from whom Education should begin."
+          "Professor Yu's consultation helped us clarify who Education should begin with."
         ]
       },
       {
@@ -5569,7 +5588,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Education must listen to real people, and what it hears must have the opportunity to inform what happens next."
+          "Education must listen to real people, and what it hears must have a chance to shape what happens next."
         ]
       }
     ]
@@ -5596,7 +5615,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "This section brings together resources that explain why particular educational approaches were designed and how others can continue using them."
+          "This section brings together resources that explain why we designed particular educational approaches and how others can continue using them."
         ]
       },
       {
@@ -5608,7 +5627,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Together, these documents record our design principles, approaches to decision-making, boundaries of evidence, and methods that can be adapted to different educational contexts."
+          "Together, these documents record our design principles, decision-making approaches, evidence boundaries, and methods that can be adapted to different educational contexts."
         ]
       },
       {
@@ -5630,7 +5649,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Winter Outreach；Vaccine Classroom；Synbio Classroom；Xinghua Festival；Health Run；Music Festival。"
+          "Winter Outreach; Vaccine Classroom; Synbio Classroom; Xinghua Festival; Health Run; Music Festival."
         ]
       },
       {
@@ -5642,7 +5661,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "They also distinguish between documented historical practices and parameters that future users need to determine according to their own environments."
+          "They also distinguish between documented historical practices and parameters that future users must determine based on their own environments."
         ]
       },
       {
@@ -5664,13 +5683,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "To help teachers and other teams quickly identify materials suitable for their learners, we organize them according to their primary educational stages."
+          "To help teachers and other teams quickly identify materials suitable for their learners, we organize them by primary educational stage."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Some resources can be used across different age groups. During actual teaching, the depth of explanation can be adjusted according to students' prior knowledge, available classroom time, and learning objectives."
+          "Some resources work across different age groups. During actual teaching, teachers can adjust the depth of explanation based on students' prior knowledge, available classroom time, and learning objectives."
         ]
       },
       {
@@ -5684,6 +5703,10 @@ const rawSections: WikiSection[] = [
         "paragraphs": [
           "- **Vaccine Classroom PPT**"
         ]
+      },
+      {
+        "type": "feature",
+        "key": "education-media-vaccine-classroom-pdf"
       },
       {
         "type": "prose",
@@ -5802,7 +5825,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "This section brings together Education works that can be independently read, viewed, and used as starting points for further discussion and reflection."
+          "This section brings together Educational works that you can read, view, and use as starting points for further discussion and reflection."
         ]
       },
       {
@@ -5896,13 +5919,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "[Explore our games](/games)"
+          "[→ Explore Our Games](/games)"
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "For complete source code and reusable project files that cannot be directly hosted on the Wiki, we have organized the relevant resources in our team's project repository on GitLab."
+          "For complete source code and reusable project files that cannot be hosted directly on the Wiki, we have organized the relevant resources in our team's project repository on GitLab."
         ]
       },
       {
@@ -5920,7 +5943,7 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "If you reuse, translate, adapt or test one of these resources, we would like to hear what changed in your context."
+          "If you reuse, translate, adapt, or test one of these resources, we would like to hear what changed in your context."
         ]
       },
       {
@@ -5948,25 +5971,25 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "Education therefore entered classrooms, laboratories, public spaces, stories, games, and digital platforms. It also became part of the everyday lives of people with different ages, experiences, and relationships."
+          "Education therefore entered classrooms, laboratories, public spaces, stories, games, and digital platforms. It also became part of the everyday lives of people of different ages, experiences, and relationships."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Recursive Care reminds us that as Education expands into more communities, people's experiences, relationships, and conditions of access should not be erased."
+          "Recursive Care reminds us that as Education expands into more communities, we should not erase people's experiences, relationships, and conditions of access."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Education Portfolio Optimization helps us select appropriate educational responses according to the needs of specific communities and the constraints of real-world settings."
+          "Education Portfolio Optimization helps us select appropriate educational responses based on specific community needs and the constraints of real-world settings."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "Genuine dialogue / mutual learning allows participants not only to enter the learning process, but also to contribute through their questions, judgments, and creative works. When a clear chain of evidence can be established, these contributions may further shape educational courses and tools."
+          "Genuine dialogue / mutual learning allows participants not only to enter the learning process, but also to contribute through their questions, judgments, and creative works. When a clear chain of evidence emerges, these contributions can further shape educational courses and tools."
         ]
       },
       {
@@ -5978,13 +6001,13 @@ const rawSections: WikiSection[] = [
       {
         "type": "prose",
         "paragraphs": [
-          "A question can change the next lesson. A single experience of using a tool can lead to changes in the product itself. An educational resource can also leave our hands and continue to grow through the work of another teacher, student, or team."
+          "A question can change the next lesson. A single experience using a tool can change the product itself. An educational resource can also leave our hands and continue to grow through the work of another teacher, student, or team."
         ]
       },
       {
         "type": "prose",
         "paragraphs": [
-          "The teaching materials, methods, and tools developed through our practices therefore remain open, creating opportunities for others to adopt, modify, and use them again."
+          "The teaching materials, methods, and tools we develop through our practices therefore remain open, creating opportunities for others to adopt, modify, and reuse them."
         ]
       },
       {
@@ -6006,7 +6029,12 @@ const rawSections: WikiSection[] = [
 export const educationSections: WikiSection[] = rawSections.map((section) => ({
   ...section,
   blocks: section.blocks?.map((block) => block.type === "figure"
-    ? { ...block, src: educationAssetUrl(block.src) }
+    ? {
+        ...block,
+        ...getEducationFigureCaption(block.src),
+        className: [...new Set([block.className, getEducationFigureCaption(block.src)?.className].filter(Boolean))].join(" ") || undefined,
+        src: educationAssetUrl(block.src),
+      }
     : block.type === "chapter-link" && block.imageSrc
       ? { ...block, imageSrc: educationAssetUrl(block.imageSrc) }
     : block.type === "prose"

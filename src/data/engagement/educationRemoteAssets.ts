@@ -22,6 +22,9 @@ const convertedSlides: Record<string, string> = {
 export function educationAssetUrl(value: string): string {
   const relative = value.replace(/^__BASE__assets\/education\//, "");
   const filename = relative.split("/").at(-1) ?? relative;
+  if (relative.startsWith("galleries/new-figure/") && /^[a-z0-9-]+\.avif$/i.test(filename)) {
+    return educationFiles + "new-figure/" + filename;
+  }
   const remoteName = convertedSlides[filename] ?? (uploadedFiles as Record<string, string>)[filename];
   if (!remoteName) {
     console.warn(`Education upload URL missing for ${filename}`);

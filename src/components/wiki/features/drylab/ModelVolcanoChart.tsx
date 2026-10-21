@@ -29,7 +29,7 @@ function VolcanoCanvas({
     observer.observe(node);
     return () => {
       observer.disconnect();
-      chart.dispose();
+      echarts.disposeChart(chart);
     };
   }, [option]);
   return (
@@ -156,6 +156,8 @@ function VolcanoChart({ cohort, rows }: { cohort: "024322" | "028102"; rows: Vol
       tooltip: {
         trigger: "item",
         confine: true,
+        position: [12, 12],
+        transitionDuration: 0,
         formatter: (params) => {
           const item = (Array.isArray(params) ? params[0] : params).data as {
             source?: VolcanoPoint;

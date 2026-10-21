@@ -143,12 +143,14 @@ export function DosePredictionExplorer({
   downloadUrl,
   initialDose = 11.5,
   threshold = 0.8,
+  compact = false,
 }: {
   rows: readonly DosePredictionRow[];
   draws: number;
   downloadUrl: string;
   initialDose?: number;
   threshold?: number;
+  compact?: boolean;
 }) {
   const id = useId();
   const [selectedIndex, setSelectedIndex] = useState(() =>
@@ -202,22 +204,21 @@ export function DosePredictionExplorer({
 
   return (
     <section
-      className="dose-prediction-explorer"
+      className={`dose-prediction-explorer${compact ? " dose-prediction-explorer--compact" : ""}`}
       aria-labelledby={`${id}-title`}
     >
       <header>
         <h3 id={`${id}-title`}>Explore predictions by dose per injection</h3>
         <p className="dose-prediction-explorer__meta">
-          Layer 3 · Module 6: joint efficacy and proxy screens · every 7 days, 5
-          injections · day 35 endpoint
+          {compact ? `${draws.toLocaleString("en-US")} scenarios · 5 weekly injections · day 35` : <>Layer 3 · Module 6: joint efficacy and proxy screens · every 7 days, 5 injections · day 35 endpoint</>}
         </p>
       </header>
-      <p>
+      {!compact && <p>
         Each dose is evaluated in {draws.toLocaleString("en-US")} model
         scenarios with different delivery and immune-response conditions. The
         three percentages show how many scenarios meet each criterion. Every
         dose uses the same paired scenarios.
-      </p>
+      </p>}
       <div
         className="dose-prediction-explorer__controls"
         onKeyDownCapture={(event) => {
@@ -247,7 +248,7 @@ export function DosePredictionExplorer({
           max={rows.at(-1)!.dose_ug}
           step={0.1}
           value={selected.dose_ug}
-          aria-describedby={`${id}-help`}
+          aria-describedby={compact ? undefined : `${id}-help`}
           onChange={(event) => selectDose(Number(event.target.value))}
         />
         <input
@@ -257,7 +258,7 @@ export function DosePredictionExplorer({
           step={0.1}
           value={numberInput}
           aria-label="Dose per injection in micrograms"
-          aria-describedby={`${id}-help`}
+          aria-describedby={compact ? undefined : `${id}-help`}
           onChange={(event) => {
             setNumberInput(event.target.value);
             const value = event.target.valueAsNumber;
@@ -274,16 +275,16 @@ export function DosePredictionExplorer({
         />
         <span>μg</span>
       </div>
-      <p className="dose-prediction-explorer__help" id={`${id}-help`}>
+      {!compact && <p className="dose-prediction-explorer__help" id={`${id}-help`}>
         Drag the slider or enter a number. Arrow keys change the dose by 0.1 μg;
         entered values snap to the nearest supplied 0.1 μg grid point.
-      </p>
+      </p>}
       <p
         className="dose-prediction-explorer__status"
         aria-live="polite"
         aria-atomic="true"
       >
-        Selected:{" "}
+        {!compact && <>Selected: </>}
         <strong>{selected.dose_ug.toFixed(1)} μg per injection</strong> ·{" "}
         <strong data-passes={passes}>
           {passes ? "Meets" : "Below"} the candidate threshold: ≥
@@ -315,7 +316,7 @@ export function DosePredictionExplorer({
           <div key={curve.key} data-metric={curve.key}>
             <p>
               {curve.name}
-              <small>
+              {!compact && <small>
                 {
                   [
                     "Efficacy pass fraction",
@@ -323,14 +324,14 @@ export function DosePredictionExplorer({
                     "Joint pass fraction",
                   ][index]
                 }
-              </small>
+              </small>}
             </p>
             <strong>{percent(selected[curve.key])}</strong>
             <p>
               {count(selected[curve.key])} / {draws.toLocaleString("en-US")}{" "}
               scenarios
             </p>
-            <p>
+            {!compact && <p>
               {
                 [
                   "Day 35 latent tumor burden is at least 30% lower than the untreated control in the same scenario.",
@@ -338,11 +339,11 @@ export function DosePredictionExplorer({
                   "The same scenario meets the tumor-control criterion and passes every viability and exposure screen.",
                 ][index]
               }
-            </p>
+            </p>}
           </div>
         ))}
       </div>
-      <div className="dose-prediction-explorer__volume" data-metric="volume">
+      {!compact && <><div className="dose-prediction-explorer__volume" data-metric="volume">
         <p>Day 35 observable volume · median [conditional interval]</p>
         <strong>
           {volume(selected.volume_median)} [{volume(selected.volume_lo)},{" "}
@@ -362,11 +363,13 @@ export function DosePredictionExplorer({
         limit. The dashed horizontal line requires at least{" "}
         {Math.round(threshold * 100)}% joint passage.
       </p>
+      </>}
       <p className="dose-prediction-explorer__footnote">
+        {compact ? <>Model scenarios, not clinical probabilities. </> : <>
         These are fractions of model scenarios, not cure rates or safety
         probabilities in animals. Volume intervals span the 2.5th–97.5th
         percentiles of model scenarios. Values come from the supplied dose grid;
-        0 μg is the untreated reference.{" "}
+        0 μg is the untreated reference.{" "}</>}
         <a href={downloadUrl} download>
           Download all {rows.length} dose points
         </a>

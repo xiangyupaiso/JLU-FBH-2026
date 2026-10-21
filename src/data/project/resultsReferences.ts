@@ -204,7 +204,7 @@ export const resultsReferences: CitationReference[] = [
     title:
       "Circular RNAs are abundant, conserved, and associated with ALU repeats.",
     journal: "RNA.",
-    volumeYear: "2013 Feb;19(2):141-57.",
+    volumeYear: "2013;19(2):141-157.",
     links: [
       {
         href: "https://doi.org/10.1261/rna.035667.112",
@@ -218,8 +218,8 @@ export const resultsReferences: CitationReference[] = [
       "Enuka Y, Lauriola M, Feldman ME, Sas-Chen A, Ulitsky I, Yarden Y.",
     title:
       "Circular RNAs are long-lived and display only minimal early alterations in response to a growth factor.",
-    journal: "Nucleic Acids Res.",
-    volumeYear: "2016 Feb 18;44(3):1370-83.",
+    journal: "Nucleic Acids Research.",
+    volumeYear: "2015;44(3):1370–1383.",
     links: [
       {
         href: "https://doi.org/10.1093/nar/gkv1367",
@@ -430,30 +430,17 @@ export const resultsReferences: CitationReference[] = [
     title:
       "The ARRIVE guidelines 2.0: updated guidelines for reporting animal research.",
     journal: "PLoS Biology.",
-    volumeYear: "2020;18(7).",
+    volumeYear: "2020;18(7):e3000410.",
     links: [
       {
-        href: "https://doi.org/10.1177/0271678x20943823",
-        label: "doi:10.1177/0271678x20943823",
+        href: "https://doi.org/10.1371/journal.pbio.3000410",
+        label: "doi:10.1371/journal.pbio.3000410",
       },
     ],
   },
+
   {
     id: 32,
-    authors: "Chen M, Ju CJ-T, Zhou G, et al.",
-    title:
-      "Multifaceted protein-protein interaction prediction based on Siamese residual RCNN.",
-    journal: "Bioinformatics.",
-    volumeYear: "2019;35(14):i305-i314.",
-    links: [
-      {
-        href: "https://doi.org/10.1093/bioinformatics/btz328",
-        label: "doi:10.1093/bioinformatics/btz328",
-      },
-    ],
-  },
-  {
-    id: 33,
     authors:
       "Wesselhoeft RA, Kowalski PS, Parker-Hale FC, Huang Y, Bisaria N, Anderson DG.",
     title:
@@ -468,7 +455,7 @@ export const resultsReferences: CitationReference[] = [
     ],
   },
   {
-    id: 34,
+    id: 33,
     authors: "Ndeupen S, Qin Z, Jacobsen S, et al.",
     title:
       "The mRNA-LNP platform's lipid nanoparticle component used in preclinical vaccine studies is highly inflammatory.",
@@ -482,7 +469,7 @@ export const resultsReferences: CitationReference[] = [
     ],
   },
   {
-    id: 35,
+    id: 34,
     authors: "Benzekry S, Lamont C, Beheshti A, et al.",
     title:
       "Classical mathematical models for description and prediction of experimental tumor growth.",
@@ -492,6 +479,19 @@ export const resultsReferences: CitationReference[] = [
       {
         href: "https://doi.org/10.1371/journal.pcbi.1003800",
         label: "doi:10.1371/journal.pcbi.1003800",
+      },
+    ],
+  },
+  {
+    id: 35,
+    authors: "Chen YG, Kim MV, Chen X, et al.",
+    title: "Sensing Self and Foreign Circular RNAs by Intron Identity.",
+    journal: "Molecular Cell.",
+    volumeYear: "2017;67(2):228–238.e5.",
+    links: [
+      {
+        href: "https://doi.org/10.1016/j.molcel.2017.05.022",
+        label: "doi:10.1016/j.molcel.2017.05.022",
       },
     ],
   },

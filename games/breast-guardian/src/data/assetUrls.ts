@@ -1,13 +1,13 @@
 /**
  * Breast Guardian — official iGEM asset URL map.
  *
- * Generated from Official-wiki/IGEM_ASSET_REGISTRY.md, the team's single source
- * of truth for uploaded media. Each key is the local path the game historically
+ * Generated from games/ASSET_REGISTRY.md, archived from the team's source registry
+ * for uploaded media. Each key is the local path the game historically
  * referenced under `public/assets/…`; each value is the official static.igem.wiki
  * URL for that exact file.
  *
  * Do not hand-edit or guess URLs. If an image is missing here, re-upload it
- * through the iGEM uploads tool, add it to IGEM_ASSET_REGISTRY.md, then run
+ * through the iGEM uploads tool, record the verified URL in games/ASSET_REGISTRY.md, then run
  * `npm run assets:regen`.
  */
 

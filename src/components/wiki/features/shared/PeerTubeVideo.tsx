@@ -3,10 +3,10 @@ import type {
   PeerTubeVideoConfig,
   PeerTubeVideoSource,
 } from "../../../../data/wikiVideo";
-import { resolvePeerTubeVideo } from "../../../../utils/resolvePeerTubeVideo";
+import { officialPeerTubeSource, resolvePeerTubeVideo } from "../../../../utils/resolvePeerTubeVideo";
 import "../../../../styles/features/wiki-video.css";
 
-export function PeerTubeVideo({ video }: { video: PeerTubeVideoConfig }) {
+export function PeerTubeVideo({ video, sourceLabel }: { video: PeerTubeVideoConfig; sourceLabel?: string }) {
   const [source, setSource] = useState<PeerTubeVideoSource | null>(null);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export function PeerTubeVideo({ video }: { video: PeerTubeVideoConfig }) {
         if (!controller.signal.aborted) setSource(resolved);
       },
       () => {
-        if (!controller.signal.aborted) setSource(video.fallback);
+        if (!controller.signal.aborted) setSource(officialPeerTubeSource(video.fallback));
       },
     );
     return () => controller.abort();
@@ -47,7 +47,7 @@ export function PeerTubeVideo({ video }: { video: PeerTubeVideoConfig }) {
           <>
             {" "}
             <a href={source.embedUrl} target="_blank" rel="noopener noreferrer">
-              Video hosted by {source.hostedBy}.
+              {sourceLabel ?? `Video hosted by ${source.hostedBy}.`}
             </a>
           </>
         ) : null}

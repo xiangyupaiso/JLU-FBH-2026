@@ -43,7 +43,7 @@ export function PatientChatDialog({ quotes }: { quotes: ReadonlyArray<ChatQuote>
           style={{ "--chat-delay": `${index * STEP}s` } as CSSProperties}
         >
           <span className="chat-avatar" aria-hidden="true">
-            {quote.speaker ? quote.speaker.slice(-1) : "“"}
+            {quote.speaker ? quote.speaker.slice(-1) : "\""}
           </span>
           <div className="chat-group__col">
             {quote.speaker ? (

@@ -1,12 +1,14 @@
-import { buildNumericCitationIndex } from "./citationIndex";
+import { buildLabelCitationIndex } from "./citationIndex";
 import {
   visualDesignNarrativeSections,
   visualDesignReferences,
+  visualDesignCitationLabels,
 } from "../project/visualDesignNarrative";
 
-export const visualDesignCitationIndex = buildNumericCitationIndex(
+export const visualDesignCitationIndex = buildLabelCitationIndex(
   visualDesignNarrativeSections,
   visualDesignReferences,
+  visualDesignCitationLabels,
 );
 
 if (visualDesignCitationIndex.issues.length) {

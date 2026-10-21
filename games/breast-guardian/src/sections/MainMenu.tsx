@@ -1,4 +1,4 @@
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import { SheepSpeech } from '@/components/SheepBubble';
 import { assetUrl } from '@/data/assetUrls';
 import { Languages } from 'lucide-react';

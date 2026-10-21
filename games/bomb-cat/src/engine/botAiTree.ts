@@ -4,7 +4,7 @@
  * Hook 层负责调度（延迟、循环），引擎层负责状态转移。
  */
 
-import type { GameState, NetworkAction } from '../types/game';
+import type { GameState, GameAction } from '../types/game';
 import { CORE_COMPONENTS, ALL_COMPONENTS } from '../constants/cards';
 
 // ───────── computeBotAction（回合行动决策） ─────────
@@ -23,7 +23,7 @@ import { CORE_COMPONENTS, ALL_COMPONENTS } from '../constants/cards';
  *
  * botActed=true 时强制抽牌（每回合最多主动出 1 次牌）。
  */
-export function computeBotAction(state: GameState, botPlayerId: number): NetworkAction {
+export function computeBotAction(state: GameState, botPlayerId: number): GameAction {
   const bot = state.players[botPlayerId];
   if (!bot || !bot.alive) return { kind: 'draw' };
 
@@ -108,12 +108,12 @@ export function computeBotNopeDecision(state: GameState, botPlayerId: number): b
  * - favorGive / swapGive → 交出价值最低的一张牌
  * - nameCard（点名索要）→ 优先索要 defuse
  *
- * @returns NetworkAction 或 null（不应由该 bot 回应时）
+ * @returns GameAction 或 null（不应由该 bot 回应时）
  */
 export function computeBotPendingResponse(
   state: GameState,
   botPlayerId: number,
-): NetworkAction | null {
+): GameAction | null {
   if (!state.pending) return null;
   const pend = state.pending;
 

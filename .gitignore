@@ -31,3 +31,16 @@ outputs/
 # must keep esbuild's temp files inside the workspace.
 .tmp-verify/
 .tmp-build/
+
+# Temporary verification and migration scratch files.
+/.tmp-*
+/.probe/
+/_tmp*
+/_build_*.mjs
+/_run_*.mjs
+/analyze_refs.py
+/check_references.py
+/patch_refs.py
+/refs_dump.json
+__pycache__/
+*.pyc

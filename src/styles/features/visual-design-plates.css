@@ -43,11 +43,16 @@
     700 21px/1.2 Arial,
     sans-serif;
 }
+/* Keep framed artwork centered over the reader's generic image-link rule. */
+.wiki-page--visual-design .design-plate .design-panel__image {
+  display: flex;
+}
 .design-plate .design-panel__image {
   display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 16/10;
+  padding: var(--wiki-figure-safe-inset, 6px);
   background: #fcfaf4;
   border: 1px solid #d9ddce;
   border-radius: var(--visual-design-image-radius, 16px);
@@ -58,6 +63,8 @@
   display: block;
   width: auto;
   height: auto;
+  min-width: 0;
+  min-height: 0;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;

@@ -1,5 +1,15 @@
 [
   {
+    "key": "education-media-vaccine-classroom-pdf",
+    "items": [
+      {
+        "kind": "pdf",
+        "src": "__BASE__assets/education/vaccine-classroom.pdf",
+        "title": "Vaccine Classroom"
+      }
+    ]
+  },
+  {
     "key": "education-media-group-1",
     "items": [
       {

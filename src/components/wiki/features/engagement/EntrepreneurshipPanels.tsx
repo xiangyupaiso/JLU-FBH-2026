@@ -302,7 +302,7 @@ export function BusinessModelCanvas() {
         {businessModelCanvas.sections.map((section) => (
           <section
             key={section.id}
-            id={section.id}
+            id={section.id === "key-resources" ? "business-model-key-resources" : section.id}
             className="business-model-canvas__section"
           >
             <h4>{section.title}</h4>

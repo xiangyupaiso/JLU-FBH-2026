@@ -192,6 +192,7 @@ export function useHomeScene01Animation({
           { autoAlpha: 1, y: 0, duration: 0.35 },
           PROLOGUE_START + 0.4,
         );
+        timeline.addLabel("prologue-readable");
         timeline.to({}, { duration: timeline.duration() * restRatio });
 
         return () => section.classList.remove("has-scene01-motion");

@@ -4,6 +4,9 @@ import {
   useEffect,
   useRef,
   useState,
+  useMemo,
+  createContext,
+  useContext,
   type CSSProperties,
   type RefObject,
 } from "react";
@@ -18,6 +21,9 @@ import {
   type EngineeringIterationDatum,
 } from "../../../../data/project/engineeringPage";
 import { engineeringReferenceStages } from "../../../../data/project/engineeringRecordAdditions";
+import { buildEngineeringStageCitations } from "../../../../data/project/engineeringCitations";
+import { CitationReferenceList, createCitationRenderer, PROJECT_CITATION_FLASH } from "../../citations/CitationRegister";
+import type { InlineRenderer } from "../../WikiRoutePage";
 import type {
   WikiContentBlock,
   WikiDbTLStage,
@@ -58,6 +64,14 @@ type Register = (
   navigate: (stage: WikiDbTLStageKey) => void,
 ) => () => void;
 const STAGE_KEYS: WikiDbTLStageKey[] = ["design", "build", "test", "learn"];
+
+function engineeringHeaderHeight() {
+  const header = document.querySelector<HTMLElement>(".site-header");
+  if (!header) return 78;
+  // Custom properties retain calc()/max() expressions; ScrollTrigger needs pixels.
+  // The painted bar stays the same height even when a navigation menu opens.
+  return Number.parseFloat(getComputedStyle(header, "::before").height) || 78;
+}
 
 // Keep Cycle 1's published blocks intact, placing its bibliography at the
 // stage recorded in the source brief. Cycle 2 already carries stage references.
@@ -127,7 +141,15 @@ function EngineeringArticleHeading({ title }: { title: string }) {
   );
 }
 
+const EngineeringCitationContext = createContext<{ render: InlineRenderer; sectionId: string } | null>(null);
+
 function InlineCopy({ text }: { text: string }) {
+  const citation = useContext(EngineeringCitationContext);
+  const fallback = (value: string) => <EngineeringInlineFormatting text={value} />;
+  return citation ? citation.render(text, fallback, citation.sectionId) : fallback(text);
+}
+
+function EngineeringInlineFormatting({ text }: { text: string }) {
   return (
     <>
       {text
@@ -143,7 +165,7 @@ function InlineCopy({ text }: { text: string }) {
           if (!link) return part;
           const url = new URL(link[2]);
           const isDetailLink =
-            ["2026.igem.wiki", "wiki.dayquay.com"].includes(url.hostname) &&
+            url.hostname === "2026.igem.wiki" &&
             url.pathname.startsWith("/jlu-fbh/");
           return (
             <a
@@ -270,7 +292,9 @@ function EngineeringBlock({ block }: { block: WikiContentBlock }) {
       );
     case "figure":
       return (
-        <figure className="wiki-figure">
+        <figure
+          className={`wiki-figure${block.figureLabel ? " wiki-figure--labelled" : ""}`}
+        >
           <QueuedImage
             src={block.src}
             alt={block.alt}
@@ -279,31 +303,22 @@ function EngineeringBlock({ block }: { block: WikiContentBlock }) {
             loading="lazy"
             decoding="async"
           />
-          {block.caption ? (
+          {block.figureLabel || block.caption ? (
             <figcaption>
-              <InlineCopy text={block.caption} />
+              {block.figureLabel ? (
+                <span className="wiki-figure__label">{block.figureLabel}</span>
+              ) : null}
+              {block.caption ? (
+                <span className="wiki-figure__caption">
+                  <InlineCopy text={block.caption} />
+                </span>
+              ) : null}
             </figcaption>
           ) : null}
         </figure>
       );
     case "references":
-      return (
-        <aside className="eng-stage-references" aria-label="References">
-          <ol>
-            {block.items.map((entry, index) => (
-              <li key={`${entry.href}-${index}`}>
-                <span aria-hidden="true">[{index + 1}] </span>
-                {entry.text}{" "}
-                {entry.href ? (
-                  <a href={entry.href} target="_blank" rel="noreferrer">
-                    {entry.hrefLabel ?? "Source"}
-                  </a>
-                ) : null}
-              </li>
-            ))}
-          </ol>
-        </aside>
-      );
+      return null; // The stage renders one shared register after its article blocks.
     case "carousel":
       return (
         <StakeholderPhotoReel
@@ -313,6 +328,7 @@ function EngineeringBlock({ block }: { block: WikiContentBlock }) {
             caption: block.caption ?? "",
           }))}
           label={block.figureLabel ?? "Engineering slide reel"}
+          figureLabel={block.figureLabel}
         />
       );
     case "code":
@@ -359,6 +375,21 @@ function EngineeringBlock({ block }: { block: WikiContentBlock }) {
     default:
       return null;
   }
+}
+
+function EngineeringStageContent({ blocks, namespace }: { blocks: WikiContentBlock[]; namespace: string }) {
+  const citation = useMemo(() => {
+    const { references, index } = buildEngineeringStageCitations(blocks, namespace);
+    return { references, index, render: createCitationRenderer(index, PROJECT_CITATION_FLASH), sectionId: namespace };
+  }, [blocks, namespace]);
+  return (
+    <EngineeringCitationContext.Provider value={citation}>
+      {blocks.map((block, index) => <EngineeringBlock block={block} key={index} />)}
+      {citation.references.length ? <aside className="eng-stage-references" aria-label="References">
+        <CitationReferenceList references={citation.references} index={citation.index} tint={PROJECT_CITATION_FLASH} />
+      </aside> : null}
+    </EngineeringCitationContext.Provider>
+  );
 }
 
 export function EngineeringIntroduction({ section }: { section: WikiSection }) {
@@ -625,8 +656,7 @@ function CycleScenes({
             scrub: window.matchMedia("(prefers-reduced-motion: reduce)").matches
               ? true
               : 0.6,
-            start: () =>
-              `top ${getComputedStyle(document.documentElement).getPropertyValue("--header-height").trim() || "78px"}`,
+            start: () => `top ${engineeringHeaderHeight()}px`,
             end: () =>
               `+=${timeline.duration() * Math.max(440, clip.clientHeight * 0.8)}`,
             invalidateOnRefresh: true,
@@ -835,9 +865,7 @@ function CycleScenes({
                         </div>
                         <div className="eng-stage-body">
                           <div className="eng-stage-content">
-                            {stage.blocks.map((block, index) => (
-                              <EngineeringBlock block={block} key={index} />
-                            ))}
+                            <EngineeringStageContent blocks={stage.blocks} namespace={`${record.iteration.id}-${stage.key}`} />
                           </div>
                         </div>
                       </section>
@@ -1085,8 +1113,7 @@ export function EngineeringJourney({
       if (!hero) return;
       ScrollTrigger.create({
         trigger: hero,
-        start: () =>
-          `bottom ${getComputedStyle(document.documentElement).getPropertyValue("--header-height").trim() || "0px"}`,
+        start: () => `bottom ${engineeringHeaderHeight()}px`,
         end: "max",
         onEnter: () => setNavigationVisible(true),
         onLeaveBack: () => setNavigationVisible(false),
@@ -1146,12 +1173,7 @@ export function EngineeringJourney({
           const heading = document.getElementById(id);
           const container = heading?.closest(".eng-introduction, .eng-outcome");
           if (!container) continue;
-          const offset = () =>
-            (parseFloat(
-              getComputedStyle(document.documentElement).getPropertyValue(
-                "--header-height",
-              ),
-            ) || 78) + 24;
+          const offset = () => engineeringHeaderHeight() + 24;
           const selectBoundary = () =>
             onChange({ id, stage: boundary === "outcome" ? "learn" : "design" });
           ScrollTrigger.create({

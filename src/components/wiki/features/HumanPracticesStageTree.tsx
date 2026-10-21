@@ -2,6 +2,8 @@ import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { humanPracticesTreeCopy } from "../../../data/engagement/humanPracticesTreeCopy";
 import { interviewMediaByCopyKey, stageMedia } from "../../../data/engagement/humanPracticesAssets";
 import { scrollReaderToTarget } from "../../../utils";
+import { HpInterviewParagraph } from "./HpMedia";
+import { isHpInterviewHeading } from "./hpInterviewText";
 import { HpFlowTooltip } from "./HpFlowTooltip";
 import { HpInterviewPhoto, HpPortrait } from "./HpStakeholderMedia";
 import { linkify } from "../proseInline";
@@ -225,8 +227,8 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
       setUnlocked((previous) => Math.max(previous, index));
     };
     const requestUpdate = () => { if (!frame) frame = requestAnimationFrame(update); };
+    const gesture = gestureRef.current;
     const holdGesture = () => {
-      const gesture = gestureRef.current;
       if (!gesture.active) gesture.releaseAt = performance.now() + 420;
       gesture.active = true;
       if (gesture.timer) clearTimeout(gesture.timer);
@@ -278,7 +280,7 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
     update();
     return () => {
       if (frame) cancelAnimationFrame(frame);
-      if (gestureRef.current.timer) clearTimeout(gestureRef.current.timer);
+      if (gesture.timer) clearTimeout(gesture.timer);
       if (hoverTimer.current) clearTimeout(hoverTimer.current);
       inner.removeEventListener("scroll", requestUpdate);
       inner.removeEventListener("wheel", handleWheel);
@@ -297,13 +299,13 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
   const interview = interviewFor(displayedStep.copyKey);
   const currentMedia = stageMedia[variant]?.[displayedStep.node];
   const interviewPhotos = interviewMediaByCopyKey[displayedStep.copyKey ?? ""] ?? (displayedStep.followup ? currentMedia?.followup ?? [] : currentMedia?.interview ?? []);
-  const firstProseIndex = interview?.paragraphs.findIndex((paragraph) => !paragraph.startsWith("**")) ?? -1;
+  const firstProseIndex = interview?.paragraphs.findIndex((paragraph) => !isHpInterviewHeading(paragraph)) ?? -1;
   const visited = new Set(config.steps.slice(0, unlocked + 1).map((item) => item.node));
   const returned = new Set(config.steps.slice(0, unlocked + 1).filter((item) => item.followup).map((item) => item.node));
   const hoveredNode = config.nodes.find((item) => item.id === hovered);
   const hoveredStep = config.steps.find((item) => item.node === hovered && item.copyKey && !item.followup);
   const hoveredInterview = interviewFor(hoveredStep?.copyKey);
-  const hoverContext = hoveredInterview?.paragraphs.find((paragraph) => !paragraph.startsWith("**")) ?? "";
+  const hoverContext = hoveredInterview?.paragraphs.find((paragraph) => !isHpInterviewHeading(paragraph)) ?? "";
   const activeEdge = config.edges.find((item) => item.id === displayedStep.edge);
   const stopHoverTimer = () => { if (hoverTimer.current) clearTimeout(hoverTimer.current); hoverTimer.current = null; };
   const hideHoverSoon = () => { stopHoverTimer(); hoverTimer.current = setTimeout(() => setHovered(null), 160); };
@@ -313,9 +315,7 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
       {config.steps.map((item, index) => <span className="hp-stage-flow__step" id={`hp-${variant}-step-${index}`} key={`${item.node}-${index}`} style={{ top: `${(index + 1) / (config.steps.length + 1) * 100}%` }} aria-hidden="true" />)}
       <section className="hp-stage-flow__stage" aria-label={`${config.label} stakeholder flow`}>
         <header className="hp-stage-flow__heading">
-          <span>{config.label}</span>
           <strong>{overview ? "Stakeholder flow" : "Stakeholder interviews"}</strong>
-          {!overview && <small>{String(active + 1).padStart(2, "0")} / {String(config.steps.length).padStart(2, "0")}</small>}
         </header>
         <div className="hp-stage-flow__tree" aria-label="Interview sequence">
           <svg className="hp-stage-flow__links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
@@ -361,7 +361,6 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
         </div>
         {!overview && <article className={`hp-stage-flow__card${displayedStep.followup ? " is-followup" : ""}`}>
           <div className="hp-stage-flow__card-head">
-            <span>{String(active + 1).padStart(2, "0")} / {String(config.steps.length).padStart(2, "0")}{displayedStep.followup ? " · Follow-up" : ""}</span>
             <h3>{interview?.title ?? node.name}</h3>
             {step.followup && firstStep && <div className="hp-stage-flow__rounds" role="group" aria-label={`${node.name} interview round`}>
               <button type="button" className={showFirst ? "is-selected" : ""} onClick={() => setShowFirst(true)}>First interview</button>
@@ -370,9 +369,9 @@ export function HumanPracticesStageTree({ variant }: { variant: Variant }) {
           </div>
           <div className="hp-stage-flow__card-body" ref={cardRef}>
             {interview ? interview.paragraphs.map((paragraph, index) => <Fragment key={index}>
-              {paragraph.startsWith("**") && paragraph.endsWith("**")
-                ? <h4>{paragraph.slice(2, -2)}</h4>
-                : <p>{linkify(paragraph)}</p>}
+              {isHpInterviewHeading(paragraph)
+                ? <h4>{paragraph.slice(2, -2).replace(/[*#]/g, "").trim()}</h4>
+                : <HpInterviewParagraph text={paragraph} />}
               {index === firstProseIndex && interviewPhotos.map((src) => <HpInterviewPhoto key={src} src={src} name={node.name} />)}
             </Fragment>) : <p>{node.name}</p>}
           </div>

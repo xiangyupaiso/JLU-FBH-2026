@@ -36,11 +36,6 @@
   text-align: center;
 }
 
-/* Cover fractional-pixel seams where the pinned Home finale meets the footer. */
-.circure-footer.is-home-page {
-  margin-top: -1px;
-}
-
 /* Carry each page into paper with the same entry spacing. */
 .circure-footer:is(.is-home-page, .is-route-page) > .circure-footer__panel {
   --footer-entry-height: clamp(220px, 25vw, 360px);
@@ -310,13 +305,13 @@
 }
 
 .circure-footer__marquee {
-  --sponsor-gap: 56px;
-  --sponsor-logo-scale: 1.28;
+  --sponsor-gap: 36px;
+  --sponsor-logo-scale: 1.12;
   --sponsor-fade: clamp(12px, 2vw, 28px);
   width: 100%;
   min-width: 0;
   overflow: hidden;
-  margin-top: 32px;
+  margin-top: 24px;
   margin-inline: auto;
   mask-image: linear-gradient(
     to right,
@@ -364,14 +359,14 @@
   align-items: center;
   justify-content: center;
   min-width: 0;
-  height: 64px;
+  height: 56px;
 }
 
 .circure-footer__sponsor img {
   display: block;
-  width: 100%;
+  width: auto;
   max-width: 100%;
-  max-height: 60px;
+  max-height: 52px;
   height: auto;
   object-fit: contain;
   filter: grayscale(1) contrast(0.7) brightness(0.85);
@@ -439,6 +434,11 @@
 
 .circure-footer__navigation a:hover {
   text-decoration: underline;
+}
+
+.circure-footer__navigation a:focus-visible {
+  outline: 2px solid var(--footer-muted);
+  outline-offset: 4px;
 }
 
 .circure-footer__colophon {
@@ -545,17 +545,17 @@
   }
 
   .circure-footer__marquee {
-    --sponsor-gap: 40px;
-    margin-top: 28px;
+    --sponsor-gap: 28px;
+    margin-top: 20px;
   }
 
   .circure-footer__sponsor {
     width: calc(var(--sponsor-logo-width) * var(--sponsor-logo-scale) * 0.84);
-    height: 56px;
+    height: 48px;
   }
 
   .circure-footer__sponsor img {
-    max-height: 46px;
+    max-height: 40px;
   }
 
   .circure-footer__sponsor[data-organisation="Charles River"] img {
