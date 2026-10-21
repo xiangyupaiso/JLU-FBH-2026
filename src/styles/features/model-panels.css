@@ -7,7 +7,8 @@
 .wiki-page--model .wiki-figure figcaption {
   text-align: center;
 }
-.wiki-page--model .wiki-figure figcaption::before {
+.wiki-page--model.wiki-page--route .wiki-figure:not(.wiki-figure--labelled) figcaption::before,
+.wiki-page--model.wiki-page--route .wiki-figure figcaption::before {
   content: none;
   display: none;
 }
@@ -19,7 +20,7 @@
   border-radius: 4px;
   background: var(--route-heading-ink);
   color: #fff;
-  font-family: var(--font-figure-label);
+  font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
   line-height: 1.25;
@@ -38,12 +39,14 @@
   outline-offset: 4px;
 }
 .wiki-page--model .model-sdg-chart__matrix {
-  min-width: 720px;
-  max-width: 820px;
+  width: 100%;
+  min-width: 1200px;
+  max-width: 1440px;
   margin-inline: auto;
 }
 .wiki-page--model .sust-chord__host {
-  min-width: 820px;
+  min-width: 1100px;
+  width: 100%;
   height: auto;
 }
 .wiki-page--model .sust-chord__scroll {
@@ -56,7 +59,7 @@
 }
 .wiki-page--model .sust-chord__host svg {
   height: auto;
-  max-height: 580px;
+  max-height: none;
 }
 .wiki-page--model .model-numbered-reasons {
   display: grid;
@@ -115,10 +118,11 @@
   text-decoration: none;
   font-weight: 700;
   font-size: 1.15rem;
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-              box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-              border-color 0.25s ease,
-              background 0.25s ease;
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.25s ease,
+    background 0.25s ease;
   animation: model-card-float 4.5s ease-in-out infinite;
 }
 .wiki-page--model .model-graphical-abstracts a:nth-child(1) {
@@ -148,7 +152,8 @@
   transform: scale(1.06);
 }
 @keyframes model-card-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -339,7 +344,8 @@
   color: #000;
   font-weight: 700;
 }
-.wiki-page--model .model-fold {
+.wiki-page--model .model-fold,
+.wiki-page--model .model-chart-data {
   border: 1px solid #d3ddd7;
   border-radius: 8px;
   background: #fafcfb;
@@ -449,7 +455,7 @@
 }
 
 /* Constrain Figure 2, 3, 4, 5 in survival tabs to match Fig 4 */
-.wiki-page--model .manuscript-tabs .wiki-figure img {
+.wiki-page--model .manuscript-tabs .wiki-figure:not(.model-ihc-figure) img {
   max-width: 350px !important;
   width: 100% !important;
   height: auto !important;
@@ -479,11 +485,11 @@
   display: block;
 }
 
-/* Center table titles and pre-table descriptions */
+/* Keep pre-table article text aligned with the rest of the manuscript. */
 .wiki-page--model .wiki-prose:has(+ .wiki-table-wrap) p,
 .wiki-page--model .wiki-prose:has(+ .model-transpose) p,
 .wiki-page--model .wiki-prose:has(+ .model-antigen-table) p {
-  text-align: center;
+  text-align: left;
 }
 
 /* Reproducibility package download card */
@@ -573,7 +579,10 @@
   grid-template-columns: minmax(0, 1fr) minmax(240px, 26%);
   gap: 32px;
 }
-.wiki-page--model .wiki-blocks--split:has(.model-figure--workflow-aside) .wiki-prose p {
+.wiki-page--model
+  .wiki-blocks--split:has(.model-figure--workflow-aside)
+  .wiki-prose
+  p {
   text-align: justify;
   text-align-last: start;
   text-wrap: wrap;
@@ -601,12 +610,20 @@
 }
 .wiki-page--model .wiki-figure.model-figure--workflow-aside img {
   display: block;
-  width: calc(100% * var(--workflow-canvas-width) / var(--workflow-content-width));
+  width: calc(
+    100% * var(--workflow-canvas-width) / var(--workflow-content-width)
+  );
   max-width: none;
   height: auto;
-  margin-top: calc(-100% * var(--workflow-trim-top) / var(--workflow-content-width));
-  margin-bottom: calc(-100% * var(--workflow-trim-bottom) / var(--workflow-content-width));
-  margin-left: calc(-100% * var(--workflow-trim-left) / var(--workflow-content-width));
+  margin-top: calc(
+    -100% * var(--workflow-trim-top) / var(--workflow-content-width)
+  );
+  margin-bottom: calc(
+    -100% * var(--workflow-trim-bottom) / var(--workflow-content-width)
+  );
+  margin-left: calc(
+    -100% * var(--workflow-trim-left) / var(--workflow-content-width)
+  );
   margin-right: 0;
 }
 .wiki-page--model .model-figure--workflow-aside figcaption {
@@ -616,51 +633,49 @@
   .wiki-page--model .wiki-blocks--split:has(.model-figure--workflow-aside) {
     grid-template-columns: minmax(0, 1fr);
   }
-  .wiki-page--model .wiki-blocks--split:has(.model-figure--workflow-aside) .wiki-blocks--split__aside {
+  .wiki-page--model
+    .wiki-blocks--split:has(.model-figure--workflow-aside)
+    .wiki-blocks--split__aside {
     width: min(100%, 280px);
     justify-self: center;
   }
 }
 @media (max-width: 600px) {
-  .wiki-page--model .wiki-blocks--split:has(.model-figure--workflow-aside) .wiki-prose p {
+  .wiki-page--model
+    .wiki-blocks--split:has(.model-figure--workflow-aside)
+    .wiki-prose
+    p {
     text-align: left;
     text-wrap: pretty;
   }
 }
 
-/* 3.1.6 IHC Two-Column Layout */
+/* IHC images stay in document flow, between the evidence and references. */
 .wiki-page--model .model-ihc-layout {
-  display: grid;
-  grid-template-columns: minmax(320px, 1.15fr) minmax(280px, 1fr);
-  gap: 32px;
-  align-items: start;
+  display: block;
+  min-width: 0;
 }
-.wiki-page--model .model-ihc-layout__left {
-  position: sticky;
-  top: 96px;
-}
-.wiki-page--model .model-ihc-layout__left .wiki-figure {
-  margin: 0;
-}
-.wiki-page--model .model-ihc-layout__left img {
+.wiki-page--model .model-ihc-layout .model-ihc-figure {
+  position: static;
   width: 100%;
+  max-width: 960px;
+  margin: 28px auto 32px;
+}
+.wiki-page--model .model-ihc-layout .model-ihc-figure img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.09);
   border: 1px solid rgba(21, 62, 52, 0.12);
-  display: block;
 }
-.wiki-page--model .model-ihc-layout__left figcaption {
-  margin-top: 10px;
-  font-size: 13px;
-  line-height: 1.45;
+.wiki-page--model .model-ihc-layout .model-ihc-figure figcaption {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--route-subheading-ink, #284c40);
   text-align: center;
-}
-.wiki-page--model .model-ihc-layout__right {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
 }
 .wiki-page--model .model-ihc-layout__antigen-title {
   margin: 0 0 16px;
@@ -669,18 +684,319 @@
   color: var(--route-heading-ink, #153e34);
   border-bottom: 2px solid var(--route-main, #207062);
   padding-bottom: 8px;
-  display: inline-block;
 }
-/* The article can be narrow even when the viewport still has a sidebar. */
-@container (max-width: 700px) {
-  .wiki-page--model .model-ihc-layout {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 24px;
+
+/* Size the complete workflow to the visible reader, then enable step scrolling. */
+.wiki-page--model .manuscript-tabs--flow {
+  --flow-stage-height: calc(100dvh - var(--header-height, 78px) - 80px);
+  --flow-gap: clamp(10px, calc(var(--flow-stage-height) * .024), 24px);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: var(--flow-stage-height);
+  min-height: 0;
+  padding-block: 6px;
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__heading {
+  flex: none;
+  margin: 0 0 6px;
+  font-size: clamp(16px, 1.3vw, 22px);
+  line-height: 1.3;
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__hint {
+  flex: none;
+  margin: 0 0 14px;
+  color: var(--route-tertiary-ink);
+  font-size: 12px;
+  line-height: 1.4;
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__layout {
+  display: grid;
+  flex: 1;
+  min-height: 0;
+  grid-template-columns: minmax(180px, 32%) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr);
+  gap: clamp(16px, 2vw, 36px);
+  align-items: stretch;
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__navigation {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__list {
+  display: grid;
+  grid-template-rows: repeat(var(--flow-node-count), minmax(0, 1fr));
+  align-self: stretch;
+  justify-items: center;
+  gap: var(--flow-gap);
+  padding: 0 4px 4px;
+  width: 100%;
+  min-height: 0;
+  overflow: visible;
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__tab,
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__output {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: clamp(3px, .8vh, 10px) 10px;
+  border: 2px solid color-mix(in srgb, var(--route-heading-ink) 75%, var(--route-main));
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--route-soft) 65%, white);
+  color: var(--route-heading-ink);
+  text-align: center;
+  font-size: clamp(12px, calc(var(--flow-stage-height) * .025), 22px);
+  font-weight: 700;
+  line-height: 1.15;
+  box-shadow: none;
+  transition: background .18s, box-shadow .18s;
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__tab:first-child,
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__output {
+  width: 70%;
+  border-color: #397f93;
+  background: #d9f0f5;
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__tab:nth-child(2) {
+  width: 76%;
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__tab::after {
+  content: "";
+  position: absolute;
+  top: calc(100% + 3px);
+  left: calc(50% - 7px);
+  width: 14px;
+  height: calc(var(--flow-gap) - 4px);
+  background: var(--route-tertiary-ink);
+  clip-path: polygon(30% 0, 70% 0, 70% 58%, 100% 58%, 50% 100%, 0 58%, 30% 58%);
+  pointer-events: none;
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__tab[data-state="active"] {
+  background: var(--route-main);
+  color: var(--route-heading-ink);
+  border-color: var(--route-heading-ink);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--route-main) 35%, transparent);
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__tab:focus-visible {
+  outline-color: var(--route-heading-ink);
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__input-source {
+  margin-top: 3px;
+  font-size: .85em;
+  font-weight: 400;
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__sheet {
+  min-height: 0;
+  max-height: none;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: auto;
+  scrollbar-gutter: stable;
+  border-radius: 18px;
+  border-top: 4px solid var(--route-main);
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__detail-heading {
+  margin: 0 0 18px;
+  color: var(--route-tertiary-ink);
+  font-size: clamp(16px, 1.2vw, 20px);
+  line-height: 1.5;
+}
+@container (max-width: 680px) {
+  .wiki-page--model .manuscript-tabs--flow .manuscript-tabs__layout {
+    grid-template-columns: minmax(110px, 38%) minmax(0, 1fr);
+    gap: 12px;
   }
-  .wiki-page--model .model-ihc-layout__left {
-    position: static;
-    max-width: 520px;
-    margin: 0 auto;
+  .wiki-page--model .manuscript-tabs--flow .manuscript-tabs__tab,
+  .wiki-page--model .manuscript-tabs--flow .manuscript-tabs__output {
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 12px;
+    line-height: 1.2;
+  }
+  .wiki-page--model .manuscript-tabs--flow .manuscript-tabs__sheet {
+    padding: 14px;
+    font-size: 14px;
+  }
+  .wiki-page--model .manuscript-tabs--flow .manuscript-tabs__sheet .wiki-prose p {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+}
+@media (max-height: 500px) {
+  .wiki-page--model .manuscript-tabs--flow {
+    height: 520px;
   }
 }
 
+/* Short desktop readers cannot shrink every workflow node into the viewport. */
+@media (max-height: 550px) and (min-width: 981px) {
+  .wiki-page--model .manuscript-tabs--flow {
+    height: auto;
+  }
+  .wiki-page--model .manuscript-tabs--flow .manuscript-tabs__sheet {
+    flex: none;
+    height: 55dvh;
+  }
+  @container (min-width: 681px) {
+    .wiki-page--model .manuscript-tabs--flow .manuscript-tabs__list {
+      grid-template-rows: repeat(var(--flow-node-count), minmax(48px, auto));
+    }
+  }
+}
+
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__tab > span {
+  white-space: pre-line;
+}
+
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__tab:first-child[data-state="active"] {
+  background: #d9f0f5;
+  border-color: #397f93;
+  box-shadow: 0 0 0 3px rgb(57 127 147 / 22%);
+}
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__tab:first-child:hover {
+  background: #c9e8f0;
+}
+
+.wiki-page--model .manuscript-tabs--flow .manuscript-tabs__node-detail {
+  margin-top: 7px;
+  font-size: clamp(10px, .7em, 14px);
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+/* Stretch each fraction rule across the wider of numerator and denominator. */
+.wiki-page--model .wiki-math__frac {
+  align-items: stretch;
+  flex-shrink: 0;
+  text-align: center;
+}
+.wiki-page--model .wiki-math__frac-top,
+.wiki-page--model .wiki-math__frac-bottom {
+  white-space: nowrap;
+}
+
+/* Clear cross-references in the Model judging answers. */
+.wiki-page--model .judging-criteria .wiki-prose-link--anchor {
+  display: inline;
+  padding: 3px 8px;
+  border: 1px solid var(--route-main);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--route-soft) 60%, white);
+  color: var(--route-heading-ink);
+  font-weight: 650;
+  line-height: 1.8;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.wiki-page--model .judging-criteria .wiki-prose-link--anchor::after {
+  content: " ↓";
+  white-space: nowrap;
+}
+.wiki-page--model .judging-criteria .wiki-prose-link--anchor:hover {
+  background: var(--route-main);
+}
+.wiki-page--model .judging-criteria .wiki-prose-link--anchor:focus-visible {
+  outline: 2px solid var(--route-heading-ink);
+  outline-offset: 3px;
+}
+.wiki-page--model #model-sst-qn .wiki-figure img {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;
+}
+.wiki-page--model #model-sst-qn .sust-chart-caption,
+.wiki-page--model #model-sst-qn .sust-chord__tooltip {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.wiki-page--model #model-sst-qn .model-sdg-chart {
+  overflow-x: auto;
+}
+.wiki-page--model #model-sst-qn .model-sdg-network {
+  display: block;
+  width: 100%;
+  height: var(--model-network-height, 840px);
+  border: 1px solid color-mix(in srgb, var(--route-heading-ink) 16%, transparent);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.7);
+}
+.wiki-page--model #model-sst-qn .sust-contribution-bubbles {
+  display: block;
+  min-width: 1200px;
+  width: 100%;
+}
+
+/* Match the site's convention: table number and description above the data. */
+.wiki-page--model .wiki-table caption {
+  caption-side: top;
+  padding: 12px 16px;
+  color: var(--route-heading-ink);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-transform: none;
+  text-align: left;
+}
+
+/* Body copy stays left aligned; captions, diagrams, icons and equations retain their layout. */
+.wiki-page--model .wiki-prose p:not(:has(.model-figure-caption)),
+.wiki-page--model .model-numbered-reasons p {
+  text-align: left !important;
+  text-align-last: auto;
+}
+.wiki-page--model .model-chart-caption {
+  margin: 16px 0;
+  color: var(--route-muted);
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Inline identifiers use the same ink as the manuscript, in a quiet code frame. */
+.wiki-page--model code {
+  color: var(--route-ink, #262b29);
+  background: #f4f5f7;
+  border: 1px solid #dfe2e7;
+  border-radius: 7px;
+  padding: 1px 6px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  overflow-wrap: anywhere;
+}
+
+.wiki-page--model .wiki-prose p:empty { display: none; }
+
+/* This pre-table paragraph is article copy, rather than a centered table caption. */
+.wiki-page--model #model-heading-14 + .wiki-prose,
+.wiki-page--model #model-heading-14 + .wiki-prose p {
+  text-align: left !important;
+  text-align-last: auto;
+}
+
+/* A pointer-selected survival tab keeps its green selection without a brown outline. */
+.wiki-page--model [data-manuscript-title="Survival evidence"] .manuscript-tabs__tab:focus {
+  outline: none;
+}
+.wiki-page--model [data-manuscript-title="Survival evidence"] .manuscript-tabs__tab:focus-visible {
+  outline: 2px solid var(--route-main, #9bd6c0);
+  outline-offset: 2px;
+}
+
+.wiki-page--model .model-chart-data > .wiki-table-wrap {
+  margin: 0;
+  padding: 8px 20px 20px;
+}

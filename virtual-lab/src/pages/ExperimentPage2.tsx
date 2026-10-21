@@ -650,7 +650,7 @@ if (experiment.id === 'exp2' && (currentStep === 3 || currentStep === 4 ||curren
   if (currentStepData?.highlightItems.includes(itemId)) {
     executeStepAnimation(currentStep);
   }
-}, [experiment, currentStep, completedSteps, isAnimating, executeStepAnimation, isSlidePrepared, isDropperUsed, isDropperInserted, isDropperMoving, setShowColonyDetail, setCompletedSteps, setCurrentStep, bottleClickable, isStained, lampClickable, loopClickable, setShowStainDetail, poolClickable, isStainedRound2, isTweezersAtPool, item10Clickable, setShowStainDetailRound2, isStainedRound3, isStainedRound4, item9Clickable, item8Clickable, setShowStainDetailRound3, setShowStainDetailRound4, isMicroscopeViewActive, isReagentClicked, isMicroscopeHighlighted, isSlideMovedToMicroscope, isSlideInserted, showMicroscopeInfo]);
+}, [experiment, currentStep, completedSteps, isAnimating, executeStepAnimation, isSlidePrepared, isDropperUsed, isDropperInserted, isDropperMoving, setShowColonyDetail, setCompletedSteps, setCurrentStep, bottleClickable, isStained, lampClickable, loopClickable, setShowStainDetail, poolClickable, isStainedRound2, isTweezersAtPool, item10Clickable, setShowStainDetailRound2, isStainedRound3, isStainedRound4, item9Clickable, item8Clickable, setShowStainDetailRound3, setShowStainDetailRound4, isMicroscopeViewActive, isReagentClicked, isMicroscopeHighlighted, isSlideMovedToMicroscope, isSlideInserted, showMicroscopeInfo, hasViewedStainDetailRound4, scheduleTimeout, tweezersClicked]);
 
   const currentStepData = experiment.steps[currentStep];
   const isCompleted = currentStep >= experiment.steps.length;
@@ -772,7 +772,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
     <div className="experiment-shell h-screen w-screen flex flex-col overflow-hidden text-white font-sans">
       <header className="h-12 lab-topbar flex items-center justify-between px-4 z-50 shrink-0">
         <div className="flex items-center gap-3">
-          <ChevronLeft className="cursor-pointer hover:text-white text-blue-200" onClick={onBack} />
+          <button type="button" className="lab-back-button shrink-0 text-blue-200 hover:text-white" onClick={onBack} aria-label="Back to Experiment Catalog"><ChevronLeft aria-hidden="true" /></button>
           <h1 className="font-bold text-xs text-white uppercase tracking-widest">{experiment.title}</h1>
         </div>
         <RestartExperimentButton onRestart={onRestart} />

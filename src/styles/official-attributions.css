@@ -1,7 +1,21 @@
-/* The shared Team shell owns the sidebar, decorated frame and document
-   timeline. Only the live iframe's complete content height is page-specific. */
+/* The official iframe owns article scrolling and exact section anchors. Keep
+   the host fitted to the shared reader so it has no second scroll range. */
+.official-attributions-page .wiki-reader-track {
+  scroll-margin-top: var(--reader-header-h);
+}
+
+.wiki-page.wiki-page--route.official-attributions-page .wiki-record .route-frame,
+.wiki-page.wiki-page--route.official-attributions-page .wiki-record .route-frame__scroll {
+  height: 100%;
+  min-height: 0;
+  overflow: clip;
+}
+
 .official-attributions-page__form {
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   min-height: 0;
   padding: clamp(40px, 5vw, 64px) clamp(26px, 5vw, 72px);
 }
@@ -9,12 +23,13 @@
 .official-attributions-page__form iframe {
   display: block;
   width: 100%;
-  height: var(--attribution-form-height, 900px);
+  height: 100%;
   border: 0;
   background: #ffffff;
 }
 
 .official-attributions-page__source {
+  flex: none;
   margin: 0 0 18px;
   font-size: 0.875rem;
   line-height: 1.6;
@@ -28,68 +43,9 @@
 }
 
 .official-attributions-page__document {
-  position: relative;
-}
-
-.official-attributions-page__jump-nav {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  background: #ffffff;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-bottom: 8px;
-}
-
-.official-attributions-page__jump-title {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #111827;
-  line-height: 1.2;
-}
-
-.official-attributions-page__jump-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.official-attributions-page__jump-chip {
-  appearance: none;
-  border: 1px solid #f3f4f6;
-  background: #f9fafb;
-  border-radius: 9999px;
-  padding: 6px 14px;
-  font-size: 14px;
-  font-weight: 500;
-  color: #374151;
-  cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-  line-height: 1.4;
-}
-
-.official-attributions-page__jump-chip:hover {
-  background: #f3f4f6;
-  color: #111827;
-}
-
-.official-attributions-page__jump-chip.is-active {
-  background: #e5e7eb;
-  color: #111827;
-  border-color: #e5e7eb;
-}
-
-.official-attributions-page__bookmark {
-  position: absolute;
-  top: var(--attribution-bookmark-top);
-  left: 0;
-  width: 1px;
-  height: 1px;
-  pointer-events: none;
-  scroll-margin-top: calc(var(--header-height) + 32px);
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
 }
 
 /* No reveal/transform choreography on the live embedded document. */
@@ -106,6 +62,11 @@
 }
 
 @media (max-width: 980px) {
+  .wiki-page.wiki-page--route.official-attributions-page .wiki-reader-track > .wiki-record {
+    height: var(--reader-h);
+    max-height: var(--reader-h);
+  }
+
   .official-attributions-page__form {
     padding: 24px 18px;
   }

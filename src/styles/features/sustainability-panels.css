@@ -102,6 +102,18 @@
 }
 
 /* "SET:" heading marker takes the green of the SET ring in that figure. */
+.wiki-page--sustainability #overview .wiki-figure.sust-figure--toolkit img {
+  width: 100%;
+  max-width: 100%;
+  max-height: none;
+}
+
+.wiki-page--sustainability #overview .wiki-figure.sust-figure--contribution-pathways img {
+  width: 80%;
+  max-width: 780px;
+  height: auto;
+}
+
 .wiki-page--sustainability #set-core-challenges {
   --route-marker-bg: #cadbca;
 }
@@ -1205,28 +1217,9 @@ a.sust-sdg-pill:focus-visible {
   text-underline-offset: 3px;
 }
 
-.sust-evidence__list {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 14px;
-  margin: 0;
-  padding-left: 1.4em;
-}
 .sust-evidence__item {
   min-width: 0;
   overflow-wrap: anywhere;
-}
-
-.sust-evidence__item::marker {
-  color: var(--route-accent);
-  font-weight: 700;
-}
-
-.sust-evidence__item p {
-  margin: 0;
-  color: var(--route-ink);
-  font-size: 16px;
-  line-height: 1.7;
 }
 
 .sust-evidence__item .wiki-figure {
@@ -2645,7 +2638,7 @@ a.sust-sdg-pill:focus-visible {
   border-radius: 10px;
 }
 
-/* Picture book CN/EN PDFs side by side (manuscript instruction). */
+/* Document groups other than the picture book retain their existing layout. */
 .sust-edu-resource__pdfs {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2657,6 +2650,30 @@ a.sust-sdg-pill:focus-visible {
 .sust-edu-resource__pdfs > * {
   min-width: 0;
   margin: 0;
+}
+
+.sust-picture-book__languages {
+  display: inline-flex;
+  gap: 4px;
+  margin-inline-start: 14px;
+  vertical-align: middle;
+}
+
+.sust-picture-book__languages button {
+  padding: 5px 10px;
+  border: 1px solid var(--doc-rule);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--doc-on);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sust-picture-book__languages button:hover,
+.sust-picture-book__languages button[aria-pressed="true"] {
+  background: var(--doc-wash);
+  border-color: var(--doc-deep);
 }
 
 @media (max-width: 640px) {
@@ -2677,10 +2694,12 @@ a.sust-sdg-pill:focus-visible {
   }
 }
 
-.sust-partnerships__prose .sust-stake-article p {
+/* Standalone partnership copy follows the reader; interview cards stay compact. */
+.sust-partnerships__prose .sust-stake-article p,
+.sust-partnerships__prose .sust-stake-article__bullets {
   margin-bottom: 16px;
-  font-size: 17px;
-  line-height: 1.8;
+  font-size: calc(18 * var(--site-ui-unit));
+  line-height: 1.75;
 }
 
 .sust-edu-group {
@@ -2715,14 +2734,6 @@ a.sust-sdg-pill:focus-visible {
   margin-top: 8px;
 }
 
-.sust-evidence__item-title {
-  margin: 0 0 6px;
-  color: var(--route-heading-ink, var(--route-ink));
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.4;
-}
-
 /* ==========================================================================
    SDG 4 — five-bookmark feedback microplate cards
    Paper bookmarks frame the original SDG 4 microplate and its red data ramp.
@@ -2755,6 +2766,40 @@ a.sust-sdg-pill:focus-visible {
 .edu-feedback[data-scroll-deck] .ef-card {
   position: sticky;
   top: var(--ef-top, 24px);
+  height: var(--ef-stage-height);
+  min-height: 0;
+}
+
+.edu-feedback[data-scroll-deck] .ef-content {
+  min-height: 0;
+  align-items: safe center;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.edu-feedback[data-scroll-deck] .ef-panel {
+  flex-shrink: 0;
+}
+
+@media (max-height: 850px) {
+  .edu-feedback[data-scroll-deck] .ef-rail {
+    padding: 16px 12px;
+  }
+
+  .edu-feedback[data-scroll-deck] .ef-tabs {
+    gap: 8px;
+  }
+
+  .edu-feedback[data-scroll-deck] .ef-tab {
+    min-height: 0;
+    padding: 8px 12px 14px;
+    font-size: 15px;
+  }
+
+  .edu-feedback[data-scroll-deck] .ef-tab-number {
+    margin-bottom: 4px;
+    font-size: 22px;
+  }
 }
 
 .edu-feedback *,
@@ -3470,5 +3515,88 @@ a.sust-sdg-pill:focus-visible {
   .sust-city-hotspot,
   .sust-city-hotspot__dot {
     transition: none;
+  }
+}
+
+/* Overview Figures 1–3: compact, centered, with the same cap as Figure 4. */
+.wiki-page--sustainability #overview .wiki-figure.sust-figure--overview-compact img {
+  width: 90%;
+  max-width: 960px;
+  height: auto;
+}
+/* Figure 18 */
+.wiki-page--sustainability .sust-evidence__item .wiki-figure img:is(
+  [src*="/sdg9/evidence-3.avif"],
+  [data-page-src*="/sdg9/evidence-3.avif"]
+) {
+  max-width: 600px !important;
+}
+/* Fit rounded edges to the artwork instead of a white padded image box. */
+.wiki-page--sustainability {
+  --wiki-figure-safe-inset: 0px;
+}
+
+.wiki-page.wiki-page--sustainability
+  :is(.wiki-figure, .wiki-figure-plate, .sust-stake-reel, .wiki-article figure:not(.wiki-masthead))
+  img {
+  padding: 0;
+  background-color: transparent;
+}
+
+/* Preserve the reel's layout while rounding the actual contained photograph. */
+.wiki-page--sustainability .sust-stake-reel__img {
+  inset: auto;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  transform: translate(-50%, -50%);
+}
+
+/* Sustainability images are displayed without decorative frames. */
+.wiki-page.wiki-page--sustainability {
+  --wiki-figure-radius: 0px;
+  --wiki-figure-safe-inset: 0px;
+}
+
+.wiki-page.wiki-page--sustainability
+  :is(.wiki-figure:has(img), .wiki-figure__frame, .wiki-figure-plate:has(img), .sust-stake-reel, .sust-stake-reel__frame, .wiki-article figure:has(img):not(.wiki-masthead)),
+.wiki-page.wiki-page--sustainability
+  :is(.wiki-figure, .wiki-figure-plate, .sust-stake-reel, .wiki-article figure:not(.wiki-masthead)) img {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Fill the Overview photo area to the reader edges and retain its bottom fade. */
+.wiki-page.wiki-page--sustainability #overview .wiki-masthead {
+  --masthead-bleed-top: clamp(40px, 5vw, calc(64 * var(--site-ui-unit)));
+  --masthead-bleed-x: clamp(26px, 5vw, calc(72 * var(--site-ui-unit)));
+}
+
+.wiki-page.wiki-page--sustainability #overview .wiki-masthead__image {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  object-fit: cover;
+  -webkit-mask-image: linear-gradient(to bottom, #000 42%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 42%, transparent 100%);
+  animation: none;
+}
+
+
+@media (max-width: 640px) {
+  .wiki-page.wiki-page--sustainability #overview .wiki-masthead {
+    --masthead-bleed-top: 24px;
+    --masthead-bleed-x: 20px;
   }
 }

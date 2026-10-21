@@ -1,0 +1,148 @@
+{
+  "archived": "2026-10-21",
+  "source_repository": "Official-wiki",
+  "source_head": "92c2836458f97cd5c99ace9afaf82808ccc2db45",
+  "last_game_commit": "f76d5f220c29a48820cdae57c260c3e724a0ef53",
+  "comparison": "Original source before archive hygiene; UTF-8 with CRLF normalized to LF. Bomb Cat CSS has one additional unused .static rule. Active published Bomb Cat includes the CDN cover correction.",
+  "builds": [
+    {
+      "game": "breast-guardian",
+      "built": "index.html",
+      "published": "index.html",
+      "same_normalized": true,
+      "normalized_sha256": "981b36332b4de822ba3a172c2d9c169fd8db467bd3d9dd50d5b784b085d15143"
+    },
+    {
+      "game": "breast-guardian",
+      "built": "assets\\index-DO8A9U8R.js",
+      "published": "assets\\index-DO8A9U8R.js",
+      "same_normalized": true,
+      "normalized_sha256": "54b6d6bb2a90155169d44933895a28a90c039321970acd1996ccc555afcffce8"
+    },
+    {
+      "game": "breast-guardian",
+      "built": "assets\\index-wlKyjRDK.css",
+      "published": "assets\\index-wlKyjRDK.css",
+      "same_normalized": true,
+      "normalized_sha256": "633a0366c01b343724bda030daa0136b97f58a2eb916f09b5223e6e17a737b4f"
+    },
+    {
+      "game": "breast-guardian",
+      "built": "assets\\radix-CvEUCBXp.js",
+      "published": "assets\\radix-CvEUCBXp.js",
+      "same_normalized": true,
+      "normalized_sha256": "fbe2642d28af0f4f1e5a99c5ee766892f7d61d178f04d0d8bfc0477362f31b50"
+    },
+    {
+      "game": "breast-guardian",
+      "built": "assets\\stories-Tg9kKJsL.js",
+      "published": "assets\\stories-Tg9kKJsL.js",
+      "same_normalized": true,
+      "normalized_sha256": "9bc6f296324ddd4bb4e244ab681f534ab07a4e354894c6f7a3e3764ec05f14ec"
+    },
+    {
+      "game": "breast-guardian",
+      "built": "assets\\vendor-Cgg2GOmP.js",
+      "published": "assets\\vendor-Cgg2GOmP.js",
+      "same_normalized": true,
+      "normalized_sha256": "c9c21267c15d080c501feee2ba7978ab1ebf792e34c1675e10cd8dfee46f5093"
+    },
+    {
+      "game": "bomb-cat",
+      "built": "index-v0QfOMMX.js",
+      "published": "index-DvtZyval.js",
+      "same_normalized": true,
+      "normalized_sha256": "9245e1cac64b5833df7952d6a19ed268b255cbdc28b25084d9f4a5058075fb47"
+    },
+    {
+      "game": "bomb-cat",
+      "built": "bundler-CNOJWtQo.js",
+      "published": "bundler-CNOJWtQo.js",
+      "same_normalized": true,
+      "normalized_sha256": "34f1261a1522a48f19da483dd830e03816999d6f87301a9b8f81e47922c8a2f7"
+    },
+    {
+      "game": "bomb-cat",
+      "built": "index-CuE7ESGG.css",
+      "published": "index-Cqlp2Gvx.css",
+      "same_normalized": false,
+      "normalized_sha256": "15196bb171b753586b5391e67c70dab7895c67d1b602fe0dd1ce19dec791db4c"
+    }
+  ],
+  "archive_adjustments": [
+    "PeerJS types replace any; unused callback parameter removed",
+    "Refresh helpers moved to separate modules with original function bodies",
+    "Reducer case declaration scopes and ordinary callback local alias corrected for lint",
+    "Asset scripts use archived relative registry instead of an external temporary file",
+    "README and generated mapping provenance updated; unused cover binary excluded",
+    "Git-reported trailing whitespace and excess empty end-of-file lines normalized without changing code tokens"
+  ],
+  "github_integration": {
+    "date": "2026-10-22",
+    "gitlab_source": "080a3f5484b61482d9e0f26d7b25ff17db13a991",
+    "base_github_head": "b24d5d172941d985f8acbf6d2258e226123ddbd9",
+    "policy": "Retain local online Bomb Cat implementation and media; integrate Wiki bridge, action types and Breast Guardian story/navigation helpers; rebuild both active Wiki entries from the integrated source.",
+    "bundles": [
+      {
+        "project": "games/bomb-cat",
+        "outputs": [
+          {
+            "path": "public/game-assets/bomb-cat/assets/bundler-CNOJWtQo.js",
+            "sha256": "34f1261a1522a48f19da483dd830e03816999d6f87301a9b8f81e47922c8a2f7",
+            "size": 89085
+          },
+          {
+            "path": "public/game-assets/bomb-cat/assets/index-B02AHIgZ.js",
+            "sha256": "8d965f3050bd72816f1e586a1a02c57491534582984a3d5d832c8740b827aefb",
+            "size": 382816
+          },
+          {
+            "path": "public/game-assets/bomb-cat/assets/index-CuE7ESGG.css",
+            "sha256": "15196bb171b753586b5391e67c70dab7895c67d1b602fe0dd1ce19dec791db4c",
+            "size": 14950
+          },
+          {
+            "path": "public/game-assets/bomb-cat/index.html",
+            "sha256": "ac9c3e146a0fa6a1e530fa1b5d04a2baa6398f5854f4e31bc88769ebd524232a",
+            "size": 788
+          }
+        ]
+      },
+      {
+        "project": "games/breast-guardian",
+        "outputs": [
+          {
+            "path": "public/game-assets/assets/index-_anQbusg.js",
+            "sha256": "98c256e48a766a84e7e4e22e07fdf696e6e4b1ac334b9f41817e93b5388dceb7",
+            "size": 477329
+          },
+          {
+            "path": "public/game-assets/assets/index-wlKyjRDK.css",
+            "sha256": "633a0366c01b343724bda030daa0136b97f58a2eb916f09b5223e6e17a737b4f",
+            "size": 70765
+          },
+          {
+            "path": "public/game-assets/assets/radix-CvEUCBXp.js",
+            "sha256": "fbe2642d28af0f4f1e5a99c5ee766892f7d61d178f04d0d8bfc0477362f31b50",
+            "size": 1231
+          },
+          {
+            "path": "public/game-assets/assets/stories-Tg9kKJsL.js",
+            "sha256": "9bc6f296324ddd4bb4e244ab681f534ab07a4e354894c6f7a3e3764ec05f14ec",
+            "size": 759959
+          },
+          {
+            "path": "public/game-assets/assets/vendor-Cgg2GOmP.js",
+            "sha256": "c9c21267c15d080c501feee2ba7978ab1ebf792e34c1675e10cd8dfee46f5093",
+            "size": 11322
+          },
+          {
+            "path": "public/game-assets/index.html",
+            "sha256": "fcbf80df50b8b77884a2f4500dbfa183d5cf1f190323c4fac118fc1b1a39cbfd",
+            "size": 656
+          }
+        ]
+      }
+    ]
+  }
+}

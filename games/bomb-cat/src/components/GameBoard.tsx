@@ -20,8 +20,8 @@ const T = (l: { cn: string; en: string }, lang: Lang) => (lang === 'cn' ? l.cn :
 
 export function GameBoard({ state, me, lang, onDraw }: GameBoardProps) {
   const opponents = state.players.filter((_, i) => i !== me);
-  const drawCount = state.drawCount ?? state.draw.length;
-  const remainingBombs = state.remainingBombs ?? state.draw.filter(card => card === 'bomb').length;
+  const drawCount = state.draw.length;
+  const remainingBombs = state.draw.filter(card => card === 'bomb').length;
   const outbreakRate = drawCount > 0 ? (remainingBombs / drawCount) * 100 : 0;
 
   return (
@@ -30,7 +30,7 @@ export function GameBoard({ state, me, lang, onDraw }: GameBoardProps) {
       <div className="flex flex-wrap justify-center gap-3">
         {opponents.map((p) => {
           const isActive = state.turn === p.id && !state.over;
-          const handCount = p.handCount ?? p.hand.length;
+          const handCount = p.hand.length;
           return (
             <motion.div
               key={p.id}

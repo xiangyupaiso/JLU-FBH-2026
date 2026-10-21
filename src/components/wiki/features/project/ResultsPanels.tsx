@@ -88,8 +88,8 @@ function formatResultsText(
   return nodes;
 }
 
-export const renderResultsText: InlineRenderer = (text, fallback, sectionId) =>
-  citedRenderer(text, (chunk) => formatResultsText(chunk, fallback), sectionId);
+export const renderResultsText: InlineRenderer = (text, fallback, sectionId, locationKey) =>
+  citedRenderer(text, (chunk) => formatResultsText(chunk, fallback), sectionId, locationKey);
 
 function ResultsVolcano({ cohort }: { cohort: "024322" | "028102" }) {
   return (

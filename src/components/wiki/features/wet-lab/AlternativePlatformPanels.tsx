@@ -6,7 +6,7 @@ import {
   alternativePlatformPage,
   alternativePlatformReferences,
 } from "../../../../data/wet-lab/alternativePlatformPage";
-import { renderInlineFormatting } from "../../proseInline";
+import { linkify } from "../../proseInline";
 import {
   buildAuthorYearCitationIndex,
   reportCitationIssues,
@@ -55,7 +55,7 @@ function AlternativePlatformJudgingCriteria() {
     <JudgingCriteria
       items={alternativePlatformJudgingCriteria}
       renderParagraph={(paragraph) =>
-        renderAlternativePlatformCitedText(paragraph, renderInlineFormatting)
+        renderAlternativePlatformCitedText(paragraph, linkify)
       }
     />
   );

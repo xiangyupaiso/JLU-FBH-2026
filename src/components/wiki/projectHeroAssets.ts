@@ -1,7 +1,7 @@
 const contributionHero =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/project-contribution-hero.webp";
 const visualDesignHero =
-  "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/project-visual-design-hero.webp";
+  "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/project-visuall-design-hero.webp";
 const safetyHero =
   "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/project-safety-hero.webp";
 

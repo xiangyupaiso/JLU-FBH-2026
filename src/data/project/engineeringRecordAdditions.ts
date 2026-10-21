@@ -219,8 +219,9 @@ export const cycle2Section: WikiSection = {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-01.avif",
           width: 3000,
-          height: 1780,
+          height: 2100,
           alt: "Figure C2-01",
+          figureLabel: "Figure C2-01",
           caption: "Binding-affinity and immunogenicity thresholds followed by source-protein context review reduced 1,838 overlapping nine-amino-acid peptides to 17 traceable candidate epitopes."
         }
           ]
@@ -299,8 +300,9 @@ export const cycle2Section: WikiSection = {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-02a.avif",
           width: 3000,
-          height: 1780,
+          height: 2100,
           alt: "Figure C2-02A",
+          figureLabel: "Figure C2-02A",
           caption: "Each candidate peptide was modelled with the HLA-A*02:01 heavy chain and β2-microglobulin. All five returned models were retained and assessed across five structural-review dimensions. `SVCWCVNSV` illustrated the PyMOL measurement and visualization workflow."
         },
         {
@@ -334,7 +336,7 @@ export const cycle2Section: WikiSection = {
         },
         {
           type: "table",
-          caption: "Table C2-02B｜Structural measurements and first-round coding status of 17 candidate epitopes",
+          caption: "Table C2-01｜Structural measurements and first-round coding status of 17 candidate epitopes",
           headers: [
             "Antigen",
             "Peptide",
@@ -367,8 +369,8 @@ export const cycle2Section: WikiSection = {
         },
         {
           type: "note",
-          label: "Table C2-02B note",
-          body: "Coding status records inclusion in the first-round experimental design; structural measurements provide accompanying computational descriptions. Numerical measurements are means across five models, while the conserved-network column counts hydrogen bonds present in all five. The P9 reference ratio uses 140 Å² as its denominator and may exceed 100%. “Undefined” denotes an undefined side-chain burial percentage."
+          label: "Table C2-01 note",
+          body: "This table corresponds to panel B of the original C2-02 composite display, alongside Figure C2-02A (structural-review workflow) and Figure C2-02C (representative PyMOL view). Coding status records inclusion in the first-round experimental design; structural measurements provide accompanying computational descriptions. Numerical measurements are means across five models, while the conserved-network column counts hydrogen bonds present in all five. The P9 reference ratio uses 140 Å² as its denominator and may exceed 100%. “Undefined” denotes an undefined side-chain burial percentage."
         },
         {
           type: "prose",
@@ -382,6 +384,7 @@ export const cycle2Section: WikiSection = {
           width: 1280,
           height: 718,
           alt: "Figure C2-02C",
+          figureLabel: "Figure C2-02C",
           caption: "A representative PyMOL view illustrates the predicted placement of `SVCWCVNSV` within the HLA-A*02:01 binding groove, together with surrounding interface residues and predicted hydrogen bonds. Structural measurements included all five sampled models."
         }
           ]
@@ -595,7 +598,7 @@ export const cycle2Section: WikiSection = {
         },
         {
           type: "table",
-          caption: "Table C2-01｜RT-qPCR assessment of the representative first-round preparation",
+          caption: "Table C2-02｜RT-qPCR assessment of the representative first-round preparation",
           headers: ["Input volume", "Recorded circular-to-linear signal ratio", "Estimated circular fraction"],
           rows: [
             ["2 µL", "13.0:1", "92.85±0.08%"],
@@ -605,7 +608,7 @@ export const cycle2Section: WikiSection = {
         },
         {
           type: "note",
-          label: "Table C2-01 note",
+          label: "Table C2-02 note",
           body: "TROP2-CTL1 served as the representative first-round preparation. Each input volume included three technical replicate wells; estimated fractions are reported as mean±SD using the source calculation. The 4 µL input was selected for subsequent measurements."
         }
           ]
@@ -685,6 +688,7 @@ export const cycle2Section: WikiSection = {
           width: 966,
           height: 334,
           alt: "Figure C2-03",
+          figureLabel: "Figure C2-03",
           caption: "First-round IFN-γ ELISpot compared 13 epitope-encoding circRNA preparations and selected two responsive modules from each of the four antigen sources."
         }
           ]
@@ -696,7 +700,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "ELISpot identified the eight modules required for Combined and clarified the next step in gathering evidence. IFN-γ secretion recorded a recognition-associated cellular response; the project still needed to observe early CD8 T-cell activation and overall effector activity before assembling the first-round evidence. We retained that scientific requirement. The idea of recognition also served as a shared scientific theme for our age-appropriate educational activities. Further details are provided in [Results — 5.1 Round 1 IFN-γ ELISpot — the primary criterion](https://2026.igem.wiki/jlu-fbh/results#results-3-1) and [Integrated Human Practices — In Vitro — Summary](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vitro-4)."
+          "ELISpot identified the eight modules required for Combined and clarified the next step in gathering evidence. IFN-γ secretion recorded a recognition-associated cellular response; the project still needed to observe early CD8 T-cell activation and overall effector activity before assembling the first-round evidence. We retained that scientific requirement. The idea of recognition also served as a shared scientific theme for our age-appropriate educational activities. Further details are provided in [Results — 4.1 Round 1 IFN-γ ELISpot — the primary criterion](https://2026.igem.wiki/jlu-fbh/results#results-3-1) and [Integrated Human Practices — In Vitro — Summary](https://2026.igem.wiki/jlu-fbh/human-practices#hp-in-vitro-4)."
 ]
         }
           ]
@@ -732,7 +736,7 @@ export const cycle2Section: WikiSection = {
         {
           type: "prose",
           paragraphs: [
-          "Education and Visual Design developed an interactive vaccine-science lesson for approximately 50 students at the Primary School Affiliated to Jilin University. Beginning with the students’ own vaccination experiences, the lesson introduced the basic idea that the immune system recognizes targets through biological information. Students then completed two rounds of a “wanted-poster” game: the first provided only limited information, while the second added clear identifying clues. By comparing their group decisions across the two rounds, students could experience how more specific information improves recognition before returning to the scientific explanation of immune recognition."
+          "Education and Visual Design developed an interactive vaccine-science lesson for approximately 50 students at the Primary School Affiliated to Jilin University. Beginning with the students’ own vaccination experiences, the lesson introduced the basic idea that the immune system recognizes targets through biological information. Students then completed two rounds of a 'wanted-poster' game: the first provided only limited information, while the second added clear identifying clues. By comparing their group decisions across the two rounds, students could experience how more specific information improves recognition before returning to the scientific explanation of immune recognition."
 ]
         }
           ]
@@ -802,6 +806,7 @@ export const cycle2Section: WikiSection = {
           width: 1702,
           height: 1276,
           alt: "Figure C2-05A",
+          figureLabel: "Figure C2-05A",
           caption: "During the first activity at Hailun No. 1 High School, the teacher used the initial Virtual Laboratory with support from the development team. This activity revealed the need for clearer experimental purposes and more visible connections between consecutive steps."
         }
           ]
@@ -834,6 +839,7 @@ export const cycle2Section: WikiSection = {
           width: 1706,
           height: 1279,
           alt: "Figure C2-05B",
+          figureLabel: "Figure C2-05B",
           caption: "After revision, the same teacher independently organised the Virtual Laboratory and continued using it after the development team had left."
         }
           ]
@@ -911,8 +917,9 @@ export const cycle2Section: WikiSection = {
           type: "figure",
           src: "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-06.avif",
           width: 3000,
-          height: 1780,
+          height: 2100,
           alt: "Figure C2-06",
+          figureLabel: "Figure C2-06",
           caption: "**(A)** CD8/CD69 staining and flow cytometry assessed early T-cell activation under the TROP2 CTL1 and CTL2 conditions. **(B)** Calcein-AM release from K562 targets measured overall effector-cell cytotoxicity at an effector-to-target ratio of 80:1, with spontaneous- and maximum-release controls supporting normalisation."
         }
           ]
@@ -933,6 +940,7 @@ export const cycle2Section: WikiSection = {
           width: 1340,
           height: 612,
           alt: "Figure C2-07A",
+          figureLabel: "Figure C2-07A",
           caption: "CD8/CD69 flow cytometry following TROP2 CTL1 or CTL2 stimulation. Red ellipses identify the lymphocyte gate; green boxes identify CD8⁺CD69⁺ cells within that gate."
         },
         {
@@ -941,6 +949,7 @@ export const cycle2Section: WikiSection = {
           width: 1745,
           height: 1611,
           alt: "Figure C2-07B",
+          figureLabel: "Figure C2-07B",
           caption: "K562 killing was measured by Calcein-AM release at an effector-to-target ratio of 80:1 across the first-round constructs."
         }
           ]
@@ -1009,6 +1018,7 @@ export const cycle2Section: WikiSection = {
           width: 1844,
           height: 1339,
           alt: "Figure C2-08",
+          figureLabel: "Figure C2-08",
           caption: "Plasmid map of the Combined construct, designed to incorporate eight modules selected through the first-round ELISpot screen."
         }
           ]
@@ -1088,7 +1098,7 @@ export const cycle2Section: WikiSection = {
                     "src": "https://static.igem.wiki/teams/6056/wiki/files/pages/project/engineering/engineering-c2-09d.avif"
           }
 ],
-          caption: "CircuForge V2.0 interfaces illustrated using a hepatocellular carcinoma proteomics demo project. (A) The Design Cart, labelled “Design list”, displays saved targets and epitopes, project identifiers and project-saving controls. (B) The construct interface provides researcher review controls for the inferred mature circRNA boundary and backbone design, alongside a confirmation-record field. (C) The export interface displays construct-generation status, review guidance and file-download options. (D) The Evidence Card summarises candidate-target evidence while retaining the requirement for user confirmation."
+          caption: "CircuForge V2.0 interfaces illustrated using a hepatocellular carcinoma proteomics demo project. (A) The Design Cart, labelled 'Design list', displays saved targets and epitopes, project identifiers and project-saving controls. (B) The construct interface provides researcher review controls for the inferred mature circRNA boundary and backbone design, alongside a confirmation-record field. (C) The export interface displays construct-generation status, review guidance and file-download options. (D) The Evidence Card summarises candidate-target evidence while retaining the requirement for user confirmation."
         }
           ]
         },

@@ -597,6 +597,8 @@ export function Navbar() {
       const currentY = window.scrollY;
       const delta = currentY - lastY;
       lastY = currentY;
+      const max = root.scrollHeight - window.innerHeight;
+      const progress = max > 0 ? clamp(currentY / max) : 0;
       const opening = homeActive
         ? document.querySelector<HTMLElement>(".home-scene01")
         : null;
@@ -692,6 +694,7 @@ export function Navbar() {
         );
       }
       // Finish layout reads before painting.
+      header.style.setProperty("--scroll-p", progress.toFixed(4));
       if (lastTarget !== animationTarget || reduced.matches) {
         const initialized = lastTarget !== -1;
         lastTarget = animationTarget;
@@ -907,7 +910,7 @@ export function Navbar() {
               aria-label={
                 isBallMode && !isBallExpanded
                   ? "Expand navigation menu"
-                  : "CirCure home"
+                  : undefined
               }
               title={
                 isBallMode && !isBallExpanded
@@ -918,7 +921,7 @@ export function Navbar() {
               aria-expanded={isBallMode ? isBallExpanded : undefined}
               aria-controls={isBallMode ? "circure-nav-controls" : undefined}
             >
-              <span className="wordmark-stage" aria-hidden="true">
+              <span className="wordmark-stage" aria-hidden={isBallMode && !isBallExpanded || undefined}>
                 <span className="wordmark-crest">
                   <QueuedImage
                     className="team-crest logo--dark"

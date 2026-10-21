@@ -5,7 +5,7 @@
  * this script exercises it through the pages' real feature wiring — the same
  * components `WikiRoutePage` mounts — and asserts both the interaction markup and
  * the bibliographic text. Covering two different in-text conventions at once is
- * the point: Description writes `(Sung et al. 2026)` and Design writes `[1]`, and
+ * the point: Description and Design use author-year groups while Hardware uses `[1]`;
  * both must reach the same register, anchors and back-links.
  *
  * Run with `node scripts/verify-citations.mjs`.
@@ -62,7 +62,7 @@ function page(name: string, sections: never, refs: never, index: never, renderer
 }
 
 const descriptionIndex = buildAuthorYearCitationIndex(descriptionPage.sections, descriptionReferences);
-const designIndex = buildNumericCitationIndex(designPage.sections, designReferences);
+const designIndex = buildAuthorYearCitationIndex(designPage.sections, designReferences);
 const hardwareIndex = buildNumericCitationIndex(hardwarePage.sections, hardwareReferences);
 const resultsIndex = buildAuthorYearCitationIndex(resultsPage.sections, resultsCitationReferences);
 const entrepreneurshipIndex = buildNumericCitationIndex(entrepreneurshipPage.sections, entrepreneurshipReferences);
@@ -74,6 +74,7 @@ const alternativePlatformIndex = buildAuthorYearCitationIndex(alternativePlatfor
  * no citation marker, so the indexed paragraphs alone would never exercise them.
  */
 const emphasis = {
+  pageLink: render(<p>{renderDesignCitedText("[Measurement](/measurement)", linkify)}</p>),
   italic: render(<p>{(renderResultsText as never as (t: string, f: unknown) => unknown)("circularised through the T4 *td* permuted intron", linkify)}</p>),
   hla: render(<p>{(renderResultsText as never as (t: string, f: unknown) => unknown)("screened against HLA-A*02:01 and HLA-A*02:01 again", linkify)}</p>),
   stars: render(<p>{(renderResultsText as never as (t: string, f: unknown) => unknown)("Error bars are SD; *** denotes P < 0.001 for Blank vs Combined.", linkify)}</p>),
@@ -270,12 +271,7 @@ for (const page of [
 
   check(
     `${name}: the index resolved every citation it saw`,
-    name === "results"
-      ? JSON.stringify(indexPath.issues) === JSON.stringify([
-          "citation inside bold text: Falk et al., 1991",
-          "unresolved: Wesselhoeft et al., 2019",
-        ])
-      : indexPath.issues.length === 0,
+    indexPath.issues.length === 0,
     indexPath.issues.slice(0, 5).join(" | "),
   );
   check(
@@ -356,10 +352,9 @@ for (const page of [
 const description = report.description;
 check(
   "description: author-year markers show the author-year text",
-  // The parentheses stay outside the anchor, exactly as the page wrote them; the
-  // link carries the author group itself.
+  // Normalized author-year groups keep parentheses inside the shared link.
   description.cited.some((entry) =>
-    /\(<a[^>]*class="wiki-cite"[^>]*>[A-Z][^<]*\d{4}<\/a>\)/.test(entry.html),
+    /<a[^>]*class="wiki-cite"[^>]*>\([A-Z][^<]*, (?:19|20)\d{2}\)<\/a>/.test(entry.html),
   ),
   description.cited
     .find((entry) => entry.html.includes("wiki-cite"))
@@ -374,23 +369,16 @@ check(
 
 const design = report.design;
 check(
-  "design: bracketed markers keep their numerals",
-  design.cited.some((entry) => />\[1\]</.test(entry.html)),
+  "design: author-year groups use the shared citation link",
+  design.cited.some((entry) => /<a[^>]*class="wiki-cite"[^>]*>\([A-Z][^<]*, (?:19|20)\d{2}\)<\/a>/.test(entry.html)),
 );
 check(
-  "design: adjacent markers both resolve",
-  design.cited.some(
-    (entry) => {
-      const adjacent = entry.paragraph.match(/\[(\d+)\]\[(\d+)\]/);
-      return adjacent &&
-        entry.html.includes(`href="#ref-${adjacent[1]}"`) &&
-        entry.html.includes(`href="#ref-${adjacent[2]}"`);
-    },
-  ),
+  "design: grouped sources retain every reference target",
+  design.cited.some((entry) => /aria-describedby="ref-\d+-body ref-\d+-body/.test(entry.html)),
 );
 check(
-  "design: Markdown page links still become links inside cited paragraphs",
-  design.cited.some((entry) => entry.html.includes('href="/measurement"')),
+  "design: Markdown page links survive the citation renderer fallback",
+  report.emphasis.pageLink.includes('href="/measurement"'),
 );
 
 const hardware = report.hardware;
@@ -412,11 +400,11 @@ check(
 const results = report.results;
 check(
   "results: author-year markers preserve the manuscript's text",
-  results.cited.some((entry) => /\(<a[^>]*class="wiki-cite"[^>]*>[A-Z][^<]*\d{4}<\/a>\)/.test(entry.html)),
+  results.cited.some((entry) => /<a[^>]*class="wiki-cite"[^>]*>\([A-Z][^<]*, (?:19|20)\d{2}\)<\/a>/.test(entry.html)),
 );
 check(
-  "results: the source-year mismatch is not linked to a different paper",
-  !results.indexPath.byRef.has(34),
+  "results: corrected Wesselhoeft citation reaches its bibliography entry",
+  results.indexPath.byRef.has(34),
 );
 check(
   "results: multi-source author-year groups resolve item by item",
@@ -484,13 +472,13 @@ const alternativePlatform = report.alternativePlatform;
 check(
   "alternative-platform: comma-separated author-year citations resolve",
   alternativePlatform.cited.some((entry) =>
-    /<a[^>]*class="wiki-cite"[^>]*>Bardia et al\., 2021<\/a>/.test(entry.html),
+    textOf(entry.html).includes("Bardia et al., 2021") && entry.html.includes('aria-describedby="ref-3-body ref-1-body"'),
   ),
 );
 check(
   "alternative-platform: multi-word surnames resolve",
   alternativePlatform.cited.some((entry) =>
-    /<a[^>]*class="wiki-cite"[^>]*>Percie du Sert et al\., 2020<\/a>/.test(entry.html),
+    /<a[^>]*class="wiki-cite"[^>]*>[^<]*Percie du Sert et al\., 2020[^<]*<\/a>/.test(entry.html),
   ),
 );
 

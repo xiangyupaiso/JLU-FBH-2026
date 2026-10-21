@@ -1,8 +1,9 @@
 import { QueuedImage } from "../../../common/QueuedImage";
-import { useEffect, useRef, useState, type ReactNode, type TouchEvent } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type TouchEvent } from "react";
 import galleries from "../../../../data/engagement/educationGalleries.json";
 import mediaGroups from "../../../../data/engagement/educationMediaGroups.json";
 import { educationAssetUrl } from "../../../../data/engagement/educationRemoteAssets";
+import { getEducationFigureCaption } from "../../../../data/engagement/educationFigureCaptions";
 import { DocumentViewer } from "../../documents/DocumentViewer";
 import "../../../../styles/features/education-media.css";
 
@@ -26,25 +27,7 @@ function useNearViewport<T extends HTMLElement>(rootMargin = "400px 0px") {
   return { ref, near };
 }
 
-const interactivePages = {
-  "education-interactive-map": {
-    title: "Community & Educational Function Map",
-    load: () => import("../../../../data/engagement/interactive/community-educational-function-map.html?raw").then((module) => module.default),
-    height: 730,
-  },
-  "education-interactive-design-board": {
-    title: "Education Design Board",
-    load: () => import("../../../../data/engagement/interactive/education-design-board.html?raw").then((module) => module.default),
-    height: 850,
-  },
-  "education-interactive-evidence-room": {
-    title: "Breast Guardian Evidence Room",
-    load: () => import("../../../../data/engagement/interactive/breast-guardian-evidence-room.html?raw").then((module) => module.default),
-    height: 900,
-  },
-} as const;
-
-function InteractivePage({ item }: { item: (typeof interactivePages)[keyof typeof interactivePages] }) {
+export function InteractivePage({ item }: { item: { title: string; load: () => Promise<string>; height: number } }) {
   const { ref, near } = useNearViewport<HTMLElement>("1200px 0px");
   const [started, setStarted] = useState(false);
   const [html, setHtml] = useState("");
@@ -76,7 +59,7 @@ function InteractivePage({ item }: { item: (typeof interactivePages)[keyof typeo
   );
 }
 
-function MediaGrid({ group }: { group: MediaGroup }) {
+export function MediaGrid({ group }: { group: MediaGroup }) {
   const allPdf = group.items.every((item) => item.kind === "pdf");
   if (allPdf) {
     return (
@@ -104,10 +87,11 @@ function MediaGrid({ group }: { group: MediaGroup }) {
     <div className="education-media-grid" data-count={group.items.length}>
       {group.items.map((item, index) => {
         const src = educationAssetUrl(item.src);
+        const caption = getEducationFigureCaption(item.src)?.caption ?? ("caption" in item ? item.caption : "");
         return (
           <figure className="education-media-grid__image" key={`${src}-${index}`}>
             <QueuedImage src={src} alt={"alt" in item ? item.alt : "Education illustration"} loading="lazy" decoding="async" />
-            {"caption" in item && item.caption ? <figcaption>{item.caption}</figcaption> : null}
+            {caption ? <figcaption>{caption}</figcaption> : null}
           </figure>
         );
       })}
@@ -115,7 +99,7 @@ function MediaGrid({ group }: { group: MediaGroup }) {
   );
 }
 
-function PhotoGallery({ gallery }: { gallery: Gallery }) {
+export function PhotoGallery({ gallery, imageUrl = (file) => educationAssetUrl(`galleries/${file}`), showCount = true }: { gallery: Gallery; imageUrl?: (file: string) => string; showCount?: boolean }) {
   const [index, setIndex] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const photos = gallery.images;
@@ -153,58 +137,65 @@ function PhotoGallery({ gallery }: { gallery: Gallery }) {
             onClick={() => offset && go(offset)}
             aria-label={offset === 0 ? photo.caption : `${offset < 0 ? "Previous" : "Next"}: ${photo.caption}`}
             tabIndex={offset === 0 ? -1 : 0}
-          ><QueuedImage src={educationAssetUrl(`galleries/${photo.file}`)} alt={photo.caption} loading="lazy" decoding="async" /></button>;
+          ><QueuedImage src={imageUrl(photo.file)} alt={photo.caption} loading="lazy" decoding="async" /></button>;
         })}
         <button type="button" className="education-gallery__arrow education-gallery__arrow--prev" onClick={() => go(-1)} aria-label={`Previous ${gallery.title} photograph`}>‹</button>
         <button type="button" className="education-gallery__arrow education-gallery__arrow--next" onClick={() => go(1)} aria-label={`Next ${gallery.title} photograph`}>›</button>
       </div>
       <figcaption>
         <span>{photos[index].caption}</span>
-        <span>{index + 1} / {count}</span>
+        {showCount && <span>{index + 1} / {count}</span>}
       </figcaption>
     </figure>
   );
 }
 
-export function educationFeatures() {
-  const features: Record<string, ReactNode> = {};
-  for (const [key, item] of Object.entries(interactivePages)) {
-    features[key] = <InteractivePage item={item} key={key} />;
-  }
-  for (const gallery of galleries) {
-    features[gallery.key] = <PhotoGallery gallery={gallery} key={gallery.key} />;
-  }
-  for (const group of mediaGroups) {
-    features[group.key] = <MediaGrid group={group} key={group.key} />;
-  }
-  features["education-equation-1"] = (
-    <div className="education-equation" role="math" aria-label="x sub i equals one if education format i is selected, otherwise zero">
-      <span><var>x</var><sub>i</sub> = </span><span className="education-equation__brace">&#123;</span>
-      <span className="education-equation__cases"><span>1, <small>if education format <var>i</var> is selected</small></span><span>0, <small>otherwise</small></span></span>
-    </div>
-  );
-  features["education-equation-2"] = (
-    <div className="education-equation education-equation--stacked" role="math" aria-label="Coverage and weighted education portfolio objective">
-      <div><var>y</var><sub>k</sub> ≤ <span className="education-equation__sum"><sup>n</sup>∑<sub>i=1</sub></span> <var>a</var><sub>ik</sub><var>x</var><sub>i</sub>,</div>
-      <div>max <var>Z</var> = <span className="education-equation__sum"><sup>K</sup>∑<sub>k=1</sub></span> <var>w</var><sub>k</sub><var>y</var><sub>k</sub></div>
-    </div>
-  );
-  features["education-equation-3"] = (
-    <div className="education-equation" role="math" aria-label="Sum of resources required by selected educational formats is no greater than available resources">
-      <span className="education-equation__sum"><sup>n</sup>∑<sub>i=1</sub></span> <var>c</var><sub>ir</sub><var>x</var><sub>i</sub> ≤ <var>C</var><sub>r</sub>
-    </div>
-  );
-  return features;
-}
+const winterStations = [
+  { name: "Hailun", filePrefix: "hailun", count: 6 },
+  { name: "Yanbian", filePrefix: "jilinyanbian", count: 2 },
+  { name: "Chongqing", filePrefix: "chongqing", count: 5 },
+  { name: "Jining", filePrefix: "shandongjining", count: 4 },
+  { name: "Turin", filePrefix: "yidaliduling", count: 3 },
+] as const;
 
-export function renderEducationInline(text: string, fallback: (value: string) => ReactNode): ReactNode {
-  text = text.replace(/\*\*(?=\[[^\]]+\]\()/g, "").replace(/(?<=\))\*\*/g, "");
-  if (!text.includes("$")) return fallback(text);
-  return text.split(/(\$[^$]+\$)/g).map((part, index) => {
-    if (!part.startsWith("$") || !part.endsWith("$")) return <span key={index}>{fallback(part)}</span>;
-    const formula = part.slice(1, -1);
-    const match = formula.match(/^([A-Za-z])_(?:\{([^}]+)\}|([A-Za-z]))$/);
-    return match ? <span className="education-inline-math" key={index}><var>{match[1]}</var><sub>{match[2] ?? match[3]}</sub></span>
-      : <span className="education-inline-math" key={index}><var>{formula}</var></span>;
-  });
+export function WinterOutreachGallery() {
+  const [stationIndex, setStationIndex] = useState(0);
+  const station = winterStations[stationIndex];
+  const gallery: Gallery = {
+    key: "education-gallery-winter-outreach",
+    title: `Winter Outreach · ${station.name}`,
+    images: Array.from({ length: station.count }, (_, index) => ({
+      file: `new-figure/${station.filePrefix}-${index + 1}.avif`,
+      caption: `${station.name} · ${index + 1} / ${station.count}`,
+    })),
+  };
+
+  return (
+    <section className="education-stations" aria-label="Winter Outreach locations">
+      <div className="education-stations__labels">
+        {winterStations.map((stop, index) => (
+          <button
+            key={stop.name}
+            type="button"
+            className={index === stationIndex ? "education-stations__label education-stations__label--active" : "education-stations__label"}
+            aria-current={index === stationIndex ? "step" : undefined}
+            onClick={() => setStationIndex(index)}
+          >{stop.name}</button>
+        ))}
+      </div>
+      <input
+        className="education-stations__range"
+        type="range"
+        min={0}
+        max={winterStations.length - 1}
+        step={1}
+        value={stationIndex}
+        onChange={(event) => setStationIndex(Number(event.currentTarget.value))}
+        aria-label="Choose a Winter Outreach location"
+        aria-valuetext={station.name}
+        style={{ "--education-station-progress": `${stationIndex / (winterStations.length - 1) * 100}%` } as CSSProperties}
+      />
+      <PhotoGallery key={station.name} gallery={gallery} />
+    </section>
+  );
 }

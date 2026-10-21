@@ -154,6 +154,8 @@ export type WikiContentBlock =
       title: string;
       level?: 3 | 4;
       anchorIds?: string[];
+      /** Fold this heading's content up to (excluding) the named sibling heading. */
+      collapseUntil?: string;
     }
   | { type: "feature"; key: string }
   | { type: "chapter-link"; target: string; label: string; imageSrc?: string; imageAlt?: string }

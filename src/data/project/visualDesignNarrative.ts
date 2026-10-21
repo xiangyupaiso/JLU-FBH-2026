@@ -29,7 +29,7 @@ export const visualDesignNarrativeSections: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "Before introducing circRNA, we give the reader time to meet the woman at the center of the story. Anxiety, surgery and hair loss appear as illustrations around her. As the view moves closer, those images recede and **“Behind every diagnosis, there is a person”** remains beside her silhouette. The change in emphasis introduces the person whose concern will guide the explanation.",
-          "That concern becomes a question in the ward: **“What if it comes back?”** Written for the illustrated story, the line leads into treatment challenges, vaccine approaches and our circular RNA platform. This attention to a person’s experience draws on **narrative medicine**.[1] It also gives the scientific discussion a clear starting point: the uncertainty she is living with.",
+          "That concern becomes a question in the ward: **“What if it comes back?”** Written for the illustrated story, the line leads into treatment challenges, vaccine approaches and our circular RNA platform. This attention to a person’s experience draws on **narrative medicine** (Charon, 2001). It also gives the scientific discussion a clear starting point: the uncertainty she is living with.",
         ],
       },
       {
@@ -65,7 +65,7 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "With the backbone established, **“Like changing a key” lets the reader try a modular design choice.** Selecting or dragging an antigen-coding segment into the circular construct changes the highlighted segment and its illustrative target together. Because the backbone stays visible, successive selections can be compared against the same structure. This use of **direct manipulation** makes the relationship between shared and replaceable parts visible.[4]",
+          "With the backbone established, **“Like changing a key” lets the reader try a modular design choice.** Selecting or dragging an antigen-coding segment into the circular construct changes the highlighted segment and its illustrative target together. Because the backbone stays visible, successive selections can be compared against the same structure. This use of **direct manipulation** makes the relationship between shared and replaceable parts visible (Shneiderman, 1983).",
           "The mechanism view then follows translation, antigen presentation and immune recognition. Antigens A, B and C serve as **conceptual examples**, with nearby notes providing the biological context: human leukocyte antigen (**HLA**) compatibility, the distinction between recognition and killing, and the need to validate each new target.",
         ],
       },
@@ -83,7 +83,7 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "An explanation that is familiar to one reader may be new to another. Readers also differ in how much time they want to spend with an illness-related story. We therefore pair a clear narrative sequence with opportunities to pause, revisit an explanation or move ahead. This balance between guidance and reader choice draws on **narrative visualization**.[2]",
+          "An explanation that is familiar to one reader may be new to another. Readers also differ in how much time they want to spend with an illness-related story. We therefore pair a clear narrative sequence with opportunities to pause, revisit an explanation or move ahead. This balance between guidance and reader choice draws on **narrative visualization** (Segel et al., 2010).",
         ],
       },
       {
@@ -191,7 +191,7 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "The opening begins with a practical need: the first scene takes time to prepare. Our loading screen is available as **HTML and CSS before the application bundle**, so its messages can explain preparation, a longer wait or a failure. This follows the principle of **visibility of system status**.[10] Readiness checks and a waiting limit determine the handoff to the introduction.",
+          "The opening begins with a practical need: the first scene takes time to prepare. Our loading screen is available as **HTML and CSS before the application bundle**, so its messages can explain preparation, a longer wait or a failure. This follows the principle of **visibility of system status** (Harley, 2018). Readiness checks and a waiting limit determine the handoff to the introduction.",
           "Once the loader leaves, the CirCure signature introduces the project. The subtitle appears word by word, but its reading hold starts after the final word settles. The complete sentence therefore has time on screen before the patient appears. Finally, the wordmark moves into its measured header position, linking the introduction to the navigation.",
           "Readers can use Skip to reach the completed introduction. With reduced motion enabled, the finished title appears with a Continue control, leaving the next step to the reader.",
         ],
@@ -227,9 +227,9 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "Once the layers are assembled, we decide what the reader needs to see together. If an object moves while its explanation changes, both demand attention. We therefore build **readable states**, where the object is visible, the sentence is complete and the composition pauses. Establishing the RNA ring before moving it into the platform preserves **object constancy**, a recognizable identity through change.[3] Keeping the explanation focused and dividing it into stages also draws on coherence, signaling and segmenting principles.[5]",
-          "Within that sequence, **staging** sets the order of events, **easing** shapes their speed and a **reading hold** leaves the completed scene still. Duration on a scroll timeline allocates scroll distance; automatic playback assigns separate times to travel and reading.[7] The circRNA explanation and project-advantages panels in Section 8.2 show two of the settled compositions this produces.",
-          "Animation research also informs the timing: each change needs to be visible long enough for the reader to follow it.[6] We give the important movements room to unfold before the next explanation begins.",
+          "Once the layers are assembled, we decide what the reader needs to see together. If an object moves while its explanation changes, both demand attention. We therefore build **readable states**, where the object is visible, the sentence is complete and the composition pauses. Establishing the RNA ring before moving it into the platform preserves **object constancy**, a recognizable identity through change (Heer et al., 2007). Keeping the explanation focused and dividing it into stages also draws on coherence, signaling and segmenting principles (Mayer et al., 2003).",
+          "Within that sequence, **staging** sets the order of events, **easing** shapes their speed and a **reading hold** leaves the completed scene still. Duration on a scroll timeline allocates scroll distance; automatic playback assigns separate times to travel and reading (GSAP, n.d.). The circRNA explanation and project-advantages panels in Section 8.2 show two of the settled compositions this produces.",
+          "Animation research also informs the timing: each change needs to be visible long enough for the reader to follow it (Tversky et al., 2002). We give the important movements room to unfold before the next explanation begins.",
         ],
       },
       {
@@ -273,7 +273,7 @@ export const visualDesignNarrativeSections: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "Following these transitions through the page reveals details that a still image cannot show. **AI assistance helps us assemble an early version; the movement needs further work once the pieces come together.** Individual sections can bring their own scroll updates and animation timings. As the page grows, those pieces can repeat work or hand over at different moments, leaving a brief hesitation or a jump between otherwise complete scenes.",
-          "Some of that unevenness comes from the work of drawing the page. Repeatedly measuring positions after changing styles can make the browser calculate the layout again; large painted layers and effects add to what it must redraw.[12] We group measurements, reuse prepared artwork and favor transforms and opacity for moving layers. In the RNA ring transition, for example, prepared variations of the painting let its contour change without sampling its pixels again on every scroll update.",
+          "Some of that unevenness comes from the work of drawing the page. Repeatedly measuring positions after changing styles can make the browser calculate the layout again; large painted layers and effects add to what it must redraw (web.dev, n.d.). We group measurements, reuse prepared artwork and favor transforms and opacity for moving layers. In the RNA ring transition, for example, prepared variations of the painting let its contour change without sampling its pixels again on every scroll update.",
           "Other moments need a closer adjustment to the movement itself. We tune where a handoff begins, how its speed changes and when the incoming artwork becomes fully visible. A reversal should continue from the view already on screen, and a resized page should keep the reader’s place. Working through short stretches at different speeds helps us find these small interruptions and try the adjustment again. These small adjustments remain part of the design, helping the separate pieces feel like one continuous page.",
         ],
       },
@@ -291,7 +291,7 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "These prepared sequences give the automatic guide a starting pace, which readers can adjust. The mouse wheel, touch or scrolling keys return control to the reader; playback can also be paused or a scene revisited. Opening the scene list pauses the guide while a chapter is chosen. Selection moves to that chapter and closes the list, while Escape closes it and returns focus to its button. Pause controls and reduced-motion alternatives follow guidance on making animated content controllable.[8][9] The example below brings these controls together.",
+          "These prepared sequences give the automatic guide a starting pace, which readers can adjust. The mouse wheel, touch or scrolling keys return control to the reader; playback can also be paused or a scene revisited. Opening the scene list pauses the guide while a chapter is chosen. Selection moves to that chapter and closes the list, while Escape closes it and returns focus to its button. Pause controls and reduced-motion alternatives follow guidance on making animated content controllable (W3C Web Accessibility Initiative, n.d.-a; W3C Web Accessibility Initiative, n.d.-b). The example below brings these controls together.",
         ],
       },
       {
@@ -392,7 +392,7 @@ export const visualDesignNarrativeSections: WikiSection[] = [
           {
             type: "prose",
             paragraphs: [
-              "On the homepage, the crest gives the changing navigation a familiar point of reference. A full bar presents the page choices at the opening, with a transparent background and soft text shadows that leave the illustration visible. Later, it folds around the crest to make room for the story. The choices return when needed, applying **progressive disclosure** to the navigation.[11]",
+              "On the homepage, the crest gives the changing navigation a familiar point of reference. A full bar presents the page choices at the opening, with a transparent background and soft text shadows that leave the illustration visible. Later, it folds around the crest to make room for the story. The choices return when needed, applying **progressive disclosure** to the navigation (Nielsen, 2006).",
               "In the middle of the story, **scrolling up opens the navigation; scrolling down folds it into the circular entrance**. A movement threshold filters small changes in direction. Near the opening and ending, however, scene position controls the transition, keeping the bar’s handoff coordinated with the illustration.",
             ],
           },
@@ -510,8 +510,8 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "Beyond the page’s last links, the closing introduces the people behind CirCure. The team photograph emerges as the preceding content moves away: a sticky stage holds the scene while a clipping window reveals it.[13] We adapted this structure from a study of **Wolverine Worldwide’s website**.[15]",
-          "As more of the photograph appears, its scale follows scroll position; moving back restores the corresponding earlier view. The framing adapts to the viewport to retain the group, with transform updates scheduled on the browser’s animation frames.[12] A light shade and soft shadows separate **CirCure** from the photographic detail while leaving the faces visible.",
+          "Beyond the page’s last links, the closing introduces the people behind CirCure. The team photograph emerges as the preceding content moves away: a sticky stage holds the scene while a clipping window reveals it (MDN Web Docs, n.d.). We adapted this structure from a study of **Wolverine Worldwide’s website** (Wolverine Worldwide, n.d.).",
+          "As more of the photograph appears, its scale follows scroll position; moving back restores the corresponding earlier view. The framing adapts to the viewport to retain the group, with transform updates scheduled on the browser’s animation frames (web.dev, n.d.). A light shade and soft shadows separate **CirCure** from the photographic detail while leaving the faces visible.",
           "The photograph also provides a setting for **“A note from us”**. Readers can open this longer message when they want to stay. The paper moves out from its button and returns there on closing, connecting the letter to the scene where it was found.",
         ],
       },
@@ -522,7 +522,7 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "The letter opens in a native modal **dialog**, with focus moving to its heading and returning to the button on close.[14] Its sheet scrolls independently while the photograph stays in place. Escape closes the letter or reverses its opening; reduced motion uses a short fade. Closing brings the reader back to the same photograph and page position.",
+          "The letter opens in a native modal **dialog**, with focus moving to its heading and returning to the button on close (W3C Web Accessibility Initiative, n.d.-c). Its sheet scrolls independently while the photograph stays in place. Escape closes the letter or reverses its opening; reduced motion uses a short fade. Closing brings the reader back to the same photograph and page position.",
         ],
       },
       {
@@ -567,7 +567,7 @@ export const visualDesignNarrativeSections: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "The archive records this work in drawings and interface studies. **Eleven initial drafts** explore the patient’s question, the molecular explanation and the closing gestures of care. Supporting layers show how the paintings are assembled, while **six design folios** collect the interface studies and revisions. Brief labels leave room to examine the images; each can be opened at full size.[16][17]",
+          "The archive records this work in drawings and interface studies. **Eleven initial drafts** explore the patient’s question, the molecular explanation and the closing gestures of care. Supporting layers show how the paintings are assembled, while **six design folios** collect the interface studies and revisions. Brief labels leave room to examine the images; each can be opened at full size (Shepherd, 2019; Nature Research, n.d.).",
         ],
       },
       {
@@ -1502,3 +1502,23 @@ export const visualDesignReferences: CitationReference[] = [
     ],
   },
 ];
+
+export const visualDesignCitationLabels: Readonly<Record<string, number>> = {
+  "Charon, 2001": 1,
+  "Segel et al., 2010": 2,
+  "Heer et al., 2007": 3,
+  "Shneiderman, 1983": 4,
+  "Mayer et al., 2003": 5,
+  "Tversky et al., 2002": 6,
+  "GSAP, n.d.": 7,
+  "W3C Web Accessibility Initiative, n.d.-a": 8,
+  "W3C Web Accessibility Initiative, n.d.-b": 9,
+  "Harley, 2018": 10,
+  "Nielsen, 2006": 11,
+  "web.dev, n.d.": 12,
+  "MDN Web Docs, n.d.": 13,
+  "W3C Web Accessibility Initiative, n.d.-c": 14,
+  "Wolverine Worldwide, n.d.": 15,
+  "Shepherd, 2019": 16,
+  "Nature Research, n.d.": 17
+};

@@ -60,25 +60,25 @@
                          no other viewport calc is allowed on the card side.
      --route-page-bg   : route theme surface shared by mat + closing block. */
   --reader-header-h: var(--header-height);
-  --reader-pad: clamp(14px, 1.8vw, 22px);
-  --toc-w: minmax(190px, 250px);
+  --reader-pad: clamp(14px, 1.8vw, calc(22 * var(--site-ui-unit)));
+  --toc-w: minmax(calc(190 * var(--site-ui-unit)), calc(250 * var(--site-ui-unit)));
   --reader-h: calc(100dvh - var(--reader-header-h));
-  --route-page: 1120px;
+  --route-page: calc(1120 * var(--site-ui-unit));
   --route-page-bg: var(--route-base);
 
   /* Editorial vertical rhythm scale (全站正文排版与统一间距层级规范) */
-  --wiki-space-p: 16px;              /* 1. 最小：段落与段落间距 (p ↔ p) */
-  --wiki-space-subhead-top: 28px;    /* 2. 稍大：正文到小标题顶部 (Body → H3) */
-  --wiki-space-subhead-bottom: 14px; /* 2b. 贴合：小标题到底部紧随正文 (H3 → Body) */
-  --wiki-space-block: 24px;          /* 3. 规范：块级元素间距 (正文↔组件/图表/表格/Callout) */
-  --wiki-space-head-bottom: 24px;    /* 4. 再稍大：大标题到底下内容 (H2 → Content/H3) */
-  --wiki-space-section: 44px;        /* 5. 宏观：章节与章节间距 (Section ↔ Section) */
+  --wiki-space-p: calc(16 * var(--site-ui-unit));              /* 1. 最小：段落与段落间距 (p ↔ p) */
+  --wiki-space-subhead-top: calc(28 * var(--site-ui-unit));    /* 2. 稍大：正文到小标题顶部 (Body → H3) */
+  --wiki-space-subhead-bottom: calc(14 * var(--site-ui-unit)); /* 2b. 贴合：小标题到底部紧随正文 (H3 → Body) */
+  --wiki-space-block: calc(24 * var(--site-ui-unit));          /* 3. 规范：块级元素间距 (正文↔组件/图表/表格/Callout) */
+  --wiki-space-head-bottom: calc(24 * var(--site-ui-unit));    /* 4. 再稍大：大标题到底下内容 (H2 → Content/H3) */
+  --wiki-space-section: calc(44 * var(--site-ui-unit));        /* 5. 宏观：章节与章节间距 (Section ↔ Section) */
   /* Entrepreneurship hierarchy, shared by plain headings and disclosures. */
-  --wiki-h2-size: clamp(21px, 2.2vw, 25px);
-  --wiki-h3-size: clamp(17px, 1.8vw, 20px);
-  --wiki-h4-size: clamp(15.5px, 1.6vw, 17px);
-  --wiki-h5-size: clamp(15px, 1.45vw, 16px);
-  --wiki-h6-size: 15px;
+  --wiki-h2-size: clamp(21px, 2.2vw, calc(25 * var(--site-ui-unit)));
+  --wiki-h3-size: clamp(17px, 1.8vw, calc(20 * var(--site-ui-unit)));
+  --wiki-h4-size: clamp(15.5px, 1.6vw, calc(17 * var(--site-ui-unit)));
+  --wiki-h5-size: clamp(15px, 1.45vw, calc(16 * var(--site-ui-unit)));
+  --wiki-h6-size: calc(15 * var(--site-ui-unit));
 }
 
 /* 2. Page surface ---------------------------------------------------------- */
@@ -106,15 +106,6 @@
 .wiki-page--route *::before,
 .wiki-page--route *::after {
   letter-spacing: 0;
-}
-
-/* Keep short final lines with their context throughout the reader pages. */
-.wiki-page--route :is(p, li, figcaption) {
-  text-wrap: pretty;
-}
-
-.wiki-page--route :is(h1, h2, h3, h4, h5, h6) {
-  text-wrap: balance;
 }
 
 /* Pull the route under the fixed header so the full-height hero starts at the
@@ -356,7 +347,7 @@ html.has-route-reader-scroll {
   max-height: var(--reader-h);
   min-height: 0;
   grid-template-columns: var(--toc-w) minmax(0, 1fr);
-  gap: 22px; /* space/5 */
+  gap: calc(22 * var(--site-ui-unit)); /* space/5 */
   align-items: stretch;
   margin: 0;
   padding: var(--reader-pad);
@@ -495,10 +486,10 @@ html.has-route-reader-scroll {
   nav
   .wiki-outline__primary {
   display: grid;
-  grid-template-columns: 24px minmax(0, 1fr);
-  gap: 8px;
+  grid-template-columns: calc(24 * var(--site-ui-unit)) minmax(0, 1fr);
+  gap: calc(8 * var(--site-ui-unit));
   align-items: baseline;
-  padding: 8px 0;
+  padding: calc(8 * var(--site-ui-unit)) 0;
   color: var(--toc-rest);
 }
 
@@ -523,7 +514,7 @@ html.has-route-reader-scroll {
   box-shadow: none;
   color: var(--toc-faint);
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: calc(17 * var(--site-ui-unit));
   font-variant-numeric: oldstyle-nums proportional-nums;
   font-weight: 400;
   letter-spacing: 0;
@@ -553,7 +544,7 @@ html.has-route-reader-scroll {
   overflow: visible;
   color: inherit;
   font-family: var(--font-sans);
-  font-size: 15px;
+  font-size: calc(15 * var(--site-ui-unit));
   font-weight: 500;
   letter-spacing: -0.005em;
   line-height: 1.4;
@@ -566,7 +557,7 @@ html.has-route-reader-scroll {
 .wiki-page.wiki-page--route .wiki-outline.wiki-outline--marker .wiki-outline__subnav {
   display: grid;
   gap: 0;
-  margin: 0 0 8px 32px;
+  margin: 0 0 calc(8 * var(--site-ui-unit)) calc(32 * var(--site-ui-unit));
   padding: 0;
   border: 0;
 }
@@ -576,7 +567,7 @@ html.has-route-reader-scroll {
   nav
   .wiki-outline__secondary {
   display: block;
-  padding: 5px 0;
+  padding: calc(5 * var(--site-ui-unit)) 0;
   color: var(--toc-faint);
 }
 
@@ -596,7 +587,7 @@ html.has-route-reader-scroll {
   /* Overrides the manuscript skin's wet-ink colour on active rows. */
   color: inherit;
   font-family: var(--font-sans);
-  font-size: 13.5px;
+  font-size: calc(13.5 * var(--site-ui-unit));
   font-weight: 450;
   letter-spacing: 0;
   line-height: 1.4;
@@ -610,8 +601,9 @@ html.has-route-reader-scroll {
   .wiki-outline.wiki-outline--marker
   nav
   .wiki-outline__secondary.is-tertiary {
-  margin-left: 2px;
-  padding: 4px 0 4px 12px;
+  margin-left: calc(2 * var(--site-ui-unit));
+  padding: calc(4 * var(--site-ui-unit)) 0 calc(4 * var(--site-ui-unit))
+    calc(12 * var(--site-ui-unit));
   border-left: 1px solid var(--route-line);
 }
 
@@ -619,7 +611,7 @@ html.has-route-reader-scroll {
   .wiki-outline.wiki-outline--marker
   nav
   .wiki-outline__secondary.is-tertiary:is(:hover, :focus-visible, .is-active) {
-  padding-left: 12px;
+  padding-left: calc(12 * var(--site-ui-unit));
   border-left-color: var(--route-line);
 }
 
@@ -627,14 +619,14 @@ html.has-route-reader-scroll {
   .wiki-outline.wiki-outline--marker
   .wiki-outline__secondary.is-tertiary
   > strong {
-  font-size: 12.5px;
+  font-size: calc(12.5 * var(--site-ui-unit));
 }
 
 .wiki-page.wiki-page--route
   .wiki-outline.wiki-outline--marker
   nav
   .wiki-outline__secondary--depth-4.is-tertiary {
-  margin-left: 14px;
+  margin-left: calc(14 * var(--site-ui-unit));
 }
 
 /* Level-2 parent of the heading being read: ink only, no swash. */
@@ -683,8 +675,8 @@ html.has-route-reader-scroll {
 .wiki-page.wiki-page--route .wiki-outline.wiki-outline--marker .wiki-outline__related {
   display: grid;
   gap: 0;
-  margin-top: 20px;
-  padding-top: 14px;
+  margin-top: calc(20 * var(--site-ui-unit));
+  padding-top: calc(14 * var(--site-ui-unit));
   border-top: 1px solid var(--route-line);
 }
 
@@ -694,7 +686,7 @@ html.has-route-reader-scroll {
   margin-bottom: 6px;
   color: var(--toc-faint);
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: calc(11 * var(--site-ui-unit));
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -709,13 +701,13 @@ html.has-route-reader-scroll {
   align-items: center;
   justify-content: flex-start;
   gap: 6px;
-  padding: 4px 0;
+  padding: calc(4 * var(--site-ui-unit)) 0;
   border: 0;
   border-radius: 0;
   background: none;
   box-shadow: none;
   color: var(--toc-rest);
-  font-size: 14px;
+  font-size: calc(14 * var(--site-ui-unit));
   font-weight: 500;
   line-height: 1.35;
   text-decoration: none;
@@ -985,7 +977,9 @@ html.has-route-reader-scroll {
   min-width: 0;
   min-height: 0;
   counter-reset: wiki-figure;
-  padding: clamp(40px, 5vw, 64px) clamp(26px, 5vw, 72px) clamp(100px, 14vh, 180px);
+  padding: clamp(40px, 5vw, calc(64 * var(--site-ui-unit)))
+    clamp(26px, 5vw, calc(72 * var(--site-ui-unit)))
+    clamp(100px, 14vh, calc(180 * var(--site-ui-unit)));
   background: transparent;
   /* Clipping must not create a second scroll owner inside the reader frame. */
   overflow-x: clip;
@@ -1054,7 +1048,7 @@ html.has-route-reader-scroll {
   margin: 0 !important;
   color: var(--route-body-ink);
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: calc(18 * var(--site-ui-unit));
   line-height: 1.75;
   text-wrap: pretty;
 }
@@ -1064,13 +1058,13 @@ html.has-route-reader-scroll {
   padding-inline-start: 1.4em;
   color: var(--route-body-ink);
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: calc(18 * var(--site-ui-unit));
   line-height: 1.75;
 }
 
 .wiki-page--route .wiki-prose ul.wiki-prose-list { list-style: disc; }
 .wiki-page--route .wiki-prose ol.wiki-prose-list { list-style: decimal; }
-.wiki-page--route .wiki-prose-list li + li { margin-top: 8px; }
+.wiki-page--route .wiki-prose-list li + li { margin-top: calc(8 * var(--site-ui-unit)); }
 
 .wiki-page--route .wiki-blocks--split {
   display: grid;
@@ -1203,7 +1197,7 @@ html.has-route-reader-scroll {
   background: transparent;
   box-shadow: none;
   font-family: var(--font-sans), sans-serif;
-  font-size: clamp(48px, 5.2vw, 68px);
+  font-size: clamp(48px, 5.2vw, calc(68 * var(--site-ui-unit)));
   font-weight: 900;
   line-height: 0.85;
   letter-spacing: -0.06em;
@@ -1386,7 +1380,7 @@ html.has-route-reader-scroll {
 .wiki-page--route .wiki-section__summary {
   margin: 24px 0 0;
   font-family: var(--font-body);
-  font-size: 20px;
+  font-size: calc(20 * var(--site-ui-unit));
   line-height: 1.64;
 }
 
@@ -1418,7 +1412,7 @@ html.has-route-reader-scroll {
   grid-template-columns: 66px minmax(0, 1fr) 28px;
   gap: 18px;
   align-items: center;
-  padding: 24px 0;
+  padding: calc(24 * var(--site-ui-unit)) 0;
   border: 0;
   background: transparent;
   color: var(--route-ink);
@@ -1428,14 +1422,14 @@ html.has-route-reader-scroll {
 
 .wiki-page--route .wiki-manuscript-list__toggle button > span:nth-child(2) {
   font-family: var(--font-sans);
-  font-size: 20px;
+  font-size: calc(20 * var(--site-ui-unit));
   font-weight: 700;
   line-height: 1.35;
 }
 
 .wiki-page--route .wiki-manuscript-list__index {
   font-family: var(--font-heading);
-  font-size: 17px;
+  font-size: calc(17 * var(--site-ui-unit));
   font-variant-numeric: tabular-nums;
 }
 
@@ -1487,7 +1481,7 @@ html.has-route-reader-scroll {
   gap: var(--wiki-space-block);
   padding: 0 24px 32px 84px;
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: calc(18 * var(--site-ui-unit));
   line-height: 1.75;
 }
 
@@ -1594,7 +1588,7 @@ html.has-route-reader-scroll {
 }
 
 .wiki-page--route .wiki-callout p,
-.wiki-page--route .wiki-boundary p { margin: 0; font-size: 17px; line-height: 1.75; }
+.wiki-page--route .wiki-boundary p { margin: 0; font-size: calc(17 * var(--site-ui-unit)); line-height: 1.75; }
 
 .wiki-page--route .wiki-callout__label,
 .wiki-page--route .wiki-boundary__label {
@@ -1614,7 +1608,7 @@ html.has-route-reader-scroll {
 
 .wiki-page--route .wiki-figure figcaption {
   font-family: var(--font-sans);
-  font-size: 13.5px;
+  font-size: calc(13.5 * var(--site-ui-unit));
   line-height: 1.6;
   color: var(--route-muted);
 }
@@ -1628,18 +1622,14 @@ html.has-route-reader-scroll {
   border-radius: 4px;
   background: var(--route-heading-ink);
   color: #ffffff;
-  font-family: var(--font-figure-label);
-  font-size: 11px;
+  font-family: var(--font-mono);
+  font-size: calc(11 * var(--site-ui-unit));
   font-weight: 700;
   line-height: 1.25;
   content: "FIG. " counter(wiki-figure, decimal-leading-zero);
 }
 
-.wiki-page--route .wiki-figure__label {
-  display: block;
-  font-family: var(--font-figure-label);
-  font-weight: 700;
-}
+.wiki-page--route .wiki-figure__label { display: block; font-weight: 700; }
 
 .wiki-page--route .feature-panel > header,
 .wiki-page--route .signature-panel--wet figcaption {
@@ -1836,7 +1826,7 @@ html.has-route-reader-scroll {
   margin-right: auto;
   border-collapse: collapse;
   color: var(--route-ink);
-  font-size: 13px;
+  font-size: calc(13 * var(--site-ui-unit));
   line-height: 1.55;
 }
 
@@ -1965,8 +1955,10 @@ html.has-route-reader-scroll {
 }
 
 /* 10. Closing prompt palette and page surface ----------------------------- */
-/* Layout, typography and interaction styling live in WikiNextRecord.css. */
-.wiki-page--route .wiki-next.wiki-next--record {
+/* Keep route geometry and palette above the standalone record skin even when
+   lazy-loaded styles arrive in a different order. Inner layout, typography and
+   interaction styling live in WikiNextRecord.css. */
+.wiki-page--route[data-wiki-route] > .wiki-next.wiki-next--record {
   --next-record-ink: var(--route-ink);
   --next-record-muted: var(--route-muted);
   --next-record-line: var(--route-line);
@@ -2324,7 +2316,7 @@ html.has-route-reader-scroll {
     font-size: 12px;
   }
 
-  .wiki-page--route .wiki-next.wiki-next--record {
+  .wiki-page--route[data-wiki-route] > .wiki-next.wiki-next--record {
     padding-inline: 20px;
   }
 }

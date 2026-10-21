@@ -13,10 +13,10 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "We tested the **combined vaccine** against three comparators — empty vector, TROP2-CTL1 and TROP2-CTL2, plus the dual-epitope TROP2-CTL1+2 — along the whole immune chain, one link at a time: **DC maturation (CD80/CD86)**, **antigen translation (anti-FLAG Western blot)**, **T-cell activation and co-stimulation (CD69, CD28)**, **effector-memory differentiation (CD45RO⁺CCR7⁻)**, **cytokine secretion (ELISpot)** and **specific killing of MDA-MB-231**. The functional assays use an empty-vector circRNA control. The anti-FLAG Western blot in §6.2 uses mock-electroporated DCs as its negative control. This section reports the six datasets in that order.",
-          "**Why TROP2-CTL1 and TROP2-CTL2 are the comparators.** They are the **two strongest single epitopes in the entire Round 1 panel** — 271 and 217 SFC against a panel median of 78 (Table 10). Choosing them sets the comparison at its hardest: comparing against a mid-range epitope would leave the margin open to the choice of comparator. The claim we want to test is stronger — that combining epitopes adds something beyond taking the best one — and that claim can only be tested against the best one. The dual-epitope **TROP2-CTL1+2** group then supplies the intermediate rung, so the four epitope-carrying groups form a ladder of increasing epitope content — **single → dual → eight-epitope combined** — at constant backbone, constant adjuvant and constant electroporation. Read in that order, the series answers two questions at once: whether the combined vaccine works at all (against the Blank), and whether multivalency itself is worth the extra construction (against the best single epitope and the best pair).",
-          "**A key control choice for this whole section.** Every group is baselined against the **Blank group**, and the Blank group was electroporated with an **empty backbone circRNA encoding no epitopes (empty vector)** — not untreated cells, and not electroporation buffer alone.",
-          'This choice makes the Blank group subtract three backgrounds at once: **electroporation stress itself**, **innate stimulation by the circRNA backbone through cytosolic sensors such as RIG-I/MDA5**, and **the effect of the 4×mC3dP28 adjuvant module**. Consequently, **the entire increment from Blank to combined can only come from the epitope-encoding sequence**. This is not a "blank" control but a strict **vector control**, and it is what allows the in vitro results on this page to be attributed to antigen at all. Cell number, volume and program (Nucleofector II, Program U-002) were identical across all groups.',
+          "We tested the **combined vaccine** against three comparators — empty vector, TROP2-CTL1 and TROP2-CTL2, plus the dual-epitope TROP2-CTL1+2 — along the whole immune chain, one link at a time: **DC maturation (CD80/CD86)**, **antigen translation (anti-FLAG Western blot)**, **T-cell activation and co-stimulation (CD69, CD28)**, **effector-memory differentiation (CD45RO⁺CCR7⁻)**, **cytokine secretion (ELISpot)** and **specific killing of MDA-MB-231**. The functional assays use an empty-vector circRNA control. The anti-FLAG Western blot in §5.2 uses mock-electroporated DCs as its negative control. This section reports the six datasets in that order.",
+          "**Why TROP2-CTL1 and TROP2-CTL2 are the comparators.** They are the **two strongest single epitopes in the entire Round 1 panel** — 271 and 217 SFC against a panel median of 78 (Table 10). Choosing them sets the comparison at its hardest: comparing against a mid-range epitope would leave the margin open to the choice of comparator. The claim we want to test is stronger — that combining epitopes adds something beyond taking the best one — and that claim can only be tested against the best one. The dual-epitope TROP2-CTL1+2 group then supplies the intermediate rung, so the four epitope-carrying groups form a ladder of increasing epitope content — single, dual, eight-epitope combined — at constant backbone and constant electroporation. Read in that order, the series answers two questions at once: whether the combined vaccine works at all (against the Blank), and whether multivalency itself is worth the extra construction (against the best single epitope and the best pair).",
+          "**A key control choice for this whole section.** Every group is baselined against the **Blank group**, and the Blank group was electroporated with the same backbone carrying no epitope fragments (empty vector), rather than with untreated cells or with buffer alone.",
+          "The Blank group therefore carries the same backbone and the same electroporation as every other group and differs from them only in the epitope fragments. It is a vector control, which is what allows the in vitro results on this page to be read as differences between constructs. Cell number, volume and program (Nucleofector II, Program U-002) were identical across all groups.",
         ],
       },
       {
@@ -69,9 +69,9 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "Values are mean ± SD, n = 3.",
-          "One-way ANOVA F(4,10) = 378.2, P < 0.0001. **Combined vs TROP2-1+2 also reaches significance** (Holm-corrected（Holm, 1979） P = 1.5 × 10⁻⁴), so eight epitopes still add over two. The representative flow values in Figure 19 (10.9 / 15.6 / 15.9 / 17.2 / 22.1) differ slightly from these means, as expected — the former is a single representative sample, the latter the mean of three replicates.",
+          "One-way ANOVA F(4,10) = 378.2, P < 0.0001. Combined vs TROP2-1+2 also reaches significance (Holm-corrected (Holm, 1979) P = 1.5 × 10⁻⁴), so eight epitopes still add over two. The representative flow values in Figure 19 (10.9 / 15.6 / 15.9 / 17.2 / 22.1) differ slightly from these means, as expected — the former is a single representative sample, the latter the mean of three replicates.",
           "**Interpretation:** All epitope-encoding groups exceeded the empty-vector Blank, following a clear **epitope-complexity gradient**: single-epitope < dual-epitope < Combined, with combined at **2.16× Blank** (Holm-corrected P = 2.5 × 10⁻⁵).",
-          "**The attribution here is clean.** Because the Blank group already carries the complete circRNA backbone and the 4×mC3dP28 adjuvant, backbone innate stimulation and adjuvant activity are **identical across all four groups** and are subtracted at baseline. The rise from 10.33% to 22.37% can therefore **only come from the epitope-encoding sequence** — the translated antigenic peptides themselves promote DC maturation. This is consistent with the classical mechanism whereby increased antigen load drives uptake and processing of more exogenous protein and upregulation of co-stimulatory molecules.",
+          "The backbone and the electroporation are the same in all five groups, so the rise from 10.33% to 22.37% goes with the presence of the epitope fragments. This comparison does not separate the translated peptides from other properties that change with the insert, such as RNA length.",
         ],
       },
       {
@@ -110,7 +110,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "**Aim:** Test whether antigen presentation actually translates into **CD8⁺ T-cell activation**, and whether those cells receive co-stimulatory support — which determines whether effector cells survive and expand.",
-          "**Design & Readout:** **CD8⁺CD69⁺** (early activation) and **CD8⁺CD28⁺** (co-stimulation) by flow after DC–T co-culture at 20: 1, four constructs plus Blank, **n = 3** (Experiments 4.3).",
+          "**Design & Readout:** **CD8⁺CD69⁺** (early activation) and **CD8⁺CD28⁺** (co-stimulation) by flow after DC–T co-culture at 1: 20, four constructs plus Blank, **n = 3** (Experiments 4.3).",
           "**Result:**",
         ],
       },
@@ -210,7 +210,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "**Aim:** Repeat the ELISpot on the four optimized constructs to **test whether multi-epitope combination outperforms single epitopes** — the core evidence for the vaccine design.",
-          "**Design & Readout:** Round 2 ELISpot, same kit and format as §5.1, reported as SFC per 10⁵ cells. **Unlike Round 1, this round carries a vector control**: the Blank group is DC electroporated with empty-vector circRNA, and it defines the background against which every other group is read. **Each group is a single well**, so every value is a single determination and this section carries no error bars and no statistical test (Experiments 4.4).",
+          "**Design & Readout:** Round 2 ELISpot, same kit and format as §4.1, reported as SFC per 10⁵ cells. **Unlike Round 1, this round carries a vector control**: the Blank group is DC electroporated with empty-vector circRNA, and it defines the background against which every other group is read. **Each group is a single well**, so every value is a single determination and this section carries no error bars and no statistical test (Experiments 4.4).",
           "**Result:**",
         ],
       },
@@ -231,8 +231,8 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "**Interpretation:** The response is **strictly monotonic**: Blank 32, single epitopes 198 and 227, dual 298, Combined 367.",
-          "Two steps of that ordering carry the design argument. **TROP2-1+2 (298) exceeds both TROP2-1 (198) and TROP2-2 (227), and also exceeds their arithmetic mean (212.5)**, so combining two strong epitopes from the same antigen adds to what either gives alone. **Combined (367) exceeds TROP2-1+2 (298)**, so extending the repertoire across antigens raises the response frequency further. Both comparisons are read against an **empty-vector Blank**, which is what Round 1 lacked, so the increment over background can be attributed to the epitope-encoding sequence (Sahin et al., 2026; Zeng et al., 2026).",
-          "**What single wells do and do not support.** With one well per group there is no estimate of measurement scatter, so the monotonic ordering is the observation and no individual gap is claimed to be distinguishable from any other. The step from Blank to any epitope-encoding group (6.2× to 11.5×) is far larger than any step between adjacent epitope-encoding groups, which is why the attribution to the epitope-encoding sequence is the part of this result the design rests on. The §6.6 killing data, run with 3 replicate wells per condition at three E: T ratios, carry the same tier ordering and are where that ordering is tested.",
+          "Two steps of that ordering carry the design argument. **TROP2-1+2 (298) exceeds both TROP2-1 (198) and TROP2-2 (227), and also exceeds their arithmetic mean (212.5)**, so combining two strong epitopes from the same antigen adds to what either gives alone. Combined (367) exceeds TROP2-1+2 (298), so the eight-fragment construct returned the highest count of the four. Both comparisons are read against an empty-vector Blank, which is what Round 1 lacked, so the increment over background goes with the epitope fragments.",
+          "**What single wells do and do not support.** With one well per group there is no estimate of measurement scatter, so the monotonic ordering is the observation and no individual gap is claimed to be distinguishable from any other. The step from Blank to any epitope-encoding group (6.2× to 11.5×) is far larger than any step between adjacent epitope-encoding groups, which is why the attribution to the epitope-encoding sequence is the part of this result the design rests on. The §5.6 killing data, run with 3 replicate wells per condition at three E: T ratios, carry the same tier ordering and are where that ordering is tested.",
           '**Limitations.** Stimulation was polyclonal co-culture rather than **peptide re-stimulation**, so although between-group differences can be attributed to "epitope-encoding or not", SFC cannot be resolved down to any individual epitope. Replicate wells belong in any repeat of this experiment.',
         ],
       },
@@ -246,7 +246,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          '**Aim:** Demonstrate that vaccine-primed T cells specifically kill genuine triple-negative breast cancer cells, and test whether the advantage of multi-epitope design converts from "stronger immune response" into "actual killing capacity".',
+          "**Aim:** Test whether vaccine-primed T cells kill a genuine triple-negative breast cancer line, and whether the ordering seen in the immune readouts carries over to killing.",
           "**Design & Readout:** Calcein-AM killing of **MDA-MB-231 (human TNBC, HLA-A*02:01⁺, TROP2⁺)** — unlike the K562 target of Round 1, it carries both the correct HLA type and the target antigen — at **three E: T ratios (20: 1 / 40: 1 / 80: 1)**, five groups, **3 replicate wells** per condition (Experiments 4.5).",
           "**Result:**",
         ],
@@ -305,7 +305,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
           "**First, a dose–response relationship holds.** Killing rises monotonically with E: T ratio in all five groups, with no plateau or inversion. A genuine cytotoxic effect should show exactly this dose dependence; an erratic curve would more likely indicate systematic error in the assay itself.",
           "**Second, the advantage of multi-epitope design is realized functionally, and it widens with effector dose.** At all three ratios the group ordering is **Blank < TROP2-1 ≈ TROP2-2 < TROP2-1+2 < Combined**, matching the Round 2 ELISpot ordering (32 < 198 ≈ 227 < 298 < 367) **at the level of tiers**.",
           "To be precise: **the two single epitopes cannot be distinguished by killing** — TROP2-1 vs TROP2-2 is non-significant at all three ratios (P = 0.25 / 0.57 / 0.75) and the direction actually flips between 20: 1 and 40: 1/80: 1. What is consistent across the two independent readouts is the tier ordering **Blank < single < dual < eight-epitope**, not the exact four-way ranking. More telling is how the gap changes: at 20: 1, Combined exceeds TROP2-1 by roughly 19 percentage points; by 80: 1 the gap widens to about **36 percentage points**. This indicates that the multivalent vaccine does not merely generate *more* effector cells — the **killing efficiency per cell is also higher**, so the difference amplifies as effector numbers increase.",
-          '**Third, the Blank group defines the "backbone + adjuvant" baseline, letting the antigen contribution be read off directly.** Blank-group T cells were primed by DCs carrying the **empty-vector circRNA** — they have received the full stimulus of the circRNA backbone and 4×mC3dP28 adjuvant, only without epitopes. Such effectors still kill 26.20 ± 3.28% of targets at 80: 1 (NK-like activity plus backbone/adjuvant-driven non-specific killing). Subtracting that baseline from the Combined group\'s 83.57 ± 1.68% leaves roughly **57 percentage points attributable to the epitope-encoding sequence**. The attribution is direct: the only difference between the two groups is the presence or absence of epitopes.',
+          "**Third, the Blank group defines the backbone-only baseline, letting the antigen contribution be read off directly.** Blank-group T cells were primed by DCs carrying the empty-vector circRNA, the same backbone without the epitope fragments. Such effectors still kill 26.20 ± 3.28% of targets at 80 : 1, which is the non-antigen-restricted killing this assay sees without an insert. The two arms differ by roughly 57 percentage points at this ratio. The only designed difference between them is the presence or absence of the epitope fragments.",
         ],
       },
     ],
@@ -352,9 +352,9 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "**Aim:** Identify which dose balances tumor control against exposure burden when both efficacy and viability must pass thresholds **simultaneously**.",
-          "**Design & Readout:** Scan 301 dose levels from 0 to 30 μg per injection. For each dose, simulate the five-injection protocol under 1,024 parameter draws and count how many satisfy **all three criteria**: tumor ratio ≤ 0.70, viability ≥ 0.80 at all time points, and joint passage across the uncertainty distribution.",
+          "**Design & Readout:** Scan 301 dose levels from 0 to 30 μg per injection. For each dose, simulate the five-injection protocol under 1,024 parameter draws and count how many satisfy **all four screening criteria** simultaneously: tumor burden ratio ≤ 0.70, normalized viability ≥ 0.80, innate signal within acceptable range, and blood exposure (AUC) within acceptable range. A dose is selected only when the fraction of parameter draws passing all four criteria jointly reaches ≥ 0.80.",
           "**Result:**",
-          "**10.2 μg per injection** achieved the **highest** passage probability of **0.8145**; 10.0 μg scored 0.8115, a difference **smaller than parameter uncertainty**. The interval [9.4, 12.0] μg ∪ [12.2, 12.4] μg ∪ {12.6} μg passed all three criteria. Doses **below 9 μg** failed the tumor-control threshold; doses **above 13 μg** violated the viability floor with increasing frequency as exposure burden accumulated across five injections.",
+          "**10.2 μg per injection** achieved the **highest** passage probability of **0.8145**; 10.0 μg scored 0.8115, a difference **smaller than parameter uncertainty**. The interval [9.4, 12.0] μg ∪ [12.2, 12.4] μg ∪ {12.6} μg achieved a joint-pass fraction of ≥ 0.80 across all four screening criteria. Doses **below 9 μg** failed the tumor-control threshold; doses **above 13 μg** violated the viability floor with increasing frequency as exposure burden accumulated across five injections.",
         ],
       },
       { type: "feature", key: "results-dose-scan" },
@@ -362,7 +362,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "**Interpretation:** The peak near 10 μg is **broad rather than sharp**, meaning small perturbations in dosing precision will **not qualitatively alter** the outcome. Higher doses raise both efficacy-passage rates and exposure costs; the 10.2-μg recommendation **balances the two** under the project-defined thresholds.",
-          "The in vivo study used **10.0 μg per injection** (§9.2). The passage-probability difference between 10.0 and 10.2 μg is 0.003, which sits **within the uncertainty** of unmeasured parameters such as lymph-node delivery fraction and in vivo RNA half-life. Practical considerations—formulation precision and pipetting reproducibility—supported the round number, and the observed tumor-growth inhibition of **89.6%** (Combined vs PBS, §9.2) confirmed **efficacy at this dose**.",
+          "The in vivo study used **10.0 μg per injection** (§8.2). The passage-probability difference between 10.0 and 10.2 μg is 0.003, which sits **within the uncertainty** of unmeasured parameters such as lymph-node delivery fraction and in vivo RNA half-life. Practical considerations—formulation precision and pipetting reproducibility—supported the round number, and the observed tumor-growth inhibition of **89.6%** (Combined vs PBS, §8.2) confirmed **efficacy at this dose**.",
           "Each dose level produces time courses of payload in lymph nodes, functional RNA expression, antigen presentation level, effector-cell activity, and tumor burden. These **intermediate states** allow us to ask which process limits efficacy at a given dose and where additional experimental measurements would reduce uncertainty most.",
         ],
       },
@@ -378,7 +378,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "**Aim:** Trace how dose translates into tumor control by examining the contributions of delivery, expression, immune priming, and killing at the 10.2-μg level.",
-          "**Delivery and lymph-node accumulation:** The model assumes **40%** of injected payload reaches draining lymph nodes (Chen et al., 2019), with the remainder distributed between the injection site and systemic circulation. At 10.2 μg per dose, approximately **4 μg** reaches lymph-associated compartments per injection. This fraction is the **first potential bottleneck**: if actual lymph delivery is lower, more RNA must be injected to achieve the same immune priming.",
+          "**Delivery and lymph-node accumulation:** The model assumes 40% of injected payload reaches draining lymph nodes, a value adopted as a stated assumption rather than from a measurement., with the remainder distributed between the injection site and systemic circulation. At 10.2 μg per dose, approximately **4 μg** reaches lymph-associated compartments per injection. This fraction is the **first potential bottleneck**: if actual lymph delivery is lower, more RNA must be injected to achieve the same immune priming.",
           "**Expression and innate signaling:** CircRNAs' covalently closed structure extends translation duration relative to linear mRNA (Wesselhoeft et al., 2019), and the absence of free 5' or 3' ends reduces innate immune activation. The model encodes these effects as **slower RNA decay** (half-life ~48 h vs. ~6 h for linear mRNA) and reduced pattern-recognition-receptor stimulation. However, LNP vehicles themselves trigger TLR and inflammasome pathways (Ndeupen et al., 2021), producing a **dose-dependent innate signal** that helps or hinders depending on magnitude. Our parameter range allows mild adjuvant benefit without overt toxicity; if actual inflammation is stronger, the viability floor may be breached earlier.",
         ],
       },
@@ -387,7 +387,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "**Antigen presentation and T-cell priming:** DC maturation and antigen presentation **saturate** as peptide-MHC complexes fill available grooves and co-stimulatory molecules reach expression ceilings. The Round 2 DC data (CD80/CD86 upregulation) constrain the steepness of this saturation. The model shows that at 10.2 μg, presentation **approaches but does not fully saturate**, leaving room for modest gains if expression efficiency improves. T-cell activation, measured by CD69 upregulation and cytokine secretion, follows presentation with a **lag**. The effector score peaks 1–2 days after each injection and decays with a time constant informed by in vitro activation kinetics.",
-          "**Tumor growth and killing competition:** The baseline tumor-growth model is Gompertzian (Benzekry et al., 2014), reflecting **density-dependent slowdown** as tumors approach carrying capacity. Effector-mediated killing opposes this growth; the net result is a **race between proliferation and immune clearance**. At the recommended dose, the model predicts **moderate tumor-growth inhibition** (TGI ~50–60% relative to untreated controls by day 35), but **not complete eradication**. Immunosuppression, modeled as a function of tumor burden and regulatory signals, rises as tumors grow, creating a **negative feedback loop** that limits late-stage efficacy.",
+          "**Tumor growth and killing competition:** The baseline tumor-growth model is a **biphasic exponential–linear structure** (parameters sourced from Benzekry et al., 2014 on LM2-4 LUC⁺/SCID tumors), with an initial exponential phase transitioning to linear growth above a burden-dependent threshold. Gompertz and logistic formulations were tested as structural sensitivity scenarios. Effector-mediated killing opposes this growth; the net result is a **race between proliferation and immune clearance**. At the recommended dose, the model predicts **moderate tumor-growth inhibition** (TGI ~50–60% relative to untreated controls by day 35), but **not complete eradication**. Immunosuppression, modeled as a function of tumor burden and regulatory signals, rises as tumors grow, creating a **negative feedback loop** that limits late-stage efficacy.",
           "**Ablation studies:** Removing innate signaling entirely reduces efficacy-passage rates by **~15 percentage points**, confirming that controlled inflammation aids priming. **Eliminating suppression** raises passage rates by **~20 points**, showing that immune inhibition is the **larger constraint** at this dose level. Doubling the expression half-life shifts the optimal dose **downward by ~1 μg**, illustrating the leverage of improving RNA stability.",
         ],
       },
@@ -425,7 +425,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "**Aim:** Compare model predictions against independent pilot animal measurements to assess directional validity.",
-          "The observed day-35 mean tumor volume in the treated group was **24.20 ± 9.72 mm³** (n=5), compared to **233.64 ± 28.33 mm³** (n=5) in the untreated control (mean ± SD; §9.2, Table 27). The observed ratio is **0.104**, falling **well below** the model's 0.70 efficacy threshold. The baseline model's central prediction was ~80 mm³ for treated and ~200 mm³ for control (ratio ~0.40), meaning the actual treatment effect was **stronger than the median prediction** but **within the 95% uncertainty interval**.",
+          "The observed day-35 mean tumor volume in the treated group was **24.20 ± 9.72 mm³** (n=5), compared to **233.64 ± 28.33 mm³** (n=5) in the untreated control (mean ± SD; §8.2, Table 27). The observed ratio is **0.104**, falling **well below** the model's 0.70 efficacy threshold. The baseline model's median prediction was 46.85 mm³ for the treated group and 1,103.58 mm³ for the untreated group. The observed vaccine-group mean (24.20 mm³) fell within the model's broad prediction interval (0–1,966 mm³), though the model substantially overpredicted untreated burden.",
         ],
       },
       resultsFigure("fig33"),
@@ -434,7 +434,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         paragraphs: [
           "Splenic CD8+ T-cell percentages and IFN-γ+ frequencies were **elevated** in treated animals relative to controls, directionally consistent with the model's T-cell activation module. However, the experimental protocol differed from the modeled schedule (actual dosing days and tumor inoculation timing were not perfectly aligned), so **quantitative agreement was not expected**.",
           "**Interpretation:** The **directional efficacy** (tumor suppression and immune activation) is confirmed. The model's dose recommendation was **not contradicted** — efficacy was observed, and viability remained acceptable. The quantitative mismatch in absolute tumor size highlights the **cross-scale gap**: improving predictions requires measuring in vivo expression levels, actual lymph delivery, and baseline tumor-growth parameters in the target model.",
-          "**Mismatch sources:** The model assumed five equal doses on a rigid schedule; the actual study used a **modified regimen**. The model's cross-scale parameters (nanogram RNA to microgram antigen equivalence) were **not independently validated** and remain the largest source of absolute-volume uncertainty. The Gompertz carrying capacity and baseline growth rate were taken from literature on 4T1 tumors but **not confirmed** in this specific TROP2-overexpressing line.",
+          "**Mismatch sources:** The model and the study used the same D0/7/14/21/28 schedule; the remaining mismatch is in the cross-scale parameters. The model's cross-scale parameters (nanogram RNA to microgram antigen equivalence) were **not independently validated** and remain the largest source of absolute-volume uncertainty. The exponential–linear growth parameters were taken from Benzekry et al. (2014) on LM2-4 LUC⁺/SCID tumors but **not confirmed** in this specific TROP2-overexpressing line.",
         ],
       },
       {
@@ -449,8 +449,8 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         paragraphs: [
           'This is a **conditional design tool**, not a validated predictor. The 10.2-μg recommendation assumes the stated delivery fractions, expression kinetics, and tumor-growth parameters. If those assumptions are wrong, the optimal dose will differ. The model outputs a **testable hypothesis** ("doses near 10 μg should balance efficacy and exposure") and a framework for revising that hypothesis as new measurements arrive.',
           "**What remains unmeasured:** Lymph-node delivery fraction (assumed 40%, **not measured**); in vivo RNA half-life (assumed ~48 h from circRNA literature, **not measured** in this system); actual tumor growth rate in 4T1-TROP2 cells (taken from literature on parental 4T1); suppression mechanisms and their kinetics (modeled phenomenologically, **not mechanistically validated**).",
-          "The model's efficacy predictions span a **fourfold range** (day-35 tumor burden 40–160 mm³ in the 2.5th–97.5th percentile) because these cross-scale parameters are uncertain. Narrowing that range requires **in-vivo measurements**, not more cell-assay replicates.",
-          'The joint passage rule is a **project-specific decision**. The thresholds (tumor ratio ≤ 0.70, viability ≥ 0.80, probability ≥ 0.80) were chosen by the team to define "acceptable" outcomes for this stage of development. Different thresholds would yield different dose recommendations.',
+          "The model's efficacy predictions span a wide range (day-35 treated-group tumor burden 0–1,966 mm³ in the 2.5th–97.5th percentile) because these cross-scale parameters are uncertain. Narrowing that range requires **in-vivo measurements**, not more cell-assay replicates.",
+          'The joint passage rule is a **project-specific decision**. The thresholds (tumor burden ratio ≤ 0.70, viability ≥ 0.80, innate signal and blood exposure within declared ranges, joint-pass probability ≥ 0.80) were chosen by the team to define acceptable outcomes for this stage of development. Different thresholds would yield different dose recommendations.',
           'The model does **not replace** wet-lab work; it **organizes** it. The recommendation is "test doses around 10 μg and measure intermediate states to learn which assumptions limit accuracy." If 10.2 μg fails in vivo, the model\'s intermediate outputs point to **where** — delivery, expression, priming, or killing — to look for the failure.',
         ],
       },
@@ -464,7 +464,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "A mechanistic model connecting cell responses to animal dosing identified **10.2 μg per injection** as the dose balancing tumor control and viability under the project's joint decision rule. The candidate range spans **9.4–12.6 μg**, with efficacy-passage probability peaking **broadly** near 10 μg. Analysis of intermediate states revealed that effector activity builds through repeated dosing events, approaches presentation saturation, and competes against tumor growth and immunosuppression.",
-          "Pilot animal data confirmed **directional efficacy** (90% tumor-volume reduction, immune activation observed) but showed quantitative mismatches in absolute tumor size, tracing to **unmeasured cross-scale parameters**: lymph delivery fraction, in vivo RNA expression kinetics, and baseline tumor growth in the TROP2-overexpressing 4T1 line. The model outputs not just a dose number but a set of **testable intermediate predictions** — payload distribution, expression time course, presentation saturation — that allow systematic refinement as measurements accumulate.",
+          "The animal study confirmed directional efficacy (89.6% reduction in endpoint tumour volume against PBS, 73.2% against the empty vector, with immune activation across five splenic readouts) but showed quantitative mismatches in absolute tumor size, tracing to **unmeasured cross-scale parameters**: lymph delivery fraction, in vivo RNA expression kinetics, and baseline tumor growth in the TROP2-overexpressing 4T1 line. The model outputs not just a dose number but a set of **testable intermediate predictions** — payload distribution, expression time course, presentation saturation — that allow systematic refinement as measurements accumulate.",
           "The recommendation is **conditional**: if delivery efficiency is lower or tumor growth faster than assumed, the effective dose must be adjusted upward. Conversely, improving circRNA stability or delivery targeting could lower the required dose.",
         ],
       },
@@ -496,7 +496,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         type: "prose",
         paragraphs: [
           "**Aim:** Test the platform's core assumption — that circularity confers resistance to degradation — and inform **dosing frequency**: the longer the molecule persists, the lower the nucleic-acid dose and the fewer administrations needed for equivalent antigen expression, and the smaller the systemic exposure.",
-          "**Design & Readout:** Equal masses of purified circRNA and its linear precursor incubated in parallel at 37 °C, sampled at **0, 24, 48 and 72 h**, run side by side on one gel and quantified by densitometry against each RNA's own 0 h lane (Experiments 5.1). **The material was the Combined batch** prepared in §5.5, which also supplied circRNA for the Round 2 functional assays (Section 6) and the in vivo study (Section 9). The stability measurement therefore applies to the vaccine preparation used downstream.",
+          "**Design & Readout:** Equal masses of purified circRNA and its linear precursor incubated in parallel at 37 °C, sampled at **0, 24, 48 and 72 h**, run side by side on one gel and quantified by densitometry against each RNA's own 0 h lane (Experiments 5.1). **The material was the Combined batch** prepared in §4.5, which also supplied circRNA for the Round 2 functional assays (Section 5) and the in vivo study (Section 8). The stability measurement therefore applies to the vaccine preparation used downstream.",
           "**Result:**",
         ],
       },
@@ -515,28 +515,43 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         ],
       },
       {
-        type: "table",
-        caption: "Table 21. Fraction of each RNA remaining.",
-        headers: [
-          "Time",
-          "circRNA remaining",
-          "Linear RNA remaining",
-          "circRNA / linear",
-        ],
-        rows: [
-          ["0 h", "1.000", "1.000", "1.0×"],
-          ["24 h", "**0.719**", "0.059", "12.2×"],
-          ["48 h", "0.616", "0.091", "6.8×"],
-          ["72 h", "**0.395**", "0.027", "14.6×"],
-        ],
-      },
+  "type": "table",
+  "caption": "Table 21. Fraction of each RNA remaining.",
+  "headers": [
+    "Time",
+    "circRNA remaining",
+    "Linear RNA remaining"
+  ],
+  "rows": [
+    [
+      "0 h",
+      "1.000",
+      "1.000"
+    ],
+    [
+      "24 h",
+      "**0.719**",
+      "0.059"
+    ],
+    [
+      "48 h",
+      "0.616",
+      "0.091"
+    ],
+    [
+      "72 h",
+      "**0.395**",
+      "0.027"
+    ]
+  ]
+},
       {
         type: "prose",
         paragraphs: [
           "Densitometric values normalized to the DNA ladder lane; n = 1 per timepoint.",
           "**Interpretation:** The difference in shape between the two traces is the point of this section, and it is **fully established within the first 24 h**:",
-          "**Linear RNA loses 94.1% by 24 h (0.059 remaining) and then sits near baseline, while circRNA still retains 71.9% at the same timepoint.** By 72 h circRNA is still at 39.5% against 2.7% for linear RNA — a **14.6-fold difference**. Put another way: **what remains of the circRNA after three days is still more than six times what was left of the linear RNA after one.**",
-          'This matches the mechanistic expectation — circRNA lacks free 5′/3′ ends and is intrinsically resistant to exonucleases (Jeck et al., 2013; Enuka et al., 2016) — and supports the platform\'s "low-frequency dosing, sustained expression" design rationale (Gong et al., 2025): the longer the molecule persists, the lower the dose and the fewer administrations needed for equivalent antigen expression.',
+          "**Linear RNA loses 94.1% by 24 h (0.059 remaining) and then sits near baseline, while circRNA still retains 71.9% at the same timepoint.** The difference is established within the first 24 h: the linear RNA has lost 94.1% while the circRNA retains 71.9%. The linear values after 24 h sit at or below the detection limit, so the later ratios are not read point by point. Put another way: **what remains of the circRNA after three days is still more than six times what was left of the linear RNA after one.**",
+          "This matches the mechanistic expectation — circRNA lacks free 5′/3′ ends and is intrinsically resistant to exonucleases (Jeck et al., 2013; Enuka et al., 2015) — and supports the platform's \"low-frequency dosing, sustained expression\" design rationale (Gong et al., 2025): the longer the molecule persists, the lower the dose and the fewer administrations needed for equivalent antigen expression.",
           "**Scope of this measurement:**",
         ],
       },
@@ -545,9 +560,9 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         ordered: true,
         start: 1,
         items: [
-          "**We report only the fraction remaining at each timepoint — no half-life, decay constant or any other kinetic parameter.** Each timepoint is **a single lane with no biological replicate**, and four points are not enough to fit and test a kinetic model. Four timepoints at one lane each support the fraction remaining and not a fitted kinetic model, so no half-life or decay constant is given. Running the timepoints in biological replicate would support a fitted curve. The lines in Figure 35 join consecutive data points and **do not represent the real trajectory between measurements**.",
+          "We report the fraction remaining at each timepoint. Each timepoint is a single lane with no biological replicate, and four such points do not support fitting a decay model, so no half-life or decay constant is given. Running the timepoints in biological replicate would support a fitted curve. Running the timepoints in biological replicate would support a fitted curve. The lines in Figure 35 join consecutive data points and **do not represent the real trajectory between measurements**.",
           '**The linear RNA value at 48 h (0.091) exceeds that at 24 h (0.059) — it is non-monotonic**, visible in Figure 35 as a distinct upward kink. Real degradation cannot rebound, so this must be **densitometric noise in the low-signal regime**: the band is near background and integration error is substantially amplified. We report the raw values without smoothing or exclusion, but accordingly **the three linear-RNA values after 24 h should be read only as "degraded to near the limit of detection" and not interpreted point by point**.',
-          '**Circular RNA migrates anomalously in native gels** (usually slower than linear RNA of the same length), so **band position cannot be used to establish circularity**; circular identity is established in §4.2 and §5.5, and this experiment answers only "how much is left".',
+          '**Circular RNA migrates anomalously in native gels** (usually slower than linear RNA of the same length), so **band position cannot be used to establish circularity**; circular identity is established in §3.2 and §4.5, and this experiment answers only "how much is left".',
         ],
       },
       {
@@ -593,56 +608,56 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         ],
       },
       {
-        type: "table",
-        caption: "Table 23. Off-target cytotoxicity.",
-        headers: [
-          "Target",
-          "Tissue origin",
-          "80: 1",
-          "100: 1",
-          "Specificity ratio (80: 1)",
-        ],
-        rows: [
-          [
-            "HCAEC",
-            "Coronary artery endothelium",
-            "2.77 ± 0.32",
-            "3.47 ± 1.35",
-            "21.4×",
-          ],
-          ["LX-2", "Hepatic stellate", "0.78 ± 0.58", "1.31 ± 0.46", "76.1×"],
-          [
-            "BEAS-2B",
-            "Bronchial epithelium",
-            "2.67 ± 0.65",
-            "2.37 ± 1.10",
-            "22.2×",
-          ],
-          [
-            "MCF12A",
-            "Normal breast epithelium",
-            "1.86 ± 0.48",
-            "2.26 ± 0.60",
-            "31.8×",
-          ],
-          [
-            "**MDA-MB-231**",
-            "**TNBC (positive control)**",
-            "**59.24 ± 2.10**",
-            "**62.07 ± 3.58**",
-            "—",
-          ],
-        ],
-      },
+  "type": "table",
+  "caption": "Table 23. Off-target cytotoxicity.",
+  "headers": [
+    "Target",
+    "Tissue origin",
+    "80: 1",
+    "100: 1"
+  ],
+  "rows": [
+    [
+      "HCAEC",
+      "Coronary artery endothelium",
+      "2.77 ± 0.32",
+      "3.47 ± 1.35"
+    ],
+    [
+      "LX-2",
+      "Hepatic stellate",
+      "0.78 ± 0.58",
+      "1.31 ± 0.46"
+    ],
+    [
+      "BEAS-2B",
+      "Bronchial epithelium",
+      "2.67 ± 0.65",
+      "2.37 ± 1.10"
+    ],
+    [
+      "MCF12A",
+      "normal mammary epithelium",
+      "1.86 ± 0.48",
+      "2.26 ± 0.60"
+    ],
+    [
+      "**MDA-MB-231**",
+      "**TNBC (positive control)**",
+      "**59.24 ± 2.10**",
+      "**62.07 ± 3.58**"
+    ]
+  ]
+},
       {
         type: "prose",
         paragraphs: [
-          "Values are killing %, mean ± SD, **n = 3 replicate wells on one plate**. Specificity ratio = MDA-MB-231 killing ÷ that line's killing.",
+          "Values are killing %, mean ± SD, n = 3 replicate wells on one plate.",
           "MDA-MB-231 versus each normal line is **P < 10⁻⁵ at both ratios** (P = 1.3–1.5 × 10⁻⁶ at 80: 1). Pooling the four normal lines at 80: 1 gives **2.02 ± 0.95% (n = 12), maximum single well 3.29%**.",
           "**Interpretation:**",
-          "**First, all four normal lines fall below 5%, against 59–62% for MDA-MB-231 — a 21- to 76-fold separation.** Not merely on average: **every line, every ratio, every one of the three replicate wells** is low. The highest single normal-cell measurement across all 24 wells (4 lines × 2 ratios × 3 replicate wells) is **4.90%**, in HCAEC at 100: 1; the highest at 80: 1 is 3.29%. The lowest MDA-MB-231 measurement is **57.11%**, so the two distributions do not overlap. The three values per condition are replicate wells on one plate, so this separation is established at plate level and has not been tested across effector-cell batches.",
+          "First, all four normal lines fall below 5%, against 59–62% for MDA-MB-231. Every line, every ratio and every one of the three replicate wells is low. The highest single normal-cell measurement across all 24 wells (4 lines × 2 ratios × 3 replicate wells) is **4.90%**, in HCAEC at 100: 1; the highest at 80: 1 is 3.29%. The lowest MDA-MB-231 measurement is **57.11%**, so the two distributions do not overlap. The three values per condition are replicate wells on one plate, so this separation is established at plate level and has not been tested across effector-cell batches.",
           '**Second, all four normal lines are HLA-A*02:01 positive, so the low killing cannot be explained by HLA mismatch.** This matters because if the normal cells did not present HLA-A*02:01, "not killed" might simply mean the CTLs could not see them, which says nothing about antigen discrimination. With HLA typing confirmed positive, these cells **are visible to HLA-A*02:01-restricted CTLs and were nonetheless spared** — so the low killing must arise at the level of **target-antigen discrimination**, not presentation-molecule invisibility.',
-          "**Third, MCF12A is the most informative line.** It shares **tissue origin with the tumor target** (both breast epithelium) and is HLA-A*02:01⁺, making it the line most likely to express low levels of cognate antigen and be mistakenly killed. It was killed at only 1.86–2.26%, a specificity ratio of 31.8×. This is the most direct available test of on-target / off-tumour risk.",
+          "Third, MCF12A is the closest line in this panel to the on-target/off-tumour case: it shares tissue origin with the tumour target and is HLA-A*02:01⁺. It was killed at 1.86–2.26%, against 59.24–62.07% for MDA-MB-231 on the same plate.",
           "**Fourth, raising the effector dose does not cost safety.** From 80: 1 to 100: 1 the normal lines move by at most ±0.7 percentage points, **all non-significant** (P = 0.28–0.70), while tumor killing continues to rise.",
         ],
       },
@@ -665,7 +680,7 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
       {
         type: "prose",
         paragraphs: [
-          "(Empty LNP, no circRNA cargo; n ≥ 3; error bars = SD.) Viability holds at baseline across 0–200 ng, then falls sharply at 400 ng.",
+          "(Empty LNP, no circRNA cargo; n = 4; error bars = SD.) Viability holds at baseline across 0–200 ng, then falls sharply at 400 ng.",
         ],
       },
       {
@@ -679,19 +694,19 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         ],
         rows: [
           ["0 ng (baseline)", "1.000 ± 0.040", "—", "—"],
-          ["50 ng", "1.017 ± 0.037", "P = 0.56 (ns)", "no toxicity"],
-          ["100 ng", "1.063 ± 0.047", "P = 0.26 (ns)", "no toxicity"],
+          ["50 ng", "1.017 ± 0.037", "P = 0.56 (ns)", "unchanged from baseline"],
+          ["100 ng", "1.063 ± 0.047", "P = 0.26 (ns)", "unchanged from baseline"],
           [
             "**200 ng**",
             "**1.030 ± 0.016**",
             "**P = 0.43 (ns)**",
-            "**no toxicity (safe upper bound)**",
+            "**unchanged from baseline (highest such dose tested)**",
           ],
           [
             "400 ng",
             "**0.572 ± 0.058**",
             "**P = 7.6 × 10⁻⁵**",
-            "clear toxicity",
+            "viability reduced",
           ],
         ],
       },
@@ -710,14 +725,14 @@ export const resultsSectionsRound2Safety: WikiSection[] = [
         items: [
           "**Viability does not fall at all between 0 and 200 ng** (fluctuating between 100% and 106%; all three doses non-significant vs baseline, Holm P = 0.26–0.56), indicating that the LNP carrier itself produces **no measurable toxicity** to DCs across this range. The reading at 100 ng (≈106%) sits slightly above baseline, within the normal variation of a colorimetric CCK-8 readout at this scale.",
           "**At 400 ng viability drops to 57.2 ± 5.8%** (P = 7.6 × 10⁻⁵) — doubling the dose from 200 ng (103.0%) costs 44% of viability. This sharp fall is characteristic of the threshold behaviour of ionisable lipid cytotoxicity: the membrane tolerates the load below a critical concentration and decompensates rapidly above it.",
-          "We therefore set **200 ng of LNP per 10⁴ DCs as the in vitro safe upper bound for the carrier**, and chose a working dose below that bound so that delivery efficiency and cell survival are secured simultaneously.",
+          "We therefore took 200 ng of LNP per 10⁴ DCs as the highest tested dose at which viability was unchanged, and worked below it. The next dose tested was 400 ng, so the dose at which viability starts to fall lies between the two.",
         ],
       },
       {
         type: "prose",
         paragraphs: [
           "**Limitations and scope:**",
-          "**What this experiment is scoped to bound.** Every well contained **LNP only**, so the dose–viability relationship measured here belongs to the **lipid carrier**, and the window it returns is a carrier-toxicity window. The assay was designed to isolate the carrier: circRNA is itself sensed by cytosolic receptors such as RIG-I/MDA5 (§6.1), so a loaded particle delivers a stimulus an empty one does not, and the ceiling of the whole formulation is a separate quantity. The ceiling of the loaded formulation remains to be defined in a future in vivo dose-escalation study. We therefore describe 200 ng as **the carrier's** safe upper bound and do not extend it to the vaccine.",
+          "**What this experiment is scoped to bound.** Every well contained **LNP only**, so the dose–viability relationship measured here belongs to the **lipid carrier**, and the window it returns is a carrier-toxicity window. The assay was designed to isolate the carrier: circRNA is itself sensed by cytosolic receptors such as RIG-I/MDA5 (Chen et al., 2017), so a loaded particle delivers a stimulus an empty one does not, and the ceiling of the whole formulation is a separate quantity. The ceiling of the loaded formulation remains to be defined in a future in vivo dose-escalation study. We therefore describe 200 ng as the highest carrier dose tested without a change in viability.",
           "**Why the in vitro and in vivo dose units are not interconvertible.** The dose unit here is **ng of empty LNP per 10⁴ DCs**; the in vivo dose is **10 µg of loaded circRNA-LNP per animal**. The denominators are entirely different (a defined number of cells versus the distribution volume and total cell count of a whole animal), so the two **cannot be converted into or compared with one another**. This experiment defines an upper bound for the in vitro working dose; the safety of the in vivo dose must be answered by an independent animal toxicology study. We state this explicitly because juxtaposing nanogram-scale in vitro data with microgram-scale in vivo doses is a common but serious interpretive error.",
           "**Other boundaries of the readout.** This is a single cell type at a single time point (24 h). CCK-8 measures mitochondrial dehydrogenase activity, so it reports metabolic viability rather than cell survival and does not distinguish apoptosis from necrosis. Repeat-dose toxicity, immunotoxicity and systemic toxicology are outside this assay and belong to the animal toxicology study above.",
         ],

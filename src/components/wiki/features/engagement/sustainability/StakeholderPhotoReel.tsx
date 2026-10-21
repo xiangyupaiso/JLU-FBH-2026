@@ -9,10 +9,13 @@ const FADE = 0.4;
 export function StakeholderPhotoReel({
   photos,
   label,
+  figureLabel,
   paused = false,
 }: {
   photos: ReadonlyArray<StakeholderPhoto>;
   label: string;
+  /** Stable manuscript label, shared by every slide of a scientific figure. */
+  figureLabel?: string;
   /** Pause a page reel while its expanded gallery is open or its deck is inactive. */
   paused?: boolean;
 }) {
@@ -60,7 +63,7 @@ export function StakeholderPhotoReel({
     <figure
       ref={ref}
       className={`sust-stake-reel${count === 1 ? " sust-stake-reel--single" : ""}`}
-      aria-label={`${label} — engagement photographs`}
+      aria-label={figureLabel ?? `${label} - engagement photographs`}
       style={
         {
           "--reel-fade": `${FADE}s`,
@@ -116,6 +119,9 @@ export function StakeholderPhotoReel({
             data-current={i === index || undefined}
             aria-hidden={i !== index}
           >
+            {figureLabel ? (
+              <span className="wiki-figure__label">{figureLabel}</span>
+            ) : null}
             {photo.caption}
           </span>
         ))}

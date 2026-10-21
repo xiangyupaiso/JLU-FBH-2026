@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import * as echarts from "../shared/echartsRuntime";
 import confidenceData from "../../../../data/drylab/modelConfidenceData.json";
 import heatmapData from "../../../../data/drylab/modelHeatmapData.json";
@@ -36,7 +36,7 @@ function ModelChart({
     observer.observe(node);
     return () => {
       observer.disconnect();
-      chart.dispose();
+      echarts.disposeChart(chart);
     };
   }, [option]);
   return (
@@ -111,7 +111,7 @@ heatmapOption.yAxis = {
   },
 };
 
-export function ModelBurialHeatmap() {
+export function ModelBurialHeatmap({ tableCaption, figureCaption }: { tableCaption: ReactNode; figureCaption: ReactNode }) {
   return (
     <div className="model-chart-panel">
       <ModelChart
@@ -127,10 +127,12 @@ export function ModelBurialHeatmap() {
         <i aria-hidden="true" className="model-heatmap-legend__bar" />
         <span className="model-heatmap-legend__val">100%</span>
       </div>
+      <p className="model-chart-caption">{figureCaption}</p>
       <details className="model-chart-data">
         <summary>View data</summary>
         <div className="wiki-table-wrap">
           <table className="wiki-table">
+            <caption>{tableCaption}</caption>
             <thead>
               <tr>
                 <th scope="col">Peptide</th>
@@ -219,14 +221,16 @@ export function createModelConfidenceOption(): echarts.EChartsOption {
 }
 
 const confidenceOption = createModelConfidenceOption();
-export function ModelConfidenceScatter() {
+export function ModelConfidenceScatter({ tableCaption, figureCaption }: { tableCaption: ReactNode; figureCaption: ReactNode }) {
   return (
     <div className="model-chart-panel">
       <ModelChart option={confidenceOption} label="Mean ipTM versus P9 fill ratio for 17 candidates. Fifteen pass and two are rejected. Hover a point for all five model scores." />
+      <p className="model-chart-caption">{figureCaption}</p>
       <details className="model-chart-data">
         <summary>View data</summary>
         <div className="wiki-table-wrap">
           <table className="wiki-table">
+            <caption>{tableCaption}</caption>
             <thead><tr><th scope="col">Peptide</th><th scope="col">Mean ipTM</th><th scope="col">P9 fill (%)</th><th scope="col">Status</th>{Array.from({ length: 5 }, (_, i) => <th scope="col" key={i}>Model {i}</th>)}</tr></thead>
             <tbody>{confidenceData.rows.map((row) => <tr key={row.peptide}><th scope="row">{row.peptide}</th><td>{row.iptm.toFixed(3)}</td><td>{row.fill.toFixed(2)}</td><td>{row.passed ? "Pass" : "Rejected"}</td>{row.models.map((score, i) => <td key={i}>{score.toFixed(3)}</td>)}</tr>)}</tbody>
           </table>

@@ -76,7 +76,7 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   };
   const detailLayers = cards.flatMap((card) =>
     Array.from(
-      card.querySelectorAll<SVGElement | HTMLElement>(
+      card.querySelectorAll<SVGElement>(
         '[data-gallery-layer="symbols"], [data-gallery-layer="labels"]',
       ),
     ),
@@ -207,7 +207,7 @@ export function animateGalleryWhy(root: HTMLElement, compact: boolean) {
   // This clone is made before the detail reveal runs. Keep its label painted
   // during handoff instead of carrying the timeline's initial opacity: 0.
   cardCopy
-    .querySelectorAll<SVGElement | HTMLElement>('[data-gallery-layer="labels"]')
+    .querySelectorAll<SVGElement>('[data-gallery-layer="labels"]')
     .forEach((label) => {
       label.style.opacity = "1";
     });

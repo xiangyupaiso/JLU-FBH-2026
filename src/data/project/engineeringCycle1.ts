@@ -544,6 +544,7 @@ export const cycle1Section: WikiSection = {
           width: 852,
           height: 257,
           alt: "Figure C1-02A",
+          figureLabel: "Figure C1-02A",
           caption: "Representative TROP2 immunohistochemistry in TNBC tissue, showing intermediate staining in the left and middle fields and high staining in the right field. Reproduced from Figure 2 of Izci et al. (2022), under CC BY 4.0; the tissue fields are retained and an external panel label has been added."
         },
         {
@@ -552,6 +553,7 @@ export const cycle1Section: WikiSection = {
           width: 412,
           height: 420,
           alt: "Figure C1-02B",
+          figureLabel: "Figure C1-02B",
           caption: "Representative B7-H4 immunostaining showing strong, moderate, weak and negative staining, as labelled in the source image. Cropped from Figure 1d of Wang et al. (2018), under CC BY 4.0; source labels and scale bars are retained, with an external panel label added."
         },
         {
@@ -560,6 +562,7 @@ export const cycle1Section: WikiSection = {
           width: 852,
           height: 261,
           alt: "Figure C1-02C",
+          figureLabel: "Figure C1-02C",
           caption: "Representative TNBC tissue showing strong, moderate and negative Nectin-4 staining in the original panels A, B and C, respectively (200× magnification). Reproduced from Figure 1 of Zeindler et al. (2019), under CC BY; original panel labels and scale bars are retained, with an external panel label added."
         },
         {
@@ -568,6 +571,7 @@ export const cycle1Section: WikiSection = {
           width: 852,
           height: 465,
           alt: "Figure C1-02D",
+          figureLabel: "Figure C1-02D",
           caption: "Representative positive and negative SLC39A6/LIV-1 immunostaining in breast-cancer tissue, corresponding to the original panels A and B. Reproduced from Figure 1 of Althobiti et al. (2021), under CC BY 4.0; an external panel label has been added. These images illustrate breast-cancer tissue staining rather than TNBC-specific prevalence."
         }
           ]
@@ -720,7 +724,7 @@ export const cycle1Section: WikiSection = {
           },
           {
                     "label": "doi:10.1016/j.celrep.2022.110460",
-                    "text": "Gong Y, Ji P, Yang YS, et al. Metabolic-pathway-based subtyping of triple-negative breast cancer reveals potential therapeutic targets. *Cell Reports*. 2022;39:110460.",
+                    "text": "Gong TQ, Jiang YZ, Shao C, et al. Proteome-centric cross-omics characterization and integrated network analyses of triple-negative breast cancer. *Cell Reports*. 2022;38(9):110460.",
                     "href": "https://doi.org/10.1016/j.celrep.2022.110460",
                     "hrefLabel": "doi:10.1016/j.celrep.2022.110460"
           }
@@ -790,6 +794,7 @@ export const cycle1Section: WikiSection = {
           width: 4000,
           height: 2744,
           alt: "Figure C1-03A",
+          figureLabel: "Figure C1-03A",
           caption: "Volcano plot comparing TNBC tumours with normal-breast samples in PXD024322 using a batch-adjusted limma model. Axes show the fitted log₂ fold change and −log₁₀ Benjamini–Hochberg-adjusted P value. Red and blue points indicate increased and decreased abundance, respectively, at adjusted P < 0.05 and |log₂FC| ≥ 0.15. Purple vertical reference lines mark log₂FC = ±0.5. TROP2, B7-H4, LIV-1 and Nectin-4 are highlighted."
         },
         {
@@ -798,6 +803,7 @@ export const cycle1Section: WikiSection = {
           width: 4000,
           height: 1889,
           alt: "Figure C1-03B",
+          figureLabel: "Figure C1-03B",
           caption: "Boxplots of batch-adjusted log₂ relative protein abundance for TROP2, B7-H4, LIV-1 and Nectin-4 in PXD024322. Grey and orange boxes represent normal-breast and TNBC samples, respectively. Each panel reports the model-estimated TNBC-to-normal fold change and Benjamini–Hochberg-adjusted P value."
         },
         {
@@ -806,6 +812,7 @@ export const cycle1Section: WikiSection = {
           width: 4000,
           height: 2960,
           alt: "Figure C1-03C",
+          figureLabel: "Figure C1-03C",
           caption: "Volcano plot from the patient-paired limma comparison of TNBC tumours and matched normal-adjacent tissue (NAT) in PXD028102. Axes show the fitted log₂ fold change and −log₁₀ Benjamini–Hochberg-adjusted P value. Red and blue points indicate increased and decreased abundance, respectively, at adjusted P < 0.01 and |log₂FC| ≥ 1. TROP2, B7-H4 and Nectin-4 are highlighted."
         },
         {
@@ -814,6 +821,7 @@ export const cycle1Section: WikiSection = {
           width: 4000,
           height: 2099,
           alt: "Figure C1-03D",
+          figureLabel: "Figure C1-03D",
           caption: "Boxplots of log₂ protein abundance after the primary missing-value imputation for TROP2, B7-H4 and Nectin-4 in PXD028102. Grey and orange boxes represent normal-adjacent tissue (NAT) and TNBC samples, respectively. Each panel reports the TNBC-to-NAT fold change and Benjamini–Hochberg-adjusted P value from the patient-paired limma model."
         }
           ]
@@ -972,6 +980,7 @@ export const cycle1Section: WikiSection = {
           width: 2499,
           height: 2129,
           alt: "Figure C1-04A",
+          figureLabel: "Figure C1-04A",
           caption: "Harmony-integrated UMAP of the 39,324 quality-controlled cells in the GSE176078 TNBC subset. Each point represents a cell, coloured by its annotated major lineage. The map shows malignant, normal epithelial, immune, stromal and endothelial cell populations."
         },
         {
@@ -980,6 +989,7 @@ export const cycle1Section: WikiSection = {
           width: 3002,
           height: 4000,
           alt: "Figure C1-04B",
+          figureLabel: "Figure C1-04B",
           caption: "Candidate-gene expression on the Harmony UMAP (left) and violin plots across cell compartments (right). Rows show TROP2/*TACSTD2*, B7-H4/*VTCN1*, LIV-1/*SLC39A6* and Nectin-4/*NECTIN4* (labelled PVRL4). Expression is displayed as ln(CP10K + 1), calculated from raw counts. Cancer-associated fibroblasts (CAFs) are included in the stromal compartment and also shown separately. The B7-H4 and Nectin-4 violin plots use broken y-axes."
         },
         {
@@ -988,6 +998,7 @@ export const cycle1Section: WikiSection = {
           width: 2088,
           height: 2126,
           alt: "Figure C1-04C",
+          figureLabel: "Figure C1-04C",
           caption: "The pie chart represents 9,491 malignant cells from eight cases in the GSE176078 TNBC subset. Each case contributes a sector proportional to its malignant-cell count, divided into coloured portions with at least one candidate gene detected and grey portions with none detected. Labels report the case-specific detection fraction and malignant-cell number. The pooled detection fraction was 81.4% (7,727/9,491)."
         }
           ]
@@ -1079,6 +1090,7 @@ export const cycle1Section: WikiSection = {
           width: 2531,
           height: 919,
           alt: "Figure C1-05",
+          figureLabel: "Figure C1-05",
           caption: "cBioPortal OncoPrint of 115 selected TCGA TNBC cases using the query `AMP EXP >= 0.5`, which identifies copy-number amplification or an mRNA expression Z-score of at least 0.5. The proportions meeting this rule were 38% for *TACSTD2*, 31% for *VTCN1*, 79% for *NECTIN4* and 4% for *SLC39A6*. At least one of the four genes met the rule in 101 of 115 cases (88%)."
         }
           ]
@@ -1163,6 +1175,7 @@ export const cycle1Section: WikiSection = {
           width: 3033,
           height: 2031,
           alt: "Figure C1-07",
+          figureLabel: "Figure C1-07",
           caption: "Group screenshot from a five-team online iGEM software exchange involving JLU-FBH, HUBU-WUHAN, AFMU-China, JLU-SPH and LZU-GANSU."
         }
           ]

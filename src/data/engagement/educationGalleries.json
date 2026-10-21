@@ -68,74 +68,32 @@
     ]
   },
   {
-    "key": "education-gallery-winter-outreach",
-    "title": "Winter Outreach",
-    "images": [
-      {
-        "file": "winter-outreach/01-winter-classroom-overview.jpg",
-        "caption": "Winter classroom overview"
-      },
-      {
-        "file": "winter-outreach/02-chongqing-science-lesson.jpg",
-        "caption": "Chongqing science lesson"
-      },
-      {
-        "file": "winter-outreach/03-yanbian-laptop-dialogue.jpg",
-        "caption": "Yanbian laptop dialogue"
-      },
-      {
-        "file": "winter-outreach/04-hailun-igem-introduction.jpg",
-        "caption": "Hailun igem introduction"
-      },
-      {
-        "file": "winter-outreach/05-dream-ring-writing.jpg",
-        "caption": "Dream ring writing"
-      },
-      {
-        "file": "winter-outreach/06-dream-ring-assembly.jpg",
-        "caption": "Dream ring assembly"
-      },
-      {
-        "file": "winter-outreach/07-dream-ring-completed.jpg",
-        "caption": "Dream ring completed"
-      },
-      {
-        "file": "winter-outreach/08-shandong-project-examples.jpg",
-        "caption": "Shandong project examples"
-      },
-      {
-        "file": "winter-outreach/09-italy-english-lesson.jpg",
-        "caption": "Italy english lesson"
-      },
-      {
-        "file": "winter-outreach/10-italy-class-closing.jpg",
-        "caption": "Italy class closing"
-      }
-    ]
-  },
-  {
     "key": "education-gallery-air-to-bread-classroom",
     "title": "Air to Bread Classroom",
     "images": [
       {
-        "file": "air-to-bread-classroom/01-air-to-bread-overview.jpg",
-        "caption": "Air to bread overview"
+        "file": "new-figure/air-to-bread-classroom-01.avif",
+        "caption": "Air to Bread Classroom · 1"
       },
       {
-        "file": "air-to-bread-classroom/02-air-to-bread-science-question.jpg",
-        "caption": "Air to bread science question"
+        "file": "new-figure/air-to-bread-classroom-02.avif",
+        "caption": "Air to Bread Classroom · 2"
       },
       {
-        "file": "air-to-bread-classroom/03-air-to-bread-class-participation.jpg",
-        "caption": "Air to bread class participation"
+        "file": "new-figure/air-to-bread-classroom-03.avif",
+        "caption": "Air to Bread Classroom · 3"
       },
       {
-        "file": "air-to-bread-classroom/04-air-to-bread-student-dialogue.jpg",
-        "caption": "Air to bread student dialogue"
+        "file": "new-figure/air-to-bread-classroom-04.avif",
+        "caption": "Air to Bread Classroom · 4"
       },
       {
-        "file": "air-to-bread-classroom/05-air-to-bread-teaching-poster.jpg",
-        "caption": "Air to bread teaching poster"
+        "file": "new-figure/air-to-bread-classroom-05.avif",
+        "caption": "Air to Bread Classroom · 5"
+      },
+      {
+        "file": "new-figure/air-to-bread-classroom-06.avif",
+        "caption": "Air to Bread Classroom · 6"
       }
     ]
   },
@@ -144,36 +102,28 @@
     "title": "Vaccine Classroom",
     "images": [
       {
-        "file": "vaccine-classroom/01-vaccine-classroom-overview.jpg",
-        "caption": "Vaccine classroom overview"
+        "file": "new-figure/jidafuxiao-1.avif",
+        "caption": "Vaccine Classroom · 1"
       },
       {
-        "file": "vaccine-classroom/02-body-defence-lesson.jpg",
-        "caption": "Body defence lesson"
+        "file": "new-figure/jidafuxiao-2.avif",
+        "caption": "Vaccine Classroom · 2"
       },
       {
-        "file": "vaccine-classroom/03-wanted-poster-rules.jpg",
-        "caption": "Wanted poster rules"
+        "file": "new-figure/jidafuxiao-3.avif",
+        "caption": "Vaccine Classroom · 3"
       },
       {
-        "file": "vaccine-classroom/04-group-response-sheet.jpg",
-        "caption": "Group response sheet"
+        "file": "new-figure/jidafuxiao-4.avif",
+        "caption": "Vaccine Classroom · 4"
       },
       {
-        "file": "vaccine-classroom/05-team-guided-group-game.jpg",
-        "caption": "Team guided group game"
+        "file": "new-figure/jidafuxiao-5.avif",
+        "caption": "Vaccine Classroom · 5"
       },
       {
-        "file": "vaccine-classroom/06-group-results-board.jpg",
-        "caption": "Group results board"
-      },
-      {
-        "file": "vaccine-classroom/07-vaccine-science-wrapup.jpg",
-        "caption": "Vaccine science wrapup"
-      },
-      {
-        "file": "vaccine-classroom/08-vaccine-class-closing.jpg",
-        "caption": "Vaccine class closing"
+        "file": "new-figure/jidafuxiao-6.avif",
+        "caption": "Vaccine Classroom · 6"
       }
     ]
   },
@@ -182,40 +132,32 @@
     "title": "Xinghua Festival",
     "images": [
       {
-        "file": "xinghua-festival/01-xinghua-booth-overview.jpg",
-        "caption": "Xinghua booth overview"
+        "file": "new-figure/xinghua01.avif",
+        "caption": "Xinghua Festival · 1"
       },
       {
-        "file": "xinghua-festival/02-bookmark-coloring-process.jpg",
-        "caption": "Bookmark coloring process"
+        "file": "new-figure/xinghua02.avif",
+        "caption": "Xinghua Festival · 2"
       },
       {
-        "file": "xinghua-festival/03-colored-bookmark-result.jpg",
-        "caption": "Colored bookmark result"
+        "file": "new-figure/xinghua03.avif",
+        "caption": "Xinghua Festival · 3"
       },
       {
-        "file": "xinghua-festival/04-health-quiz-dialogue.jpg",
-        "caption": "Health quiz dialogue"
+        "file": "new-figure/xinghua04.avif",
+        "caption": "Xinghua Festival · 4"
       },
       {
-        "file": "xinghua-festival/05-care-wall-contribution.jpg",
-        "caption": "Care wall contribution"
+        "file": "new-figure/xinghua05.avif",
+        "caption": "Xinghua Festival · 5"
       },
       {
-        "file": "xinghua-festival/06-care-wall-completed.jpg",
-        "caption": "Care wall completed"
+        "file": "new-figure/xinghua06.avif",
+        "caption": "Xinghua Festival · 6"
       },
       {
-        "file": "xinghua-festival/07-doctor-health-consultation.jpg",
-        "caption": "Doctor health consultation"
-      },
-      {
-        "file": "xinghua-festival/08-open-sandbag-game.jpg",
-        "caption": "Open sandbag game"
-      },
-      {
-        "file": "xinghua-festival/09-xinghua-team-closing.jpg",
-        "caption": "Xinghua team closing"
+        "file": "new-figure/xinghua07.avif",
+        "caption": "Xinghua Festival · 7"
       }
     ]
   },

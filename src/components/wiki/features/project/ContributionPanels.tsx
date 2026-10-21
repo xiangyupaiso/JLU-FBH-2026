@@ -3,6 +3,7 @@ import { QueuedImage } from "../../../common/QueuedImage";
 import type { ReactNode } from "react";
 import {
   contributionAssets,
+  contributionBaduanjinVideo,
   contributionDocUrl,
   contributionImage,
   type ContributionDocAssetKey,
@@ -22,13 +23,15 @@ import {
   createCitationRenderer,
 } from "../../citations/CitationRegister";
 import { DocumentViewer } from "../../documents/DocumentViewer";
+import { PeerTubeVideo } from "../shared/PeerTubeVideo";
+import { SafetyWhitePaperFeature } from "./SafetyPanels";
 import "../../../../styles/features/contribution-panels.css";
 
 /**
  * Contribution page feature slots.
  *
  * The page is overwhelmingly editorial — seven chapters of prose, three
- * diagrams, one 23-row Registry table, four embedded documents and thirty-five
+ * diagrams, one 30-row Registry table, four embedded documents and thirty-five
  * activity photographs. Only two mechanisms are needed, and both are reused
  * rather than invented:
  *
@@ -217,16 +220,20 @@ export function contributionFeatures(): Record<string, ReactNode> {
 
     /* Documents, through the shared PDF housing. */
     "contribution-doc-animal-ethics": (
-      <ContributionDocument assetKey="animalEthicsHandbook" />
+      <SafetyWhitePaperFeature featureKey="safety-white-paper-7" />
     ),
     "contribution-doc-lab-safety": (
-      <ContributionDocument assetKey="laboratorySafetyHandbook" />
+      <SafetyWhitePaperFeature featureKey="safety-white-paper-1" />
     ),
     "contribution-doc-together-with-igem": (
       <ContributionDocument assetKey="togetherWithIgem" />
     ),
     "contribution-doc-new-team-handbook": (
       <ContributionDocument assetKey="newTeamHandbook" />
+    ),
+
+    "contribution-video-baduanjin": (
+      <PeerTubeVideo video={contributionBaduanjinVideo} />
     ),
 
     "contribution-references": <ContributionReferenceList />,

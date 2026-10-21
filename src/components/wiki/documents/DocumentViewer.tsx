@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 import "../../../styles/wiki-documents.css";
 
 /**
@@ -52,6 +52,9 @@ type DocumentViewerProps = {
   defaultOpen?: boolean;
   readLabel?: string;
   closeLabel?: string;
+  /** Optional controls beside the direct document link. */
+  actions?: ReactNode;
+  fullWidth?: boolean;
 } & (
   | { variant?: "inline" }
   | { variant: "modal"; open: boolean; onOpenChange: (open: boolean) => void }
@@ -61,6 +64,7 @@ export function DocumentViewer(props: DocumentViewerProps) {
   return props.variant === "modal" ? (
     <DocumentDialog
       document={props.document}
+      actions={props.actions}
       open={props.open}
       onOpenChange={props.onOpenChange}
     />
@@ -73,10 +77,12 @@ export function DocumentViewer(props: DocumentViewerProps) {
  * the PDF frame. The browser restores focus to the attachment/folder button. */
 function DocumentDialog({
   document,
+  actions,
   open,
   onOpenChange,
 }: {
   document: WikiDocument;
+  actions?: ReactNode;
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
@@ -133,13 +139,19 @@ function DocumentDialog({
         </button>
       </header>
       <div className="wiki-document__panel">
-        {open ? <DocumentContents document={document} /> : null}
+        {open ? <DocumentContents document={document} actions={actions} /> : null}
       </div>
     </dialog>
   );
 }
 
-function DocumentContents({ document }: { document: WikiDocument }) {
+function DocumentContents({
+  document,
+  actions,
+}: {
+  document: WikiDocument;
+  actions?: ReactNode;
+}) {
   return (
     <>
       {document.description ? (
@@ -159,6 +171,7 @@ function DocumentContents({ document }: { document: WikiDocument }) {
             </a>
           ) : null}
           .
+          {actions}
         </p>
       ) : null}
       <iframe
@@ -180,11 +193,15 @@ function InlineDocumentViewer({
   /** Labels for the collapse control, so a manual is not called a "report". */
   readLabel = "Read",
   closeLabel = "Close",
+  actions,
+  fullWidth = false,
 }: {
   document: WikiDocument;
   defaultOpen?: boolean;
   readLabel?: string;
   closeLabel?: string;
+  actions?: ReactNode;
+  fullWidth?: boolean;
 }) {
   const [open, setOpen] = useState(defaultOpen);
   /** Once opened the frame stays mounted: re-creating a PDF surface on every
@@ -201,7 +218,9 @@ function InlineDocumentViewer({
   };
 
   return (
-    <figure className={`wiki-document${open ? " is-open" : ""}`}>
+    <figure
+      className={`wiki-document${open ? " is-open" : ""}${fullWidth ? " wiki-document--full-width" : ""}`}
+    >
       <div className="wiki-document__card">
         <p className="wiki-document__caption">{document.caption}</p>
         <button
@@ -218,7 +237,9 @@ function InlineDocumentViewer({
       </div>
 
       <div className="wiki-document__panel" id={panelId} hidden={!open}>
-        {mounted ? <DocumentContents document={document} /> : null}
+        {mounted ? (
+          <DocumentContents document={document} actions={actions} />
+        ) : null}
       </div>
     </figure>
   );

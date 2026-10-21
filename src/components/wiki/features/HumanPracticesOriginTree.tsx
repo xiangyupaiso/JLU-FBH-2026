@@ -2,9 +2,10 @@ import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import { originInterviewRecords } from "../../../data/engagement/humanPracticesCopy";
 import { originMedia } from "../../../data/engagement/humanPracticesAssets";
 import { scrollReaderToTarget } from "../../../utils";
+import { HpInterviewParagraph } from "./HpMedia";
+import { isHpInterviewHeading } from "./hpInterviewText";
 import { HpFlowTooltip } from "./HpFlowTooltip";
 import { HpInterviewPhoto, HpPortrait } from "./HpStakeholderMedia";
-import { linkify } from "../proseInline";
 import "../../../styles/hp-origin-tree.css";
 
 const names = ["Pharmaceutical Expo", "Kou Changgui", "Public", "Jia Lin", "Wang Lei", "Li Chengli", "Tian Runhui"];
@@ -67,7 +68,7 @@ function interviewContext(index: number) {
     for (const paragraph of block.paragraphs) {
       if (paragraph === "**Context**") {
         inContext = true;
-      } else if (inContext && !paragraph.startsWith("**")) {
+      } else if (inContext && !isHpInterviewHeading(paragraph)) {
         return paragraph;
       }
     }
@@ -181,8 +182,8 @@ export function HumanPracticesOriginTree() {
     const requestUpdate = () => {
       if (!frame) frame = requestAnimationFrame(update);
     };
+    const gesture = wheelGestureRef.current;
     const holdWheelGesture = () => {
-      const gesture = wheelGestureRef.current;
       if (!gesture.active) gesture.releaseAt = performance.now() + 420;
       gesture.active = true;
       if (gesture.timer) clearTimeout(gesture.timer);
@@ -236,7 +237,7 @@ export function HumanPracticesOriginTree() {
     update();
     return () => {
       if (frame) cancelAnimationFrame(frame);
-      if (wheelGestureRef.current.timer) clearTimeout(wheelGestureRef.current.timer);
+      if (gesture.timer) clearTimeout(gesture.timer);
       inner.removeEventListener("scroll", requestUpdate);
       inner.removeEventListener("wheel", handleWheel);
       window.removeEventListener("scroll", requestUpdate);
@@ -273,7 +274,7 @@ export function HumanPracticesOriginTree() {
   const visibleParagraphs = interviewParagraphs(currentStep.person, displayedPhase);
   const currentMedia = originMedia[currentStep.person];
   const interviewPhotos = displayedPhase === "followup" ? currentMedia?.followup ?? [] : currentMedia?.interview ?? [];
-  const firstProseIndex = visibleParagraphs.findIndex((paragraph) => !paragraph.startsWith("**"));
+  const firstProseIndex = visibleParagraphs.findIndex((paragraph) => !isHpInterviewHeading(paragraph));
   const visitedPeople = new Set(storySteps.slice(0, unlocked + 1).map((step) => step.person));
   const returnedPeople = new Set(storySteps.slice(0, unlocked + 1).filter((step) => step.phase === "followup").map((step) => step.person));
   const activeTracePaths = displayedReturnFrom !== undefined
@@ -286,8 +287,7 @@ export function HumanPracticesOriginTree() {
     <div className="hp-origin-flow" ref={rootRef} style={{ height: `calc(var(--hp-origin-step) * ${storySteps.length + leadSteps})` }}>
       <section className="hp-origin-flow__intro" aria-label="Stakeholder network overview">
         <div className="hp-origin-flow__intro-heading">
-          <span>III / Origin</span>
-          <h3>Tree-shaped stakeholder network</h3>
+          <h3>Stakeholder flow</h3>
         </div>
         <div className="hp-origin-flow__intro-network">
           <div className="hp-origin-flow__intro-canvas">
@@ -431,9 +431,9 @@ export function HumanPracticesOriginTree() {
           </div>
           <div className="hp-origin-flow__card-body">
             {visibleParagraphs.map((paragraph, paragraphIndex) => {
-              const label = paragraph.match(/^\*\*(.+)\*\*$/);
+              const label = isHpInterviewHeading(paragraph) ? [paragraph, paragraph.replace(/[*#]/g, "").trim()] : null;
               return <Fragment key={paragraphIndex}>
-                {label ? <h4>{label[1]}</h4> : <p>{linkify(paragraph)}</p>}
+                {label ? <h4>{label[1].replace(/[*#]/g, "").trim()}</h4> : <HpInterviewParagraph text={paragraph} />}
                 {paragraphIndex === firstProseIndex && interviewPhotos.map((src) => <HpInterviewPhoto key={src} src={src} name={names[currentStep.person]} />)}
               </Fragment>;
             })}

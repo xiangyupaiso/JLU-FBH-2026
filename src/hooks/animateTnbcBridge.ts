@@ -1,7 +1,13 @@
 import gsap from "gsap";
+import {
+  createHomeScrubBoundaryGuard,
+  isHomeMotionRefreshing,
+  settleHomeScrubEndpoint,
+} from "./homeMotion";
 import { resetTnbcCopyOpacity, setTnbcCopyOpacity } from "./tnbcCopyOpacity";
 
 const BRIDGE_SCRUB = 0.2;
+export const TNBC_COPY_READABLE_PROGRESS = 0.94;
 
 // Let native scrolling carry both panels while their shared word changes shape.
 export function animateTnbcBridge(section: HTMLElement) {
@@ -104,26 +110,10 @@ export function animateTnbcBridge(section: HTMLElement) {
   };
 
   const draw = () => {
-    const trigger = bridgeRef.current?.scrollTrigger;
-    const scroll = trigger?.scroll() ?? 0;
-    // ScrollTrigger stops calling onUpdate once its progress is clamped.
-    // Check during the trailing scrub too, so repeated large scrolls cannot
-    // leave an unfinished shared word in a distant scene.
-    if (
-      trigger &&
-      state.progress > 0 &&
-      state.progress < 1 &&
-      (scroll < trigger.start - window.innerHeight * 0.5 ||
-        scroll > trigger.end + window.innerHeight * 0.5)
-    ) {
-      trigger.getTween()?.pause();
-      bridgeRef.current?.progress(scroll < trigger.start ? 0 : 1);
-      return;
-    }
-    // Finish the same scrubbed fade at both boundaries before handing back
-    // the real word; fast wheel input must not force an unfinished last frame.
+    if (isHomeMotionRefreshing()) return;
     const progress = state.progress;
     const visible = progress > 0 && progress < 1;
+    boundaryGuard.setActive(visible);
     if (!visible) geometry = undefined;
     if (visible && !geometry) measure();
     wash.style.visibility = visible ? "visible" : "hidden";
@@ -132,7 +122,7 @@ export function animateTnbcBridge(section: HTMLElement) {
     // Complete the carried word's journey before the longer title and diagram
     // become readable, so wrapped lines do not expose an empty middle phrase.
     setTnbcCopyOpacity(copy, "bridge", fade(0.62, 0.9, progress));
-    target.style.opacity = String(fade(0.72, 0.94, progress));
+    target.style.opacity = String(fade(0.72, TNBC_COPY_READABLE_PROGRESS, progress));
     source.style.visibility = visible ? "hidden" : original.sourceVisibility;
     // Clear the outgoing headline before the shared word crosses its lines.
     sourceHeading.style.opacity =
@@ -170,9 +160,15 @@ export function animateTnbcBridge(section: HTMLElement) {
       ", " +
       scaleY +
       ")";
-    word.style.opacity = String(1 - fade(0.72, 0.94, progress));
+    word.style.opacity = String(1 - fade(0.72, TNBC_COPY_READABLE_PROGRESS, progress));
   };
 
+  // The map becomes sticky again on reverse entry. Release the scrolling
+  // word at that boundary so its trailing scrub cannot drift below the title.
+  const boundaryGuard = createHomeScrubBoundaryGuard(
+    () => bridgeRef.current?.scrollTrigger,
+    draw,
+  );
   const bridge = gsap.timeline({
     scrollTrigger: {
       id: "home-tnbc-copy-bridge",
@@ -181,6 +177,7 @@ export function animateTnbcBridge(section: HTMLElement) {
       end: () => trackBottom() - headerHeight(),
       scrub: BRIDGE_SCRUB,
       invalidateOnRefresh: true,
+      onUpdate: settleHomeScrubEndpoint,
       onRefreshInit: () => {
         geometry = undefined;
       },
@@ -198,6 +195,7 @@ export function animateTnbcBridge(section: HTMLElement) {
   return {
     timeline: bridge,
     cleanup: () => {
+      boundaryGuard.dispose();
       bridge.kill();
       resetTnbcCopyOpacity(copy, "bridge");
       copy.style.opacity = original.copyOpacity;

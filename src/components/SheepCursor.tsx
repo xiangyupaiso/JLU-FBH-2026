@@ -481,7 +481,13 @@ export function SheepCursor() {
       <span className="sheep-cursor__ripple" />
       <span className="sheep-cursor__ripple" />
       {Array.from({ length: PARTICLE_COUNT }, (_, index) => (
-        <i key={index} className="sheep-cursor__spark" />
+        <i key={index} className="sheep-cursor__spark">
+          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+            <path d="M8 0.5 C8 4.6 11.4 8 15.5 8 C11.4 8 8 11.4 8 15.5 C8 11.4 4.6 8 0.5 8 C4.6 8 8 4.6 8 0.5 Z" />
+            <circle cx="8" cy="8" r="1.5" />
+            <path d="M8 2v12M2 8h12" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+          </svg>
+        </i>
       ))}
     </div>,
     portalHost,

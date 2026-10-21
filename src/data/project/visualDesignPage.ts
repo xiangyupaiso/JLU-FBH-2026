@@ -262,7 +262,7 @@ export const visualDesignPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "Our citation system follows the reading conventions of academic journals. Hovering over an in-text citation marker (**`[1]`, `[2]`**) opens an **interactive preview card** with authors, title, journal, volume and year. Clicking the marker scrolls to the bibliography and briefly highlights the entry, while **backlink pills** return readers to the paragraph where the paper was cited.",
+            "Our citation system follows the reading conventions of academic journals. Hovering over an in-text citation marker (**`(Charon, 2001)`, `(Segel et al., 2010)`**) opens an **interactive preview card** with authors, title, journal, volume and year. Clicking the marker scrolls to the bibliography and briefly highlights the entry, while **backlink pills** return readers to the paragraph where the paper was cited.",
             "Visual artworks are served from the official iGEM static server in **AVIF format** to reduce download size. Automated **link checks** confirm that image and reference URLs respond, and **figure badges (`FIG. XX`)** are numbered automatically in page order.",
           ],
         },

@@ -180,7 +180,7 @@
 .hp-stage-flow__card.is-followup { border-color: #c07a42; }
 .hp-stage-flow__card-head { flex: 0 0 auto; padding: 22px 28px 14px; border-bottom: 1px solid #e4d4b2; }
 .hp-stage-flow__card-head > span { color: #ad662e; font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; }
-.hp-stage-flow__card-head h3 { margin: 7px 0 0; color: #285b54; font-family: var(--font-editorial); font-size: clamp(18px, 1.65vw, 24px); line-height: 1.22; }
+.hp-stage-flow__card-head h3 { margin: 0; color: #285b54; font-family: var(--font-editorial); font-size: clamp(18px, 1.65vw, 24px); line-height: 1.22; }
 .hp-stage-flow__rounds { display: flex; gap: 8px; margin-top: 13px; }
 .hp-stage-flow__rounds button { padding: 6px 11px; border: 1px solid #d7b983; border-radius: 999px; background: #fff9e9; color: var(--hp-stage-ink); cursor: pointer; font-family: var(--font-sans); font-size: 11px; }
 .hp-stage-flow__rounds button.is-selected { border-color: #a85d27; background: #c57336; color: #fffaf0; }

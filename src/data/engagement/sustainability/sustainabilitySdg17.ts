@@ -10,16 +10,16 @@ export const sdg17Chapter: SdgChapter = {
   id: "sdg17",
   headingId: "sdg17-partnerships",
   index: "5.2",
-  title: "SDG17: Partnerships for the Goals",
+  title: "SDG 17: Partnerships for the Goals",
   intro: [
-    "No single team has all the knowledge and resources needed to address interconnected challenges in health, education, and sustainable development. We chose SDG 17 to **connect complementary expertise across teams and sectors through shared learning and joint work**. Our aim is to turn individual contributions into **resources others can use and build upon**, so that one team’s experience becomes another’s starting point and the value of collaboration extends beyond the competition.",
+    "No single team has all the knowledge and resources needed to address interconnected challenges in health, education, and sustainable development. We chose SDG 17 to **connect complementary expertise across teams and sectors through shared learning and joint work**. Our aim is to turn individual contributions into **resources others can use and build upon**, so that one team's experience becomes another's starting point and the value of collaboration extends beyond the competition.",
   ],
   stakeholders: {
     heading: "Stakeholder & Partnership Mapping",
     lead: [
       "Through our work on SDG 3, SDG 4, SDG 9, and SDG 12, we connected with stakeholders across four core areas: **health needs**, **technological innovation**, **responsible development**, and **education and communication**. Patients and clinicians helped us understand real healthcare needs; researchers contributed to technical design and evaluation; industry practitioners provided perspectives on production, technology translation, and resource management; and teachers, science communicators, and the public helped us bring scientific knowledge into broader social settings.",
       "Under SDG 17, we examine **how these relationships connect**. What **knowledge, resources, and practical experience** can different stakeholders contribute? How can the **complementary strengths** developed through our work on different SDGs be brought together to support CirCure?",
-      "Based on how stakeholders participated and how these relationships developed, we organized CirCure’s external network into four groups: **Other iGEM Teams**, **Research & Medical Partners**, **Industry & Professional Partners**, and **Public & Community Partners**. Together, these groups connect peer collaboration, research and medicine, industry practice, and public participation within CirCure’s broader partnership network.",
+      "Based on how stakeholders participated and how these relationships developed, we organized CirCure's external network into four groups: **Other iGEM Teams**, **Research & Medical Partners**, **Industry & Professional Partners**, and **Public & Community Partners**. Together, these groups connect peer collaboration, research and medicine, industry practice, and public participation within CirCure's broader partnership network.",
     ],
     profiles: [],
     groups: [
@@ -28,8 +28,8 @@ export const sdg17Chapter: SdgChapter = {
         index: "01",
         title: "Other iGEM Teams",
         intro: [
-          "Other iGEM teams form CirCure’s most immediate network of peer partners. Through continued exchange, we aimed to develop these connections into shared discussions, joint activities, and outputs that could remain useful over time.",
-          "We hosted the Northeast China iGEM Meetup, participated in iGEM exchange events across China, and initiated five inter-team Collaboration projects. Through this process, our relationships developed from learning about one another’s projects to completing shared tasks and producing resources for continued use. Differences in research interests, practical experience, audience connections, and expertise allowed teams to complement one another and helped CirCure extend its reach.",
+          "Other iGEM teams form CirCure's most immediate network of peer partners. Through continued exchange, we aimed to develop these connections into shared discussions, joint activities, and outputs that could remain useful over time.",
+          "We hosted the Northeast China iGEM Meetup, participated in iGEM exchange events across China, and initiated five inter-team Collaboration projects. Through this process, our relationships developed from learning about one another's projects to completing shared tasks and producing resources for continued use. Differences in research interests, practical experience, audience connections, and expertise allowed teams to complement one another and helped CirCure extend its reach.",
         ],
         profiles: [
           {
@@ -41,14 +41,14 @@ export const sdg17Chapter: SdgChapter = {
               "The event established a regional peer network and made Safety a shared topic for discussion and judgment across teams. It also provided a foundation for subsequent collaboration.",
             sdgs: [17, 4],
             sdgsLabel: "SDGs",
-            partnerLabel: "Partners / Reach",
+            partnerLabel: "Partners",
             partner: "Regional iGEM Teams · 11 Teams",
             challengeLabel: "What Connected Us",
             challenge:
               "Teams in the region needed a face-to-face platform to present their projects, exchange experience, and identify opportunities for collaboration.",
             whatWeDidLabel: "What We Did Together",
             whatWeDid:
-              "JLU-FBH hosted the Northeast China iGEM Meetup and designed an immersive safety discussion, “DDL Crisis: The Qinghe Bacterial Release Incident.” Through risk assessment, analysis of responsibilities, and team discussion, participants explored the release of engineered bacteria and the boundaries of iGEM Safety.",
+              "JLU-FBH hosted the Northeast China iGEM Meetup and designed an immersive safety discussion, \"DDL Crisis: The Qinghe Bacterial Release Incident.\" Through risk assessment, analysis of responsibilities, and team discussion, participants explored the release of engineered bacteria and the boundaries of iGEM Safety.",
             whatChangedLabel: "Shared Outcome",
             article: {
               title: "Building Peer Connections through Face-to-Face Exchange",
@@ -56,7 +56,7 @@ export const sdg17Chapter: SdgChapter = {
                 {
                   blocks: [
                     "Collaboration begins with opportunities for teams to sit together and understand the problems others are addressing, the difficulties they face, and the experience they can share.",
-                    "JLU-FBH therefore hosted the Northeast China iGEM Meetup, inviting regional teams to present projects, share experience, and hold face-to-face discussions. We wanted teams to identify one another’s strengths, challenges, and potential areas of collaboration, making the regional meeting a starting point for continued exchange.",
+                    "JLU-FBH therefore hosted the Northeast China iGEM Meetup, inviting regional teams to present projects, share experience, and hold face-to-face discussions. We wanted teams to identify one another's strengths, challenges, and potential areas of collaboration, making the regional meeting a starting point for continued exchange.",
                   ],
                 },
                 {
@@ -70,7 +70,7 @@ export const sdg17Chapter: SdgChapter = {
                 {
                   heading: "02 Discussing Safety Together",
                   blocks: [
-                    "During the meetup, we independently designed and facilitated the immersive reasoning roundtable “DDL Crisis: The Qinghe Bacterial Release Incident.”",
+                    "During the meetup, we independently designed and facilitated the immersive reasoning roundtable \"DDL Crisis: The Qinghe Bacterial Release Incident.\"",
                     "Using a simulated accidental release of engineered bacteria, we asked teams to examine clues, assess risks, identify responsible parties, and discuss engineered organism release, laboratory practices, and iGEM Safety boundaries.",
                     "This made Safety a practical question requiring collective analysis and judgment:",
                     "If a risk event occurs, how should we identify the problem, take responsibility, and make decisions?",
@@ -85,7 +85,7 @@ export const sdg17Chapter: SdgChapter = {
                 {
                   heading: "04 What We Learned",
                   blocks: [
-                    "Partnerships often begin with a thorough conversation. Understanding one another’s research interests, strengths, and needs helps teams develop collaboration into substantive joint work.",
+                    "Partnerships often begin with a thorough conversation. Understanding one another's research interests, strengths, and needs helps teams develop collaboration into substantive joint work.",
                   ],
                 },
               ],
@@ -100,14 +100,14 @@ export const sdg17Chapter: SdgChapter = {
               "We expanded our regional connections into a broader national peer network and identified opportunities for knowledge sharing and joint content development.",
             sdgs: [17],
             sdgsLabel: "SDGs",
-            partnerLabel: "Partners / Reach",
+            partnerLabel: "Partners",
             partner: "iGEM Teams across China",
             challenge:
               "Teams from different regions brought varied experience and resources in Wet Lab, Dry Lab, HP, Education, Wiki, and team management.",
             challengeLabel: "",
             whatWeDidLabel: "What We Did Together",
             whatWeDid:
-              "We participated in **this year’s iGEM exchange events across China**, maintaining project presentations, experience sharing, and collaboration discussions with other teams.",
+              "We participated in **this year's iGEM exchange events across China**, maintaining project presentations, experience sharing, and collaboration discussions with other teams.",
             whatChangedLabel: "Shared Outcome",
             article: {
               title:
@@ -131,7 +131,7 @@ export const sdg17Chapter: SdgChapter = {
                   heading:
                     "02 From Project Presentations to Collaboration Discussions",
                   blocks: [
-                    "At these events, we introduced CirCure and learned about other teams’ research interests and practices.",
+                    "At these events, we introduced CirCure and learned about other teams' research interests and practices.",
                     "Continued exchange helped us identify topics suitable for joint work, including public health education, vaccine technology reviews, clarification of scientific misconceptions, health promotion, and the transfer of experience to new teams.",
                     "These connections provided the foundation for our five subsequent inter-team Collaboration projects.",
                   ],
@@ -161,7 +161,7 @@ export const sdg17Chapter: SdgChapter = {
               "Together, we corrected 43 scientific misconceptions and produced a collection covering multiple fields of synthetic biology application.",
             sdgs: [17, 4],
             sdgsLabel: "SDGs",
-            partnerLabel: "Partners / Reach",
+            partnerLabel: "Partners",
             partner: "17 Teams · 11 Villages",
             challenge:
               "Different iGEM Villages encounter different scientific misconceptions, and each team has expertise closely connected to its own research area.",
@@ -172,7 +172,7 @@ export const sdg17Chapter: SdgChapter = {
             whatChangedLabel: "Shared Outcome",
             article: {
               title:
-                "Using Each Team’s Expertise to Address a Scientific Misconception",
+                "Using Each Team's Expertise to Address a Scientific Misconception",
               sections: [
                 {
                   blocks: [
@@ -220,7 +220,7 @@ export const sdg17Chapter: SdgChapter = {
               "We produced a complete joint Baduanjin health promotion video, connecting youth collaboration, health communication, and traditional culture.",
             sdgs: [17, 3, 4],
             sdgsLabel: "SDGs",
-            partnerLabel: "Partners / Reach",
+            partnerLabel: "Partners",
             partner: "5 iGEM Teams",
             challengeLabel: "What Connected Us",
             challenge:
@@ -265,7 +265,7 @@ export const sdg17Chapter: SdgChapter = {
                 {
                   heading: "04 What We Learned",
                   blocks: [
-                    "Joint creation can allow participants to contribute different parts of a shared task. In this project, the complete output depended on everyone’s contribution.",
+                    "Joint creation can allow participants to contribute different parts of a shared task. In this project, the complete output depended on everyone's contribution.",
                     "This extended our work on SDG 17 from knowledge sharing to a shared health activity.",
                   ],
                 },
@@ -280,7 +280,7 @@ export const sdg17Chapter: SdgChapter = {
               "We developed Handbook + Micro-videos + FAQ Resources to provide guidance that future iGEM teams can continue using and expanding.",
             sdgs: [17, 4],
             sdgsLabel: "SDGs",
-            partnerLabel: "Partners / Reach",
+            partnerLabel: "Partners",
             partner: "5 iGEM Teams",
             challengeLabel: "What Connected Us",
             challenge:
@@ -291,7 +291,7 @@ export const sdg17Chapter: SdgChapter = {
             whatChangedLabel: "Shared Outcome",
             article: {
               title:
-                "Turning This Year’s Experience into Next Year’s Starting Point",
+                "Turning This Year's Experience into Next Year's Starting Point",
               sections: [
                 {
                   blocks: [
@@ -305,7 +305,7 @@ export const sdg17Chapter: SdgChapter = {
                   blocks: [
                     "We asked whether documenting these experiences could help future teams avoid repeating some of the same trial and error.",
                     "We therefore initiated From Teams, For Teams, inviting teams to share experience from the aspects of participation they understood best.",
-                    "Our aim was to provide practical references grounded in participants’ experience.",
+                    "Our aim was to provide practical references grounded in participants' experience.",
                   ],
                 },
                 {
@@ -346,7 +346,7 @@ export const sdg17Chapter: SdgChapter = {
                   heading: "04 What We Learned",
                   blocks: [
                     "Sustainable collaboration does not always require a partnership to remain in the same form indefinitely. Passing experience to the next group of participants can also sustain its value.",
-                    "What one team learned this year can become another team’s starting point next year.",
+                    "What one team learned this year can become another team's starting point next year.",
                     "In this sense, sharing experience is itself a form of sustainable partnership.",
                   ],
                 },
@@ -377,10 +377,10 @@ export const sdg17Chapter: SdgChapter = {
               sections: [
                 {
                   blocks: [
-                    "CirCure’s challenges cannot be addressed by a single discipline. Treatment needs in TNBC arise from patients’ experiences and clinical practice. Translating these needs into a testable therapeutic strategy involves antigen design, RNA technology, delivery systems, tumor immunology, and preclinical evaluation.",
-                    "Under SDG 3, patients, clinicians, and medical and public health experts helped us reconsider efficacy, recurrence, long-term survival, quality of life, costs, and accessibility in real healthcare settings. This broadened project evaluation from technical performance to potential patient benefit. Under SDG 9, we connected with researchers in computational immunology, RNA, nanodelivery, preclinical evaluation, and technology translation, bringing health needs into discussions of technical design, functional validation, and future development.",
-                    "Under SDG 17, we bring these participants together to examine how their different perspectives contributed to CirCure. Patients and clinicians helped identify the problems the project should address. Medical and public health experts contributed perspectives on disease management and accessibility. Researchers provided advice on antigen design, RNA technology, delivery systems, and preclinical evaluation. These exchanges helped us consider clinical needs, scientific evidence, and future conditions of use together when discussing technical approaches.",
-                    "Not every expert we interviewed became a long-term partner. Nevertheless, these interactions established connections between research and medicine, allowing healthcare needs to inform research design and ensuring that technical development continued to be examined against clinical needs, scientific evidence, and future translation requirements.",
+                    "CirCure's challenges cannot be addressed by a single discipline. Treatment needs in TNBC arise from patients' experiences and clinical practice. Translating these needs into a testable therapeutic strategy involves antigen design, RNA technology, delivery systems, tumor immunology, and preclinical evaluation.",
+                    "Under SDG 3, patients, clinicians, and medical and public health experts helped us reconsider efficacy, recurrence, long-term survival, quality of life, costs, and accessibility in real healthcare settings. This broadened project evaluation **from technical performance to potential patient benefit**. Under SDG 9, we connected with researchers in computational immunology, RNA, nanodelivery, preclinical evaluation, and technology translation, bringing health needs into discussions of technical design, functional validation, and future development.",
+                    "Under SDG 17, we bring these participants together to examine how their different perspectives contributed to CirCure. Patients and clinicians helped identify the problems the project should address. Medical and public health experts contributed perspectives on disease management and accessibility. Researchers provided advice on antigen design, RNA technology, delivery systems, and preclinical evaluation. These exchanges helped us **consider clinical needs, scientific evidence, and future conditions of use together** when discussing technical approaches.",
+                    "Not every expert we interviewed became a long-term partner. Nevertheless, these interactions established connections between research and medicine, **allowing healthcare needs to inform research design** and ensuring that technical development continued to be examined against clinical needs, scientific evidence, and future translation requirements.",
                   ],
                 },
               ],
@@ -398,22 +398,22 @@ export const sdg17Chapter: SdgChapter = {
             index: "03",
             name: "Industry & Professional Partners",
             whatChanged:
-              "These partners broadened CirCure’s evaluation to include future production, resource responsibility, lifecycle considerations, and ongoing data management. Their input also supported the development of tools such as the Resource Responsibility Map.",
+              "These partners broadened CirCure's evaluation to include future production, resource responsibility, lifecycle considerations, and ongoing data management. Their input also supported the development of tools such as the Resource Responsibility Map.",
             sdgs: [17, 9, 12, 13],
             relevantStakeholder:
               "Researchers can assess technical feasibility, while production and practical application also require expertise in manufacturing, CMC, lifecycle management, supply chains, and data governance.",
             keyInsight:
-              "Beyond the laboratory, manufacturability, batch consistency, quality control, resource inputs, production costs, storage, transport, and data tracking all influence a technology’s long-term sustainability.",
+              "Beyond the laboratory, manufacturability, batch consistency, quality control, resource inputs, production costs, storage, transport, and data tracking all influence a technology's long-term sustainability.",
             currentStatus: "Incorporated",
             article: {
               title: "",
               sections: [
                 {
                   blocks: [
-                    "As we considered CirCure’s development beyond technical validation, we recognized that research expertise alone could not answer every question about future production and use. We therefore connected with practitioners and companies working in CMC and manufacturing, sustainability, lifecycle management, supply chains, and data governance.",
-                    "These participants initially informed our analyses under SDG 9 and SDG 12. For technology translation, they drew our attention to manufacturability, batch consistency, quality control, and production costs. For resource responsibility, they expanded our focus from current reagents, consumables, and experimental repetition to raw materials, production, storage, transport, waste, and ongoing data collection.",
-                    "For example, discussions with CMC and manufacturing professionals prompted us to consider failed batches and repeated production within resource responsibility and supported the development of the Resource Responsibility Map. Industry practices also highlighted the importance of traceable production, storage, transport, and waste data when evaluating long-term sustainability.",
-                    "Under SDG 17, we focus on how these areas of expertise complement one another. Manufacturing experience, sustainability management, lifecycle perspectives, and data governance helped us understand the production, management, and resource challenges that may arise as a technology moves toward practical application. These connections do not mean that every company has entered a formal, long-term partnership with us. They constitute an industry and professional network that CirCure can continue engaging as it develops.",
+                    "As we considered CirCure's development beyond technical validation, we recognized that research expertise alone could not answer every question about future production and use. We therefore connected with practitioners and companies working in CMC and manufacturing, sustainability, lifecycle management, supply chains, and data governance.",
+                    "These participants initially informed our analyses under SDG 9 and SDG 12. For technology translation, they drew our attention to **manufacturability, batch consistency, quality control, and production costs**. For resource responsibility, they expanded our focus from current reagents, consumables, and experimental repetition to raw materials, production, storage, transport, waste, and ongoing data collection.",
+                    "For example, discussions with CMC and manufacturing professionals prompted us to consider failed batches and repeated production within resource responsibility and supported the development of the **Resource Responsibility Map**. Industry practices also highlighted the importance of traceable production, storage, transport, and waste data when evaluating long-term sustainability.",
+                    "Under SDG 17, we focus on **how these areas of expertise complement one another**. Manufacturing experience, sustainability management, lifecycle perspectives, and data governance helped us understand the production, management, and resource challenges that may arise as a technology moves toward practical application. These connections do not mean that every company has entered a formal, long-term partnership with us. They constitute an industry and professional network that CirCure can continue engaging as it develops.",
                   ],
                 },
               ],
@@ -443,10 +443,10 @@ export const sdg17Chapter: SdgChapter = {
               sections: [
                 {
                   blocks: [
-                    "CirCure’s partnership network extends beyond research, medicine, and industry. Education and communication are also needed to connect technology with society. We therefore included the education and communication network developed under SDG 4, along with students and community members who participated in related activities, in our partnership mapping.",
-                    "Teachers, communicators, students, and the public helped us translate specialist content into lessons, experimental experiences, virtual laboratories, games, and community activities, giving different audiences accessible ways to learn about and engage with CirCure.",
-                    "This network also connected other SDGs with broader social settings. Health knowledge from SDG 3 became public health education; synthetic biology and technological innovation from SDG 9 informed educational activities; and resource responsibility from SDG 12 entered community practice through activities such as planting.",
-                    "Education, communication, and community participation brought scientific knowledge into classrooms, online platforms, and community activities.",
+                    "CirCure's partnership network extends beyond research, medicine, and industry. Education and communication are also needed to connect technology with society. We therefore included the education and communication network developed under SDG 4, along with students and community members who participated in related activities, in our partnership mapping.",
+                    "Teachers, communicators, students, and the public helped us **translate specialist content into lessons, experimental experiences, virtual laboratories, games, and community activities**, giving different audiences accessible ways to learn about and engage with CirCure.",
+                    "This network also **connected other SDGs with broader social settings**. Health knowledge from SDG 3 became public health education; synthetic biology and technological innovation from SDG 9 informed educational activities; and resource responsibility from SDG 12 entered community practice through activities such as planting.",
+                    "Education, communication, and community participation **brought scientific knowledge into classrooms, online platforms, and community activities**.",
                   ],
                 },
               ],
@@ -498,11 +498,11 @@ export const sdg17Chapter: SdgChapter = {
   },
   alignment: {
     lead: [
-      "For CirCure, the significance of SDG 17 depends on whether partnerships influence project design and practice. SST-QN’s initial screening identified potential relationships between partnerships and health, technological innovation, education, and responsible development.",
+      "For CirCure, the significance of SDG 17 depends on whether partnerships influence project design and practice. SST-QN's initial screening identified potential relationships between partnerships and health, technological innovation, education, and responsible development.",
       "In Alignment, we therefore examined completed collaborations, the integration of feedback, and project adjustments to assess whether these relationships were supported by evidence within CirCure and how far that evidence could support our conclusions.",
     ],
     findings: [
-      "**We classify the relationship between SDG 17 and SDG 9 as a Core Synergy.** Research, clinical, and industry stakeholders contributed to discussions of antigen selection, RNA technology, delivery systems, preclinical evaluation, and future translation. Their input influenced specific technical designs, evaluation criteria, and development priorities. Collaboration has therefore become a substantive source of support for CirCure’s technological innovation.",
+      "**We classify the relationship between SDG 17 and SDG 9 as a Core Synergy.** Research, clinical, and industry stakeholders contributed to discussions of antigen selection, RNA technology, delivery systems, preclinical evaluation, and future translation. Their input influenced specific technical designs, evaluation criteria, and development priorities. Collaboration has therefore become a substantive source of support for CirCure's technological innovation.",
       "**We classify the relationship between SDG 17 and SDG 12 as a Core Synergy.** Participants with expertise in CMC, EHS, carbon emissions, green manufacturing, and data governance brought batch failure, resource use, storage, transport, and waste into project evaluation. Their contributions supported the Resource Responsibility Map and Sustainability Claim Boundary Protocol, directly changing how CirCure identifies and evaluates resource responsibility.",
       "**We classify the relationship between SDG 17 and SDG 4 as a Core Synergy.** Teachers, science communicators, and interactive design professionals contributed perspectives on learning, information presentation, and user experience. Their feedback informed changes to course content, communication approaches, and activity formats. Inter-team collaboration also supported the sharing of educational resources and practical experience.",
       "**We classify the relationship between SDG 17 and SDG 3 as an Exploratory Synergy.** Patients, clinicians, and other professional participants improved our understanding of efficacy, safety, accessibility, and health needs and informed changes to project evaluation. However, current evidence primarily supports improvements in project decisions. It does not yet demonstrate that these partnerships directly produce distinct, consistent health outcomes.",
@@ -545,13 +545,13 @@ export const sdg17Chapter: SdgChapter = {
   },
   legacy: {
     intro: [
-      "We hope our collaborations leave behind more than a series of exchanges—**co-created outcomes that sustain connections between teams and remain useful over time**. This year, JLU-FBH began by hosting the **Northeast China iGEM Meetup**, providing a platform for teams in the region to present their projects, share experiences, and engage in in-depth discussions. This event laid the foundation for our initial cross-team connections. We then continued to participate in **iGEM meetups across different regions of China this year**, exchanging project experiences with more teams and learning about their research interests and practical strengths as we gradually expanded our collaboration network.",
+      "We hope our collaborations leave behind more than a series of exchanges-**co-created outcomes that sustain connections between teams and remain useful over time**. This year, JLU-FBH began by hosting the **Northeast China iGEM Meetup**, providing a platform for teams in the region to present their projects, share experiences, and engage in in-depth discussions. This event laid the foundation for our initial cross-team connections. We then continued to participate in **iGEM meetups across different regions of China this year**, exchanging project experiences with more teams and learning about their research interests and practical strengths as we gradually expanded our collaboration network.",
       "Building on these exchanges and connections, we initiated and hosted **3 cross-team Collaboration projects**, bringing teams together to co-create around public health outreach, vaccine technologies, debunking scientific misconceptions, health practices, and passing on iGEM experience. These efforts transformed the knowledge, experience, and creativity of different teams into shareable resources, including white papers, collections of science outreach materials, joint videos, and growth guides. In this way, individual exchanges developed into a **Collaboration Legacy that can continue to be shared, used, and expanded upon**.",
     ],
     tools: [
       {
         title: "Northeast China iGEM Meetup & Immersive Safety Roundtable",
-        why: "Teams need opportunities to **understand one another’s projects, share experience, and identify collaboration needs**. Safety discussions also benefit from scenarios that connect rules with practical decisions and team responsibilities.",
+        why: "Teams need opportunities to **understand one another's projects, share experience, and identify collaboration needs**. Safety discussions also benefit from scenarios that connect rules with practical decisions and team responsibilities.",
         whatItHelpsWith:
           "Combine **project presentations, experience sharing, and face-to-face discussions** with an immersive roundtable on a simulated engineered-bacteria leak. Guide participants through **clue analysis, risk assessment, responsibility, and discussion of iGEM Safety boundaries**, while building connections for future collaboration.",
         bestFor:
@@ -596,7 +596,7 @@ export const sdg17Chapter: SdgChapter = {
         title: "From Teams, For Teams: iGEM New Team Growth Guide",
         why: "First-time iGEM teams often need to learn **team formation, project design, experimental planning, Human Practices, Wiki development, and team management** from the beginning. Scattered experience can lead to repeated trial and error.",
         whatItHelpsWith:
-          "Organize participating teams’ **practical experience and working methods** into a shared **handbook, short videos, and frequently asked questions**. Give future teams a reference they can consult throughout their projects and a resource that can continue to grow through new contributions.",
+          "Organize participating teams' **practical experience and working methods** into a shared **handbook, short videos, and frequently asked questions**. Give future teams a reference they can consult throughout their projects and a resource that can continue to grow through new contributions.",
         bestFor:
           "**New team onboarding, project kick-offs, task planning, team handovers**, and peer mentoring throughout the **iGEM project cycle**.",
         whatItDoes: "",
@@ -610,14 +610,14 @@ export const sdg17Chapter: SdgChapter = {
       },
     ],
     closing: [
-      "By hosting regional exchanges, building connections across different regions, and completing joint projects, we developed individual conversations into more sustained relationships and shared outputs. These white papers, educational resources, joint videos, and guides document this year’s Collaboration and provide material for continued public communication, team exchange, and use by future iGEM participants.",
+      "By hosting regional exchanges, building connections across different regions, and completing joint projects, we developed individual conversations into more sustained relationships and shared outputs. These white papers, educational resources, joint videos, and guides document this year's Collaboration and provide material for continued public communication, team exchange, and use by future iGEM participants.",
     ],
   },
   evidence: {
     intro: [
       "Through sustained partnership building, CirCure has developed an external network spanning **four partner categories** and established direct collaborations with **26 iGEM teams**. We hosted **one Northeast China iGEM exchange event**, participated in **all seven regional iGEM exchange events held across China this year**, and initiated or contributed to **seven cross-team collaborations**.",
       "These collaborations have produced **five joint white papers, one educational website, one health-promotion video co-created by multiple teams, and one resource collection supporting new iGEM teams**. Among these efforts, **Together With iGEM** spans **11 iGEM Villages** and addresses **43 common misconceptions**.",
-      "Partners across research, healthcare, industry, education, and the wider public continue to inform CirCure’s assessment of needs, technical evaluation, discussions about responsible development, and science communication. Together, these partnerships bring stakeholder perspectives into project decisions and turn collective experience into practical resources—leaving a shared foundation that others can use, refine, and carry forward beyond a single team or competition season.",
+      "Partners across research, healthcare, industry, education, and the wider public continue to inform CirCure's assessment of needs, technical evaluation, discussions about responsible development, and science communication. Together, these partnerships bring stakeholder perspectives into project decisions and turn collective experience into practical resources-leaving a shared foundation that others can use, refine, and carry forward beyond a single team or competition season.",
     ],
     stats: [],
     measurable: [],

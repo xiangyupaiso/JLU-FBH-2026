@@ -1,8 +1,9 @@
+import { linkify } from "../../proseInline";
 import { QueuedImage, QueuedSvgImage } from "../../../common/QueuedImage";
 import { useState, useRef, useEffect, useCallback } from "react";
-import waterfallFullWebpLocal from "../../../../assets/wiki/hp/hp-waterfall-loop.webp";
-import waterfallCoreWebpLocal from "../../../../assets/wiki/hp/hp-waterfall-core.webp";
-import waterfallStreamWebpLocal from "../../../../assets/wiki/hp/hp-waterfall-stream.webp";
+const waterfallFullWebpLocal = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/ihp/hp-waterfall-loop.webp";
+const waterfallCoreWebpLocal = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/ihp/hp-waterfall-core.webp";
+const waterfallStreamWebpLocal = "https://static.igem.wiki/teams/6056/wiki/files/pages/engagement/ihp/hp-waterfall-stream.webp";
 import {
   RETURN_CONTOUR,
   PROJECT_CONTOUR,
@@ -60,7 +61,7 @@ const HOTSPOTS: Record<HotspotKey, HotspotData> = {
     badge: "01 / Foundation & Demand",
     title: "Human: The Public Pool as Reservoir",
     subtitle: "Inspiration Originating from Grassroots Community Demands",
-    body: "Using the 3i framework across six stakeholder categories, we used CIRC to drive iterative dialogues and re-engagement, building a tree-like network that replaces linear communication with a responsive, bidirectional Human Practices approach and embeds societal feedback into project evolution.",
+    body: "Using the **3i framework** across six stakeholder categories, we used **CIRC** to drive iterative dialogues and re-engagement, building a **tree-like network** that replaces linear communication with a responsive, bidirectional Human Practices approach and embeds societal feedback into project evolution.",
     targetSectionId: "hp-human",
     targetSectionLabel: "02 Human: Stakeholder Matrix",
     bubbleStyle: {
@@ -78,7 +79,7 @@ const HOTSPOTS: Record<HotspotKey, HotspotData> = {
     badge: "02 / Initiation & Motivation",
     title: "Origin: The Waterwheel of Initiation",
     subtitle: "Public Needs Setting Engineering in Motion",
-    body: "We conducted iterative stakeholder interviews and follow‑up re‑interviews guided by the 3i/CIRC framework, progressively narrowing our focus to recurrence prevention for postoperative residual lesions in triple‑negative breast cancer (TNBC). We selected therapeutic tumour vaccines as our candidate intervention and reoriented educational outreach towards subtype‑specific disease awareness and patient‑centered risk communication.",
+    body: "We conducted iterative stakeholder interviews and follow‑up re‑interviews guided by the **3i/CIRC framework**, progressively narrowing our focus to recurrence prevention for postoperative residual lesions in triple‑negative breast cancer (TNBC). We selected therapeutic tumor vaccines as our candidate intervention and reoriented educational outreach towards subtype‑specific disease awareness and patient‑centered risk communication.",
     targetSectionId: "hp-origin",
     targetSectionLabel: "03 Origin: Project Motivation",
     bubbleStyle: {
@@ -96,7 +97,7 @@ const HOTSPOTS: Record<HotspotKey, HotspotData> = {
     badge: "03 / Iterative Aqueducts",
     title: "Project: Rising Aqueducts of Iteration",
     subtitle: "Continuous Feedback-Driven Design Refinements",
-    body: "This project develops a circRNA-based prophylactic therapy for residual postoperative triple-negative breast cancer lesions. It converts clinical needs into molecular plasmid design. With expert guidance, the team adopted multi-target antigens and built a dry-lab analysis pipeline. Public perception surveys and ethical reviews were carried out. The study includes plasmid design, in vitro and in vivo tests, balancing scientific evidence and practical constraints for preclinical research.",
+    body: "This project develops a **circRNA-based prophylactic therapy** for residual postoperative triple-negative breast cancer lesions. It converts clinical needs into molecular plasmid design. With expert guidance, the team selected multiple target antigens and built a dry-lab analysis pipeline. The team conducted public perception surveys and ethical reviews. The study includes plasmid design and in vitro and in vivo tests, balancing scientific evidence with practical constraints for preclinical research.",
     targetSectionId: "hp-project",
     targetSectionLabel: "04 Project: Iterative Design Cycles",
     bubbleStyle: {
@@ -114,7 +115,7 @@ const HOTSPOTS: Record<HotspotKey, HotspotData> = {
     badge: "04 / Benefiting Society",
     title: "Return: Waterfall Stepping Out of the Lab",
     subtitle: "Closing the Loop: Knowledge and Solutions for Society",
-    body: "Guided by the 3i/CIRC framework across six stakeholder categories, we shifted the question from whether CirCure was technically feasible to what evidence, safeguards, and institutional conditions responsible implementation would require. Dialogue with patients and families, experts, public and safety stakeholders, and four industry partners clarified patient priorities, research and communication boundaries, affordability concerns, and translation challenges. The Return phase established an evidence-aligned pathway that now guides our Wiki, education, and public communication.",
+    body: "Guided by the 3i/CIRC framework across six stakeholder categories, we shifted the question from whether CirCure was technically feasible to **what evidence, safeguards, and institutional conditions responsible implementation would require**. Dialogue with patients and families, experts, public and safety stakeholders, and four industry partners clarified patient priorities, research and communication boundaries, affordability concerns, and translation challenges. The Return phase established an evidence-aligned pathway that now guides our Wiki, education, and public communication.",
     targetSectionId: "hp-overview",
     targetSectionLabel: "01 Overview: Closing the Cycle",
     bubbleStyle: {
@@ -159,8 +160,10 @@ export function HpInteractiveWaterfall() {
   // Pinned scroll listener: card stays frozen in viewport while mouse wheel scrolls from 0 to 1
   useEffect(() => {
     let lastScrollY = window.scrollY;
+    let frame = 0;
 
     const handleScroll = () => {
+      frame = 0;
       const container = containerRef.current;
       if (!container) return;
 
@@ -184,9 +187,22 @@ export function HpInteractiveWaterfall() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    const requestUpdate = () => {
+      if (!frame) frame = requestAnimationFrame(handleScroll);
+    };
+    const observer = new ResizeObserver(requestUpdate);
+    if (containerRef.current) observer.observe(containerRef.current);
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate, { passive: true });
+    window.visualViewport?.addEventListener("resize", requestUpdate, { passive: true });
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      observer.disconnect();
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+      window.visualViewport?.removeEventListener("resize", requestUpdate);
+    };
   }, [manualFocus]);
 
   const handleSelectTab = (key: HotspotKey) => {
@@ -406,7 +422,7 @@ export function HpInteractiveWaterfall() {
                 </button>
                 <div className="hp-bubble-kicker">{activeData.badge}</div>
                 <h3 className="hp-bubble-title">{activeData.title}</h3>
-                <p className="hp-bubble-body">{activeData.body}</p>
+                <p className="hp-bubble-body">{linkify(activeData.body)}</p>
                 <button
                   type="button"
                   className="hp-bubble-action-btn"

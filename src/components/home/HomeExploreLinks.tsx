@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import { homeDestinations } from "../../data/homeDestinations";
 import { QueuedImage } from "../common/QueuedImage";
-import descriptionSheep from "../../assets/home/explore/description.webp";
-import engineeringSheep from "../../assets/home/explore/engineering.webp";
-import sustainabilitySheep from "../../assets/home/explore/sustainability.webp";
-import contributionSheep from "../../assets/home/explore/contribution.webp";
-import modelSheep from "../../assets/home/explore/model.webp";
-import softwareSheep from "../../assets/home/explore/software.webp";
+const descriptionSheep = "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/description.webp";
+const engineeringSheep = "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/engineering.webp";
+const sustainabilitySheep = "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/sustainability.webp";
+const contributionSheep = "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/contribution.webp";
+const modelSheep = "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/model.webp";
+const softwareSheep = "https://static.igem.wiki/teams/6056/wiki/files/pages/hero/software.webp";
 import "../../styles/home-explore.css";
 
 const destinationSheep = {

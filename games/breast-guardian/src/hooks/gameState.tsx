@@ -1,13 +1,13 @@
-import React, { createContext, useContext, useReducer, useCallback } from 'react';
+import React, { useReducer, useCallback } from 'react';
+import { GameContext } from './gameContext';
+import type { GameAction, GameContextType } from './gameContext';
 import type {
   GameState,
   Language,
   Perspective,
   PerspectiveProgress,
-  GamePhase,
   BossType,
-  EndingType,
-  Playthrough
+  EndingType
 } from '@/types';
 import { BOSSES_BY_PLAYTHROUGH } from '@/data/bossProgression';
 import { readSavedLanguage, saveLanguage } from '@/lib/languageStorage';
@@ -49,34 +49,6 @@ const initialState: GameState = {
   lastUsedNegativeSkillSource: null as number | null,
   isExitMenuOpen: false
 };
-
-// Action类型
-type GameAction =
-  | { type: 'SET_PHASE'; payload: GamePhase }
-  | { type: 'SET_EXIT_MENU_OPEN'; payload: boolean }
-  | { type: 'SET_LANGUAGE'; payload: Language }
-  | { type: 'SET_PERSPECTIVE'; payload: Perspective | null }
-  | { type: 'SET_MEMORY_POINT'; payload: number }
-  | { type: 'SET_BOSS'; payload: BossType | null }
-  | { type: 'SET_PLAYTHROUGH'; payload: Playthrough }
-  | { type: 'SET_SKIP_STORY'; payload: boolean }
-  | { type: 'COMPLETE_TUTORIAL' }
-  | { type: 'COMPLETE_MEMORY'; payload: { perspective: Perspective; memoryPoint: number; result: EndingType } }
-  | { type: 'COMPLETE_PERSPECTIVE' }
-  | { type: 'COMPLETE_PROMOTION_AND_UNLOCK' }
-  | { type: 'SWITCH_PERSPECTIVE'; payload: Perspective }
-  | { type: 'UNLOCK_BOSS'; payload: BossType }
-  | { type: 'DEFEAT_BOSS'; payload: BossType }
-  | { type: 'UNLOCK_SKILL'; payload: string }
-  | { type: 'EQUIP_SKILL'; payload: { newSkill: string; oldSkill: string } }
-  | { type: 'SET_EQUIPPED_SKILLS'; payload: string[] }
-  | { type: 'RECORD_BE_SKILL_SOURCE'; payload: { skillId: string; memoryPoint: number } }
-  | { type: 'SET_BATTLE_STATE'; payload: GameState['battleState'] }
-  | { type: 'USE_SKILL_IN_BATTLE'; payload: { skillId: string; negativeSkillSource?: number } }
-  | { type: 'RESET_BATTLE' }
-  | { type: 'RESET_GAME' }
-  | { type: 'START_NEW_GAME'; payload: Perspective }
-  | { type: 'START_WEEK2' };
 
 // Reducer
 function gameReducer(state: GameState, action: GameAction): GameState {
@@ -160,7 +132,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         ...state,
         unlockedBosses: [...state.unlockedBosses, action.payload]
       };
-    
+
     case 'DEFEAT_BOSS':
       if (state.defeatedBosses.includes(action.payload)) {
         return state;
@@ -169,7 +141,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         ...state,
         defeatedBosses: [...state.defeatedBosses, action.payload]
       };
-    
+
     case 'UNLOCK_SKILL':
       if (state.unlockedSkills.includes(action.payload)) {
         return state;
@@ -178,16 +150,17 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         ...state,
         unlockedSkills: [...state.unlockedSkills, action.payload]
       };
-    
-    case 'EQUIP_SKILL':
+
+    case 'EQUIP_SKILL': {
       const newEquipped = state.equippedSkills.map(skill =>
         skill === action.payload.oldSkill ? action.payload.newSkill : skill
       );
       return { ...state, equippedSkills: newEquipped };
-    
+    }
+
     case 'SET_EQUIPPED_SKILLS':
       return { ...state, equippedSkills: action.payload };
-    
+
     case 'RECORD_BE_SKILL_SOURCE':
       return {
         ...state,
@@ -196,11 +169,11 @@ function gameReducer(state: GameState, action: GameAction): GameState {
           [action.payload.skillId]: action.payload.memoryPoint
         }
       };
-    
+
     case 'SET_BATTLE_STATE':
       return { ...state, battleState: action.payload };
-    
-    case 'USE_SKILL_IN_BATTLE':
+
+    case 'USE_SKILL_IN_BATTLE': {
       if (!state.battleState) return state;
       const newUsedSkills = [...state.battleState.usedSkills, action.payload.skillId];
       return {
@@ -214,7 +187,8 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         // 记录负面技能来源（如果有）
         lastUsedNegativeSkillSource: action.payload.negativeSkillSource ?? state.lastUsedNegativeSkillSource
       };
-    
+
+    }
     case 'RESET_BATTLE':
       return {
         ...state,
@@ -226,10 +200,10 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         },
         lastUsedNegativeSkillSource: null
       };
-    
+
     case 'RESET_GAME':
       return { ...initialState, language: state.language };
-    
+
     case 'START_NEW_GAME': {
       // 全视角解锁后开新线：保留各线进度与共享技能背包，只重置本局流程
       const preserved = state.allPerspectivesUnlocked
@@ -251,7 +225,7 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         currentPhase: 'realityTrigger'
       };
     }
-    
+
     case 'START_WEEK2':
       return {
         ...state,
@@ -263,37 +237,11 @@ function gameReducer(state: GameState, action: GameAction): GameState {
         battleState: null,
         lastUsedNegativeSkillSource: null
       };
-    
+
     default:
       return state;
   }
 }
-
-// Context类型
-interface GameContextType {
-  state: GameState;
-  dispatch: React.Dispatch<GameAction>;
-  setLanguage: (lang: Language) => void;
-  openExitMenu: () => void;
-  closeExitMenu: () => void;
-  // 游戏流程
-  startNewGame: (perspective: Perspective) => void;
-  startWeek2: () => void;
-  completeMemoryPoint: (memoryPoint: number, result: EndingType) => void;
-  unlockBossForMemory: (memoryPoint: number) => void;
-  defeatBoss: (boss: BossType) => void;
-  equipSkill: (newSkill: string, oldSkill: string) => void;
-  unlockSkill: (skillId: string) => void;
-  startBattle: (boss: BossType) => void;
-  useSkillInBattle: (skillId: string, isNegative: boolean, negativeSkillSource?: number) => void;
-  resetGame: () => void;
-  // 查询
-  getMemoryResult: (memoryPoint: number, perspective?: Perspective) => EndingType | null;
-  canChallengeBoss: (memoryPoint: number) => boolean;
-  getBossesForMemory: (memoryPoint: number) => BossType[];
-}
-
-const GameContext = createContext<GameContextType | null>(null);
 
 export function GameProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(gameReducer, initialState);
@@ -427,12 +375,4 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       {children}
     </GameContext.Provider>
   );
-}
-
-export function useGame() {
-  const context = useContext(GameContext);
-  if (!context) {
-    throw new Error('useGame must be used within a GameProvider');
-  }
-  return context;
 }

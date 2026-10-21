@@ -652,7 +652,8 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
     tubeOpened,
     hasBacteria,
     plateStreaked,
-    plateInIncubator
+    plateInIncubator,
+    scheduleTimeout
   ]);
 
   const currentStepData = experiment.steps[currentStep];
@@ -688,7 +689,7 @@ const handleStepNavigation = useCallback((stepIndex: number) => {
       {/* 顶部导航栏 */}
       <header className="h-12 lab-topbar flex items-center justify-between px-4 z-50 shrink-0">
         <div className="flex items-center gap-3">
-          <ChevronLeft className="cursor-pointer text-blue-200 hover:text-white" onClick={onBack} />
+          <button type="button" className="lab-back-button shrink-0 text-blue-200 hover:text-white" onClick={onBack} aria-label="Back to Experiment Catalog"><ChevronLeft aria-hidden="true" /></button>
           <h1 className="font-bold text-xs text-white uppercase tracking-widest">{experiment.title}</h1>
         </div>
         <RestartExperimentButton onRestart={onRestart} />

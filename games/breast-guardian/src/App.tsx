@@ -1,4 +1,5 @@
-import { GameProvider, useGame } from '@/hooks/gameState';
+import { GameProvider } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import MainMenu from '@/sections/MainMenu';
 import PerspectiveSelect from '@/sections/PerspectiveSelect';
 import RealityTrigger from '@/sections/RealityTrigger';

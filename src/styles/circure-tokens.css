@@ -1,6 +1,6 @@
 /* CirCure design tokens — Friendly Scientific Editorial.
    Loaded AFTER bootstrap.min.css so it overrides Bootstrap body/typography defaults.
-   Main web fonts are served from the team's iGEM Uploads directory. */
+   Web fonts are served from the team's iGEM Uploads directory. */
 
 @font-face {
   font-family: "Outfit";
@@ -88,7 +88,18 @@
   --tracking-label: 0.05em;
   --weight-display: 600;
   --weight-label: 600;
-  --header-height: 78px;
+  --site-ui-unit: 1px;
+  --header-height: calc(78 * var(--site-ui-unit));
+}
+
+/* Preserve the 1366px desktop proportions on high-resolution laptops. Grow
+   more gradually on larger displays; the reading surface stays full width.
+   A 1705px viewport (2560px at 150% display scaling) uses about 1.25px. */
+html:has(.wiki-page--route) {
+  --site-ui-unit: max(
+    1px,
+    min(calc(100vw / 1366), calc(0.75px + 0.03vw))
+  );
 }
  
 * {

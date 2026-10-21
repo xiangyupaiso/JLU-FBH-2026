@@ -100,6 +100,78 @@
   transform: translate(-50%, -44px);
 }
 
+.exp-atlas__prompt {
+  position: absolute;
+  bottom: 92px;
+  left: 34px;
+  width: max-content;
+  color: #527f8a;
+  font: italic 500 16px/1.4 var(--font-heading, serif);
+  text-align: left;
+  text-wrap: balance;
+  pointer-events: none;
+}
+
+.exp-atlas__prompt svg {
+  position: absolute;
+  right: calc(100% + 4px);
+  bottom: -46px;
+  display: block;
+  width: 70px;
+  height: 60px;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: exp-atlas-prompt-nudge 3.6s ease-in-out infinite;
+}
+
+.exp-atlas__prompt .exp-atlas__prompt-wash {
+  stroke-width: 2.6;
+  opacity: 0.7;
+}
+
+.exp-atlas__prompt .exp-atlas__prompt-pigment {
+  stroke-width: 0.85;
+  opacity: 0.3;
+}
+
+.exp-atlas:not(.is-expanded) .exp-atlas__centre .exp-atlas__wash {
+  animation: exp-atlas-entry-breathe 3.6s ease-in-out infinite;
+}
+
+.exp-atlas__centre:is(:hover, :focus-visible) .exp-atlas__wash,
+.exp-atlas__centre:is(:hover, :focus-visible) + .exp-atlas__prompt svg {
+  animation-play-state: paused;
+}
+
+@keyframes exp-atlas-prompt-nudge {
+  0%,
+  70%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.82;
+  }
+  35% {
+    transform: translate(2px, 3px);
+    opacity: 1;
+  }
+}
+
+@keyframes exp-atlas-entry-breathe {
+  0%,
+  70%,
+  100% {
+    transform: scale(1);
+    opacity: 0.86;
+  }
+  35% {
+    transform: scale(1.025);
+    opacity: 1;
+  }
+}
+
 .exp-atlas__stage {
   width: 92px;
   transform: translate(-50%, -28px);
@@ -275,6 +347,17 @@
   text-align: center;
 }
 
+.exp-atlas:not(.is-expanded) .exp-atlas__instruction {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 /* Use document flow when the actual article column cannot fit the radial map. */
 @container experiment-atlas (max-width: 749px) {
   .exp-atlas__map,
@@ -290,6 +373,23 @@
 
   .exp-atlas__connections {
     display: none;
+  }
+
+  .exp-atlas:not(.is-expanded) .exp-atlas__map {
+    padding-top: 104px;
+  }
+
+  .exp-atlas__prompt {
+    bottom: 116px;
+    left: calc(50% + 24px);
+    width: min(112px, calc(50cqw - 30px));
+    font-size: 14px;
+  }
+
+  .exp-atlas__prompt svg {
+    bottom: -34px;
+    width: 58px;
+    height: auto;
   }
 
   .exp-atlas__centre-position,
@@ -360,6 +460,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .exp-atlas__prompt svg,
+  .exp-atlas:not(.is-expanded) .exp-atlas__centre .exp-atlas__wash {
+    animation: none;
+  }
+
   .exp-atlas__orbit,
   .exp-atlas__spoke,
   .exp-atlas__branch,
@@ -383,12 +488,13 @@
 
 /* Top-layer protocol viewer */
 .wiki-protocol-modal {
+  --protocol-modal-padding: clamp(10px, 2vw, 24px);
   position: fixed;
   z-index: 10000;
   inset: 0;
   display: grid;
   place-items: center;
-  padding: clamp(10px, 2vw, 24px);
+  padding: var(--protocol-modal-padding);
   background: rgba(12, 35, 45, 0.78);
   backdrop-filter: blur(4px);
 }
@@ -397,6 +503,7 @@
   display: flex;
   width: min(1240px, 96vw);
   height: min(92vh, 940px);
+  max-height: calc(100dvh - var(--protocol-modal-padding) - var(--protocol-modal-padding));
   min-height: 0;
   flex-direction: column;
   overflow: hidden;
@@ -721,7 +828,7 @@
 
 @media (max-width: 560px) {
   .wiki-protocol-modal {
-    padding: 0;
+    --protocol-modal-padding: 0px;
   }
   .wiki-protocol-modal__surface {
     width: 100vw;

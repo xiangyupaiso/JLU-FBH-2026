@@ -50,7 +50,7 @@ export function animateCircRna(
     find(".circrna-caption"),
     { opacity: 0, y: 10, filter: "blur(2px)" },
     {
-      opacity: 1,
+      opacity: 0.75,
       y: 0,
       filter: "blur(0px)",
       duration: 0.24,

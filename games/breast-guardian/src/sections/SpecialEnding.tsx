@@ -1,4 +1,4 @@
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { BookOpen } from 'lucide-react';
@@ -14,7 +14,8 @@ import {
   SPEAKER_AVATAR,
   SPEAKER_TAG
 } from '@/components/dialogStyles';
-import { StoryControlBar, StoryLogDrawer, useStoryPlayback } from '@/components/storyControls';
+import { StoryControlBar, StoryLogDrawer } from '@/components/storyControls';
+import { useStoryPlayback } from '@/hooks/useStoryPlayback';
 
 // Scene type definition
 interface Scene {
@@ -27,7 +28,7 @@ export default function SpecialEnding() {
   const { state, dispatch } = useGame();
   const [showSettings, setShowSettings] = useState(false);
   const [showDataPage, setShowDataPage] = useState(false);
-  
+
   const perspective = state.currentPerspective!;
   const isZh = state.language === 'zh';
 
@@ -427,7 +428,7 @@ export default function SpecialEnding() {
   }
 
   return (
-    <div 
+    <div
       className={`min-h-screen bg-gradient-to-b ${getBackgroundColor()} relative overflow-hidden`}
       onClick={pb.handleScreenClick}
     >
@@ -535,7 +536,7 @@ export default function SpecialEnding() {
 
       {/* Settings modal */}
       {showSettings && (
-        <div 
+        <div
           className="absolute inset-0 bg-black/70 flex items-center justify-center z-50"
           onClick={(e) => e.stopPropagation()}
         >

@@ -61,11 +61,13 @@ function loadD3(): Promise<unknown> {
 export function SdgDimensionChord({
   numbered = true,
   scrollable = false,
+  figureLabel,
   caption = "Weighted mapping of the 17 SDGs across social, economic, and environmental dimensions.",
 }: {
   numbered?: boolean;
   scrollable?: boolean;
   caption?: string;
+  figureLabel?: string;
 } = {}) {
   const figureRef = useRef<HTMLElement | null>(null);
   const hostRef = useRef<HTMLDivElement | null>(null);
@@ -435,6 +437,7 @@ export function SdgDimensionChord({
       </div>
       <div className="sust-chord__tooltip" ref={tipRef} />
       <figcaption className="sust-chart-caption">
+        {figureLabel && <span className="wiki-figure__label">{figureLabel}</span>}
         {caption}
       </figcaption>
     </figure>

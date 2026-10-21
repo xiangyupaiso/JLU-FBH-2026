@@ -40,8 +40,12 @@ export function StakeholderMatrix3D() {
       className="stakeholder-matrix-3d"
       role="group"
       aria-label="Interest × Influence × Impact Framework"
+      aria-describedby={`${id}-hint`}
       {...detail.containerProps}
     >
+      <p id={`${id}-hint`} className="stakeholder-matrix-3d__hint">
+        Click to know more
+      </p>
       <div className="stakeholder-matrix-3d__stage">
         <svg
           className="stakeholder-matrix-3d__drawing"

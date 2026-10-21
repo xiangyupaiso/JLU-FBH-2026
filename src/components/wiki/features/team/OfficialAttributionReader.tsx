@@ -1,24 +1,29 @@
 import {
+  useCallback,
   useEffect,
   useId,
   useLayoutEffect,
   useRef,
   useState,
-  type CSSProperties,
 } from "react";
 import { PageImagePreloads } from "../../../common/PageImagePreloads";
 import { WikiNextRecord } from "../../WikiNextRecord";
 import { getTeamHeroImage } from "../../teamHeroAssets";
 import { attributionPage } from "../../../../data/team/attributionPage";
-import { getAttributionBookmarks } from "../../../../data/team/attributionBookmarks";
-import { useRouteReaderScroll } from "../../../../hooks/useRouteReaderScroll";
-import { scrollReaderToTarget } from "../../../../utils";
 import "../../../../styles/wiki-route-skin.css";
 import "../../../../styles/official-attributions.css";
 
 const FRAME_NAME = "igem-attribution-form";
 const FORM_ORIGIN = new URL(attributionPage.formUrl).origin;
 const COMPACT_QUERY = "(max-width: 980px)";
+
+function readerTop(track: HTMLElement) {
+  const headerHeight = Number.parseFloat(getComputedStyle(track).scrollMarginTop) || 0;
+  return Math.max(
+    0,
+    track.getBoundingClientRect().top + window.scrollY - headerHeight,
+  );
+}
 
 function sectionFromHostHash(hash: string) {
   const value = hash.replace(/^#(?:attribution-)?/, "");
@@ -45,12 +50,10 @@ function readFormHeight(data: unknown): number | null {
 export function OfficialAttributionReader() {
   const frameRef = useRef<HTMLIFrameElement>(null);
   const readerRef = useRef<HTMLDivElement>(null);
-  const scrollRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
-  const [reportedHeight, setReportedHeight] = useState<number | null>(null);
-  const [formWidth, setFormWidth] = useState(819);
-  const initialSection = sectionFromHostHash(window.location.hash);
+  const initialSection = useRef(sectionFromHostHash(window.location.hash)).current;
+  const pendingInitialSection = useRef(initialSection);
   const [selectedSection, setSelectedSection] = useState<string>(
     initialSection ?? attributionPage.sections[0].id,
   );
@@ -60,31 +63,19 @@ export function OfficialAttributionReader() {
   const [tocOpen, setTocOpen] = useState(false);
   const outlineId = useId();
   const heroImage = getTeamHeroImage(attributionPage.route);
-  const bookmarks = getAttributionBookmarks(formWidth, reportedHeight);
-  const formStyle = {
-    "--attribution-form-height": `${reportedHeight ?? bookmarks.contentHeight + 100}px`,
-  } as CSSProperties;
-
-  const jumpToSection = (sectionId: string) => {
-    const bookmark = document.getElementById(`attribution-${sectionId}`);
-    if (bookmark) {
-      const inner = scrollRef.current;
-      if (!compact && inner) {
-        const offset =
-          inner.scrollTop +
-          bookmark.getBoundingClientRect().top -
-          inner.getBoundingClientRect().top -
-          32;
-        bookmark.dataset.readerScrollTop = String(
-          Math.max(
-            0,
-            Math.min(inner.scrollHeight - inner.clientHeight, offset),
-          ),
-        );
-      } else {
-        delete bookmark.dataset.readerScrollTop;
+  const jumpToSection = useCallback((sectionId: string) => {
+    pendingInitialSection.current = null;
+    const frame = frameRef.current;
+    if (frame) {
+      // Let the official document resolve its own anchors. Its dynamic section
+      // positions cannot be inferred from the total cross-origin form height.
+      frame.src = `${attributionPage.formUrl}#${sectionId}`;
+      // Keep the whole reader below the header. Scrolling to the padded iframe
+      // would move the decorated frame while the official document is reading.
+      const track = readerRef.current?.parentElement;
+      if (track) {
+        window.scrollTo({ top: readerTop(track), behavior: "instant" });
       }
-      scrollReaderToTarget(bookmark, scrollRef.current);
     }
     window.history.replaceState(
       window.history.state,
@@ -93,18 +84,15 @@ export function OfficialAttributionReader() {
     );
     setSelectedSection(sectionId);
     setTocOpen(false);
-  };
-
-  useEffect(() => {
-    const initial = sectionFromHostHash(window.location.hash);
-    if (!initial) return;
-    const timer = window.setTimeout(() => jumpToSection(initial), 120);
-    return () => window.clearTimeout(timer);
   }, []);
 
-  // Keep the full live document on the shared reader timeline, including
-  // gestures over the table of contents and the surrounding Team background.
-  useRouteReaderScroll(!compact, readerRef, scrollRef);
+  useEffect(() => {
+    if (!initialSection) return;
+    const track = readerRef.current?.parentElement;
+    // Bring a deep-linked embed into view so its offscreen resize reporting
+    // is not throttled before it can announce that its sections are ready.
+    if (track) window.scrollTo({ top: readerTop(track), behavior: "instant" });
+  }, [initialSection]);
 
   useEffect(() => {
     const media = window.matchMedia(COMPACT_QUERY);
@@ -114,16 +102,6 @@ export function OfficialAttributionReader() {
     };
     media.addEventListener("change", onChange);
     return () => media.removeEventListener("change", onChange);
-  }, []);
-
-  useLayoutEffect(() => {
-    const frame = frameRef.current;
-    if (!frame) return;
-    const onResize = () => setFormWidth(frame.clientWidth);
-    const observer = new ResizeObserver(onResize);
-    observer.observe(frame);
-    onResize();
-    return () => observer.disconnect();
   }, []);
 
   useLayoutEffect(() => {
@@ -139,8 +117,14 @@ export function OfficialAttributionReader() {
         return;
       const height = readFormHeight(event.data);
       if (height === null) return;
-      setReportedHeight(height);
       onLoad();
+      // Native fragments cannot resolve before the official React app has
+      // mounted its sections. Its first height message marks that point.
+      if (pendingInitialSection.current) {
+        const section = pendingInitialSection.current;
+        pendingInitialSection.current = null;
+        jumpToSection(section);
+      }
     };
     window.addEventListener("message", onMessage);
     frame.addEventListener("load", onLoad);
@@ -148,58 +132,51 @@ export function OfficialAttributionReader() {
       frame.removeEventListener("load", onLoad);
       window.removeEventListener("message", onMessage);
     };
-  }, []);
+  }, [jumpToSection]);
 
   useEffect(() => {
-    const inner = scrollRef.current;
-    if (!inner) return;
+    const frame = frameRef.current;
+    const track = readerRef.current?.parentElement;
+    if (!frame || !track) return;
 
-    let frame = 0;
-    const updateActiveSection = () => {
-      frame = 0;
-      const innerBounds = inner.getBoundingClientRect();
-      const headerHeight =
-        Number.parseFloat(
-          getComputedStyle(document.documentElement).getPropertyValue(
-            "--header-height",
-          ),
-        ) || 78;
-      // Keep the active item tied to the reading line below the fixed header.
-      // The same viewport rule works for the projected desktop reader and the
-      // natural mobile flow because the bookmarks move with the live iframe.
-      const readingLine = Math.max(innerBounds.top + 48, headerHeight + 24);
-      let active: string = attributionPage.sections[0].id;
-      for (const section of attributionPage.sections) {
-        const bookmark = document.getElementById(`attribution-${section.id}`);
-        if (bookmark && bookmark.getBoundingClientRect().top <= readingLine) {
-          active = section.id;
-        }
+    let hostScrollRequested = false;
+    const onHostInput = () => {
+      hostScrollRequested = true;
+    };
+    const onFrameEnter = () => {
+      hostScrollRequested = false;
+    };
+    const onBlur = () => {
+      if (document.activeElement === frame) hostScrollRequested = false;
+    };
+    const keepFrameInView = () => {
+      if (hostScrollRequested || document.activeElement !== frame) return;
+      // The official Jump to calls scrollIntoView across the iframe boundary.
+      // Preserve the reader position for that native scroll, while gestures
+      // on the host remain free to reach the hero, next page and footer.
+      const top = readerTop(track);
+      if (Math.abs(window.scrollY - top) > 1) {
+        window.scrollTo({ top, behavior: "instant" });
       }
-      setSelectedSection((current) => (current === active ? current : active));
     };
-    const requestUpdate = () => {
-      if (!frame) frame = window.requestAnimationFrame(updateActiveSection);
-    };
-    const observer = new ResizeObserver(requestUpdate);
 
-    observer.observe(inner);
-    const documentShell = inner.querySelector(
-      ".official-attributions-page__document",
-    );
-    if (documentShell) observer.observe(documentShell);
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    inner.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate, { passive: true });
-    requestUpdate();
-
+    frame.addEventListener("pointerenter", onFrameEnter);
+    window.addEventListener("blur", onBlur);
+    window.addEventListener("wheel", onHostInput, { passive: true });
+    window.addEventListener("touchstart", onHostInput, { passive: true });
+    window.addEventListener("pointerdown", onHostInput);
+    window.addEventListener("keydown", onHostInput);
+    window.addEventListener("scroll", keepFrameInView, { passive: true });
     return () => {
-      if (frame) window.cancelAnimationFrame(frame);
-      observer.disconnect();
-      window.removeEventListener("scroll", requestUpdate);
-      inner.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
+      frame.removeEventListener("pointerenter", onFrameEnter);
+      window.removeEventListener("blur", onBlur);
+      window.removeEventListener("wheel", onHostInput);
+      window.removeEventListener("touchstart", onHostInput);
+      window.removeEventListener("pointerdown", onHostInput);
+      window.removeEventListener("keydown", onHostInput);
+      window.removeEventListener("scroll", keepFrameInView);
     };
-  }, [compact, formWidth, reportedHeight]);
+  }, []);
 
   useEffect(() => {
     if (!tocOpen) return;
@@ -271,6 +248,7 @@ export function OfficialAttributionReader() {
                   <a
                     className={`wiki-outline__primary${selectedSection === section.id ? " is-active" : ""}`}
                     href={`#attribution-${section.id}`}
+                    aria-current={selectedSection === section.id ? "location" : undefined}
                     onClick={(event) => {
                       if (
                         event.ctrlKey ||
@@ -301,6 +279,7 @@ export function OfficialAttributionReader() {
                 aria-controls={outlineId}
                 aria-expanded={tocOpen}
                 aria-label="Open table of contents"
+                title="Open table of contents"
                 onClick={() => setTocOpen(true)}
               >
                 <svg
@@ -332,14 +311,11 @@ export function OfficialAttributionReader() {
             data-page-background-property="--route-frame-image-ready"
           >
             <div
-              ref={scrollRef}
               className="route-frame__scroll"
-              tabIndex={0}
               aria-label="Project Attributions article"
             >
               <div
                 className="official-attributions-page__form"
-                style={formStyle}
               >
                 <p className="official-attributions-page__source">
                   <a href={attributionPage.formUrl} target="_blank" rel="noopener noreferrer">
@@ -348,49 +324,12 @@ export function OfficialAttributionReader() {
                   </a>
                 </p>
                 <div className="official-attributions-page__document">
-                  <nav
-                    className="official-attributions-page__jump-nav"
-                    aria-label="Official attribution Jump to navigation"
-                  >
-                    <span className="official-attributions-page__jump-title">
-                      Jump to
-                    </span>
-                    <div className="official-attributions-page__jump-chips">
-                      {attributionPage.sections.map((section) => (
-                        <button
-                          key={section.id}
-                          type="button"
-                          className={`official-attributions-page__jump-chip${selectedSection === section.id ? " is-active" : ""}`}
-                          onClick={() => jumpToSection(section.id)}
-                        >
-                          {section.label}
-                        </button>
-                      ))}
-                    </div>
-                  </nav>
-                  {attributionPage.sections.map((section, index) => (
-                    <span
-                      key={section.id}
-                      id={`attribution-${section.id}`}
-                      className="official-attributions-page__bookmark"
-                      aria-hidden="true"
-                      style={
-                        {
-                          "--attribution-bookmark-top": `${bookmarks.offsets[index]}px`,
-                        } as CSSProperties
-                      }
-                    />
-                  ))}
                   <iframe
                     ref={frameRef}
                     id={FRAME_NAME}
                     name={FRAME_NAME}
                     title="Official iGEM attribution form"
-                    src={
-                      initialSection
-                        ? `${attributionPage.formUrl}#${initialSection}`
-                        : attributionPage.formUrl
-                    }
+                    src={attributionPage.formUrl}
                     loading="eager"
                     data-page-embed-ready="false"
                   />

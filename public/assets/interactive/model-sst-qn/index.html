@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Figure 50 | SST-QN interactive network</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="vendor/echarts.min.js" defer></script>
+  <script src="vendor/lucide.min.js" defer></script>
+  <script src="network.js" defer></script>
+</head>
+<body>
+  <main class="figure" id="panel-a">
+    <header class="sr-only">
+      <span class="panel-letter" aria-hidden="true">a</span>
+      <div>
+        <h1>Enabled network <span class="relationship-count" id="network-count">12 SDGs / 20 directed relationships</span></h1>
+        <p class="scenario">Future-development scenario with residual ecological risk <span aria-hidden="true">&middot;</span> <i>K</i> = 3, &delta; = 0.50</p>
+      </div>
+    </header>
+    <div class="chart-bar">
+      <div class="tools" role="group" aria-label="Network view">
+        <button type="button" id="zoom-out" class="icon-button" aria-label="Zoom out" title="Zoom out"><i data-lucide="minus" aria-hidden="true"></i></button>
+        <output id="zoom-value" aria-label="Zoom level">100%</output>
+        <button type="button" id="zoom-in" class="icon-button" aria-label="Zoom in" title="Zoom in"><i data-lucide="plus" aria-hidden="true"></i></button>
+        <span class="tool-divider" aria-hidden="true"></span>
+        <button type="button" id="reset-view" class="icon-button" aria-label="Reset view" title="Reset view"><i data-lucide="rotate-ccw" aria-hidden="true"></i></button>
+        <button type="button" id="save-image" class="icon-button" aria-label="Download PNG" title="Download PNG"><i data-lucide="download" aria-hidden="true"></i></button>
+      </div>
+    </div>
+    <section class="chart-stage" aria-label="Interactive SDG network">
+      <div id="network" role="group" aria-label="Twelve SDGs and twenty directed relationships. SDGs 3, 9 and 12 are central." aria-describedby="network-summary"></div>
+      <p id="chart-message" class="chart-message" role="status">Loading network...</p>
+
+    </section>
+    <footer>
+      <ul class="edge-legend" aria-label="Relationship legend">
+        <li><span class="edge-swatch positive" aria-hidden="true"></span>Positive relationship</li>
+        <li><span class="edge-swatch negative" aria-hidden="true"></span>Negative relationship</li>
+      </ul>
+      <p class="figure-note" id="network-summary">Edge width scales with |<i>b</i><sub>ij</sub>|. Node positions and sizes are schematic. Relationships are scenario-conditional model outputs, not observed causal effects.</p>
+    </footer>
+    <details class="network-details">
+      <summary>Explore SDGs and relationships</summary>
+      <div id="keyboard-targets" class="keyboard-targets" aria-label="Network details"></div>
+      <output id="network-detail-output" class="network-detail-output" aria-live="polite">Select an SDG or a relationship to view its recorded values.</output>
+    </details>
+  </main>
+  <script id="network-data" type="application/json">{"scenario":"future_risk_stress","parameters":{"K":3,"delta":0.5},"nodes":[{"id":1,"name":"No Poverty","position":[112,106],"direct":0,"icon_id":1,"iconData":"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/sst-qn/new/e-web-goal-01.avif"},{"id":3,"name":"Good Health and Well-Being","position":[72,80],"direct":2.325,"icon_id":3,"iconData":"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/sst-qn/new/e-web-goal-03.avif"},{"id":4,"name":"Quality Education","position":[30,94],"direct":2.55,"icon_id":4,"iconData":"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/sst-qn/new/e-web-goal-04.avif"},{"id":5,"name":"Gender Equality","position":[70,112],"direct":0,"icon_id":5,"iconData":"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/sst-qn/new/e-web-goal-05.avif"},{"id":8,"name":"Decent Work and Economic Growth","position":[137,90],"direct":0,"icon_id":8,"iconData":"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/sst-qn/new/e-web-goal-08.avif"},{"id":9,"name":"Industry, Innovation and Infrastructure","position":[98,61],"direct":2.55,"icon_id":9,"iconData":"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/sst-qn/new/e-web-goal-09.avif"},{"id":10,"name":"Reduced Inequalities","position":[147,66],"direct":0,"icon_id":10,"iconData":"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/sst-qn/new/e-web-goal-10.avif"},{"id":12,"name":"Responsible Consumption and Production","position":[65,44],"direct":1.95,"icon_id":12,"iconData":"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/sst-qn/new/e-web-goal-12.avif"},{"id":13,"name":"Climate Action","position":[35,27],"direct":0,"icon_id":13,"iconData":"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/sst-qn/new/e-web-goal-13.avif"},{"id":14,"name":"Life Below Water","position":[137,40],"direct":0,"icon_id":14,"iconData":"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/sst-qn/new/e-web-goal-14.avif"},{"id":15,"name":"Life on Land","position":[103,21],"direct":0,"icon_id":15,"iconData":"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/sst-qn/new/e-web-goal-15.avif"},{"id":17,"name":"Partnerships for the Goals","position":[15,61],"direct":1.875,"icon_id":17,"iconData":"https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/model/sst-qn/new/e-web-goal-17.avif"}],"edges":[{"id":"E03_09","source":3,"target":9,"b":0.145985401459854,"C":0.75,"tau":1,"condition":"knowledge_reuse","control":[91,77]},{"id":"E09_03","source":9,"target":3,"b":0.09322560596643878,"C":0.75,"tau":0.5,"condition":"clinical_translation","control":[75,67]},{"id":"E17_09","source":17,"target":9,"b":0.13636363636363635,"C":0.75,"tau":1,"condition":"knowledge_reuse","control":null},{"id":"E17_03","source":17,"target":3,"b":0.09090909090909091,"C":0.5,"tau":1,"condition":"knowledge_reuse","control":[37,80]},{"id":"E17_12","source":17,"target":12,"b":0.13636363636363635,"C":0.75,"tau":1,"condition":"knowledge_reuse","control":[37,41]},{"id":"E17_04","source":17,"target":4,"b":0.13636363636363635,"C":0.75,"tau":1,"condition":"education_adoption","control":[37,66]},{"id":"E09_04","source":9,"target":4,"b":0.16656308266003728,"C":0.75,"tau":1,"condition":"education_adoption","control":[49,65]},{"id":"E03_04","source":3,"target":4,"b":0.16253041362530413,"C":0.75,"tau":1,"condition":"education_adoption","control":[49,97]},{"id":"E04_03","source":4,"target":3,"b":0.13624999999999998,"C":0.5,"tau":0.5,"condition":"education_adoption","control":[50,75]},{"id":"E04_05","source":4,"target":5,"b":0.1775,"C":0.5,"tau":0.5,"condition":"education_adoption","control":[51,123]},{"id":"E03_01","source":3,"target":1,"b":0.06909975669099756,"C":0.5,"tau":0.5,"condition":"clinical_translation|affordable_access","control":null},{"id":"E03_08","source":3,"target":8,"b":0.05304136253041362,"C":0.5,"tau":0.5,"condition":"clinical_translation","control":[100,94]},{"id":"E09_08","source":9,"target":8,"b":0.08638906152889994,"C":0.5,"tau":0.5,"condition":"manufacturing_adoption","control":[122,72]},{"id":"E03_10","source":3,"target":10,"b":0.048661800486618,"C":0.5,"tau":0.5,"condition":"clinical_translation|affordable_access","control":[112,79]},{"id":"E09_10","source":9,"target":10,"b":0.062150403977625855,"C":0.5,"tau":0.5,"condition":"manufacturing_adoption|affordable_access","control":[124,66]},{"id":"E09_12","source":9,"target":12,"b":0.04723430702299565,"C":0.5,"tau":0.5,"condition":"manufacturing_adoption|resource_improvement","control":[86,39]},{"id":"E12_09","source":12,"target":9,"b":0.095,"C":0.5,"tau":0.5,"condition":"knowledge_reuse","control":[76,57]},{"id":"E12_13","source":12,"target":13,"b":0.1775,"C":0.5,"tau":0.5,"condition":"resource_improvement","control":null},{"id":"E09_14","source":9,"target":14,"b":-0.01833436917339963,"C":-0.25,"tau":0.25,"condition":"manufacturing_adoption|residual_ecological_pressure","control":[120,56]},{"id":"E09_15","source":9,"target":15,"b":-0.025170913610938473,"C":-0.25,"tau":0.25,"condition":"manufacturing_adoption|residual_ecological_pressure","control":[120,37]}]}</script>
+</body>
+</html>

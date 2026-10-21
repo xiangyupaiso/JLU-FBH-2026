@@ -26,6 +26,17 @@ export function scrollReaderToTarget(
   behavior: ScrollBehavior = "instant",
   options: { block?: ScrollLogicalPosition } = {},
 ) {
+  // Outline links and citation backlinks can point inside a closed protocol.
+  const targetElement = target instanceof HTMLElement
+    ? target
+    : target.commonAncestorContainer instanceof Element
+      ? target.commonAncestorContainer
+      : target.commonAncestorContainer.parentElement;
+  let disclosure = targetElement?.closest<HTMLDetailsElement>("details[data-wiki-protocol-range]");
+  while (disclosure) {
+    disclosure.open = true;
+    disclosure = disclosure.parentElement?.closest<HTMLDetailsElement>("details[data-wiki-protocol-range]");
+  }
   const track = inner?.closest<HTMLElement>(".wiki-reader-track");
   // Scroll-driven panels can occupy one viewport while owning different
   // reading positions. Their calibrated targets remain valid for deep links.

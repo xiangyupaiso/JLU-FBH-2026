@@ -1,6 +1,6 @@
 # Breast Guardian — asset URL mapping
 
-Generated from [`IGEM_ASSET_REGISTRY.md`](../../IGEM_ASSET_REGISTRY.md), the
+Generated from the archived [`ASSET_REGISTRY.md`](../ASSET_REGISTRY.md), the
 team's single source of truth for uploaded media. Every row below is a 1:1
 transcription: the local path the game used to reference, and the official
 `static.igem.wiki` URL for that exact file. No URL was inferred from a filename,
@@ -38,8 +38,8 @@ site; they exist for content work, not for this build.
 
 ### Requested by code but missing from the registry
 
-None at the time of writing. `npm run check:runtime` fails the build if a code
-path resolves to `undefined`, so this list cannot silently grow.
+Known state-name resolution diagnostics are listed in [KNOWN_LIMITATIONS.md](./KNOWN_LIMITATIONS.md).
+`npm run check:runtime` exits nonzero when a requested portrait cannot be resolved.
 
 ### Deduplicated uploads
 

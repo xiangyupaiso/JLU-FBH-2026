@@ -49,7 +49,7 @@ const CITY_HOTSPOTS: CityHotspot[] = [
   // 2. 左下角 SST-QN 小船 -> SDG Synergy–Trade-off Quantification Network (SST-QN)
   {
     id: "sst-qn-boat",
-    name: "SDG Synergy–Trade-off Quantification Network (SST-QN)",
+    name: "SDG Synergy-Trade-off Quantification Network (SST-QN)",
     badge: "Quantitative Model",
     targetId: "sst-qn",
     left: 0.0,
@@ -159,7 +159,7 @@ const CITY_HOTSPOTS: CityHotspot[] = [
   // 12. 上方中央的拱桥 (数字 10) -> SDG 10 — Reduced Inequalities
   {
     id: "sdg10-bridge",
-    name: "SDG 10 — Reduced Inequalities",
+    name: "SDG 10 - Reduced Inequalities",
     badge: "Connecting Bridge",
     targetId: "grow-sdg10",
     left: 37.0,
@@ -170,7 +170,7 @@ const CITY_HOTSPOTS: CityHotspot[] = [
   // 13. 桥后偏左带有数字 5 的楼群 -> SDG 5 — Gender Equality
   {
     id: "grow-sdg5",
-    name: "SDG 5 — Gender Equality",
+    name: "SDG 5 - Gender Equality",
     badge: "GROW · Long-term Future",
     targetId: "grow-sdg5",
     left: 38.0,
@@ -181,7 +181,7 @@ const CITY_HOTSPOTS: CityHotspot[] = [
   // 14. 桥后居中带有数字 1 的楼群 -> SDG 1 — No Poverty
   {
     id: "grow-sdg1",
-    name: "SDG 1 — No Poverty",
+    name: "SDG 1 - No Poverty",
     badge: "GROW · Long-term Future",
     targetId: "grow-sdg1",
     left: 50.0,
@@ -192,7 +192,7 @@ const CITY_HOTSPOTS: CityHotspot[] = [
   // 15. 桥后偏右带有数字 8 的楼群 -> SDG 8 — Decent Work and Economic Growth
   {
     id: "grow-sdg8",
-    name: "SDG 8 — Decent Work and Economic Growth",
+    name: "SDG 8 - Decent Work and Economic Growth",
     badge: "GROW · Long-term Future",
     targetId: "grow-sdg8",
     left: 54.5,

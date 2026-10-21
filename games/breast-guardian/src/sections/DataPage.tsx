@@ -1,4 +1,4 @@
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Home, AlertCircle, BookOpen, Heart } from 'lucide-react';

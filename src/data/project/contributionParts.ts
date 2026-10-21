@@ -1,16 +1,6 @@
 /**
- * Contribution page — the JLU-FBH Registry parts table.
- *
- * Provenance: `文案集/project/contribution/3.6 Contribution.md`, the 23-row
- * table under "Parts → Reusable and Adaptable Biological Parts".
- *
- * Faithful by construction: every cell carries the manuscript's own wording.
- * The only edits are mechanical — Markdown escapes (`\_`, `\-`, `\(`, `'`) are
- * resolved to the plain characters they stand for, and the source's literal
- * `<br>` cell breaks are kept as line breaks so a long functional description
- * stays one table row instead of being split or truncated.
- *
- * Pure data: no React, no JSX.
+ * Contribution Registry collection: 30 entries from the user-provided
+ * updated Parts table (2026-10-21). Cell wording and line breaks are preserved.
  */
 
 export interface ContributionPart {
@@ -197,6 +187,56 @@ export const contributionPartsTable: {
       shortDescription: "TROP2 HLA-A*02:01 CTL epitope SVCWCVNSV",
       functionalDescription:
         "A nine-residue peptide epitope from human TROP2, predicted to be presented on HLA-A*02:01. When encoded within a circular RNA vaccine and translated in dendritic cells, the peptide is expected to be processed by the proteasome, loaded onto HLA-A*02:01 in the endoplasmic reticulum and displayed at the cell surface, where it is expected to be recognised by cognate CD8+ T cells and to drive their activation and expansion into cytotoxic effectors against TROP2-positive tumour cells. The part is designed to be used as a single module within a string-of-beads multi-epitope array, flanked by flexible GSGGS linkers.",
+    },
+    {
+      name: "BBa_26DXB4A5",
+      registryUrl: "https://registry.igem.org/parts/bba-26dxb4a5",
+      shortDescription: "T7-driven circMEV PIE precursor cassette",
+      functionalDescription:
+        "The DNA template for in vitro transcription of the circMEV vaccine RNA. T7 RNA polymerase initiates at the GGG of BBa_26KIMH8W and runs off the linearised 3' end, giving one linear precursor whose two PIE halves reconstitute a T4 td group I ribozyme; the ribozyme joins the internal exon ends and releases a closed circle of 2013 nt.<br>In that circle synIRES-RC25 recruits eIF4G-eIF4A, so translation initiates at the Kozak-flanked AUG of the tPA leader without a cap; the A-rich spacer after the back-splice junction binds PABP and stops read-through in all three frames. The polypeptide is the tPA leader, eight HLA-A*02:01-restricted CTL epitopes from TROP2, B7-H4, Nectin-4 and LIV-1 on GSGGS linkers, four tandem mC3d-P28 copies, the MHC class I trafficking domain and a FLAG tag. tPA is expected to route it into the secretory pathway and MITD into the MHC-I/II loading compartments.<br>Unique BamHI (1199) and XhoI (1556) flank the array, so the eight slots are exchangeable.",
+    },
+    {
+      name: "BBa_26LQ3XWC",
+      registryUrl: "https://registry.igem.org/parts/bba-26lq3xwc",
+      shortDescription: "circMEV multi-epitope antigen ORF",
+      functionalDescription:
+        "This open reading frame encodes the whole antigen payload of the CirCure vaccine as one polypeptide. It starts at the AUG of the tPA signal and pro-peptide leader and ends at a single stop codon, so it can be read from an IRES on a circular RNA, from a capped mRNA or from a DNA promoter.<br>The tPA leader directs the nascent chain into the ER. The array presents eight HLA-A*02:01-restricted CTL epitopes, two each from TROP2, B7-H4, Nectin-4 and LIV-1, separated by GSGGS linkers that keep the flanking residues accessible to the proteasome so each epitope is excised independently. Four tandem copies of murine C3d-P28 follow; C3d-P28 binds CR2/CD21 and is expected to lower the activation threshold of responding lymphocytes. The MHC class I trafficking domain is expected to redirect the product into the MHC-I/II loading compartments, and a C-terminal FLAG tag allows the full-length product to be detected.",
+    },
+    {
+      name: "BBa_26DTP41G",
+      registryUrl: "https://registry.igem.org/parts/bba-26dtp41g",
+      shortDescription:
+        "circRNA vaccine chassis: T7-PIE-IRES payload-free cassette",
+      functionalDescription:
+        "The CirCure cassette with the epitope array removed, leaving an empty BamHI-XhoI cloning window between the tPA secretion leader and the C3d-P28 adjuvant. Everything a circular RNA vaccine needs apart from the antigen is present and in frame: a T7 promoter with a fixed GGG start, the two PIE halves that circularise the run-off transcript, the PABP-binding spacer with its three-frame stop cassette, synIRES-RC25 for cap-independent initiation, a Kozak sequence, the tPA leader, four tandem copies of murine C3d-P28, the MHC class I trafficking domain, a FLAG tag, a stop codon, HBA1 3'UTR and the poly(A) segment.<br>On its own it is expected to give a circular RNA translating a leader-adjuvant-MITD-FLAG fusion carrying no tumour epitope, which makes it a vector-only control for any construct built from it.<br>Its intended use is as a chassis: an in-frame epitope array for any target, with BamHI and XhoI ends, drops into the window. Both sites are unique in the parent plasmid.",
+    },
+    {
+      name: "BBa_26QYL2YH",
+      registryUrl: "https://registry.igem.org/parts/bba-26qyl2yh",
+      shortDescription: "pCirCure-circMEV complete plasmid",
+      functionalDescription:
+        "The complete 5267 bp plasmid built in this project. It is the physical form in which the circMEV cassette is kept, amplified in E. coli and supplied as an in vitro transcription template.<br>Bases 402-2971 carry the T7-driven PIE precursor cassette. The rest is the pUC57 backbone: the unique NotI site at 2972 that linearises the plasmid for run-off transcription, a T7 terminator at 2980-3027, the lac operator and promoter, the pUC/ColE1 origin at 3448-4036, and bla with its own promoter at 4207-5172.<br>The origin is high-copy, so overnight cultures are expected to give plasmid at preparative yield; bla confers ampicillin resistance and selects transformants after an epitope array is ligated into the BamHI-XhoI window. BamHI (1600), XhoI (1957) and NotI (2972) are each unique in the full plasmid, so the array can be exchanged and the template linearised without further subcloning.",
+    },
+    {
+      name: "BBa_26DQL85I",
+      registryUrl: "https://registry.igem.org/parts/bba-26dql85i",
+      shortDescription: "8-slot TNBC CTL epitope array",
+      functionalDescription:
+        "A string-of-beads array of eight HLA-A*02:01-restricted CTL epitopes, two from each of the four triple-negative breast cancer antigens TROP2, B7-H4, Nectin-4 and LIV-1, joined by GSGGS linkers. Seven are nonamers; One of the two Nectin-4 slot carries a fourteen-residue fragment covering two overlapping predicted binders as one peptide.<br>The array is read in a single frame and is designed to sit inside a larger antigen fusion. Each linker is expected to keep the residues flanking an epitope accessible to the proteasome, so the eight peptides are excised independently and loaded onto HLA-A*02:01 without the junctions creating new binders or destroying the intended ones. Two epitopes per antigen keeps the four equally represented, reducing the chance of escape by loss of any one.<br>Each linker encodes GSGGS through a different set of codons. Any slot can take an epitope against another tumour; in the parent construct the array is flanked by BamHI and XhoI.",
+    },
+    {
+      name: "BBa_26HYJJGY",
+      registryUrl: "https://registry.igem.org/parts/bba-26hyjjgy",
+      shortDescription: "CMV-driven human TROP2-3xFLAG expression cassette",
+      functionalDescription:
+        "A transgene cassette placing full-length human TROP2 with a C-terminal 3xFLAG tag under a CMV immediate-early promoter, delivered by lentiviral transduction. Its purpose is an antigen-positive target cell.<br>The CMV promoter drives constitutive transcription in most mammalian cells, and a Kozak sequence sits immediately upstream of the TROP2 start codon. The TROP2 coding sequence keeps its own signal peptide, the EGF-like and thyroglobulin-like extracellular domains, the transmembrane region and the cytoplasmic tail; its stop codon has been removed so that it reads through a BamHI junction into 3xFLAG, and a single stop codon closes the frame. The product is expected to be displayed at the cell surface with the tag on the cytoplasmic side, so surface TROP2 can be measured with an anti-TROP2 antibody and total expression with an anti-FLAG antibody.",
+    },
+    {
+      name: "BBa_262M4VRL",
+      registryUrl: "https://registry.igem.org/parts/bba-262m4vrl",
+      shortDescription: "PVRL4 HLA-A*02:01 CTL epitope FQARLRLRVLVPPL",
+      functionalDescription:
+        "A fourteen-residue peptide epitope from human PVRL4, predicted to be presented on HLA-A*02:01. When encoded within a circular RNA vaccine and translated in dendritic cells, the peptide is expected to be processed by the proteasome, loaded onto HLA-A*02:01 in the endoplasmic reticulum and displayed at the cell surface, where it is expected to be recognised by cognate CD8+ T cells and to drive their activation and expansion into cytotoxic effectors against PVRL4-positive tumour cells. The part is designed to be used as a single module within a string-of-beads multi-epitope array, flanked by flexible GSGGS linkers.",
     },
   ],
 };

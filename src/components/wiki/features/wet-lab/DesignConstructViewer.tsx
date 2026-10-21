@@ -301,12 +301,6 @@ export function DesignConstructViewer() {
           </section>
         </div>
       </div>
-
-      <p className="cc-caption">
-        Figure 6. Construct architecture of pCirCure-circMEV. Element colours
-        denote functional class, and elements carrying a BBa number are
-        registered in the iGEM Registry.
-      </p>
     </div>
   );
 }

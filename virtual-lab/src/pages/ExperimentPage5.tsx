@@ -476,7 +476,7 @@ export function ExperimentPage5({ onBack, onRestart }: ExperimentPageProps) {
       : rackClickCount > 0 && rackClickCount <= 3
         ? DESK_TUBE_SETS[rackClickCount - 1]
         : null;
-  const deskTubes = deskTubeSet ? deskTubeSet.tubes : [];
+  const deskTubes = useMemo(() => deskTubeSet ? deskTubeSet.tubes : [], [deskTubeSet]);
   const needsRackClick = pendingStepAdvance !== null || (currentStep === 0 && rackClickCount === 0) || (currentStep === 1 && rackClickCount === 1) || (currentStep === 2 && rackClickCount === 2) || (currentStep === 10 && rackClickCount === 3);
 
   const activeDeskTubeIdx = useMemo(() => {

@@ -1,4 +1,4 @@
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import { ChevronLeft, Skull, Sparkles, TriangleAlert } from 'lucide-react';
 import { BOSSES_ZH, BOSSES_EN } from '@/types';
 import { getAllSkills } from '@/data/skills';

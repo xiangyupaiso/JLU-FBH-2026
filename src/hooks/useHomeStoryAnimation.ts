@@ -42,6 +42,7 @@ const ART_REST_RATIO = HOME_STILL_RATIO;
 const BRIDGE_LEADS: Record<string, number> = {
   "what-we-saw": WARD_TEAR_LEAD,
   "what-stayed-with-us": TEAR_CLOUD_LEAD,
+  "what-we-hope": 0.12,
 };
 
 declare global {
@@ -584,25 +585,24 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
                   "(max-width: 800px) and (orientation: portrait), (max-height: 650px) and (orientation: landscape)",
                 ).matches;
               const flowScene = stackedVaccine || stackedAntigen;
-              // Desktop: a bridge leaving this scene early must not eat its
-              // still hold, so the track also reserves the bridge's lead.
-              // Give the completed map statistics the same reading rest as
-              // the text panels, before their shared-word handoff begins.
-              let restRatio = section.id === "why-tnbc" ? HOME_REST_RATIO : ART_REST_RATIO;
-              if (section.id === "why-tnbc") {
-                gsap.set(section, { "--home-scroll-scale": 1 + restRatio });
-              }
+              // These scenes finish on live text, not just a settled picture.
+              // Reserve its quarter-distance reading window before a carry can
+              // take over, including on phones. Interactive antigen diagrams
+              // already own their separate, timed explanation.
+              let restRatio = section.id === "plug-and-play" ? ART_REST_RATIO : HOME_REST_RATIO;
+              gsap.set(section, { "--home-scroll-scale": 1 + restRatio });
               const lead = BRIDGE_LEADS[section.id];
-              if (!compact && lead) {
+              if (lead) {
+                const scale = 1 + restRatio;
                 const hold = stillHold(
                   track.offsetHeight - stage.offsetHeight,
-                  ART_REST_RATIO,
+                  restRatio,
                   window.innerHeight * lead,
-                  ART_REST_RATIO,
+                  restRatio,
                 );
                 restRatio = hold.rest;
                 gsap.set(section, {
-                  "--home-scroll-scale": (1 + ART_REST_RATIO) * hold.scale,
+                  "--home-scroll-scale": scale * hold.scale,
                 });
               }
               const timeline = gsap.timeline({
@@ -667,6 +667,7 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
                 artworkTimeline,
                 ARTWORK_START,
               );
+              timeline.addLabel("art-reading-complete");
               if (section.id === "what-we-hope") {
                 timeline.addLabel("hope-readable", ARTWORK_START + artworkTimeline.duration());
               }
@@ -940,15 +941,9 @@ export function useHomeStoryAnimation(root: RefObject<HTMLDivElement | null>) {
           ScrollTrigger.create({
             id: "home-finale-reading",
             trigger: finale,
-            start: () => {
-              const headerHeight =
-                Number.parseFloat(
-                  getComputedStyle(finale).getPropertyValue("--header-height"),
-                ) || 0;
-              return finale.offsetHeight > window.innerHeight - headerHeight + 1
-                ? "bottom bottom"
-                : `top top+=${headerHeight}`;
-            },
+            // The scene already excludes the header; keep its bottom at the
+            // viewport edge without parsing the calc() header token as a number.
+            start: "bottom bottom",
             end: () =>
               `+=${Math.round(window.innerHeight * (compact ? 3 : 3.4) * finaleScale)}`,
             pin: true,

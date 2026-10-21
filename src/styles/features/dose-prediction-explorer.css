@@ -168,3 +168,38 @@
     height: 300px;
   }
 }
+
+.dose-prediction-explorer--compact {
+  padding: 14px 16px;
+  line-height: 1.45;
+}
+.dose-prediction-explorer--compact > p,
+.dose-prediction-explorer--compact > div {
+  margin-top: 8px;
+}
+.dose-prediction-explorer--compact .dose-prediction-explorer__legend {
+  margin-top: 8px;
+  gap: 4px 18px;
+}
+.dose-prediction-explorer--compact .dose-prediction-explorer__chart {
+  height: clamp(200px, 30vh, 300px);
+  margin-top: 0;
+}
+.dose-prediction-explorer--compact .dose-prediction-explorer__controls input[type="number"] {
+  padding: 5px 8px;
+}
+.dose-prediction-explorer--compact .dose-prediction-explorer__metrics > div {
+  padding: 8px 10px;
+}
+.dose-prediction-explorer--compact .dose-prediction-explorer__metrics strong {
+  margin-top: 3px;
+}
+@media (max-width: 600px) {
+  .dose-prediction-explorer--compact .dose-prediction-explorer__metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .dose-prediction-explorer--compact .dose-prediction-explorer__metrics strong {
+    font-size: 17px;
+  }
+}

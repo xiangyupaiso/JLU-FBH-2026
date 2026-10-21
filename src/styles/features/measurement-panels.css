@@ -1,6 +1,31 @@
 /* Measurement page: reuse the experiments protocol drawer and Results-style figure plates. */
 @import "./experiments-panels.css";
 
+.wiki-page[data-wiki-route="/measurement"] .wiki-protocol-range > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  cursor: pointer;
+}
+
+.wiki-page[data-wiki-route="/measurement"] .wiki-protocol-range > summary::-webkit-details-marker {
+  display: none;
+}
+
+.wiki-page[data-wiki-route="/measurement"] .wiki-protocol-range:not([open]) > .wiki-protocol-drawer__body {
+  display: none;
+}
+
+.wiki-page[data-wiki-route="/measurement"] .wiki-protocol-range > summary:focus-visible {
+  outline: 2px solid var(--route-heading-ink);
+  outline-offset: 3px;
+}
+
+.wiki-page[data-wiki-route="/measurement"] .wiki-protocol-range[open] > summary .wiki-protocol-drawer__chevron {
+  transform: rotate(180deg) !important;
+}
+
 .wiki-page[data-wiki-route="/measurement"] .wiki-protocol-drawer__title {
   white-space: normal;
   overflow: visible;

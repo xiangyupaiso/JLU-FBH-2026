@@ -40,6 +40,12 @@
   text-align: left;
 }
 
+/* A selected long-form reader can release the default 760px card width and
+   use the complete article column. */
+.wiki-page .wiki-document.wiki-document--full-width {
+  max-width: none;
+}
+
 /* 2. The bar --------------------------------------------------------------- */
 
 .wiki-page .wiki-document .wiki-document__card {
@@ -155,6 +161,10 @@
   margin-bottom: 14px;
 }
 
+.wiki-page .wiki-document.wiki-document--full-width .wiki-document__frame {
+  height: clamp(520px, 86vh, 1080px);
+}
+
 .wiki-page .wiki-document .wiki-document__actions a {
   color: var(--route-subheading-ink, var(--doc-on));
   font-weight: 700;
@@ -198,6 +208,10 @@
 
   .wiki-page .wiki-document .wiki-document__frame {
     height: clamp(320px, 72vh, 640px);
+  }
+
+  .wiki-page .wiki-document.wiki-document--full-width .wiki-document__frame {
+    height: clamp(420px, 75vh, 760px);
   }
 }
 

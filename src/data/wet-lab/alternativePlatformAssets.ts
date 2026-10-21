@@ -2,7 +2,7 @@ const platformComparison = "https://static.igem.wiki/teams/6056/wiki/files/pages
 const necessityChain = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/host-modality-and-production-as-three-stacked-layers-with-the-forcing-constraint-on-each-arrow.avif";
 const backboneArchitecture = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-circrna-in-translation-order-with-the-four-encoded-elements-highlighted.avif";
 const evidenceDependencyMap = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-evidence-chain-from-dc-maturation-to-tumour-cell-killing-each-link-with-its-read-out-and-its-control.avif";
-const releaseWorkflow = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-cell-free-production-route-and-the-release-gate-that-returns-a-failed-preparation-to-transcription.avif";
+const releaseWorkflow = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-cell-free-production-route-and-the-release-gate-that-returns-a-failed-preparation-to-transcription-2.avif";
 const roundOneRanking = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/round-1-killing-of-k562-by-t-cells-primed-with-each-construct.avif";
 const roundOneElispot = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/round-1-ifn-elispot-wells-for-all-13-single-epitope-constructs.avif";
 const inVivoResults = "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/tumour-growth-curves-for-the-three-groups.avif";
@@ -84,9 +84,9 @@ export const alternativePlatformAssets = {
       "文案集/wetlab/Alternative_Platform/图片和附件/放行流程图.png",
     localSrc: releaseWorkflow,
     uploadUrl:
-      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-cell-free-production-route-and-the-release-gate-that-returns-a-failed-preparation-to-transcription.avif",
+      "https://static.igem.wiki/teams/6056/wiki/files/pages/wet-lab/the-cell-free-production-route-and-the-release-gate-that-returns-a-failed-preparation-to-transcription-2.avif",
     width: 1280,
-    height: 795,
+    height: 817,
     alt: "The cell-free production route and the release gate that returns a failed preparation to transcription.",
     caption:
       "The cell-free production route and the release gate that returns a failed preparation to transcription.",

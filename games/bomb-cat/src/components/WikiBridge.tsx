@@ -18,7 +18,7 @@
  */
 import { useEffect, useRef } from 'react';
 import { useSharedGameEngine } from '../hooks/gameEngineContext';
-import type { GameState } from '../types/game';
+import { completionStats } from './wikiBridgeStats';
 
 const MESSAGE_SOURCE = 'bomb-cat-game';
 
@@ -30,16 +30,6 @@ function notifyParent(type: string, detail: Record<string, unknown> = {}) {
     { source: MESSAGE_SOURCE, type, ...detail },
     window.location.origin,
   );
-}
-
-/** Exported for tests; mirrors the payload the wiki's iframe listener expects. */
-export function completionStats(state: GameState, me: number) {
-  const winner = state.winner != null ? state.players[state.winner] : null;
-  return {
-    title: winner ? winner.name : '',
-    won: winner ? winner.id === me : false,
-    winner,
-  };
 }
 
 export default function WikiBridge({ me }: { me: number }) {

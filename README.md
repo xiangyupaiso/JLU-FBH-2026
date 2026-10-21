@@ -315,3 +315,7 @@ stages:
 本项目遵循 [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/)（知识共享署名 4.0 国际许可协议）开源授权。
 
 参赛队伍所有设计资料与开源代码均可在保持署名的前提下自由分发、修改与二次创作。
+
+## Shared page image loading
+
+New pages inherit Hero and figure preloading through `WikiRoutePage`. Images in dialogs or inactive tabs use `preloadImages` or `PageImagePreloads`. See [the shared loading contract](./WIKI_ARCHITECTURE_SPEC.md) and run `yarn test:page-loading`.

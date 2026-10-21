@@ -114,6 +114,9 @@ export type NetworkAction =
   | { kind: 'giveCard'; cardIndex: number }
   | { kind: 'nameCard'; card: CardKey };
 
+/** Shared action name used by local controls and online messages. */
+export type GameAction = NetworkAction;
+
 // ───────── 网络通信 ─────────
 
 export interface LobbyPlayer {

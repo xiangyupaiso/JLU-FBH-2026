@@ -32,6 +32,20 @@
  * under `pages/project/`.
  */
 
+import type { PeerTubeVideoConfig } from "../wikiVideo";
+
+const baduanjinVideoSource = {
+  title: "ZJUT-China: Baduanjin (2026)",
+  embedUrl: "https://video.igem.org/videos/embed/eNWgqQpxvwGY7q7HBPngtb",
+  hostedBy: "ZJUT-China",
+};
+
+export const contributionBaduanjinVideo: PeerTubeVideoConfig = {
+  primary: baduanjinVideoSource,
+  fallback: baduanjinVideoSource,
+  credit: "Collaborative Baduanjin ·",
+};
+
 const ddlCrisisPosterImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-responsible-ddl-crisis-poster-1947ba1bf803.webp";
 
 const circoreDeviceImg = "https://static.igem.wiki/teams/6056/wiki/files/pages/project/contribution/contribution-hardware-circore-device-cce193f20a95.webp";

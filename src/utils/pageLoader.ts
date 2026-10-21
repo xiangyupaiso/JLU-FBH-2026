@@ -5,15 +5,15 @@ import { createPageImageQueue, loadPageImageSerial } from "./pageImageQueue";
  *
  * The loader is plain HTML/CSS so it paints before the app bundle arrives.
  * This module only decides WHEN it leaves: as soon as the current route is
- * actually presentable. Managed reader routes gate the Hero and first six
- * distinct body images through the serial image queue; after that succeeds,
- * fonts, layout and optional artwork have at most 25 seconds. Home gates its
+ * actually presentable. Managed reader routes gate the Hero, first article
+ * image and visible body images through the bounded queue; after that settles,
+ * fonts and layout have at most 25 seconds. Other images continue in the
+ * background without extending the cover. Home gates its
  * opening scene separately with a two-minute ceiling. Legacy routes retain
- * the original entrance, media and first-screen scan under READY_DEADLINE_MS.
+ * the media and first-screen scan under READY_DEADLINE_MS.
  */
 
 const LEAVE_MS = 380; // matches `.page-loader` opacity transition
-const COMPLETE_HOLD_MS = 350; // let the finished illustration register
 const HOME_COVER_FADE_MS = 400; // static fallback transition in index.html
 // External apps may never send their readiness message when their service is
 // unavailable. This limit applies only to explicitly opted-in embeds.
@@ -148,36 +148,6 @@ export function showPageLoader() {
   loader.dispatchEvent(new Event("loaderstart"));
 }
 
-/** Wait for the real CSS entrance, excluding the infinite breathing loops. */
-async function openingComplete(loader: HTMLElement, signal: AbortSignal) {
-  if (!loader.classList.contains("is-playing")) {
-    await new Promise<void>((resolve) => {
-      const done = () => {
-        loader.removeEventListener("loaderplay", done);
-        signal.removeEventListener("abort", done);
-        resolve();
-      };
-      loader.addEventListener("loaderplay", done, { once: true });
-      signal.addEventListener("abort", done, { once: true });
-    });
-  }
-  if (signal.aborted) return;
-  const animations = loader
-    .getAnimations({ subtree: true })
-    .filter(
-      (animation) => animation.effect?.getTiming().iterations !== Infinity,
-    );
-  await Promise.allSettled(animations.map((animation) => animation.finished));
-  if (
-    signal.aborted ||
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  )
-    return;
-  await new Promise<void>((resolve) =>
-    window.setTimeout(resolve, COMPLETE_HOLD_MS),
-  );
-}
-
 /** Hide the loader once the page that is mounted now is presentable. */
 export function hidePageLoaderWhenReady() {
   const loader = loaderElement();
@@ -194,10 +164,9 @@ export function hidePageLoaderWhenReady() {
   // its address before React has replaced the previous page.
   const opening = document.getElementById("root")
     ?.querySelector<HTMLElement>(".home-scene01") ?? null;
-  const ready = Promise.all([
-    opening ? Promise.resolve() : openingComplete(loader, signal),
-    pageReady(loader, signal, opening),
-  ]);
+  // The illustration plays while resources prepare, but its finite entrance
+  // must not delay a page that is already ready. Keep the normal cover fade.
+  const ready = pageReady(loader, signal, opening);
   const elapsed = loader.dataset.waitStart
     ? Math.max(0, Date.now() - Number(loader.dataset.waitStart))
     : 0;
@@ -289,7 +258,7 @@ async function pageReady(
     }
     if (signal.aborted) return;
   }
-  // Home's first portrait frame mask is managed by the same serial queue. It
+  // Home's first portrait frame mask is managed by the same bounded queue. It
   // is critical to the opening composition, while later scene art stays lazy.
   if (opening?.querySelector('[data-page-background-src][data-page-critical="true"]') && imageQueue) {
     await criticalArtworkReady(imageQueue.criticalReady, loader, signal);
@@ -322,8 +291,9 @@ async function readerPageReady(loader: HTMLElement, signal: AbortSignal) {
   imageQueue = queue;
   reportStatus(loader, "assets", "Preparing the opening artwork…");
   try {
-    // The hero and first six distinct body images must really decode. Neither
-    // the optional budget nor the static loader watchdog can release this gate.
+    // Wait for the hero, first article image and visible figures to settle.
+    // The optional layout budget begins afterwards; the absolute cover ceiling
+    // remains the escape hatch for a stalled page.
     await criticalArtworkReady(queue.criticalReady, loader, signal);
   } catch (error) {
     if (imageQueue === queue) {
@@ -350,8 +320,8 @@ async function readerPageReady(loader: HTMLElement, signal: AbortSignal) {
     await untilAborted(Promise.all(Array.from(pagePreparations, (prepare) => prepare())), budget.signal);
     if (budget.signal.aborted) return;
     await renderFrames();
-    await untilAborted(queue.remainingReady(), budget.signal);
-    if (budget.signal.aborted) return;
+    // The queue automatically prepares the remaining images while reading.
+    // Pointer movement must not turn them into a whole-page readiness gate.
     await finishPagePreparations(budget.signal);
     if (budget.signal.aborted) return;
     await renderFrames();

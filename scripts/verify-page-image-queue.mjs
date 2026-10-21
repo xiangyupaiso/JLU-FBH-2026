@@ -46,6 +46,11 @@ function environment() {
     append(...children) { for (const child of children) { child.parentElement = this; this.children.push(child); } }
     contains(element) { return this === element || this.children.some((child) => child.contains(element)); }
     matches(selector) {
+      if (selector === "img" || selector === "image") return selector === this.tagName;
+      if (selector.includes(",")) return selector.split(",").some((part) => this.matches(part.trim()));
+      if (selector === ".route-frame") return this.getAttribute("class")?.split(" ").includes("route-frame");
+      if (selector === ".route-frame__scroll") return this.getAttribute("class")?.split(" ").includes("route-frame__scroll");
+      if (selector === "[hidden]" || selector === "[inert]") return this.hasAttribute(selector.slice(1, -1));
       if (selector === "img, image") return ["img", "image"].includes(this.tagName);
       if (selector === ".home-scene01") return this.getAttribute("class")?.includes("home-scene01");
       if (selector === "main.wiki-page--route") return this.tagName === "main" && this.getAttribute("class")?.includes("wiki-page--route");
@@ -65,9 +70,14 @@ function environment() {
         if (selector.includes("data-page-critical") && node.getAttribute("data-page-critical") === "true") return node;
         if (selector.includes(".home-scene01") && node.getAttribute("class")?.includes("home-scene01")) return node;
         if (selector.includes(".story-chapter") && node.getAttribute("class")?.includes("story-chapter")) return node;
+        if (selector.includes(".route-frame__scroll") && node.getAttribute("class")?.includes("route-frame__scroll")) return node;
+        if (selector.includes("[hidden]") && node.hasAttribute("hidden")) return node;
+        if (selector.includes("[inert]") && node.hasAttribute("inert")) return node;
       }
       return null;
     }
+    getBoundingClientRect() { return this.rect ?? { top: 2000, bottom: 2100, left: 0, right: 100, width: 100, height: 100 }; }
+    getClientRects() { return this.hasAttribute("hidden") || this.hasAttribute("inert") ? [] : [this.getBoundingClientRect()]; }
     compareDocumentPosition(other) {
       const flatten = (node) => [node, ...node.children.flatMap(flatten)];
       const list = flatten(body);
@@ -132,6 +142,8 @@ function environment() {
   }
   const body = new Element("body");
   const window = Object.assign(new EventTarget(), {
+    innerHeight: 800,
+    innerWidth: 1440,
     setTimeout: (callback) => { timers.add(callback); return callback; },
     clearTimeout: (callback) => timers.delete(callback),
   });
@@ -141,13 +153,15 @@ function environment() {
     document: { body, baseURI: "https://example.test/", getElementById: () => loader }, window,
     Element, HTMLElement: Element, HTMLImageElement: Img, SVGImageElement: Svg, HTMLDialogElement: Dialog,
     Image: Probe, MutationObserver,
+    getComputedStyle: () => ({ display: "block", visibility: "visible", overflowY: "auto" }),
+    requestAnimationFrame: (callback) => setImmediate(callback), cancelAnimationFrame: clearImmediate,
     Node: { DOCUMENT_POSITION_FOLLOWING: 4, DOCUMENT_POSITION_PRECEDING: 2 },
   });
   vm.runInContext(`${source}\nglobalThis.api = { createPageImageQueue, loadPageImageSerial, PageImageQueueError };`, context);
   vm.runInContext(`${compile("src/utils/homeArtwork.ts").replace(/^import .*;\r?\n/gm, "").replace(/^export /gm, "")}\nglobalThis.api.createHomeArtworkLoader = createHomeArtworkLoader;`, context);
   vm.runInContext(`${compile("src/utils/homeArtworkSource.ts").replace(/^import .*;\r?\n/gm, "").replace(/^export /gm, "")}\nglobalThis.api.bindHomeArtwork = bindHomeArtwork;`, context);
   return {
-    ...context.api, body, Element, Img, Svg, Dialog, transfers, accidentalRequests, loader,
+    ...context.api, body, Element, Img, Svg, Dialog, transfers, accidentalRequests, loader, window,
     get active() { return active; }, get maximum() { return maximum; },
     latest: () => transfers.at(-1),
     route: () => { const route = new Element("main", { class: "wiki-page--route" }); body.append(route); return route; },
@@ -174,276 +188,227 @@ test("native wrappers keep geometry, refs and handlers without source attributes
   assert.doesNotMatch(svg, /(?:^|\s)(?:href|xlink:href)=|<link/);
 });
 
-test("Hero then six unique content sources decode serially; remaining waits for intent", async () => {
+const live = (env) => env.transfers.filter((transfer) => transfer.active);
+const transfer = (env, url) => live(env).find((item) => item.src.split("?")[0] === `https://example.test/${url}`);
+const drain = async (env) => {
+  for (let round = 0; round < 50; round++) {
+    await tick();
+    const pending = live(env);
+    if (!pending.length) return;
+    pending.forEach((item) => item.finish());
+  }
+  assert.fail("the queue did not finish");
+};
+
+test("Hero, first figure and visible images gate entry; decoding holds a slot and background continues automatically", async () => {
   const env = environment();
   const nav = new env.Element("nav"); nav.append(env.image("menu.avif")); env.body.append(nav);
-  const route = env.route();
+  const frame = new env.Element("div", { class: "route-frame" });
   const images = ["a", "a", "b", "c", "d", "e", "f", "g", "h"].map((name) => env.image(`${name}.avif`));
-  const hidden = new env.Element("div", { "aria-hidden": "true" }); hidden.append(env.image("hidden.avif"));
+  images.slice(0, 7).forEach((image) => { image.rect = { top: 100, bottom: 200, left: 0, right: 100, width: 100, height: 100 }; });
   const hero = new env.Element("header", { class: "wiki-hero", "data-page-background-src": "hero.avif" });
-  route.append(hidden, ...images, hero);
+  frame.append(...images); env.route().append(hero, frame);
   const queue = env.createPageImageQueue(env.body);
   let ready = false; queue.criticalReady.then(() => { ready = true; });
   await tick();
-  assert.equal(env.latest().src, "https://example.test/hero.avif");
-  env.latest().finish(true, true); await tick();
-  assert.equal(env.transfers.length, 1, "decode retains the serial slot");
-  env.latest().decodeRelease(); await tick();
+  assert.deepEqual(live(env).map((item) => item.src), ["hero", "a", "b"].map((name) => `https://example.test/${name}.avif`));
+  const heroProbe = transfer(env, "hero.avif"); heroProbe.finish(true, true); await tick();
+  assert.equal(env.transfers.length, 3, "decoding retains its download slot");
   for (const name of ["a", "b", "c", "d", "e", "f"]) {
-    assert.equal(env.latest().src, `https://example.test/${name}.avif`);
-    env.latest().finish(); await tick();
+    const image = transfer(env, `${name}.avif`); assert.ok(image); image.finish(); await tick();
   }
-  await queue.criticalReady;
-  assert.equal(ready, true);
-  assert.equal(env.transfers.length, 7);
+  assert.equal(ready, false, "the hero must finish decoding");
+  assert.equal(env.transfers.length, 7, "background waits for the critical gate");
+  heroProbe.decodeRelease(); await queue.criticalReady; await tick();
   assert.equal(images[0].src, images[1].src);
-  assert.equal(hero.dataset.pageLoaded, "true");
-  await queue.remainingReady();
-  assert.equal(env.transfers.length, 7);
-  env.interact(); await tick();
-  for (const name of ["g", "h", "menu", "hidden"]) {
-    assert.equal(env.latest().src, `https://example.test/${name}.avif`);
-    env.latest().finish(); await tick();
-  }
-  await queue.remainingReady();
-  assert.equal(env.maximum, 1);
-  assert.deepEqual(env.accidentalRequests, []);
+  assert.equal(live(env).length, 1, "only one background transfer runs");
+  assert.ok(transfer(env, "g.avif"), "background starts without interaction");
+  await drain(env);
+  assert.equal(env.maximum, 3); assert.deepEqual(env.accidentalRequests, []);
   queue.dispose();
 });
 
-test("a failed Hero retries twice, then lets critical and ordinary images continue serially", async () => {
+test("a failing Hero retries twice while other critical images progress", async () => {
   const env = environment(); const route = env.route();
   const hero = new env.Element("header", { class: "wiki-hero", "data-page-background-src": "broken.avif" });
-  const content = env.image("content.avif");
-  const nav = new env.Element("nav"); nav.append(env.image("menu.avif"));
-  route.append(hero, content); env.body.append(nav);
-  const queue = env.createPageImageQueue(env.body);
-  let ready = false; queue.criticalReady.then(() => { ready = true; });
-  env.interact();
-  for (let attempt = 0; attempt < 3; ++attempt) { await tick(); env.latest().finish(false); }
-  await tick();
-  assert.equal(hero.dataset.pageImageState, "error");
-  assert.equal(hero.dataset.pageLoaded, "false");
-  assert.equal(ready, false, "the remaining critical image must still settle");
-  assert.match(env.transfers[1].requestedSrc, /circure_image_retry=/);
-  assert.equal(env.transfers[1].src, "", "failed sources are removed to cancel their transfer");
-  assert.equal(env.latest().src, "https://example.test/content.avif");
-  env.latest().finish(); await queue.criticalReady; await tick();
+  const content = env.image("content.avif"); route.append(hero, content);
+  const queue = env.createPageImageQueue(env.body); await tick();
+  transfer(env, "content.avif").finish(); await tick();
   assert.equal(content.dataset.pageLoaded, "true");
-  assert.equal(env.latest().src, "https://example.test/menu.avif");
-  env.latest().finish(); await queue.remainingReady();
-  assert.equal(env.transfers.length, 5);
-  assert.equal(env.maximum, 1);
+  for (let attempt = 0; attempt < 3; ++attempt) { transfer(env, "broken.avif").finish(false); await tick(); }
+  await queue.criticalReady;
+  assert.equal(hero.dataset.pageImageState, "error"); assert.equal(hero.dataset.pageLoaded, "false");
+  assert.equal(env.transfers.filter((item) => item.requestedSrc.includes("broken.avif")).length, 3);
+  assert.match(env.transfers[2].requestedSrc, /circure_image_retry=/);
   queue.dispose();
 });
 
-test("disposing cancels active work; rebuilt queues reuse successful Hero cache", async () => {
+test("disposing cancels all active work and rebuilt queues reuse decoded images", async () => {
   const env = environment(); const route = env.route();
   route.append(new env.Element("header", { class: "wiki-hero", "data-page-background-src": "hero.avif" }), env.image("content.avif"));
-  const first = env.createPageImageQueue(env.body);
-  await tick(); env.latest().finish(); await tick();
-  assert.equal(env.latest().src, "https://example.test/content.avif");
-  first.dispose(); await tick();
+  const first = env.createPageImageQueue(env.body); await tick();
+  transfer(env, "hero.avif").finish(); await tick(); first.dispose(); await tick();
   assert.equal(env.active, 0);
   const second = env.createPageImageQueue(env.body); await tick();
-  assert.equal(env.transfers.length, 3);
-  assert.equal(env.latest().src, "https://example.test/content.avif");
-  env.latest().finish(); await second.criticalReady;
-  assert.equal(env.maximum, 1);
+  assert.equal(env.transfers.filter((item) => item.requestedSrc.endsWith("hero.avif")).length, 1);
+  assert.equal(live(env).length, 1); transfer(env, "content.avif").finish(); await second.criticalReady;
   second.dispose();
 });
 
-test("a timed-out critical image releases entry without counting its pixels as loaded", async () => {
+test("a timed-out critical image releases entry without treating its pixels as loaded", async () => {
   const env = environment(); const image = env.image("slow.avif"); env.route().append(image);
-  const queue = env.createPageImageQueue(env.body);
-  await tick(); await env.timeout(); await queue.criticalReady;
-  assert.equal(image.dataset.pageImageState, "error");
-  assert.equal(image.dataset.pageLoaded, "false");
-  assert.equal(image.naturalWidth, 0);
-  assert.equal(env.active, 0); assert.equal(env.transfers.length, 1);
-  queue.dispose();
+  const queue = env.createPageImageQueue(env.body); await tick(); await env.timeout(); await queue.criticalReady;
+  assert.equal(image.dataset.pageImageState, "error"); assert.equal(image.dataset.pageLoaded, "false");
+  assert.equal(image.naturalWidth, 0); assert.equal(env.active, 0); queue.dispose();
 });
 
-test("Home shared hints are ordinary; normal failure continues and dynamic cached nodes reuse pixels", async () => {
+test("hidden image hints start automatically and a failed image releases the background slot", async () => {
   const env = environment();
   env.body.append(new env.Element("span", { "data-page-image-hints": JSON.stringify(["bad.avif", "good.avif"]) }));
-  const queue = env.createPageImageQueue(env.body);
-  await queue.criticalReady; await queue.remainingReady(); await tick();
-  assert.equal(env.transfers.length, 0);
-  env.interact();
-  for (let attempt = 0; attempt < 3; ++attempt) { await tick(); env.latest().finish(false); }
-  await tick(); assert.equal(env.latest().src, "https://example.test/good.avif"); env.latest().finish();
-  await queue.remainingReady();
+  const queue = env.createPageImageQueue(env.body); await tick();
+  for (let attempt = 0; attempt < 3; ++attempt) { transfer(env, "bad.avif").finish(false); await tick(); }
+  assert.ok(transfer(env, "good.avif")); transfer(env, "good.avif").finish(); await tick();
   const added = env.image("good.avif"); env.body.append(added); await env.mutate();
-  assert.equal(added.dataset.pageLoaded, "true");
-  assert.equal(env.transfers.length, 4);
-  assert.deepEqual(env.accidentalRequests, []);
-  queue.dispose();
+  assert.equal(added.dataset.pageLoaded, "true"); assert.equal(env.transfers.length, 4);
+  assert.equal(env.maximum, 1); queue.dispose();
 });
 
 test("source updates cancel obsolete transfers and load the replacement", async () => {
   const env = environment(); const image = env.image("old.avif"); env.route().append(image);
   const queue = env.createPageImageQueue(env.body); await tick();
   image.setAttribute("data-page-src", "new.avif"); await env.mutate();
-  assert.equal(env.transfers[0].src, "");
-  assert.equal(env.latest().src, "https://example.test/new.avif");
-  env.latest().finish(); await queue.criticalReady;
-  assert.equal(image.src, "https://example.test/new.avif"); assert.equal(env.maximum, 1);
-  queue.dispose();
+  assert.equal(env.transfers[0].src, ""); transfer(env, "new.avif").finish(); await queue.criticalReady;
+  assert.equal(image.src, "https://example.test/new.avif"); queue.dispose();
 });
 
-test("ordinary backgrounds use their CSS property and count toward six content images", async () => {
-  const env = environment(); const route = env.route();
-  const background = new env.Element("figure", { "data-page-background-src": "card.avif", "data-page-background-property": "background-image" });
-  route.append(background);
-  const queue = env.createPageImageQueue(env.body); await tick();
-  env.latest().finish(); await queue.criticalReady;
-  assert.equal(background.style.values.get("background-image"), 'url("https://example.test/card.avif")');
-  queue.dispose();
+test("ordinary backgrounds use their CSS property and count as critical content", async () => {
+  const env = environment(); const background = new env.Element("figure", { "data-page-background-src": "card.avif", "data-page-background-property": "background-image" });
+  env.route().append(background); const queue = env.createPageImageQueue(env.body); await drain(env); await queue.criticalReady;
+  assert.equal(background.style.values.get("background-image"), 'url("https://example.test/card.avif")'); queue.dispose();
 });
 
-test("shared serial helper and route queues share cache and one physical slot", async () => {
+test("independent callers keep cancellation ownership and share decoded cache", async () => {
   const env = environment(); env.route().append(env.image("same.avif"));
-  const home = env.loadPageImageSerial("same.avif");
+  const controller = new AbortController(); const home = env.loadPageImageSerial("same.avif", {signal:controller.signal});
   const queue = env.createPageImageQueue(env.body); await tick();
-  assert.equal(env.transfers.length, 1); env.latest().finish();
-  assert.equal(await home, "https://example.test/same.avif"); await queue.criticalReady;
-  assert.equal(env.transfers.length, 1); assert.equal(env.maximum, 1);
-  queue.dispose();
+  assert.equal(live(env).length, 2); controller.abort();
+  await assert.rejects(home, (error) => error.reason === "cancelled"); await tick();
+  transfer(env, "same.avif").finish(); await queue.criticalReady;
+  assert.equal(await env.loadPageImageSerial("same.avif"), "https://example.test/same.avif");
+  assert.equal(env.transfers.length, 2); queue.dispose();
 });
 
-test("Home assigns each source only after serial decoding and activates the completed scene", async () => {
-  const env = environment();
-  const scene = new env.Element("section", { class: "home-scene01" });
-  const a = new env.Img({ "data-home-src": "https://example.test/a.avif" });
-  const b = new env.Img({ "data-home-src": "https://example.test/b.avif" });
-  scene.append(a, b); env.body.append(scene);
-  const home = env.createHomeArtworkLoader(env.body, () => {});
-  home.warm(scene); await tick();
-  assert.equal(a.src, ""); assert.equal(b.src, ""); assert.notEqual(scene.dataset.homeArtworkActive, "true");
-  env.latest().finish(); await tick();
-  assert.equal(a.src, "https://example.test/a.avif"); assert.equal(b.src, "");
-  assert.notEqual(scene.dataset.homeArtworkActive, "true");
-  env.latest().finish(); await tick();
-  assert.equal(scene.dataset.homeArtworkActive, "true"); assert.equal(home.status(scene), "ready");
-  assert.equal(env.maximum, 1); assert.deepEqual(env.accidentalRequests, []);
-  home.dispose();
+test("Home assigns each source after its own decode and activates only a complete scene", async () => {
+  const env = environment(); const scene = new env.Element("section", {class:"home-scene01"});
+  const a = new env.Img({"data-home-src":"https://example.test/a.avif"}); const b = new env.Img({"data-home-src":"https://example.test/b.avif"});
+  scene.append(a,b); env.body.append(scene); const home = env.createHomeArtworkLoader(env.body, () => {}); home.warm(scene); await tick();
+  assert.equal(live(env).length, 2); const first = transfer(env,"a.avif"); first.finish(true,true); await tick();
+  assert.equal(a.src, ""); transfer(env,"b.avif").finish(); await tick();
+  assert.equal(b.src,"https://example.test/b.avif"); assert.notEqual(scene.dataset.homeArtworkActive,"true");
+  first.decodeRelease(); await tick(); assert.equal(scene.dataset.homeArtworkActive,"true"); assert.deepEqual(env.accidentalRequests,[]); home.dispose();
 });
 
-test("entering a preloaded Home scene promotes its queued art without restarting the active download", async () => {
-  const env = environment();
-  const earlier = new env.Element("section", { class: "story-chapter" });
-  earlier.append(
-    new env.Img({ "data-home-src": "https://example.test/active.avif" }),
-    new env.Img({ "data-home-src": "https://example.test/offscreen.avif" }),
-  );
-  const current = new env.Element("section", { class: "story-chapter" });
-  current.append(
-    new env.Img({ "data-home-src": "https://example.test/current-background.avif" }),
-    new env.Img({ "data-home-src": "https://example.test/current-people.avif" }),
-  );
-  env.body.append(earlier, current);
-  const home = env.createHomeArtworkLoader(env.body, () => {});
-  home.warm(earlier, "low");
-  home.warm(current, "low");
-  await tick();
-  const active = env.latest();
-  home.warm(current, "high");
-  await tick();
-  assert.equal(env.transfers.length, 1, "promotion keeps the ongoing transfer");
-  assert.equal(active.active, true);
-  active.finish();
-  await tick();
-  assert.equal(env.latest().src, "https://example.test/current-background.avif");
-  env.latest().finish();
-  await tick();
-  assert.equal(env.latest().src, "https://example.test/current-people.avif");
-  env.latest().finish();
-  await tick();
-  assert.equal(home.status(current), "ready");
-  assert.equal(env.latest().src, "https://example.test/offscreen.avif");
-  env.latest().finish();
-  await tick();
-  assert.equal(env.transfers.length, 4, "each URL downloads only once");
-  assert.equal(env.maximum, 1, "promotion preserves the single transfer slot");
-  home.dispose();
+test("promoting Home scene artwork uses reserved slots while background remains active", async () => {
+  const env = environment(); const earlier = new env.Element("section",{class:"story-chapter"}); const current = new env.Element("section",{class:"story-chapter"});
+  earlier.append(...["active","offscreen"].map(name=>new env.Img({"data-home-src":`https://example.test/${name}.avif`})));
+  current.append(...["current-background","current-people"].map(name=>new env.Img({"data-home-src":`https://example.test/${name}.avif`})));
+  env.body.append(earlier,current); const home=env.createHomeArtworkLoader(env.body,()=>{}); home.warm(earlier,"low"); home.warm(current,"low"); await tick();
+  const background=transfer(env,"active.avif"); assert.equal(live(env).length,1);
+  home.warm(current,"high"); await tick(); assert.equal(background.active,true);
+  assert.ok(transfer(env,"current-background.avif")); assert.ok(transfer(env,"current-people.avif")); assert.equal(env.maximum,3);
+  transfer(env,"current-background.avif").finish(); transfer(env,"current-people.avif").finish(); await tick();
+  assert.equal(home.status(current),"ready"); assert.equal(transfer(env,"offscreen.avif"),undefined,"one stalled background cannot consume more slots");
+  background.finish(); await drain(env); assert.equal(env.transfers.length,4); home.dispose();
 });
 
-test("Home opening recovery retains successful art and retries failed sources from the loader button", async () => {
-  const env = environment(); const scene = new env.Element("section", { class: "home-scene01" });
-  const a = new env.Img({ "data-home-src": "https://example.test/a.avif" });
-  const b = new env.Img({ "data-home-src": "https://example.test/b.avif" });
-  scene.append(a, b); env.body.append(scene);
-  const home = env.createHomeArtworkLoader(env.body, () => {}); home.warm(scene);
-  await tick(); env.latest().finish();
-  for (let i = 0; i < 3; ++i) { await tick(); env.latest().finish(false); }
-  await tick(); assert.equal(home.status(scene), "error");
-  assert.notEqual(scene.dataset.homeArtworkActive, "true");
-  const successfulSource = a.src;
-  env.loader.dispatchEvent(new Event("loaderretry")); await tick();
-  assert.match(env.latest().src, /^https:\/\/example\.test\/b\.avif\?home-image-retry=/);
-  env.latest().finish(); await tick();
-  assert.equal(home.status(scene), "ready"); assert.equal(a.src, successfulSource);
-  assert.equal(env.transfers.length, 5); assert.equal(scene.dataset.homeArtworkActive, "true");
-  home.dispose();
+test("Home opening recovery retains successful art and retries only failed sources", async () => {
+  const env=environment(); const scene=new env.Element("section",{class:"home-scene01"});
+  const a=new env.Img({"data-home-src":"https://example.test/a.avif"}); scene.append(a,new env.Img({"data-home-src":"https://example.test/b.avif"})); env.body.append(scene);
+  const home=env.createHomeArtworkLoader(env.body,()=>{}); home.warm(scene); await tick(); transfer(env,"a.avif").finish();
+  for(let i=0;i<3;i++){await tick();transfer(env,"b.avif").finish(false);} await tick(); assert.equal(home.status(scene),"error");
+  const successful=a.src; env.loader.dispatchEvent(new Event("loaderretry")); await tick();
+  assert.match(transfer(env,"b.avif").src,/home-image-retry=/); transfer(env,"b.avif").finish(); await tick();
+  assert.equal(home.status(scene),"ready"); assert.equal(a.src,successful); assert.equal(env.transfers.length,5); home.dispose();
 });
 
-test("Home keeps loading past the cover deadline and cancels only on a loader error before retry", async () => {
-  const env = environment(); const scene = new env.Element("section", { class: "home-scene01" });
-  scene.append(new env.Img({ "data-home-src": "https://example.test/a.avif" }), new env.Img({ "data-home-src": "https://example.test/b.avif" }));
-  env.body.append(scene); const home = env.createHomeArtworkLoader(env.body, () => {}); home.warm(scene);
-  await tick(); env.loader.dispatchEvent(new Event("loaderdeadline")); await tick();
-  assert.equal(env.active, 1); assert.equal(home.status(scene), "loading");
-  env.loader.dispatchEvent(new Event("loadererror")); await tick();
-  assert.equal(env.active, 0); assert.equal(env.transfers.length, 1); assert.equal(home.status(scene), "error");
-  env.loader.dispatchEvent(new Event("loaderretry")); await tick();
-  env.latest().finish(); await tick(); env.latest().finish(); await tick();
-  assert.equal(home.status(scene), "ready"); assert.equal(env.transfers.length, 3); assert.equal(env.maximum, 1);
-  home.dispose();
+test("Home cover deadline retains artwork work; an error cancels every active transfer before retry", async () => {
+  const env=environment(); const scene=new env.Element("section",{class:"home-scene01"});
+  scene.append(...["a","b"].map(name=>new env.Img({"data-home-src":`https://example.test/${name}.avif` }))); env.body.append(scene);
+  const home=env.createHomeArtworkLoader(env.body,()=>{}); home.warm(scene); await tick(); env.loader.dispatchEvent(new Event("loaderdeadline")); await tick();
+  assert.equal(env.active,2); env.loader.dispatchEvent(new Event("loadererror")); await tick(); assert.equal(env.active,0); assert.equal(home.status(scene),"error");
+  env.loader.dispatchEvent(new Event("loaderretry")); await drain(env); assert.equal(home.status(scene),"ready"); assert.equal(env.transfers.length,4); home.dispose();
 });
 
 test("a cold Home room copy receives all source layers before carrying the next scene", async () => {
-  const env = environment();
-  const scene = new env.Element("section", { class: "story-chapter" });
-  const source = new env.Element();
-  const copy = new env.Element();
-  const urls = ["background.avif", "people.avif", "family.avif"];
-  for (const url of urls) {
-    const attrs = { "data-home-src": `https://example.test/${url}` };
-    source.append(new env.Img(attrs));
-    copy.append(new env.Img(attrs));
-  }
-  scene.append(source);
-  env.body.append(scene, copy);
-  const stop = env.bindHomeArtwork(source, copy);
-  const home = env.createHomeArtworkLoader(env.body, () => {});
-  assert.ok(copy.children.every((image) => !image.src));
-  home.warm(scene);
-  for (const url of urls) {
-    await tick();
-    assert.equal(env.latest().src, `https://example.test/${url}`);
-    env.latest().finish();
-  }
-  await tick();
-  assert.equal(scene.dataset.homeArtworkActive, "true");
-  assert.deepEqual(copy.children.map((image) => image.src), source.children.map((image) => image.src));
-  assert.ok(copy.children.every((image) => image.complete && image.naturalWidth > 0));
-  assert.equal(env.transfers.length, 3, "the room copy reuses the decoded source layers");
-  assert.deepEqual(env.accidentalRequests, []);
-  stop();
-  home.dispose();
+  const env=environment(); const scene=new env.Element("section",{class:"story-chapter"}); const source=new env.Element(); const copy=new env.Element();
+  for(const url of ["background","people","family"]){const attrs={"data-home-src":`https://example.test/${url}.avif`};source.append(new env.Img(attrs));copy.append(new env.Img(attrs));}
+  scene.append(source); env.body.append(scene,copy); const stop=env.bindHomeArtwork(source,copy); const home=env.createHomeArtworkLoader(env.body,()=>{}); home.warm(scene);
+  await drain(env); assert.equal(scene.dataset.homeArtworkActive,"true"); assert.deepEqual(copy.children.map(image=>image.src),source.children.map(image=>image.src));
+  assert.equal(env.transfers.length,3); assert.deepEqual(env.accidentalRequests,[]); stop();home.dispose();
 });
 
-test("detached Home CORS readers wait for the shared serial slot and cancel with their binding", async () => {
-  const env = environment(); const scene = new env.Element("section", { class: "home-scene01" });
-  const original = new env.Img({ "data-home-src": "https://example.test/art.avif" });
-  const reader = new env.Img({ "data-home-src": "https://example.test/art.avif", crossorigin: "anonymous" });
-  scene.append(original); env.body.append(scene);
-  const stop = env.bindHomeArtwork(original, reader);
-  const home = env.createHomeArtworkLoader(env.body, () => {}); home.warm(scene); await tick();
-  assert.equal(env.transfers.length, 1); assert.equal(reader.src, "");
-  env.latest().finish(); await tick();
-  assert.equal(env.transfers.length, 2); assert.equal(env.latest().crossOrigin, "anonymous"); assert.equal(reader.src, "");
-  stop(); await tick(); assert.equal(env.active, 0); assert.equal(reader.src, "");
-  assert.equal(env.maximum, 1); home.dispose();
+test("detached CORS readers use their own cache key and cancel without affecting the original", async () => {
+  const env=environment(); const scene=new env.Element("section",{class:"home-scene01"});
+  const original=new env.Img({"data-home-src":"https://example.test/art.avif"}); const reader=new env.Img({"data-home-src":"https://example.test/art.avif",crossorigin:"anonymous"});
+  scene.append(original); env.body.append(scene); const stop=env.bindHomeArtwork(original,reader); const home=env.createHomeArtworkLoader(env.body,()=>{});home.warm(scene);await tick();
+  assert.equal(live(env).length,1);assert.equal(reader.src,""); transfer(env,"art.avif").finish();await tick();
+  const cors=live(env).find(item=>item.crossOrigin==="anonymous");assert.ok(cors);
+  stop();await tick();assert.equal(cors.active,false);assert.equal(env.active,0);assert.equal(home.status(scene),"ready");home.dispose();
+});
+
+test("visible content promotes into a reserved slot beside a stalled background", async () => {
+  const env=environment(); const route=env.route();
+  const images=Array.from({length:8},(_,index)=>env.image(`image-${index}.avif`));route.append(...images);
+  images.slice(0,6).forEach(image=>{image.rect={top:100,bottom:200,left:0,right:100,width:100,height:100};});
+  const queue=env.createPageImageQueue(env.body);await tick();
+  for(let index=0;index<6;index++){transfer(env,`image-${index}.avif`).finish();await tick();}
+  await queue.criticalReady;assert.ok(transfer(env,"image-6.avif"));
+  images[7].rect={top:100,bottom:200,left:0,right:100,width:100,height:100};env.window.dispatchEvent(new Event("scroll"));
+  await tick(); assert.ok(transfer(env,"image-7.avif"));assert.equal(live(env).length,2);
+  queue.dispose();await tick();assert.equal(env.active,0);
+});
+
+test("critical page images start while decorative loader artwork is still pending", async () => {
+  const env = environment();
+  env.window.__circureLoaderArtReady = new Promise(() => {});
+  const image = env.image("first.avif"); env.route().append(image);
+  const queue = env.createPageImageQueue(env.body); await tick();
+  assert.ok(transfer(env, "first.avif"), "loader illustration must not serialize page downloads");
+  transfer(env, "first.avif").finish(); await queue.criticalReady;
+  assert.equal(image.dataset.pageLoaded, "true");
+  queue.dispose();
+});
+
+test("distant figures do not gate entry and still start automatically after the first figure", async () => {
+  const env = environment(); const route = env.route();
+  const hidden = env.image("hidden.avif"); hidden.getClientRects = () => [];
+  route.append(hidden);
+  route.append(...Array.from({ length: 7 }, (_, index) => env.image(`figure-${index}.avif`)));
+  const queue = env.createPageImageQueue(env.body); await tick();
+  assert.equal(live(env).length, 1, "only the first figure is critical below the fold");
+  transfer(env, "figure-0.avif").finish(); await queue.criticalReady; await tick();
+  assert.equal(live(env).length, 1);
+  assert.ok(transfer(env, "figure-1.avif"), "background continues without interaction");
+  queue.dispose(); await tick(); assert.equal(env.active, 0);
+});
+
+test("visible critical figures respect the reader clip and the horizontal viewport", async () => {
+  const env = environment(); const route = env.route();
+  const reader = new env.Element("div", { class: "route-frame__scroll" });
+  reader.rect = { top: 100, bottom: 400, left: 0, right: 1000, width: 1000, height: 300 };
+  const first = env.image("first.avif");
+  const clipped = env.image("clipped.avif");
+  clipped.rect = { top: 600, bottom: 700, left: 0, right: 100, width: 100, height: 100 };
+  const offside = env.image("offside.avif");
+  offside.rect = { top: 150, bottom: 250, left: 1500, right: 1600, width: 100, height: 100 };
+  const visible = env.image("visible.avif");
+  visible.rect = { top: 150, bottom: 250, left: 0, right: 100, width: 100, height: 100 };
+  reader.append(first, clipped, offside, visible); route.append(reader);
+  const queue = env.createPageImageQueue(env.body); let ready = false;
+  queue.criticalReady.then(() => { ready = true; }); await tick();
+  assert.deepEqual(live(env).map((image) => image.src), ["first", "visible"].map((name) => `https://example.test/${name}.avif`));
+  transfer(env, "first.avif").finish(); await tick(); assert.equal(ready, false);
+  transfer(env, "visible.avif").finish(); await queue.criticalReady; await tick();
+  assert.equal(ready, true); assert.equal(live(env).length, 1);
+  queue.dispose();
 });

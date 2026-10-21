@@ -8,14 +8,14 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './Button';
 import { CARD_META, CATEGORY_COLORS, getNopeEffectName } from '../constants/cards';
-import type { GameState, Lang, CardKey, NetworkAction } from '../types/game';
+import type { GameState, Lang, CardKey, GameAction } from '../types/game';
 
 export interface DialogsProps {
   state: GameState;
   me: number;
   lang: Lang;
   /** 统一发送操作 */
-  onAction: (action: NetworkAction) => void;
+  onAction: (action: GameAction) => void;
   /** 关闭胜负弹窗 */
   onExit?: () => void;
 }
@@ -154,7 +154,7 @@ function renderPendingContent(
   pending: NonNullable<GameState['pending']>,
   state: GameState,
   lang: Lang,
-  onAction: (a: NetworkAction) => void,
+  onAction: (a: GameAction) => void,
 ) {
   switch (pending.kind) {
     // 新抗原预测：偷看顶端 3 张
@@ -231,7 +231,7 @@ function renderPendingContent(
           ? `🎯 ${T({ cn: '靶向索要', en: 'Targeted' }, lang)}`
           : `🧩 ${T({ cn: '随机抢牌', en: 'Steal' }, lang)}`;
       const targets = state.players
-        .filter((p, i) => i !== pending.player && p.alive && (p.handCount ?? p.hand.length) > 0);
+        .filter((p, i) => i !== pending.player && p.alive && p.hand.length > 0);
       return (
         <>
           <h2 className="text-[20px] font-bold" style={{ fontFamily: 'var(--font-editorial, serif)' }}>{title}</h2>
@@ -242,7 +242,7 @@ function renderPendingContent(
             {targets.map((p) => (
               <Button key={p.id} variant="ghost"
                 onClick={() => onAction({ kind: 'pickTarget', target: p.id })}>
-                {p.name} (🎴{p.handCount ?? p.hand.length})
+                {p.name} (🎴{p.hand.length})
               </Button>
             ))}
           </div>

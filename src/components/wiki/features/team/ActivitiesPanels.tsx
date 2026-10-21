@@ -73,6 +73,10 @@ export function ActivitiesExperience({
         contextSafe(() => {
           if (!mounted) return;
           media.add("(prefers-reduced-motion: no-preference)", () => {
+            const galleryViewport = rootRef.current?.querySelector(
+              ".activities-gallery__viewport",
+            );
+            if (!galleryViewport) return;
             gsap
               .timeline({
                 defaults: { ease: "power3.out", duration: 1.15 },
@@ -102,8 +106,9 @@ export function ActivitiesExperience({
                 scrollTrigger: {
                   trigger: ".activities-gallery",
                   start: "top bottom",
+                  // Resolve the CSS calc() to pixels before ScrollTrigger parses it.
                   end: () =>
-                    `top top+=${getComputedStyle(document.documentElement).getPropertyValue("--header-height").trim()}`,
+                    `top top+=${getComputedStyle(galleryViewport).top}`,
                   scrub: 0.7,
                 },
               },

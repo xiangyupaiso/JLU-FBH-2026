@@ -125,3 +125,62 @@
   border-color: var(--route-main, #207062);
   box-shadow: 0 2px 8px rgba(21, 62, 52, 0.12), inset 0 -3px var(--route-main, #207062);
 }
+
+.manuscript-tabs__navigation {
+  display: contents;
+}
+/* Keep the IHC choices available only while their panel is in view. */
+.manuscript-tabs--pinned .manuscript-tabs__navigation {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 0;
+  background: #fff;
+  border-bottom: 1px solid var(--tab-line);
+}
+.manuscript-tabs--pinned .manuscript-tabs__navigation .manuscript-tabs__list {
+  align-self: auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+.manuscript-tabs--pinned .manuscript-tabs__sheet {
+  scroll-margin-top: 100px;
+}
+.manuscript-tabs__skip {
+  flex-shrink: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--tab-line);
+  border-radius: 8px;
+  color: var(--tab-ink);
+  background: var(--tab-tint);
+  font-size: .8rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.manuscript-tabs__skip:hover {
+  text-decoration: underline;
+}
+.manuscript-tabs__skip:focus-visible {
+  outline: 2px solid var(--tab-ink);
+  outline-offset: 3px;
+}
+@container (max-width: 520px) {
+  .manuscript-tabs--pinned .manuscript-tabs__navigation .manuscript-tabs__list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: 100%;
+    gap: 6px;
+    overflow: visible;
+  }
+  .wiki-page .manuscript-tabs--pinned .manuscript-tabs__navigation .manuscript-tabs__tab {
+    padding: 10px 5px;
+    font-size: .75rem;
+    text-align: center;
+  }
+}

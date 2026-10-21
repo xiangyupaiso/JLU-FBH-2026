@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import { Button } from '@/components/ui/button';
 import { Brain, Sword } from 'lucide-react';
 import { getBossAssetPath, getCharacterAssetPath, getSceneAssetPath } from '@/data/assets';
@@ -15,7 +15,8 @@ import {
   SPEAKER_AVATAR,
   SPEAKER_TAG
 } from '@/components/dialogStyles';
-import { StoryControlBar, StoryLogDrawer, useStoryPlayback } from '@/components/storyControls';
+import { StoryControlBar, StoryLogDrawer } from '@/components/storyControls';
+import { useStoryPlayback } from '@/hooks/useStoryPlayback';
 
 // Scene type definition
 interface Scene {
@@ -34,13 +35,13 @@ const tutorialScenesZh: Scene[] = [
   { speaker: '派蒙', text: '我是乳腺主城守护精灵派蒙！这里就是你的乳腺，BOSS在黑雾里作乱，你的习惯也在悄悄伤害我们。', background: 'main' },
   { speaker: '主角', text: '我？怎么会？', background: 'main' },
   { speaker: '派蒙', text: '先去核心区域，我帮你弄明白怎么守护这里！', background: 'main' },
-  
+
   // 第二阶段：大脑记忆中枢（场景8-11）
   { speaker: '旁白', text: '场景切换至大脑记忆中枢，派蒙指着发光神经元："这里是大脑记忆中枢，能回看你的过往选择哦！"', background: 'memory' },
   { speaker: '派蒙', text: '我们可以通过神经元进入记忆点，重新经历过去的事情，改写曾经的做法～', background: 'memory' },
   { speaker: '派蒙', text: '不同的选择会触发不一样的结局，中枢还会根据结局教你专属技能呢！', background: 'memory' },
   { speaker: '派蒙', text: '不管结局是HE还是BE，只要通关记忆点，就能解锁对应的BOSS挑战～这可是拯救乳腺主城的唯一捷径哦！', background: 'memory' },
-  
+
   // 第三阶段：病变乳腺组织（场景12-19）
   { speaker: '旁白', text: '场景切换至病变乳腺组织边界，BOSS挑战界面浮现，三个锁定图标排列。', background: 'boss' },
   { speaker: '派蒙', text: '这里是病变乳腺组织，就是坏家伙BOSS们的战场啦！远处的黑雾全是它们搞的鬼～', background: 'boss' },
@@ -63,13 +64,13 @@ const tutorialScenesEn: Scene[] = [
   { speaker: 'Paimon', text: 'I am Paimon, Guardian Sprite of the Mammary Citadel! This is your breast tissue. BOSSes run amok within the dark mist, and harmful habits have been silently damaging our world.', background: 'main' },
   { speaker: 'Protagonist', text: 'Me? How could that happen?', background: 'main' },
   { speaker: 'Paimon', text: 'Let\'s head to the Core Sector first! I will help you figure out how to defend this citadel!', background: 'main' },
-  
+
   // Stage 2: Brain Memory Center
   { speaker: 'Narrator', text: 'Scene transitions to the Brain Memory Center. Paimon points toward the luminous neurons: "This is the Brain Memory Center. It lets you reflect on your past life choices!"', background: 'memory' },
   { speaker: 'Paimon', text: 'We can enter Memory Points through these neural synapses, relive past events, and rewrite previous decisions!', background: 'memory' },
   { speaker: 'Paimon', text: 'Different choices lead to different endings. The center will also bestow exclusive skills based on your outcomes!', background: 'memory' },
   { speaker: 'Paimon', text: 'Whether you reach an HE or BE, clearing a Memory Point unlocks its corresponding BOSS challenge! That is the only path to salvaging our Mammary Citadel!', background: 'memory' },
-  
+
   // Stage 3: Diseased Mammary Tissue
   { speaker: 'Narrator', text: 'Scene transitions to the perimeter of the Diseased Mammary Tissue. The BOSS Arena interface manifests, displaying three locked icons in line.', background: 'boss' },
   { speaker: 'Paimon', text: 'This is the Diseased Mammary Tissue—the battlefield of those villainous BOSSes! The dense dark mist in the distance is entirely their doing!', background: 'boss' },
@@ -130,7 +131,7 @@ export default function TutorialGuide() {
                 {isZh ? '一周目 · 核心区域' : 'Playthrough 1 · Central Nexus'}
               </p>
             </div>
-            
+
             {/* Paimon dialog preview */}
             <div className="absolute top-36 left-1/2 -translate-x-1/2 w-80">
               <div className="bg-white/80 rounded-2xl p-4 border border-pink-200 shadow-sm text-center">
@@ -168,7 +169,7 @@ export default function TutorialGuide() {
             </div>
           </div>
         );
-      
+
       case 'memory':
         return (
           <div className="absolute inset-0 bg-gradient-to-b from-indigo-900 to-purple-950">
@@ -233,7 +234,7 @@ export default function TutorialGuide() {
             </div>
           </div>
         );
-      
+
       case 'boss':
         return (
           <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-red-950">
@@ -265,7 +266,7 @@ export default function TutorialGuide() {
                   <span>🔒</span> {isZh ? '未解锁' : 'Locked'}
                 </span>
               </div>
-              
+
               <div className="bg-red-800/60 rounded-xl p-4 border border-red-700 flex items-center gap-3">
                 <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center overflow-hidden">
                   <img src={getBossAssetPath('nippleDischarge', '狰狞')} alt="BOSS" className="h-full w-full object-cover" />
@@ -282,7 +283,7 @@ export default function TutorialGuide() {
                   <span>🔒</span> {isZh ? '未解锁' : 'Locked'}
                 </span>
               </div>
-              
+
               <div className="bg-red-800/60 rounded-xl p-4 border border-red-700 flex items-center gap-3">
                 <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center overflow-hidden">
                   <img src={getBossAssetPath('orangePeel', '狰狞')} alt="BOSS" className="h-full w-full object-cover" />
@@ -330,7 +331,7 @@ export default function TutorialGuide() {
             </div>
           </div>
         );
-      
+
       default:
         return null;
     }
@@ -458,7 +459,7 @@ export default function TutorialGuide() {
 
       {/* Settings modal */}
       {showSettings && (
-        <div 
+        <div
           className="absolute inset-0 bg-black/70 flex items-center justify-center z-50"
           onClick={(e) => e.stopPropagation()}
         >

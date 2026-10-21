@@ -42,6 +42,16 @@ type WhitePaperSpec = Extract<SafetyFeatureSpec, { kind: "white-paper" }>;
 type FolderSpec = Extract<SafetyFeatureSpec, { kind: "folders" }>;
 type ImageSpec = Extract<SafetyFeatureSpec, { kind: "images" }>;
 
+/** Reuse a registered white paper, including its language versions and attachments. */
+export function SafetyWhitePaperFeature({
+  featureKey,
+}: {
+  featureKey: string;
+}) {
+  const spec = safetyFeatureSpecs[featureKey];
+  return spec?.kind === "white-paper" ? <SafetyWhitePaper spec={spec} /> : null;
+}
+
 function SafetyWhitePaper({ spec }: { spec: WhitePaperSpec }) {
   const [language, setLanguage] = useState<SafetyLanguage>("en");
   const [selected, setSelected] = useState<WikiDocument | null>(null);

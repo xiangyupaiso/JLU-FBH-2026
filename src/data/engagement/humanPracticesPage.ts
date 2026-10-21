@@ -11,7 +11,7 @@ export const humanPracticesPage: WikiPageContent = {
   boundary: "",
   visual: "human-thread",
   visualLabel: "Stakeholder dialogue and project iteration",
-  visualSteps: ["Context", "Issue", "Reframing", "Cycle"],
+  visualSteps: ["**Context**", "**Issue**", "**Reframing**", "**Cycle**"],
   facts: [],
   sections: humanPracticesSections,
   links: [

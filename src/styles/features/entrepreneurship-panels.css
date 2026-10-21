@@ -425,6 +425,13 @@
 .stakeholder-matrix-3d {
   max-width: 720px;
 }
+.wiki-page .stakeholder-matrix-3d__hint {
+  margin: 0 0 12px;
+  color: var(--route-subheading-ink);
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
 .stakeholder-matrix-3d [data-orbit-tone="rose"] {
   --stakeholder-color: #b96078;
 }
@@ -730,12 +737,6 @@
 }
 
 /* Page links keep the shared semantics, with the Engagement palette. */
-.wiki-page--entrepreneurship a.wiki-cite {
-  white-space: nowrap;
-  font-size: 0.78em;
-  line-height: 0;
-  vertical-align: super;
-}
 .wiki-page--entrepreneurship :is(.wiki-prose-link, .wiki-chapter-link--inline) {
   color: var(--route-subheading-ink);
   font-weight: 600;

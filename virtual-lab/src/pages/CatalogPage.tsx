@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { allExperiments } from '../data/experiments';
 import type { Experiment } from '../types';
@@ -53,10 +53,10 @@ export function CatalogPage({ onSelectExperiment }: CatalogPageProps) {
   const currentConfig = difficultyConfig[difficulty];
   const progress = ((experimentIndex + 1) / experiments.length) * 100;
 
-  const move = (delta: number) => {
+  const move = useCallback((delta: number) => {
     if (experiments.length < 2) return;
     setExperimentIndex((current) => (current + delta + experiments.length) % experiments.length);
-  };
+  }, [experiments.length]);
 
   const selectDifficulty = (nextDifficulty: Difficulty) => {
     if (nextDifficulty === difficulty) return;
@@ -79,7 +79,7 @@ export function CatalogPage({ onSelectExperiment }: CatalogPageProps) {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [experiments.length]);
+  }, [move]);
 
   useLayoutEffect(() => {
     if (!pageRef.current) return;

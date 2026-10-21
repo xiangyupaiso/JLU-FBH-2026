@@ -95,7 +95,7 @@ export const softwareFigures = {
     alt: "Comparison design and screening criteria are set separately. Run the differential analysis before applying screening criteria to the results.",
     caption:
       "Comparison design and screening criteria are set separately. Run the differential analysis before applying screening criteria to the results.",
-    figureLabel: "FIG. 4A",
+    figureLabel: "FIG. 4",
     section: "Software",
   },
   "figure-04b-evidence-card": {
@@ -109,7 +109,7 @@ export const softwareFigures = {
     alt: "Selecting P16401 displays its information in the Evidence Card. Add Selected Targets to Cart saves the selected target in the Design list.",
     caption:
       "Selecting P16401 displays its information in the Evidence Card. Add Selected Targets to Cart saves the selected target in the Design list.",
-    figureLabel: "FIG. 4B",
+    figureLabel: "FIG. 5",
     section: "Software",
   },
   "figure-05a-epitope-prediction": {
@@ -123,7 +123,7 @@ export const softwareFigures = {
     alt: "After loading a target from the Design list, set the peptide length and HLA allele, then start epitope prediction.",
     caption:
       "After loading a target from the Design list, set the peptide length and HLA allele, then start epitope prediction.",
-    figureLabel: "FIG. 5A",
+    figureLabel: "FIG. 6",
     section: "Software",
   },
   "figure-05b-candidate-epitopes": {
@@ -137,7 +137,7 @@ export const softwareFigures = {
     alt: "Two candidate epitopes are checked in this example. They enter the Design list when the user clicks Add to design list.",
     caption:
       "Two candidate epitopes are checked in this example. They enter the Design list when the user clicks Add to design list.",
-    figureLabel: "FIG. 5B",
+    figureLabel: "FIG. 7",
     section: "Software",
   },
   "figure-06a-assembly": {
@@ -151,7 +151,7 @@ export const softwareFigures = {
     alt: "The two saved epitopes appear on the assembly page. The user checks the input, ORF name, and linkers before generating the ORF.",
     caption:
       "The two saved epitopes appear on the assembly page. The user checks the input, ORF name, and linkers before generating the ORF.",
-    figureLabel: "FIG. 6A",
+    figureLabel: "FIG. 8",
     section: "Software",
   },
   "figure-06b-junction-review": {
@@ -165,7 +165,7 @@ export const softwareFigures = {
     alt: "Junction review provides HLA settings, consent for external submission, and a list of peptide windows to scan. The scan has not started in this screenshot.",
     caption:
       "Junction review provides HLA settings, consent for external submission, and a list of peptide windows to scan. The scan has not started in this screenshot.",
-    figureLabel: "FIG. 6B",
+    figureLabel: "FIG. 9",
     section: "Software",
   },
   "figure-07a-backbone-import": {
@@ -179,7 +179,7 @@ export const softwareFigures = {
     alt: "Backbone import, DNA feature map, and editing-method controls",
     caption:
       "Users import a backbone, inspect its feature map, and select the editing method and target region.",
-    figureLabel: "FIG. 7A",
+    figureLabel: "FIG. 10",
     section: "Software",
   },
   "figure-08-downloads": {
@@ -193,7 +193,7 @@ export const softwareFigures = {
     alt: "Download files brings together downloads for construct sequences, annotations, result tables, and the validation package.",
     caption:
       "Download files brings together downloads for construct sequences, annotations, result tables, and the validation package.",
-    figureLabel: "FIG. 8",
+    figureLabel: "FIG. 12",
     section: "Software",
   },
   "figure-10-one-click-setup": {
@@ -207,7 +207,7 @@ export const softwareFigures = {
     alt: "Users review installation options and external-tool requirements before starting a prediction.",
     caption:
       "Users review installation options and external-tool requirements before starting a prediction.",
-    figureLabel: "FIG. 10",
+    figureLabel: "FIG. 14",
     section: "Software",
   },
   "figure-11-run-console": {
@@ -221,7 +221,7 @@ export const softwareFigures = {
     alt: "Users follow stage messages and execution details in the run console.",
     caption:
       "Users follow stage messages and execution details in the run console.",
-    figureLabel: "FIG. 11",
+    figureLabel: "FIG. 15",
     section: "Software",
   },
   "figure-12-status-panel": {
@@ -235,7 +235,7 @@ export const softwareFigures = {
     alt: "Users inspect the saved stage, configuration, and checkpoint files.",
     caption:
       "Users inspect the saved stage, configuration, and checkpoint files.",
-    figureLabel: "FIG. 12",
+    figureLabel: "FIG. 16",
     section: "Software",
   },
   "figure-13-circuforge-modules": {
@@ -249,7 +249,7 @@ export const softwareFigures = {
     alt: "CircuForge research-task modules connected through the Design Cart",
     caption:
       "CircuForge’s task-based modules transfer confirmed candidates through the Design Cart.",
-    figureLabel: "FIG. 13",
+    figureLabel: "FIG. 21",
     section: "Software",
   },
   "figure-14-torusfold-stages": {
@@ -263,7 +263,7 @@ export const softwareFigures = {
     alt: "TorusFold pairing, fragment prediction, reconstruction, refinement, and stage outputs",
     caption:
       "TorusFold connects pairing information, fragment prediction, reconstruction, and refinement, saving outputs at each stage.",
-    figureLabel: "FIG. 14",
+    figureLabel: "FIG. 22",
     section: "Software",
   },
   "figure-15-workflow-evolution": {
@@ -277,7 +277,7 @@ export const softwareFigures = {
     alt: "CircuForge development from candidate analysis to confirmed selection and construct export",
     caption:
       "CircuForge evolved from analysis modules into a connected candidate-review and construct-design workflow.",
-    figureLabel: "FIG. 15",
+    figureLabel: "FIG. 23",
     section: "Software",
   },
   "figure-16-software-exchange": {
@@ -291,7 +291,7 @@ export const softwareFigures = {
     alt: "Participants in the five-team online software exchange",
     caption:
       "Participants share software-development experience at an online exchange involving five iGEM teams.",
-    figureLabel: "FIG. 16",
+    figureLabel: "FIG. 24",
     section: "Software",
   },
   "figure-17-consultation": {
@@ -305,7 +305,7 @@ export const softwareFigures = {
     alt: "Software consultation with Associate Professor Qingtian Guan",
     caption:
       "The team discusses the software workflow with Associate Professor Qingtian Guan.",
-    figureLabel: "FIG. 17",
+    figureLabel: "FIG. 25",
     section: "Software",
   },
   "figure-18-team-discussion": {
@@ -319,7 +319,7 @@ export const softwareFigures = {
     alt: "In-person software-engineering discussion",
     caption:
       "The team discusses module responsibilities, task management, and software deployment.",
-    figureLabel: "FIG. 18",
+    figureLabel: "FIG. 26",
     section: "Software",
   },
   "figure-19-circuforge-user-testing": {
@@ -333,7 +333,7 @@ export const softwareFigures = {
     alt: "Team members testing the CircuForge browser workflow",
     caption:
       "Team members test CircuForge’s candidate-review and construct-design workflow.",
-    figureLabel: "FIG. 19",
+    figureLabel: "FIG. 27",
     section: "Software",
   },
   "figure-20-torusfold-user-testing": {
@@ -347,7 +347,7 @@ export const softwareFigures = {
     alt: "Team members testing RNA-model inspection in TorusFold",
     caption:
       "Team members inspect the RNA model and review TorusFold’s result-viewing workflow.",
-    figureLabel: "FIG. 20",
+    figureLabel: "FIG. 28",
     section: "Software",
   },
   "figure-21-epitope-structural-review": {
@@ -360,8 +360,8 @@ export const softwareFigures = {
     height: 570,
     alt: "AlphaFold 3 model-derived position-9 side-chain burial for 17 candidate peptides",
     caption:
-      "Position-9 side-chain burial in AlphaFold 3 models supported the 17-to-15 candidate selection.",
-    figureLabel: "FIG. 21A",
+      "Per-position side-chain burial vs terminal-anchor review.",
+    figureLabel: "FIG. 17B",
     section: "Software",
   },
   "figure-21b-epitope-position-burial": {
@@ -374,8 +374,8 @@ export const softwareFigures = {
     height: 717,
     alt: "Per-position side-chain burial across the 17 candidate peptides",
     caption:
-      "Per-position side-chain burial complements terminal-anchor review across the 17 candidate peptide models.",
-    figureLabel: "FIG. 21B",
+      "Per-position side-chain burial across 17 candidates.",
+    figureLabel: "FIG. 17A",
     section: "Software",
   },
   "figure-22-first-round-elispot": {
@@ -389,7 +389,7 @@ export const softwareFigures = {
     alt: "First-round IFN-gamma ELISpot wells and raw counts for 13 epitope-encoding constructs",
     caption:
       "First-round IFN-γ ELISpot counts guided selection of two coding segments per antigen for Combined.",
-    figureLabel: "FIG. 22",
+    figureLabel: "FIG. 18",
     section: "Software",
   },
   "figure-23a-combined-bsj": {
@@ -402,8 +402,8 @@ export const softwareFigures = {
     height: 432,
     alt: "Sanger sequencing across the back-splice junction of the Wet Lab Combined construct",
     caption:
-      "BSJ sequencing identifies the ligation junction in the experimentally tested Combined RNA.",
-    figureLabel: "FIG. 23A",
+      "BSJ sequencing identifies the ligation junction in the experimentally tested combined RNA.",
+    figureLabel: "FIG. 19A",
     section: "Software",
   },
   "figure-23b-combined-expression": {
@@ -417,7 +417,7 @@ export const softwareFigures = {
     alt: "Anti-FLAG Western blot of the Wet Lab circRNA construct with Blank and beta-actin controls",
     caption:
       "Anti-FLAG immunoblotting detects expression from the Wet Lab construct, with β-actin as the loading control.",
-    figureLabel: "FIG. 23B",
+    figureLabel: "FIG. 19B",
     section: "Software",
   },
   "figure-24a-combined-elispot": {
@@ -430,8 +430,8 @@ export const softwareFigures = {
     height: 659,
     alt: "Second-round IFN-gamma ELISpot wells comparing Blank, TROP2 singles, dual and Combined constructs",
     caption:
-      "Second-round IFN-γ ELISpot compares Combined with Blank, single-segment, and dual-segment designs.",
-    figureLabel: "FIG. 24A",
+      "Second-round IFN-γ ELISpot compares the Combined design with the Blank, single-segment, and dual-segment designs.",
+    figureLabel: "FIG. 20A",
     section: "Software",
   },
   "figure-24b-combined-target-killing": {
@@ -445,7 +445,7 @@ export const softwareFigures = {
     alt: "MDA-MB-231 cell killing across three effector-to-target ratios and five construct groups",
     caption:
       "Vaccine-primed T-cell killing of MDA-MB-231 cells was measured across three effector-to-target ratios.",
-    figureLabel: "FIG. 24B",
+    figureLabel: "FIG. 20B",
     section: "Software",
   },
 } as const satisfies Record<string, SoftwareAssetEntry>;
@@ -454,33 +454,12 @@ export type SoftwareFigureKey = keyof typeof softwareFigures;
 export const getSoftwareImage = (key: SoftwareFigureKey): string =>
   softwareFigures[key].uploadUrl;
 
-export const softwareGuides = {
-  circuforge: {
-    fileName: "circuforge-usage-guide.pdf",
-    caption: "CircuForge User Guide",
-    description:
-      "Read the illustrated guide for installation, target and epitope review, construct design, exports, and troubleshooting.",
-    fallback: "If the preview is unavailable, use the links above.",
-    localSourcePath: "public/assets/docs/software/circuforge-usage-guide.pdf",
-    uploadUrl: "",
-  },
-  torusfold: {
-    fileName: "torusfold-usage-guide.pdf",
-    caption: "TorusFold User Guide",
-    description:
-      "Read the illustrated guide for environment setup, prediction, checkpoint recovery, model inspection, exports, and troubleshooting.",
-    fallback: "If the preview is unavailable, use the links above.",
-    localSourcePath: "public/assets/docs/software/torusfold-usage-guide.pdf",
-    uploadUrl: "",
-  },
-} as const;
-
 export const softwareVideo = {
   fileName: "figure-07b-registry-matching.webp",
   alt: "CircuForge Registry matching demonstration",
   caption:
     "Users review Registry DNA matches and confirm the Part IDs to write into construct annotations.",
-  figureLabel: "FIG. 7B",
+  figureLabel: "FIG. 11",
   localSourcePath:
     "public/assets/docs/software/figure-07b-registry-matching.webp",
   uploadUrl:
@@ -489,7 +468,7 @@ export const softwareVideo = {
 
 export const softwareUsageVideo = {
   title: "JLU-FBH: CircuForge Usage Guide (2026) [English]",
-  src: "https://video.igem.org/videos/embed/dpwGrMSSQS3dK8xeZXsYkT?subtitle=en",
+  src: "https://video.igem.org/videos/embed/dpwGrMSSQS3dK8xeZXsYkT?subtitle=en&p2p=0",
   allow: "fullscreen",
   sandbox: "allow-same-origin allow-scripts allow-popups allow-forms",
 } as const;
@@ -497,12 +476,12 @@ export const softwareUsageVideo = {
 export const softwareModel = {
   fileName: "isrnaclong-final.pdb",
   localSourcePath: "public/assets/docs/software/isrnaclong-final.pdb",
-  uploadUrl: "",
+  uploadUrl: "https://static.igem.wiki/teams/6056/wiki/files/pages/dry-lab/software/isrnaclong-final.pdb",
   residueCount: 2013,
   atomCount: 42831,
   chain: "A",
   stage: "Saved PPR-repaired model",
-  figureLabel: "FIG. 9",
+  figureLabel: "FIG. 13",
   caption:
     "Users rotate the saved model, adjust its display, and mark the circular junction.",
 } as const;

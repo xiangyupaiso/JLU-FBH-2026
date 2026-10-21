@@ -26,6 +26,7 @@ import {
 } from "./sustainability";
 import type {
   EducationResource,
+  LegacyToolPdf,
   SdgChapter,
 } from "../../../../data/engagement/sustainability/sdgChapterContract";
 import {
@@ -67,7 +68,7 @@ import "../../../../styles/features/sustainability-panels.css";
 
 type FeatureMap = Record<string, ReactNode>;
 
-const sstqnPdf = sustainabilityAssets.sstQnModelConstruction;
+const sstqnPdf = sustainabilityAssets.sstQnHandbook;
 const numberedSections = numberWikiSections(sustainabilityPage.sections);
 
 function ChartFigure({
@@ -88,7 +89,8 @@ function ChartFigure({
 /**
  * Third-level headings under a chapter ("4.1" → "4.1.1" … "4.1.6"), read from
  * the page data so the rail always matches what the article renders. SCALE
- * titles ("S — Stakeholder Insights") give their letter; the Tracker is "T".
+ * titles ("S - Stakeholder Insights", also en/em dashes) give their letter;
+ * the Tracker is "T".
  */
 function chapterRailSteps(chapter: SdgChapter): ScaleRailStep[] {
   const headings = numberedSections.flatMap((section) => section.blocks ?? []);
@@ -103,7 +105,7 @@ function chapterRailSteps(chapter: SdgChapter): ScaleRailStep[] {
         block.type === "subheading" && block.index.startsWith(prefix),
     )
     .map((block) => {
-      const scale = /^(\S) — (.+)$/.exec(block.title);
+      const scale = /^([SCALE])\s*[-–—]\s*(.+)$/.exec(block.title);
       return {
         id: block.id,
         index: block.index,
@@ -204,7 +206,7 @@ function PartnershipStakeholders({ chapter }: { chapter: SdgChapter }) {
         >
           {group.title ? (
             <h4 className="sust-minor-heading">
-              {group.index ? `${group.index} — ` : ""}
+              {group.index ? `${group.index} - ` : ""}
               {group.title}
             </h4>
           ) : null}
@@ -222,7 +224,7 @@ function PartnershipStakeholders({ chapter }: { chapter: SdgChapter }) {
                 id={profile.id}
               >
                 <h4 className="sust-minor-heading">
-                  {profile.index} — {profile.name}
+                  {profile.index} - {profile.name}
                 </h4>
                 {profile.article ? (
                   <StakeholderArticleView article={profile.article} />
@@ -247,6 +249,51 @@ function PartnershipStakeholders({ chapter }: { chapter: SdgChapter }) {
         />
       ) : null}
     </div>
+  );
+}
+
+function resourcePdfDocument(pdf: LegacyToolPdf) {
+  const url = pdf.url ?? sustainabilityDocUrl(pdf.fileName);
+  return {
+    caption: pdf.label,
+    url,
+    openUrl: url,
+  };
+}
+
+/** One full-width reader for the picture book, with English selected first. */
+function PictureBookReader({ pdfs }: { pdfs: ReadonlyArray<LegacyToolPdf> }) {
+  const [language, setLanguage] = useState("English");
+  const selectedPdf = pdfs.find((pdf) => pdf.label === language) ?? pdfs[0];
+  if (!selectedPdf) return null;
+  const document = resourcePdfDocument(selectedPdf);
+
+  return (
+    <DocumentViewer
+      document={{ ...document, url: `${document.url}#page=1&view=FitH` }}
+      actions={
+        <span
+          className="sust-picture-book__languages"
+          role="group"
+          aria-label="Picture book language"
+        >
+          {pdfs.map((pdf) => (
+            <button
+              key={pdf.fileName}
+              type="button"
+              aria-label={`Read in ${pdf.label}`}
+              aria-pressed={pdf.fileName === selectedPdf.fileName}
+              onClick={() => setLanguage(pdf.label)}
+            >
+              {pdf.label === "English" ? "EN" : "CN"}
+            </button>
+          ))}
+        </span>
+      }
+      defaultOpen
+      fullWidth
+      readLabel="Read picture book"
+    />
   );
 }
 
@@ -285,19 +332,19 @@ function ResourceShowcase({ resource }: { resource: EducationResource }) {
         </figure>
       ) : null}
       {resource.pdfs?.length ? (
-        <div className="sust-edu-resource__pdfs">
-          {resource.pdfs.map((pdf) => (
-            <DocumentViewer
-              key={pdf.fileName}
-              document={{
-                caption: pdf.label,
-                url: pdf.url ?? sustainabilityDocUrl(pdf.fileName),
-                openUrl: pdf.url ?? sustainabilityDocUrl(pdf.fileName),
-              }}
-              defaultOpen
-            />
-          ))}
-        </div>
+        resource.id === "picture-book" ? (
+          <PictureBookReader pdfs={resource.pdfs} />
+        ) : (
+          <div className="sust-edu-resource__pdfs">
+            {resource.pdfs.map((pdf) => (
+              <DocumentViewer
+                key={pdf.fileName}
+                document={resourcePdfDocument(pdf)}
+                defaultOpen
+              />
+            ))}
+          </div>
+        )
       ) : null}
     </article>
   );
@@ -408,57 +455,63 @@ function EvidencePanel({ chapter }: { chapter: SdgChapter }) {
           ))}
         </div>
       ) : null}
-      <ol className="sust-evidence__list">
-        {measurable.map((item) => (
-          <li className="sust-evidence__item" key={item.title ?? item.text}>
-            {item.title ? (
-              <h5 className="sust-evidence__item-title">{item.title}</h5>
-            ) : null}
-            <p>
-              <RichText text={item.text} />
-            </p>
-            {item.toolTable ? <ToolTable tools={chapter.legacy.tools} /> : null}
-            {item.table ? (
-              <WikiContentBlocks
-                sectionId={`${chapter.id}-evidence`}
-                blocks={[
-                  {
-                    type: "table",
-                    headers: [...item.table.headers],
-                    rows: item.table.rows.map((row) => [...row]),
-                  },
-                ]}
-              />
-            ) : null}
-            {item.document ? (
-              <DocumentViewer
-                document={{
-                  caption: item.document.label,
-                  url: item.document.url ?? sustainabilityDocUrl(item.document.fileName),
-                  openUrl: item.document.url ?? sustainabilityDocUrl(item.document.fileName),
-                  downloadUrl: item.document.url ?? sustainabilityDocUrl(item.document.fileName),
-                }}
-              />
-            ) : null}
-            {item.figure ? (
-              // Keep the caption as the source text; figure labels are not added here.
-              <figure className="wiki-figure">
-                <QueuedImage
-                  src={sustainabilityImage(item.figure)}
-                  alt={sustainabilityAssets[item.figure].alt}
-                  width={sustainabilityImageEntry(item.figure).width}
-                  height={sustainabilityImageEntry(item.figure).height}
-                  loading="lazy"
-                  decoding="async"
+      <div className="wiki-prose">
+        <ol className="wiki-prose-list">
+          {measurable.map((item) => (
+            <li className="sust-evidence__item" key={item.title ?? item.text}>
+              {item.title ? (
+                <p>
+                  <strong>{item.title}</strong>
+                </p>
+              ) : null}
+              {item.text ? (
+                <p>
+                  <RichText text={item.text} />
+                </p>
+              ) : null}
+              {item.toolTable ? <ToolTable tools={chapter.legacy.tools} /> : null}
+              {item.table ? (
+                <WikiContentBlocks
+                  sectionId={`${chapter.id}-evidence`}
+                  blocks={[
+                    {
+                      type: "table",
+                      headers: [...item.table.headers],
+                      rows: item.table.rows.map((row) => [...row]),
+                    },
+                  ]}
                 />
-                <figcaption>
-                  {item.figureCaption ?? sustainabilityAssets[item.figure].alt}
-                </figcaption>
-              </figure>
-            ) : null}
-          </li>
-        ))}
-      </ol>
+              ) : null}
+              {item.document ? (
+                <DocumentViewer
+                  document={{
+                    caption: item.document.label,
+                    url: item.document.url ?? sustainabilityDocUrl(item.document.fileName),
+                    openUrl: item.document.url ?? sustainabilityDocUrl(item.document.fileName),
+                    downloadUrl: item.document.url ?? sustainabilityDocUrl(item.document.fileName),
+                  }}
+                />
+              ) : null}
+              {item.figure ? (
+                // Keep the caption as the source text; figure labels are not added here.
+                <figure className="wiki-figure">
+                  <QueuedImage
+                    src={sustainabilityImage(item.figure)}
+                    alt={sustainabilityAssets[item.figure].alt}
+                    width={sustainabilityImageEntry(item.figure).width}
+                    height={sustainabilityImageEntry(item.figure).height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>
+                    {item.figureCaption ?? sustainabilityAssets[item.figure].alt}
+                  </figcaption>
+                </figure>
+              ) : null}
+            </li>
+          ))}
+        </ol>
+      </div>
       {measurableClosing?.length ? (
         <div className="wiki-prose">
           {measurableClosing.map((paragraph) => (
@@ -495,7 +548,7 @@ function ChapterToolArchive({ chapter }: { chapter: SdgChapter }) {
         instance={`${chapter.id}-legacy`}
         onPdfSelect={(pdf, title) =>
           setSelected({
-            caption: `${title} — ${pdf.label}`,
+            caption: `${title} - ${pdf.label}`,
             url: pdf.url ?? sustainabilityDocUrl(pdf.fileName),
             openUrl: pdf.url ?? sustainabilityDocUrl(pdf.fileName),
           })
@@ -587,7 +640,6 @@ export function sustainabilityFeatures(): FeatureMap {
       <SustainabilityPdfPreview
         manual={{
           title: sstqnSection.pdfTitle,
-          meta: `SST-QN · Report · ${sstqnPdf.pdfPages} pages`,
           pdfUrl: sstqnPdf.uploadUrl,
           fileName: sstqnPdf.fileName,
         }}

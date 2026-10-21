@@ -31,7 +31,7 @@ try {
           for (const paragraph of node.initializer.elements) {
             if (!ts.isStringLiteralLike(paragraph) || !/^\*\*[^*]+\*\*(?:\s*\[\d+\])*\s*$/.test(paragraph.text)) continue;
             const html = renderToStaticMarkup(renderProseParagraphs([paragraph.text]));
-            assert(html.startsWith("<p>"), `Prose promoted to heading: ${path}: ${paragraph.text}`);
+            assert(/^<p(?:\s|>)/.test(html), `Prose promoted to heading: ${path}: ${paragraph.text}`);
             assert(html.includes("<strong>"));
             assert(!html.includes("wiki-protocol-step-subheading"));
             checked++;

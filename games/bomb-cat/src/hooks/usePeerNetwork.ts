@@ -5,6 +5,8 @@
  */
 
 import { useState, useRef, useCallback, useEffect } from 'react';
+import type Peer from 'peerjs';
+import type { DataConnection, PeerJSOption } from 'peerjs';
 import type {
   GameState, NetworkAction, NetMessage,
   Lobby, NetMode,
@@ -59,8 +61,8 @@ import type { PlayerDef } from '../engine/gameEngine';
 // ───────── PeerJS 懒加载 ─────────
 
 // 动态 import 避免构建/SSR 时加载；仅在实际联网时拉取
-let PeerCtor: any = null;
-async function loadPeer(): Promise<any> {
+let PeerCtor: typeof Peer | null = null;
+async function loadPeer(): Promise<typeof Peer> {
   if (!PeerCtor) PeerCtor = (await import('peerjs')).default;
   return PeerCtor;
 }
@@ -75,7 +77,7 @@ function randCode(): string {
 }
 function pid(code: string): string { return 'circrnabzm-' + code; }
 
-function buildPeerOpts(opts?: PeerOptions): any {
+function buildPeerOpts(opts?: PeerOptions): PeerJSOption | undefined {
   if (opts?.host) {
     return { host: opts.host, port: opts.port ? parseInt(String(opts.port)) : 9000, path: '/', secure: false };
   }
@@ -123,9 +125,9 @@ export function usePeerNetwork(opts: UsePeerNetworkOptions = {}): UsePeerNetwork
   const [error, setError] = useState<string | null>(null);
 
   // Refs（PeerJS 实例不可序列化，不放 state）
-  const peerRef = useRef<any>(null);
-  const connsRef = useRef<{ conn: any; idx: number }[]>([]);   // Host 端连接列表
-  const hostConnRef = useRef<any>(null);                        // Client 端到 Host 的连接
+  const peerRef = useRef<Peer | null>(null);
+  const connsRef = useRef<{ conn: DataConnection; idx: number }[]>([]);   // Host 端连接列表
+  const hostConnRef = useRef<DataConnection | null>(null);               // Client 端到 Host 的连接
   const meRef = useRef(0);
   const isHostRef = useRef(true);
   const startedRef = useRef(false);
@@ -167,7 +169,7 @@ export function usePeerNetwork(opts: UsePeerNetworkOptions = {}): UsePeerNetwork
 
   // ───────── Host: 连接事件处理 ─────────
 
-  const handleHostData = useCallback((conn: any, data: NetMessage) => {
+  const handleHostData = useCallback((conn: DataConnection, data: NetMessage) => {
     if (data.t === 'join') {
       const rec = connsRef.current.find(c => c.conn === conn);
       if (!rec) return;
@@ -188,7 +190,7 @@ export function usePeerNetwork(opts: UsePeerNetworkOptions = {}): UsePeerNetwork
     }
   }, [pushLobby]);
 
-  const handlePeerLeft = useCallback((conn: any) => {
+  const handlePeerLeft = useCallback((conn: DataConnection) => {
     const rec = connsRef.current.find(c => c.conn === conn);
     if (!rec) return;
     connsRef.current = connsRef.current.filter(c => c.conn !== conn);
@@ -234,8 +236,8 @@ export function usePeerNetwork(opts: UsePeerNetworkOptions = {}): UsePeerNetwork
       setLobby(lb);
 
       peer.on('open', () => { /* 就绪 */ });
-      peer.on('error', (e: any) => setError(`⚠️ ${e.type || e.message || e}`));
-      peer.on('connection', (conn: any) => {
+      peer.on('error', (e) => setError(`⚠️ ${e.type || e.message}`));
+      peer.on('connection', (conn) => {
         conn.on('open', () => {
           const lb = lobbyRef.current;
           if (!lb) return;
@@ -248,12 +250,12 @@ export function usePeerNetwork(opts: UsePeerNetworkOptions = {}): UsePeerNetwork
           // 占位：等 join 消息填充 name
           lb.players.push({ name: `Player${idx}`, isBot: false, connId: idx });
           connsRef.current.push({ conn, idx });
-          conn.on('data', (d: NetMessage) => handleHostData(conn, d));
+          conn.on('data', (d) => handleHostData(conn, d as NetMessage));
           conn.on('close', () => handlePeerLeft(conn));
         });
       });
-    } catch (e: any) {
-      setError(`Peer error: ${e.message || e}`);
+    } catch (e) {
+      setError(`Peer error: ${e instanceof Error ? e.message : String(e)}`);
     }
   }, [handleHostData, handlePeerLeft]);
 
@@ -265,7 +267,7 @@ export function usePeerNetwork(opts: UsePeerNetworkOptions = {}): UsePeerNetwork
     code = code.toUpperCase();
     try {
       const Peer = await loadPeer();
-      const peer = new Peer(buildPeerOpts(peerOpts));
+      const peer = new Peer(buildPeerOpts(peerOpts) ?? {});
       peerRef.current = peer;
       setMode('online');
       setIsHost(false);
@@ -278,7 +280,8 @@ export function usePeerNetwork(opts: UsePeerNetworkOptions = {}): UsePeerNetwork
         conn.on('open', () => {
           conn.send({ t: 'join', name: nick });
         });
-        conn.on('data', (d: NetMessage) => {
+        conn.on('data', (message) => {
+          const d = message as NetMessage;
           if (d.t === 'welcome') {
             setMe(d.me);
             meRef.current = d.me;
@@ -304,14 +307,14 @@ export function usePeerNetwork(opts: UsePeerNetworkOptions = {}): UsePeerNetwork
           }
         });
       });
-      peer.on('error', (e: any) => {
+      peer.on('error', (e) => {
         const msg = e.type === 'peer-unavailable'
           ? (lang === 'cn' ? '房间号错误或房主离线' : 'Bad code / host offline')
           : (e.type || e.message || String(e));
         setError(`⚠️ ${msg}`);
       });
-    } catch (e: any) {
-      setError(`Peer error: ${e.message || e}`);
+    } catch (e) {
+      setError(`Peer error: ${e instanceof Error ? e.message : String(e)}`);
     }
   }, [lang]);
 
@@ -331,7 +334,7 @@ export function usePeerNetwork(opts: UsePeerNetworkOptions = {}): UsePeerNetwork
 
   // ───────── Host: 开始联机对局 ─────────
 
-  const startOnline = useCallback((_playerDefs: PlayerDef[]) => {
+  const startOnline = useCallback(() => {
     const lb = lobbyRef.current;
     if (!lb || lb.players.length < 2) return;
     startedRef.current = true;

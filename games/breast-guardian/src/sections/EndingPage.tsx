@@ -1,4 +1,4 @@
-import { useGame } from '@/hooks/gameState';
+import { useGame } from '@/hooks/gameContext';
 import { assetUrl } from '@/data/assetUrls';
 
 // Ending Page - Background image has pre-baked graphics

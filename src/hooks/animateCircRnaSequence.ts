@@ -4,6 +4,7 @@ import type { SplitText } from "gsap/SplitText";
 import { animateCircRna } from "./animateCircRna";
 import {
   HOME_EASE,
+  HOME_REST_RATIO,
   HOME_SCRUB,
   settleHomeScrubEndpoint,
   stillHold,
@@ -12,7 +13,6 @@ import { createRnaRingMorph } from "./createRnaRingMorph";
 import { animatePlatformAntigen } from "./animatePlatformAntigen";
 
 // Give the completed Why artwork a reading beat before its ring departs.
-const WHY_READING_HOLD = 0.36;
 const BASE_FIGURE_END = 5.5;
 const BASE_WHY_REVEAL_END = 1.06;
 const FIGURE_REST = 0.65;
@@ -39,7 +39,7 @@ export function animateCircRnaSequence(
   animateCircRna(rna, whyTimeline);
   const whyRevealEnd = whyTimeline.duration();
   const addedReadingTime =
-    whyRevealEnd - BASE_WHY_REVEAL_END + WHY_READING_HOLD;
+    whyRevealEnd - BASE_WHY_REVEAL_END + whyRevealEnd * HOME_REST_RATIO;
   const figureEnd = BASE_FIGURE_END + addedReadingTime;
   gsap.set(ring, { x: 0, y: 0, scaleX: 1, scaleY: 1 });
   const transfer = { progress: 0 };
@@ -90,7 +90,7 @@ export function animateCircRnaSequence(
   // Home can still be hidden under its loader. Keep the CSS track until the
   // preparation rebuild can measure it instead of freezing its height at zero.
   if (range > 0 && Number.isFinite(range)) {
-    const hold = stillHold(range, FIGURE_REST / figureEnd);
+    const hold = stillHold(range, FIGURE_REST / figureEnd, 0, HOME_REST_RATIO);
     figureRest = figureEnd * hold.rest;
     gsap.set(track, { height: window.innerHeight + range * hold.scale });
   }

@@ -1855,7 +1855,7 @@ export const safetyPage: WikiPageContent = {
         {
           type: "prose",
           paragraphs: [
-            "For normal cell off-target evaluation, the team selected four normal cell lines: HLEC, LX-2, BEAS-2B, and MCF12A, covering major normal tissues potentially associated with the selected targets. All selected cells were confirmed to have an HLA-A*02:01 background.",
+            "For normal cell off-target evaluation, the team selected four normal cell lines: HCAEC, LX-2, BEAS-2B, and MCF12A, covering major normal tissues potentially associated with the selected targets. All selected cells were confirmed to have an HLA-A*02:01 background.",
             "The experiments included MDA-MB-231 positive control target cells and were performed under effector-to-target ratios of 80:1 and 100:1 to improve the reliability of safety evaluation.",
             "Additionally, empty-vector controls were included during experimental design to distinguish antigen-specific immune effects from potential non-specific effects caused by adjuvants or delivery systems, preventing incorrect interpretation of experimental results.",
             "**(6) Implementing Safety Requirements Through Design Iteration**",
@@ -2333,7 +2333,7 @@ export const safetyPage: WikiPageContent = {
           paragraphs: [
             "A three-group parallel experimental design was adopted, with each individual mouse considered as the experimental unit. A tumor growth inhibition (TGI) ≥ 50% was defined as a biologically meaningful effect threshold, and sample size estimation was performed based on expected variability.",
             "The final design of n = 5 mice per group represents a balance between statistical requirements, resource equation considerations, and minimizing animal use.",
-            "The primary statistical analysis will use one-way ANOVA. Comparisons between Combined vaccine vs. empty-vector control and empty-vector control vs. PBS control were predefined. If statistical assumptions are not satisfied, data transformation or non-parametric methods will be considered.",
+            "The primary statistical analysis will use one-way ANOVA. Comparisons between Combined vaccine vs. empty-vector control , empty-vector control vs. PBS control and Combined vaccine vs.PBS control were predefined. If statistical assumptions are not satisfied, data transformation or non-parametric methods will be considered.",
           ],
         },
         {
@@ -3628,6 +3628,7 @@ export const safetyFeatureSpecs: Record<string, SafetyFeatureSpec> = {
       "4-1-2-2-2-1-animal-use-form.avif",
       "4-1-2-2-2-animal-use-form.avif",
     ],
+    caption: "Approved Animal Use Form",
   },
   "safety-white-paper-16": {
     kind: "white-paper",
