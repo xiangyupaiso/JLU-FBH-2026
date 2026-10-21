@@ -1,6 +1,6 @@
 import { QueuedImage } from "../../../common/QueuedImage";
 import { Fragment, useEffect, useId, useRef } from "react";
-import radiusStudyIllustration from "../../../../assets/visual-design/home-hope-radius-study.webp";
+import radiusStudyIllustration from "../../../../assets/visual-design/plates/panels/01-patient-question-a.png";
 import whitespaceFocus from "../../../../assets/visual-design/plates/panels/08b-whitespace-focus-scroll.jpg";
 import whitespaceFooter from "../../../../assets/visual-design/plates/panels/08b-whitespace-footer-scroll.jpg";
 import { visualDesignFigures } from "../../../../data/project/visualDesignAssets";
@@ -201,9 +201,9 @@ function ImageRadiusStudy() {
             >
               <QueuedImage
                 src={radiusStudyIllustration}
-                width="1600"
-                height="900"
-                alt="Open hands support a smiling patient holding a heart against a soft pink background."
+                width="4000"
+                height="2250"
+                alt="Patient story illustration with anxiety, surgery and hair loss around a woman’s silhouette."
                 loading="lazy"
                 decoding="async"
               />
