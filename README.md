@@ -9,11 +9,7 @@
     <img src="docs/media/readme-language-en.svg" alt="English" width="112" height="38" />
   </a>
   <br />
-  <a href="README.fr.md" lang="fr">Français</a> &nbsp;·&nbsp; <a href="README.de.md" lang="de">Deutsch</a> &nbsp;·&nbsp; <a href="README.es.md" lang="es">Español</a>
-  <br />
-  <a href="README.ru.md" lang="ru">Русский</a> &nbsp;·&nbsp; <a href="README.ar.md" lang="ar">العربية</a> &nbsp;·&nbsp; <a href="README.pt.md" lang="pt">Português</a>
-  <br />
-  <a href="README.ja.md" lang="ja">日本語</a> &nbsp;·&nbsp; <a href="README.ko.md" lang="ko">한국어</a>
+  <sub><a href="README.fr.md" lang="fr">Français</a> &nbsp; <a href="README.de.md" lang="de">Deutsch</a> &nbsp; <a href="README.es.md" lang="es">Español</a> &nbsp; <a href="README.ru.md" lang="ru">Русский</a> &nbsp; <a href="README.ar.md" lang="ar">العربية</a> &nbsp; <a href="README.pt.md" lang="pt">Português</a> &nbsp; <a href="README.ja.md" lang="ja">日&#8288;本&#8288;語</a> &nbsp; <a href="README.ko.md" lang="ko">한&#8288;국&#8288;어</a></sub>
   <br />
   <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
 </p>
@@ -664,11 +660,7 @@ Vite preview 和官方 GitLab Pages 按 base 挂载产物；Cloudflare 由 [wran
     <img src="docs/media/readme-language-en.svg" alt="English" width="112" height="38" />
   </a>
   <br />
-  <a href="README.fr.md" lang="fr">Français</a> &nbsp;·&nbsp; <a href="README.de.md" lang="de">Deutsch</a> &nbsp;·&nbsp; <a href="README.es.md" lang="es">Español</a>
-  <br />
-  <a href="README.ru.md" lang="ru">Русский</a> &nbsp;·&nbsp; <a href="README.ar.md" lang="ar">العربية</a> &nbsp;·&nbsp; <a href="README.pt.md" lang="pt">Português</a>
-  <br />
-  <a href="README.ja.md" lang="ja">日本語</a> &nbsp;·&nbsp; <a href="README.ko.md" lang="ko">한국어</a>
+  <sub><a href="README.fr.md" lang="fr">Français</a> &nbsp; <a href="README.de.md" lang="de">Deutsch</a> &nbsp; <a href="README.es.md" lang="es">Español</a> &nbsp; <a href="README.ru.md" lang="ru">Русский</a> &nbsp; <a href="README.ar.md" lang="ar">العربية</a> &nbsp; <a href="README.pt.md" lang="pt">Português</a> &nbsp; <a href="README.ja.md" lang="ja">日&#8288;本&#8288;語</a> &nbsp; <a href="README.ko.md" lang="ko">한&#8288;국&#8288;어</a></sub>
   <br />
   <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
 </p>
