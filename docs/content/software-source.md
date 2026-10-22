@@ -1,3 +1,9 @@
+# 文案来源说明
+
+本文件于 2026-10-22 从根目录的 `CircuForge and TorusFold - Software (JLU-FBH iGEM 2026).md` 移至此处，下方原稿保留。当前网页入口为 [software.tsx](../../src/contents/software.tsx)，页面数据为 [softwarePage.ts](../../src/data/drylab/softwarePage.ts)；导入器读取的定稿目录见 [generate_software_page.py](../../scripts/generate_software_page.py)。不同稿件的版本关系需要内容负责人核对，移动不代表已同步正文或重新验证科学结论。
+
+---
+
 # CircuForge and TorusFold \- Software \(JLU\-FBH iGEM 2026\)
 
 # CircuForge and TorusFold

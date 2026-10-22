@@ -44,3 +44,11 @@ outputs/
 /refs_dump.json
 __pycache__/
 *.pyc
+
+# Local deployment and package-manager caches.
+/.wrangler/
+/.yarn-cache/
+*.tsbuildinfo
+
+# Generated CDN probe report (see scripts/check-cdn-links.mjs).
+/cdn-dead-links.json

@@ -9,10 +9,8 @@
 
 ## 保存位置
 
-1. **当前项目上传包目录**：
-   - 快速访问目录：`d:\TRAE SOLO CN\project\Official-wiki\upload-bundle-new-heroes\`
-   - 官方后台层级目录：`upload-bundle-new-heroes\按照iGEM后台上传层级_upload-by-folder\files\pages\hero\`
-2. **微信源文件同级目录**：
-   - `c:\Users\香芋派\xwechat_files\wxid_5ebnlqbau8vc22_50a2\msg\file\2026-10\新改_VisualDesign_HumanPractices\`
+本批次于 2026-10-22 移入 `delivery/uploads/upload-bundle-new-heroes/`，不再依赖作者电脑上的 Windows 绝对路径。
 
-你可以直接取用上述目录中的 WebP 或 PNG 文件进行后续上传或在其它地方替换使用。
+上传副本位于本目录的 `按照iGEM后台上传层级_upload-by-folder/files/pages/hero/`。根目录中的对应文件及原有映射保留，后台目标仍为 `files/pages/hero/`。
+
+上面的导出参数和 PSD 名称为原有记录；本轮没有重新导出或上传素材，实际 CDN 状态需另行核实。
