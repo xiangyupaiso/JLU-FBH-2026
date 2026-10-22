@@ -34,7 +34,6 @@ const firstGroupIndex = rosterCollections.findIndex(
 function rosterLinkTarget() {
   const id = window.location.hash.slice(1);
   for (const collection of rosterCollections) {
-    if (collection.kind === "teachers") continue;
     const member = collection.members.find((person) => person.id === id);
     if (collection.id === id || member) return { collection, member };
   }
@@ -107,7 +106,9 @@ function PersonCard({
       {content}
     </button>
   ) : (
-    <div className="roster-person roster-person--teacher">{content}</div>
+    <div id={member.id} className="roster-person roster-person--teacher">
+      {content}
+    </div>
   );
 }
 
@@ -427,7 +428,7 @@ function RosterPanels() {
   const requestClose = useCallback(() => {
     if (isClosingRef.current) return;
     const target = rosterLinkTarget();
-    if (target?.member) {
+    if (target?.member && target.collection.kind !== "teachers") {
       window.history.replaceState(
         window.history.state,
         "",
@@ -600,7 +601,10 @@ function RosterPanels() {
       return;
     }
     const element = document.getElementById(
-      target.member?.id ?? target.collection.id,
+      target.member?.id ??
+        (target.collection.kind === "teachers"
+          ? `roster-${target.collection.id}`
+          : target.collection.id),
     );
     element?.scrollIntoView({ block: "center", behavior: "instant" });
     if (target.member && element instanceof HTMLButtonElement) {
