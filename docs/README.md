@@ -6,6 +6,14 @@
 
 仓库首页在同一页提供中文与英文；下列维护指南保留各自的中英文入口。
 
+## 给未来 iGEM 团队的设计参考
+
+[JLU-FBH / CirCure Visual Design 方法指南](visual-design-guide.md)整理九个部分的阅读入口，重点展开第 9 节 Our Wiki Contribution：分层绘稿与开场、动效与阅读节奏、长文版面、导航、照片与来信、迭代记录。每组方法说明问题、做法、适用条件和源码位置，并提供引用建议。
+
+建议配合[原网页](https://2026.igem.wiki/jlu-fbh/visual-design)学习，尤其第 8、9 节：亲自操作交互演示，并展开 Technical details 阅读设计与实现细节。
+
+[English guide](visual-design-guide.en.md) · [完整 Visual Design 页面](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)
+
 ## 当前维护指南
 
 | 文档                              | 用途                                      |

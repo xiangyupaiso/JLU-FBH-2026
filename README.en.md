@@ -4,6 +4,7 @@
 
 The repository homepage contains both Chinese and English versions. Use its language badges to move between them on the same page.
 
+- [Visual Design methods for future iGEM teams](docs/visual-design-guide.en.md)
 - [English documentation](docs/README.en.md)
 - [Contributing](CONTRIBUTING.en.md)
 

@@ -37,6 +37,8 @@
 <p align="center">
   <a href="https://2026.igem.wiki/jlu-fbh/"><strong>浏览 Wiki ↗</strong></a>
   &nbsp;·&nbsp;
+  <a href="#给未来-igem-团队的设计参考">设计经验</a>
+  &nbsp;·&nbsp;
   <a href="#全站模块与页面体系">页面导航</a>
   &nbsp;·&nbsp;
   <a href="#快速启动">快速启动</a>
@@ -65,7 +67,48 @@
 
 </details>
 
+## 给未来 iGEM 团队的设计参考
+
+**JLU-FBH / JLUFBH · CirCure · iGEM 2026 · 吉林大学白求恩第一医院（First Bethune Hospital of Jilin University）**。本仓库也保存团队在科学传播（science communication）、Wiki 视觉设计（visual design）和交互叙事（interactive storytelling）中的尝试、修改原因与实现，供后续 iGEM 团队调研、引用和复用。
+
+**建议打开 [Visual Design 完整交互页面 ↗](https://2026.igem.wiki/jlu-fbh/visual-design)，重点阅读[第 8 节：人文关怀与叙事设计](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience)和[第 9 节：Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)。** 原网页有可操作的交互组件、动态对比和默认折叠的技术细节，建议边体验演示，边展开 **Technical details** 阅读设计理由与实现说明。
+
+[中英文方法指南](docs/visual-design-guide.md)提供案例摘要与源码入口，便于在 GitHub 内查阅，以及供搜索和 AI 调研工具读取；完整的交互与展开说明请结合原网页学习。
+
+### 最值得复用的第 9 节
+
+这一节记录从绘稿到成品的设计过程：如何让读者看清对象、读完解释、找到下一步，并能返回原处。
+
+| 小节 | 可借鉴的做法 |
+| --- | --- |
+| [9.1 绘稿与开场](https://2026.igem.wiki/jlu-fbh/visual-design#artwork-and-opening) | 按独立运动拆分画层，保存共同坐标；先准备资源，再完成标题与首场景交接。 |
+| [9.2 动效与阅读节奏](https://2026.igem.wiki/jlu-fbh/visual-design#keyframes-and-reading-holds) | 先安排可完整阅读的静止状态，再连接转场；保留 RNA 环轮廓，并提供暂停、选章与反向浏览。 |
+| [9.3 持续阅读的版面](https://2026.igem.wiki/jlu-fbh/visual-design#reading-surfaces) | 让色彩在正文区退后，用字体层级、图像边缘与留白组织长文。 |
+| [9.4 清楚的阅读路径](https://2026.igem.wiki/jlu-fbh/visual-design#navigation-with-a-landmark) | 用队徽保持导航地标，区分当前页与悬停反馈；提供目录、搜索、引用回链与明确的下一页。 |
+| [9.5 团队照片与来信](https://2026.igem.wiki/jlu-fbh/visual-design#photo-reveal-craft) | 用可逆的照片揭示和按需打开的信件结束叙事，处理键盘焦点与关闭后的阅读位置。 |
+| [9.6 迭代与记录](https://2026.igem.wiki/jlu-fbh/visual-design#design-record) | 保存草图、前后比较、修改理由与实现入口，检查反向滚动、快速反转、缩放窗口和减少动态效果。 |
+
+这些是 CirCure 的设计经验与实现案例。它们没有建立阅读理解或学习效果的量化结论；16:10 画布、16 px 图片圆角等取值也需要结合新项目的内容与视口重新判断。
+
+### Visual Design 九个部分
+
+| 部分 | 内容与调研入口 |
+| --- | --- |
+| [1 · Brand Identity](https://2026.igem.wiki/jlu-fbh/visual-design#brand-identity) | 项目标识、队徽、队旗与 Lumi 吉祥物如何呼应研究主题。 |
+| [2 · Cross-Module Palette Architecture](https://2026.igem.wiki/jlu-fbh/visual-design#color-system) | 五个内容模块的配色、标题层级与阅读底色。 |
+| [3 · Interactive Aesthetics & Motion](https://2026.igem.wiki/jlu-fbh/visual-design#interactive-experience) | 吉祥物光标、水彩界面、分子可视化与动画。 |
+| [4 · Decoupled Web Engineering Architecture](https://2026.igem.wiki/jlu-fbh/visual-design#engineering-rigor) | 正文、资产、交互和装配分层，以及文献与媒体交付。 |
+| [5 · Core Interfaces & Narrative Experience](https://2026.igem.wiki/jlu-fbh/visual-design#core-interfaces) | 加载界面与首页叙事入口。 |
+| [6 · Wiki Subpage Illustration System](https://2026.igem.wiki/jlu-fbh/visual-design#subpage-illustrations) | 跨模块的手绘题图与统一视觉语言。 |
+| [7 · Educational Games & Hands-On Experience](https://2026.igem.wiki/jlu-fbh/visual-design#educational-games) | 科普游戏与虚拟实验室的体验设计。 |
+| [8 · Humanistic Care & Narrative Design](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) | 从患者的问题出发连接科学解释，给读者参与和调节节奏的空间。 |
+| [9 · Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) | 从分层绘稿、阅读节奏到导航、收尾与迭代记录的可复用方法。 |
+
+调研与引用：[方法指南与源码地图](docs/visual-design-guide.md) · [English guide](docs/visual-design-guide.en.md) · [设计参考文献](https://2026.igem.wiki/jlu-fbh/visual-design#design-references) · [署名、许可与引用建议](docs/visual-design-guide.md#复用与引用)。
+
 ## 项目链接
+
+**GitHub 仓库** · 开发协作、设计方法与可复用源码<br />[JLU-FBH / CirCure — xiangyupaiso/Official-wiki](https://github.com/xiangyupaiso/Official-wiki)
 
 **在线 Wiki** · 正式网站与项目展示<br />[https://2026.igem.wiki/jlu-fbh/](https://2026.igem.wiki/jlu-fbh/)
 
@@ -94,6 +137,7 @@
 
 ## 从这里开始
 
+- 调研 iGEM Wiki 设计：[Visual Design 方法指南](docs/visual-design-guide.md)，重点阅读第 9 节的方法与案例
 - 直接运行项目：[快速启动](#快速启动)
 - 开发、检查与构建：[开发指南](docs/development.md)
 - 改页面时去哪里找文件：[仓库地图](docs/repository-layout.md)
@@ -503,6 +547,8 @@ GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配
 <p align="center">
   <a href="https://2026.igem.wiki/jlu-fbh/"><strong>Wiki ↗</strong></a>
   &nbsp;·&nbsp;
+  <a href="#design-reference-for-future-igem-teams">Design lessons</a>
+  &nbsp;·&nbsp;
   <a href="#site-modules-and-pages">Pages</a>
   &nbsp;·&nbsp;
   <a href="#quick-start">Quick start</a>
@@ -531,7 +577,48 @@ This repository contains the website source, page text, illustrations, asset sou
 
 </details>
 
+## Design reference for future iGEM teams
+
+**JLU-FBH / JLUFBH · CirCure · iGEM 2026 · First Bethune Hospital of Jilin University, China**. This repository also preserves the team's work on **iGEM Wiki visual design, science communication, and interactive storytelling**, including the reasons for revisions and the code behind them, for future teams to study, cite, and adapt.
+
+**Open the [complete interactive Visual Design page ↗](https://2026.igem.wiki/jlu-fbh/visual-design), especially [Section 8: Humanistic Care & Narrative Design](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) and [Section 9: Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft).** The original page includes interactive components, animated comparisons, and initially collapsed technical details. Try the demonstrations and expand **Technical details** to read the design rationale alongside the implementation.
+
+The [English methods guide](docs/visual-design-guide.en.md) and its [Chinese edition](docs/visual-design-guide.md) provide case summaries and source links for GitHub readers, search tools, and AI-assisted research. Use the original page to explore the complete interactions and expandable explanations.
+
+### Section 9: methods to adapt
+
+This section follows the work from drawings to finished interfaces: keep the object recognizable, give readers time to finish an explanation, make the next step clear, and leave a way back.
+
+| Section | Reusable approach |
+| --- | --- |
+| [9.1 Artwork and opening](https://2026.igem.wiki/jlu-fbh/visual-design#artwork-and-opening) | Separate layers by movement, retain shared coordinates, prepare resources, and coordinate the title-to-scene handoff. |
+| [9.2 Motion and reading rhythm](https://2026.igem.wiki/jlu-fbh/visual-design#keyframes-and-reading-holds) | Establish complete readable states before transitions; retain the RNA ring's outline and offer pause, chapter selection, and reverse browsing. |
+| [9.3 Sustained reading](https://2026.igem.wiki/jlu-fbh/visual-design#reading-surfaces) | Let color recede around the article; use typography, image edges, and white space to organize long-form content. |
+| [9.4 Clear reading routes](https://2026.igem.wiki/jlu-fbh/visual-design#navigation-with-a-landmark) | Keep the crest as a navigation landmark, distinguish current-page and hover feedback, and provide outlines, search, citation backlinks, and a clear next page. |
+| [9.5 Team photograph and letter](https://2026.igem.wiki/jlu-fbh/visual-design#photo-reveal-craft) | Close the story with a reversible photograph reveal and an optional letter, preserving keyboard focus and reading position. |
+| [9.6 Revision and documentation](https://2026.igem.wiki/jlu-fbh/visual-design#design-record) | Preserve sketches, comparisons, reasons, and source links; check reverse scrolling, rapid reversal, resize, and reduced motion. |
+
+These are CirCure design decisions and implementation cases. They do not establish measured gains in comprehension or learning. Values such as a 16:10 artwork canvas and 16 px image corners need to be reconsidered for another project's content and viewports.
+
+### All nine Visual Design sections
+
+| Section | What to study |
+| --- | --- |
+| [1 · Brand Identity](https://2026.igem.wiki/jlu-fbh/visual-design#brand-identity) | Project logo, team crest, flag, and Lumi mascot connected to the research theme. |
+| [2 · Cross-Module Palette Architecture](https://2026.igem.wiki/jlu-fbh/visual-design#color-system) | Five module palettes, heading hierarchy, and reading surfaces. |
+| [3 · Interactive Aesthetics & Motion](https://2026.igem.wiki/jlu-fbh/visual-design#interactive-experience) | Mascot cursor, watercolor interfaces, molecular visualization, and animation. |
+| [4 · Decoupled Web Engineering Architecture](https://2026.igem.wiki/jlu-fbh/visual-design#engineering-rigor) | Content, assets, interaction, and assembly layers; citations and media delivery. |
+| [5 · Core Interfaces & Narrative Experience](https://2026.igem.wiki/jlu-fbh/visual-design#core-interfaces) | Loading screen and homepage narrative entry. |
+| [6 · Wiki Subpage Illustration System](https://2026.igem.wiki/jlu-fbh/visual-design#subpage-illustrations) | Hand-painted page covers and a shared visual language across modules. |
+| [7 · Educational Games & Hands-On Experience](https://2026.igem.wiki/jlu-fbh/visual-design#educational-games) | Science-communication games and virtual laboratory experiences. |
+| [8 · Humanistic Care & Narrative Design](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) | Connect a patient's question to scientific explanation, participation, and reader control. |
+| [9 · Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) | Adaptable methods for layered artwork, reading rhythm, navigation, endings, and revision records. |
+
+Research and reuse: [Methods and source map](docs/visual-design-guide.en.md) · [Design references](https://2026.igem.wiki/jlu-fbh/visual-design#design-references) · [Attribution, licensing, and suggested citation](docs/visual-design-guide.en.md#reuse-and-citation).
+
 ## Project links
+
+**GitHub repository** · Development, design methods, and reusable source<br />[JLU-FBH / CirCure — xiangyupaiso/Official-wiki](https://github.com/xiangyupaiso/Official-wiki)
 
 **Live Wiki** · Published site and project showcase<br />[https://2026.igem.wiki/jlu-fbh/](https://2026.igem.wiki/jlu-fbh/)
 
@@ -560,6 +647,7 @@ See the [version comparison](docs/deployment.en.md#preview-and-official-gitlab-c
 
 ## Start here
 
+- Research iGEM Wiki design: [Visual Design methods guide](docs/visual-design-guide.en.md), with particular attention to Section 9
 - Run the project: [Quick start](#quick-start)
 - Develop, check, and build: [Development guide](docs/development.en.md)
 - Find the right files: [Repository map](docs/repository-layout.en.md)
