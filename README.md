@@ -100,7 +100,11 @@
 
 **也请展开页尾的 [Design Folios：六组设计研究与迭代 ↗](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive)。** 这里保留了未在最终 Wiki 中采用的探索、历史方案与修改理由，包括图像导航、粉色丝带与标志展开、三种 Human Practices 时间线，以及构图和 RNA 环转场的比较。其中五个交互演示保留为 HTML 页面，可在作品集中操作，也可通过 **Open in full window** 单独体验。它们为后续团队提供设计思路与实现参考；[方法指南中的作品集入口](docs/visual-design-guide.md#design-folios设计作品集与历史方案)列出了具体案例和源码。
 
-[Jianyuan Li](https://2026.igem.wiki/jlu-fbh/roster)（GitHub：[@jianyuanliljy-hub](https://github.com/jianyuanliljy-hub)）主要负责 CirCure 首页的设计与开发、Visual Design 第 8、9 节的调研、撰写与设计，以及 Design Folios 中相关的设计研究与交互实现。
+成员介绍：[Roster · Visual Design 分组 ↗](https://wiki.dayquay.com/jlu-fbh/roster#visual-design)。点击下方姓名可直接展开对应成员的详细介绍。
+
+- [Yupeng Xu](https://wiki.dayquay.com/jlu-fbh/roster#yupeng-xu)（GitHub：[@xiangyupaiso](https://github.com/xiangyupaiso)）担任 Wiki Lead（Wiki 负责人），统筹 CirCure Wiki 的开发与数字设计，组织页面功能的实现、整合与迭代。他结合计算机专业背景协调多智能体协作，将复杂任务拆分为可执行的开发步骤，并为队友整理可复用的工作流程、技能与工具，帮助团队共同推进网站建设。
+- [Jianyuan Li](https://wiki.dayquay.com/jlu-fbh/roster#jianyuan-li)（GitHub：[@jianyuanliljy-hub](https://github.com/jianyuanliljy-hub)）主要负责 CirCure 首页的设计与开发、Visual Design 第 8、9 节的调研、撰写与设计，以及 Design Folios 中相关的设计研究与交互实现。他将分层插画、滚动转场与阅读停留结合起来，反复调整叙事节奏和交互细节，并保留草图、修改记录与交互原型，供后续团队对照源码理解设计过程。
+- [Jingchen He](https://wiki.dayquay.com/jlu-fbh/roster#jingchen-he)（GitHub：[@HE-JINGCHEN](https://github.com/HE-JINGCHEN)）主要负责虚拟实验室的构建，将九个分子生物学实验整理为可交互的学习页面，完善实验侧栏、操作入口与媒体展示，方便读者按步骤浏览和体验实验。他也参与实验室的中文切换、图片资源迁移和源码压缩，在保留原有交互的基础上调整资源加载与页面呈现，并参与 Wiki 内容组织与细节修正。
 
 ### 最值得复用的第 9 节
 
@@ -573,12 +577,12 @@ Vite preview 和官方 GitLab Pages 按 base 挂载产物；Cloudflare 由 [wran
 
 感谢六位成员为 CirCure 的视觉设计与 Wiki 建设付出的工作。以下结合[官方 Attributions 团队贡献表](https://teams.igem.org/wiki/6056/attributions#team-member-contributions)、[Roster](https://2026.igem.wiki/jlu-fbh/roster)及本仓库已有的页面分工整理：
 
-- **Shuyi Wang · Art Lead（美术负责人）**：设计吉祥物、周边与队服，制定 Wiki 配色、版式和动效，并完善科学示意图与流程图。协调美术组分工，与湿实验成员沟通修改图稿，保持网站与宣传材料的视觉风格一致。
-- **Yupeng Xu · Wiki Lead（Wiki 负责人）**：统筹 Wiki 开发进度与跨组协作，搭建模块化前端框架，负责网站架构与阅读体验。参与教育游戏、虚拟实验和交互式数据展示的开发，编写技术文档，并检查内容质量、代码与数字素材的合规要求。
-- **Jianyuan Li · 团队成员**：主要负责首页设计与开发，以及 Visual Design 第 8、9 节的调研、撰写与设计。参与信息架构、页面实现、素材整合与版式调整，检查术语、逻辑和英文表达，并整理草图、迭代记录与设计经验。
-- **Muzi Li · 团队成员**：参与项目视觉概念与角色设计，绘制队徽、吉祥物、Wiki 插画、科学示意图、首页元素和图标。制作面向公众的医学与科学传播材料，并调整各板块的构图与风格，帮助读者理解项目及相关生物学概念。
-- **Zhixia Ye · 团队成员**：绘制 Wiki 加载页与首页的原创画稿，并为网站界面制作定制图形素材。参与项目封面及其他插画创作，将图像融入页面设计，形成首页与加载界面相互呼应的视觉效果，支持网站整体风格的统一。
-- **Jingchen He · 团队成员**：参与虚拟实验室构建与 Wiki 页面开发，组织页面结构、调整布局，并整合队友提供的文字、图片和项目结果。根据内容与设计反馈修改页面，排查显示及技术问题，让不同部分的项目资料得到清楚呈现。
+- **[Shuyi Wang](https://wiki.dayquay.com/jlu-fbh/roster#shuyi-wang) · Art Lead（美术负责人）**：设计吉祥物、周边与队服，制定 Wiki 配色、版式和动效，并完善科学示意图与流程图。协调美术组分工，与湿实验成员沟通修改图稿，保持网站与宣传材料的视觉风格一致。
+- **[Yupeng Xu](https://wiki.dayquay.com/jlu-fbh/roster#yupeng-xu) · Wiki Lead（Wiki 负责人）**：统筹 Wiki 开发进度与跨组协作，搭建模块化前端框架，负责网站架构与阅读体验。参与教育游戏、虚拟实验和交互式数据展示的开发，编写技术文档，并检查内容质量、代码与数字素材的合规要求。
+- **[Jianyuan Li](https://wiki.dayquay.com/jlu-fbh/roster#jianyuan-li) · 团队成员**：主要负责首页设计与开发，以及 Visual Design 第 8、9 节的调研、撰写与设计。参与信息架构、页面实现、素材整合与版式调整，检查术语、逻辑和英文表达，并整理草图、迭代记录与设计经验。
+- **[Muzi Li](https://wiki.dayquay.com/jlu-fbh/roster#muzi-li) · 团队成员**：参与项目视觉概念与角色设计，绘制队徽、吉祥物、Wiki 插画、科学示意图、首页元素和图标。制作面向公众的医学与科学传播材料，并调整各板块的构图与风格，帮助读者理解项目及相关生物学概念。
+- **[Zhixia Ye](https://wiki.dayquay.com/jlu-fbh/roster#zhixia-ye) · 团队成员**：绘制 Wiki 加载页与首页的原创画稿，并为网站界面制作定制图形素材。参与项目封面及其他插画创作，将图像融入页面设计，形成首页与加载界面相互呼应的视觉效果，支持网站整体风格的统一。
+- **[Jingchen He](https://wiki.dayquay.com/jlu-fbh/roster#jingchen-he) · 团队成员**：主要负责虚拟实验室构建，并参与 Wiki 页面开发，组织页面结构、调整布局，并整合队友提供的文字、图片和项目结果。根据内容与设计反馈修改页面，排查显示及技术问题，让不同部分的项目资料得到清楚呈现。
 
 ### 团队负责人与其他工作组
 
@@ -730,7 +734,11 @@ The [English methods guide](docs/visual-design-guide.en.md) and its [Chinese edi
 
 **Also expand the [Design Folios: six studies and revisions ↗](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive) near the end of the page.** They preserve explorations left out of the final Wiki, earlier directions, and reasons for revision: image-led navigation, a pink thread and expanding emblem, three Human Practices timelines, and composition and RNA-ring transition comparisons. Five interactive demonstrations are preserved as HTML pages; try them within the folios or choose **Open in full window**. They offer design ideas and implementation references for future teams; the [guide's Design Folios section](docs/visual-design-guide.en.md#design-folios-earlier-directions-and-interactive-studies) lists the examples and source files.
 
-[Jianyuan Li](https://2026.igem.wiki/jlu-fbh/roster) (GitHub: [@jianyuanliljy-hub](https://github.com/jianyuanliljy-hub)) was primarily responsible for the design and development of the CirCure homepage; the research, writing, and design of Visual Design Sections 8 and 9; and the related design studies and interactive implementations in Design Folios.
+Meet the contributors in the [Roster · Visual Design group ↗](https://wiki.dayquay.com/jlu-fbh/roster#visual-design). Select a name below to open that member’s full profile directly.
+
+- [Yupeng Xu](https://wiki.dayquay.com/jlu-fbh/roster#yupeng-xu) (GitHub: [@xiangyupaiso](https://github.com/xiangyupaiso)) served as Wiki Lead, coordinating CirCure Wiki development and digital design, including the implementation, integration, and revision of page features. Drawing on his computer science background, he organized collaboration across AI agents, broke complex tasks into practical development steps, and documented reusable workflows, skills, and tools for teammates. His work helped the team coordinate contributions across the site and turn individual development tasks into a shared working process.
+- [Jianyuan Li](https://wiki.dayquay.com/jlu-fbh/roster#jianyuan-li) (GitHub: [@jianyuanliljy-hub](https://github.com/jianyuanliljy-hub)) primarily designed and developed the CirCure homepage; researched, wrote, and designed Visual Design Sections 8 and 9; and developed related design studies and interactive implementations in Design Folios. He combined layered illustrations, scroll transitions, and reading pauses, repeatedly refining the narrative rhythm and interaction details. He also preserved sketches, revision records, and interactive prototypes so future teams can study the design process alongside the source code.
+- [Jingchen He](https://wiki.dayquay.com/jlu-fbh/roster#jingchen-he) (GitHub: [@HE-JINGCHEN](https://github.com/HE-JINGCHEN)) primarily built the virtual laboratory, organizing nine molecular biology experiments into interactive learning pages and refining experiment sidebars, controls, and media presentation so readers can follow each experiment step by step. He also worked on Chinese-language switching, image migration, and source compression, adjusting resource loading and page presentation while preserving existing interactions. Alongside the laboratory, he contributed to Wiki content organization and page refinements, helping arrange project ideas, experimental material, and revision records for readers.
 
 ### Section 9: methods to adapt
 
@@ -1201,12 +1209,12 @@ We thank the university, clinical institutions, research platforms, and supporte
 
 We thank all six members for their work on CirCure's visual design and Wiki. The summaries below draw on the [official Attributions form](https://teams.igem.org/wiki/6056/attributions#team-member-contributions), the [Roster](https://2026.igem.wiki/jlu-fbh/roster), and the page responsibilities already documented in this repository:
 
-- **Shuyi Wang · Art Lead**: Designed the mascot, merchandise, and team uniform, and developed Wiki palettes, layouts, and animation effects. Coordinated art-team tasks, refined scientific schematics and flowcharts with wet-lab feedback, and maintained a consistent visual style across the website and outreach materials.
-- **Yupeng Xu · Wiki Lead**: Led Wiki planning and coordination, built the modular frontend framework, and oversaw website architecture and user experience. Developed educational games, virtual-lab simulations, and interactive data displays; wrote technical documentation; and reviewed content quality, code, and digital assets against iGEM and licensing requirements.
-- **Jianyuan Li · Team Member**: Primarily designed and developed the homepage and researched, wrote, and designed Visual Design Sections 8 and 9. Contributed to information architecture, page implementation, asset integration, layout refinement, and editorial review, while documenting sketches, revisions, and design lessons for future teams.
-- **Muzi Li · Team Member**: Developed visual concepts and character designs, creating the team logo, mascot illustrations, Wiki graphics, scientific diagrams, homepage elements, and icons. Prepared illustrated medical and science communication materials and refined composition and style across sections to help wider audiences understand the project.
-- **Zhixia Ye · Team Member**: Created original drawings for the Wiki loading page and homepage, alongside custom graphics for the website interface. Contributed cover art and other project illustrations, helping the entry pages share a coherent visual identity and supporting consistency across the site's artwork.
-- **Jingchen He · Team Member**: Contributed to virtual-lab construction and Wiki coding, organizing pages, adjusting layouts, and integrating teammates' text, images, and project results. Worked with the team on content and design revisions and addressed display and technical problems to present the project's materials clearly.
+- **[Shuyi Wang](https://wiki.dayquay.com/jlu-fbh/roster#shuyi-wang) · Art Lead**: Designed the mascot, merchandise, and team uniform, and developed Wiki palettes, layouts, and animation effects. Coordinated art-team tasks, refined scientific schematics and flowcharts with wet-lab feedback, and maintained a consistent visual style across the website and outreach materials.
+- **[Yupeng Xu](https://wiki.dayquay.com/jlu-fbh/roster#yupeng-xu) · Wiki Lead**: Led Wiki planning and coordination, built the modular frontend framework, and oversaw website architecture and user experience. Developed educational games, virtual-lab simulations, and interactive data displays; wrote technical documentation; and reviewed content quality, code, and digital assets against iGEM and licensing requirements.
+- **[Jianyuan Li](https://wiki.dayquay.com/jlu-fbh/roster#jianyuan-li) · Team Member**: Primarily designed and developed the homepage and researched, wrote, and designed Visual Design Sections 8 and 9. Contributed to information architecture, page implementation, asset integration, layout refinement, and editorial review, while documenting sketches, revisions, and design lessons for future teams.
+- **[Muzi Li](https://wiki.dayquay.com/jlu-fbh/roster#muzi-li) · Team Member**: Developed visual concepts and character designs, creating the team logo, mascot illustrations, Wiki graphics, scientific diagrams, homepage elements, and icons. Prepared illustrated medical and science communication materials and refined composition and style across sections to help wider audiences understand the project.
+- **[Zhixia Ye](https://wiki.dayquay.com/jlu-fbh/roster#zhixia-ye) · Team Member**: Created original drawings for the Wiki loading page and homepage, alongside custom graphics for the website interface. Contributed cover art and other project illustrations, helping the entry pages share a coherent visual identity and supporting consistency across the site's artwork.
+- **[Jingchen He](https://wiki.dayquay.com/jlu-fbh/roster#jingchen-he) · Team Member**: Primarily built the virtual laboratory and contributed to Wiki coding, organizing pages, adjusting layouts, and integrating teammates' text, images, and project results. Worked with the team on content and design revisions and addressed display and technical problems to present the project's materials clearly.
 
 ### Team leaders and other working groups
 
