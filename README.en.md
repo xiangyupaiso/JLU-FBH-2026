@@ -10,15 +10,23 @@
   <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
 </p>
 
-<h1 align="center">
+<p align="center">
   <a href="https://2026.igem.wiki/jlu-fbh/">
-    <img src="docs/media/circure-cover.svg" alt="CirCure · JLU-FBH · iGEM 2026" width="1200" />
+    <img src="docs/media/circure-wordmark.svg" alt="CirCure" width="340" />
   </a>
-</h1>
+</p>
+
+<h1 align="center">JLU-FBH · iGEM 2026</h1>
 
 <p align="center">
-  <strong>A circRNA vaccine research project for triple-negative breast cancer</strong><br />
-  <sub>JLU-FBH · International Genetically Engineered Machine Competition 2026 · Official Wiki</sub>
+  <a href="https://teams.igem.org/6056">
+    <img src="docs/media/readme-team-marks.svg" alt="JLU-FBH team crest and iGEM mark" width="180" />
+  </a>
+</p>
+
+<p align="center">
+  <strong>CirCure Official Wiki</strong><br />
+  A circRNA vaccine research project for triple-negative breast cancer
 </p>
 
 <p align="center">
@@ -397,6 +405,28 @@ GitHub Pages does not read Cloudflare's `_redirects`. Configure its mount path a
 Asset dictionaries such as `contributionAssets.ts`, `resultsAssets.ts`, and `designAssets.ts` connect resources to pages. Earlier fixes addressed broad key indexing and `never` inference. Continue validating changes through TypeScript and build checks.
 
 `wrangler.json` configures Cloudflare; `.gitlab-ci.yml` controls official Wiki builds; `.dockerignore` filters Docker contexts. Maintain each configuration for its environment.
+
+## Team and acknowledgements
+
+We thank the university, clinical institutions, research platforms, and supporters who helped the team. See the Wiki's [Attributions](https://2026.igem.wiki/jlu-fbh/attributions) page for individual contributions and forms of support.
+
+<p align="center">
+  <img src="docs/media/readme-institutions.svg" alt="Jilin University; The First Bethune Hospital of Jilin University; The First Bethune Clinical Medical College of Jilin University." width="640" />
+</p>
+
+<p align="center">
+  <strong>Jilin University</strong><br />
+  The First Bethune Hospital of Jilin University<br />
+  The First Bethune Clinical Medical College of Jilin University
+</p>
+
+### Research platforms and tools
+
+<p align="center">
+  <img src="docs/media/readme-acknowledgements.svg" alt="Acknowledgements from the Wiki footer: Core Facility, Institute of Translational Medicine, Charles River, BioRender, MathWorks, Lark, Grammarly, and Schrödinger." width="640" />
+</p>
+
+These marks come from the existing Wiki footer. Research platforms include the Core Facility and Institute of Translational Medicine at the First Hospital of Jilin University. Tools and other supporters include Charles River, BioRender, MathWorks, Lark, Grammarly, and Schrödinger.
 
 ## License and attribution
 
