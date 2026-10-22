@@ -7,6 +7,7 @@
 | 文件                                                | 来源与用途                                                                                                                                            |
 | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `readme-language-zh.svg` / `readme-language-en.svg` | README 顶部的中文与英文阅读入口，沿用 CirCure 字标的品牌色；静态 SVG，无外部字体、脚本或依赖。                                                        |
+| `readme-visit-wiki-zh.svg` / `readme-visit-wiki-en.svg` | 中英文 README 的官方 Wiki 主入口按钮，沿用语言入口的品牌紫色；静态 SVG，由外层链接负责跳转，无脚本或外部资源。 |
 | `readme-team-marks.svg`                             | JLU-FBH 队徽与 iGEM 标识，原图来自 `src/assets/jlu-fbh-crest.png` 与 `src/assets/partners/sponsor-igem.png`。                                         |
 | `readme-institutions.svg`                           | 复用官网页脚的吉林大学字标、白求恩第一医院印章与第一临床医学院字标；来源为 `src/assets/partners/` 和 `src/assets/footer/`。                           |
 | `readme-acknowledgements.svg`                       | 复用 `src/data/footer.ts` 中对应科研平台和工具的现有本地标识；来源为 `src/assets/partners/`。                                                         |

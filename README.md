@@ -30,8 +30,14 @@
 </p>
 
 <p align="center">
-  <a href="https://2026.igem.wiki/jlu-fbh/"><strong>浏览 Wiki ↗</strong></a>
-  &nbsp;·&nbsp;
+  <a href="https://2026.igem.wiki/jlu-fbh/" title="浏览 CirCure 官方 Wiki">
+    <img src="docs/media/readme-visit-wiki-zh.svg" alt="浏览完整 Wiki ↗" width="300" height="76" />
+  </a>
+  <br />
+  <sub><a href="https://2026.igem.wiki/jlu-fbh/">进入官方 Wiki，浏览完整项目与交互展示 ↗</a></sub>
+</p>
+
+<p align="center">
   <a href="#全站模块与页面体系">页面导航</a>
   &nbsp;·&nbsp;
   <a href="#快速启动">快速启动</a>
@@ -44,6 +50,16 @@
 本项目为 **JLU-FBH** 战队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki 网站前端工程，同时保存页面内容、素材来源与可复用的子项目源码。
 
 项目以 **CirCure**——基于工程化环状 RNA（circRNA）的多靶向三阴性乳腺癌（TNBC）疫苗平台——为主题，通过学术长文、手绘插画、滚动叙事、模型可视化与交互科普介绍团队的设计、实验和研究过程。
+
+<p align="center">
+  <strong>项目宣传视频 · Promotion Video</strong><br />
+  <a href="https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16">
+    <img src="https://video.igem.org/lazy-static/thumbnails/a5170f77-bfc2-4ce8-a304-5b86a23cccc2.jpg" alt="CirCure 项目宣传视频官方封面，点击前往 iGEM 视频平台观看。" width="800" />
+  </a>
+  <br />
+  <a href="https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16"><strong>▶ 观看宣传视频 · 2 分 03 秒 ↗</strong></a><br />
+  <sub>iGEM 官方视频平台 · 点击封面或链接播放</sub>
+</p>
 
 <details>
 <summary><strong>展开官网预览</strong> · circRNA 手绘场景</summary>

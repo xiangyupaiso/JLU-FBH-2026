@@ -30,8 +30,14 @@
 </p>
 
 <p align="center">
-  <a href="https://2026.igem.wiki/jlu-fbh/"><strong>Wiki ↗</strong></a>
-  &nbsp;·&nbsp;
+  <a href="https://2026.igem.wiki/jlu-fbh/" title="Visit the official CirCure Wiki">
+    <img src="docs/media/readme-visit-wiki-en.svg" alt="Explore the Wiki ↗" width="300" height="76" />
+  </a>
+  <br />
+  <sub><a href="https://2026.igem.wiki/jlu-fbh/">Open the official Wiki for the full project and interactive features ↗</a></sub>
+</p>
+
+<p align="center">
   <a href="#site-modules-and-pages">Pages</a>
   &nbsp;·&nbsp;
   <a href="#quick-start">Quick start</a>
@@ -44,6 +50,16 @@
 This repository contains the official Wiki frontend for **JLU-FBH** in the 2026 International Genetically Engineered Machine Competition (**iGEM**), together with page content, asset sources, and reusable application source.
 
 **CirCure** explores an engineered circular RNA (**circRNA**) platform for a multi-target triple-negative breast cancer (**TNBC**) vaccine. The Wiki presents the team's design, experiments, and research through long-form articles, hand-drawn illustrations, scroll-driven storytelling, model visualizations, and interactive science communication.
+
+<p align="center">
+  <strong>Project Promotion Video</strong><br />
+  <a href="https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16">
+    <img src="https://video.igem.org/lazy-static/thumbnails/a5170f77-bfc2-4ce8-a304-5b86a23cccc2.jpg" alt="Official cover of the CirCure project promotion video. Open the video on iGEM Video Universe." width="800" />
+  </a>
+  <br />
+  <a href="https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16"><strong>▶ Watch the promotion video · 2 min 03 sec ↗</strong></a><br />
+  <sub>iGEM Video Universe · Click the cover or link to watch</sub>
+</p>
 
 <details>
 <summary><strong>Preview the Wiki</strong> · Hand-painted circRNA scene</summary>
