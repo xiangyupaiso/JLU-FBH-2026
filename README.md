@@ -443,13 +443,16 @@ GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配
   吉林大学白求恩第一医院 · 吉林大学白求恩第一临床医学院
 </p>
 
-### 科研平台与工具
+### 科研平台、工具与其他支持
 
 <p align="center">
-  <img src="docs/media/readme-acknowledgements.svg" alt="官网页脚致谢标识：公共技术平台、转化医学研究院、Charles River、BioRender、MathWorks、Lark、Grammarly 和 Schrödinger。" width="640" />
+  <img src="docs/media/readme-acknowledgements.svg" alt="官网页脚致谢标识：公共技术平台、转化医学研究院、实验动物中心、Charles River、BioRender、MathWorks、Lark、Grammarly 和 Schrödinger。" width="640" />
 </p>
 
-标识沿用官网页脚的现有素材。科研平台包括吉林大学第一医院公共技术平台与转化医学研究院；工具及其他支持方包括 Charles River、BioRender、MathWorks、Lark、Grammarly 和 Schrödinger。
+- **临床与教学单位**：吉林大学白求恩第一临床医学院教学部、吉林大学白求恩第一医院肿瘤中心。
+- **科研平台**：吉林大学第一医院公共技术平台、转化医学研究院、实验动物中心。
+- **工具及其他支持方**：Charles River、BioRender、MathWorks、Lark、Grammarly、Schrödinger。
+- **赛事与社区**：iGEM。
 
 ## 授权与知识产权
 
@@ -907,13 +910,16 @@ We thank the university, clinical institutions, research platforms, and supporte
   The First Bethune Clinical Medical College of Jilin University
 </p>
 
-### Research platforms and tools
+### Research platforms, tools, and other support
 
 <p align="center">
-  <img src="docs/media/readme-acknowledgements.svg" alt="Acknowledgements from the Wiki footer: Core Facility, Institute of Translational Medicine, Charles River, BioRender, MathWorks, Lark, Grammarly, and Schrödinger." width="640" />
+  <img src="docs/media/readme-acknowledgements.svg" alt="Acknowledgements from the Wiki footer: Core Facility, Institute of Translational Medicine, Laboratory Animal Center, Charles River, BioRender, MathWorks, Lark, Grammarly, and Schrödinger." width="640" />
 </p>
 
-These marks come from the existing Wiki footer. Research platforms include the Core Facility and Institute of Translational Medicine at the First Hospital of Jilin University. Tools and other supporters include Charles River, BioRender, MathWorks, Lark, Grammarly, and Schrödinger.
+- **Clinical and teaching units**: Department of Teaching, The First Bethune Clinical Medical College of Jilin University; Cancer Center, The First Bethune Hospital of Jilin University.
+- **Research platforms**: Core Facility, Institute of Translational Medicine, and Laboratory Animal Center at the First Hospital of Jilin University.
+- **Tools and other supporters**: Charles River, BioRender, MathWorks, Lark, Grammarly, and Schrödinger.
+- **Competition and community**: iGEM.
 
 ## License and attribution
 
