@@ -1,14 +1,21 @@
 # 部署说明
 
-GitHub 集成、官方 GitLab Wiki、Cloudflare 预览与实验室部署各自独立。下面描述仓库中可见的配置；某次线上是否成功，需要查对应平台的实际结果。
+简体中文 | [English](deployment.en.md)
 
-## GitHub：LJY-PART → main
+本项目使用 GitHub 进行团队协作，使用官方 GitLab 交付源码并发布 Wiki，使用 Cloudflare 提供构建预览。虚拟实验室作为独立应用部署在 iGEM 基础设施上。
 
-GitHub 保存团队协作源码。将工作推送到 `LJY-PART`，通过 Pull Request 合入 `main`，核对 head commit、差异和适用的状态检查。
+## 团队协作与发布入口
 
-当前仓库没有随源码提交的 GitHub Actions 工作流。第三方平台可能对提交附加部署检查，是否启用以平台实际配置为准。
+| 平台                                                | 职责                                       |
+| --------------------------------------------------- | ------------------------------------------ |
+| GitHub                                              | 日常开发、Pull Request、代码评审与版本协作 |
+| [官方 GitLab](https://gitlab.igem.org/2026/jlu-fbh) | iGEM Wiki 源码交付、流水线构建与发布       |
+| [在线 Wiki](https://2026.igem.wiki/jlu-fbh/)        | 面向评审和公众的正式网站                   |
+| Cloudflare                                          | 主站构建与预览环境                         |
 
-GitHub 合并不会自动证明官方 GitLab 已同步，也不能证明某个在线环境已更新。
+各协作者在自己的工作分支或功能分支开发，通过 Pull Request 评审后合入 `main`。分支名按协作者或小组的现有约定使用，`main` 作为共享集成分支。
+
+准备发布时，由发布负责人将审核通过的版本同步到官方 GitLab 的默认分支，随后由 GitLab Pages 流水线构建并发布。
 
 ## 官方 Wiki：GitLab Pages
 
@@ -21,7 +28,7 @@ GitHub 合并不会自动证明官方 GitLab 已同步，也不能证明某个�
 
 规则只在 GitLab 默认分支运行。GitLab 的复制发生在 CI 工作目录，不应把该目录混入本机源码提交。
 
-官方 GitLab 的同步属于独立发布操作，可能有单独的素材与来源要求。不要直接把整个 GitHub 工作目录、原稿或交付归档当作 GitLab 发布包；先核对目标提交、发布范围和素材验证结果。
+发布版本应包含所需源码和来源记录，图片、字体、视频等资源按官方托管方式接入。开发缓存、临时报告和本地交付目录按发布清单处理；素材维护流程见[素材说明](assets.md)。
 
 ## Cloudflare
 
@@ -29,9 +36,9 @@ GitHub 合并不会自动证明官方 GitLab 已同步，也不能证明某个�
 
 `scripts/postbuild-slug.mjs` 根据 Vite 实际 base 生成 `_redirects`，将 `/jlu-fbh/` 映射到单份构建产物。正常情况下保留一份 `dist/`，无需手动复制出 `dist/jlu-fbh/`。
 
-脚本还生成 `.assetsignore`，在 Cloudflare 上传时排除超过平台单文件限制的资源。排除上传不代表页面资源仍然完整，正式发布前仍需核对实际使用的文件与 CDN URL。
+脚本还生成 `.assetsignore`，在 Cloudflare 上传时排除超过平台单文件限制的资源。被排除的资源应通过对应的官方 CDN 地址提供，预览时检查页面引用与加载结果。
 
-Cloudflare 的线上项目、触发分支和访问保护配置不在本说明中假定为已验证状态。
+Cloudflare 项目的构建命令、触发分支和访问设置由维护者在平台中管理；仓库中的 `wrangler.json` 和构建脚本负责产物目录与路径适配。
 
 ## 四个 HTML 入口
 
@@ -42,7 +49,7 @@ Cloudflare 的线上项目、触发分支和访问保护配置不在本说明中
 - `archive-navigation-study.html`
 - `archive-recognition-study.html`
 
-后三者服务于设计展示或历史交互研究，仍在当前构建图中。整理名称与目录时必须更新构建入口、引用和页面集成；本轮保留这些路径。
+后三者服务于设计展示或历史交互研究，仍在当前构建图中。调整名称与目录时同步更新构建入口、引用和页面集成。
 
 ## 子项目与其他托管
 
@@ -50,4 +57,4 @@ Cloudflare 的线上项目、触发分支和访问保护配置不在本说明中
 - 虚拟实验室在官方独立软件仓库部署，当前 Wiki 保存其源码并通过 iframe 接入。详见 [实验室 README](../virtual-lab/README.md)。
 - GitHub Pages 不读取 Cloudflare 的 `_redirects`；若另行部署，需核对挂载路径与 SPA 回退。
 
-发布前执行[开发指南](development.md)中的工程检查，并核对页面访问、深层路由、静态资源和适用的 iframe 集成。发布成功与科研结论成立需要分别判断。
+发布前执行[开发指南](development.md)中的工程检查，发布后检查首页、主要正文页、深层路由、静态资源和 iframe 入口。

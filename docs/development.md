@@ -1,5 +1,7 @@
 # 开发指南
 
+简体中文 | [English](development.en.md)
+
 ## 主站环境与安装
 
 建议 Node.js 22.12+ 的 22.x 环境，Yarn Classic 1.22.22。官方 CI 使用 `node:22`；主站包管理器声明在 `package.json`。
