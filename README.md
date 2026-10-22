@@ -2,6 +2,16 @@
 
 JLU-FBH 2026 官方 Wiki 的前端源码、页面内容与素材来源。主站使用 React、TypeScript 和 Vite；主题为基于环状 RNA（circRNA）的三阴性乳腺癌（TNBC）疫苗平台。
 
+## 项目链接
+
+| 入口 | 用途 |
+| --- | --- |
+| [在线 Wiki](https://2026.igem.wiki/jlu-fbh/) | 浏览面向评审与公众的正式网站 |
+| [官方 GitLab 仓库](https://gitlab.igem.org/2026/jlu-fbh) | 查看官方 Wiki 源码及 GitLab Pages 发布记录 |
+| [团队后台 · Team 6056](https://teams.igem.org/6056) | 团队管理、素材上传与参赛交付入口 |
+
+日常开发与 Pull Request 在本 GitHub 仓库进行；官方 GitLab 同步与网站发布的关系见[部署说明](docs/deployment.md)。
+
 ## 从这里开始
 
 - 开发、检查与构建：[开发指南](docs/development.md)
