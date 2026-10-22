@@ -59,6 +59,15 @@
 我们希望读者在了解分子机制与实验设计的同时，也能看到研究背后患者对复发的担忧，以及她们对生活的期待。因此，我们从患者的疑问讲起，在科学解释中加入可以停下来阅读、比较和探索的交互，让读者按自己的节奏了解 CirCure。
 
 <p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/visual-design#lumi-mascot" title="认识 Lumi，CirCure 的小羊吉祥物">
+    <img src="docs/media/readme-lumi.png" alt="小羊 Lumi 戴着粉色花朵，胸前系着粉红丝带，在环状 RNA 图案中微笑比耶。" width="140" height="140" />
+  </a>
+  <br />
+  <strong>你好，我是 Lumi！</strong><br />
+  <sub>陪你读懂 CirCure 的小羊伙伴 · <a href="https://2026.igem.wiki/jlu-fbh/visual-design#lumi-mascot">认识我们的吉祥物 ↗</a></sub>
+</p>
+
+<p align="center">
   <strong>项目宣传视频 · Promotion Video</strong><br />
   <a href="https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16">
     <img src="https://video.igem.org/lazy-static/thumbnails/a5170f77-bfc2-4ce8-a304-5b86a23cccc2.jpg" alt="CirCure 项目宣传视频官方封面，点击前往 iGEM 视频平台观看。" width="800" />
@@ -585,6 +594,15 @@ This is the official Wiki repository for **JLU-FBH** in the 2026 International G
 **CirCure** explores an engineered circular RNA (**circRNA**) platform for a multi-target triple-negative breast cancer (**TNBC**) vaccine. The Wiki presents the project's design, experiments, and research findings through research articles, hand-drawn illustrations, scroll-driven storytelling, model visualizations, and science communication games.
 
 Alongside the molecular mechanisms and experimental design, we want readers to see the patients behind the research: their worries about recurrence and their hopes for everyday life. We begin with a patient's question and give readers room to pause, compare, and explore the science at their own pace.
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/visual-design#lumi-mascot" title="Meet Lumi, the CirCure lamb mascot">
+    <img src="docs/media/readme-lumi.png" alt="Lumi the lamb wears pink petals and a breast cancer awareness ribbon, smiling and making peace signs inside a circular RNA motif." width="140" height="140" />
+  </a>
+  <br />
+  <strong>Hi, I'm Lumi!</strong><br />
+  <sub>Your little lamb companion through CirCure · <a href="https://2026.igem.wiki/jlu-fbh/visual-design#lumi-mascot">Meet our mascot ↗</a></sub>
+</p>
 
 <p align="center">
   <strong>Project Promotion Video</strong><br />

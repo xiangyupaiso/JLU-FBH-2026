@@ -4,6 +4,8 @@
 
 These assets support the repository's README presentation. The website keeps its existing runtime assets and build entries.
 
+`readme-lumi.png` introduces the mascot after the project overview in both language sections of the README. It comes from the [Lumi circular emblem](https://static.igem.wiki/teams/6056/wiki/files/pages/project/art/lumi-circle.avif) used on the Visual Design page, retrieved on 2026-10-22. The decoded AVIF is saved losslessly as PNG, preserving its 1853 × 1853 dimensions, colors, and white background. Both sections display it at 140 × 140 and link to Lumi's design notes.
+
 | File                                                | Source and purpose                                                                                                                                                                                                         |
 | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `readme-language-zh.svg` / `readme-language-en.svg` | Same-page language links with the original purple rounded buttons and arrows, displayed side by side at 112px each.                                                                                                        |
