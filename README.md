@@ -1,11 +1,9 @@
 <a name="readme-zh"></a><br />
 
 <p align="center">
-  <a href="#readme-en"><img src="docs/media/readme-language-en.svg" alt="English · Read in English on this page" height="36" /></a><br />
-  <a href="#readme-zh"><img src="docs/media/readme-language-zh-current.svg" alt="简体中文 · 当前语言" height="36" /></a>
-</p>
-
-<p align="center">
+  <a href="#readme-zh"><img src="docs/media/readme-language-zh.svg" alt="简体中文 · 当前语言" width="112" /></a>
+  &nbsp;
+  <a href="#readme-en"><img src="docs/media/readme-language-en.svg" alt="English · Read in English on this page" width="112" /></a><br />
   <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
 </p>
 
@@ -447,11 +445,9 @@ GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配
 <a name="readme-en"></a><br />
 
 <p align="center">
-  <a href="#readme-zh"><img src="docs/media/readme-language-zh.svg" alt="简体中文 · 在本页阅读中文版" height="36" /></a><br />
-  <a href="#readme-en"><img src="docs/media/readme-language-en-current.svg" alt="English · Current language" height="36" /></a>
-</p>
-
-<p align="center">
+  <a href="#readme-zh"><img src="docs/media/readme-language-zh.svg" alt="简体中文 · 在本页阅读中文版" width="112" /></a>
+  &nbsp;
+  <a href="#readme-en"><img src="docs/media/readme-language-en.svg" alt="English · Current language" width="112" /></a><br />
   <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
 </p>
 
