@@ -589,6 +589,18 @@ Vite preview 和官方 GitLab Pages 按 base 挂载产物；Cloudflare 由 [wran
 
 也感谢 Wet Lab、Dry Lab 与 Human Practices 的全体成员在实验执行、安全与记录、生物信息学与计算设计、数学建模、工具开发、教育和公共传播中的共同投入，为 Wiki 的科学内容、项目记录与公众交流提供基础。
 
+### 其他成员与指导团队
+
+也感谢以下同学、指导教师与顾问的参与和支持。名单按 [Roster](https://2026.igem.wiki/jlu-fbh/roster) 分组，并与[官方 Attributions 团队贡献表](https://teams.igem.org/wiki/6056/attributions#team-member-contributions)核对；连同上文所列成员，完整团队共 44 人。各人的具体贡献可在官方表中查阅。
+
+- **Wet Lab**：Jiaze Xu、Minxu Jin、Zitong Ye、Shuangshuo Tian、Jingtong Xu、Jiayi Zhang。
+- **Dry Lab**：Hui Pan、Ziyi Yan、Yufan Ji。
+- **Human Practices**：Jianyu Zhou、Qihang Chen、Jiatong Zhang、Yiran Zheng、Junhan Lu。
+- **Primary PIs（主要指导教师）**：Bin Liu、Guoyue Lv、Jiuwei Cui、Songling Zhang。
+- **Secondary PIs（共同指导教师）**：Lin Jia、Meihua Piao、Qingtian Guan。
+- **Instructors（指导教师）**：Bin Wang、Kexin Gao、Ruihong Wu、Ruohan Yang。
+- **Advisors（顾问）**：Mingwan Liu、Sirui Dong、Xilei Song、Yurui Wei。
+
 <p align="center">
   <img src="docs/media/readme-institutions.svg" alt="吉林大学；吉林大学白求恩第一医院；吉林大学白求恩第一临床医学院。" width="640" />
 </p>
@@ -1209,6 +1221,18 @@ We thank the team leaders, group leads, and new media subgroup lead for their re
 - **Rong Gao · New Media Subgroup Lead**: Reviewed other iGEM projects and supported outreach events, including the Apricot Blossom Festival, through materials, on-site organization, and audience communication. Coordinated new media work, producing WeChat content, posters, promotional graphics, and brochures, and contributed video editing while maintaining consistent visual communication.
 
 We also thank every member of Wet Lab, Dry Lab, and Human Practices for their work on experiments, safety and documentation, bioinformatics and computational design, mathematical modeling, tool development, education, and public communication, which underpins the Wiki's scientific content and project records.
+
+### Other members and mentors
+
+We also thank the following students, PIs, instructors, and advisors for their participation and support. The names follow the [Roster](https://2026.igem.wiki/jlu-fbh/roster) groups and have been checked against the [official Attributions form](https://teams.igem.org/wiki/6056/attributions#team-member-contributions). Together with those listed above, they make up the full team of 44 people. Individual contributions are recorded in the official form.
+
+- **Wet Lab**: Jiaze Xu, Minxu Jin, Zitong Ye, Shuangshuo Tian, Jingtong Xu, Jiayi Zhang.
+- **Dry Lab**: Hui Pan, Ziyi Yan, Yufan Ji.
+- **Human Practices**: Jianyu Zhou, Qihang Chen, Jiatong Zhang, Yiran Zheng, Junhan Lu.
+- **Primary PIs**: Bin Liu, Guoyue Lv, Jiuwei Cui, Songling Zhang.
+- **Secondary PIs**: Lin Jia, Meihua Piao, Qingtian Guan.
+- **Instructors**: Bin Wang, Kexin Gao, Ruihong Wu, Ruohan Yang.
+- **Advisors**: Mingwan Liu, Sirui Dong, Xilei Song, Yurui Wei.
 
 <p align="center">
   <img src="docs/media/readme-institutions.svg" alt="Jilin University; The First Bethune Hospital of Jilin University; The First Bethune Clinical Medical College of Jilin University." width="640" />
