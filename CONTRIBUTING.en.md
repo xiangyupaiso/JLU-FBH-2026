@@ -2,7 +2,7 @@
 
 [简体中文](CONTRIBUTING.md) | English
 
-Start with the [README](README.en.md), [repository map](docs/repository-layout.en.md), and [page architecture specification](WIKI_ARCHITECTURE_SPEC.md) (Chinese).
+Start with the [README](README.md#readme-en), [repository map](docs/repository-layout.en.md), and [page architecture specification](WIKI_ARCHITECTURE_SPEC.md) (Chinese).
 
 ## Before editing
 

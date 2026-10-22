@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="88" height="24" viewBox="0 0 88 24" role="img" aria-label="iGEM · 2026">
+  <clipPath id="round"><rect width="88" height="24" rx="3" /></clipPath>
+  <g clip-path="url(#round)"><path fill="#555" d="M0 0h44v24H0z" /><path fill="#367d50" d="M44 0h44v24H44z" /></g>
+  <text x="22.0" y="16.20" fill="#fff" text-anchor="middle" font-family="Arial, Helvetica, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" letter-spacing="0">iGEM</text>
+  <text x="66.0" y="16.20" fill="#fff" text-anchor="middle" font-family="Arial, Helvetica, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" letter-spacing="0">2026</text>
+</svg>
