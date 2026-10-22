@@ -93,6 +93,8 @@
 
 **也请展开页尾的 [Design Folios：六组设计研究与迭代 ↗](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive)。** 这里保留了未在最终 Wiki 中采用的探索、历史方案与修改理由，包括图像导航、粉色丝带与标志展开、三种 Human Practices 时间线，以及构图和 RNA 环转场的比较。其中五个交互演示保留为 HTML 页面，可在作品集中操作，也可通过 **Open in full window** 单独体验。它们为后续团队提供设计思路与实现参考；[方法指南中的作品集入口](docs/visual-design-guide.md#design-folios设计作品集与历史方案)列出了具体案例和源码。
 
+[Jianyuan Li](https://2026.igem.wiki/jlu-fbh/roster)（GitHub：[@jianyuanliljy-hub](https://github.com/jianyuanliljy-hub)）主要负责 CirCure 首页的设计与开发、Visual Design 第 8、9 节的调研、撰写与设计，以及 Design Folios 中相关的设计研究与交互实现。
+
 ### 最值得复用的第 9 节
 
 这一节记录从绘稿到成品的设计过程：如何让读者看清对象、读完解释、找到下一步，并能返回原处。
@@ -620,6 +622,8 @@ This repository contains the website source, page text, illustrations, asset sou
 The [English methods guide](docs/visual-design-guide.en.md) and its [Chinese edition](docs/visual-design-guide.md) provide case summaries and source links for GitHub readers, search tools, and AI-assisted research. Use the original page to explore the complete interactions and expandable explanations.
 
 **Also expand the [Design Folios: six studies and revisions ↗](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive) near the end of the page.** They preserve explorations left out of the final Wiki, earlier directions, and reasons for revision: image-led navigation, a pink thread and expanding emblem, three Human Practices timelines, and composition and RNA-ring transition comparisons. Five interactive demonstrations are preserved as HTML pages; try them within the folios or choose **Open in full window**. They offer design ideas and implementation references for future teams; the [guide's Design Folios section](docs/visual-design-guide.en.md#design-folios-earlier-directions-and-interactive-studies) lists the examples and source files.
+
+[Jianyuan Li](https://2026.igem.wiki/jlu-fbh/roster) (GitHub: [@jianyuanliljy-hub](https://github.com/jianyuanliljy-hub)) was primarily responsible for the design and development of the CirCure homepage; the research, writing, and design of Visual Design Sections 8 and 9; and the related design studies and interactive implementations in Design Folios.
 
 ### Section 9: methods to adapt
 
