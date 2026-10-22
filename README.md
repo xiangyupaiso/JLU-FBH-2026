@@ -52,11 +52,11 @@
 
 ## 项目概览
 
-这是 **JLU-FBH** 团队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki 仓库，包含网站前端、页面内容、设计素材，以及游戏和虚拟实验室源码。
+本仓库包含 **JLU-FBH** 团队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki 前端源码、页面内容与设计素材，以及配套游戏和虚拟实验室的源码。
 
-**CirCure** 研究基于工程化环状 RNA（circRNA）的多靶向三阴性乳腺癌（TNBC）疫苗平台。Wiki 通过研究文章、手绘插画、滚动叙事、模型可视化和科普游戏，介绍项目的[设计思路](https://2026.igem.wiki/jlu-fbh/description)、[实验过程](https://2026.igem.wiki/jlu-fbh/experiments)与[研究结果](https://2026.igem.wiki/jlu-fbh/results)。
+**CirCure** 以工程化环状 RNA（circular RNA, circRNA）为研究基础，探索面向三阴性乳腺癌（triple-negative breast cancer, TNBC）的多靶向治疗性疫苗平台。Wiki 通过[设计思路](https://2026.igem.wiki/jlu-fbh/description)、[实验过程](https://2026.igem.wiki/jlu-fbh/experiments)与[研究结果](https://2026.igem.wiki/jlu-fbh/results)等页面记录项目进展，并提供相关实验方法、模型分析和参考文献。
 
-我们希望读者在了解分子机制与实验设计的同时，也能看到研究背后患者对复发的担忧，以及她们对生活的期待。因此，我们从患者的疑问讲起，在科学解释中加入可以停下来阅读、比较和探索的交互，让读者按自己的节奏了解 CirCure。
+网站同时关注患者对复发风险和生活质量的关切，以患者的疑问引入疾病背景与治疗需求。手绘插画、滚动叙事、模型可视化和科普游戏用于解释分子机制与实验设计，读者可结合正文、图示和交互内容查阅研究依据。
 
 <p align="center">
   <a href="https://2026.igem.wiki/jlu-fbh/visual-design#lumi-mascot" title="认识 Lumi，CirCure 的小羊吉祥物">
@@ -689,11 +689,11 @@ Vite preview 和官方 GitLab Pages 按 base 挂载产物；Cloudflare 由 [wran
 
 ## Project overview
 
-This is the official Wiki repository for **JLU-FBH** in the 2026 International Genetically Engineered Machine Competition (**iGEM**). It contains the website frontend, page content, design assets, and source code for the games and virtual laboratory.
+This repository contains the frontend source code, page content, and design assets for the official Wiki of the **JLU-FBH** team in the 2026 International Genetically Engineered Machine Competition (**iGEM**), together with source code for the companion games and virtual laboratory.
 
-**CirCure** explores an engineered circular RNA (**circRNA**) platform for a multi-target triple-negative breast cancer (**TNBC**) vaccine. The Wiki presents the project's [design](https://2026.igem.wiki/jlu-fbh/description), [experiments](https://2026.igem.wiki/jlu-fbh/experiments), and [research findings](https://2026.igem.wiki/jlu-fbh/results) through research articles, hand-drawn illustrations, scroll-driven storytelling, model visualizations, and science communication games.
+**CirCure** investigates engineered circular RNA (**circRNA**) as a platform for a multi-target therapeutic vaccine against triple-negative breast cancer (**TNBC**). The Wiki documents the project through pages on its [design](https://2026.igem.wiki/jlu-fbh/description), [experiments](https://2026.igem.wiki/jlu-fbh/experiments), and [research findings](https://2026.igem.wiki/jlu-fbh/results), with experimental methods, model analyses, and references.
 
-Alongside the molecular mechanisms and experimental design, we want readers to see the patients behind the research: their worries about recurrence and their hopes for everyday life. We begin with a patient's question and give readers room to pause, compare, and explore the science at their own pace.
+The website also addresses patients’ concerns about recurrence and quality of life, using their questions to introduce the disease context and treatment needs. Hand-drawn illustrations, scroll-driven storytelling, model visualizations, and science communication games explain molecular mechanisms and experimental design. Readers can examine the research rationale through the text, figures, and interactive content.
 
 <p align="center">
   <a href="https://2026.igem.wiki/jlu-fbh/visual-design#lumi-mascot" title="Meet Lumi, the CirCure lamb mascot">
