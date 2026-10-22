@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="77" height="24" viewBox="0 0 77 24" role="img" aria-label="Vite · 7.3">
+  <clipPath id="round"><rect width="77" height="24" rx="3" /></clipPath>
+  <g clip-path="url(#round)"><path fill="#555" d="M0 0h38v24H0z" /><path fill="#7765b2" d="M38 0h39v24H38z" /></g>
+  <text x="19.0" y="16.20" fill="#fff" text-anchor="middle" font-family="Arial, Helvetica, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" letter-spacing="0">Vite</text>
+  <text x="57.5" y="16.20" fill="#fff" text-anchor="middle" font-family="Arial, Helvetica, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" letter-spacing="0">7.3</text>
+</svg>

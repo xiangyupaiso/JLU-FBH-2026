@@ -2,20 +2,20 @@
 
 [简体中文](README.md) | English
 
-Use the current guides for maintenance. Guides default to Chinese and link to an English sibling at the top. Original specifications, scientific manuscripts, generated asset registries, and historical reviews retain their source language for reference and provenance.
+Use the current guides for maintenance. The repository homepage contains both languages on one page. Maintenance guides default to Chinese and link to an English sibling at the top. Original specifications, scientific manuscripts, generated asset registries, and historical reviews retain their source language for reference and provenance.
 
 ## Current maintenance guides
 
-| Document                                   | Purpose                                                       |
-| ------------------------------------------ | ------------------------------------------------------------- |
-| [Repository homepage](../README.en.md)     | Project overview, setup, and editing entry points             |
-| [Repository map](repository-layout.en.md)  | Directory roles, retained paths, and migration records        |
-| [Development guide](development.en.md)     | Wiki and subproject development, validation, and builds       |
-| [Deployment guide](deployment.en.md)       | Collaboration, official GitLab releases, and Cloudflare paths |
-| [Asset guide](assets.en.md)                | Manuscripts, assets, registries, and upload batches           |
-| [Contributing](../CONTRIBUTING.en.md)      | Scope, validation, and review                                 |
-| [Script index](../scripts/README.en.md)    | Script purposes, inputs, and write effects                    |
-| [Delivery index](../delivery/README.en.md) | Upload batches and source delivery archives                   |
+| Document                                      | Purpose                                                       |
+| --------------------------------------------- | ------------------------------------------------------------- |
+| [Repository homepage](../README.md#readme-en) | Project overview, setup, and editing entry points             |
+| [Repository map](repository-layout.en.md)     | Directory roles, retained paths, and migration records        |
+| [Development guide](development.en.md)        | Wiki and subproject development, validation, and builds       |
+| [Deployment guide](deployment.en.md)          | Collaboration, official GitLab releases, and Cloudflare paths |
+| [Asset guide](assets.en.md)                   | Manuscripts, assets, registries, and upload batches           |
+| [Contributing](../CONTRIBUTING.en.md)         | Scope, validation, and review                                 |
+| [Script index](../scripts/README.en.md)       | Script purposes, inputs, and write effects                    |
+| [Delivery index](../delivery/README.en.md)    | Upload batches and source delivery archives                   |
 
 ## Page development references
 

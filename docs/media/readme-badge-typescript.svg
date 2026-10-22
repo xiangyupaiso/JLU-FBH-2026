@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="117" height="24" viewBox="0 0 117 24" role="img" aria-label="TypeScript · 5.9">
+  <clipPath id="round"><rect width="117" height="24" rx="3" /></clipPath>
+  <g clip-path="url(#round)"><path fill="#555" d="M0 0h78v24H0z" /><path fill="#3178b2" d="M78 0h39v24H78z" /></g>
+  <text x="39.0" y="16.20" fill="#fff" text-anchor="middle" font-family="Arial, Helvetica, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" letter-spacing="0">TypeScript</text>
+  <text x="97.5" y="16.20" fill="#fff" text-anchor="middle" font-family="Arial, Helvetica, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" letter-spacing="0">5.9</text>
+</svg>

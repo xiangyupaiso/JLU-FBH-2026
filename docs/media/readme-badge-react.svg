@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="90" height="24" viewBox="0 0 90 24" role="img" aria-label="React · 19.2">
+  <clipPath id="round"><rect width="90" height="24" rx="3" /></clipPath>
+  <g clip-path="url(#round)"><path fill="#555" d="M0 0h47v24H0z" /><path fill="#3576a9" d="M47 0h43v24H47z" /></g>
+  <text x="23.5" y="16.20" fill="#fff" text-anchor="middle" font-family="Arial, Helvetica, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" letter-spacing="0">React</text>
+  <text x="68.5" y="16.20" fill="#fff" text-anchor="middle" font-family="Arial, Helvetica, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" letter-spacing="0">19.2</text>
+</svg>
