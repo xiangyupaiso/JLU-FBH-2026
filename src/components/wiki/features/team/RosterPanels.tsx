@@ -3,6 +3,7 @@ import { QueuedImage } from "../../../common/QueuedImage";
 import {
   useId,
   useCallback,
+  useEffect,
   useLayoutEffect,
   useRef,
   useState,
@@ -29,6 +30,15 @@ const groups = rosterCollections.filter(
 const firstGroupIndex = rosterCollections.findIndex(
   (collection) => collection.kind === "group",
 );
+
+function rosterLinkTarget() {
+  const id = window.location.hash.slice(1);
+  for (const collection of rosterCollections) {
+    if (collection.kind === "teachers") continue;
+    const member = collection.members.find((person) => person.id === id);
+    if (collection.id === id || member) return { collection, member };
+  }
+}
 
 const memberCollectionMap: Record<string, string> = (() => {
   const map: Record<string, string> = {};
@@ -87,6 +97,7 @@ function PersonCard({
   );
   return onOpen ? (
     <button
+      id={member.id}
       className={`roster-person${isLead ? " roster-person--lead" : ""}`}
       type="button"
       aria-label={`Meet ${member.name}, ${member.role}`}
@@ -124,11 +135,17 @@ function TeacherSection({ collection }: { collection: RosterCollection }) {
  */
 function GroupGallery({
   onOpen,
+  initialGroupId,
 }: {
   onOpen: (member: RosterMember, trigger: HTMLButtonElement) => void;
+  initialGroupId?: string;
 }) {
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [shownIndex, setShownIndex] = useState(0);
+  const initialIndex = Math.max(
+    0,
+    groups.findIndex((group) => group.id === initialGroupId),
+  );
+  const [selectedIndex, setSelectedIndex] = useState(initialIndex);
+  const [shownIndex, setShownIndex] = useState(initialIndex);
   const id = useId();
   const galleryRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -330,7 +347,7 @@ function GroupGallery({
         className="roster-group-members"
       >
         <div key={group.id} className="roster-group-members__content">
-          <h3>{group.title}</h3>
+          <h3 id={group.id}>{group.title}</h3>
           <div className="roster-role-groups">
             {roles.map((role) => {
               const members = group.members.filter(
@@ -371,10 +388,15 @@ function GroupGallery({
 
 function RosterPanels() {
   const [active, setActive] = useState<RosterMember | null>(null);
+  const [linkRequest, setLinkRequest] = useState(() => ({
+    target: rosterLinkTarget(),
+    version: 0,
+  }));
   const opener = useRef<HTMLButtonElement | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const isClosingRef = useRef(false);
+  const closeTimelineRef = useRef<gsap.core.Timeline | null>(null);
 
   // 鼠标 3D 视差控制器引用（零 React 重渲染）
   const quickPhotoX = useRef<gsap.QuickToFunc | null>(null);
@@ -393,6 +415,7 @@ function RosterPanels() {
 
   const openMember = useCallback(
     (member: RosterMember, trigger: HTMLButtonElement) => {
+      closeTimelineRef.current?.kill();
       opener.current = trigger;
       isClosingRef.current = false;
       setActive(member);
@@ -403,6 +426,14 @@ function RosterPanels() {
   // 逆序分层退场：Step 1 文字与鎏金线先向上抽离淡出 -> Step 2 人物肖像推远虚化并与视窗合拢
   const requestClose = useCallback(() => {
     if (isClosingRef.current) return;
+    const target = rosterLinkTarget();
+    if (target?.member) {
+      window.history.replaceState(
+        window.history.state,
+        "",
+        `${window.location.pathname}${window.location.search}#${target.collection.id}`,
+      );
+    }
     const dialog = dialogRef.current;
     const overlay = overlayRef.current;
     const reduced = window.matchMedia(
@@ -439,6 +470,7 @@ function RosterPanels() {
         setActive(null);
       },
     });
+    closeTimelineRef.current = tl;
 
     // 第一阶段（0.00s - 0.25s）：右侧文字层率先逆序向上消散，此时左侧人物依然定格
     if (quoteBlock) {
@@ -546,6 +578,37 @@ function RosterPanels() {
       );
     }
   }, []);
+
+  useEffect(() => {
+    const followLink = () => {
+      setLinkRequest((previous) => ({
+        target: rosterLinkTarget(),
+        version: previous.version + 1,
+      }));
+    };
+    window.addEventListener("hashchange", followLink);
+    return () => {
+      closeTimelineRef.current?.kill();
+      window.removeEventListener("hashchange", followLink);
+    };
+  }, []);
+
+  useEffect(() => {
+    const target = linkRequest.target;
+    if (!target) {
+      requestClose();
+      return;
+    }
+    const element = document.getElementById(
+      target.member?.id ?? target.collection.id,
+    );
+    element?.scrollIntoView({ block: "center", behavior: "instant" });
+    if (target.member && element instanceof HTMLButtonElement) {
+      openMember(target.member, element);
+    } else {
+      requestClose();
+    }
+  }, [linkRequest, openMember, requestClose]);
 
   // 入场五阶段剧场编排：人物率先破幕推轨 -> 巨型水印横移 -> 标题遮罩破土 -> 鎏金线延伸 -> 传记与宣言层叠显现
   useLayoutEffect(() => {
@@ -830,7 +893,11 @@ function RosterPanels() {
         {rosterCollections.map((collection, index) => {
           if (collection.kind === "group")
             return index === firstGroupIndex ? (
-              <GroupGallery key="groups" onOpen={openMember} />
+              <GroupGallery
+                key={`groups-${linkRequest.version}`}
+                initialGroupId={linkRequest.target?.collection.id}
+                onOpen={openMember}
+              />
             ) : null;
           if (collection.kind === "teachers")
             return (
@@ -877,6 +944,10 @@ function RosterPanels() {
           onPointerDownOutside={(event) => {
             event.preventDefault();
             requestClose();
+          }}
+          onFocusOutside={(event) => {
+            // 成员锚点会先把焦点移到卡片，避免旧弹窗抢先关闭新链接。
+            if (rosterLinkTarget()?.member) event.preventDefault();
           }}
           onCloseAutoFocus={(event) => {
             event.preventDefault();
