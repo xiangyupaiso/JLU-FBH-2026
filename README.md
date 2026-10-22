@@ -505,6 +505,17 @@ GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配
 
 感谢学校、临床机构、科研平台及各支持方对团队工作的帮助。具体工作归属与支持方式见官网的 [Attributions](https://2026.igem.wiki/jlu-fbh/attributions) 页面。
 
+### Visual Design 团队
+
+感谢 Visual Design 团队的六位成员，将科学内容、原创插画与网页交互共同编织进 CirCure Wiki。以下按 [Roster 的 Visual Design 分组](https://2026.igem.wiki/jlu-fbh/roster)顺序，依据[仓库中的成员介绍](src/data/team/rosterPage.ts)整理各自贡献：
+
+- **Shuyi Wang · Art Lead（美术负责人）**：统筹项目视觉创作，负责标志设计、团队视觉素材、Wiki 插画及宣传美术，将复杂的生物学概念转化为直观的视觉表达。
+- **Yupeng Xu · Wiki Lead（Wiki 负责人）**：牵头 Wiki 开发与数字设计，组织 AI 智能体协作，并将工作流程整理为队友可复用的技能与工具。
+- **Jianyuan Li · 团队成员**：主要负责首页设计与开发，探索视觉、动画及交互叙事；调研、撰写并设计 Visual Design 第 8 节 Humanistic Care & Narrative Design 和第 9 节 Our Wiki Contribution，整理草图、修改过程与设计经验。
+- **Muzi Li · 团队成员**：参与医学与人类实践工作，将科学知识转化为便于公众理解的故事，为项目传播带来医学与人文视角。
+- **Zhixia Ye · 团队成员**：参与团队美术工作，绘制项目封面及其他视觉插画，为项目内容提供图像表达。
+- **Jingchen He · 团队成员**：参与 Wiki 开发与页面内容组织，梳理想法、实验与修改记录，通过信息顺序和细节取舍，让读者更清楚地理解项目及其背后的人。
+
 <p align="center">
   <img src="docs/media/readme-institutions.svg" alt="吉林大学；吉林大学白求恩第一医院；吉林大学白求恩第一临床医学院。" width="640" />
 </p>
@@ -1041,6 +1052,17 @@ Asset dictionaries such as `contributionAssets.ts`, `resultsAssets.ts`, and `des
 ## Team and acknowledgements
 
 We thank the university, clinical institutions, research platforms, and supporters who helped the team. See the Wiki's [Attributions](https://2026.igem.wiki/jlu-fbh/attributions) page for individual contributions and forms of support.
+
+### Visual Design team
+
+We thank all six members of the Visual Design team for bringing scientific content, original illustrations, and web interactions together in the CirCure Wiki. The contributions below follow the order of the [Roster's Visual Design group](https://2026.igem.wiki/jlu-fbh/roster) and are based on the [member biographies in this repository](src/data/team/rosterPage.ts):
+
+- **Shuyi Wang · Art Lead**: Coordinated the project's visual creation, including logo design, team graphic assets, Wiki illustrations, and promotional artwork, translating complex biological concepts into accessible visuals.
+- **Yupeng Xu · Wiki Lead**: Led Wiki development and digital design, coordinated AI-agent collaboration, and packaged workflows into reusable skills and tools for teammates.
+- **Jianyuan Li · Team Member**: Primarily designed and developed the homepage, exploring visual storytelling, animation, and interaction; researched, wrote, and designed Visual Design Section 8, Humanistic Care & Narrative Design, and Section 9, Our Wiki Contribution, sharing sketches, revisions, and lessons learned.
+- **Muzi Li · Team Member**: Contributed to medical and human practices work, turning scientific knowledge into stories for wider audiences and bringing medical and human perspectives to project communication.
+- **Zhixia Ye · Team Member**: Created project illustrations, including cover art and other visual drawings, as a member of the team's graphic group.
+- **Jingchen He · Team Member**: Contributed to Wiki development and page content organization, bringing ideas, experiments, and revisions into an explorable narrative through careful information ordering and selection of details.
 
 <p align="center">
   <img src="docs/media/readme-institutions.svg" alt="Jilin University; The First Bethune Hospital of Jilin University; The First Bethune Clinical Medical College of Jilin University." width="640" />
