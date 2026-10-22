@@ -36,10 +36,8 @@
 
 <p align="center">
   <a href="https://2026.igem.wiki/jlu-fbh/" title="浏览 CirCure 官方 Wiki">
-    <img src="docs/media/readme-visit-wiki-zh.svg" alt="浏览完整 Wiki ↗" width="300" height="76" />
+    <img src="docs/media/readme-visit-wiki-zh.svg" alt="浏览完整 Wiki ↗" width="248" height="52" />
   </a>
-  <br />
-  <sub><a href="https://2026.igem.wiki/jlu-fbh/">进入官方 Wiki，浏览完整项目与交互展示 ↗</a></sub>
 </p>
 
 <p align="center">
@@ -566,10 +564,8 @@ GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配
 
 <p align="center">
   <a href="https://2026.igem.wiki/jlu-fbh/" title="Visit the official CirCure Wiki">
-    <img src="docs/media/readme-visit-wiki-en.svg" alt="Explore the Wiki ↗" width="300" height="76" />
+    <img src="docs/media/readme-visit-wiki-en.svg" alt="Explore the Wiki ↗" width="248" height="52" />
   </a>
-  <br />
-  <sub><a href="https://2026.igem.wiki/jlu-fbh/">Open the official Wiki for the full project and interactive features ↗</a></sub>
 </p>
 
 <p align="center">
