@@ -92,7 +92,9 @@
 
 ## 给未来 iGEM 团队的设计参考
 
-**JLU-FBH / JLUFBH · CirCure · iGEM 2026 · 吉林大学白求恩第一医院（First Bethune Hospital of Jilin University）**。本仓库也保存团队在科学传播（science communication）、Wiki 视觉设计（visual design）和交互叙事（interactive storytelling）中的尝试、修改原因与实现，供后续 iGEM 团队调研、引用和复用。
+我们为 CirCure 设计了首页与整站页面框架，将项目的临床动机、科学原理和视觉形象串联起来。原创水彩插画经过分层准备，与分子解释动画、场景转场、章节导航和交互组件共同构成阅读体验。我们也保留了草图、交互原型与历次修改，记录画稿和界面如何随着项目逐步成形。
+
+在实现与迭代中，我们反复检查每个场景要讲清什么、读者如何跟随故事：让 RNA 环在转场中保持可辨认的轮廓，为完整句子留出阅读时间，调整不同屏幕上的插画取景，并让导航名称更容易浏览。这里整理了尝试过的方案、修改理由和对应源码，分享这些设计中的选择与取舍，希望后续 iGEM 团队能把具体做法与背后的思考对照起来，结合自己的项目复用、调整并继续改进。
 
 **建议打开 [Visual Design 完整交互页面 ↗](https://2026.igem.wiki/jlu-fbh/visual-design)，重点阅读[第 8 节：人文关怀与叙事设计](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience)和[第 9 节：Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)。**
 
@@ -713,7 +715,9 @@ Alongside the molecular mechanisms and experimental design, we want readers to s
 
 ## Design reference for future iGEM teams
 
-**JLU-FBH / JLUFBH · CirCure · iGEM 2026 · First Bethune Hospital of Jilin University, China**. This repository also preserves the team's work on **iGEM Wiki visual design, science communication, and interactive storytelling**, including the reasons for revisions and the code behind them, for future teams to study, cite, and adapt.
+We designed CirCure's homepage and overall page framework to connect the project's clinical motivation, scientific rationale, and visual identity. Original watercolor artwork, prepared as aligned layers, works together with animated molecular explanations, scene transitions, chapter navigation, and interactive elements to shape the reading experience. We also kept sketches, interactive prototypes, and revisions to document how the artwork and interface developed alongside the project.
+
+Throughout implementation and revision, we considered what each scene needed to communicate and how readers would follow the story: keeping the RNA ring recognizable through transitions, allowing time to read complete sentences, adjusting artwork framing for different screens, and making page names easier to scan in navigation. Here we share the alternatives we tried, the reasons for changing them, and the corresponding source code. We hope these decisions and trade-offs help future iGEM teams connect practical examples with the reasoning behind them, adapting and improving the ideas for their own projects.
 
 **Open the [complete interactive Visual Design page ↗](https://2026.igem.wiki/jlu-fbh/visual-design), especially [Section 8: Humanistic Care & Narrative Design](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) and [Section 9: Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft).**
 
