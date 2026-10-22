@@ -52,7 +52,7 @@
 
 ## 项目概览
 
-这是 **JLU-FBH** 战队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki 仓库，包含网站前端、页面内容、设计素材，以及游戏和虚拟实验室源码。
+这是 **JLU-FBH** 团队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki 仓库，包含网站前端、页面内容、设计素材，以及游戏和虚拟实验室源码。
 
 **CirCure** 研究基于工程化环状 RNA（circRNA）的多靶向三阴性乳腺癌（TNBC）疫苗平台。Wiki 通过研究文章、手绘插画、滚动叙事、模型可视化和科普游戏，介绍项目的设计思路、实验过程与研究结果。
 
@@ -94,7 +94,9 @@
 
 **JLU-FBH / JLUFBH · CirCure · iGEM 2026 · 吉林大学白求恩第一医院（First Bethune Hospital of Jilin University）**。本仓库也保存团队在科学传播（science communication）、Wiki 视觉设计（visual design）和交互叙事（interactive storytelling）中的尝试、修改原因与实现，供后续 iGEM 团队调研、引用和复用。
 
-**建议打开 [Visual Design 完整交互页面 ↗](https://2026.igem.wiki/jlu-fbh/visual-design)，重点阅读[第 8 节：人文关怀与叙事设计](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience)和[第 9 节：Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)。** 原网页有可操作的交互组件、动态对比和默认折叠的技术细节，建议边体验演示，边展开 **Technical details** 阅读设计理由与实现说明。
+**建议打开 [Visual Design 完整交互页面 ↗](https://2026.igem.wiki/jlu-fbh/visual-design)，重点阅读[第 8 节：人文关怀与叙事设计](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience)和[第 9 节：Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)。**
+
+第 8 节从患者视角组织科学叙事；第 9 节分享分层绘稿、阅读停留、清晰导航与可逆交互的设计经验。建议边体验演示，边展开 **Technical details** 查看设计理由与实现说明。
 
 [中英文方法指南](docs/visual-design-guide.md)提供案例摘要与源码入口，便于在 GitHub 内查阅，以及供搜索和 AI 调研工具读取；完整的交互与展开说明请结合原网页学习。
 
@@ -105,21 +107,6 @@
 - [Yupeng Xu](https://wiki.dayquay.com/jlu-fbh/roster#yupeng-xu)（GitHub：[@xiangyupaiso](https://github.com/xiangyupaiso)）担任 Wiki Lead（Wiki 负责人），统筹 CirCure Wiki 的开发与数字设计，组织页面功能的实现、整合与迭代。他结合计算机专业背景协调多智能体协作，将复杂任务拆分为可执行的开发步骤，并为队友整理可复用的工作流程、技能与工具，帮助团队共同推进网站建设。
 - [Jianyuan Li](https://wiki.dayquay.com/jlu-fbh/roster#jianyuan-li)（GitHub：[@jianyuanliljy-hub](https://github.com/jianyuanliljy-hub)）主要负责 CirCure 首页的设计与开发、Visual Design 第 8、9 节的调研、撰写与设计，以及 Design Folios 中相关的设计研究与交互实现。他将分层插画、滚动转场与阅读停留结合起来，反复调整叙事节奏和交互细节，并保留草图、修改记录与交互原型，供后续团队对照源码理解设计过程。
 - [Jingchen He](https://wiki.dayquay.com/jlu-fbh/roster#jingchen-he)（GitHub：[@HE-JINGCHEN](https://github.com/HE-JINGCHEN)）主要负责虚拟实验室的构建，将九个分子生物学实验整理为可交互的学习页面，完善实验侧栏、操作入口与媒体展示，方便读者按步骤浏览和体验实验。他也参与实验室的中文切换、图片资源迁移和源码压缩，在保留原有交互的基础上调整资源加载与页面呈现，并参与 Wiki 内容组织与细节修正。
-
-### 最值得复用的第 9 节
-
-这一节记录从绘稿到成品的设计过程：如何让读者看清对象、读完解释、找到下一步，并能返回原处。
-
-| 小节 | 可借鉴的做法 |
-| --- | --- |
-| [9.1 绘稿与开场](https://2026.igem.wiki/jlu-fbh/visual-design#artwork-and-opening) | 按独立运动拆分画层，保存共同坐标；先准备资源，再完成标题与首场景交接。 |
-| [9.2 动效与阅读节奏](https://2026.igem.wiki/jlu-fbh/visual-design#keyframes-and-reading-holds) | 先安排可完整阅读的静止状态，再连接转场；保留 RNA 环轮廓，并提供暂停、选章与反向浏览。 |
-| [9.3 持续阅读的版面](https://2026.igem.wiki/jlu-fbh/visual-design#reading-surfaces) | 让色彩在正文区退后，用字体层级、图像边缘与留白组织长文。 |
-| [9.4 清楚的阅读路径](https://2026.igem.wiki/jlu-fbh/visual-design#navigation-with-a-landmark) | 用队徽保持导航地标，区分当前页与悬停反馈；提供目录、搜索、引用回链与明确的下一页。 |
-| [9.5 团队照片与来信](https://2026.igem.wiki/jlu-fbh/visual-design#photo-reveal-craft) | 用可逆的照片揭示和按需打开的信件结束叙事，处理键盘焦点与关闭后的阅读位置。 |
-| [9.6 迭代与记录](https://2026.igem.wiki/jlu-fbh/visual-design#design-record) | 保存草图、前后比较、修改理由与实现入口，检查反向滚动、快速反转、缩放窗口和减少动态效果。 |
-
-这些是 CirCure 的设计经验与实现案例。它们没有建立阅读理解或学习效果的量化结论；16:10 画布、16 px 图片圆角等取值也需要结合新项目的内容与视口重新判断。
 
 ### Visual Design 九个部分
 
@@ -728,7 +715,9 @@ Alongside the molecular mechanisms and experimental design, we want readers to s
 
 **JLU-FBH / JLUFBH · CirCure · iGEM 2026 · First Bethune Hospital of Jilin University, China**. This repository also preserves the team's work on **iGEM Wiki visual design, science communication, and interactive storytelling**, including the reasons for revisions and the code behind them, for future teams to study, cite, and adapt.
 
-**Open the [complete interactive Visual Design page ↗](https://2026.igem.wiki/jlu-fbh/visual-design), especially [Section 8: Humanistic Care & Narrative Design](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) and [Section 9: Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft).** The original page includes interactive components, animated comparisons, and initially collapsed technical details. Try the demonstrations and expand **Technical details** to read the design rationale alongside the implementation.
+**Open the [complete interactive Visual Design page ↗](https://2026.igem.wiki/jlu-fbh/visual-design), especially [Section 8: Humanistic Care & Narrative Design](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) and [Section 9: Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft).**
+
+Section 8 connects the patient's perspective to the scientific story; Section 9 shares lessons in layered artwork, reading pauses, clear navigation, and reversible interactions. Try the demonstrations and expand **Technical details** for design rationale and implementation notes.
 
 The [English methods guide](docs/visual-design-guide.en.md) and its [Chinese edition](docs/visual-design-guide.md) provide case summaries and source links for GitHub readers, search tools, and AI-assisted research. Use the original page to explore the complete interactions and expandable explanations.
 
@@ -739,21 +728,6 @@ Meet the contributors in the [Roster · Visual Design group ↗](https://wiki.da
 - [Yupeng Xu](https://wiki.dayquay.com/jlu-fbh/roster#yupeng-xu) (GitHub: [@xiangyupaiso](https://github.com/xiangyupaiso)) served as Wiki Lead, coordinating CirCure Wiki development and digital design, including the implementation, integration, and revision of page features. Drawing on his computer science background, he organized collaboration across AI agents, broke complex tasks into practical development steps, and documented reusable workflows, skills, and tools for teammates. His work helped the team coordinate contributions across the site and turn individual development tasks into a shared working process.
 - [Jianyuan Li](https://wiki.dayquay.com/jlu-fbh/roster#jianyuan-li) (GitHub: [@jianyuanliljy-hub](https://github.com/jianyuanliljy-hub)) primarily designed and developed the CirCure homepage; researched, wrote, and designed Visual Design Sections 8 and 9; and developed related design studies and interactive implementations in Design Folios. He combined layered illustrations, scroll transitions, and reading pauses, repeatedly refining the narrative rhythm and interaction details. He also preserved sketches, revision records, and interactive prototypes so future teams can study the design process alongside the source code.
 - [Jingchen He](https://wiki.dayquay.com/jlu-fbh/roster#jingchen-he) (GitHub: [@HE-JINGCHEN](https://github.com/HE-JINGCHEN)) primarily built the virtual laboratory, organizing nine molecular biology experiments into interactive learning pages and refining experiment sidebars, controls, and media presentation so readers can follow each experiment step by step. He also worked on Chinese-language switching, image migration, and source compression, adjusting resource loading and page presentation while preserving existing interactions. Alongside the laboratory, he contributed to Wiki content organization and page refinements, helping arrange project ideas, experimental material, and revision records for readers.
-
-### Section 9: methods to adapt
-
-This section follows the work from drawings to finished interfaces: keep the object recognizable, give readers time to finish an explanation, make the next step clear, and leave a way back.
-
-| Section | Reusable approach |
-| --- | --- |
-| [9.1 Artwork and opening](https://2026.igem.wiki/jlu-fbh/visual-design#artwork-and-opening) | Separate layers by movement, retain shared coordinates, prepare resources, and coordinate the title-to-scene handoff. |
-| [9.2 Motion and reading rhythm](https://2026.igem.wiki/jlu-fbh/visual-design#keyframes-and-reading-holds) | Establish complete readable states before transitions; retain the RNA ring's outline and offer pause, chapter selection, and reverse browsing. |
-| [9.3 Sustained reading](https://2026.igem.wiki/jlu-fbh/visual-design#reading-surfaces) | Let color recede around the article; use typography, image edges, and white space to organize long-form content. |
-| [9.4 Clear reading routes](https://2026.igem.wiki/jlu-fbh/visual-design#navigation-with-a-landmark) | Keep the crest as a navigation landmark, distinguish current-page and hover feedback, and provide outlines, search, citation backlinks, and a clear next page. |
-| [9.5 Team photograph and letter](https://2026.igem.wiki/jlu-fbh/visual-design#photo-reveal-craft) | Close the story with a reversible photograph reveal and an optional letter, preserving keyboard focus and reading position. |
-| [9.6 Revision and documentation](https://2026.igem.wiki/jlu-fbh/visual-design#design-record) | Preserve sketches, comparisons, reasons, and source links; check reverse scrolling, rapid reversal, resize, and reduced motion. |
-
-These are CirCure design decisions and implementation cases. They do not establish measured gains in comprehension or learning. Values such as a 16:10 artwork canvas and 16 px image corners need to be reconsidered for another project's content and viewports.
 
 ### All nine Visual Design sections
 
