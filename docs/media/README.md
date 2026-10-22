@@ -6,6 +6,7 @@
 
 | 文件                   | 来源与用途                                                                                                                                            |
 | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `circure-cover.svg`    | README 横幅：复用原字标的七个轮廓和 `src/components/home/HomeIntroOrbit.tsx` 的闭合轨迹，添加静态配色与排版。环形用于品牌装饰，非分子结构图。         |
 | `circure-wordmark.svg` | 复用 `src/data/homeIntroWordmark.ts` 中的七个 CirCure 字形轮廓与 viewBox；仅为文档设置静态品牌色。原轮廓基于 Kalam Regular（SIL OFL）。               |
 | `wiki-circrna.jpg`     | 2026-10-22 从[官方 Wiki](https://2026.igem.wiki/jlu-fbh/)的 “Why circular RNA?” 场景截取，尺寸为 1265 × 712；保留浏览器截图原始像素。画面是概念图解。 |
 

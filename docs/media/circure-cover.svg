@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+  <title id="title">CirCure — JLU-FBH · iGEM 2026</title>
+  <desc id="desc">CirCure's original handwritten wordmark with a decorative closed orbit from the Wiki introduction. A visual identity composition, not a molecular structure diagram.</desc>
+  <defs>
+    <linearGradient id="paper" x2="1" y2="1">
+      <stop stop-color="#fcf7f4" />
+      <stop offset="0.58" stop-color="#f7eff2" />
+      <stop offset="1" stop-color="#efeaf5" />
+    </linearGradient>
+    <radialGradient id="wash">
+      <stop stop-color="#e8c3d4" stop-opacity="0.54" />
+      <stop offset="1" stop-color="#e8c3d4" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="ink" x1="0" y1="0" x2="1" y2="0.6">
+      <stop stop-color="#895675" />
+      <stop offset="1" stop-color="#b87998" />
+    </linearGradient>
+    <linearGradient id="strand" x1="110" y1="130" x2="890" y2="590" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#c184ac" />
+      <stop offset="0.36" stop-color="#e0b0cd" />
+      <stop offset="0.67" stop-color="#eed8c6" />
+      <stop offset="1" stop-color="#ae85ac" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="320" rx="18" fill="url(#paper)" />
+  <ellipse cx="974" cy="158" rx="310" ry="245" fill="url(#wash)" />
+  <path d="M62 264 H1138" fill="none" stroke="#ba91a6" stroke-opacity="0.25" />
+  <g fill="#856478" font-family="Arial, Helvetica, sans-serif" font-size="15" letter-spacing="3">
+    <text x="72" y="58">JLU-FBH · iGEM 2026</text>
+  </g>
+  <svg x="68" y="103" width="572" height="138" viewBox="62 40 2950 710">
+    <g fill="url(#ink)">
+        <path d="M470 42Q496 42 523.5 75Q551 108 551 129.5Q551 151 543.5 151Q536 151 515 143.5Q494 136 477 136Q438 136 382.5 176Q327 216 277.5 275Q228 334 193 409.5Q158 485 158 540Q158 595 186.5 620.5Q215 646 261 646Q307 646 356 632.5Q405 619 436 602Q516 559 524 559Q541 559 541 581.5Q541 604 495 641.5Q449 679 381 709Q313 739 259 739Q189 739 127 678.5Q65 618 65 545Q65 451 126.5 332.5Q188 214 284.5 128Q381 42 470 42Z" />
+        <path d="M869 159Q869 169 860 177Q851 185 841 185Q817 185 787.5 156Q758 127 758 107Q758 87 774 69Q790 51 806.5 51Q823 51 846 91.5Q869 132 869 159ZM753 249Q772 249 789 272Q806 295 806 317Q806 339 777 448.5Q748 558 704 694Q687 744 661 744Q647 744 637 732.5Q627 721 627 706.5Q627 692 634.5 660.5Q642 629 656.5 576.5Q671 524 679.5 491Q688 458 697 416.5Q706 375 711.5 349.5Q717 324 724 298Q738 249 753 249Z" />
+        <path d="M928 371 925 296Q925 249 947 249Q966 249 983.5 273.5Q1001 298 1001 331.5Q1001 365 999 382Q1086 250 1164 250Q1213 250 1213 274Q1213 286 1202 296Q1191 306 1167 319Q1114 342 1077.5 389.5Q1041 437 1018 497Q995 557 981.5 598Q968 639 961 662Q954 685 945 707Q929 747 908 747Q891 747 880.5 727.5Q870 708 870 689.5Q870 671 887 616Q928 490 928 371Z" />
+        <path d="M1638 42Q1664 42 1691.5 75Q1719 108 1719 129.5Q1719 151 1711.5 151Q1704 151 1683 143.5Q1662 136 1645 136Q1606 136 1550.5 176Q1495 216 1445.5 275Q1396 334 1361 409.5Q1326 485 1326 540Q1326 595 1354.5 620.5Q1383 646 1429 646Q1475 646 1524 632.5Q1573 619 1604 602Q1684 559 1692 559Q1709 559 1709 581.5Q1709 604 1663 641.5Q1617 679 1549 709Q1481 739 1427 739Q1357 739 1295 678.5Q1233 618 1233 545Q1233 451 1294.5 332.5Q1356 214 1452.5 128Q1549 42 1638 42Z" />
+        <path d="M2230 325Q2230 338 2186 479Q2142 620 2118 703Q2106 745 2084 745Q2071 745 2062 734Q2053 723 2053 694Q2053 665 2076 589Q2034 657 1985 701Q1936 745 1895.5 745Q1855 745 1819 707Q1783 669 1783 629Q1783 534 1838.5 391.5Q1894 249 1931 249Q1949 249 1962.5 265.5Q1976 282 1976 303Q1976 312 1949 367.5Q1922 423 1895 497.5Q1868 572 1868 628Q1868 644 1878 654.5Q1888 665 1902 665Q1940 665 1992.5 598Q2045 531 2088 442Q2131 353 2152 277Q2156 261 2160 255Q2164 249 2177.5 249Q2191 249 2210.5 275Q2230 301 2230 325Z" />
+        <path d="M2339 371 2336 296Q2336 249 2358 249Q2377 249 2394.5 273.5Q2412 298 2412 331.5Q2412 365 2410 382Q2497 250 2575 250Q2624 250 2624 274Q2624 286 2613 296Q2602 306 2578 319Q2525 342 2488.5 389.5Q2452 437 2429 497Q2406 557 2392.5 598Q2379 639 2372 662Q2365 685 2356 707Q2340 747 2319 747Q2302 747 2291.5 727.5Q2281 708 2281 689.5Q2281 671 2298 616Q2339 490 2339 371Z" />
+        <path d="M2690 519Q2676 563 2676 597.5Q2676 632 2697.5 651Q2719 670 2768.5 670Q2818 670 2870.5 652.5Q2923 635 2928 635Q2954 635 2954 655Q2954 682 2893 713.5Q2832 745 2774 745Q2696 745 2647 698.5Q2598 652 2598 581Q2598 510 2636 432.5Q2674 355 2734 302Q2794 249 2853 249Q2912 249 2960.5 305Q3009 361 3009 414.5Q3009 468 2951.5 501.5Q2894 535 2821.5 535Q2749 535 2690 519ZM2858 328Q2821 328 2781 366.5Q2741 405 2713 462Q2753 471 2804 471Q2855 471 2893 454.5Q2931 438 2931 411Q2931 384 2906.5 356Q2882 328 2858 328Z" />
+    </g>
+  </svg>
+  <g transform="translate(913 153) rotate(-18) scale(0.53 0.53) translate(-500 -360)">
+    <path d="M 890 360 C 890 224 719 125 500 130 C 289 135 111 223 110 360 C 109 490 284 599 500 590 C 716 581 891 496 890 360 Z" fill="none" stroke="#d9bdcf" stroke-width="2" transform="translate(500 360) scale(1.08 1.12) translate(-500 -360)" opacity="0.5" />
+    <path d="M 890 360 C 890 224 719 125 500 130 C 289 135 111 223 110 360 C 109 490 284 599 500 590 C 716 581 891 496 890 360 Z" fill="none" stroke="url(#strand)" stroke-width="12" />
+    <path d="M 890 360 C 890 224 719 125 500 130 C 289 135 111 223 110 360 C 109 490 284 599 500 590 C 716 581 891 496 890 360 Z" fill="none" stroke="#fff9f5" stroke-width="2" transform="translate(500 360) scale(0.97 0.96) translate(-500 -360)" opacity="0.9" />
+    <circle cx="890.00" cy="360.00" r="3.6" fill="#a86c91" /><path d="M884.08 399.94 L869.30 397.33" stroke="#b17b9b" stroke-width="3" /><path d="M866.48 438.66 L852.38 433.53" stroke="#b17b9b" stroke-width="3" /><circle cx="837.75" cy="475.00" r="3.6" fill="#a86c91" /><path d="M798.76 507.84 L787.27 498.20" stroke="#b17b9b" stroke-width="3" /><path d="M750.69 536.19 L741.05 524.70" stroke="#b17b9b" stroke-width="3" /><circle cx="695.00" cy="559.19" r="3.6" fill="#a86c91" /><path d="M633.39 576.13 L628.26 562.03" stroke="#b17b9b" stroke-width="3" /><path d="M567.72 586.51 L565.12 571.73" stroke="#b17b9b" stroke-width="3" /><circle cx="500.00" cy="590.00" r="3.6" fill="#a86c91" /><path d="M432.28 586.51 L434.88 571.73" stroke="#b17b9b" stroke-width="3" /><path d="M366.61 576.13 L371.74 562.03" stroke="#b17b9b" stroke-width="3" /><circle cx="305.00" cy="559.19" r="3.6" fill="#a86c91" /><path d="M249.31 536.19 L258.95 524.70" stroke="#b17b9b" stroke-width="3" /><path d="M201.24 507.84 L212.73 498.20" stroke="#b17b9b" stroke-width="3" /><circle cx="162.25" cy="475.00" r="3.6" fill="#a86c91" /><path d="M133.52 438.66 L147.62 433.53" stroke="#b17b9b" stroke-width="3" /><path d="M115.92 399.94 L130.70 397.33" stroke="#b17b9b" stroke-width="3" /><circle cx="110.00" cy="360.00" r="3.6" fill="#a86c91" /><path d="M115.92 320.06 L130.70 322.67" stroke="#b17b9b" stroke-width="3" /><path d="M133.52 281.34 L147.62 286.47" stroke="#b17b9b" stroke-width="3" /><circle cx="162.25" cy="245.00" r="3.6" fill="#a86c91" /><path d="M201.24 212.16 L212.73 221.80" stroke="#b17b9b" stroke-width="3" /><path d="M249.31 183.81 L258.95 195.30" stroke="#b17b9b" stroke-width="3" /><circle cx="305.00" cy="160.81" r="3.6" fill="#a86c91" /><path d="M366.61 143.87 L371.74 157.97" stroke="#b17b9b" stroke-width="3" /><path d="M432.28 133.49 L434.88 148.27" stroke="#b17b9b" stroke-width="3" /><circle cx="500.00" cy="130.00" r="3.6" fill="#a86c91" /><path d="M567.72 133.49 L565.12 148.27" stroke="#b17b9b" stroke-width="3" /><path d="M633.39 143.87 L628.26 157.97" stroke="#b17b9b" stroke-width="3" /><circle cx="695.00" cy="160.81" r="3.6" fill="#a86c91" /><path d="M750.69 183.81 L741.05 195.30" stroke="#b17b9b" stroke-width="3" /><path d="M798.76 212.16 L787.27 221.80" stroke="#b17b9b" stroke-width="3" /><circle cx="837.75" cy="245.00" r="3.6" fill="#a86c91" /><path d="M866.48 281.34 L852.38 286.47" stroke="#b17b9b" stroke-width="3" /><path d="M884.08 320.06 L869.30 322.67" stroke="#b17b9b" stroke-width="3" />
+    <circle cx="890" cy="360" r="10" fill="#fff8ed" />
+    <circle cx="890" cy="360" r="20" fill="none" stroke="#fff8ed" stroke-opacity="0.5" />
+  </g>
+  <g fill="#9b7f92" font-family="Arial, Helvetica, sans-serif" font-size="12" letter-spacing="2.4">
+    <text x="72" y="292">CIRCULAR RNA · CANCER IMMUNOTHERAPY</text>
+    <text x="1138" y="292" text-anchor="end">CirCure / 2026</text>
+  </g>
+</svg>
