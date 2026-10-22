@@ -1,41 +1,23 @@
-# Responsible & honest use of AI assistants
+# 负责任、诚实地使用 AI 辅助工具
 
-This repository ships with configuration for AI coding assistants (such as Claude
-Code). These tools can help you build your iGEM wiki faster — but **you and your
-team remain fully responsible for everything you commit and publish.** AI is an
-assistant, not an author of your science and not a substitute for understanding
-your own work. Read this before you start.
+简体中文 | [English](RESPONSIBLE_AI_USE.en.md)
 
-## 1. You are accountable
-- Judges evaluate **your team's** work. Be able to explain and defend every line
-  of code and every claim on your wiki.
-- Follow the official iGEM competition rules and policies at
-  [competition.igem.org](https://competition.igem.org).
+本仓库包含 Claude Code 等 AI 编程工具的配置。工具可以协助开发 Wiki，团队仍负责提交和发布的内容。使用 AI 时应理解相关实现与科学表述。
 
-## 2. Never fabricate
-- Do **not** let an AI invent experimental results, data, measurements,
-  citations, references, statistics, or attributions.
-- All scientific claims must come from your actual work and be verifiable.
-- AI may help you phrase, structure, translate, or debug — it must not generate
-  fake science or pad your pages with content you cannot back up.
+## 内容责任
 
-## 3. Honesty & attribution
-- Keep a human in the loop: review and understand AI-generated text and code
-  before committing it.
-- Do not present AI-generated text as a real person's quote or as peer-reviewed
-  fact.
-- Properly credit collaborators, mentors, and sources — the **Attributions Form**
-  is a judging requirement, not a formality.
+评审关注团队的工作。团队成员应能解释代码和科学主张，并遵守 [iGEM 官方竞赛规则与政策](https://competition.igem.org)。
 
-## 4. Security & Privacy
-- Review AI-suggested code and dependencies before using them. Do not run
-  commands you do not understand.
-- Never commit secrets or API keys to the repository.
-- Do not paste personal data, unpublished third-party data, credentials, or
-  anything confidential into AI prompts.
+## 科研真实性
 
----
+不得编造实验结果、数据、测量值、文献、引用、统计量或工作归属。科学主张应有实际工作和可核对证据支持。AI 可帮助组织、翻译、润色和排查问题，科研内容仍需负责人审核。
 
-When in doubt, ask a human (an instructor or advisor) and consult the official
-iGEM resources. The goal of AI assistance here is to help you do **your** work
-well — not to do it for you.
+## 署名与引用
+
+提交前由团队成员检查并理解 AI 生成的文本与代码。不得把 AI 生成内容作为真实人物原话或同行评审事实。按要求记录协作者、导师和资料来源，完成 Attributions 中的工作归属。
+
+## 安全与隐私
+
+先检查 AI 建议的代码和依赖，再运行理解其作用的命令。仓库不保存密钥、API Key 或其他凭据。不得向 AI 输入无授权的个人信息、第三方未公开数据或机密内容。
+
+遇到科学、来源或合规问题时，与相应负责人、指导老师或官方渠道核对。

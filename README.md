@@ -1,5 +1,7 @@
 # JLU-FBH iGEM 2026 · CirCure Official Wiki
 
+简体中文 | [English](README.en.md)
+
 本项目为 **JLU-FBH** 战队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki 网站前端工程，同时保存页面内容、素材来源与可复用的子项目源码。
 
 项目以 **CirCure**——基于工程化环状 RNA（circRNA）的多靶向三阴性乳腺癌（TNBC）疫苗平台——为主题，通过学术长文、手绘插画、滚动叙事、模型可视化与交互科普介绍团队的设计、实验和研究过程。
@@ -309,7 +311,9 @@ npm run dev
 
 ### GitHub 协作与官方 GitLab 发布
 
-团队使用 `LJY-PART → main` 的 Pull Request 流程。GitHub 合并、官方 GitLab 同步与在线 Wiki 发布分别核对；GitHub 上的提交不会自动证明官方站点已更新。
+协作者在各自的工作分支或功能分支上开发，通过 Pull Request 交流和评审改动，再合入共享的 `main` 分支。分支命名由协作者或负责模块的小组约定。
+
+GitHub 用于日常协作与代码评审，官方 GitLab 用于 iGEM 源码交付和 Wiki 发布。发布负责人按发布计划将审核通过的版本同步到官方 GitLab，由其流水线构建并发布网站。
 
 当前 [.gitlab-ci.yml](.gitlab-ci.yml) 在 GitLab 默认分支执行：
 
