@@ -69,11 +69,28 @@
 
 **在线 Wiki** · 正式网站与项目展示<br />[https://2026.igem.wiki/jlu-fbh/](https://2026.igem.wiki/jlu-fbh/)
 
+**开发预览版** · 持续更新的页面、交互与设计展示<br />[https://wiki.dayquay.com/jlu-fbh/](https://wiki.dayquay.com/jlu-fbh/)
+
+**项目宣传视频 · Promotion Video** · iGEM 官方视频平台<br />[https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16)
+
 **官方 GitLab** · 官方源码与发布记录<br />[https://gitlab.igem.org/2026/jlu-fbh](https://gitlab.igem.org/2026/jlu-fbh)
 
 **团队后台 · Team 6056** · 团队管理、素材上传与参赛交付<br />[https://teams.igem.org/6056](https://teams.igem.org/6056)
 
 日常开发与 Pull Request 在本 GitHub 仓库进行；官方 GitLab 同步与网站发布的关系见[部署说明](docs/deployment.md)。
+
+### 预览版与正式版的区别
+
+`wiki.dayquay.com` 是开发预览入口，包含尚未同步到官方 GitLab 的内容。正式参赛网站以 `2026.igem.wiki/jlu-fbh/` 为准；两个环境独立发布，GitHub 更新后仍需等待预览部署。
+
+截至 2026-10-22，GitHub 开发版相较官方 GitLab 保留了以下补充：
+
+- **Visual Design**：11 张初始草稿、四种图片圆角对比、Next page 与页脚之间的留白说明和完整截图，以及更完整的丝带与历史设计展示。已在 dayquay 预览页核对草稿、圆角对比和留白展示。
+- **Bomb Cat**：创建与加入在线房间、大厅、连接状态及 PeerJS 联机源码；源码与重建产物均保留在 GitHub。
+- **Sustainability**：恢复 10 月 21 日晚紧急回退覆盖的 Tracker 汇总，区分 66 位参与者、38 份来源档案和 78 条反馈，展示 10 项框架 SDG 的 SET / DEVELOP / GROW 分层；长期路径保留待验证说明。
+- **素材与工程资料**：保留可构建的游戏与虚拟实验室源码、本地素材、来源记录及双语开发文档。
+
+具体文件、回退时间线和发布边界见[版本差异说明](docs/deployment.md#预览版与官方-gitlab-的内容差异)。
 
 ## 从这里开始
 
@@ -515,11 +532,28 @@ This repository contains the official Wiki frontend for **JLU-FBH** in the 2026 
 
 **Live Wiki** · Published site and project showcase<br />[https://2026.igem.wiki/jlu-fbh/](https://2026.igem.wiki/jlu-fbh/)
 
+**Development preview** · Ongoing page, interaction, and design updates<br />[https://wiki.dayquay.com/jlu-fbh/](https://wiki.dayquay.com/jlu-fbh/)
+
+**Project Promotion Video** · Hosted on the official iGEM video platform<br />[https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16)
+
 **Official GitLab** · Official source and release history<br />[https://gitlab.igem.org/2026/jlu-fbh](https://gitlab.igem.org/2026/jlu-fbh)
 
 **Team dashboard · Team 6056** · Team administration, uploads, and deliverables<br />[https://teams.igem.org/6056](https://teams.igem.org/6056)
 
 Development and Pull Requests take place in this GitHub repository. See the [deployment guide](docs/deployment.en.md) for the roles of GitHub, official GitLab, and website releases.
+
+### Preview and published versions
+
+`wiki.dayquay.com` is the development preview and includes content that has not been synchronized to official GitLab. The competition website is `2026.igem.wiki/jlu-fbh/`. The environments deploy independently; GitHub changes still need a preview deployment.
+
+As of 2026-10-22, the GitHub development version retains these additions relative to official GitLab:
+
+- **Visual Design**: eleven initial sketches, four image-corner comparisons, complete screenshots explaining the gap between Next page and the footer, and additional ribbon and historical design studies. The sketches, corner comparison, and spacing study were also checked on the live dayquay preview.
+- **Bomb Cat**: online room creation and joining, the lobby, connection state, and PeerJS networking source, together with rebuilt runtime assets.
+- **Sustainability**: restored Tracker summaries overwritten by the October 21 emergency rollback, distinguishing 66 participants, 38 source profiles, and 78 feedback records, with ten framework SDGs grouped into SET / DEVELOP / GROW. Long-term pathways retain their evidence limitations.
+- **Assets and engineering resources**: buildable game and virtual laboratory source, local assets, provenance, and bilingual development documentation.
+
+See the [version comparison](docs/deployment.en.md#preview-and-official-gitlab-content-differences) for source paths, the rollback timeline, and deployment boundaries.
 
 ## Start here
 
