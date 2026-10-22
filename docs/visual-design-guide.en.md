@@ -11,6 +11,8 @@ JLU-FBH (also written JLUFBH) is the iGEM 2026 team from the First Bethune Hospi
 > The original page includes interactive components, animated comparisons, and technical details that are initially collapsed. Try clicking, dragging, or playing the demonstrations, and expand the relevant **Technical details** to read the visual changes alongside their design rationale and implementation.
 >
 > **[Section 8: Humanistic Care & Narrative Design](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience)** introduces the narrative and reader participation; **[Section 9: Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)** develops the methods, revision comparisons, and implementation details.
+>
+> **Also visit the initially collapsed [Design Folios ↗](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive) near the page ending.** Expand **Open the design folios · Six studies and revisions** to explore unused directions, earlier designs, revision comparisons, and five interactive demonstrations preserved as HTML pages. Each demonstration has an **Open in full window** link; [the examples and source files are listed below](#design-folios-earlier-directions-and-interactive-studies).
 
 Source and release links: [GitHub source repository](https://github.com/xiangyupaiso/Official-wiki) · [Official iGEM GitLab](https://gitlab.igem.org/2026/jlu-fbh).
 
@@ -151,6 +153,22 @@ Inspect the sketches, earlier versions, and comparisons, and expand the implemen
 **CirCure's approach.** Preserve sketches, layers, interface studies, comparisons, and technical notes. Revisit three concrete questions: does the object remain recognizable, is the next step clear, and can the reader return? Lumi connects loading, the cursor, destinations, and the ending, while each component owns its own state and controls.
 
 **When documenting your work.** Record the difficulty, its cause, the change, the comparison, and the conditions checked. Record desktop, narrow screens, reverse scrolling, rapid reversal, resize, keyboard input, and reduced motion separately. Screenshots, successful builds, and browser checks each support conclusions within their own scope.
+
+## Design Folios: earlier directions and interactive studies
+
+**[Open the Design Folios near the page ending and expand the six studies ↗](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive)**
+
+The folios are initially collapsed under **Open the design folios · Six studies and revisions**. In chronological order, they preserve ring-led and spatial openings, parallel visual directions, Human Practices timelines, patient composition, RNA-ring transitions, and final interaction refinements. Some ideas were left out of the final Wiki, but retain useful design questions: how navigation can introduce destinations, how one ribbon can connect storytelling and progress, and how timelines can organize different perspectives. Comparisons also show why the designs continued to change.
+
+Five demonstrations are preserved as **HTML pages**, with styles, scripts, or supporting assets. Try them within the expanded folios, or choose **Open in full window**:
+
+| Example and folio link                                                                                  | What to explore                                                                                                           | HTML entry in the repository                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Image-led navigation](https://2026.igem.wiki/jlu-fbh/visual-design#live-image-led-navigation)          | Expanding categories, illustrated destinations, and navigation that contracts and returns while scrolling.                | [archive-navigation-study.html](../archive-navigation-study.html)                                                                                                       |
+| [Pink thread and expanding emblem](https://2026.igem.wiki/jlu-fbh/visual-design#live-pink-thread)       | A portrait becoming an emblem, with a ribbon that also serves as a draggable reading-progress marker.                     | [archive-recognition-study.html](../archive-recognition-study.html)                                                                                                     |
+| [Three Human Practices timelines](https://2026.igem.wiki/jlu-fbh/visual-design#archive-reading-studies) | How centered alternating cards, a rotating focus, and horizontal impact cards arrange dates, people, and project changes. | [center.html](../public/archive-hp-study/center.html), [dial.html](../public/archive-hp-study/dial.html), [horizontal.html](../public/archive-hp-study/horizontal.html) |
+
+The folio text, images, and demonstration markup are in [history.html](../src/data/project/visual-design/history.html). Styles and scripts for navigation and the ribbon study are in [archive-navigation/](../src/components/wiki/features/project/visual-design-studies/archive-navigation/) and [archive-recognition/](../src/components/wiki/features/project/visual-design-studies/archive-recognition/). Follow the entry's stylesheet, script, and asset dependencies when adapting it. Archived layouts, palettes, and example content can differ from the final pages.
 
 ## Source map
 

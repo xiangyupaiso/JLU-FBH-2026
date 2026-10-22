@@ -14,6 +14,8 @@
 
 [English guide](visual-design-guide.en.md) · [完整 Visual Design 页面](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)
 
+页尾默认折叠的 [Design Folios 设计作品集](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive)也值得单独访问：六组研究保留了未采用的设计探索、历史方案和修改对比，其中五个 HTML 交互演示可以操作并全窗口打开。[指南中的作品集入口](visual-design-guide.md#design-folios设计作品集与历史方案)整理了案例与源码。
+
 ## 当前维护指南
 
 | 文档                              | 用途                                      |

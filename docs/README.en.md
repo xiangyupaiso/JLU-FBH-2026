@@ -12,6 +12,8 @@ Study it alongside the [original Wiki page](https://2026.igem.wiki/jlu-fbh/visua
 
 [Chinese guide](visual-design-guide.md) · [Full Visual Design page](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)
 
+Also visit the initially collapsed [Design Folios](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive) near the page ending. Six studies preserve unused explorations, earlier directions, and revision comparisons, including five interactive HTML demonstrations with full-window links. The [guide's folio section](visual-design-guide.en.md#design-folios-earlier-directions-and-interactive-studies) maps the examples and source files.
+
 ## Current maintenance guides
 
 | Document                                      | Purpose                                                       |

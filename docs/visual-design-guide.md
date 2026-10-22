@@ -11,6 +11,8 @@ JLU-FBH（也写作 JLUFBH）是吉林大学白求恩第一医院（First Bethun
 > 原网页保留了可操作的交互组件、动态对比和默认折叠的技术细节。建议亲自点击、拖动或播放演示，并展开相关的 **Technical details**，把画面变化、设计理由和实现说明对照起来阅读。
 >
 > **[第 8 节：Humanistic Care & Narrative Design](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience)** 介绍叙事思路与读者参与；**[第 9 节：Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)** 展开具体做法、迭代比较和实现细节。
+>
+> **不要漏掉页尾默认折叠的 [Design Folios 设计作品集 ↗](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive)。** 展开 **Open the design folios · Six studies and revisions**，可以查看未采用的设计探索、历史方案和修改比较，并操作五个保留为 HTML 页面的交互演示。每个演示的 **Open in full window** 可打开独立页面；[下文列出了案例与源码](#design-folios设计作品集与历史方案)。
 
 源码与发布记录：[GitHub 源码仓库](https://github.com/xiangyupaiso/Official-wiki) · [iGEM 官方 GitLab](https://gitlab.igem.org/2026/jlu-fbh)。
 
@@ -151,6 +153,22 @@ x(p) = (1 - u) × x0 + u × x1
 **CirCure 的做法。** 保存草图、图层、界面研究、前后比较与技术说明。复查围绕三个具体问题展开：对象能否保持可辨认、下一步是否清楚、读者能否返回。Lumi 在加载、光标、目的地和收尾中维持角色连续性，每个组件分别负责自己的状态与操作。
 
 **迁移时怎么记录。** 每次保留“哪里难读或难用 → 原因 → 修改 → 对比 → 验证条件”。将桌面、小屏、反向滚动、快速反转、窗口变化、键盘和 reduced motion 分别记录。截图、构建成功和浏览器检查各自只能支持对应范围内的结论。
+
+## Design Folios：设计作品集与历史方案
+
+**[打开页尾 Design Folios，展开六组设计研究 ↗](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive)**
+
+这块默认折叠，入口文字是 **Open the design folios · Six studies and revisions**。六组作品按时间保存了圆环与空间开场、并行视觉方向、Human Practices 时间线、患者构图、RNA 环转场及最后的交互细节。部分想法没有进入最终 Wiki，但它们保留了值得借鉴的设计问题：导航如何介绍目的地、同一条丝带如何连接叙事与进度、时间线如何组织不同人的意见。前后对比也让读者看到方案为什么继续修改。
+
+其中五个演示确实以 **HTML 页面**保存，包含样式、脚本或配套资源。展开作品集后可直接操作，也可用 **Open in full window** 独立体验：
+
+| 案例与作品集入口                                                                                    | 可以观察什么                                                             | 仓库中的 HTML 入口                                                                                                                                                      |
+| --------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [图像导航](https://2026.igem.wiki/jlu-fbh/visual-design#live-image-led-navigation)                  | 分类展开、图文目的地，以及滚动时导航的收放。                             | [archive-navigation-study.html](../archive-navigation-study.html)                                                                                                       |
+| [粉色丝带与展开的标志](https://2026.igem.wiki/jlu-fbh/visual-design#live-pink-thread)               | 人物轮廓如何过渡到标志，丝带如何兼任可拖动的阅读进度标记。               | [archive-recognition-study.html](../archive-recognition-study.html)                                                                                                     |
+| [三种 Human Practices 时间线](https://2026.igem.wiki/jlu-fbh/visual-design#archive-reading-studies) | 中轴交错卡片、旋转式聚焦、横向影响卡片如何分别安排日期、人物与项目变化。 | [center.html](../public/archive-hp-study/center.html)、[dial.html](../public/archive-hp-study/dial.html)、[horizontal.html](../public/archive-hp-study/horizontal.html) |
+
+作品集的文字、图像与演示装配记录见 [history.html](../src/data/project/visual-design/history.html)。导航与丝带演示的样式、脚本位于 [archive-navigation/](../src/components/wiki/features/project/visual-design-studies/archive-navigation/) 和 [archive-recognition/](../src/components/wiki/features/project/visual-design-studies/archive-recognition/)。复用时连同入口引用的样式、脚本和资源一起追踪；历史演示的布局、配色及示例内容可能与最终页面不同。
 
 ## 源码地图
 
