@@ -142,7 +142,7 @@
 
 ### 预览版与正式版的区别
 
-根据 [iGEM 2026 官方日历](https://competition.igem.org/about/calendar)，官方 Wiki 于 **2026 年 10 月 21 日 15:00 UTC（北京时间 23:00，UTC+8）**进入冻结期（Wiki Freeze）。冻结期间无法继续编辑，需等待赛事结束后的 Wiki Thaw 重新开放修改。
+根据 [iGEM 2026 官方日历](https://competition.igem.org/about/calendar)，官方 Wiki 于 <strong>2026 年 10 月 21 日 15:00 UTC（北京时间 23:00，UTC+8）</strong>进入冻结期（Wiki Freeze）。冻结期间无法继续编辑，需等待赛事结束后的 Wiki Thaw 重新开放修改。
 
 [`2026.igem.wiki/jlu-fbh/`](https://2026.igem.wiki/jlu-fbh/)保留正式参赛的冻结版本。后续补充、资料恢复和页面改进保存在本 GitHub 仓库，部署后可在[开发预览版 `wiki.dayquay.com`](https://wiki.dayquay.com/jlu-fbh/)查看。两个站点独立发布。
 
