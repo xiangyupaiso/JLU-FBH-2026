@@ -4,6 +4,12 @@
 
 Use the current guides for maintenance. The repository homepage contains both languages on one page. Maintenance guides default to Chinese and link to an English sibling at the top. Original specifications, scientific manuscripts, generated asset registries, and historical reviews retain their source language for reference and provenance.
 
+## Design reference for future iGEM teams
+
+The [JLU-FBH / CirCure Visual Design methods guide](visual-design-guide.en.md) maps all nine sections and develops Section 9, Our Wiki Contribution: layered artwork and opening, motion and reading rhythm, article layout, navigation, photograph and letter, and revision records. Each method includes the problem, approach, adaptation checks, source entry points, and guidance for citation.
+
+[Chinese guide](visual-design-guide.md) · [Full Visual Design page](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)
+
 ## Current maintenance guides
 
 | Document                                      | Purpose                                                       |
