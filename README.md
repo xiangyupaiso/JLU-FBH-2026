@@ -1,14 +1,12 @@
-<p align="center">
+<h1 align="center">
   <a href="https://2026.igem.wiki/jlu-fbh/">
-    <img src="docs/media/circure-wordmark.svg" alt="CirCure" width="340" />
+    <img src="docs/media/circure-cover.svg" alt="CirCure · JLU-FBH · iGEM 2026" width="1200" />
   </a>
-</p>
-
-<h1 align="center">JLU-FBH · iGEM 2026</h1>
+</h1>
 
 <p align="center">
-  <strong>CirCure 官方 Wiki</strong><br />
-  面向三阴性乳腺癌的环状 RNA 疫苗研究
+  <strong>面向三阴性乳腺癌的环状 RNA 疫苗研究</strong><br />
+  <sub>JLU-FBH · 2026 国际基因工程机器大赛 · 官方 Wiki</sub>
 </p>
 
 <p align="center">
@@ -25,27 +23,32 @@
   <a href="CONTRIBUTING.md">参与贡献</a>
 </p>
 
-<p align="center">
-  <a href="https://2026.igem.wiki/jlu-fbh/">
-    <img src="docs/media/wiki-circrna.jpg" alt="CirCure 官方 Wiki 首页的 circRNA 手绘场景：环状结构、稳定性和持续表达的概念图解。" width="960" />
-  </a>
-  <br />
-  <sub>官网首页实景 · circRNA 设计图解（示意） · 点击进入完整 Wiki</sub>
-</p>
-
 ## 项目概览
 
 本项目为 **JLU-FBH** 战队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki 网站前端工程，同时保存页面内容、素材来源与可复用的子项目源码。
 
 项目以 **CirCure**——基于工程化环状 RNA（circRNA）的多靶向三阴性乳腺癌（TNBC）疫苗平台——为主题，通过学术长文、手绘插画、滚动叙事、模型可视化与交互科普介绍团队的设计、实验和研究过程。
 
+<details>
+<summary><strong>展开官网预览</strong> · circRNA 手绘场景</summary>
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/">
+    <img src="docs/media/wiki-circrna.jpg" alt="CirCure 官方 Wiki 首页的 circRNA 手绘场景：环状结构、稳定性和持续表达的概念图解。" width="960" />
+  </a>
+  <br />
+  <sub>官网首页实景 · 概念图解 · 点击图片进入完整 Wiki</sub>
+</p>
+
+</details>
+
 ## 项目链接
 
-| 入口                | 网址                                                                         | 用途                         |
-| ------------------- | ---------------------------------------------------------------------------- | ---------------------------- |
-| **在线 Wiki**       | [https://2026.igem.wiki/jlu-fbh/](https://2026.igem.wiki/jlu-fbh/)           | 正式网站与项目展示           |
-| **官方 GitLab**     | [https://gitlab.igem.org/2026/jlu-fbh](https://gitlab.igem.org/2026/jlu-fbh) | 官方源码与发布记录           |
-| **团队后台 · 6056** | [https://teams.igem.org/6056](https://teams.igem.org/6056)                   | 团队管理、素材上传与参赛交付 |
+**在线 Wiki** · 正式网站与项目展示<br />[https://2026.igem.wiki/jlu-fbh/](https://2026.igem.wiki/jlu-fbh/)
+
+**官方 GitLab** · 官方源码与发布记录<br />[https://gitlab.igem.org/2026/jlu-fbh](https://gitlab.igem.org/2026/jlu-fbh)
+
+**团队后台 · Team 6056** · 团队管理、素材上传与参赛交付<br />[https://teams.igem.org/6056](https://teams.igem.org/6056)
 
 日常开发与 Pull Request 在本 GitHub 仓库进行；官方 GitLab 同步与网站发布的关系见[部署说明](docs/deployment.md)。
 

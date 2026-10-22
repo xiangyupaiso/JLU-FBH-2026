@@ -1,14 +1,12 @@
-<p align="center">
+<h1 align="center">
   <a href="https://2026.igem.wiki/jlu-fbh/">
-    <img src="docs/media/circure-wordmark.svg" alt="CirCure" width="340" />
+    <img src="docs/media/circure-cover.svg" alt="CirCure · JLU-FBH · iGEM 2026" width="1200" />
   </a>
-</p>
-
-<h1 align="center">JLU-FBH · iGEM 2026</h1>
+</h1>
 
 <p align="center">
-  <strong>CirCure Official Wiki</strong><br />
-  A circRNA vaccine research project for triple-negative breast cancer
+  <strong>A circRNA vaccine research project for triple-negative breast cancer</strong><br />
+  <sub>JLU-FBH · International Genetically Engineered Machine Competition 2026 · Official Wiki</sub>
 </p>
 
 <p align="center">
@@ -25,27 +23,32 @@
   <a href="CONTRIBUTING.en.md">Contribute</a>
 </p>
 
-<p align="center">
-  <a href="https://2026.igem.wiki/jlu-fbh/">
-    <img src="docs/media/wiki-circrna.jpg" alt="The official CirCure Wiki homepage showing its hand-painted conceptual illustration of circular RNA structure, stability, and sustained expression." width="960" />
-  </a>
-  <br />
-  <sub>Official homepage preview · Conceptual circRNA illustration · Open the complete Wiki</sub>
-</p>
-
 ## Project overview
 
 This repository contains the official Wiki frontend for **JLU-FBH** in the 2026 International Genetically Engineered Machine Competition (**iGEM**), together with page content, asset sources, and reusable application source.
 
 **CirCure** explores an engineered circular RNA (**circRNA**) platform for a multi-target triple-negative breast cancer (**TNBC**) vaccine. The Wiki presents the team's design, experiments, and research through long-form articles, hand-drawn illustrations, scroll-driven storytelling, model visualizations, and interactive science communication.
 
+<details>
+<summary><strong>Preview the Wiki</strong> · Hand-painted circRNA scene</summary>
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/">
+    <img src="docs/media/wiki-circrna.jpg" alt="The official CirCure Wiki homepage showing its hand-painted conceptual illustration of circular RNA structure, stability, and sustained expression." width="960" />
+  </a>
+  <br />
+  <sub>Official homepage · Conceptual illustration · Open the complete Wiki</sub>
+</p>
+
+</details>
+
 ## Project links
 
-| Entry                     | URL                                                                          | Purpose                                        |
-| ------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------- |
-| **Live Wiki**             | [https://2026.igem.wiki/jlu-fbh/](https://2026.igem.wiki/jlu-fbh/)           | Published site and project showcase            |
-| **Official GitLab**       | [https://gitlab.igem.org/2026/jlu-fbh](https://gitlab.igem.org/2026/jlu-fbh) | Official source and release history            |
-| **Team dashboard · 6056** | [https://teams.igem.org/6056](https://teams.igem.org/6056)                   | Team administration, uploads, and deliverables |
+**Live Wiki** · Published site and project showcase<br />[https://2026.igem.wiki/jlu-fbh/](https://2026.igem.wiki/jlu-fbh/)
+
+**Official GitLab** · Official source and release history<br />[https://gitlab.igem.org/2026/jlu-fbh](https://gitlab.igem.org/2026/jlu-fbh)
+
+**Team dashboard · Team 6056** · Team administration, uploads, and deliverables<br />[https://teams.igem.org/6056](https://teams.igem.org/6056)
 
 Development and Pull Requests take place in this GitHub repository. See the [deployment guide](docs/deployment.en.md) for the roles of GitHub, official GitLab, and website releases.
 
