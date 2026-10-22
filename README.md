@@ -175,63 +175,90 @@
 - 所有文档：[文档索引](docs/README.md)
 - 提交改动前：[协作约定](CONTRIBUTING.md)
 
-本页内容：[技术栈](#技术栈与核心依赖) · [架构原则](#架构设计与开发原则) · [页面体系](#全站模块与页面体系) · [交互特色](#核心交互与工程特色) · [仓库目录](#仓库目录与构建边界) · [修改入口](#常见修改位置) · [部署适配](#持续集成与多环境适配) · [许可](#授权与知识产权)
+本页：[技术栈](#技术栈) · [代码组织](#页面代码怎么组织) · [页面导航](#页面与导航) · [交互体验](#交互与阅读体验) · [目录与构建](#仓库目录与构建) · [修改位置](#常见修改位置) · [快速启动](#快速启动) · [部署](#协作与部署) · [致谢](#团队与致谢) · [许可](#许可与署名)
 
-## 技术栈与核心依赖
+<a id="技术栈与核心依赖"></a>
 
-主站使用以下技术。[package.json](package.json)列出依赖及版本范围，锁文件记录实际安装版本；独立子项目各自维护依赖。
+## 技术栈
 
-| 领域             | 选型                                       | 版本系列                            | 工程用途                                      |
-| ---------------- | ------------------------------------------ | ----------------------------------- | --------------------------------------------- |
-| 构建工具         | Vite                                       | 7.3.x                               | 本地开发、热更新（HMR）与多 HTML 入口生产构建 |
-| 前端框架         | React + TypeScript                         | 19.2.x / 5.9.x                      | 组件、类型检查与页面数据接口                  |
-| 路由             | React Router                               | 7.x                                 | 页面路由、导航、重定向与阅读入口              |
-| 动画编排         | GSAP + @gsap/react                         | 3.15.x / 2.1.x                      | 开场笔画、滚动场景、时间轴与组件动画生命周期  |
-| 分子结构可视化   | Mol\*（Molstar）                           | 5.13.x                              | WebGL 分子查看器，运行时单独编译并按需加载    |
-| 数据可视化       | Apache ECharts                             | 6.1.x                               | 图表、图例、区间高亮与提示信息                |
-| 主站样式         | CSS 自定义属性（Design Tokens）+ Bootstrap | Bootstrap 5.3.x                     | 主题、栅格、共享阅读器与页面排版              |
-| 实验室样式与图标 | Tailwind CSS + Lucide                      | Tailwind 3.4.x；主站 Lucide 0.562.x | 实验台界面、图标与独立样式系统                |
-| 交互原语         | Radix UI                                   | 主站 Dialog / Tabs 1.x              | 对话框、标签页等基础交互                      |
-| 工程检查         | ESLint + Prettier + Node 测试脚本          | 以配置与锁文件为准                  | 静态检查、格式化与专项回归验证                |
+主站用 React 和 TypeScript 开发，通过 Vite 构建。动画、分子结构和图表分别使用 GSAP、Mol\* 和 ECharts。
 
-主站、两个独立游戏和虚拟实验室有不同的构建入口；根目录构建不会自动重建所有子项目，详见[构建边界](#三类应用的构建边界)。
+| 技术 | 版本 | 用途 |
+| --- | --- | --- |
+| React / TypeScript | 19.2.x / 5.9.x | 页面组件与类型检查 |
+| Vite | 7.3.x | 开发服务器与多 HTML 入口构建 |
+| React Router | 7.x | 路由、导航与重定向 |
+| GSAP / @gsap/react | 3.15.x / 2.1.x | 开场动画、滚动场景与时间轴 |
+| Mol\*（Molstar） | 5.13.x | 按需加载的 WebGL 分子查看器 |
+| Apache ECharts | 6.1.x | 模型图表与交互提示 |
+| CSS 自定义属性 / Bootstrap | Bootstrap 5.3.x | 主站配色、栅格与阅读版式 |
+| Tailwind CSS / Lucide | 3.4.x / 主站 Lucide 0.562.x | 实验室样式与界面图标 |
+| Radix UI | Dialog / Tabs 1.x | 对话框与标签页 |
+| ESLint / Prettier / Node 测试脚本 | 见配置与锁文件 | 代码检查、格式化与回归测试 |
 
-## 架构设计与开发原则
+具体依赖见 [package.json](package.json)，安装版本由锁文件确定。游戏和虚拟实验室各自管理依赖与构建，见[构建说明](#三类应用的构建边界)。
 
-### 页面分层：数据、资产、交互与装配
+<a id="架构设计与开发原则"></a>
 
-页面开发遵循[架构规范](WIKI_ARCHITECTURE_SPEC.md)中的关注点分离（Separation of Concerns），主要分成四层：
+## 页面代码怎么组织
 
-| 层次     | 常见路径                                 | 职责                                                                |
-| -------- | ---------------------------------------- | ------------------------------------------------------------------- |
-| 正文数据 | `src/data/[module]/[page]Page.ts`        | 以 `WikiPageContent` 等类型描述正文、章节、图表与链接，避免混入 JSX |
-| 资产映射 | `src/data/[module]/[page]Assets.ts`      | 维护本地来源、图片和附件的调用关系与 CDN 映射                       |
-| 页面交互 | `src/components/wiki/features/[module]/` | 封装图表、构建体查看器和专用交互，通过 feature 插槽接入             |
-| 路由装配 | `src/contents/[page].tsx`                | 组合 `WikiRoutePage`、页面数据、Hero 和 feature，保持装配层简洁     |
+<a id="页面分层数据资产交互与装配"></a>
 
-新增页面按这四层组织。现有 `src/data/` 中，部分页面数据位于根目录，部分位于模块子目录，维护时可沿 `import` 找到对应文件。
+### 正文、图片和交互分别维护
 
-### 共享阅读器与单一维护入口
+一篇正文页通常涉及以下四个位置：
 
-正文页面复用 `WikiRoutePage`，统一处理内容块、图片、文献、目录与章节衔接。共享尺寸和阅读版式优先维护 `src/styles/wiki-route-skin.css`；模块主题由 `route-palette-*.css` 管理，页面专用交互与样式留在对应 feature 中。
+| 内容 | 常见位置 | 放什么 |
+| --- | --- | --- |
+| 正文数据 | `src/data/[module]/[page]Page.ts` | 文字、章节、图表说明和链接，使用 `WikiPageContent` 等类型描述 |
+| 素材映射 | `src/data/[module]/[page]Assets.ts` | 本地源文件、图片、附件与 CDN 地址的对应关系 |
+| 页面交互 | `src/components/wiki/features/[module]/` | 图表、构建体查看器等交互组件，通过 feature 插槽接入 |
+| 页面装配 | `src/contents/[page].tsx` | 将正文数据、题图和交互组件交给 `WikiRoutePage` |
 
-正文与资产映射分别维护，避免同一内容在组件和数据文件中重复保存。具体修改位置见[常见修改位置](#常见修改位置)。
+新增页面按[页面规范](WIKI_ARCHITECTURE_SPEC.md)组织，正文数据中避免混入 JSX。现有数据文件有的位于 `src/data/` 根目录，有的位于模块子目录；从页面装配文件的 `import` 往下找即可。
 
-### 独立应用与样式隔离
+<a id="共享阅读器与单一维护入口"></a>
 
-主站以共享阅读器、CSS 主题和 Bootstrap 为基础；虚拟实验室有自己的 Tailwind 样式、依赖和构建。主站通过 `loading="lazy"` 的 iframe 嵌入官方实验室部署，隔离两个文档的样式与视口。
+### 正文页共用阅读器
 
-实验室使用 `window.postMessage` 通知主站关闭，主站同时检查消息来源域名与 iframe 窗口。实验室的九个实验页面使用 `React.lazy` 和动态 `import()` 分包，在实验室项目内独立构建。
+`WikiRoutePage` 负责正文、图片、文献、目录和章节衔接。调整共享版式时改 `src/styles/wiki-route-skin.css`，调整模块配色时改 `route-palette-*.css`。仅用于某一页的交互和样式放在对应 feature 中。
 
-### 共享图片准备契约
+正文和素材映射各保留一处维护来源，避免在组件中再存一份相同内容。
 
-页面切换使用共享加载器；`WikiRoutePage` 自动收集 Hero 和正文图片。弹窗或未激活标签中的普通图片通过 `preloadImages` 或 `PageImagePreloads` 声明，避免读者进入交互后才出现空白图。
+<a id="共享图片准备契约"></a>
 
-新页面继承同一套规则，详见[共享模板的图片准备契约](WIKI_ARCHITECTURE_SPEC.md#471-新页面接入)。修改后运行 `yarn test:page-loading`，再检查实际页面切换与交互。
+### 页面切换时准备图片
 
-## 全站模块与页面体系
+共享加载器会自动收集 `WikiRoutePage` 的题图和正文图片。弹窗、未激活标签页中的图片需要通过 `preloadImages` 或 `PageImagePreloads` 声明，减少打开后等待图片的情况。
 
-当前导航由 Home 和五个内容板块组成，包含首页以外的 22 个内容入口。下图与 [src/pages.ts](src/pages.ts) 中的分组一致；路径均相对于网站基址 `/jlu-fbh/`。
+接入方式见[图片准备规则](WIKI_ARCHITECTURE_SPEC.md#471-新页面接入)。修改后运行 `yarn test:page-loading`，并在浏览器里检查页面切换和相关交互。
+
+<a id="独立应用与样式隔离"></a>
+
+### 实验室独立运行
+
+虚拟实验室有自己的 Tailwind 样式、依赖和构建，主站通过延迟加载的 iframe 嵌入其官方部署。两个文档的样式与视口相互隔离。
+
+实验室通过 `window.postMessage` 请求关闭，主站检查消息来源域名和 iframe 窗口。九个实验页面在子项目中用 `React.lazy` 和动态 `import()` 分包。
+
+<a id="全站模块与页面体系"></a>
+
+## 页面与导航
+
+首页之外，五个内容板块共有 22 个页面入口。导航配置在 [src/pages.ts](src/pages.ts)。
+
+| 板块 | 页面 |
+| --- | --- |
+| Team | Roster、Attributions、Activities |
+| Project | Description、Engineering、Results、Contribution、Visual Design、Notebook、Safety and Security |
+| Wet Lab | Design、Experiments、Measurement、Alternative Platform |
+| Dry Lab | Model、Software、Hardware、Games |
+| Engagement | Entrepreneurship、Human Practices、Education、Sustainability |
+
+Games 页面汇集虚拟实验室、Breast Guardian RPG、Bomb Cat 和 Bio Memory Match。
+
+<details>
+<summary>查看完整页面路径与内容说明</summary>
 
 ```text
 CirCure Wiki
@@ -269,27 +296,38 @@ CirCure Wiki
     └── Sustainability (/sustainability)          # 可持续发展目标与影响评估
 ```
 
-`/team` 重定向到 `/roster`，`/attribution` 作为别名重定向到 `/attributions`。
+</details>
 
-## 核心交互与工程特色
+路径均相对于 `/jlu-fbh/`。`/team` 重定向到 `/roster`，`/attribution` 重定向到 `/attributions`。
 
-### 开场序章与滚动叙事（Home Intro & Scroll Story）
+<a id="核心交互与工程特色"></a>
 
-首页使用 SVG 笔画、Canvas 粒子和 GSAP 时间轴呈现 CirCure 签名开场，并衔接后续的滚动叙事。TNBC 探索地图、抗原切换器、circRNA 图解与场景过渡共同组织从问题背景到设计思路的阅读顺序。
+## 交互与阅读体验
 
-相关实现集中在 `src/components/home/`、`src/data/` 的首页数据以及 `src/styles/home-*.css` 等样式中。首页有独立的叙事布局，进入正文页后使用对应阅读器与模块主题。
+<a id="开场序章与滚动叙事home-intro--scroll-story"></a>
 
-### 手绘题图与长文阅读（Hero & Manuscript Reader）
+### 首页：从问题背景读到设计思路
 
-页面使用手绘题图与水墨淡彩视觉规则。题图自身包含标题时，通过 `hideHeroCopy` 控制可见标题，仍保留供辅助技术读取的语义化 `h1`。
+首页以 CirCure 签名动画开场，再通过 TNBC 探索地图、抗原切换器和 circRNA 图解展开故事。SVG 笔画、Canvas 粒子和 GSAP 时间轴负责开场与场景过渡。
 
-共享阅读器包括马克笔风格的 `WikiLineSidebar` 目录、章节定位、正文内图表与文献，以及结尾的 `WikiNextRecord` 下一章入口。目录默认根据当前阅读位置展开更深层标题，部分页面可选择完整大纲。
+相关代码在 `src/components/home/`，数据在 `src/data/`，样式主要在 `src/styles/home-*.css`。首页使用独立布局，正文页使用共享阅读器。
 
-Team、Project、Wet Lab、Dry Lab 和 Engagement 分别维护模块色板；主色、柔和色和底色与标题、标记等 Token 配合使用。具体颜色及排版约束见[设计与排版规范](文案集/Wiki-设计与排版规范.md)。
+<a id="手绘题图与长文阅读hero--manuscript-reader"></a>
 
-### 虚拟分子生物学实验室（Virtual Laboratory）
+### 正文：手绘题图、目录与下一章
 
-[在线实验室](https://virtual-lab-208fd4.igem.wiki/)包含九个引导式实验，目录以 Beginner、Intermediate、Advanced 三档组织。主站保留[完整实验室源码](virtual-lab/README.md)，通过 iframe 接入其官方独立部署；[官方软件仓库](https://gitlab.igem.org/2026/software/jlu-fbh/virtual-lab)负责该应用的部署。
+手绘题图延续水墨淡彩风格，五个内容板块分别使用自己的配色。题图已经包含标题时，可用 `hideHeroCopy` 隐藏重复文字，同时保留供辅助技术读取的语义化 `h1`。
+
+正文配有马克笔风格的 `WikiLineSidebar` 目录、章节定位、图表和文献，结尾由 `WikiNextRecord` 连接下一章。目录通常随阅读位置展开深层标题，部分页面展示完整大纲。配色与排版细节见[设计与排版规范](文案集/Wiki-设计与排版规范.md)。
+
+<a id="虚拟分子生物学实验室virtual-laboratory"></a>
+
+### 虚拟实验室：九个引导式实验
+
+[在线实验室](https://virtual-lab-208fd4.igem.wiki/)按 Beginner、Intermediate、Advanced 三档组织课程，从菌株复苏、染色和质粒提取，逐步进入 PCR、酶切、连接、转化与表达检测。
+
+<details>
+<summary>查看九个实验及学习内容</summary>
 
 | 难度         | 实验                                 | 主要学习内容                        |
 | ------------ | ------------------------------------ | ----------------------------------- |
@@ -303,39 +341,58 @@ Team、Project、Wet Lab、Dry Lab 和 Engagement 分别维护模块色板；主
 | Advanced     | 8 · 感受态制备与质粒转化             | 感受态细胞、热激转化与平板培养      |
 | Advanced     | 9 · 菌落 PCR、GFP 荧光与蛋白表达     | 阳性克隆筛选、荧光观察和蛋白检测    |
 
-实验界面包括移液器、离心机、PCR 仪、电泳与成像等器材，配合步骤指示（StepIndicator）、操作提示和原理、器材、试剂信息面板（InfoPanel）。实验页面提供重启入口，并对小屏竖屏使用横屏提示。课程内容与视口交互的实现保留在子项目中。
+</details>
 
-### 交互科普小游戏（Sci-Comm Games）
+界面提供移液器、离心机、PCR 仪和电泳成像等器材，配有步骤指示、操作提示、原理及试剂说明。实验可以重启，小屏竖屏时会提示横屏使用。
 
-`/games` 将实验室和三款游戏汇集在同一门户，进入对应体验后加载游戏内容：
+完整源码和开发方式见 [virtual-lab/README.md](virtual-lab/README.md)，独立部署由[官方软件仓库](https://gitlab.igem.org/2026/software/jlu-fbh/virtual-lab)管理。
+
+<a id="交互科普小游戏sci-comm-games"></a>
+
+### 科普游戏
+
+在 `/games` 中选择游戏后加载对应内容：
 
 - **Breast Guardian RPG**：通过不同生命阶段的角色与情境介绍乳腺健康知识。
-- **Bomb Cat**：围绕 circRNA 主题的策略卡牌，包含本地机器人、在线房间和规则说明。
-- **Bio Memory Match**：通过标本卡片的观察、记忆与配对接触生物学概念。
+- **Bomb Cat**：以 circRNA 为主题的策略卡牌，支持本地机器人、在线房间，并提供规则说明。
+- **Bio Memory Match**：观察、记忆并配对标本卡片，认识生物学概念。
 
-Breast Guardian 和 Bomb Cat 的独立可构建源码位于 `games/`；Bio Memory 的运行入口位于 `public/game-assets/bio-memory/`。源码来源、版本比较和构建方式见 [games/README.md](games/README.md)。
+前两款游戏的可构建源码在 `games/`；Bio Memory 的运行文件在 `public/game-assets/bio-memory/`。来源记录和构建方式见 [games/README.md](games/README.md)。
 
-### 分子与数据可视化（Molecular & Data Visualization）
+<a id="分子与数据可视化molecular--data-visualization"></a>
 
-Model 页面通过 Mol\* 展示 Trop2 复合体结构，提供旋转、缩放、片段聚焦、表面与极性接触显示等控制。分子运行时与 PDB 在读者接近图示时按需加载，避免首页提前加载完整查看器。
+### 分子结构与模型图表
 
-ECharts 等组件展示模型数据，提供图例、区间高亮和交互提示，便于对照图表阅读模型分析。
+Model 页面用 Mol\* 展示 Trop2 复合体，可旋转、缩放、聚焦片段，也可切换表面和极性接触显示。分子运行时和 PDB 文件在读者接近图示时加载。
 
-### 共享导航、光标与页面辅助
+模型数据通过 ECharts 等组件展示，读者可操作图例、查看区间高亮和提示信息，对照正文阅读分析。
 
-站点包含响应式导航、页面内搜索、返回顶部、共享页脚，以及绵羊光标等交互。光标根据精细指针、悬停和 reduced motion 条件启用，在适用的输入区域保留原生光标行为。
+<a id="共享导航光标与页面辅助"></a>
 
-这些共享组件跨页面使用，修改时需同时检查首页与正文页的状态切换、窄屏、键盘操作和减少动态效果（reduced motion）设置。
+### 导航与阅读辅助
 
-### 素材来源与官方托管
+响应式导航、页面内搜索、返回顶部和页脚供全站使用。绵羊光标会根据精细指针、悬停能力和减少动态效果（reduced motion）设置启用，并在适用的输入区域保留原生光标。
 
-正式页面使用 `static.igem.wiki` 上的官方图片、字体和附件；仓库也保留本地素材、原稿与来源映射。素材调用应沿用对应资产字典和登记规则，视频与独立应用按官方托管入口接入。
+修改共享组件时，要检查首页与正文页之间的切换，以及窄屏、键盘操作和减少动态效果设置下的表现。
 
-上传副本和历史核验记录位于 `delivery/uploads/`。素材更新时，按[素材维护](docs/assets.md)核对源文件、CDN 地址和页面引用。
+<a id="素材来源与官方托管"></a>
 
-## 仓库目录与构建边界
+### 图片、字体与附件
 
-### 目录入口
+正式页面的图片、字体和附件使用 `static.igem.wiki` 地址，视频和独立应用接入各自的官方托管平台。仓库保留本地素材、原稿与 CDN 映射，上传副本和历史核验记录保存在 `delivery/uploads/`。
+
+替换素材时，按[素材维护](docs/assets.md)核对源文件、CDN 地址和页面引用。
+
+<a id="仓库目录与构建边界"></a>
+
+## 仓库目录与构建
+
+主站代码在 `src/`，独立应用在 `games/` 和 `virtual-lab/`；`文案集/` 保存原稿，`delivery/` 保存交付记录。查找具体文件可直接看[常见修改位置](#常见修改位置)或[仓库地图](docs/repository-layout.md)。
+
+<a id="目录入口"></a>
+
+<details>
+<summary>展开仓库目录</summary>
 
 ```text
 .
@@ -382,55 +439,59 @@ ECharts 等组件展示模型数据，提供图例、区间高亮和交互提示
 └── vite.config.ts                    # 多入口构建、分子运行时与 base 路径
 ```
 
-根目录的 `index.html`、`visual-design-study.html`、`archive-navigation-study.html` 和 `archive-recognition-study.html` 是四个 HTML 构建入口，分别用于主站和设计研究演示。
+</details>
 
-`.env` 保存现有队伍元数据等构建输入，不应写入密钥；`.dockerignore` 用于排除本机构建上下文中的无关文件。其余根目录文件职责与迁移记录见[仓库地图](docs/repository-layout.md)。
+根目录有四个 HTML 构建入口：`index.html` 用于主站，`visual-design-study.html`、`archive-navigation-study.html` 和 `archive-recognition-study.html` 用于设计研究演示。
+
+现有 `.env` 保存队伍元数据等构建输入，不应写入密钥。`.dockerignore` 排除 Docker 构建上下文中的无关文件。
 
 ### 三类应用的构建边界
 
-| 应用                       | 开发入口                                       | 根目录构建的行为                                                |
-| -------------------------- | ---------------------------------------------- | --------------------------------------------------------------- |
-| Wiki 主站                  | `src/`，`yarn dev`                             | 类型检查、四个 HTML 入口打包、生成路径映射                      |
-| Breast Guardian / Bomb Cat | [games/README.md](games/README.md)             | 发布 `public/game-assets/` 中已提交的运行文件；不会自动重建游戏 |
-| Virtual Laboratory         | [virtual-lab/README.md](virtual-lab/README.md) | 主站嵌入官方实验室部署；不会自动构建或发布实验室                |
+| 应用 | 开发说明 | 根目录 `yarn build` 会做什么 |
+| --- | --- | --- |
+| Wiki 主站 | [开发指南](docs/development.md) | 检查类型、构建四个 HTML 入口并生成路径映射 |
+| Breast Guardian / Bomb Cat | [游戏说明](games/README.md) | 复制 `public/game-assets/` 中已提交的运行文件；游戏源码需另行构建 |
+| Virtual Laboratory | [实验室说明](virtual-lab/README.md) | 构建主站中的 iframe 接入；实验室需独立构建、发布 |
 
-子项目有各自的依赖、锁文件和许可证，开发与构建方式见对应 README。实验室独立部署；游戏重新构建后，将运行文件更新到主站的 `public/game-assets/`。
+各子项目有自己的依赖、锁文件和许可证。游戏重建后，需将运行文件更新到主站的 `public/game-assets/`；实验室通过独立站点发布。
 
 ## 常见修改位置
 
-| 要修改的内容             | 入口                                                       |
-| ------------------------ | ---------------------------------------------------------- |
-| 页面路由、导航目标       | `src/pages.ts`、`src/contents/`                            |
-| 正文、章节、图表说明     | `src/data/` 中对应模块                                     |
-| 页面图片与附件映射       | 对应的 `*Assets.ts`、`src/data/assets/`                    |
-| 页面专用交互、图表       | `src/components/wiki/features/`                            |
-| 首页叙事、动画           | `src/components/home/`、首页数据与相关 `home-*.css` 样式   |
-| 共享阅读器与正文版式     | `src/components/wiki/`、`src/styles/wiki-route-skin.css`   |
-| 模块色板与标题颜色       | `src/styles/route-palette-*.css`                           |
-| 共享加载与图片准备       | `src/utils/`；遵循[页面规范](WIKI_ARCHITECTURE_SPEC.md)    |
-| 素材来源、上传记录       | [素材维护](docs/assets.md)、[交付索引](delivery/README.md) |
-| 工具用途、输入与写入范围 | [scripts/README.md](scripts/README.md)                     |
+| 想改什么 | 去哪里找 |
+| --- | --- |
+| 路由、导航目标 | `src/pages.ts`、`src/contents/` |
+| 正文、章节、图表说明 | `src/data/` 中对应页面的数据文件 |
+| 图片与附件地址 | 对应的 `*Assets.ts`、`src/data/assets/` |
+| 页面交互、图表 | `src/components/wiki/features/` |
+| 首页叙事、动画 | `src/components/home/`、首页数据与 `home-*.css` |
+| 正文阅读版式 | `src/components/wiki/`、`src/styles/wiki-route-skin.css` |
+| 模块配色 | `src/styles/route-palette-*.css` |
+| 页面加载与图片准备 | `src/utils/`，同时查阅[页面规范](WIKI_ARCHITECTURE_SPEC.md) |
+| 素材来源、上传记录 | [素材维护](docs/assets.md)、[交付索引](delivery/README.md) |
+| 脚本用途与写入范围 | [脚本索引](scripts/README.md) |
 
-运行导入器或素材生成器前，先查看脚本说明中的写入范围；这些工具会更新内容或索引。修改科研原稿、实验参数、公式与评价指标前，需与内容负责人确认。
+导入器和素材生成器可能覆写正文或索引，运行前先看脚本说明。科研原稿、实验参数、公式与评价指标的改动需由内容负责人确认。
 
 ## 快速启动
 
-### 环境与依赖
+<a id="环境与依赖"></a>
 
-主站建议使用 Node.js 22.12+ 的 22.x 环境和 Yarn Classic 1.22.22，保持与官方 CI 的 Node 22 主版本一致。包管理器以 `package.json` 的 `packageManager` 为准。
+### 启动主站
 
-从仓库根目录运行：
+建议使用 Node.js 22.12+（22.x）和 Yarn Classic 1.22.22，与官方 CI 的 Node 主版本保持一致。在仓库根目录运行：
 
 ```sh
 yarn install --frozen-lockfile
 yarn dev
 ```
 
-打开终端输出的地址，默认路径为 `http://localhost:5173/jlu-fbh/`。
+打开终端给出的地址，默认是 `http://localhost:5173/jlu-fbh/`。
 
-根目录同时保留 npm 锁文件；使用 npm 时执行 `npm ci`，通过 `npm run <名称>` 运行脚本。同一依赖目录固定使用一种包管理器，升级依赖时同步更新对应锁文件。
+根目录也保留 npm 锁文件：使用 npm 时执行 `npm ci`，再用 `npm run <名称>` 运行脚本。同一依赖目录固定使用一种包管理器，依赖变更时同步维护对应锁文件。
 
-### 检查、构建与预览
+<a id="检查构建与预览"></a>
+
+### 检查与构建
 
 ```sh
 yarn lint
@@ -439,30 +500,37 @@ yarn build
 yarn preview
 ```
 
-`build` 依次执行主站 TypeScript 检查、Vite 构建和 `scripts/postbuild-slug.mjs`。产物写入 `dist/`，包含 Wiki 与设计研究 HTML 入口；Mol\* 运行时单独编译。
+`build` 依次运行 TypeScript 检查、Vite 构建和 `scripts/postbuild-slug.mjs`，输出到 `dist/`。产物包含主站与设计研究页面，Mol\* 运行时单独编译。`preview` 查看这份构建产物，修改源码后需要重新构建。
 
-`yarn format` 会批量改写匹配文件，日常只格式化本次涉及的文件。专项内容核对与浏览器检查见[开发指南](docs/development.md)和[脚本索引](scripts/README.md)。
+日常只格式化本次修改的文件；`yarn format` 会批量改写匹配文件。专项检查见[开发指南](docs/development.md)和[脚本索引](scripts/README.md)。
 
-### 开发独立子项目
+<a id="开发独立子项目"></a>
+
+### 启动实验室或游戏
+
+在独立终端中启动实验室：
 
 ```sh
-# 虚拟实验室：在独立终端启动
 cd virtual-lab
 npm ci
 npm run dev
 ```
 
-实验室运行 `npm run build` 时产物写入自身忽略的 `virtual-lab/dist/`，主站开发服务器仍只负责 Wiki。两个小游戏在 `games/breast-guardian/` 和 `games/bomb-cat/` 内分别安装与构建，详见各自 README。
+实验室的 `npm run build` 输出到自身的 `virtual-lab/dist/`，该目录已被 Git 忽略。主站开发服务器只负责 Wiki。
 
-## 持续集成与多环境适配
+游戏分别在 `games/breast-guardian/` 和 `games/bomb-cat/` 中安装与构建，按各自 README 操作。
 
-### GitHub 协作与官方 GitLab 发布
+<a id="持续集成与多环境适配"></a>
 
-协作者在各自的工作分支或功能分支上开发，通过 Pull Request 交流和评审改动，再合入共享的 `main` 分支。分支命名由协作者或负责模块的小组约定。
+## 协作与部署
 
-GitHub 用于日常协作与代码评审，官方 GitLab 用于 iGEM 源码交付和 Wiki 发布。发布负责人按发布计划将审核通过的版本同步到官方 GitLab，由其流水线构建并发布网站。
+<a id="github-协作与官方-gitlab-发布"></a>
 
-当前 [.gitlab-ci.yml](.gitlab-ci.yml) 在 GitLab 默认分支执行：
+### 从 GitHub 协作到 GitLab 发布
+
+日常开发在 GitHub 进行：协作者使用各自的工作分支，通过 Pull Request 评审后合入 `main`。分支命名沿用团队约定。发布负责人再按计划将审核通过的版本同步到官方 GitLab，由流水线构建和发布 Wiki。
+
+[.gitlab-ci.yml](.gitlab-ci.yml) 只在 GitLab 默认分支运行：
 
 ```text
 Node 22
@@ -470,18 +538,18 @@ Node 22
   → yarn lint
   → yarn test:page-loading
   → yarn build
-  → 将 dist/. 复制到 CI 的 public/，生成 SPA 回退并发布
+  → 在 CI 工作目录中将 dist/. 复制到 public/，生成 SPA 回退并发布
 ```
 
-流水线在 CI 工作目录中将构建产物复制到发布目录。发布流程和源码检查见[部署说明](docs/deployment.md)。
+<a id="yarn-classic-与安装一致性"></a>
 
-### Yarn Classic 与安装一致性
+主站通过 `package.json` 固定 Yarn 1.22.22，CI 按锁文件安装依赖。子项目在各自目录中安装。发布步骤和各环境的区别见[部署说明](docs/deployment.md)。
 
-`package.json` 声明 `yarn@1.22.22`，官方流水线通过 `--frozen-lockfile` 按锁文件安装。主站与子项目分别在各自目录中安装依赖。
+<a id="单份产物与路径映射"></a>
 
-### 单份产物与路径映射
+### 部署路径与静态文件
 
-`scripts/postbuild-slug.mjs` 读取 Vite 实际解析的 base，在单份 `dist/` 中生成 Cloudflare 的 `_redirects`。默认队伍路径的核心规则为：
+`scripts/postbuild-slug.mjs` 根据 Vite 的 base 配置，在 `dist/` 中生成 Cloudflare 的 `_redirects`。默认队伍路径使用以下规则，并补充 HTML 和目录入口的规范地址：
 
 ```text
 / /jlu-fbh/ 302
@@ -489,17 +557,13 @@ Node 22
 /jlu-fbh/* /:splat 200
 ```
 
-此外还生成 HTML 与目录入口的规范地址规则。Vite preview 与官方 GitLab Pages 按 base 挂载产物；[wrangler.json](wrangler.json) 让 Cloudflare 从 `./dist` 读取静态文件并使用 SPA 回退。无需再复制出 `dist/jlu-fbh/`。
+Vite preview 和官方 GitLab Pages 按 base 挂载产物；Cloudflare 由 [wrangler.json](wrangler.json) 指向 `./dist` 并使用单页应用（SPA）回退。无需额外复制 `dist/jlu-fbh/`。
 
-脚本按需生成 `.assetsignore`，让 Cloudflare 上传时跳过超过 25 MiB 的文件。页面引用这些资源时，使用对应 CDN 地址。
+脚本会按需生成 `.assetsignore`，让 Cloudflare 上传时跳过超过 25 MiB 的文件，这些资源应使用对应 CDN 地址。GitHub Pages 需要单独配置挂载路径和深层路由回退，它不读取 Cloudflare 的 `_redirects`。
 
-GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配置挂载路径与深层路由回退。
+<a id="typescript-资产索引与配置维护"></a>
 
-### TypeScript 资产索引与配置维护
-
-`contributionAssets.ts`、`resultsAssets.ts`、`designAssets.ts` 等资产字典维护页面素材的引用关系。修改后运行 TypeScript 检查与构建，检查索引键和资源路径。
-
-`wrangler.json` 配置 Cloudflare 托管，`.gitlab-ci.yml` 配置官方 Wiki 的构建与发布，`.dockerignore` 控制 Docker 构建上下文包含的文件。
+修改 `contributionAssets.ts`、`resultsAssets.ts`、`designAssets.ts` 等素材字典后，运行类型检查与构建，核对索引键和资源路径。
 
 ## 团队与致谢
 
@@ -507,14 +571,29 @@ GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配
 
 ### Visual Design 团队
 
-感谢 Visual Design 团队的六位成员，将科学内容、原创插画与网页交互共同编织进 CirCure Wiki。以下按 [Roster 的 Visual Design 分组](https://2026.igem.wiki/jlu-fbh/roster)顺序，依据[仓库中的成员介绍](src/data/team/rosterPage.ts)整理各自贡献：
+以下按 [Roster 的 Visual Design 分组](https://2026.igem.wiki/jlu-fbh/roster)顺序列出六位成员的主要工作，依据[仓库中的成员介绍](src/data/team/rosterPage.ts)整理：
 
-- **Shuyi Wang · Art Lead（美术负责人）**：统筹项目视觉创作，负责标志设计、团队视觉素材、Wiki 插画及宣传美术，将复杂的生物学概念转化为直观的视觉表达。
-- **Yupeng Xu · Wiki Lead（Wiki 负责人）**：牵头 Wiki 开发与数字设计，组织 AI 智能体协作，并将工作流程整理为队友可复用的技能与工具。
-- **Jianyuan Li · 团队成员**：主要负责首页设计与开发，探索视觉、动画及交互叙事；调研、撰写并设计 Visual Design 第 8 节 Humanistic Care & Narrative Design 和第 9 节 Our Wiki Contribution，整理草图、修改过程与设计经验。
-- **Muzi Li · 团队成员**：参与医学与人类实践工作，将科学知识转化为便于公众理解的故事，为项目传播带来医学与人文视角。
-- **Zhixia Ye · 团队成员**：参与团队美术工作，绘制项目封面及其他视觉插画，为项目内容提供图像表达。
-- **Jingchen He · 团队成员**：参与 Wiki 开发与页面内容组织，梳理想法、实验与修改记录，通过信息顺序和细节取舍，让读者更清楚地理解项目及其背后的人。
+- **Shuyi Wang · Art Lead（美术负责人）**：负责标志设计、团队视觉素材、Wiki 插画与宣传美术，统筹项目视觉创作。
+- **Yupeng Xu · Wiki Lead（Wiki 负责人）**：牵头 Wiki 开发与数字设计，组织 AI 智能体协作，为队友整理可复用的工作流程、技能与工具。
+- **Jianyuan Li · 团队成员**：主要负责首页设计与开发，以及 Visual Design 第 8 节 Humanistic Care & Narrative Design、第 9 节 Our Wiki Contribution 的调研、撰写与设计；整理草图、修改记录和设计经验。
+- **Muzi Li · 团队成员**：参与医学与人类实践工作，将科学知识转化为便于公众理解的故事。
+- **Zhixia Ye · 团队成员**：参与团队美术工作，绘制项目封面及其他插画。
+- **Jingchen He · 团队成员**：参与 Wiki 开发与页面内容组织，梳理项目想法、实验与修改记录，调整信息顺序和呈现细节。
+
+### 团队负责人与其他工作组
+
+CirCure 的研究、设计与传播也离不开其他工作组的共同投入。感谢以下团队负责人、各组负责人及新媒体小组负责人；职责依据同一份 [Roster 成员介绍](src/data/team/rosterPage.ts)整理：
+
+- **Ding Ma、Jinqi Xu · Team Leaders（团队负责人）**：带领团队，与各工作组共同推进 CirCure 项目。
+- **Xuanhe Chang · Team Leader（团队负责人）**：主要负责湿实验验证、科学示意图绘制与数据整理，帮助清晰呈现实验工作和分子机制。
+- **Ke Wang · Wet Lab 负责人**：带领湿实验组，负责实验开展与重复实验。
+- **Ouyang Li · Dry Lab 负责人**：负责实验方案设计与数据分析。
+- **Zhe Jia · Human Practices 负责人**：主要负责人类实践工作，通过交流、倾听不同意见，探索科学想法与实验室之外实际需求的联系。
+- **Yirou Gong · Human Practices 负责人**：整理人类实践相关信息、跟进重点任务，并支持团队沟通与协调。
+- **Zecun Li · Human Practices 负责人**：负责可持续发展、整合型人类实践（Integrated Human Practices，iHP）与教育工作，连接项目研究、公众与社会议题。
+- **Rong Gao · 新媒体小组负责人**：带领新媒体运营小组，撰写社交媒体推文、设计海报与活动物料，并剪辑竞赛视频。
+
+也感谢 Wet Lab、Dry Lab 与 Human Practices 的全体成员在实验执行、安全与记录、生物信息学与计算设计、数学建模、工具开发、教育和公共传播中的共同投入。各组的持续工作，为 Wiki 中的科学内容、项目记录与公众交流提供了基础。
 
 <p align="center">
   <img src="docs/media/readme-institutions.svg" alt="吉林大学；吉林大学白求恩第一医院；吉林大学白求恩第一临床医学院。" width="640" />
@@ -536,9 +615,11 @@ GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配
 - **工具及其他支持方**：Charles River、BioRender、MathWorks、Lark、Grammarly、Schrödinger。
 - **赛事与社区**：iGEM。
 
-## 授权与知识产权
+<a id="授权与知识产权"></a>
 
-主仓库采用 [CC BY 4.0](LICENSE)（知识共享署名 4.0 国际许可协议）。使用、分发和修改时遵守署名与许可要求；第三方素材、依赖及独立子项目保留各自的许可要求。
+## 许可与署名
+
+主仓库采用 [CC BY 4.0](LICENSE)（知识共享署名 4.0 国际许可协议）。复用、分发或修改时，请保留署名并遵守许可条款。第三方素材、依赖和独立子项目适用各自的许可证。
 
 维护时保留共享页脚中的许可证说明与官方 GitLab 仓库链接。AI 辅助编写与修改还需遵循[协作约定](CONTRIBUTING.md)及[负责任使用说明](.claude/RESPONSIBLE_AI_USE.md)。
 
@@ -723,63 +804,90 @@ See the [version comparison](docs/deployment.en.md#preview-and-official-gitlab-c
 - Browse documentation: [Documentation index](docs/README.en.md)
 - Prepare a contribution: [Contributing](CONTRIBUTING.en.md)
 
-On this page: [Technology](#technology-and-core-dependencies) · [Architecture](#architecture-and-development-principles) · [Site map](#site-modules-and-pages) · [Features](#interaction-and-engineering-features) · [Repository structure](#repository-structure-and-build-boundaries) · [Editing guide](#common-editing-locations) · [Deployment](#continuous-integration-and-hosting) · [License](#license-and-attribution)
+On this page: [Technology](#technology) · [Page code](#how-pages-are-organized) · [Navigation](#pages-and-navigation) · [Interactions](#interaction-and-reading) · [Repository and builds](#repository-and-builds) · [Editing](#common-editing-locations) · [Quick start](#quick-start) · [Deployment](#collaboration-and-deployment) · [Thanks](#team-and-acknowledgements) · [License](#license-and-attribution)
 
-## Technology and core dependencies
+<a id="technology-and-core-dependencies"></a>
 
-The Wiki uses the technologies below. [package.json](package.json) declares dependencies and version ranges; lockfiles record installed versions. Standalone applications maintain their own dependencies.
+## Technology
 
-| Area                         | Technology                                        | Version family                      | Purpose                                                                     |
-| ---------------------------- | ------------------------------------------------- | ----------------------------------- | --------------------------------------------------------------------------- |
-| Build tooling                | Vite                                              | 7.3.x                               | Local development, hot module replacement, and multiple HTML build entries  |
-| Frontend                     | React + TypeScript                                | 19.2.x / 5.9.x                      | Components, type checking, and page data interfaces                         |
-| Routing                      | React Router                                      | 7.x                                 | Routes, navigation, redirects, and reading entry points                     |
-| Animation                    | GSAP + @gsap/react                                | 3.15.x / 2.1.x                      | Intro strokes, scroll scenes, timelines, and component animation lifecycles |
-| Molecular visualization      | Mol\* (Molstar)                                   | 5.13.x                              | WebGL molecular viewers with a separately compiled, on-demand runtime       |
-| Data visualization           | Apache ECharts                                    | 6.1.x                               | Charts, legends, range highlighting, and tooltips                           |
-| Wiki styling                 | CSS custom properties (design tokens) + Bootstrap | Bootstrap 5.3.x                     | Themes, grids, the shared reader, and page layout                           |
-| Laboratory styling and icons | Tailwind CSS + Lucide                             | Tailwind 3.4.x; root Lucide 0.562.x | Laboratory interfaces, icons, and separate styling                          |
-| Interaction primitives       | Radix UI                                          | Root Dialog / Tabs 1.x              | Dialogs, tabs, and other basic interactions                                 |
-| Engineering checks           | ESLint + Prettier + Node test scripts             | See configuration and lockfiles     | Static analysis, formatting, and focused regression checks                  |
+The Wiki is built with React, TypeScript, and Vite. GSAP handles animation, Mol\* displays molecular structures, and ECharts plots model data.
 
-The Wiki, two standalone games, and virtual laboratory have separate build entries. See [build boundaries](#build-boundaries).
+| Technology | Version | Used for |
+| --- | --- | --- |
+| React / TypeScript | 19.2.x / 5.9.x | Page components and type checking |
+| Vite | 7.3.x | Development server and multiple HTML build entries |
+| React Router | 7.x | Routes, navigation, and redirects |
+| GSAP / @gsap/react | 3.15.x / 2.1.x | Intro animation, scroll scenes, and timelines |
+| Mol\* (Molstar) | 5.13.x | On-demand WebGL molecular viewer |
+| Apache ECharts | 6.1.x | Model charts and tooltips |
+| CSS custom properties / Bootstrap | Bootstrap 5.3.x | Wiki colors, grids, and reading layout |
+| Tailwind CSS / Lucide | 3.4.x / root Lucide 0.562.x | Laboratory styles and interface icons |
+| Radix UI | Dialog / Tabs 1.x | Dialogs and tabs |
+| ESLint / Prettier / Node test scripts | See configuration and lockfiles | Code checks, formatting, and regression tests |
 
-## Architecture and development principles
+See [package.json](package.json) for dependencies and the lockfiles for resolved versions. Games and the laboratory manage their own dependencies and builds; see [build boundaries](#build-boundaries).
 
-### Page layers: data, assets, interaction, and assembly
+<a id="architecture-and-development-principles"></a>
 
-The [page architecture specification](WIKI_ARCHITECTURE_SPEC.md) (Chinese) separates four responsibilities:
+## How pages are organized
 
-| Layer            | Typical location                         | Responsibility                                                                                                 |
-| ---------------- | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Page content     | `src/data/[module]/[page]Page.ts`        | Describe text, sections, figures, and links with types such as `WikiPageContent`; keep JSX out of content data |
-| Asset mapping    | `src/data/[module]/[page]Assets.ts`      | Connect local sources, images, attachments, and CDN URLs                                                       |
-| Page interaction | `src/components/wiki/features/[module]/` | Implement charts, construct viewers, and specialized interactions through feature slots                        |
-| Route assembly   | `src/contents/[page].tsx`                | Combine `WikiRoutePage`, page data, Hero artwork, and features in a small assembly layer                       |
+<a id="page-layers-data-assets-interaction-and-assembly"></a>
 
-New pages follow these four layers. Existing page data lives both at the root of `src/data/` and in module directories; follow imports to find the files for a page.
+### Content, assets, and interactions have separate files
 
-### Shared reader and maintenance entry points
+A typical article page uses four locations:
 
-Content pages reuse `WikiRoutePage` for blocks, images, citations, the outline, and chapter transitions. Shared reader dimensions and layout belong primarily in `src/styles/wiki-route-skin.css`. Module themes live in `route-palette-*.css`; specialized interactions and styles stay with their features.
+| Content | Typical location | What belongs here |
+| --- | --- | --- |
+| Page data | `src/data/[module]/[page]Page.ts` | Text, sections, figure descriptions, and links, using types such as `WikiPageContent` |
+| Asset mappings | `src/data/[module]/[page]Assets.ts` | Local sources, images, attachments, and their CDN URLs |
+| Interactions | `src/components/wiki/features/[module]/` | Charts, construct viewers, and other components connected through feature slots |
+| Page assembly | `src/contents/[page].tsx` | Page data, Hero artwork, and features passed to `WikiRoutePage` |
 
-Maintain page content and asset mappings separately to avoid duplicate sources of the same content. See [common editing locations](#common-editing-locations).
+Follow the [page specification](WIKI_ARCHITECTURE_SPEC.md) (Chinese) for new pages, and keep JSX out of content data. Existing data files live both at the root of `src/data/` and in module folders; follow the assembly file's imports to find them.
 
-### Standalone applications and style isolation
+<a id="shared-reader-and-maintenance-entry-points"></a>
 
-The Wiki uses the shared reader, CSS themes, and Bootstrap. The virtual laboratory has its own Tailwind styles, dependencies, and build. A lazily loaded iframe embeds the official laboratory deployment, separating the two documents' styles and viewports.
+### Articles share a reader
 
-The laboratory uses `window.postMessage` to request closing. The Wiki verifies both the message origin and the iframe window. The nine laboratory pages are split using `React.lazy` and dynamic `import()`; their code is built in the laboratory project.
+`WikiRoutePage` handles article blocks, images, citations, outlines, and chapter links. Edit `src/styles/wiki-route-skin.css` for shared layout and `route-palette-*.css` for module colors. Keep page-specific interactions and styles with their feature components.
 
-### Shared image-readiness contract
+Maintain one source for content and one for asset mappings, rather than copying the same content into components.
 
-Route changes use the shared loader. `WikiRoutePage` collects Hero and article images automatically. Declare images in dialogs or inactive tabs through `preloadImages` or `PageImagePreloads` so they are ready when the interaction opens.
+<a id="shared-image-readiness-contract"></a>
 
-New pages inherit the same behavior. See the [image-readiness contract](WIKI_ARCHITECTURE_SPEC.md#471-新页面接入) (Chinese). Run `yarn test:page-loading` after changes and inspect route transitions and interactions in the browser.
+### Images are prepared during page transitions
 
-## Site modules and pages
+The shared loader collects Hero and article images from `WikiRoutePage`. Declare images in dialogs or inactive tabs with `preloadImages` or `PageImagePreloads` to reduce waiting when readers open them.
 
-Navigation consists of Home and five content groups, with 22 entries besides the homepage. This tree follows [src/pages.ts](src/pages.ts). Paths are relative to the website base `/jlu-fbh/`.
+See the [image-loading rules](WIKI_ARCHITECTURE_SPEC.md#471-新页面接入) (Chinese). After changes, run `yarn test:page-loading` and check page transitions and the affected interactions in a browser.
+
+<a id="standalone-applications-and-style-isolation"></a>
+
+### The laboratory runs separately
+
+The laboratory has its own Tailwind styles, dependencies, and build. The Wiki embeds its official deployment in a lazily loaded iframe, keeping the two documents' styles and viewports separate.
+
+The laboratory requests closing through `window.postMessage`; the Wiki checks both the message origin and the iframe window. Its nine experiment pages use `React.lazy` and dynamic `import()` within the standalone project.
+
+<a id="site-modules-and-pages"></a>
+
+## Pages and navigation
+
+Beyond Home, five content groups contain 22 page entries. Navigation is defined in [src/pages.ts](src/pages.ts).
+
+| Group | Pages |
+| --- | --- |
+| Team | Roster, Attributions, Activities |
+| Project | Description, Engineering, Results, Contribution, Visual Design, Notebook, Safety and Security |
+| Wet Lab | Design, Experiments, Measurement, Alternative Platform |
+| Dry Lab | Model, Software, Hardware, Games |
+| Engagement | Entrepreneurship, Human Practices, Education, Sustainability |
+
+Games brings together the virtual laboratory, Breast Guardian RPG, Bomb Cat, and Bio Memory Match.
+
+<details>
+<summary>View all page paths and descriptions</summary>
 
 ```text
 CirCure Wiki
@@ -817,27 +925,38 @@ CirCure Wiki
     └── Sustainability (/sustainability)          # SDGs and impact assessment
 ```
 
-`/team` redirects to `/roster`; `/attribution` is an alias for `/attributions`.
+</details>
 
-## Interaction and engineering features
+All paths are relative to `/jlu-fbh/`. `/team` redirects to `/roster`, and `/attribution` redirects to `/attributions`.
 
-### Opening sequence and scroll story
+<a id="interaction-and-engineering-features"></a>
 
-The homepage combines SVG strokes, Canvas particles, and GSAP timelines in the CirCure signature intro. The TNBC exploration map, antigen switcher, circRNA illustrations, and scene transitions guide readers from the problem to the design.
+## Interaction and reading
 
-The implementation lives mainly in `src/components/home/`, homepage data in `src/data/`, and styles such as `src/styles/home-*.css`. Home has its own narrative layout; article routes use the shared reader and module themes.
+<a id="opening-sequence-and-scroll-story"></a>
 
-### Hand-drawn Hero artwork and long-form reading
+### Home: from the problem to the design
 
-Pages use hand-drawn Hero artwork and an ink-wash watercolor visual style. When an illustration already includes its title, `hideHeroCopy` controls the visible text while retaining a semantic `h1` for assistive technologies.
+The homepage opens with the CirCure signature animation, then follows the TNBC exploration map, antigen switcher, and circRNA illustrations. SVG strokes, Canvas particles, and GSAP timelines handle the intro and scene transitions.
 
-The shared reader includes the marker-style `WikiLineSidebar`, section navigation, inline charts and citations, and the closing `WikiNextRecord` link. Deeper outline entries normally expand around the current reading position; some pages show the full outline.
+Code lives in `src/components/home/`, data in `src/data/`, and styles mainly in `src/styles/home-*.css`. Home has its own layout; article pages use the shared reader.
 
-Team, Project, Wet Lab, Dry Lab, and Engagement maintain their own palettes. Primary, soft, and base colors work alongside heading and marker tokens. See the [design and typography specification](文案集/Wiki-设计与排版规范.md) (Chinese).
+<a id="hand-drawn-hero-artwork-and-long-form-reading"></a>
 
-### Virtual molecular biology laboratory
+### Articles: illustrations, outlines, and chapter links
 
-The [live laboratory](https://virtual-lab-208fd4.igem.wiki/) contains nine guided experiments, organized into Beginner, Intermediate, and Advanced levels. The Wiki retains the [complete laboratory source](virtual-lab/README.en.md) and embeds its official deployment. The [official software repository](https://gitlab.igem.org/2026/software/jlu-fbh/virtual-lab) manages that application's deployment.
+Hand-drawn Hero artwork follows an ink-wash watercolor style, with a separate palette for each content group. When an illustration already includes its title, `hideHeroCopy` can hide duplicate text while retaining a semantic `h1` for assistive technologies.
+
+The reader includes the marker-style `WikiLineSidebar`, section navigation, charts, and citations. `WikiNextRecord` links to the next chapter at the end. Deeper outline entries usually expand around the reading position; some pages show the full outline. See the [design and typography specification](文案集/Wiki-设计与排版规范.md) (Chinese) for details.
+
+<a id="virtual-molecular-biology-laboratory"></a>
+
+### Virtual laboratory: nine guided experiments
+
+The [live laboratory](https://virtual-lab-208fd4.igem.wiki/) groups courses into Beginner, Intermediate, and Advanced levels. They progress from culture revival, staining, and plasmid extraction to PCR, digestion, ligation, transformation, and expression analysis.
+
+<details>
+<summary>View the nine experiments and learning topics</summary>
 
 | Level        | Experiment                                               | Learning topics                                              |
 | ------------ | -------------------------------------------------------- | ------------------------------------------------------------ |
@@ -851,39 +970,56 @@ The [live laboratory](https://virtual-lab-208fd4.igem.wiki/) contains nine guide
 | Advanced     | 8 · Competent cells and transformation                   | Competent cells, heat shock, and plate culture               |
 | Advanced     | 9 · Colony PCR, GFP fluorescence, and protein expression | Clone screening, fluorescence, and protein detection         |
 
-Equipment includes pipettes, centrifuges, thermal cyclers, electrophoresis, and imaging tools. StepIndicator, hints, and InfoPanel provide procedural, equipment, and reagent information. Experiment pages offer restart controls and landscape prompts on small portrait screens. Course content and viewport interactions remain in the standalone project.
+</details>
+
+The interface includes pipettes, centrifuges, thermal cyclers, and electrophoresis and imaging equipment, with step indicators, hints, and explanations of principles and reagents. Experiments can be restarted; small portrait screens show a landscape prompt.
+
+Source and development instructions are in [virtual-lab/README.en.md](virtual-lab/README.en.md). The [official software repository](https://gitlab.igem.org/2026/software/jlu-fbh/virtual-lab) manages the separate deployment.
 
 ### Science communication games
 
-The `/games` portal groups the laboratory and three games, loading each experience when selected:
+Selecting a game in `/games` loads that experience:
 
 - **Breast Guardian RPG** introduces breast-health concepts through characters and situations across life stages.
 - **Bomb Cat** is a circRNA-themed strategy card game with local bots, online rooms, and a rulebook.
-- **Bio Memory Match** introduces biological concepts through specimen-card observation, recall, and matching.
+- **Bio Memory Match** introduces biological concepts through observing, remembering, and matching specimen cards.
 
-Buildable source for Breast Guardian and Bomb Cat lives in `games/`. Bio Memory runs from `public/game-assets/bio-memory/`. See [games/README.en.md](games/README.en.md) for source provenance, version comparisons, and build instructions.
+Buildable source for the first two games lives in `games/`; Bio Memory's runtime files are in `public/game-assets/bio-memory/`. See [games/README.en.md](games/README.en.md) for source records and build instructions.
 
-### Molecular and data visualization
+<a id="molecular-and-data-visualization"></a>
 
-The Model page uses Mol\* to display the Trop2 complex, with rotation, zoom, segment focus, surface visibility, and polar-contact controls. The molecular runtime and PDB load when the reader approaches the figure.
+### Molecular structures and model charts
 
-ECharts and related components display model data with legends, range highlighting, and interactive tooltips, so readers can explore the figures alongside the model analysis.
+The Model page displays the Trop2 complex with Mol\*. Readers can rotate, zoom, focus on segments, and toggle surfaces and polar contacts. The molecular runtime and PDB files load as readers approach the figure.
 
-### Navigation, cursor, and reading tools
+ECharts and related components display model data with interactive legends, range highlights, and tooltips for reading alongside the analysis.
 
-Shared features include responsive navigation, in-page search, back-to-top controls, the footer, and a sheep cursor. The cursor is enabled according to fine-pointer, hover, and reduced-motion settings, while applicable input areas retain native cursor behavior.
+<a id="navigation-cursor-and-reading-tools"></a>
 
-Changes to shared components should cover transitions between Home and article pages, narrow viewports, keyboard use, and reduced-motion preferences.
+### Navigation and reading tools
 
-### Asset sources and official hosting
+Responsive navigation, in-page search, back-to-top controls, and the footer are shared across the site. The sheep cursor follows fine-pointer, hover, and reduced-motion settings, retaining the native cursor in applicable input areas.
 
-Published pages use official images, fonts, and attachments on `static.igem.wiki`. The repository also retains local assets, manuscripts, and source mappings. Use the relevant asset dictionary and registry, and retain official hosting entries for videos and standalone applications.
+When changing shared components, check transitions between Home and article pages, narrow screens, keyboard use, and reduced-motion settings.
 
-Upload copies and historical check records live in `delivery/uploads/`. When updating assets, follow the [asset guide](docs/assets.en.md) to check source files, CDN URLs, and page references.
+<a id="asset-sources-and-official-hosting"></a>
 
-## Repository structure and build boundaries
+### Images, fonts, and attachments
 
-### Directory entry points
+Published images, fonts, and attachments use `static.igem.wiki`; videos and standalone applications use their respective official hosting platforms. The repository retains local assets, manuscripts, and CDN mappings. Upload copies and historical check records live in `delivery/uploads/`.
+
+Follow the [asset guide](docs/assets.en.md) when replacing files to check sources, CDN URLs, and page references.
+
+<a id="repository-structure-and-build-boundaries"></a>
+
+## Repository and builds
+
+Wiki code lives in `src/`, and standalone applications in `games/` and `virtual-lab/`. `文案集/` holds manuscripts; `delivery/` holds delivery records. For specific files, see [common editing locations](#common-editing-locations) or the [repository map](docs/repository-layout.en.md).
+
+<a id="directory-entry-points"></a>
+
+<details>
+<summary>Expand the repository tree</summary>
 
 ```text
 .
@@ -930,55 +1066,59 @@ Upload copies and historical check records live in `delivery/uploads/`. When upd
 └── vite.config.ts                    # HTML entries, molecular runtime, and base path
 ```
 
-The root files `index.html`, `visual-design-study.html`, `archive-navigation-study.html`, and `archive-recognition-study.html` are the four HTML build entries for the Wiki and design demonstrations.
+</details>
 
-`.env` contains existing team metadata and build inputs; keep secrets out of it. `.dockerignore` filters local build contexts. See the [repository map](docs/repository-layout.en.md) for other root files and migration records.
+Four HTML files serve as build entries: `index.html` for the Wiki, and `visual-design-study.html`, `archive-navigation-study.html`, and `archive-recognition-study.html` for design studies.
+
+The existing `.env` contains team metadata and other build inputs; keep secrets out of it. `.dockerignore` excludes unrelated files from Docker build contexts.
 
 ### Build boundaries
 
-| Application                | Development entry                                    | Root build behavior                                                                   |
-| -------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Wiki                       | `src/`, `yarn dev`                                   | Type-check, build four HTML entries, and generate path mappings                       |
-| Breast Guardian / Bomb Cat | [games/README.en.md](games/README.en.md)             | Publish checked-in files in `public/game-assets/`; game source is built separately    |
-| Virtual Laboratory         | [virtual-lab/README.en.md](virtual-lab/README.en.md) | Embed the official laboratory deployment; build and release the laboratory separately |
+| Application | Development instructions | What root `yarn build` does |
+| --- | --- | --- |
+| Wiki | [Development guide](docs/development.en.md) | Checks types, builds four HTML entries, and generates path mappings |
+| Breast Guardian / Bomb Cat | [Game guide](games/README.en.md) | Copies committed runtime files from `public/game-assets/`; game source needs a separate build |
+| Virtual Laboratory | [Laboratory guide](virtual-lab/README.en.md) | Builds the Wiki's iframe integration; the laboratory is built and published separately |
 
-Subprojects maintain their own dependencies, lockfiles, and licenses; their README files explain development and build steps. The laboratory deploys independently. After rebuilding a game, update its runtime files in the Wiki's `public/game-assets/`.
+Each subproject has its own dependencies, lockfiles, and license. After rebuilding a game, update its runtime files in `public/game-assets/`. The laboratory is published on its own site.
 
 ## Common editing locations
 
-| Change                                  | Entry point                                                                        |
-| --------------------------------------- | ---------------------------------------------------------------------------------- |
-| Routes and navigation targets           | `src/pages.ts`, `src/contents/`                                                    |
-| Text, sections, and figure descriptions | The relevant module in `src/data/`                                                 |
-| Image and attachment mappings           | The relevant `*Assets.ts`, `src/data/assets/`                                      |
-| Page-specific interactions and charts   | `src/components/wiki/features/`                                                    |
-| Home story and animation                | `src/components/home/`, homepage data, and related `home-*.css`                    |
-| Shared reader and article layout        | `src/components/wiki/`, `src/styles/wiki-route-skin.css`                           |
-| Module palettes and heading colors      | `src/styles/route-palette-*.css`                                                   |
-| Shared loading and image readiness      | `src/utils/`; follow the [page specification](WIKI_ARCHITECTURE_SPEC.md) (Chinese) |
-| Asset sources and upload records        | [Asset guide](docs/assets.en.md), [delivery index](delivery/README.en.md)          |
-| Tool purpose, inputs, and write effects | [scripts/README.en.md](scripts/README.en.md)                                       |
+| What to change | Where to look |
+| --- | --- |
+| Routes and navigation targets | `src/pages.ts`, `src/contents/` |
+| Text, sections, and figure descriptions | The page's data files in `src/data/` |
+| Image and attachment URLs | The relevant `*Assets.ts`, `src/data/assets/` |
+| Page interactions and charts | `src/components/wiki/features/` |
+| Homepage story and animation | `src/components/home/`, homepage data, and `home-*.css` |
+| Article layout | `src/components/wiki/`, `src/styles/wiki-route-skin.css` |
+| Module colors | `src/styles/route-palette-*.css` |
+| Page loading and image preparation | `src/utils/`; also read the [page specification](WIKI_ARCHITECTURE_SPEC.md) (Chinese) |
+| Asset sources and upload records | [Asset guide](docs/assets.en.md), [delivery index](delivery/README.en.md) |
+| Script purpose and write scope | [Script index](scripts/README.en.md) |
 
-Before running importers or asset generators, read their documented write scope; these tools update content or indexes. Consult the content owner before changing scientific manuscripts, experimental parameters, formulas, or evaluation metrics.
+Importers and asset generators may overwrite content or indexes; read their instructions before running them. Changes to scientific manuscripts, experimental parameters, formulas, and evaluation metrics require the content owner's confirmation.
 
 ## Quick start
 
-### Environment and dependencies
+<a id="environment-and-dependencies"></a>
 
-For the Wiki, use Node.js 22.12+ within the 22.x release family and Yarn Classic 1.22.22, matching the official CI's Node 22 major version. `package.json` declares the package manager.
+### Start the Wiki
 
-From the repository root:
+Use Node.js 22.12+ (22.x) and Yarn Classic 1.22.22 to match the official CI's Node major version. From the repository root:
 
 ```sh
 yarn install --frozen-lockfile
 yarn dev
 ```
 
-Open the URL printed by the terminal, normally `http://localhost:5173/jlu-fbh/`.
+Open the address printed in the terminal, normally `http://localhost:5173/jlu-fbh/`.
 
-The root npm lockfile is also retained. For npm, use `npm ci` and `npm run <script>`. Use one package manager per dependency directory and update its lockfile when upgrading dependencies.
+The root also retains an npm lockfile. For npm, run `npm ci`, then `npm run <name>` for scripts. Use one package manager per dependency directory and maintain the corresponding lockfile when dependencies change.
 
-### Check, build, and preview
+<a id="check-build-and-preview"></a>
+
+### Check and build
 
 ```sh
 yarn lint
@@ -987,30 +1127,37 @@ yarn build
 yarn preview
 ```
 
-The build runs TypeScript checking, Vite, and `scripts/postbuild-slug.mjs`. Output in `dist/` includes Wiki and design-study HTML entries. The Mol\* runtime is compiled separately.
+`build` runs TypeScript checks, Vite, and `scripts/postbuild-slug.mjs`, writing output to `dist/`. This includes the Wiki and design-study pages, with the Mol\* runtime compiled separately. `preview` serves that output; rebuild after changing source files.
 
-`yarn format` rewrites all matching files; format only relevant files during routine work. See the [development guide](docs/development.en.md) and [script index](scripts/README.en.md) for focused content and browser checks.
+Format only the files you changed during everyday work; `yarn format` rewrites all matching files. See the [development guide](docs/development.en.md) and [script index](scripts/README.en.md) for focused checks.
 
-### Standalone projects
+<a id="standalone-projects"></a>
+
+### Start the laboratory or games
+
+Start the laboratory in a separate terminal:
 
 ```sh
-# Start the laboratory in a separate terminal.
 cd virtual-lab
 npm ci
 npm run dev
 ```
 
-The laboratory's production output goes into its ignored `virtual-lab/dist/`. The root development server serves the Wiki. Install and build the two games inside `games/breast-guardian/` and `games/bomb-cat/`, following their README files.
+Its `npm run build` writes to its own Git-ignored `virtual-lab/dist/`. The root development server only serves the Wiki.
 
-## Continuous integration and hosting
+Install and build games in `games/breast-guardian/` and `games/bomb-cat/`, following their READMEs.
 
-### GitHub collaboration and official GitLab releases
+<a id="continuous-integration-and-hosting"></a>
 
-Contributors develop on their own working or feature branches, discuss and review changes through Pull Requests, and integrate them into the shared `main` branch. Branch naming follows contributor or module-team conventions.
+## Collaboration and deployment
 
-GitHub supports everyday collaboration and code review. Official GitLab supports iGEM source delivery and Wiki releases. The release maintainer synchronizes reviewed versions to official GitLab according to the team's release plan, where the pipeline builds and publishes the site.
+<a id="github-collaboration-and-official-gitlab-releases"></a>
 
-The current [.gitlab-ci.yml](.gitlab-ci.yml) runs on GitLab's default branch:
+### From GitHub review to GitLab publication
+
+Contributors develop on their own branches on GitHub and use Pull Requests for review before merging into `main`. Branch names follow team conventions. The release maintainer then synchronizes reviewed versions to official GitLab as planned, where the pipeline builds and publishes the Wiki.
+
+[.gitlab-ci.yml](.gitlab-ci.yml) runs only on GitLab's default branch:
 
 ```text
 Node 22
@@ -1018,18 +1165,18 @@ Node 22
   → yarn lint
   → yarn test:page-loading
   → yarn build
-  → copy dist/. into the CI public/ directory, generate SPA fallback, and publish
+  → copy dist/. to public/ in the CI workspace, generate SPA fallback, and publish
 ```
 
-The pipeline copies build output into the deployment directory within the CI workspace. See the [deployment guide](docs/deployment.en.md) for the release process and source checks.
+<a id="yarn-classic-and-installation-consistency"></a>
 
-### Yarn Classic and installation consistency
+The root `package.json` pins Yarn 1.22.22, and CI installs from the lockfile. Install subproject dependencies in their own directories. See the [deployment guide](docs/deployment.en.md) for release steps and hosting differences.
 
-`package.json` declares `yarn@1.22.22`; the official pipeline installs from the lockfile with `--frozen-lockfile`. Install dependencies separately in the Wiki and each subproject directory.
+<a id="one-output-tree-and-path-mapping"></a>
 
-### One output tree and path mapping
+### Hosting paths and static files
 
-`scripts/postbuild-slug.mjs` reads Vite's resolved base and generates Cloudflare `_redirects` inside a single `dist/` output tree. Core rules for the default team path are:
+`scripts/postbuild-slug.mjs` reads Vite's base setting and generates Cloudflare `_redirects` in `dist/`. The default team path uses these rules, with additional rules for canonical HTML and directory URLs:
 
 ```text
 / /jlu-fbh/ 302
@@ -1037,17 +1184,13 @@ The pipeline copies build output into the deployment directory within the CI wor
 /jlu-fbh/* /:splat 200
 ```
 
-Additional rules canonicalize HTML and directory entries. Vite preview and official GitLab Pages mount output at the base path. [wrangler.json](wrangler.json) points Cloudflare at `./dist` with SPA fallback. An extra `dist/jlu-fbh/` copy is unnecessary.
+Vite preview and official GitLab Pages mount output at the base path. [wrangler.json](wrangler.json) points Cloudflare at `./dist` with a single-page application (SPA) fallback. No extra `dist/jlu-fbh/` copy is needed.
 
-When needed, the script generates `.assetsignore` so Cloudflare uploads skip files above 25 MiB. Use the corresponding CDN URLs when pages reference those resources.
+When needed, the script generates `.assetsignore` so Cloudflare skips files above 25 MiB during upload; use their CDN URLs instead. GitHub Pages needs its own mount path and deep-route fallback because it does not read Cloudflare's `_redirects`.
 
-GitHub Pages does not read Cloudflare's `_redirects`. Configure its mount path and deep-route fallback separately if using that host.
+<a id="typescript-asset-indexes-and-configuration"></a>
 
-### TypeScript asset indexes and configuration
-
-Asset dictionaries such as `contributionAssets.ts`, `resultsAssets.ts`, and `designAssets.ts` maintain page-to-resource references. Run TypeScript and build checks after changes to check index keys and resource paths.
-
-`wrangler.json` configures Cloudflare; `.gitlab-ci.yml` controls official Wiki builds; `.dockerignore` filters Docker contexts. Maintain each configuration for its environment.
+After changing asset dictionaries such as `contributionAssets.ts`, `resultsAssets.ts`, or `designAssets.ts`, run type checks and the build to check index keys and resource paths.
 
 ## Team and acknowledgements
 
@@ -1055,14 +1198,29 @@ We thank the university, clinical institutions, research platforms, and supporte
 
 ### Visual Design team
 
-We thank all six members of the Visual Design team for bringing scientific content, original illustrations, and web interactions together in the CirCure Wiki. The contributions below follow the order of the [Roster's Visual Design group](https://2026.igem.wiki/jlu-fbh/roster) and are based on the [member biographies in this repository](src/data/team/rosterPage.ts):
+The six members below follow the order of the [Roster's Visual Design group](https://2026.igem.wiki/jlu-fbh/roster). Their main contributions are summarized from the [member biographies in this repository](src/data/team/rosterPage.ts):
 
-- **Shuyi Wang · Art Lead**: Coordinated the project's visual creation, including logo design, team graphic assets, Wiki illustrations, and promotional artwork, translating complex biological concepts into accessible visuals.
-- **Yupeng Xu · Wiki Lead**: Led Wiki development and digital design, coordinated AI-agent collaboration, and packaged workflows into reusable skills and tools for teammates.
-- **Jianyuan Li · Team Member**: Primarily designed and developed the homepage, exploring visual storytelling, animation, and interaction; researched, wrote, and designed Visual Design Section 8, Humanistic Care & Narrative Design, and Section 9, Our Wiki Contribution, sharing sketches, revisions, and lessons learned.
-- **Muzi Li · Team Member**: Contributed to medical and human practices work, turning scientific knowledge into stories for wider audiences and bringing medical and human perspectives to project communication.
-- **Zhixia Ye · Team Member**: Created project illustrations, including cover art and other visual drawings, as a member of the team's graphic group.
-- **Jingchen He · Team Member**: Contributed to Wiki development and page content organization, bringing ideas, experiments, and revisions into an explorable narrative through careful information ordering and selection of details.
+- **Shuyi Wang · Art Lead**: Designed the logo, team graphics, Wiki illustrations, and promotional artwork, and coordinated the project's visual work.
+- **Yupeng Xu · Wiki Lead**: Led Wiki development and digital design, coordinated AI-agent collaboration, and documented reusable workflows, skills, and tools for teammates.
+- **Jianyuan Li · Team Member**: Primarily designed and developed the homepage; researched, wrote, and designed Visual Design Section 8, Humanistic Care & Narrative Design, and Section 9, Our Wiki Contribution; collected sketches, revision records, and design lessons.
+- **Muzi Li · Team Member**: Contributed to medical and human practices work, helping present scientific knowledge through stories for a general audience.
+- **Zhixia Ye · Team Member**: Created project cover art and other illustrations as part of the art team.
+- **Jingchen He · Team Member**: Contributed to Wiki development and content organization, arranging project ideas, experiments, and revision records and refining how they appear on the page.
+
+### Team leaders and other working groups
+
+CirCure's research, design, and communication also depend on the work of the other groups. We thank the following team leaders, group leads, and new media subgroup lead. Their responsibilities are summarized from the same [Roster biographies](src/data/team/rosterPage.ts):
+
+- **Ding Ma and Jinqi Xu · Team Leaders**: Led the team and worked with the groups to advance the CirCure project.
+- **Xuanhe Chang · Team Leader**: Primarily oversaw wet-lab experimental validation, scientific schematic illustration, and data organization, helping communicate experimental work and molecular mechanisms clearly.
+- **Ke Wang · Wet Lab Lead**: Led the wet-lab group and carried out and repeated experiments.
+- **Ouyang Li · Dry Lab Lead**: Designed experimental protocols and analyzed data.
+- **Zhe Jia · Human Practices Lead**: Primarily worked on Human Practices, communicating with people and listening to different perspectives to explore how scientific ideas relate to needs beyond the laboratory.
+- **Yirou Gong · Human Practices Lead**: Organized Human Practices information, followed up on key tasks, and supported communication and coordination.
+- **Zecun Li · Human Practices Lead**: Took responsibility for sustainability, Integrated Human Practices (iHP), and education, connecting project research with people and wider social questions.
+- **Rong Gao · New Media Subgroup Lead**: Led new media operations, writing social media posts, designing posters and event materials, and editing competition videos.
+
+We also thank every member of Wet Lab, Dry Lab, and Human Practices for their contributions to experiments, safety and documentation, bioinformatics and computational design, mathematical modeling, tool development, education, and public communication. Their sustained work provides the foundation for the scientific content, project records, and public engagement presented in the Wiki.
 
 <p align="center">
   <img src="docs/media/readme-institutions.svg" alt="Jilin University; The First Bethune Hospital of Jilin University; The First Bethune Clinical Medical College of Jilin University." width="640" />
