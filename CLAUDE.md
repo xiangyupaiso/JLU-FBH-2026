@@ -1,8 +1,11 @@
 # Notes for AI assistants
 
-Read **[README.md](README.md)** first — it covers the stack, where to edit
-(`src/contents/*`, `src/pages.ts`), the `yarn` commands, and the iGEM asset rules
-(images via the uploads tool, videos from iGEM servers, no external CDNs).
+Read **[README.md](README.md)** first, then follow **[CONTRIBUTING.md](CONTRIBUTING.md)**
+and the **[repository map](docs/repository-layout.md)**. Commands and build
+boundaries are in **[docs/development.md](docs/development.md)**; asset sources,
+upload batches and CDN mappings are in **[docs/assets.md](docs/assets.md)**.
+Check **[scripts/README.md](scripts/README.md)** before running import or asset
+tools: several commands overwrite content, catalogs or generated files.
 
 ## Responsible & honest use
 @.claude/RESPONSIBLE_AI_USE.md
