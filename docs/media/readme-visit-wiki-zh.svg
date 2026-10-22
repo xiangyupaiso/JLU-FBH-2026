@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="300" height="76" viewBox="0 0 300 76" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="248" height="52" viewBox="0 0 248 52" role="img" aria-labelledby="title desc">
   <title id="title">浏览完整 Wiki</title>
   <desc id="desc">CirCure 官方 Wiki 入口</desc>
-  <rect x="1" y="1" width="298" height="74" rx="16" fill="#8b5274" stroke="#a97895" stroke-width="2" />
-  <text x="132" y="34" text-anchor="middle" fill="#fffafb" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="23" font-weight="700">浏览完整 Wiki</text>
-  <text x="132" y="56" text-anchor="middle" fill="#f1dce7" font-family="Arial, sans-serif" font-size="12" letter-spacing="1">CirCure · iGEM 2026</text>
-  <path d="M246 45l13-13m-13 0h13v13" fill="none" stroke="#fffafb" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <rect x="0.5" y="0.5" width="247" height="51" rx="26" fill="#fff5f9" stroke="#dfc5d3" />
+  <text x="28" y="32" fill="#70445f" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="17" font-weight="600">浏览完整 Wiki</text>
+  <path d="M195.5 17v18" fill="none" stroke="#e5d0dc" />
+  <path d="M212 31l10-10m-10 0h10v10" fill="none" stroke="#8b5274" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
 </svg>
