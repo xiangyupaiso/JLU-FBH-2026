@@ -8,11 +8,11 @@ This repository contains the official Wiki frontend for **JLU-FBH** in the 2026 
 
 ## Project links
 
-| Entry                                                              | Purpose                                                          |
-| ------------------------------------------------------------------ | ---------------------------------------------------------------- |
-| [Live Wiki](https://2026.igem.wiki/jlu-fbh/)                       | Published website for judges and the public                      |
-| [Official GitLab repository](https://gitlab.igem.org/2026/jlu-fbh) | Official Wiki source and GitLab Pages release history            |
-| [Team dashboard · Team 6056](https://teams.igem.org/6056)          | Team administration, asset uploads, and competition deliverables |
+| Entry                     | URL                                                                          | Purpose                                        |
+| ------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------- |
+| **Live Wiki**             | [https://2026.igem.wiki/jlu-fbh/](https://2026.igem.wiki/jlu-fbh/)           | Published site and project showcase            |
+| **Official GitLab**       | [https://gitlab.igem.org/2026/jlu-fbh](https://gitlab.igem.org/2026/jlu-fbh) | Official source and release history            |
+| **Team dashboard · 6056** | [https://teams.igem.org/6056](https://teams.igem.org/6056)                   | Team administration, uploads, and deliverables |
 
 Development and Pull Requests take place in this GitHub repository. See the [deployment guide](docs/deployment.en.md) for the roles of GitHub, official GitLab, and website releases.
 
