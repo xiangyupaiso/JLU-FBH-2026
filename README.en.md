@@ -68,6 +68,12 @@ This repository contains the official Wiki frontend for **JLU-FBH** in the 2026 
 
 Development and Pull Requests take place in this GitHub repository. See the [deployment guide](docs/deployment.en.md) for the roles of GitHub, official GitLab, and website releases.
 
+### Preview and published versions
+
+According to the [official iGEM 2026 calendar](https://competition.igem.org/about/calendar), the official Wiki entered the **Wiki Freeze on October 21, 2026, at 15:00 UTC (23:00 Beijing time, UTC+8)**. Editing is closed during the freeze and will reopen at the Wiki Thaw after the Grand Jamboree.
+
+Supplementary content, restored materials, and further refinements that were not included in the official frozen version remain in this GitHub repository and are presented through the [development preview at `wiki.dayquay.com`](https://wiki.dayquay.com/jlu-fbh/) for readers and future teams to explore. The frozen version at [`2026.igem.wiki/jlu-fbh/`](https://2026.igem.wiki/jlu-fbh/) remains the official competition reference. The environments deploy independently; GitHub changes still need a preview deployment.
+
 ## Start here
 
 - Run the project: [Quick start](#quick-start)

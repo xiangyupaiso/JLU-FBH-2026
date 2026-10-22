@@ -68,6 +68,12 @@
 
 日常开发与 Pull Request 在本 GitHub 仓库进行；官方 GitLab 同步与网站发布的关系见[部署说明](docs/deployment.md)。
 
+### 预览版与正式版的区别
+
+根据 [iGEM 2026 官方日历](https://competition.igem.org/about/calendar)，官方 Wiki 于 **2026 年 10 月 21 日 15:00 UTC（北京时间 23:00，UTC+8）**进入冻结期（Wiki Freeze）。冻结期间无法继续编辑，需等待赛事结束后的 Wiki Thaw 重新开放修改。
+
+未纳入官方冻结版本的补充内容、恢复资料与后续完善，继续保存在本 GitHub 仓库，并通过[开发预览版 `wiki.dayquay.com`](https://wiki.dayquay.com/jlu-fbh/)展示，供读者查阅和后续团队参考。正式参赛内容仍以 [`2026.igem.wiki/jlu-fbh/`](https://2026.igem.wiki/jlu-fbh/) 的冻结版本为准；两个环境独立发布，GitHub 更新后仍需等待预览部署。
+
 ## 从这里开始
 
 - 直接运行项目：[快速启动](#快速启动)
