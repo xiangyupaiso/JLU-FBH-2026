@@ -569,9 +569,9 @@ Vite preview 和官方 GitLab Pages 按 base 挂载产物；Cloudflare 由 [wran
 - **[Shuyi Wang](https://wiki.dayquay.com/jlu-fbh/roster#shuyi-wang) · Art Lead（美术负责人）**：设计吉祥物、周边与队服，制定 Wiki 配色、版式和动效，并完善科学示意图与流程图。协调美术组分工，与湿实验成员沟通修改图稿，保持网站与宣传材料的视觉风格一致。
 - **[Yupeng Xu](https://wiki.dayquay.com/jlu-fbh/roster#yupeng-xu) · Wiki Lead（Wiki 负责人）**：统筹 Wiki 开发进度与跨组协作，搭建模块化前端框架，负责网站架构与阅读体验。参与教育游戏、虚拟实验和交互式数据展示的开发，编写技术文档，并检查内容质量、代码与数字素材的合规要求。
 - **[Jianyuan Li](https://wiki.dayquay.com/jlu-fbh/roster#jianyuan-li) · 团队成员**：主要负责首页设计与开发，以及 Visual Design 第 8、9 节的调研、撰写与设计。参与信息架构、页面实现、素材整合与版式调整，检查术语、逻辑和英文表达，并整理草图、迭代记录与设计经验。
+- **[Jingchen He](https://wiki.dayquay.com/jlu-fbh/roster#jingchen-he) · 团队成员**：主要负责虚拟实验室构建，并参与 Wiki 页面开发，组织页面结构、调整布局，并整合队友提供的文字、图片和项目结果。根据内容与设计反馈修改页面，排查显示及技术问题，让不同部分的项目资料得到清楚呈现。
 - **[Muzi Li](https://wiki.dayquay.com/jlu-fbh/roster#muzi-li) · 团队成员**：参与项目视觉概念与角色设计，绘制队徽、吉祥物、Wiki 插画、科学示意图、首页元素和图标。制作面向公众的医学与科学传播材料，并调整各板块的构图与风格，帮助读者理解项目及相关生物学概念。
 - **[Zhixia Ye](https://wiki.dayquay.com/jlu-fbh/roster#zhixia-ye) · 团队成员**：绘制 Wiki 加载页与首页的原创画稿，并为网站界面制作定制图形素材。参与项目封面及其他插画创作，将图像融入页面设计，形成首页与加载界面相互呼应的视觉效果，支持网站整体风格的统一。
-- **[Jingchen He](https://wiki.dayquay.com/jlu-fbh/roster#jingchen-he) · 团队成员**：主要负责虚拟实验室构建，并参与 Wiki 页面开发，组织页面结构、调整布局，并整合队友提供的文字、图片和项目结果。根据内容与设计反馈修改页面，排查显示及技术问题，让不同部分的项目资料得到清楚呈现。
 
 ### 团队负责人与其他工作组
 
@@ -1190,9 +1190,9 @@ We thank all six members for their work on CirCure's visual design and Wiki. The
 - **[Shuyi Wang](https://wiki.dayquay.com/jlu-fbh/roster#shuyi-wang) · Art Lead**: Designed the mascot, merchandise, and team uniform, and developed Wiki palettes, layouts, and animation effects. Coordinated art-team tasks, refined scientific schematics and flowcharts with wet-lab feedback, and maintained a consistent visual style across the website and outreach materials.
 - **[Yupeng Xu](https://wiki.dayquay.com/jlu-fbh/roster#yupeng-xu) · Wiki Lead**: Led Wiki planning and coordination, built the modular frontend framework, and oversaw website architecture and user experience. Developed educational games, virtual-lab simulations, and interactive data displays; wrote technical documentation; and reviewed content quality, code, and digital assets against iGEM and licensing requirements.
 - **[Jianyuan Li](https://wiki.dayquay.com/jlu-fbh/roster#jianyuan-li) · Team Member**: Primarily designed and developed the homepage and researched, wrote, and designed Visual Design Sections 8 and 9. Contributed to information architecture, page implementation, asset integration, layout refinement, and editorial review, while documenting sketches, revisions, and design lessons for future teams.
+- **[Jingchen He](https://wiki.dayquay.com/jlu-fbh/roster#jingchen-he) · Team Member**: Primarily built the virtual laboratory and contributed to Wiki coding, organizing pages, adjusting layouts, and integrating teammates' text, images, and project results. Worked with the team on content and design revisions and addressed display and technical problems to present the project's materials clearly.
 - **[Muzi Li](https://wiki.dayquay.com/jlu-fbh/roster#muzi-li) · Team Member**: Developed visual concepts and character designs, creating the team logo, mascot illustrations, Wiki graphics, scientific diagrams, homepage elements, and icons. Prepared illustrated medical and science communication materials and refined composition and style across sections to help wider audiences understand the project.
 - **[Zhixia Ye](https://wiki.dayquay.com/jlu-fbh/roster#zhixia-ye) · Team Member**: Created original drawings for the Wiki loading page and homepage, alongside custom graphics for the website interface. Contributed cover art and other project illustrations, helping the entry pages share a coherent visual identity and supporting consistency across the site's artwork.
-- **[Jingchen He](https://wiki.dayquay.com/jlu-fbh/roster#jingchen-he) · Team Member**: Primarily built the virtual laboratory and contributed to Wiki coding, organizing pages, adjusting layouts, and integrating teammates' text, images, and project results. Worked with the team on content and design revisions and addressed display and technical problems to present the project's materials clearly.
 
 ### Team leaders and other working groups
 
