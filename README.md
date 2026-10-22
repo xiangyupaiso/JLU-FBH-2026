@@ -571,29 +571,30 @@ Vite preview 和官方 GitLab Pages 按 base 挂载产物；Cloudflare 由 [wran
 
 ### Visual Design 团队
 
-以下按 [Roster 的 Visual Design 分组](https://2026.igem.wiki/jlu-fbh/roster)顺序列出六位成员的主要工作，依据[仓库中的成员介绍](src/data/team/rosterPage.ts)整理：
+感谢六位成员为 CirCure 的视觉设计与 Wiki 建设付出的工作。以下结合[官方 Attributions 团队贡献表](https://teams.igem.org/wiki/6056/attributions#team-member-contributions)、[Roster](https://2026.igem.wiki/jlu-fbh/roster)及本仓库已有的页面分工整理：
 
-- **Shuyi Wang · Art Lead（美术负责人）**：负责标志设计、团队视觉素材、Wiki 插画与宣传美术，统筹项目视觉创作。
-- **Yupeng Xu · Wiki Lead（Wiki 负责人）**：牵头 Wiki 开发与数字设计，组织 AI 智能体协作，为队友整理可复用的工作流程、技能与工具。
-- **Jianyuan Li · 团队成员**：主要负责首页设计与开发，以及 Visual Design 第 8 节 Humanistic Care & Narrative Design、第 9 节 Our Wiki Contribution 的调研、撰写与设计；整理草图、修改记录和设计经验。
-- **Muzi Li · 团队成员**：参与医学与人类实践工作，将科学知识转化为便于公众理解的故事。
-- **Zhixia Ye · 团队成员**：参与团队美术工作，绘制项目封面及其他插画。
-- **Jingchen He · 团队成员**：参与 Wiki 开发与页面内容组织，梳理项目想法、实验与修改记录，调整信息顺序和呈现细节。
+- **Shuyi Wang · Art Lead（美术负责人）**：设计吉祥物、周边与队服，制定 Wiki 配色、版式和动效，并完善科学示意图与流程图。协调美术组分工，与湿实验成员沟通修改图稿，保持网站与宣传材料的视觉风格一致。
+- **Yupeng Xu · Wiki Lead（Wiki 负责人）**：统筹 Wiki 开发进度与跨组协作，搭建模块化前端框架，负责网站架构与阅读体验。参与教育游戏、虚拟实验和交互式数据展示的开发，编写技术文档，并检查内容质量、代码与数字素材的合规要求。
+- **Jianyuan Li · 团队成员**：主要负责首页设计与开发，以及 Visual Design 第 8、9 节的调研、撰写与设计。参与信息架构、页面实现、素材整合与版式调整，检查术语、逻辑和英文表达，并整理草图、迭代记录与设计经验。
+- **Muzi Li · 团队成员**：参与项目视觉概念与角色设计，绘制队徽、吉祥物、Wiki 插画、科学示意图、首页元素和图标。制作面向公众的医学与科学传播材料，并调整各板块的构图与风格，帮助读者理解项目及相关生物学概念。
+- **Zhixia Ye · 团队成员**：绘制 Wiki 加载页与首页的原创画稿，并为网站界面制作定制图形素材。参与项目封面及其他插画创作，将图像融入页面设计，形成首页与加载界面相互呼应的视觉效果，支持网站整体风格的统一。
+- **Jingchen He · 团队成员**：参与虚拟实验室构建与 Wiki 页面开发，组织页面结构、调整布局，并整合队友提供的文字、图片和项目结果。根据内容与设计反馈修改页面，排查显示及技术问题，让不同部分的项目资料得到清楚呈现。
 
 ### 团队负责人与其他工作组
 
-CirCure 的研究、设计与传播也离不开其他工作组的共同投入。感谢以下团队负责人、各组负责人及新媒体小组负责人；职责依据同一份 [Roster 成员介绍](src/data/team/rosterPage.ts)整理：
+感谢团队负责人、各组负责人及新媒体小组负责人在研究、组织与传播中的投入。以下同样依据官方贡献表与 Roster 整理：
 
-- **Ding Ma、Jinqi Xu · Team Leaders（团队负责人）**：带领团队，与各工作组共同推进 CirCure 项目。
-- **Xuanhe Chang · Team Leader（团队负责人）**：主要负责湿实验验证、科学示意图绘制与数据整理，帮助清晰呈现实验工作和分子机制。
-- **Ke Wang · Wet Lab 负责人**：带领湿实验组，负责实验开展与重复实验。
-- **Ouyang Li · Dry Lab 负责人**：负责实验方案设计与数据分析。
-- **Zhe Jia · Human Practices 负责人**：主要负责人类实践工作，通过交流、倾听不同意见，探索科学想法与实验室之外实际需求的联系。
-- **Yirou Gong · Human Practices 负责人**：整理人类实践相关信息、跟进重点任务，并支持团队沟通与协调。
-- **Zecun Li · Human Practices 负责人**：负责可持续发展、整合型人类实践（Integrated Human Practices，iHP）与教育工作，连接项目研究、公众与社会议题。
-- **Rong Gao · 新媒体小组负责人**：带领新媒体运营小组，撰写社交媒体推文、设计海报与活动物料，并剪辑竞赛视频。
+- **Ding Ma · Team Leader（团队负责人）**：参与项目构思、背景调研、数据分析与记录整理，并协助规划和审阅软硬件工作。承担秘书职责，协调日程、内部沟通与行政材料，同时参与安全准备、公众交流、筹资及项目文稿的撰写修改。
+- **Jinqi Xu · Team Leader（团队负责人）**：参与组建团队、安排赛季时间表，并协调湿实验、计算与公众交流工作的进度。与其他负责人共同推进筹资、赞助和创业交流，撰写 Engineering 页面内容，并负责宣传视频与展示视频的拍摄剪辑。
+- **Xuanhe Chang · Team Leader（团队负责人）**：参与文献调研与项目实验框架设计，协调湿实验、Wiki 和美术组工作，监督疫苗构建及功能验证。规范实验记录与数据管理，负责 Description、Contribution 和首页等模块内容，并协助科学图表绘制与公众科普。
+- **Ke Wang · Wet Lab 负责人**：统筹湿实验进度，参与疫苗与靶点调研、实验执行、数据分析和记录整理。牵头湿实验及 Hardware 页面写作，提交 Parts 登记与安全、Check-In、动物实验表单，并参与教育活动、商业材料及实用新型专利申请。
+- **Ouyang Li · Dry Lab 负责人**：牵头多尺度机制建模、敏感性分析、贝叶斯校准与给药窗口预测，并开展多组学靶点筛选及表位结构分析。开发首版 circForge 软件流程，整理计算数据与结构图，并撰写修改中英文 Model 页面。
+- **Zhe Jia · Human Practices 负责人**：统筹人类实践，设计访谈提纲与活动方案，通过利益相关方反馈推动项目设计调整。组织教育活动、队际合作和新媒体传播，参与创业规划，并撰写 Human Practices、Entrepreneurship 页面及修改 Education 内容。
+- **Yirou Gong · Human Practices 负责人**：参与线上线下工作坊、互动游戏、科普与队际合作活动的策划和实施，协调活动与受众交流。撰写、修改和整合 Human Practices 与 Education 页面内容，并设计视觉和动画元素，使活动记录清晰易读、呈现一致。
+- **Zecun Li · Human Practices 负责人**：设计 Bio Memory Match 教育游戏，提出虚拟实验室与 SST-QN 网络概念并参与完善。发起 Together with iGEM 合作，组织读书日与八段锦活动，撰写 Sustainability 页面及生物安全角色扮演游戏 DDL Crisis 的完整剧本。
+- **Rong Gao · 新媒体小组负责人**：调研其他 iGEM 团队案例，为项目与传播提供参考；参与杏花节等公众活动的物料设计、现场组织和交流。协调新媒体运营，制作公众号内容、海报、宣传图与手册，并参与视频剪辑，保持团队对外传播的视觉风格一致。
 
-也感谢 Wet Lab、Dry Lab 与 Human Practices 的全体成员在实验执行、安全与记录、生物信息学与计算设计、数学建模、工具开发、教育和公共传播中的共同投入。各组的持续工作，为 Wiki 中的科学内容、项目记录与公众交流提供了基础。
+也感谢 Wet Lab、Dry Lab 与 Human Practices 的全体成员在实验执行、安全与记录、生物信息学与计算设计、数学建模、工具开发、教育和公共传播中的共同投入，为 Wiki 的科学内容、项目记录与公众交流提供基础。
 
 <p align="center">
   <img src="docs/media/readme-institutions.svg" alt="吉林大学；吉林大学白求恩第一医院；吉林大学白求恩第一临床医学院。" width="640" />
@@ -1198,29 +1199,30 @@ We thank the university, clinical institutions, research platforms, and supporte
 
 ### Visual Design team
 
-The six members below follow the order of the [Roster's Visual Design group](https://2026.igem.wiki/jlu-fbh/roster). Their main contributions are summarized from the [member biographies in this repository](src/data/team/rosterPage.ts):
+We thank all six members for their work on CirCure's visual design and Wiki. The summaries below draw on the [official Attributions form](https://teams.igem.org/wiki/6056/attributions#team-member-contributions), the [Roster](https://2026.igem.wiki/jlu-fbh/roster), and the page responsibilities already documented in this repository:
 
-- **Shuyi Wang · Art Lead**: Designed the logo, team graphics, Wiki illustrations, and promotional artwork, and coordinated the project's visual work.
-- **Yupeng Xu · Wiki Lead**: Led Wiki development and digital design, coordinated AI-agent collaboration, and documented reusable workflows, skills, and tools for teammates.
-- **Jianyuan Li · Team Member**: Primarily designed and developed the homepage; researched, wrote, and designed Visual Design Section 8, Humanistic Care & Narrative Design, and Section 9, Our Wiki Contribution; collected sketches, revision records, and design lessons.
-- **Muzi Li · Team Member**: Contributed to medical and human practices work, helping present scientific knowledge through stories for a general audience.
-- **Zhixia Ye · Team Member**: Created project cover art and other illustrations as part of the art team.
-- **Jingchen He · Team Member**: Contributed to Wiki development and content organization, arranging project ideas, experiments, and revision records and refining how they appear on the page.
+- **Shuyi Wang · Art Lead**: Designed the mascot, merchandise, and team uniform, and developed Wiki palettes, layouts, and animation effects. Coordinated art-team tasks, refined scientific schematics and flowcharts with wet-lab feedback, and maintained a consistent visual style across the website and outreach materials.
+- **Yupeng Xu · Wiki Lead**: Led Wiki planning and coordination, built the modular frontend framework, and oversaw website architecture and user experience. Developed educational games, virtual-lab simulations, and interactive data displays; wrote technical documentation; and reviewed content quality, code, and digital assets against iGEM and licensing requirements.
+- **Jianyuan Li · Team Member**: Primarily designed and developed the homepage and researched, wrote, and designed Visual Design Sections 8 and 9. Contributed to information architecture, page implementation, asset integration, layout refinement, and editorial review, while documenting sketches, revisions, and design lessons for future teams.
+- **Muzi Li · Team Member**: Developed visual concepts and character designs, creating the team logo, mascot illustrations, Wiki graphics, scientific diagrams, homepage elements, and icons. Prepared illustrated medical and science communication materials and refined composition and style across sections to help wider audiences understand the project.
+- **Zhixia Ye · Team Member**: Created original drawings for the Wiki loading page and homepage, alongside custom graphics for the website interface. Contributed cover art and other project illustrations, helping the entry pages share a coherent visual identity and supporting consistency across the site's artwork.
+- **Jingchen He · Team Member**: Contributed to virtual-lab construction and Wiki coding, organizing pages, adjusting layouts, and integrating teammates' text, images, and project results. Worked with the team on content and design revisions and addressed display and technical problems to present the project's materials clearly.
 
 ### Team leaders and other working groups
 
-CirCure's research, design, and communication also depend on the work of the other groups. We thank the following team leaders, group leads, and new media subgroup lead. Their responsibilities are summarized from the same [Roster biographies](src/data/team/rosterPage.ts):
+We thank the team leaders, group leads, and new media subgroup lead for their research, coordination, and communication work. These summaries follow the same Attributions form and Roster:
 
-- **Ding Ma and Jinqi Xu · Team Leaders**: Led the team and worked with the groups to advance the CirCure project.
-- **Xuanhe Chang · Team Leader**: Primarily oversaw wet-lab experimental validation, scientific schematic illustration, and data organization, helping communicate experimental work and molecular mechanisms clearly.
-- **Ke Wang · Wet Lab Lead**: Led the wet-lab group and carried out and repeated experiments.
-- **Ouyang Li · Dry Lab Lead**: Designed experimental protocols and analyzed data.
-- **Zhe Jia · Human Practices Lead**: Primarily worked on Human Practices, communicating with people and listening to different perspectives to explore how scientific ideas relate to needs beyond the laboratory.
-- **Yirou Gong · Human Practices Lead**: Organized Human Practices information, followed up on key tasks, and supported communication and coordination.
-- **Zecun Li · Human Practices Lead**: Took responsibility for sustainability, Integrated Human Practices (iHP), and education, connecting project research with people and wider social questions.
-- **Rong Gao · New Media Subgroup Lead**: Led new media operations, writing social media posts, designing posters and event materials, and editing competition videos.
+- **Ding Ma · Team Leader**: Contributed to project ideas, background research, data analysis, record organization, and reviews of hardware and software plans. As team secretary, coordinated schedules, internal communication, and administrative documentation, while supporting safety preparation, public engagement, fundraising, and the drafting and revision of project materials.
+- **Jinqi Xu · Team Leader**: Helped assemble the team, plan the season, and coordinate wet-lab, dry-lab, and outreach work. Worked with fellow leaders on fundraising, sponsorship, public engagement, and entrepreneurship; drafted Engineering content; and filmed and edited the team's Promotion Video and Presentation Video.
+- **Xuanhe Chang · Team Leader**: Helped define the experimental framework through literature research and coordinated wet-lab, Wiki, and art work. Supervised vaccine construction and functional verification, organized laboratory records and data management, prepared Description, Contribution, and homepage content, and supported scientific visualization and public outreach.
+- **Ke Wang · Wet Lab Lead**: Coordinated wet-lab schedules, researched vaccine platforms and targets, and conducted experiments, analysis, and record keeping. Led Wet Lab and Hardware page writing, submitted Parts Registry entries and safety-related forms, and contributed to education, commercial materials, and a utility-model patent application.
+- **Ouyang Li · Dry Lab Lead**: Led multiscale mechanistic modeling, sensitivity analysis, Bayesian calibration, and dosing-window prediction, alongside multi-omics target screening and epitope structural analysis. Developed the first circForge pipeline, organized computational data and structural figures, and drafted and revised the bilingual Model page.
+- **Zhe Jia · Human Practices Lead**: Coordinated Human Practices, designed interview outlines and activity plans, and used stakeholder feedback to refine project design. Organized educational activities, inter-team collaborations, and social media outreach, contributed to entrepreneurship planning, wrote Human Practices and Entrepreneurship content, and revised Education materials.
+- **Yirou Gong · Human Practices Lead**: Planned and delivered workshops, interactive games, science outreach, and inter-team activities, helping coordinate events and audience engagement. Drafted, revised, and integrated Human Practices and Education content, and designed visual and animated elements to improve clarity, accessibility, and consistency across the Wiki.
+- **Zecun Li · Human Practices Lead**: Designed Bio Memory Match and proposed the Virtual Laboratory and SST-QN concepts, supporting their development. Initiated Together with iGEM, organized World Book Day and Baduanjin activities, wrote Sustainability content, and authored the complete script for the biosafety role-playing game DDL Crisis.
+- **Rong Gao · New Media Subgroup Lead**: Reviewed other iGEM projects and supported outreach events, including the Apricot Blossom Festival, through materials, on-site organization, and audience communication. Coordinated new media work, producing WeChat content, posters, promotional graphics, and brochures, and contributed video editing while maintaining consistent visual communication.
 
-We also thank every member of Wet Lab, Dry Lab, and Human Practices for their contributions to experiments, safety and documentation, bioinformatics and computational design, mathematical modeling, tool development, education, and public communication. Their sustained work provides the foundation for the scientific content, project records, and public engagement presented in the Wiki.
+We also thank every member of Wet Lab, Dry Lab, and Human Practices for their work on experiments, safety and documentation, bioinformatics and computational design, mathematical modeling, tool development, education, and public communication, which underpins the Wiki's scientific content and project records.
 
 <p align="center">
   <img src="docs/media/readme-institutions.svg" alt="Jilin University; The First Bethune Hospital of Jilin University; The First Bethune Clinical Medical College of Jilin University." width="640" />
