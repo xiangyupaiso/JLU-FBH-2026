@@ -584,15 +584,15 @@ Vite preview 和官方 GitLab Pages 按 base 挂载产物；Cloudflare 由 [wran
 
 感谢团队负责人、各组负责人及新媒体小组负责人在研究、组织与传播中的投入。以下同样依据官方贡献表与 Roster 整理：
 
-- **Ding Ma · Team Leader（团队负责人）**：参与项目构思、背景调研、数据分析与记录整理，并协助规划和审阅软硬件工作。承担秘书职责，协调日程、内部沟通与行政材料，同时参与安全准备、公众交流、筹资及项目文稿的撰写修改。
-- **Jinqi Xu · Team Leader（团队负责人）**：参与组建团队、安排赛季时间表，并协调湿实验、计算与公众交流工作的进度。与其他负责人共同推进筹资、赞助和创业交流，撰写 Engineering 页面内容，并负责宣传视频与展示视频的拍摄剪辑。
-- **Xuanhe Chang · Team Leader（团队负责人）**：参与文献调研与项目实验框架设计，协调湿实验、Wiki 和美术组工作，监督疫苗构建及功能验证。规范实验记录与数据管理，负责 Description、Contribution 和首页等模块内容，并协助科学图表绘制与公众科普。
-- **Ke Wang · Wet Lab 负责人**：统筹湿实验进度，参与疫苗与靶点调研、实验执行、数据分析和记录整理。牵头湿实验及 Hardware 页面写作，提交 Parts 登记与安全、Check-In、动物实验表单，并参与教育活动、商业材料及实用新型专利申请。
-- **Ouyang Li · Dry Lab 负责人**：牵头多尺度机制建模、敏感性分析、贝叶斯校准与给药窗口预测，并开展多组学靶点筛选及表位结构分析。开发首版 circForge 软件流程，整理计算数据与结构图，并撰写修改中英文 Model 页面。
-- **Zhe Jia · Human Practices 负责人**：统筹人类实践，设计访谈提纲与活动方案，通过利益相关方反馈推动项目设计调整。组织教育活动、队际合作和新媒体传播，参与创业规划，并撰写 Human Practices、Entrepreneurship 页面及修改 Education 内容。
-- **Yirou Gong · Human Practices 负责人**：参与线上线下工作坊、互动游戏、科普与队际合作活动的策划和实施，协调活动与受众交流。撰写、修改和整合 Human Practices 与 Education 页面内容，并设计视觉和动画元素，使活动记录清晰易读、呈现一致。
-- **Zecun Li · Human Practices 负责人**：设计 Bio Memory Match 教育游戏，提出虚拟实验室与 SST-QN 网络概念并参与完善。发起 Together with iGEM 合作，组织读书日与八段锦活动，撰写 Sustainability 页面及生物安全角色扮演游戏 DDL Crisis 的完整剧本。
-- **Rong Gao · 新媒体小组负责人**：调研其他 iGEM 团队案例，为项目与传播提供参考；参与杏花节等公众活动的物料设计、现场组织和交流。协调新媒体运营，制作公众号内容、海报、宣传图与手册，并参与视频剪辑，保持团队对外传播的视觉风格一致。
+- **[Ding Ma](https://wiki.dayquay.com/jlu-fbh/roster#ding-ma) · Team Leader（团队负责人）**：参与项目构思、背景调研、数据分析与记录整理，并协助规划和审阅软硬件工作。承担秘书职责，协调日程、内部沟通与行政材料，同时参与安全准备、公众交流、筹资及项目文稿的撰写修改。
+- **[Jinqi Xu](https://wiki.dayquay.com/jlu-fbh/roster#jinqi-xu) · Team Leader（团队负责人）**：参与组建团队、安排赛季时间表，并协调湿实验、计算与公众交流工作的进度。与其他负责人共同推进筹资、赞助和创业交流，撰写 Engineering 页面内容，并负责宣传视频与展示视频的拍摄剪辑。
+- **[Xuanhe Chang](https://wiki.dayquay.com/jlu-fbh/roster#xuanhe-chang) · Team Leader（团队负责人）**：参与文献调研与项目实验框架设计，协调湿实验、Wiki 和美术组工作，监督疫苗构建及功能验证。规范实验记录与数据管理，负责 Description、Contribution 和首页等模块内容，并协助科学图表绘制与公众科普。
+- **[Ke Wang](https://wiki.dayquay.com/jlu-fbh/roster#ke-wang) · Wet Lab 负责人**：统筹湿实验进度，参与疫苗与靶点调研、实验执行、数据分析和记录整理。牵头湿实验及 Hardware 页面写作，提交 Parts 登记与安全、Check-In、动物实验表单，并参与教育活动、商业材料及实用新型专利申请。
+- **[Ouyang Li](https://wiki.dayquay.com/jlu-fbh/roster#ouyang-li) · Dry Lab 负责人**：牵头多尺度机制建模、敏感性分析、贝叶斯校准与给药窗口预测，并开展多组学靶点筛选及表位结构分析。开发首版 circForge 软件流程，整理计算数据与结构图，并撰写修改中英文 Model 页面。
+- **[Zhe Jia](https://wiki.dayquay.com/jlu-fbh/roster#zhe-jia) · Human Practices 负责人**：统筹人类实践，设计访谈提纲与活动方案，通过利益相关方反馈推动项目设计调整。组织教育活动、队际合作和新媒体传播，参与创业规划，并撰写 Human Practices、Entrepreneurship 页面及修改 Education 内容。
+- **[Yirou Gong](https://wiki.dayquay.com/jlu-fbh/roster#yirou-gong) · Human Practices 负责人**：参与线上线下工作坊、互动游戏、科普与队际合作活动的策划和实施，协调活动与受众交流。撰写、修改和整合 Human Practices 与 Education 页面内容，并设计视觉和动画元素，使活动记录清晰易读、呈现一致。
+- **[Zecun Li](https://wiki.dayquay.com/jlu-fbh/roster#zecun-li) · Human Practices 负责人**：设计 Bio Memory Match 教育游戏，提出虚拟实验室与 SST-QN 网络概念并参与完善。发起 Together with iGEM 合作，组织读书日与八段锦活动，撰写 Sustainability 页面及生物安全角色扮演游戏 DDL Crisis 的完整剧本。
+- **[Rong Gao](https://wiki.dayquay.com/jlu-fbh/roster#rong-gao) · 新媒体小组负责人**：调研其他 iGEM 团队案例，为项目与传播提供参考；参与杏花节等公众活动的物料设计、现场组织和交流。协调新媒体运营，制作公众号内容、海报、宣传图与手册，并参与视频剪辑，保持团队对外传播的视觉风格一致。
 
 也感谢 Wet Lab、Dry Lab 与 Human Practices 的全体成员在实验执行、安全与记录、生物信息学与计算设计、数学建模、工具开发、教育和公共传播中的共同投入，为 Wiki 的科学内容、项目记录与公众交流提供基础。
 
@@ -600,13 +600,13 @@ Vite preview 和官方 GitLab Pages 按 base 挂载产物；Cloudflare 由 [wran
 
 也感谢以下同学、指导教师与顾问的参与和支持。名单按 [Roster](https://2026.igem.wiki/jlu-fbh/roster) 分组，并与[官方 Attributions 团队贡献表](https://teams.igem.org/wiki/6056/attributions#team-member-contributions)核对；连同上文所列成员，完整团队共 44 人。各人的具体贡献可在官方表中查阅。
 
-- **Wet Lab**：Jiaze Xu、Minxu Jin、Zitong Ye、Shuangshuo Tian、Jingtong Xu、Jiayi Zhang。
-- **Dry Lab**：Hui Pan、Ziyi Yan、Yufan Ji。
-- **Human Practices**：Jianyu Zhou、Qihang Chen、Jiatong Zhang、Yiran Zheng、Junhan Lu。
-- **Primary PIs（主要指导教师）**：Bin Liu、Guoyue Lv、Jiuwei Cui、Songling Zhang。
-- **Secondary PIs（共同指导教师）**：Lin Jia、Meihua Piao、Qingtian Guan。
-- **Instructors（指导教师）**：Bin Wang、Kexin Gao、Ruihong Wu、Ruohan Yang。
-- **Advisors（顾问）**：Mingwan Liu、Sirui Dong、Xilei Song、Yurui Wei。
+- **Wet Lab**：[Jiaze Xu](https://wiki.dayquay.com/jlu-fbh/roster#jiaze-xu)、[Minxu Jin](https://wiki.dayquay.com/jlu-fbh/roster#minxu-jin)、[Zitong Ye](https://wiki.dayquay.com/jlu-fbh/roster#zitong-ye)、[Shuangshuo Tian](https://wiki.dayquay.com/jlu-fbh/roster#shuangshuo-tian)、[Jingtong Xu](https://wiki.dayquay.com/jlu-fbh/roster#jingtong-xu)、[Jiayi Zhang](https://wiki.dayquay.com/jlu-fbh/roster#jiayi-zhang)。
+- **Dry Lab**：[Hui Pan](https://wiki.dayquay.com/jlu-fbh/roster#hui-pan)、[Ziyi Yan](https://wiki.dayquay.com/jlu-fbh/roster#ziyi-yan)、[Yufan Ji](https://wiki.dayquay.com/jlu-fbh/roster#yufan-ji)。
+- **Human Practices**：[Jianyu Zhou](https://wiki.dayquay.com/jlu-fbh/roster#jianyu-zhou)、[Qihang Chen](https://wiki.dayquay.com/jlu-fbh/roster#qihang-chen)、[Jiatong Zhang](https://wiki.dayquay.com/jlu-fbh/roster#jiatong-zhang)、[Yiran Zheng](https://wiki.dayquay.com/jlu-fbh/roster#yiran-zheng)、[Junhan Lu](https://wiki.dayquay.com/jlu-fbh/roster#junhan-lu)。
+- **Primary PIs（主要指导教师）**：[Bin Liu](https://wiki.dayquay.com/jlu-fbh/roster#bin-liu)、[Guoyue Lv](https://wiki.dayquay.com/jlu-fbh/roster#guoyue-lv)、[Jiuwei Cui](https://wiki.dayquay.com/jlu-fbh/roster#jiuwei-cui)、[Songling Zhang](https://wiki.dayquay.com/jlu-fbh/roster#songling-zhang)。
+- **Secondary PIs（共同指导教师）**：[Lin Jia](https://wiki.dayquay.com/jlu-fbh/roster#lin-jia)、[Meihua Piao](https://wiki.dayquay.com/jlu-fbh/roster#meihua-piao)、[Qingtian Guan](https://wiki.dayquay.com/jlu-fbh/roster#qingtian-guan)。
+- **Instructors（指导教师）**：[Bin Wang](https://wiki.dayquay.com/jlu-fbh/roster#bin-wang)、[Kexin Gao](https://wiki.dayquay.com/jlu-fbh/roster#kexin-gao)、[Ruihong Wu](https://wiki.dayquay.com/jlu-fbh/roster#ruihong-wu)、[Ruohan Yang](https://wiki.dayquay.com/jlu-fbh/roster#ruohan-yang)。
+- **Advisors（顾问）**：[Mingwan Liu](https://wiki.dayquay.com/jlu-fbh/roster#mingwan-liu)、[Sirui Dong](https://wiki.dayquay.com/jlu-fbh/roster#sirui-dong)、[Xilei Song](https://wiki.dayquay.com/jlu-fbh/roster#xilei-song)、[Yurui Wei](https://wiki.dayquay.com/jlu-fbh/roster#yurui-wei)。
 
 <p align="center">
   <img src="docs/media/readme-institutions.svg" alt="吉林大学；吉林大学白求恩第一医院；吉林大学白求恩第一临床医学院。" width="640" />
@@ -1224,15 +1224,15 @@ We thank all six members for their work on CirCure's visual design and Wiki. The
 
 We thank the team leaders, group leads, and new media subgroup lead for their research, coordination, and communication work. These summaries follow the same Attributions form and Roster:
 
-- **Ding Ma · Team Leader**: Contributed to project ideas, background research, data analysis, record organization, and reviews of hardware and software plans. As team secretary, coordinated schedules, internal communication, and administrative documentation, while supporting safety preparation, public engagement, fundraising, and the drafting and revision of project materials.
-- **Jinqi Xu · Team Leader**: Helped assemble the team, plan the season, and coordinate wet-lab, dry-lab, and outreach work. Worked with fellow leaders on fundraising, sponsorship, public engagement, and entrepreneurship; drafted Engineering content; and filmed and edited the team's Promotion Video and Presentation Video.
-- **Xuanhe Chang · Team Leader**: Helped define the experimental framework through literature research and coordinated wet-lab, Wiki, and art work. Supervised vaccine construction and functional verification, organized laboratory records and data management, prepared Description, Contribution, and homepage content, and supported scientific visualization and public outreach.
-- **Ke Wang · Wet Lab Lead**: Coordinated wet-lab schedules, researched vaccine platforms and targets, and conducted experiments, analysis, and record keeping. Led Wet Lab and Hardware page writing, submitted Parts Registry entries and safety-related forms, and contributed to education, commercial materials, and a utility-model patent application.
-- **Ouyang Li · Dry Lab Lead**: Led multiscale mechanistic modeling, sensitivity analysis, Bayesian calibration, and dosing-window prediction, alongside multi-omics target screening and epitope structural analysis. Developed the first circForge pipeline, organized computational data and structural figures, and drafted and revised the bilingual Model page.
-- **Zhe Jia · Human Practices Lead**: Coordinated Human Practices, designed interview outlines and activity plans, and used stakeholder feedback to refine project design. Organized educational activities, inter-team collaborations, and social media outreach, contributed to entrepreneurship planning, wrote Human Practices and Entrepreneurship content, and revised Education materials.
-- **Yirou Gong · Human Practices Lead**: Planned and delivered workshops, interactive games, science outreach, and inter-team activities, helping coordinate events and audience engagement. Drafted, revised, and integrated Human Practices and Education content, and designed visual and animated elements to improve clarity, accessibility, and consistency across the Wiki.
-- **Zecun Li · Human Practices Lead**: Designed Bio Memory Match and proposed the Virtual Laboratory and SST-QN concepts, supporting their development. Initiated Together with iGEM, organized World Book Day and Baduanjin activities, wrote Sustainability content, and authored the complete script for the biosafety role-playing game DDL Crisis.
-- **Rong Gao · New Media Subgroup Lead**: Reviewed other iGEM projects and supported outreach events, including the Apricot Blossom Festival, through materials, on-site organization, and audience communication. Coordinated new media work, producing WeChat content, posters, promotional graphics, and brochures, and contributed video editing while maintaining consistent visual communication.
+- **[Ding Ma](https://wiki.dayquay.com/jlu-fbh/roster#ding-ma) · Team Leader**: Contributed to project ideas, background research, data analysis, record organization, and reviews of hardware and software plans. As team secretary, coordinated schedules, internal communication, and administrative documentation, while supporting safety preparation, public engagement, fundraising, and the drafting and revision of project materials.
+- **[Jinqi Xu](https://wiki.dayquay.com/jlu-fbh/roster#jinqi-xu) · Team Leader**: Helped assemble the team, plan the season, and coordinate wet-lab, dry-lab, and outreach work. Worked with fellow leaders on fundraising, sponsorship, public engagement, and entrepreneurship; drafted Engineering content; and filmed and edited the team's Promotion Video and Presentation Video.
+- **[Xuanhe Chang](https://wiki.dayquay.com/jlu-fbh/roster#xuanhe-chang) · Team Leader**: Helped define the experimental framework through literature research and coordinated wet-lab, Wiki, and art work. Supervised vaccine construction and functional verification, organized laboratory records and data management, prepared Description, Contribution, and homepage content, and supported scientific visualization and public outreach.
+- **[Ke Wang](https://wiki.dayquay.com/jlu-fbh/roster#ke-wang) · Wet Lab Lead**: Coordinated wet-lab schedules, researched vaccine platforms and targets, and conducted experiments, analysis, and record keeping. Led Wet Lab and Hardware page writing, submitted Parts Registry entries and safety-related forms, and contributed to education, commercial materials, and a utility-model patent application.
+- **[Ouyang Li](https://wiki.dayquay.com/jlu-fbh/roster#ouyang-li) · Dry Lab Lead**: Led multiscale mechanistic modeling, sensitivity analysis, Bayesian calibration, and dosing-window prediction, alongside multi-omics target screening and epitope structural analysis. Developed the first circForge pipeline, organized computational data and structural figures, and drafted and revised the bilingual Model page.
+- **[Zhe Jia](https://wiki.dayquay.com/jlu-fbh/roster#zhe-jia) · Human Practices Lead**: Coordinated Human Practices, designed interview outlines and activity plans, and used stakeholder feedback to refine project design. Organized educational activities, inter-team collaborations, and social media outreach, contributed to entrepreneurship planning, wrote Human Practices and Entrepreneurship content, and revised Education materials.
+- **[Yirou Gong](https://wiki.dayquay.com/jlu-fbh/roster#yirou-gong) · Human Practices Lead**: Planned and delivered workshops, interactive games, science outreach, and inter-team activities, helping coordinate events and audience engagement. Drafted, revised, and integrated Human Practices and Education content, and designed visual and animated elements to improve clarity, accessibility, and consistency across the Wiki.
+- **[Zecun Li](https://wiki.dayquay.com/jlu-fbh/roster#zecun-li) · Human Practices Lead**: Designed Bio Memory Match and proposed the Virtual Laboratory and SST-QN concepts, supporting their development. Initiated Together with iGEM, organized World Book Day and Baduanjin activities, wrote Sustainability content, and authored the complete script for the biosafety role-playing game DDL Crisis.
+- **[Rong Gao](https://wiki.dayquay.com/jlu-fbh/roster#rong-gao) · New Media Subgroup Lead**: Reviewed other iGEM projects and supported outreach events, including the Apricot Blossom Festival, through materials, on-site organization, and audience communication. Coordinated new media work, producing WeChat content, posters, promotional graphics, and brochures, and contributed video editing while maintaining consistent visual communication.
 
 We also thank every member of Wet Lab, Dry Lab, and Human Practices for their work on experiments, safety and documentation, bioinformatics and computational design, mathematical modeling, tool development, education, and public communication, which underpins the Wiki's scientific content and project records.
 
@@ -1240,13 +1240,13 @@ We also thank every member of Wet Lab, Dry Lab, and Human Practices for their wo
 
 We also thank the following students, PIs, instructors, and advisors for their participation and support. The names follow the [Roster](https://2026.igem.wiki/jlu-fbh/roster) groups and have been checked against the [official Attributions form](https://teams.igem.org/wiki/6056/attributions#team-member-contributions). Together with those listed above, they make up the full team of 44 people. Individual contributions are recorded in the official form.
 
-- **Wet Lab**: Jiaze Xu, Minxu Jin, Zitong Ye, Shuangshuo Tian, Jingtong Xu, Jiayi Zhang.
-- **Dry Lab**: Hui Pan, Ziyi Yan, Yufan Ji.
-- **Human Practices**: Jianyu Zhou, Qihang Chen, Jiatong Zhang, Yiran Zheng, Junhan Lu.
-- **Primary PIs**: Bin Liu, Guoyue Lv, Jiuwei Cui, Songling Zhang.
-- **Secondary PIs**: Lin Jia, Meihua Piao, Qingtian Guan.
-- **Instructors**: Bin Wang, Kexin Gao, Ruihong Wu, Ruohan Yang.
-- **Advisors**: Mingwan Liu, Sirui Dong, Xilei Song, Yurui Wei.
+- **Wet Lab**: [Jiaze Xu](https://wiki.dayquay.com/jlu-fbh/roster#jiaze-xu), [Minxu Jin](https://wiki.dayquay.com/jlu-fbh/roster#minxu-jin), [Zitong Ye](https://wiki.dayquay.com/jlu-fbh/roster#zitong-ye), [Shuangshuo Tian](https://wiki.dayquay.com/jlu-fbh/roster#shuangshuo-tian), [Jingtong Xu](https://wiki.dayquay.com/jlu-fbh/roster#jingtong-xu), [Jiayi Zhang](https://wiki.dayquay.com/jlu-fbh/roster#jiayi-zhang).
+- **Dry Lab**: [Hui Pan](https://wiki.dayquay.com/jlu-fbh/roster#hui-pan), [Ziyi Yan](https://wiki.dayquay.com/jlu-fbh/roster#ziyi-yan), [Yufan Ji](https://wiki.dayquay.com/jlu-fbh/roster#yufan-ji).
+- **Human Practices**: [Jianyu Zhou](https://wiki.dayquay.com/jlu-fbh/roster#jianyu-zhou), [Qihang Chen](https://wiki.dayquay.com/jlu-fbh/roster#qihang-chen), [Jiatong Zhang](https://wiki.dayquay.com/jlu-fbh/roster#jiatong-zhang), [Yiran Zheng](https://wiki.dayquay.com/jlu-fbh/roster#yiran-zheng), [Junhan Lu](https://wiki.dayquay.com/jlu-fbh/roster#junhan-lu).
+- **Primary PIs**: [Bin Liu](https://wiki.dayquay.com/jlu-fbh/roster#bin-liu), [Guoyue Lv](https://wiki.dayquay.com/jlu-fbh/roster#guoyue-lv), [Jiuwei Cui](https://wiki.dayquay.com/jlu-fbh/roster#jiuwei-cui), [Songling Zhang](https://wiki.dayquay.com/jlu-fbh/roster#songling-zhang).
+- **Secondary PIs**: [Lin Jia](https://wiki.dayquay.com/jlu-fbh/roster#lin-jia), [Meihua Piao](https://wiki.dayquay.com/jlu-fbh/roster#meihua-piao), [Qingtian Guan](https://wiki.dayquay.com/jlu-fbh/roster#qingtian-guan).
+- **Instructors**: [Bin Wang](https://wiki.dayquay.com/jlu-fbh/roster#bin-wang), [Kexin Gao](https://wiki.dayquay.com/jlu-fbh/roster#kexin-gao), [Ruihong Wu](https://wiki.dayquay.com/jlu-fbh/roster#ruihong-wu), [Ruohan Yang](https://wiki.dayquay.com/jlu-fbh/roster#ruohan-yang).
+- **Advisors**: [Mingwan Liu](https://wiki.dayquay.com/jlu-fbh/roster#mingwan-liu), [Sirui Dong](https://wiki.dayquay.com/jlu-fbh/roster#sirui-dong), [Xilei Song](https://wiki.dayquay.com/jlu-fbh/roster#xilei-song), [Yurui Wei](https://wiki.dayquay.com/jlu-fbh/roster#yurui-wei).
 
 <p align="center">
   <img src="docs/media/readme-institutions.svg" alt="Jilin University; The First Bethune Hospital of Jilin University; The First Bethune Clinical Medical College of Jilin University." width="640" />
