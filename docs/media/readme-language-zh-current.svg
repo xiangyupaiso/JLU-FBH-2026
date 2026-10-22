@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="187" height="36" viewBox="0 0 187 36" role="img" aria-label="简体中文 · 当前语言">
-  <clipPath id="round"><rect width="187" height="32" rx="3" /></clipPath>
-  <g clip-path="url(#round)"><path fill="#555" d="M0 0h83v32H0z" /><path fill="#192b42" d="M83 0h104v32H83z" /></g>
-  <text x="41.5" y="20.55" fill="#fff" text-anchor="middle" font-family="Arial, Helvetica, PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="600" letter-spacing="0.7">简体中文</text>
-  <text x="135.0" y="20.55" fill="#fff" text-anchor="middle" font-family="Arial, Helvetica, PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="600" letter-spacing="0.7">当前语言</text>
-</svg>

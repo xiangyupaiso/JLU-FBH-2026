@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="274" height="36" viewBox="0 0 274 36" role="img" aria-label="ENGLISH · CURRENT LANGUAGE">
-  <clipPath id="round"><rect width="274" height="32" rx="3" /></clipPath>
-  <g clip-path="url(#round)"><path fill="#555" d="M0 0h85v32H0z" /><path fill="#192b42" d="M85 0h189v32H85z" /></g>
-  <text x="42.5" y="20.20" fill="#fff" text-anchor="middle" font-family="Arial, Helvetica, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="600" letter-spacing="0.8">ENGLISH</text>
-  <text x="179.5" y="20.20" fill="#fff" text-anchor="middle" font-family="Arial, Helvetica, PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="600" letter-spacing="0.8">CURRENT LANGUAGE</text>
-</svg>
