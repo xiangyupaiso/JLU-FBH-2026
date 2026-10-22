@@ -41,9 +41,11 @@
 
 ## Project overview
 
-This repository contains the official Wiki frontend for **JLU-FBH** in the 2026 International Genetically Engineered Machine Competition (**iGEM**), together with page content, asset sources, and reusable application source.
+**CirCure** is a synthetic biology research project by JLU-FBH exploring engineered circular RNA (**circRNA**) as a platform for a multi-target therapeutic vaccine against triple-negative breast cancer (**TNBC**). As the team’s official Wiki for the 2026 International Genetically Engineered Machine Competition (**iGEM**), this website documents the work from defining the research question and developing the design to experimental investigation and computational modeling. It also traces how societal needs, public engagement, and sustainability inform the project’s development.
 
-**CirCure** explores an engineered circular RNA (**circRNA**) platform for a multi-target triple-negative breast cancer (**TNBC**) vaccine. The Wiki presents the team's design, experiments, and research through long-form articles, hand-drawn illustrations, scroll-driven storytelling, model visualizations, and interactive science communication.
+The Wiki follows a reading path from understanding the problem to exploring the design and examining the evidence. Hand-drawn illustrations and scroll-driven storytelling introduce the disease context and circRNA design on the homepage; experimental records, model analyses, figures, and references develop the reasoning across the content pages. Molecular visualizations, a virtual laboratory, and science communication games offer hands-on ways for readers with different backgrounds to engage with the project.
+
+This repository contains the Wiki frontend, page content, illustrations and asset provenance, and source code for companion applications, including the virtual laboratory and games. Built with React, TypeScript, and Vite, the main site supports collaborative maintenance through shared reading components, separate content and asset mappings, and on-demand interactive modules. The source and documentation give future contributors implementations they can inspect, run, and reuse.
 
 <details>
 <summary><strong>Preview the Wiki</strong> · Hand-painted circRNA scene</summary>

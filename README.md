@@ -41,9 +41,11 @@
 
 ## 项目概览
 
-本项目为 **JLU-FBH** 战队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki 网站前端工程，同时保存页面内容、素材来源与可复用的子项目源码。
+**CirCure** 是 JLU-FBH 战队面向三阴性乳腺癌（Triple-Negative Breast Cancer, TNBC）开展的合成生物学研究项目，探索以工程化环状 RNA（circular RNA, circRNA）为载体的多靶向治疗性疫苗设计。本网站作为团队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki，系统记录从研究问题、方案设计到实验探索与计算建模的工作，以及社会需求、公众沟通与可持续性对项目发展的影响。
 
-项目以 **CirCure**——基于工程化环状 RNA（circRNA）的多靶向三阴性乳腺癌（TNBC）疫苗平台——为主题，通过学术长文、手绘插画、滚动叙事、模型可视化与交互科普介绍团队的设计、实验和研究过程。
+网站以“理解问题—探索设计—查阅证据”为阅读线索，将研究内容组织为相互衔接的页面。首页通过手绘插画与滚动叙事引入疾病背景和 circRNA 设计思路，正文以实验记录、模型分析、图表和参考文献展开论证；分子结构可视化、虚拟实验室与科普游戏则提供可操作的学习体验，让不同背景的读者都能找到理解项目的入口。
+
+本仓库保存 Wiki 前端工程、页面正文、插画与素材来源，以及虚拟实验室和游戏等子项目源码。主站基于 React、TypeScript 与 Vite 构建，通过共享阅读组件、独立的内容与资产映射、按需加载的交互模块支持协作维护，并为后续开发者提供可查阅、可运行、可复用的实现与文档。
 
 <details>
 <summary><strong>展开官网预览</strong> · circRNA 手绘场景</summary>
