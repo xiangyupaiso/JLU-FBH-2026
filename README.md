@@ -1,3 +1,15 @@
+<p align="center">
+  <a href="README.md" title="阅读中文版 · Read in Chinese">
+    <img src="docs/media/readme-language-zh.svg" alt="简体中文 · Read in Chinese" width="128" height="44" />
+  </a>
+  &nbsp;
+  <a href="README.en.md" title="Read the full README in English">
+    <img src="docs/media/readme-language-en.svg" alt="English · Read in English" width="128" height="44" />
+  </a>
+  <br />
+  <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
+</p>
+
 <h1 align="center">
   <a href="https://2026.igem.wiki/jlu-fbh/">
     <img src="docs/media/circure-cover.svg" alt="CirCure · JLU-FBH · iGEM 2026" width="1200" />
@@ -7,10 +19,6 @@
 <p align="center">
   <strong>面向三阴性乳腺癌的环状 RNA 疫苗研究</strong><br />
   <sub>JLU-FBH · 2026 国际基因工程机器大赛 · 官方 Wiki</sub>
-</p>
-
-<p align="center">
-  <strong>简体中文</strong> · <a href="README.en.md">English</a>
 </p>
 
 <p align="center">
