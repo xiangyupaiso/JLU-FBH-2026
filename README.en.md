@@ -38,6 +38,8 @@
 </p>
 
 <p align="center">
+  <a href="#design-reference-for-future-igem-teams">Design lessons</a>
+  &nbsp;·&nbsp;
   <a href="#site-modules-and-pages">Pages</a>
   &nbsp;·&nbsp;
   <a href="#quick-start">Quick start</a>
@@ -47,9 +49,11 @@
 
 ## Project overview
 
-This repository contains the official Wiki frontend for **JLU-FBH** in the 2026 International Genetically Engineered Machine Competition (**iGEM**), together with page content, asset sources, and reusable application source.
+This is the official Wiki repository for **JLU-FBH** in the 2026 International Genetically Engineered Machine Competition (**iGEM**). It contains the website frontend, page content, design assets, and source code for the games and virtual laboratory.
 
-**CirCure** explores an engineered circular RNA (**circRNA**) platform for a multi-target triple-negative breast cancer (**TNBC**) vaccine. The Wiki presents the team's design, experiments, and research through long-form articles, hand-drawn illustrations, scroll-driven storytelling, model visualizations, and interactive science communication.
+**CirCure** explores an engineered circular RNA (**circRNA**) platform for a multi-target triple-negative breast cancer (**TNBC**) vaccine. The Wiki presents the project's design, experiments, and research findings through research articles, hand-drawn illustrations, scroll-driven storytelling, model visualizations, and science communication games.
+
+Alongside the molecular mechanisms and experimental design, we want readers to see the patients behind the research: their worries about recurrence and their hopes for everyday life. We begin with a patient's question and give readers room to pause, compare, and explore the science at their own pace.
 
 <p align="center">
   <strong>Project Promotion Video</strong><br />
@@ -74,9 +78,54 @@ This repository contains the official Wiki frontend for **JLU-FBH** in the 2026 
 
 </details>
 
+## Design reference for future iGEM teams
+
+We kept sketches, interactive prototypes, revision notes, and source code throughout CirCure's design process. We hope these records help teams building their own Wiki understand what we tried, why we changed it, and how we built the final pages.
+
+Start with the [interactive Visual Design page ↗](https://2026.igem.wiki/jlu-fbh/visual-design). [Section 8: Humanistic Care & Narrative Design](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) explains how the patient's perspective shapes the scientific story. [Section 9: Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) covers artwork, motion, typography, and navigation. Try the demonstrations, then expand **Technical details** to read the design rationale and implementation notes.
+
+The [English methods guide](docs/visual-design-guide.en.md) and its [Chinese edition](docs/visual-design-guide.md) collect case summaries and source paths for reading alongside the code on GitHub.
+
+The [Design Folios: six studies and revisions ↗](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive) near the end of the page preserve earlier designs and revision notes: image-led navigation, a pink thread and expanding emblem, three Human Practices timelines, and composition and RNA-ring transition comparisons. Try the five HTML demonstrations within the folios or choose **Open in full window**. The [folio source index](docs/visual-design-guide.en.md#design-folios-earlier-directions-and-interactive-studies) lists the files for each example.
+
+### Section 9: from artwork to implementation
+
+This section follows the production process: separate artwork into layers, plan reading pauses, lay out the article, then build navigation, the ending, and interaction checks.
+
+| Section | Reusable approach |
+| --- | --- |
+| [9.1 Artwork and opening](https://2026.igem.wiki/jlu-fbh/visual-design#artwork-and-opening) | Separate layers by movement and use shared coordinates; load resources before connecting the title animation to the first scene. |
+| [9.2 Motion and reading rhythm](https://2026.igem.wiki/jlu-fbh/visual-design#keyframes-and-reading-holds) | Establish complete readable states before transitions; retain the RNA ring's outline and offer pause, chapter selection, and reverse browsing. |
+| [9.3 Sustained reading](https://2026.igem.wiki/jlu-fbh/visual-design#reading-surfaces) | Use subdued article backgrounds, typography, image edges, and white space to organize long-form content. |
+| [9.4 Clear reading routes](https://2026.igem.wiki/jlu-fbh/visual-design#navigation-with-a-landmark) | Mark the navigation entry with the crest, distinguish current-page and hover states, and provide outlines, search, citation backlinks, and next-page links. |
+| [9.5 Team photograph and letter](https://2026.igem.wiki/jlu-fbh/visual-design#photo-reveal-craft) | End with a gradual team photograph reveal and a letter readers can open; support reversing the animation and restore keyboard focus and reading position when the letter closes. |
+| [9.6 Revision and documentation](https://2026.igem.wiki/jlu-fbh/visual-design#design-record) | Keep sketches, before-and-after comparisons, revision notes, and source code; check reverse scrolling, rapid reversal, window resizing, and reduced-motion settings. |
+
+### All nine Visual Design sections
+
+| Section | What to study |
+| --- | --- |
+| [1 · Brand Identity](https://2026.igem.wiki/jlu-fbh/visual-design#brand-identity) | Project logo, team crest, flag, and Lumi mascot connected to the research theme. |
+| [2 · Cross-Module Palette Architecture](https://2026.igem.wiki/jlu-fbh/visual-design#color-system) | Five module palettes, heading hierarchy, and reading surfaces. |
+| [3 · Interactive Aesthetics & Motion](https://2026.igem.wiki/jlu-fbh/visual-design#interactive-experience) | Mascot cursor, watercolor interfaces, molecular visualization, and animation. |
+| [4 · Decoupled Web Engineering Architecture](https://2026.igem.wiki/jlu-fbh/visual-design#engineering-rigor) | Content, assets, interaction, and assembly layers; citations and media delivery. |
+| [5 · Core Interfaces & Narrative Experience](https://2026.igem.wiki/jlu-fbh/visual-design#core-interfaces) | Loading screen and homepage narrative entry. |
+| [6 · Wiki Subpage Illustration System](https://2026.igem.wiki/jlu-fbh/visual-design#subpage-illustrations) | Hand-painted page covers and a shared visual language across modules. |
+| [7 · Educational Games & Hands-On Experience](https://2026.igem.wiki/jlu-fbh/visual-design#educational-games) | Science-communication games and virtual laboratory experiences. |
+| [8 · Humanistic Care & Narrative Design](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) | Connect a patient's question to scientific explanation, participation, and reader control. |
+| [9 · Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) | Adaptable methods for layered artwork, reading rhythm, navigation, endings, and revision records. |
+
+Research and reuse: [Methods and source map](docs/visual-design-guide.en.md) · [Design references](https://2026.igem.wiki/jlu-fbh/visual-design#design-references) · [Attribution, licensing, and suggested citation](docs/visual-design-guide.en.md#reuse-and-citation).
+
 ## Project links
 
+**GitHub repository** · Development, design methods, and reusable source<br />[JLU-FBH / CirCure — xiangyupaiso/Official-wiki](https://github.com/xiangyupaiso/Official-wiki)
+
 **Live Wiki** · Published site and project showcase<br />[https://2026.igem.wiki/jlu-fbh/](https://2026.igem.wiki/jlu-fbh/)
+
+**Development preview** · Ongoing page, interaction, and design updates<br />[https://wiki.dayquay.com/jlu-fbh/](https://wiki.dayquay.com/jlu-fbh/)
+
+**Project Promotion Video** · Hosted on the official iGEM video platform<br />[https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16)
 
 **Official GitLab** · Official source and release history<br />[https://gitlab.igem.org/2026/jlu-fbh](https://gitlab.igem.org/2026/jlu-fbh)
 
@@ -88,10 +137,20 @@ Development and Pull Requests take place in this GitHub repository. See the [dep
 
 According to the [official iGEM 2026 calendar](https://competition.igem.org/about/calendar), the official Wiki entered the **Wiki Freeze on October 21, 2026, at 15:00 UTC (23:00 Beijing time, UTC+8)**. Editing is closed during the freeze and will reopen at the Wiki Thaw after the Grand Jamboree.
 
-Supplementary content, restored materials, and further refinements that were not included in the official frozen version remain in this GitHub repository and are presented through the [development preview at `wiki.dayquay.com`](https://wiki.dayquay.com/jlu-fbh/) for readers and future teams to explore. The frozen version at [`2026.igem.wiki/jlu-fbh/`](https://2026.igem.wiki/jlu-fbh/) remains the official competition reference. The environments deploy independently; GitHub changes still need a preview deployment.
+[`2026.igem.wiki/jlu-fbh/`](https://2026.igem.wiki/jlu-fbh/) preserves the frozen competition version. Later additions, restored materials, and page improvements are kept in this GitHub repository and appear on the [development preview at `wiki.dayquay.com`](https://wiki.dayquay.com/jlu-fbh/) after deployment. The two sites deploy independently.
+
+As of 2026-10-22, the GitHub development version retains these additions relative to official GitLab:
+
+- **Visual Design**: eleven initial sketches, four image-corner comparisons, explanations and complete screenshots of the gap between Next page and the footer, and additional ribbon and historical design studies.
+- **Bomb Cat**: online room creation and joining, the lobby, connection state, and PeerJS networking source, together with rebuilt runtime assets.
+- **Sustainability**: restored Tracker summaries overwritten by the October 21 emergency rollback, with separate counts for 66 participants, 38 source profiles, and 78 feedback records, and ten framework SDGs grouped into SET / DEVELOP / GROW.
+- **Assets and engineering resources**: buildable game and virtual laboratory source, local assets, provenance, and bilingual development documentation.
+
+See the [version comparison](docs/deployment.en.md#preview-and-official-gitlab-content-differences) for source paths, the rollback timeline, and deployment details.
 
 ## Start here
 
+- Research iGEM Wiki design: [Visual Design methods guide](docs/visual-design-guide.en.md), with particular attention to Section 9
 - Run the project: [Quick start](#quick-start)
 - Develop, check, and build: [Development guide](docs/development.en.md)
 - Find the right files: [Repository map](docs/repository-layout.en.md)
@@ -104,7 +163,7 @@ On this page: [Technology](#technology-and-core-dependencies) · [Architecture](
 
 ## Technology and core dependencies
 
-This table summarizes the current technology choices. Root dependency declarations live in [package.json](package.json); lockfiles record resolved versions. Standalone applications maintain their own dependencies.
+The Wiki uses the technologies below. [package.json](package.json) declares dependencies and version ranges; lockfiles record installed versions. Standalone applications maintain their own dependencies.
 
 | Area                         | Technology                                        | Version family                      | Purpose                                                                     |
 | ---------------------------- | ------------------------------------------------- | ----------------------------------- | --------------------------------------------------------------------------- |
@@ -134,7 +193,7 @@ The [page architecture specification](WIKI_ARCHITECTURE_SPEC.md) (Chinese) separ
 | Page interaction | `src/components/wiki/features/[module]/` | Implement charts, construct viewers, and specialized interactions through feature slots                        |
 | Route assembly   | `src/contents/[page].tsx`                | Combine `WikiRoutePage`, page data, Hero artwork, and features in a small assembly layer                       |
 
-New pages follow this structure. Existing `src/data/` files include both root-level files and module directories. Follow actual imports when maintaining an existing page and migrate it as needed.
+New pages follow these four layers. Existing page data lives both at the root of `src/data/` and in module directories; follow imports to find the files for a page.
 
 ### Shared reader and maintenance entry points
 
@@ -196,8 +255,6 @@ CirCure Wiki
 
 `/team` redirects to `/roster`; `/attribution` is an alias for `/attributions`.
 
-This map describes the website's organization. Each page provides the evidence, assumptions, and scope for its scientific content.
-
 ## Interaction and engineering features
 
 ### Opening sequence and scroll story
@@ -246,7 +303,7 @@ Buildable source for Breast Guardian and Bomb Cat lives in `games/`. Bio Memory 
 
 The Model page uses Mol\* to display the Trop2 complex, with rotation, zoom, segment focus, surface visibility, and polar-contact controls. The molecular runtime and PDB load when the reader approaches the figure.
 
-ECharts and related components provide model charts, legends, and interactive tooltips. These viewers present the data and models described on the page; structural visualization alone does not establish experimental validation.
+ECharts and related components display model data with legends, range highlighting, and interactive tooltips, so readers can explore the figures alongside the model analysis.
 
 ### Navigation, cursor, and reading tools
 
@@ -258,7 +315,7 @@ Changes to shared components should cover transitions between Home and article p
 
 Published pages use official images, fonts, and attachments on `static.igem.wiki`. The repository also retains local assets, manuscripts, and source mappings. Use the relevant asset dictionary and registry, and retain official hosting entries for videos and standalone applications.
 
-Upload copies and historical checks live in `delivery/uploads/`. See the [asset guide](docs/assets.en.md) for source files, expected URLs, upload records, and maintenance.
+Upload copies and historical check records live in `delivery/uploads/`. When updating assets, follow the [asset guide](docs/assets.en.md) to check source files, CDN URLs, and page references.
 
 ## Repository structure and build boundaries
 
@@ -309,7 +366,7 @@ Upload copies and historical checks live in `delivery/uploads/`. See the [asset 
 └── vite.config.ts                    # HTML entries, molecular runtime, and base path
 ```
 
-The root files `index.html`, `visual-design-study.html`, `archive-navigation-study.html`, and `archive-recognition-study.html` are active build entries. Review references before moving files whose names contain `archive`.
+The root files `index.html`, `visual-design-study.html`, `archive-navigation-study.html`, and `archive-recognition-study.html` are the four HTML build entries for the Wiki and design demonstrations.
 
 `.env` contains existing team metadata and build inputs; keep secrets out of it. `.dockerignore` filters local build contexts. See the [repository map](docs/repository-layout.en.md) for other root files and migration records.
 
@@ -321,7 +378,7 @@ The root files `index.html`, `visual-design-study.html`, `archive-navigation-stu
 | Breast Guardian / Bomb Cat | [games/README.en.md](games/README.en.md)             | Publish checked-in files in `public/game-assets/`; game source is built separately    |
 | Virtual Laboratory         | [virtual-lab/README.en.md](virtual-lab/README.en.md) | Embed the official laboratory deployment; build and release the laboratory separately |
 
-Subprojects maintain their own dependencies, lockfiles, and licenses. Read their README files before development. Keep laboratory output in its own project and explicitly update the Wiki's runtime game files when publishing a rebuilt game.
+Subprojects maintain their own dependencies, lockfiles, and licenses; their README files explain development and build steps. The laboratory deploys independently. After rebuilding a game, update its runtime files in the Wiki's `public/game-assets/`.
 
 ## Common editing locations
 
@@ -338,7 +395,7 @@ Subprojects maintain their own dependencies, lockfiles, and licenses. Read their
 | Asset sources and upload records        | [Asset guide](docs/assets.en.md), [delivery index](delivery/README.en.md)          |
 | Tool purpose, inputs, and write effects | [scripts/README.en.md](scripts/README.en.md)                                       |
 
-Importers and asset generators can overwrite content or indexes. Read their instructions before running them. Changes to scientific manuscripts, experimental parameters, formulas, and evaluation metrics require content-owner review.
+Before running importers or asset generators, read their documented write scope; these tools update content or indexes. Consult the content owner before changing scientific manuscripts, experimental parameters, formulas, or evaluation metrics.
 
 ## Quick start
 
@@ -355,7 +412,7 @@ yarn dev
 
 Open the URL printed by the terminal, normally `http://localhost:5173/jlu-fbh/`.
 
-The root npm lockfile is also retained. For npm, use `npm ci` and `npm run <script>`. Use one installation workflow per dependency directory and handle dependency upgrades separately.
+The root npm lockfile is also retained. For npm, use `npm ci` and `npm run <script>`. Use one package manager per dependency directory and update its lockfile when upgrading dependencies.
 
 ### Check, build, and preview
 
@@ -400,11 +457,11 @@ Node 22
   → copy dist/. into the CI public/ directory, generate SPA fallback, and publish
 ```
 
-The copy takes place in the CI workspace. Keep the resulting deployment directory out of local source commits. See the [deployment guide](docs/deployment.en.md) for release contents and source-only asset checks.
+The pipeline copies build output into the deployment directory within the CI workspace. See the [deployment guide](docs/deployment.en.md) for the release process and source checks.
 
 ### Yarn Classic and installation consistency
 
-`package.json` declares `yarn@1.22.22`; the official pipeline uses `--frozen-lockfile`. Retain this declaration to avoid lockfile migration by another Yarn major version. Subprojects use their own dependencies and lockfiles.
+`package.json` declares `yarn@1.22.22`; the official pipeline installs from the lockfile with `--frozen-lockfile`. Install dependencies separately in the Wiki and each subproject directory.
 
 ### One output tree and path mapping
 
@@ -418,13 +475,13 @@ The copy takes place in the CI workspace. Keep the resulting deployment director
 
 Additional rules canonicalize HTML and directory entries. Vite preview and official GitLab Pages mount output at the base path. [wrangler.json](wrangler.json) points Cloudflare at `./dist` with SPA fallback. An extra `dist/jlu-fbh/` copy is unnecessary.
 
-When needed, the script generates `.assetsignore` to exclude files above 25 MiB from Cloudflare uploads. Local files and GitLab output remain intact; review actual references and CDN URLs for excluded resources.
+When needed, the script generates `.assetsignore` so Cloudflare uploads skip files above 25 MiB. Use the corresponding CDN URLs when pages reference those resources.
 
 GitHub Pages does not read Cloudflare's `_redirects`. Configure its mount path and deep-route fallback separately if using that host.
 
 ### TypeScript asset indexes and configuration
 
-Asset dictionaries such as `contributionAssets.ts`, `resultsAssets.ts`, and `designAssets.ts` connect resources to pages. Earlier fixes addressed broad key indexing and `never` inference. Continue validating changes through TypeScript and build checks.
+Asset dictionaries such as `contributionAssets.ts`, `resultsAssets.ts`, and `designAssets.ts` maintain page-to-resource references. Run TypeScript and build checks after changes to check index keys and resource paths.
 
 `wrangler.json` configures Cloudflare; `.gitlab-ci.yml` controls official Wiki builds; `.dockerignore` filters Docker contexts. Maintain each configuration for its environment.
 
@@ -442,13 +499,16 @@ We thank the university, clinical institutions, research platforms, and supporte
   The First Bethune Clinical Medical College of Jilin University
 </p>
 
-### Research platforms and tools
+### Research platforms, tools, and other support
 
 <p align="center">
-  <img src="docs/media/readme-acknowledgements.svg" alt="Acknowledgements from the Wiki footer: Core Facility, Institute of Translational Medicine, Charles River, BioRender, MathWorks, Lark, Grammarly, and Schrödinger." width="640" />
+  <img src="docs/media/readme-acknowledgements.svg" alt="Acknowledgements from the Wiki footer: Core Facility, Institute of Translational Medicine, Laboratory Animal Center, Charles River, BioRender, MathWorks, Lark, Grammarly, and Schrödinger." width="640" />
 </p>
 
-These marks come from the existing Wiki footer. Research platforms include the Core Facility and Institute of Translational Medicine at the First Hospital of Jilin University. Tools and other supporters include Charles River, BioRender, MathWorks, Lark, Grammarly, and Schrödinger.
+- **Clinical and teaching units**: Department of Teaching, The First Bethune Clinical Medical College of Jilin University; Cancer Center, The First Bethune Hospital of Jilin University.
+- **Research platforms**: Core Facility, Institute of Translational Medicine, and Laboratory Animal Center at the First Hospital of Jilin University.
+- **Tools and other supporters**: Charles River, BioRender, MathWorks, Lark, Grammarly, and Schrödinger.
+- **Competition and community**: iGEM.
 
 ## License and attribution
 

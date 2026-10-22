@@ -38,6 +38,8 @@
 </p>
 
 <p align="center">
+  <a href="#给未来-igem-团队的设计参考">设计经验</a>
+  &nbsp;·&nbsp;
   <a href="#全站模块与页面体系">页面导航</a>
   &nbsp;·&nbsp;
   <a href="#快速启动">快速启动</a>
@@ -47,9 +49,11 @@
 
 ## 项目概览
 
-本项目为 **JLU-FBH** 战队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki 网站前端工程，同时保存页面内容、素材来源与可复用的子项目源码。
+这是 **JLU-FBH** 战队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki 仓库，包含网站前端、页面内容、设计素材，以及游戏和虚拟实验室源码。
 
-项目以 **CirCure**——基于工程化环状 RNA（circRNA）的多靶向三阴性乳腺癌（TNBC）疫苗平台——为主题，通过学术长文、手绘插画、滚动叙事、模型可视化与交互科普介绍团队的设计、实验和研究过程。
+**CirCure** 研究基于工程化环状 RNA（circRNA）的多靶向三阴性乳腺癌（TNBC）疫苗平台。Wiki 通过研究文章、手绘插画、滚动叙事、模型可视化和科普游戏，介绍项目的设计思路、实验过程与研究结果。
+
+我们希望读者在了解分子机制与实验设计的同时，也能看到研究背后患者对复发的担忧，以及她们对生活的期待。因此，我们从患者的疑问讲起，在科学解释中加入可以停下来阅读、比较和探索的交互，让读者按自己的节奏了解 CirCure。
 
 <p align="center">
   <strong>项目宣传视频 · Promotion Video</strong><br />
@@ -74,9 +78,54 @@
 
 </details>
 
+## 给未来 iGEM 团队的设计参考
+
+我们在 CirCure 的设计过程中保留了草图、交互原型、修改理由和对应源码。希望这些记录能给正在制作 Wiki 的团队一些帮助：既能看到最终页面，也能知道我们尝试过什么、为什么修改，以及具体如何实现。
+
+从 [Visual Design 交互页面 ↗](https://2026.igem.wiki/jlu-fbh/visual-design)开始：[第 8 节：人文关怀与叙事设计](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience)介绍患者视角如何融入科学叙事，[第 9 节：Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)讲解绘稿、动效、排版与导航的实现。操作演示后，展开 **Technical details** 即可查看设计理由和技术细节。
+
+[方法指南](docs/visual-design-guide.md)整理了案例摘要和源码路径，便于在 GitHub 中对照阅读。
+
+页尾的 [Design Folios：六组设计研究与迭代 ↗](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive)保留了早期方案与修改记录，包括图像导航、粉色丝带与标志展开、三种 Human Practices 时间线，以及构图和 RNA 环转场的比较。五个 HTML 交互演示可直接操作，也可点击 **Open in full window** 单独打开。[作品集源码索引](docs/visual-design-guide.md#design-folios设计作品集与历史方案)列出了各案例的文件位置。
+
+### 第 9 节：从绘稿到页面实现
+
+这一节按制作过程整理设计做法：拆分绘稿图层、安排动画停留、组织正文版面，再处理导航、收尾和交互检查。
+
+| 小节 | 可借鉴的做法 |
+| --- | --- |
+| [9.1 绘稿与开场](https://2026.igem.wiki/jlu-fbh/visual-design#artwork-and-opening) | 按运动方式拆分图层，使用统一坐标；资源加载后，衔接标题动画与首个场景。 |
+| [9.2 动效与阅读节奏](https://2026.igem.wiki/jlu-fbh/visual-design#keyframes-and-reading-holds) | 先安排可完整阅读的静止状态，再连接转场；保留 RNA 环轮廓，并提供暂停、选章与反向浏览。 |
+| [9.3 持续阅读的版面](https://2026.igem.wiki/jlu-fbh/visual-design#reading-surfaces) | 降低正文背景的色彩强度，用字体层级、图片边缘和留白组织长文。 |
+| [9.4 清楚的阅读路径](https://2026.igem.wiki/jlu-fbh/visual-design#navigation-with-a-landmark) | 用队徽标识导航入口，区分当前页与悬停状态；提供目录、搜索、引用回链和下一页链接。 |
+| [9.5 团队照片与来信](https://2026.igem.wiki/jlu-fbh/visual-design#photo-reveal-craft) | 在结尾逐步展示团队照片，提供可打开的信件；支持动画回退，并在关闭信件后恢复键盘焦点与阅读位置。 |
+| [9.6 迭代与记录](https://2026.igem.wiki/jlu-fbh/visual-design#design-record) | 保存草图、前后对比、修改理由与源码；检查反向滚动、快速反转、窗口尺寸变化，以及减少动态效果设置下的表现。 |
+
+### Visual Design 九个部分
+
+| 部分 | 内容与调研入口 |
+| --- | --- |
+| [1 · Brand Identity](https://2026.igem.wiki/jlu-fbh/visual-design#brand-identity) | 项目标识、队徽、队旗与 Lumi 吉祥物如何呼应研究主题。 |
+| [2 · Cross-Module Palette Architecture](https://2026.igem.wiki/jlu-fbh/visual-design#color-system) | 五个内容模块的配色、标题层级与阅读底色。 |
+| [3 · Interactive Aesthetics & Motion](https://2026.igem.wiki/jlu-fbh/visual-design#interactive-experience) | 吉祥物光标、水彩界面、分子可视化与动画。 |
+| [4 · Decoupled Web Engineering Architecture](https://2026.igem.wiki/jlu-fbh/visual-design#engineering-rigor) | 正文、资产、交互和装配分层，以及文献与媒体交付。 |
+| [5 · Core Interfaces & Narrative Experience](https://2026.igem.wiki/jlu-fbh/visual-design#core-interfaces) | 加载界面与首页叙事入口。 |
+| [6 · Wiki Subpage Illustration System](https://2026.igem.wiki/jlu-fbh/visual-design#subpage-illustrations) | 跨模块的手绘题图与统一视觉语言。 |
+| [7 · Educational Games & Hands-On Experience](https://2026.igem.wiki/jlu-fbh/visual-design#educational-games) | 科普游戏与虚拟实验室的体验设计。 |
+| [8 · Humanistic Care & Narrative Design](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) | 从患者的问题出发连接科学解释，给读者参与和调节节奏的空间。 |
+| [9 · Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) | 从分层绘稿、阅读节奏到导航、收尾与迭代记录的可复用方法。 |
+
+调研与引用：[方法指南与源码地图](docs/visual-design-guide.md) · [English guide](docs/visual-design-guide.en.md) · [设计参考文献](https://2026.igem.wiki/jlu-fbh/visual-design#design-references) · [署名、许可与引用建议](docs/visual-design-guide.md#复用与引用)。
+
 ## 项目链接
 
+**GitHub 仓库** · 开发协作、设计方法与可复用源码<br />[JLU-FBH / CirCure — xiangyupaiso/Official-wiki](https://github.com/xiangyupaiso/Official-wiki)
+
 **在线 Wiki** · 正式网站与项目展示<br />[https://2026.igem.wiki/jlu-fbh/](https://2026.igem.wiki/jlu-fbh/)
+
+**开发预览版** · 持续更新的页面、交互与设计展示<br />[https://wiki.dayquay.com/jlu-fbh/](https://wiki.dayquay.com/jlu-fbh/)
+
+**项目宣传视频 · Promotion Video** · iGEM 官方视频平台<br />[https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16)
 
 **官方 GitLab** · 官方源码与发布记录<br />[https://gitlab.igem.org/2026/jlu-fbh](https://gitlab.igem.org/2026/jlu-fbh)
 
@@ -88,10 +137,20 @@
 
 根据 [iGEM 2026 官方日历](https://competition.igem.org/about/calendar)，官方 Wiki 于 **2026 年 10 月 21 日 15:00 UTC（北京时间 23:00，UTC+8）**进入冻结期（Wiki Freeze）。冻结期间无法继续编辑，需等待赛事结束后的 Wiki Thaw 重新开放修改。
 
-未纳入官方冻结版本的补充内容、恢复资料与后续完善，继续保存在本 GitHub 仓库，并通过[开发预览版 `wiki.dayquay.com`](https://wiki.dayquay.com/jlu-fbh/)展示，供读者查阅和后续团队参考。正式参赛内容仍以 [`2026.igem.wiki/jlu-fbh/`](https://2026.igem.wiki/jlu-fbh/) 的冻结版本为准；两个环境独立发布，GitHub 更新后仍需等待预览部署。
+[`2026.igem.wiki/jlu-fbh/`](https://2026.igem.wiki/jlu-fbh/)保留正式参赛的冻结版本。后续补充、资料恢复和页面改进保存在本 GitHub 仓库，部署后可在[开发预览版 `wiki.dayquay.com`](https://wiki.dayquay.com/jlu-fbh/)查看。两个站点独立发布。
+
+截至 2026-10-22，GitHub 开发版相较官方 GitLab 保留了以下补充：
+
+- **Visual Design**：11 张初始草稿、四种图片圆角对比、Next page 与页脚之间的留白说明及完整截图，以及补充的丝带与历史设计展示。
+- **Bomb Cat**：创建与加入在线房间、大厅、连接状态及 PeerJS 联机源码；源码与重建产物均保留在 GitHub。
+- **Sustainability**：恢复 10 月 21 日晚紧急回退覆盖的 Tracker 汇总，分别呈现 66 位参与者、38 份来源档案和 78 条反馈，并按 SET / DEVELOP / GROW 展示 10 项框架 SDG。
+- **素材与工程资料**：保留可构建的游戏与虚拟实验室源码、本地素材、来源记录及双语开发文档。
+
+具体文件、回退时间线和部署情况见[版本差异说明](docs/deployment.md#预览版与官方-gitlab-的内容差异)。
 
 ## 从这里开始
 
+- 调研 iGEM Wiki 设计：[Visual Design 方法指南](docs/visual-design-guide.md)，重点阅读第 9 节的方法与案例
 - 直接运行项目：[快速启动](#快速启动)
 - 开发、检查与构建：[开发指南](docs/development.md)
 - 改页面时去哪里找文件：[仓库地图](docs/repository-layout.md)
@@ -104,7 +163,7 @@
 
 ## 技术栈与核心依赖
 
-下表概括当前工程的主要选型。主站的依赖声明以 [package.json](package.json) 为准，实际解析版本见锁文件；独立子项目各自维护依赖。
+主站使用以下技术。[package.json](package.json)列出依赖及版本范围，锁文件记录实际安装版本；独立子项目各自维护依赖。
 
 | 领域             | 选型                                       | 版本系列                            | 工程用途                                      |
 | ---------------- | ------------------------------------------ | ----------------------------------- | --------------------------------------------- |
@@ -134,7 +193,7 @@
 | 页面交互 | `src/components/wiki/features/[module]/` | 封装图表、构建体查看器和专用交互，通过 feature 插槽接入             |
 | 路由装配 | `src/contents/[page].tsx`                | 组合 `WikiRoutePage`、页面数据、Hero 和 feature，保持装配层简洁     |
 
-这也是新增页面的组织目标。现有 `src/data/` 仍有根级文件与模块子目录并存的情况；维护时从实际 import 追踪来源，按需迁移，避免为目录整齐改动无关实现。
+新增页面按这四层组织。现有 `src/data/` 中，部分页面数据位于根目录，部分位于模块子目录，维护时可沿 `import` 找到对应文件。
 
 ### 共享阅读器与单一维护入口
 
@@ -146,7 +205,7 @@
 
 主站以共享阅读器、CSS 主题和 Bootstrap 为基础；虚拟实验室有自己的 Tailwind 样式、依赖和构建。主站通过 `loading="lazy"` 的 iframe 嵌入官方实验室部署，隔离两个文档的样式与视口。
 
-实验室使用 `window.postMessage` 通知主站关闭，主站同时检查消息来源域名与 iframe 窗口。实验室的九个实验页面使用 `React.lazy` 和动态 `import()` 分包；主站不会把它们再次打进自身产物。
+实验室使用 `window.postMessage` 通知主站关闭，主站同时检查消息来源域名与 iframe 窗口。实验室的九个实验页面使用 `React.lazy` 和动态 `import()` 分包，在实验室项目内独立构建。
 
 ### 共享图片准备契约
 
@@ -196,8 +255,6 @@ CirCure Wiki
 
 `/team` 重定向到 `/roster`，`/attribution` 作为别名重定向到 `/attributions`。
 
-页面体系描述网站内容的组织方式；科研结果、模型假设和适用范围以对应页面的正文与证据为准。
-
 ## 核心交互与工程特色
 
 ### 开场序章与滚动叙事（Home Intro & Scroll Story）
@@ -246,7 +303,7 @@ Breast Guardian 和 Bomb Cat 的独立可构建源码位于 `games/`；Bio Memor
 
 Model 页面通过 Mol\* 展示 Trop2 复合体结构，提供旋转、缩放、片段聚焦、表面与极性接触显示等控制。分子运行时与 PDB 在读者接近图示时按需加载，避免首页提前加载完整查看器。
 
-ECharts 等组件承载模型相关图表、图例和交互提示。可视化用于浏览页面所列的数据和模型；结构展示本身不构成实验验证。
+ECharts 等组件展示模型数据，提供图例、区间高亮和交互提示，便于对照图表阅读模型分析。
 
 ### 共享导航、光标与页面辅助
 
@@ -258,7 +315,7 @@ ECharts 等组件承载模型相关图表、图例和交互提示。可视化用
 
 正式页面使用 `static.igem.wiki` 上的官方图片、字体和附件；仓库也保留本地素材、原稿与来源映射。素材调用应沿用对应资产字典和登记规则，视频与独立应用按官方托管入口接入。
 
-上传副本和历史核验归入 `delivery/uploads/`。本地保留素材、预期 CDN 地址、历史探活与当前线上可用性需要分别核对；维护流程见[素材维护](docs/assets.md)。
+上传副本和历史核验记录位于 `delivery/uploads/`。素材更新时，按[素材维护](docs/assets.md)核对源文件、CDN 地址和页面引用。
 
 ## 仓库目录与构建边界
 
@@ -309,7 +366,7 @@ ECharts 等组件承载模型相关图表、图例和交互提示。可视化用
 └── vite.config.ts                    # 多入口构建、分子运行时与 base 路径
 ```
 
-根目录的 `index.html`、`visual-design-study.html`、`archive-navigation-study.html` 和 `archive-recognition-study.html` 都是当前构建入口。带有 `archive` 的文件仍可能参与正式页面，移动前必须核对引用。
+根目录的 `index.html`、`visual-design-study.html`、`archive-navigation-study.html` 和 `archive-recognition-study.html` 是四个 HTML 构建入口，分别用于主站和设计研究演示。
 
 `.env` 保存现有队伍元数据等构建输入，不应写入密钥；`.dockerignore` 用于排除本机构建上下文中的无关文件。其余根目录文件职责与迁移记录见[仓库地图](docs/repository-layout.md)。
 
@@ -321,7 +378,7 @@ ECharts 等组件承载模型相关图表、图例和交互提示。可视化用
 | Breast Guardian / Bomb Cat | [games/README.md](games/README.md)             | 发布 `public/game-assets/` 中已提交的运行文件；不会自动重建游戏 |
 | Virtual Laboratory         | [virtual-lab/README.md](virtual-lab/README.md) | 主站嵌入官方实验室部署；不会自动构建或发布实验室                |
 
-子项目有各自的依赖、锁文件和许可证，开发前先阅读对应 README。不要把独立实验室的构建产物复制回主站，也不要仅修改游戏源码后就认为已更新 `public/game-assets/` 中的运行版本。
+子项目有各自的依赖、锁文件和许可证，开发与构建方式见对应 README。实验室独立部署；游戏重新构建后，将运行文件更新到主站的 `public/game-assets/`。
 
 ## 常见修改位置
 
@@ -338,7 +395,7 @@ ECharts 等组件承载模型相关图表、图例和交互提示。可视化用
 | 素材来源、上传记录       | [素材维护](docs/assets.md)、[交付索引](delivery/README.md) |
 | 工具用途、输入与写入范围 | [scripts/README.md](scripts/README.md)                     |
 
-导入器和素材生成器可能覆盖内容或索引；查看脚本说明后再运行。科研原稿、实验参数、公式与评价指标的修改需单独确认，目录整理不自动同步这些内容。
+运行导入器或素材生成器前，先查看脚本说明中的写入范围；这些工具会更新内容或索引。修改科研原稿、实验参数、公式与评价指标前，需与内容负责人确认。
 
 ## 快速启动
 
@@ -355,7 +412,7 @@ yarn dev
 
 打开终端输出的地址，默认路径为 `http://localhost:5173/jlu-fbh/`。
 
-根目录同时保留 npm 锁文件；需要使用 npm 时执行 `npm ci`，对应脚本通过 `npm run <名称>` 运行。不要在同一依赖目录交替安装，依赖升级应单独维护锁文件。
+根目录同时保留 npm 锁文件；使用 npm 时执行 `npm ci`，通过 `npm run <名称>` 运行脚本。同一依赖目录固定使用一种包管理器，升级依赖时同步更新对应锁文件。
 
 ### 检查、构建与预览
 
@@ -400,11 +457,11 @@ Node 22
   → 将 dist/. 复制到 CI 的 public/，生成 SPA 回退并发布
 ```
 
-GitLab 的产物复制发生在 CI 工作目录，不应将复制后的目录混入本机源码提交。实际发布范围及纯源码检查说明见[部署说明](docs/deployment.md)。
+流水线在 CI 工作目录中将构建产物复制到发布目录。发布流程和源码检查见[部署说明](docs/deployment.md)。
 
 ### Yarn Classic 与安装一致性
 
-`package.json` 声明 `yarn@1.22.22`，官方流水线采用 `--frozen-lockfile`。沿用该声明，避免托管平台使用其他 Yarn 主版本迁移锁文件。不同子项目按自己的依赖和锁文件安装，不因共处一个仓库而共享安装目录。
+`package.json` 声明 `yarn@1.22.22`，官方流水线通过 `--frozen-lockfile` 按锁文件安装。主站与子项目分别在各自目录中安装依赖。
 
 ### 单份产物与路径映射
 
@@ -418,15 +475,15 @@ GitLab 的产物复制发生在 CI 工作目录，不应将复制后的目录混
 
 此外还生成 HTML 与目录入口的规范地址规则。Vite preview 与官方 GitLab Pages 按 base 挂载产物；[wrangler.json](wrangler.json) 让 Cloudflare 从 `./dist` 读取静态文件并使用 SPA 回退。无需再复制出 `dist/jlu-fbh/`。
 
-脚本会在需要时生成 `.assetsignore`，Cloudflare 上传时跳过超过 25 MiB 的文件；它不会删除本地文件，也不会缩小 GitLab 的产物。被排除的文件是否影响页面，仍需核对实际引用与 CDN 状态。
+脚本按需生成 `.assetsignore`，让 Cloudflare 上传时跳过超过 25 MiB 的文件。页面引用这些资源时，使用对应 CDN 地址。
 
 GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配置挂载路径与深层路由回退。
 
 ### TypeScript 资产索引与配置维护
 
-`contributionAssets.ts`、`resultsAssets.ts`、`designAssets.ts` 等资产字典连接素材与页面。此前针对宽泛键索引与 `never` 推导的修复属于类型兼容处理；后续变更继续通过当前 `tsc` 与构建检查验证，避免绕过类型约束。
+`contributionAssets.ts`、`resultsAssets.ts`、`designAssets.ts` 等资产字典维护页面素材的引用关系。修改后运行 TypeScript 检查与构建，检查索引键和资源路径。
 
-`wrangler.json` 由 Cloudflare 使用，`.gitlab-ci.yml` 负责官方 Wiki 流水线；`.dockerignore` 只影响 Docker 上下文的文件筛选。修改这些文件时按对应平台核对用途，避免把预览配置与正式发布状态混为一谈。
+`wrangler.json` 配置 Cloudflare 托管，`.gitlab-ci.yml` 配置官方 Wiki 的构建与发布，`.dockerignore` 控制 Docker 构建上下文包含的文件。
 
 ## 团队与致谢
 
@@ -441,13 +498,16 @@ GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配
   吉林大学白求恩第一医院 · 吉林大学白求恩第一临床医学院
 </p>
 
-### 科研平台与工具
+### 科研平台、工具与其他支持
 
 <p align="center">
-  <img src="docs/media/readme-acknowledgements.svg" alt="官网页脚致谢标识：公共技术平台、转化医学研究院、Charles River、BioRender、MathWorks、Lark、Grammarly 和 Schrödinger。" width="640" />
+  <img src="docs/media/readme-acknowledgements.svg" alt="官网页脚致谢标识：公共技术平台、转化医学研究院、实验动物中心、Charles River、BioRender、MathWorks、Lark、Grammarly 和 Schrödinger。" width="640" />
 </p>
 
-标识沿用官网页脚的现有素材。科研平台包括吉林大学第一医院公共技术平台与转化医学研究院；工具及其他支持方包括 Charles River、BioRender、MathWorks、Lark、Grammarly 和 Schrödinger。
+- **临床与教学单位**：吉林大学白求恩第一临床医学院教学部、吉林大学白求恩第一医院肿瘤中心。
+- **科研平台**：吉林大学第一医院公共技术平台、转化医学研究院、实验动物中心。
+- **工具及其他支持方**：Charles River、BioRender、MathWorks、Lark、Grammarly、Schrödinger。
+- **赛事与社区**：iGEM。
 
 ## 授权与知识产权
 
