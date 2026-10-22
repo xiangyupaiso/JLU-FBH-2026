@@ -54,11 +54,11 @@
 
 ## 项目概览
 
-**CirCure** 是 JLU-FBH 团队面向三阴性乳腺癌（Triple-Negative Breast Cancer, TNBC）开展的合成生物学研究项目，探索以工程化环状 RNA（circular RNA, circRNA）为载体的多靶向治疗性疫苗设计。本网站作为团队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki，系统记录从研究问题、方案设计到实验探索与计算建模的工作，以及社会需求、公众沟通与可持续性对项目发展的影响。
+这是 **JLU-FBH** 战队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki 仓库，包含网站前端、页面内容、设计素材，以及游戏和虚拟实验室源码。
 
-首页用手绘插画和滚动动画介绍 TNBC 的疾病背景与 circRNA 的设计思路。实验、建模和社会实践页面记录团队开展的工作、采用的方法和参考资料。网站还提供分子结构查看器、虚拟实验室和科普游戏，读者可以查看分子结构、体验实验步骤，也可以通过游戏了解相关的生物学知识。
+**CirCure** 研究基于工程化环状 RNA（circRNA）的多靶向三阴性乳腺癌（TNBC）疫苗平台。Wiki 通过研究文章、手绘插画、滚动叙事、模型可视化和科普游戏，介绍项目的设计思路、实验过程与研究结果。
 
-本仓库包含网站源码、页面文案、插画和素材来源记录，以及虚拟实验室和游戏的源码。主站使用 React、TypeScript 和 Vite 开发，正文内容、素材引用与交互组件分别维护。运行方式、目录说明和部署流程见下方文档。
+我们希望读者在了解分子机制与实验设计的同时，也能看到研究背后患者对复发的担忧，以及她们对生活的期待。因此，我们从患者的疑问讲起，在科学解释中加入可以停下来阅读、比较和探索的交互，让读者按自己的节奏了解 CirCure。
 
 <p align="center">
   <strong>项目宣传视频 · Promotion Video</strong><br />
@@ -144,7 +144,9 @@
 
 ### 预览版与正式版的区别
 
-`wiki.dayquay.com` 是开发预览入口，包含尚未同步到官方 GitLab 的内容。正式参赛网站以 `2026.igem.wiki/jlu-fbh/` 为准；两个环境独立发布，GitHub 更新后仍需等待预览部署。
+根据 [iGEM 2026 官方日历](https://competition.igem.org/about/calendar)，官方 Wiki 于 **2026 年 10 月 21 日 15:00 UTC（北京时间 23:00，UTC+8）**进入冻结期（Wiki Freeze）。冻结期间无法继续编辑，需等待赛事结束后的 Wiki Thaw 重新开放修改。
+
+[`2026.igem.wiki/jlu-fbh/`](https://2026.igem.wiki/jlu-fbh/)保留正式参赛的冻结版本。后续补充、资料恢复和页面改进保存在本 GitHub 仓库，部署后可在[开发预览版 `wiki.dayquay.com`](https://wiki.dayquay.com/jlu-fbh/)查看。两个站点独立发布。
 
 截至 2026-10-22，GitHub 开发版相较官方 GitLab 保留了以下补充：
 
@@ -170,7 +172,7 @@
 
 ## 技术栈与核心依赖
 
-下表概括当前工程的主要选型。主站的依赖声明以 [package.json](package.json) 为准，实际解析版本见锁文件；独立子项目各自维护依赖。
+主站使用以下技术。[package.json](package.json)列出依赖及版本范围，锁文件记录实际安装版本；独立子项目各自维护依赖。
 
 | 领域             | 选型                                       | 版本系列                            | 工程用途                                      |
 | ---------------- | ------------------------------------------ | ----------------------------------- | --------------------------------------------- |
@@ -200,7 +202,7 @@
 | 页面交互 | `src/components/wiki/features/[module]/` | 封装图表、构建体查看器和专用交互，通过 feature 插槽接入             |
 | 路由装配 | `src/contents/[page].tsx`                | 组合 `WikiRoutePage`、页面数据、Hero 和 feature，保持装配层简洁     |
 
-这也是新增页面的组织目标。现有 `src/data/` 仍有根级文件与模块子目录并存的情况；维护时从实际 import 追踪来源，按需迁移，避免为目录整齐改动无关实现。
+新增页面按这四层组织。现有 `src/data/` 中，部分页面数据位于根目录，部分位于模块子目录，维护时可沿 `import` 找到对应文件。
 
 ### 共享阅读器与单一维护入口
 
@@ -212,7 +214,7 @@
 
 主站以共享阅读器、CSS 主题和 Bootstrap 为基础；虚拟实验室有自己的 Tailwind 样式、依赖和构建。主站通过 `loading="lazy"` 的 iframe 嵌入官方实验室部署，隔离两个文档的样式与视口。
 
-实验室使用 `window.postMessage` 通知主站关闭，主站同时检查消息来源域名与 iframe 窗口。实验室的九个实验页面使用 `React.lazy` 和动态 `import()` 分包；主站不会把它们再次打进自身产物。
+实验室使用 `window.postMessage` 通知主站关闭，主站同时检查消息来源域名与 iframe 窗口。实验室的九个实验页面使用 `React.lazy` 和动态 `import()` 分包，在实验室项目内独立构建。
 
 ### 共享图片准备契约
 
@@ -262,8 +264,6 @@ CirCure Wiki
 
 `/team` 重定向到 `/roster`，`/attribution` 作为别名重定向到 `/attributions`。
 
-页面体系描述网站内容的组织方式；科研结果、模型假设和适用范围以对应页面的正文与证据为准。
-
 ## 核心交互与工程特色
 
 ### 开场序章与滚动叙事（Home Intro & Scroll Story）
@@ -312,7 +312,7 @@ Breast Guardian 和 Bomb Cat 的独立可构建源码位于 `games/`；Bio Memor
 
 Model 页面通过 Mol\* 展示 Trop2 复合体结构，提供旋转、缩放、片段聚焦、表面与极性接触显示等控制。分子运行时与 PDB 在读者接近图示时按需加载，避免首页提前加载完整查看器。
 
-ECharts 等组件承载模型相关图表、图例和交互提示。可视化用于浏览页面所列的数据和模型；结构展示本身不构成实验验证。
+ECharts 等组件展示模型数据，提供图例、区间高亮和交互提示，便于对照图表阅读模型分析。
 
 ### 共享导航、光标与页面辅助
 
@@ -324,7 +324,7 @@ ECharts 等组件承载模型相关图表、图例和交互提示。可视化用
 
 正式页面使用 `static.igem.wiki` 上的官方图片、字体和附件；仓库也保留本地素材、原稿与来源映射。素材调用应沿用对应资产字典和登记规则，视频与独立应用按官方托管入口接入。
 
-上传副本和历史核验归入 `delivery/uploads/`。本地保留素材、预期 CDN 地址、历史探活与当前线上可用性需要分别核对；维护流程见[素材维护](docs/assets.md)。
+上传副本和历史核验记录位于 `delivery/uploads/`。素材更新时，按[素材维护](docs/assets.md)核对源文件、CDN 地址和页面引用。
 
 ## 仓库目录与构建边界
 
@@ -375,7 +375,7 @@ ECharts 等组件承载模型相关图表、图例和交互提示。可视化用
 └── vite.config.ts                    # 多入口构建、分子运行时与 base 路径
 ```
 
-根目录的 `index.html`、`visual-design-study.html`、`archive-navigation-study.html` 和 `archive-recognition-study.html` 都是当前构建入口。带有 `archive` 的文件仍可能参与正式页面，移动前必须核对引用。
+根目录的 `index.html`、`visual-design-study.html`、`archive-navigation-study.html` 和 `archive-recognition-study.html` 是四个 HTML 构建入口，分别用于主站和设计研究演示。
 
 `.env` 保存现有队伍元数据等构建输入，不应写入密钥；`.dockerignore` 用于排除本机构建上下文中的无关文件。其余根目录文件职责与迁移记录见[仓库地图](docs/repository-layout.md)。
 
@@ -387,7 +387,7 @@ ECharts 等组件承载模型相关图表、图例和交互提示。可视化用
 | Breast Guardian / Bomb Cat | [games/README.md](games/README.md)             | 发布 `public/game-assets/` 中已提交的运行文件；不会自动重建游戏 |
 | Virtual Laboratory         | [virtual-lab/README.md](virtual-lab/README.md) | 主站嵌入官方实验室部署；不会自动构建或发布实验室                |
 
-子项目有各自的依赖、锁文件和许可证，开发前先阅读对应 README。不要把独立实验室的构建产物复制回主站，也不要仅修改游戏源码后就认为已更新 `public/game-assets/` 中的运行版本。
+子项目有各自的依赖、锁文件和许可证，开发与构建方式见对应 README。实验室独立部署；游戏重新构建后，将运行文件更新到主站的 `public/game-assets/`。
 
 ## 常见修改位置
 
@@ -404,7 +404,7 @@ ECharts 等组件承载模型相关图表、图例和交互提示。可视化用
 | 素材来源、上传记录       | [素材维护](docs/assets.md)、[交付索引](delivery/README.md) |
 | 工具用途、输入与写入范围 | [scripts/README.md](scripts/README.md)                     |
 
-导入器和素材生成器可能覆盖内容或索引；查看脚本说明后再运行。科研原稿、实验参数、公式与评价指标的修改需单独确认，目录整理不自动同步这些内容。
+运行导入器或素材生成器前，先查看脚本说明中的写入范围；这些工具会更新内容或索引。修改科研原稿、实验参数、公式与评价指标前，需与内容负责人确认。
 
 ## 快速启动
 
@@ -421,7 +421,7 @@ yarn dev
 
 打开终端输出的地址，默认路径为 `http://localhost:5173/jlu-fbh/`。
 
-根目录同时保留 npm 锁文件；需要使用 npm 时执行 `npm ci`，对应脚本通过 `npm run <名称>` 运行。不要在同一依赖目录交替安装，依赖升级应单独维护锁文件。
+根目录同时保留 npm 锁文件；使用 npm 时执行 `npm ci`，通过 `npm run <名称>` 运行脚本。同一依赖目录固定使用一种包管理器，升级依赖时同步更新对应锁文件。
 
 ### 检查、构建与预览
 
@@ -466,11 +466,11 @@ Node 22
   → 将 dist/. 复制到 CI 的 public/，生成 SPA 回退并发布
 ```
 
-GitLab 的产物复制发生在 CI 工作目录，不应将复制后的目录混入本机源码提交。实际发布范围及纯源码检查说明见[部署说明](docs/deployment.md)。
+流水线在 CI 工作目录中将构建产物复制到发布目录。发布流程和源码检查见[部署说明](docs/deployment.md)。
 
 ### Yarn Classic 与安装一致性
 
-`package.json` 声明 `yarn@1.22.22`，官方流水线采用 `--frozen-lockfile`。沿用该声明，避免托管平台使用其他 Yarn 主版本迁移锁文件。不同子项目按自己的依赖和锁文件安装，不因共处一个仓库而共享安装目录。
+`package.json` 声明 `yarn@1.22.22`，官方流水线通过 `--frozen-lockfile` 按锁文件安装。主站与子项目分别在各自目录中安装依赖。
 
 ### 单份产物与路径映射
 
@@ -484,15 +484,15 @@ GitLab 的产物复制发生在 CI 工作目录，不应将复制后的目录混
 
 此外还生成 HTML 与目录入口的规范地址规则。Vite preview 与官方 GitLab Pages 按 base 挂载产物；[wrangler.json](wrangler.json) 让 Cloudflare 从 `./dist` 读取静态文件并使用 SPA 回退。无需再复制出 `dist/jlu-fbh/`。
 
-脚本会在需要时生成 `.assetsignore`，Cloudflare 上传时跳过超过 25 MiB 的文件；它不会删除本地文件，也不会缩小 GitLab 的产物。被排除的文件是否影响页面，仍需核对实际引用与 CDN 状态。
+脚本按需生成 `.assetsignore`，让 Cloudflare 上传时跳过超过 25 MiB 的文件。页面引用这些资源时，使用对应 CDN 地址。
 
 GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配置挂载路径与深层路由回退。
 
 ### TypeScript 资产索引与配置维护
 
-`contributionAssets.ts`、`resultsAssets.ts`、`designAssets.ts` 等资产字典连接素材与页面。此前针对宽泛键索引与 `never` 推导的修复属于类型兼容处理；后续变更继续通过当前 `tsc` 与构建检查验证，避免绕过类型约束。
+`contributionAssets.ts`、`resultsAssets.ts`、`designAssets.ts` 等资产字典维护页面素材的引用关系。修改后运行 TypeScript 检查与构建，检查索引键和资源路径。
 
-`wrangler.json` 由 Cloudflare 使用，`.gitlab-ci.yml` 负责官方 Wiki 流水线；`.dockerignore` 只影响 Docker 上下文的文件筛选。修改这些文件时按对应平台核对用途，避免把预览配置与正式发布状态混为一谈。
+`wrangler.json` 配置 Cloudflare 托管，`.gitlab-ci.yml` 配置官方 Wiki 的构建与发布，`.dockerignore` 控制 Docker 构建上下文包含的文件。
 
 ## 团队与致谢
 
@@ -584,11 +584,11 @@ GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配
 
 ## Project overview
 
-**CirCure** is a synthetic biology research project by JLU-FBH exploring engineered circular RNA (**circRNA**) as a platform for a multi-target therapeutic vaccine against triple-negative breast cancer (**TNBC**). As the team’s official Wiki for the 2026 International Genetically Engineered Machine Competition (**iGEM**), this website documents the work from defining the research question and developing the design to experimental investigation and computational modeling. It also traces how societal needs, public engagement, and sustainability inform the project’s development.
+This is the official Wiki repository for **JLU-FBH** in the 2026 International Genetically Engineered Machine Competition (**iGEM**). It contains the website frontend, page content, design assets, and source code for the games and virtual laboratory.
 
-The homepage uses hand-drawn illustrations and scroll animations to introduce TNBC and the circRNA design. The experimental, modeling, and human practices pages describe the team’s work, methods, and references. A molecular structure viewer, virtual laboratory, and science games let readers examine molecular structures, try experimental procedures, and learn about the biology behind the project.
+**CirCure** explores an engineered circular RNA (**circRNA**) platform for a multi-target triple-negative breast cancer (**TNBC**) vaccine. The Wiki presents the project's design, experiments, and research findings through research articles, hand-drawn illustrations, scroll-driven storytelling, model visualizations, and science communication games.
 
-This repository contains the website source, page text, illustrations, asset source records, and the source code for the virtual laboratory and games. The main site uses React, TypeScript, and Vite, with page content, asset references, and interactive components maintained separately. The documentation below explains how to run the project, find files, and deploy the site.
+Alongside the molecular mechanisms and experimental design, we want readers to see the patients behind the research: their worries about recurrence and their hopes for everyday life. We begin with a patient's question and give readers room to pause, compare, and explore the science at their own pace.
 
 <p align="center">
   <strong>Project Promotion Video</strong><br />
@@ -674,7 +674,9 @@ Development and Pull Requests take place in this GitHub repository. See the [dep
 
 ### Preview and published versions
 
-`wiki.dayquay.com` is the development preview and includes content that has not been synchronized to official GitLab. The competition website is `2026.igem.wiki/jlu-fbh/`. The environments deploy independently; GitHub changes still need a preview deployment.
+According to the [official iGEM 2026 calendar](https://competition.igem.org/about/calendar), the official Wiki entered the **Wiki Freeze on October 21, 2026, at 15:00 UTC (23:00 Beijing time, UTC+8)**. Editing is closed during the freeze and will reopen at the Wiki Thaw after the Grand Jamboree.
+
+[`2026.igem.wiki/jlu-fbh/`](https://2026.igem.wiki/jlu-fbh/) preserves the frozen competition version. Later additions, restored materials, and page improvements are kept in this GitHub repository and appear on the [development preview at `wiki.dayquay.com`](https://wiki.dayquay.com/jlu-fbh/) after deployment. The two sites deploy independently.
 
 As of 2026-10-22, the GitHub development version retains these additions relative to official GitLab:
 
@@ -700,7 +702,7 @@ On this page: [Technology](#technology-and-core-dependencies) · [Architecture](
 
 ## Technology and core dependencies
 
-This table summarizes the current technology choices. Root dependency declarations live in [package.json](package.json); lockfiles record resolved versions. Standalone applications maintain their own dependencies.
+The Wiki uses the technologies below. [package.json](package.json) declares dependencies and version ranges; lockfiles record installed versions. Standalone applications maintain their own dependencies.
 
 | Area                         | Technology                                        | Version family                      | Purpose                                                                     |
 | ---------------------------- | ------------------------------------------------- | ----------------------------------- | --------------------------------------------------------------------------- |
@@ -730,7 +732,7 @@ The [page architecture specification](WIKI_ARCHITECTURE_SPEC.md) (Chinese) separ
 | Page interaction | `src/components/wiki/features/[module]/` | Implement charts, construct viewers, and specialized interactions through feature slots                        |
 | Route assembly   | `src/contents/[page].tsx`                | Combine `WikiRoutePage`, page data, Hero artwork, and features in a small assembly layer                       |
 
-New pages follow this structure. Existing `src/data/` files include both root-level files and module directories. Follow actual imports when maintaining an existing page and migrate it as needed.
+New pages follow these four layers. Existing page data lives both at the root of `src/data/` and in module directories; follow imports to find the files for a page.
 
 ### Shared reader and maintenance entry points
 
@@ -792,8 +794,6 @@ CirCure Wiki
 
 `/team` redirects to `/roster`; `/attribution` is an alias for `/attributions`.
 
-This map describes the website's organization. Each page provides the evidence, assumptions, and scope for its scientific content.
-
 ## Interaction and engineering features
 
 ### Opening sequence and scroll story
@@ -842,7 +842,7 @@ Buildable source for Breast Guardian and Bomb Cat lives in `games/`. Bio Memory 
 
 The Model page uses Mol\* to display the Trop2 complex, with rotation, zoom, segment focus, surface visibility, and polar-contact controls. The molecular runtime and PDB load when the reader approaches the figure.
 
-ECharts and related components provide model charts, legends, and interactive tooltips. These viewers present the data and models described on the page; structural visualization alone does not establish experimental validation.
+ECharts and related components display model data with legends, range highlighting, and interactive tooltips, so readers can explore the figures alongside the model analysis.
 
 ### Navigation, cursor, and reading tools
 
@@ -854,7 +854,7 @@ Changes to shared components should cover transitions between Home and article p
 
 Published pages use official images, fonts, and attachments on `static.igem.wiki`. The repository also retains local assets, manuscripts, and source mappings. Use the relevant asset dictionary and registry, and retain official hosting entries for videos and standalone applications.
 
-Upload copies and historical checks live in `delivery/uploads/`. See the [asset guide](docs/assets.en.md) for source files, expected URLs, upload records, and maintenance.
+Upload copies and historical check records live in `delivery/uploads/`. When updating assets, follow the [asset guide](docs/assets.en.md) to check source files, CDN URLs, and page references.
 
 ## Repository structure and build boundaries
 
@@ -905,7 +905,7 @@ Upload copies and historical checks live in `delivery/uploads/`. See the [asset 
 └── vite.config.ts                    # HTML entries, molecular runtime, and base path
 ```
 
-The root files `index.html`, `visual-design-study.html`, `archive-navigation-study.html`, and `archive-recognition-study.html` are active build entries. Review references before moving files whose names contain `archive`.
+The root files `index.html`, `visual-design-study.html`, `archive-navigation-study.html`, and `archive-recognition-study.html` are the four HTML build entries for the Wiki and design demonstrations.
 
 `.env` contains existing team metadata and build inputs; keep secrets out of it. `.dockerignore` filters local build contexts. See the [repository map](docs/repository-layout.en.md) for other root files and migration records.
 
@@ -917,7 +917,7 @@ The root files `index.html`, `visual-design-study.html`, `archive-navigation-stu
 | Breast Guardian / Bomb Cat | [games/README.en.md](games/README.en.md)             | Publish checked-in files in `public/game-assets/`; game source is built separately    |
 | Virtual Laboratory         | [virtual-lab/README.en.md](virtual-lab/README.en.md) | Embed the official laboratory deployment; build and release the laboratory separately |
 
-Subprojects maintain their own dependencies, lockfiles, and licenses. Read their README files before development. Keep laboratory output in its own project and explicitly update the Wiki's runtime game files when publishing a rebuilt game.
+Subprojects maintain their own dependencies, lockfiles, and licenses; their README files explain development and build steps. The laboratory deploys independently. After rebuilding a game, update its runtime files in the Wiki's `public/game-assets/`.
 
 ## Common editing locations
 
@@ -934,7 +934,7 @@ Subprojects maintain their own dependencies, lockfiles, and licenses. Read their
 | Asset sources and upload records        | [Asset guide](docs/assets.en.md), [delivery index](delivery/README.en.md)          |
 | Tool purpose, inputs, and write effects | [scripts/README.en.md](scripts/README.en.md)                                       |
 
-Importers and asset generators can overwrite content or indexes. Read their instructions before running them. Changes to scientific manuscripts, experimental parameters, formulas, and evaluation metrics require content-owner review.
+Before running importers or asset generators, read their documented write scope; these tools update content or indexes. Consult the content owner before changing scientific manuscripts, experimental parameters, formulas, or evaluation metrics.
 
 ## Quick start
 
@@ -951,7 +951,7 @@ yarn dev
 
 Open the URL printed by the terminal, normally `http://localhost:5173/jlu-fbh/`.
 
-The root npm lockfile is also retained. For npm, use `npm ci` and `npm run <script>`. Use one installation workflow per dependency directory and handle dependency upgrades separately.
+The root npm lockfile is also retained. For npm, use `npm ci` and `npm run <script>`. Use one package manager per dependency directory and update its lockfile when upgrading dependencies.
 
 ### Check, build, and preview
 
@@ -996,11 +996,11 @@ Node 22
   → copy dist/. into the CI public/ directory, generate SPA fallback, and publish
 ```
 
-The copy takes place in the CI workspace. Keep the resulting deployment directory out of local source commits. See the [deployment guide](docs/deployment.en.md) for release contents and source-only asset checks.
+The pipeline copies build output into the deployment directory within the CI workspace. See the [deployment guide](docs/deployment.en.md) for the release process and source checks.
 
 ### Yarn Classic and installation consistency
 
-`package.json` declares `yarn@1.22.22`; the official pipeline uses `--frozen-lockfile`. Retain this declaration to avoid lockfile migration by another Yarn major version. Subprojects use their own dependencies and lockfiles.
+`package.json` declares `yarn@1.22.22`; the official pipeline installs from the lockfile with `--frozen-lockfile`. Install dependencies separately in the Wiki and each subproject directory.
 
 ### One output tree and path mapping
 
@@ -1014,13 +1014,13 @@ The copy takes place in the CI workspace. Keep the resulting deployment director
 
 Additional rules canonicalize HTML and directory entries. Vite preview and official GitLab Pages mount output at the base path. [wrangler.json](wrangler.json) points Cloudflare at `./dist` with SPA fallback. An extra `dist/jlu-fbh/` copy is unnecessary.
 
-When needed, the script generates `.assetsignore` to exclude files above 25 MiB from Cloudflare uploads. Local files and GitLab output remain intact; review actual references and CDN URLs for excluded resources.
+When needed, the script generates `.assetsignore` so Cloudflare uploads skip files above 25 MiB. Use the corresponding CDN URLs when pages reference those resources.
 
 GitHub Pages does not read Cloudflare's `_redirects`. Configure its mount path and deep-route fallback separately if using that host.
 
 ### TypeScript asset indexes and configuration
 
-Asset dictionaries such as `contributionAssets.ts`, `resultsAssets.ts`, and `designAssets.ts` connect resources to pages. Earlier fixes addressed broad key indexing and `never` inference. Continue validating changes through TypeScript and build checks.
+Asset dictionaries such as `contributionAssets.ts`, `resultsAssets.ts`, and `designAssets.ts` maintain page-to-resource references. Run TypeScript and build checks after changes to check index keys and resource paths.
 
 `wrangler.json` configures Cloudflare; `.gitlab-ci.yml` controls official Wiki builds; `.dockerignore` filters Docker contexts. Maintain each configuration for its environment.
 
