@@ -2,9 +2,17 @@
 
 简体中文 | [English](visual-design-guide.en.md) · [仓库首页](../README.md) · [文档索引](README.md)
 
-JLU-FBH（也写作 JLUFBH）是吉林大学白求恩第一医院（First Bethune Hospital of Jilin University）的 iGEM 2026 团队。CirCure 项目围绕面向三阴性乳腺癌（TNBC）的环状 RNA（circRNA）疫苗研究展开。本指南整理其 Wiki 的视觉设计、科学传播和交互叙事方法，重点对应 **Visual Design 第 9 节：Our Wiki Contribution**。
+JLU-FBH（也写作 JLUFBH）是吉林大学白求恩第一医院（First Bethune Hospital of Jilin University）的 iGEM 2026 团队。CirCure 项目围绕面向三阴性乳腺癌（TNBC）的环状 RNA（circRNA）疫苗研究展开。本指南整理其 Wiki 的视觉设计、科学传播和交互叙事方法，重点对应 **Visual Design 第 8 节：Humanistic Care & Narrative Design** 与 **第 9 节：Our Wiki Contribution**。
 
-阅读入口：[Visual Design 完整页面](https://2026.igem.wiki/jlu-fbh/visual-design) · [第 9 节](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) · [GitHub 源码仓库](https://github.com/xiangyupaiso/Official-wiki) · [iGEM 官方 GitLab](https://gitlab.igem.org/2026/jlu-fbh)。
+> **建议先打开原网页，边操作边阅读，尤其是第 8、9 节。**
+>
+> **[打开 Visual Design 完整交互页面 ↗](https://2026.igem.wiki/jlu-fbh/visual-design)**
+>
+> 原网页保留了可操作的交互组件、动态对比和默认折叠的技术细节。建议亲自点击、拖动或播放演示，并展开相关的 **Technical details**，把画面变化、设计理由和实现说明对照起来阅读。
+>
+> **[第 8 节：Humanistic Care & Narrative Design](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience)** 介绍叙事思路与读者参与；**[第 9 节：Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)** 展开具体做法、迭代比较和实现细节。
+
+源码与发布记录：[GitHub 源码仓库](https://github.com/xiangyupaiso/Official-wiki) · [iGEM 官方 GitLab](https://gitlab.igem.org/2026/jlu-fbh)。
 
 这份 Markdown 将交互页面中的方法写成可独立阅读的文本，让调研者和 AI 调研工具能够沿着“问题 → 做法 → 案例 → 源码”找到资料。它依据仓库当前页面数据整理；原始绘稿、动态比较与设计参考文献请结合 Wiki 阅读。这里的设计意图和实现案例没有建立阅读理解或学习效果的量化结论。
 
@@ -33,6 +41,10 @@ JLU-FBH（也写作 JLUFBH）是吉林大学白求恩第一医院（First Bethun
 
 ## 第 8 节提供的叙事起点
 
+**[打开原网页：操作演示并展开细节 ↗](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience)**
+
+在原网页操作抗原切换、阅读控制等示例，并结合图解查看叙事如何连接到科学解释。
+
 CirCure 从插画人物的问题 “What if it comes back?” 引入研究动机。页面将患者、临床问题、分子解释与日常生活连接起来。这句话属于为插画创作的叙事台词，引用时应说明其创作性质。
 
 在尺度变化中，泪滴的水彩过渡到地图上的云，延续情绪与主题；RNA 环在疫苗候选、circRNA 解释和平台设计中保持可辨认的形状，帮助读者跟随同一个对象。抗原切换交互让读者比较共同骨架与可替换片段的关系。抗原 A、B、C 是概念示例，界面演示不建立靶点有效性、免疫杀伤或临床疗效的证据。
@@ -43,7 +55,9 @@ CirCure 从插画人物的问题 “What if it comes back?” 引入研究动机
 
 ### 9.1 绘稿与开场：Prepare the Artwork and Opening
 
-[原节与演示](https://2026.igem.wiki/jlu-fbh/visual-design#artwork-and-opening)
+**[打开原网页：操作演示并展开细节 ↗](https://2026.igem.wiki/jlu-fbh/visual-design#artwork-and-opening)**
+
+在原网页查看分层画稿与开场演示，并展开技术细节，了解画布选择、图层坐标和资源准备。
 
 **问题。** 一张完整插画进入动画后，人物、背景、标注可能需要独立运动；裁切后的图层如果丢失原坐标，重组时就会错位。开场还要等待样式、字体和首场景资源准备。
 
@@ -64,7 +78,9 @@ height = 100 × (y1 - y0) / H %
 
 ### 9.2 动效与阅读节奏：Give Motion a Reading Rhythm
 
-[原节与演示](https://2026.igem.wiki/jlu-fbh/visual-design#keyframes-and-reading-holds)
+**[打开原网页：操作演示并展开细节 ↗](https://2026.igem.wiki/jlu-fbh/visual-design#keyframes-and-reading-holds)**
+
+在原网页操作转场、播放与选章示例，并展开技术细节，对照观察对象连续性、阅读停顿和滚动交接。
 
 **问题。** 对象移动、说明替换与场景切换同时发生时，读者可能来不及建立关系。动画时间线有进展，也可能始终缺少一帧能读完的完整解释。
 
@@ -86,7 +102,9 @@ x(p) = (1 - u) × x0 + u × x1
 
 ### 9.3 长文版面：Make Room for Sustained Reading
 
-[原节与演示](https://2026.igem.wiki/jlu-fbh/visual-design#reading-surfaces)
+**[打开原网页：操作演示并展开细节 ↗](https://2026.igem.wiki/jlu-fbh/visual-design#reading-surfaces)**
+
+在原网页查看配色与字体层级对比，并展开技术细节，结合实际版面理解阅读底色和图像边缘的处理。
 
 **问题。** 首页的视觉密度延续到科研长文时，背景、标题、图片与正文会争夺注意力。
 
@@ -96,7 +114,9 @@ x(p) = (1 - u) × x0 + u × x1
 
 ### 9.4 阅读路径：Keep the Route Clear
 
-[原节与演示](https://2026.igem.wiki/jlu-fbh/visual-design#navigation-with-a-landmark)
+**[打开原网页：操作演示并展开细节 ↗](https://2026.igem.wiki/jlu-fbh/visual-design#navigation-with-a-landmark)**
+
+在原网页操作导航、目的地提示与丝带演示，并展开技术细节，观察展开、收起、反向操作和键盘焦点的关系。
 
 **问题。** 导航折叠会改变控件位置，装饰性图像也可能让目的地难以辨认；查过文献后，读者还需要返回原来的论述。
 
@@ -108,7 +128,9 @@ x(p) = (1 - u) × x0 + u × x1
 
 ### 9.5 照片与来信：Meet the Team, Open the Letter
 
-[原节与演示](https://2026.igem.wiki/jlu-fbh/visual-design#photo-reveal-craft)
+**[打开原网页：操作演示并展开细节 ↗](https://2026.igem.wiki/jlu-fbh/visual-design#photo-reveal-craft)**
+
+在原网页体验照片揭示和来信的打开、关闭，并展开技术细节，对照理解滚动位置、动画反转与焦点返回。
 
 **问题。** 团队照片和长篇寄语需要在文章结束后自然出现；弹层关闭时如果丢失焦点或滚动位置，会打断阅读。
 
@@ -120,7 +142,9 @@ x(p) = (1 - u) × x0 + u × x1
 
 ### 9.6 迭代记录：Refine the Details, Keep the Record
 
-[原节与演示](https://2026.igem.wiki/jlu-fbh/visual-design#design-record)
+**[打开原网页：操作演示并展开细节 ↗](https://2026.igem.wiki/jlu-fbh/visual-design#design-record)**
+
+在原网页查看草图、历史版本与前后比较，并展开实现说明，沿着修改理由回看设计过程。
 
 **问题。** 成品截图留下了结果，修改动机、失败尝试和适用条件容易丢失，后续团队就难以判断该借鉴哪一部分。
 

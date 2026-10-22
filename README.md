@@ -71,7 +71,9 @@
 
 **JLU-FBH / JLUFBH · CirCure · iGEM 2026 · 吉林大学白求恩第一医院（First Bethune Hospital of Jilin University）**。本仓库也保存团队在科学传播（science communication）、Wiki 视觉设计（visual design）和交互叙事（interactive storytelling）中的尝试、修改原因与实现，供后续 iGEM 团队调研、引用和复用。
 
-**建议先读 [Visual Design 第 9 节：Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)**，再对照[中英文方法指南](docs/visual-design-guide.md)中的案例与源码。指南提供可直接阅读的 Markdown 正文，便于在 GitHub 内查阅，以及供搜索和 AI 调研工具读取；完整的动画、交互比较、绘稿和参考文献保留在 Wiki 中。
+**建议打开 [Visual Design 完整交互页面 ↗](https://2026.igem.wiki/jlu-fbh/visual-design)，重点阅读[第 8 节：人文关怀与叙事设计](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience)和[第 9 节：Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)。** 原网页有可操作的交互组件、动态对比和默认折叠的技术细节，建议边体验演示，边展开 **Technical details** 阅读设计理由与实现说明。
+
+[中英文方法指南](docs/visual-design-guide.md)提供案例摘要与源码入口，便于在 GitHub 内查阅，以及供搜索和 AI 调研工具读取；完整的交互与展开说明请结合原网页学习。
 
 ### 最值得复用的第 9 节
 
@@ -559,7 +561,9 @@ This repository contains the website source, page text, illustrations, asset sou
 
 **JLU-FBH / JLUFBH · CirCure · iGEM 2026 · First Bethune Hospital of Jilin University, China**. This repository also preserves the team's work on **iGEM Wiki visual design, science communication, and interactive storytelling**, including the reasons for revisions and the code behind them, for future teams to study, cite, and adapt.
 
-**Start with [Visual Design, Section 9: Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)**, then follow the cases and source links in the [English methods guide](docs/visual-design-guide.en.md) or its [Chinese edition](docs/visual-design-guide.md). The guide provides readable Markdown for GitHub readers, search tools, and AI-assisted research. The Wiki retains the full animations, interactive comparisons, artwork, and references.
+**Open the [complete interactive Visual Design page ↗](https://2026.igem.wiki/jlu-fbh/visual-design), especially [Section 8: Humanistic Care & Narrative Design](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) and [Section 9: Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft).** The original page includes interactive components, animated comparisons, and initially collapsed technical details. Try the demonstrations and expand **Technical details** to read the design rationale alongside the implementation.
+
+The [English methods guide](docs/visual-design-guide.en.md) and its [Chinese edition](docs/visual-design-guide.md) provide case summaries and source links for GitHub readers, search tools, and AI-assisted research. Use the original page to explore the complete interactions and expandable explanations.
 
 ### Section 9: methods to adapt
 

@@ -2,9 +2,17 @@
 
 [简体中文](visual-design-guide.md) | English · [Repository homepage](../README.md#readme-en) · [Documentation index](README.en.md)
 
-JLU-FBH (also written JLUFBH) is the iGEM 2026 team from the First Bethune Hospital of Jilin University, China. CirCure explores circular RNA (circRNA) vaccine research for triple-negative breast cancer (TNBC). This guide documents the Wiki's visual design, science communication, and interactive storytelling methods, with particular attention to **Visual Design, Section 9: Our Wiki Contribution**.
+JLU-FBH (also written JLUFBH) is the iGEM 2026 team from the First Bethune Hospital of Jilin University, China. CirCure explores circular RNA (circRNA) vaccine research for triple-negative breast cancer (TNBC). This guide documents the Wiki's visual design, science communication, and interactive storytelling methods, with particular attention to **Visual Design, Section 8: Humanistic Care & Narrative Design** and **Section 9: Our Wiki Contribution**.
 
-Reading links: [Full Visual Design page](https://2026.igem.wiki/jlu-fbh/visual-design) · [Section 9](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) · [GitHub source repository](https://github.com/xiangyupaiso/Official-wiki) · [Official iGEM GitLab](https://gitlab.igem.org/2026/jlu-fbh).
+> **Open the original Wiki and explore it as you read, especially Sections 8 and 9.**
+>
+> **[Open the complete interactive Visual Design page ↗](https://2026.igem.wiki/jlu-fbh/visual-design)**
+>
+> The original page includes interactive components, animated comparisons, and technical details that are initially collapsed. Try clicking, dragging, or playing the demonstrations, and expand the relevant **Technical details** to read the visual changes alongside their design rationale and implementation.
+>
+> **[Section 8: Humanistic Care & Narrative Design](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience)** introduces the narrative and reader participation; **[Section 9: Our Wiki Contribution](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft)** develops the methods, revision comparisons, and implementation details.
+
+Source and release links: [GitHub source repository](https://github.com/xiangyupaiso/Official-wiki) · [Official iGEM GitLab](https://gitlab.igem.org/2026/jlu-fbh).
 
 This Markdown guide expresses the methods from the interactive page as standalone text, letting researchers and AI-assisted research tools follow a problem, approach, case, and source. It is derived from the repository's current page data; consult the Wiki for original artwork, animated comparisons, and design references. The design intentions and implementation cases here do not establish measured improvements in comprehension or learning.
 
@@ -33,6 +41,10 @@ The first seven sections are defined in [visualDesignPage.ts](../src/data/projec
 
 ## Section 8: the narrative starting point
 
+**[Open this section on the Wiki: explore demonstrations and expandable details ↗](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience)**
+
+Try the antigen-switching and reading-control examples on the original page, and follow the illustrations linking the narrative to the scientific explanation.
+
 CirCure introduces its research motivation through an illustrated character's question: “What if it comes back?” The page connects a patient, the clinical problem, molecular explanation, and ordinary life. This line was written for the illustrated story; describe that creative context when quoting it.
 
 Across changes in scale, watercolor from a tear becomes a cloud above a map, carrying the theme and emotion forward. An RNA ring retains a recognizable shape across vaccine candidates, the circRNA explanation, and the platform. An antigen-switching interaction lets readers compare a shared backbone with replaceable segments. Antigens A, B, and C are conceptual examples; the interface does not establish target efficacy, immune killing, or clinical benefit.
@@ -43,7 +55,9 @@ For another project, first write down the question readers bring, the relationsh
 
 ### 9.1 Prepare the Artwork and Opening
 
-[Original section and demonstrations](https://2026.igem.wiki/jlu-fbh/visual-design#artwork-and-opening)
+**[Open this section on the Wiki: explore demonstrations and expandable details ↗](https://2026.igem.wiki/jlu-fbh/visual-design#artwork-and-opening)**
+
+View the layered artwork and opening demonstrations, then expand the technical details on canvas choices, layer coordinates, and resource preparation.
 
 **Problem.** Once a complete illustration becomes an animation, characters, backgrounds, and annotations may need to move independently. Cropped layers lose their alignment if their original coordinates are discarded. The opening must also wait for styles, fonts, and first-scene resources.
 
@@ -64,7 +78,9 @@ An HTML/CSS loader presents preparation, waiting, and failure states before the 
 
 ### 9.2 Give Motion a Reading Rhythm
 
-[Original section and demonstrations](https://2026.igem.wiki/jlu-fbh/visual-design#keyframes-and-reading-holds)
+**[Open this section on the Wiki: explore demonstrations and expandable details ↗](https://2026.igem.wiki/jlu-fbh/visual-design#keyframes-and-reading-holds)**
+
+Try the transition, playback, and chapter-selection examples, then expand the technical details to examine object continuity, reading holds, and scroll handoffs.
 
 **Problem.** When an object moves, its explanation changes, and the scene transitions simultaneously, readers may have too little time to establish the relationship. A timeline can advance without ever presenting a complete explanation long enough to read.
 
@@ -86,7 +102,9 @@ Performance work includes reusing prepared artwork variations, grouping measurem
 
 ### 9.3 Make Room for Sustained Reading
 
-[Original section and demonstrations](https://2026.igem.wiki/jlu-fbh/visual-design#reading-surfaces)
+**[Open this section on the Wiki: explore demonstrations and expandable details ↗](https://2026.igem.wiki/jlu-fbh/visual-design#reading-surfaces)**
+
+Explore the color and typography comparisons, then expand the technical details to relate the reading surfaces and image edges to the actual layout.
 
 **Problem.** Carrying the homepage's visual density into a research article makes backgrounds, headings, images, and paragraphs compete for attention.
 
@@ -96,7 +114,9 @@ Performance work includes reusing prepared artwork variations, grouping measurem
 
 ### 9.4 Keep the Route Clear
 
-[Original section and demonstrations](https://2026.igem.wiki/jlu-fbh/visual-design#navigation-with-a-landmark)
+**[Open this section on the Wiki: explore demonstrations and expandable details ↗](https://2026.igem.wiki/jlu-fbh/visual-design#navigation-with-a-landmark)**
+
+Try the navigation, destination hints, and ribbon demonstrations, then expand the technical details to examine opening, folding, reversal, and keyboard focus.
 
 **Problem.** Folding navigation changes control positions, illustration can obscure destinations, and readers need to return to an argument after checking its references.
 
@@ -108,7 +128,9 @@ Articles provide outlines, in-page search, and citation backlinks. Homepage dest
 
 ### 9.5 Meet the Team, Open the Letter
 
-[Original section and demonstrations](https://2026.igem.wiki/jlu-fbh/visual-design#photo-reveal-craft)
+**[Open this section on the Wiki: explore demonstrations and expandable details ↗](https://2026.igem.wiki/jlu-fbh/visual-design#photo-reveal-craft)**
+
+Explore the photograph reveal and open and close the letter, then expand the technical details on scroll position, animation reversal, and focus return.
 
 **Problem.** A team photograph and longer message need room after the article. Losing focus or scroll position when closing a modal interrupts reading.
 
@@ -120,7 +142,9 @@ The page records its reference to Wolverine Worldwide's website. Consult and cre
 
 ### 9.6 Refine the Details, Keep the Record
 
-[Original section and demonstrations](https://2026.igem.wiki/jlu-fbh/visual-design#design-record)
+**[Open this section on the Wiki: explore demonstrations and expandable details ↗](https://2026.igem.wiki/jlu-fbh/visual-design#design-record)**
+
+Inspect the sketches, earlier versions, and comparisons, and expand the implementation notes to follow the reasons behind the revisions.
 
 **Problem.** A final screenshot preserves the result, while revision reasons, unsuccessful attempts, and applicable conditions can disappear. Future teams then have little basis for deciding what to adapt.
 
