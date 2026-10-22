@@ -1,11 +1,24 @@
 <a name="readme-zh"></a><br />
 
-<p align="center">
-  <a href="#readme-zh"><img src="docs/media/readme-language-zh.svg" alt="简体中文 · 当前语言" width="112" /></a>
+<p align="center" dir="ltr">
+  <a href="#readme-zh" lang="zh-Hans" title="阅读简体中文版">
+    <img src="docs/media/readme-language-zh.svg" alt="简体中文" width="112" height="38" />
+  </a>
   &nbsp;
-  <a href="#readme-en"><img src="docs/media/readme-language-en.svg" alt="English · Read in English on this page" width="112" /></a><br />
+  <a href="#readme-en" lang="en" title="Read the full README in English">
+    <img src="docs/media/readme-language-en.svg" alt="English" width="112" height="38" />
+  </a>
+  <br />
+  <a href="README.fr.md" lang="fr">Français</a> &nbsp;·&nbsp; <a href="README.de.md" lang="de">Deutsch</a> &nbsp;·&nbsp; <a href="README.es.md" lang="es">Español</a>
+  <br />
+  <a href="README.ru.md" lang="ru">Русский</a> &nbsp;·&nbsp; <a href="README.ar.md" lang="ar">العربية</a> &nbsp;·&nbsp; <a href="README.pt.md" lang="pt">Português</a>
+  <br />
+  <a href="README.ja.md" lang="ja">日本語</a> &nbsp;·&nbsp; <a href="README.ko.md" lang="ko">한국어</a>
+  <br />
   <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
 </p>
+
+<p align="center"><sub>中英文为完整 README · 其他语言为导读版</sub></p>
 
 <p align="center">
   <a href="https://2026.igem.wiki/jlu-fbh/">
@@ -642,12 +655,25 @@ Vite preview 和官方 GitLab Pages 按 base 挂载产物；Cloudflare 由 [wran
 
 <a name="readme-en"></a><br />
 
-<p align="center">
-  <a href="#readme-zh"><img src="docs/media/readme-language-zh.svg" alt="简体中文 · 在本页阅读中文版" width="112" /></a>
+<p align="center" dir="ltr">
+  <a href="#readme-zh" lang="zh-Hans" title="阅读简体中文版">
+    <img src="docs/media/readme-language-zh.svg" alt="简体中文" width="112" height="38" />
+  </a>
   &nbsp;
-  <a href="#readme-en"><img src="docs/media/readme-language-en.svg" alt="English · Current language" width="112" /></a><br />
+  <a href="#readme-en" lang="en" title="Read the full README in English">
+    <img src="docs/media/readme-language-en.svg" alt="English" width="112" height="38" />
+  </a>
+  <br />
+  <a href="README.fr.md" lang="fr">Français</a> &nbsp;·&nbsp; <a href="README.de.md" lang="de">Deutsch</a> &nbsp;·&nbsp; <a href="README.es.md" lang="es">Español</a>
+  <br />
+  <a href="README.ru.md" lang="ru">Русский</a> &nbsp;·&nbsp; <a href="README.ar.md" lang="ar">العربية</a> &nbsp;·&nbsp; <a href="README.pt.md" lang="pt">Português</a>
+  <br />
+  <a href="README.ja.md" lang="ja">日本語</a> &nbsp;·&nbsp; <a href="README.ko.md" lang="ko">한국어</a>
+  <br />
   <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
 </p>
+
+<p align="center"><sub>Full READMEs: Chinese / English · Other languages: introductory guides</sub></p>
 
 <p align="center">
   <a href="https://2026.igem.wiki/jlu-fbh/">
