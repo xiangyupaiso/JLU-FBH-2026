@@ -1,6 +1,39 @@
-# JLU-FBH iGEM 2026 · CirCure Official Wiki
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/">
+    <img src="docs/media/circure-wordmark.svg" alt="CirCure" width="340" />
+  </a>
+</p>
 
-简体中文 | [English](README.en.md)
+<h1 align="center">JLU-FBH · iGEM 2026</h1>
+
+<p align="center">
+  <strong>CirCure 官方 Wiki</strong><br />
+  面向三阴性乳腺癌的环状 RNA 疫苗研究
+</p>
+
+<p align="center">
+  <strong>简体中文</strong> · <a href="README.en.md">English</a>
+</p>
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/"><strong>浏览 Wiki ↗</strong></a>
+  &nbsp;·&nbsp;
+  <a href="#全站模块与页面体系">页面导航</a>
+  &nbsp;·&nbsp;
+  <a href="#快速启动">快速启动</a>
+  &nbsp;·&nbsp;
+  <a href="CONTRIBUTING.md">参与贡献</a>
+</p>
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/">
+    <img src="docs/media/wiki-circrna.jpg" alt="CirCure 官方 Wiki 首页的 circRNA 手绘场景：环状结构、稳定性和持续表达的概念图解。" width="960" />
+  </a>
+  <br />
+  <sub>官网首页实景 · circRNA 设计图解（示意） · 点击进入完整 Wiki</sub>
+</p>
+
+## 项目概览
 
 本项目为 **JLU-FBH** 战队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki 网站前端工程，同时保存页面内容、素材来源与可复用的子项目源码。
 

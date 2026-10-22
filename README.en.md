@@ -1,6 +1,39 @@
-# JLU-FBH iGEM 2026 · CirCure Official Wiki
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/">
+    <img src="docs/media/circure-wordmark.svg" alt="CirCure" width="340" />
+  </a>
+</p>
 
-[简体中文](README.md) | English
+<h1 align="center">JLU-FBH · iGEM 2026</h1>
+
+<p align="center">
+  <strong>CirCure Official Wiki</strong><br />
+  A circRNA vaccine research project for triple-negative breast cancer
+</p>
+
+<p align="center">
+  <a href="README.md">简体中文</a> · <strong>English</strong>
+</p>
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/"><strong>Wiki ↗</strong></a>
+  &nbsp;·&nbsp;
+  <a href="#site-modules-and-pages">Pages</a>
+  &nbsp;·&nbsp;
+  <a href="#quick-start">Quick start</a>
+  &nbsp;·&nbsp;
+  <a href="CONTRIBUTING.en.md">Contribute</a>
+</p>
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/">
+    <img src="docs/media/wiki-circrna.jpg" alt="The official CirCure Wiki homepage showing its hand-painted conceptual illustration of circular RNA structure, stability, and sustained expression." width="960" />
+  </a>
+  <br />
+  <sub>Official homepage preview · Conceptual circRNA illustration · Open the complete Wiki</sub>
+</p>
+
+## Project overview
 
 This repository contains the official Wiki frontend for **JLU-FBH** in the 2026 International Genetically Engineered Machine Competition (**iGEM**), together with page content, asset sources, and reusable application source.
 
