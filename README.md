@@ -10,15 +10,23 @@
   <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
 </p>
 
-<h1 align="center">
+<p align="center">
   <a href="https://2026.igem.wiki/jlu-fbh/">
-    <img src="docs/media/circure-cover.svg" alt="CirCure · JLU-FBH · iGEM 2026" width="1200" />
+    <img src="docs/media/circure-wordmark.svg" alt="CirCure" width="340" />
   </a>
-</h1>
+</p>
+
+<h1 align="center">JLU-FBH · iGEM 2026</h1>
 
 <p align="center">
-  <strong>面向三阴性乳腺癌的环状 RNA 疫苗研究</strong><br />
-  <sub>JLU-FBH · 2026 国际基因工程机器大赛 · 官方 Wiki</sub>
+  <a href="https://teams.igem.org/6056">
+    <img src="docs/media/readme-team-marks.svg" alt="JLU-FBH 队徽与 iGEM 标识" width="180" />
+  </a>
+</p>
+
+<p align="center">
+  <strong>CirCure 官方 Wiki</strong><br />
+  面向三阴性乳腺癌的环状 RNA 疫苗研究
 </p>
 
 <p align="center">
@@ -397,6 +405,27 @@ GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配
 `contributionAssets.ts`、`resultsAssets.ts`、`designAssets.ts` 等资产字典连接素材与页面。此前针对宽泛键索引与 `never` 推导的修复属于类型兼容处理；后续变更继续通过当前 `tsc` 与构建检查验证，避免绕过类型约束。
 
 `wrangler.json` 由 Cloudflare 使用，`.gitlab-ci.yml` 负责官方 Wiki 流水线；`.dockerignore` 只影响 Docker 上下文的文件筛选。修改这些文件时按对应平台核对用途，避免把预览配置与正式发布状态混为一谈。
+
+## 团队与致谢
+
+感谢学校、临床机构、科研平台及各支持方对团队工作的帮助。具体工作归属与支持方式见官网的 [Attributions](https://2026.igem.wiki/jlu-fbh/attributions) 页面。
+
+<p align="center">
+  <img src="docs/media/readme-institutions.svg" alt="吉林大学；吉林大学白求恩第一医院；吉林大学白求恩第一临床医学院。" width="640" />
+</p>
+
+<p align="center">
+  <strong>吉林大学</strong><br />
+  吉林大学白求恩第一医院 · 吉林大学白求恩第一临床医学院
+</p>
+
+### 科研平台与工具
+
+<p align="center">
+  <img src="docs/media/readme-acknowledgements.svg" alt="官网页脚致谢标识：公共技术平台、转化医学研究院、Charles River、BioRender、MathWorks、Lark、Grammarly 和 Schrödinger。" width="640" />
+</p>
+
+标识沿用官网页脚的现有素材。科研平台包括吉林大学第一医院公共技术平台与转化医学研究院；工具及其他支持方包括 Charles River、BioRender、MathWorks、Lark、Grammarly 和 Schrödinger。
 
 ## 授权与知识产权
 

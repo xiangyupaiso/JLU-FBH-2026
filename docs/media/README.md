@@ -6,9 +6,14 @@
 
 | 文件                                                | 来源与用途                                                                                                                                            |
 | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `readme-language-zh.svg` / `readme-language-en.svg` | README 顶部的中文与英文阅读入口，沿用横幅的品牌色；静态 SVG，无外部字体、脚本或依赖。                                                                 |
-| `circure-cover.svg`                                 | README 横幅：复用原字标的七个轮廓和 `src/components/home/HomeIntroOrbit.tsx` 的闭合轨迹，添加静态配色与排版。环形用于品牌装饰，非分子结构图。         |
+| `readme-language-zh.svg` / `readme-language-en.svg` | README 顶部的中文与英文阅读入口，沿用 CirCure 字标的品牌色；静态 SVG，无外部字体、脚本或依赖。                                                        |
+| `readme-team-marks.svg`                             | JLU-FBH 队徽与 iGEM 标识，原图来自 `src/assets/jlu-fbh-crest.png` 与 `src/assets/partners/sponsor-igem.png`。                                         |
+| `readme-institutions.svg`                           | 复用官网页脚的吉林大学字标、白求恩第一医院印章与第一临床医学院字标；来源为 `src/assets/partners/` 和 `src/assets/footer/`。                           |
+| `readme-acknowledgements.svg`                       | 复用 `src/data/footer.ts` 中对应科研平台和工具的现有本地标识；来源为 `src/assets/partners/`。                                                         |
+| `circure-cover.svg`                                 | 历史 README 横幅，保留作设计参考；当前入口使用独立 CirCure 字标。                                                                                     |
 | `circure-wordmark.svg`                              | 复用 `src/data/homeIntroWordmark.ts` 中的七个 CirCure 字形轮廓与 viewBox；仅为文档设置静态品牌色。原轮廓基于 Kalam Regular（SIL OFL）。               |
 | `wiki-circrna.jpg`                                  | 2026-10-22 从[官方 Wiki](https://2026.igem.wiki/jlu-fbh/)的 “Why circular RNA?” 场景截取，尺寸为 1265 × 712；保留浏览器截图原始像素。画面是概念图解。 |
 
 中英文 README 共用同一组图片。更新画面时使用真实页面或已有项目素材，并同步图像说明和来源记录。
+
+标识面板仅使用 SVG 编排与白色底板：原图以原始字节嵌入，保留颜色、轮廓和比例，保证浅色与深色主题下均可阅读。面板内的标识名称在 README 正文中同时提供。
