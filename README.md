@@ -8,11 +8,11 @@
 
 ## 项目链接
 
-| 入口                                                     | 用途                                       |
-| -------------------------------------------------------- | ------------------------------------------ |
-| [在线 Wiki](https://2026.igem.wiki/jlu-fbh/)             | 浏览面向评审与公众的正式网站               |
-| [官方 GitLab 仓库](https://gitlab.igem.org/2026/jlu-fbh) | 查看官方 Wiki 源码及 GitLab Pages 发布记录 |
-| [团队后台 · Team 6056](https://teams.igem.org/6056)      | 团队管理、素材上传与参赛交付入口           |
+| 入口                | 网址                                                                         | 用途                         |
+| ------------------- | ---------------------------------------------------------------------------- | ---------------------------- |
+| **在线 Wiki**       | [https://2026.igem.wiki/jlu-fbh/](https://2026.igem.wiki/jlu-fbh/)           | 正式网站与项目展示           |
+| **官方 GitLab**     | [https://gitlab.igem.org/2026/jlu-fbh](https://gitlab.igem.org/2026/jlu-fbh) | 官方源码与发布记录           |
+| **团队后台 · 6056** | [https://teams.igem.org/6056](https://teams.igem.org/6056)                   | 团队管理、素材上传与参赛交付 |
 
 日常开发与 Pull Request 在本 GitHub 仓库进行；官方 GitLab 同步与网站发布的关系见[部署说明](docs/deployment.md)。
 
