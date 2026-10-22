@@ -54,7 +54,7 @@
 
 这是 **JLU-FBH** 战队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki 仓库，包含网站前端、页面内容、设计素材，以及游戏和虚拟实验室源码。
 
-**CirCure** 研究基于工程化环状 RNA（circRNA）的多靶向三阴性乳腺癌（TNBC）疫苗平台。Wiki 通过研究文章、手绘插画、滚动叙事、模型可视化和科普游戏，介绍项目的设计思路、实验过程与研究结果。
+**CirCure** 研究基于工程化环状 RNA（circRNA）的多靶向三阴性乳腺癌（TNBC）疫苗平台。Wiki 通过研究文章、手绘插画、滚动叙事、模型可视化和科普游戏，介绍项目的[设计思路](https://2026.igem.wiki/jlu-fbh/description)、[实验过程](https://2026.igem.wiki/jlu-fbh/experiments)与[研究结果](https://2026.igem.wiki/jlu-fbh/results)。
 
 我们希望读者在了解分子机制与实验设计的同时，也能看到研究背后患者对复发的担忧，以及她们对生活的期待。因此，我们从患者的疑问讲起，在科学解释中加入可以停下来阅读、比较和探索的交互，让读者按自己的节奏了解 CirCure。
 
@@ -245,17 +245,17 @@
 
 ## 页面与导航
 
-首页之外，五个内容板块共有 22 个页面入口。导航配置在 [src/pages.ts](src/pages.ts)。
+[首页 ↗](https://2026.igem.wiki/jlu-fbh/)之外，五个内容板块共有 22 个页面入口。点击下表中的页面名称即可前往官网。导航配置在 [src/pages.ts](src/pages.ts)。
 
 | 板块 | 页面 |
 | --- | --- |
-| Team | Roster、Attributions、Activities |
-| Project | Description、Engineering、Results、Contribution、Visual Design、Notebook、Safety and Security |
-| Wet Lab | Design、Experiments、Measurement、Alternative Platform |
-| Dry Lab | Model、Software、Hardware、Games |
-| Engagement | Entrepreneurship、Human Practices、Education、Sustainability |
+| Team | [Roster](https://2026.igem.wiki/jlu-fbh/roster)、[Attributions](https://2026.igem.wiki/jlu-fbh/attributions)、[Activities](https://2026.igem.wiki/jlu-fbh/activities) |
+| Project | [Description](https://2026.igem.wiki/jlu-fbh/description)、[Engineering](https://2026.igem.wiki/jlu-fbh/engineering)、[Results](https://2026.igem.wiki/jlu-fbh/results)、[Contribution](https://2026.igem.wiki/jlu-fbh/contribution)、[Visual Design](https://2026.igem.wiki/jlu-fbh/visual-design)、[Notebook](https://2026.igem.wiki/jlu-fbh/notebook)、[Safety and Security](https://2026.igem.wiki/jlu-fbh/safety-and-security) |
+| Wet Lab | [Design](https://2026.igem.wiki/jlu-fbh/design)、[Experiments](https://2026.igem.wiki/jlu-fbh/experiments)、[Measurement](https://2026.igem.wiki/jlu-fbh/measurement)、[Alternative Platform](https://2026.igem.wiki/jlu-fbh/alternative-platform) |
+| Dry Lab | [Model](https://2026.igem.wiki/jlu-fbh/model)、[Software](https://2026.igem.wiki/jlu-fbh/software)、[Hardware](https://2026.igem.wiki/jlu-fbh/hardware)、[Games](https://2026.igem.wiki/jlu-fbh/games) |
+| Engagement | [Entrepreneurship](https://2026.igem.wiki/jlu-fbh/entrepreneurship)、[Human Practices](https://2026.igem.wiki/jlu-fbh/human-practices)、[Education](https://2026.igem.wiki/jlu-fbh/education)、[Sustainability](https://2026.igem.wiki/jlu-fbh/sustainability) |
 
-Games 页面汇集虚拟实验室、Breast Guardian RPG、Bomb Cat 和 Bio Memory Match。
+[Games 页面](https://2026.igem.wiki/jlu-fbh/games)汇集[虚拟实验室](https://2026.igem.wiki/jlu-fbh/games#game-virtual-lab)、[Breast Guardian RPG](https://2026.igem.wiki/jlu-fbh/games#game-breast-guardian)、[Bomb Cat](https://2026.igem.wiki/jlu-fbh/games#game-bomb-cat) 和 [Bio Memory Match](https://2026.igem.wiki/jlu-fbh/games#game-bio-memory)。
 
 <details>
 <summary>查看完整页面路径与内容说明</summary>
@@ -308,7 +308,7 @@ CirCure Wiki
 
 ### 首页：从问题背景读到设计思路
 
-首页以 CirCure 签名动画开场，再通过 TNBC 探索地图、抗原切换器和 circRNA 图解展开故事。SVG 笔画、Canvas 粒子和 GSAP 时间轴负责开场与场景过渡。
+[首页](https://2026.igem.wiki/jlu-fbh/)以 CirCure 签名动画开场，再通过 TNBC 探索地图、抗原切换器和 circRNA 图解展开故事。SVG 笔画、Canvas 粒子和 GSAP 时间轴负责开场与场景过渡。
 
 相关代码在 `src/components/home/`，数据在 `src/data/`，样式主要在 `src/styles/home-*.css`。首页使用独立布局，正文页使用共享阅读器。
 
@@ -318,7 +318,7 @@ CirCure Wiki
 
 手绘题图延续水墨淡彩风格，五个内容板块分别使用自己的配色。题图已经包含标题时，可用 `hideHeroCopy` 隐藏重复文字，同时保留供辅助技术读取的语义化 `h1`。
 
-正文配有马克笔风格的 `WikiLineSidebar` 目录、章节定位、图表和文献，结尾由 `WikiNextRecord` 连接下一章。目录通常随阅读位置展开深层标题，部分页面展示完整大纲。配色与排版细节见[设计与排版规范](文案集/Wiki-设计与排版规范.md)。
+正文配有马克笔风格的 `WikiLineSidebar` 目录、章节定位、图表和文献，结尾由 `WikiNextRecord` 连接下一章。目录通常随阅读位置展开深层标题，部分页面展示完整大纲。可在[项目介绍页](https://2026.igem.wiki/jlu-fbh/description)体验，配色与排版细节见[设计与排版规范](文案集/Wiki-设计与排版规范.md)。
 
 <a id="虚拟分子生物学实验室virtual-laboratory"></a>
 
@@ -351,11 +351,11 @@ CirCure Wiki
 
 ### 科普游戏
 
-在 `/games` 中选择游戏后加载对应内容：
+在 [Games 页面](https://2026.igem.wiki/jlu-fbh/games)中选择游戏后加载对应内容：
 
-- **Breast Guardian RPG**：通过不同生命阶段的角色与情境介绍乳腺健康知识。
-- **Bomb Cat**：以 circRNA 为主题的策略卡牌，支持本地机器人、在线房间，并提供规则说明。
-- **Bio Memory Match**：观察、记忆并配对标本卡片，认识生物学概念。
+- **[Breast Guardian RPG](https://2026.igem.wiki/jlu-fbh/games#game-breast-guardian)**：通过不同生命阶段的角色与情境介绍乳腺健康知识。
+- **[Bomb Cat](https://2026.igem.wiki/jlu-fbh/games#game-bomb-cat)**：以 circRNA 为主题的策略卡牌，支持本地机器人、在线房间，并提供规则说明。
+- **[Bio Memory Match](https://2026.igem.wiki/jlu-fbh/games#game-bio-memory)**：观察、记忆并配对标本卡片，认识生物学概念。
 
 前两款游戏的可构建源码在 `games/`；Bio Memory 的运行文件在 `public/game-assets/bio-memory/`。来源记录和构建方式见 [games/README.md](games/README.md)。
 
@@ -363,7 +363,7 @@ CirCure Wiki
 
 ### 分子结构与模型图表
 
-Model 页面用 Mol\* 展示 Trop2 复合体，可旋转、缩放、聚焦片段，也可切换表面和极性接触显示。分子运行时和 PDB 文件在读者接近图示时加载。
+[Model 页面](https://2026.igem.wiki/jlu-fbh/model)用 Mol\* 展示 [Trop2 复合体](https://2026.igem.wiki/jlu-fbh/model#model-structural-confirmation)，可旋转、缩放、聚焦片段，也可切换表面和极性接触显示。分子运行时和 PDB 文件在读者接近图示时加载。
 
 模型数据通过 ECharts 等组件展示，读者可操作图例、查看区间高亮和提示信息，对照正文阅读分析。
 
@@ -683,7 +683,7 @@ CirCure 的研究、设计与传播也离不开其他工作组的共同投入。
 
 This is the official Wiki repository for **JLU-FBH** in the 2026 International Genetically Engineered Machine Competition (**iGEM**). It contains the website frontend, page content, design assets, and source code for the games and virtual laboratory.
 
-**CirCure** explores an engineered circular RNA (**circRNA**) platform for a multi-target triple-negative breast cancer (**TNBC**) vaccine. The Wiki presents the project's design, experiments, and research findings through research articles, hand-drawn illustrations, scroll-driven storytelling, model visualizations, and science communication games.
+**CirCure** explores an engineered circular RNA (**circRNA**) platform for a multi-target triple-negative breast cancer (**TNBC**) vaccine. The Wiki presents the project's [design](https://2026.igem.wiki/jlu-fbh/description), [experiments](https://2026.igem.wiki/jlu-fbh/experiments), and [research findings](https://2026.igem.wiki/jlu-fbh/results) through research articles, hand-drawn illustrations, scroll-driven storytelling, model visualizations, and science communication games.
 
 Alongside the molecular mechanisms and experimental design, we want readers to see the patients behind the research: their worries about recurrence and their hopes for everyday life. We begin with a patient's question and give readers room to pause, compare, and explore the science at their own pace.
 
@@ -874,17 +874,17 @@ The laboratory requests closing through `window.postMessage`; the Wiki checks bo
 
 ## Pages and navigation
 
-Beyond Home, five content groups contain 22 page entries. Navigation is defined in [src/pages.ts](src/pages.ts).
+Beyond [Home ↗](https://2026.igem.wiki/jlu-fbh/), five content groups contain 22 page entries. Click any page name below to visit it on the official Wiki. Navigation is defined in [src/pages.ts](src/pages.ts).
 
 | Group | Pages |
 | --- | --- |
-| Team | Roster, Attributions, Activities |
-| Project | Description, Engineering, Results, Contribution, Visual Design, Notebook, Safety and Security |
-| Wet Lab | Design, Experiments, Measurement, Alternative Platform |
-| Dry Lab | Model, Software, Hardware, Games |
-| Engagement | Entrepreneurship, Human Practices, Education, Sustainability |
+| Team | [Roster](https://2026.igem.wiki/jlu-fbh/roster), [Attributions](https://2026.igem.wiki/jlu-fbh/attributions), [Activities](https://2026.igem.wiki/jlu-fbh/activities) |
+| Project | [Description](https://2026.igem.wiki/jlu-fbh/description), [Engineering](https://2026.igem.wiki/jlu-fbh/engineering), [Results](https://2026.igem.wiki/jlu-fbh/results), [Contribution](https://2026.igem.wiki/jlu-fbh/contribution), [Visual Design](https://2026.igem.wiki/jlu-fbh/visual-design), [Notebook](https://2026.igem.wiki/jlu-fbh/notebook), [Safety and Security](https://2026.igem.wiki/jlu-fbh/safety-and-security) |
+| Wet Lab | [Design](https://2026.igem.wiki/jlu-fbh/design), [Experiments](https://2026.igem.wiki/jlu-fbh/experiments), [Measurement](https://2026.igem.wiki/jlu-fbh/measurement), [Alternative Platform](https://2026.igem.wiki/jlu-fbh/alternative-platform) |
+| Dry Lab | [Model](https://2026.igem.wiki/jlu-fbh/model), [Software](https://2026.igem.wiki/jlu-fbh/software), [Hardware](https://2026.igem.wiki/jlu-fbh/hardware), [Games](https://2026.igem.wiki/jlu-fbh/games) |
+| Engagement | [Entrepreneurship](https://2026.igem.wiki/jlu-fbh/entrepreneurship), [Human Practices](https://2026.igem.wiki/jlu-fbh/human-practices), [Education](https://2026.igem.wiki/jlu-fbh/education), [Sustainability](https://2026.igem.wiki/jlu-fbh/sustainability) |
 
-Games brings together the virtual laboratory, Breast Guardian RPG, Bomb Cat, and Bio Memory Match.
+[Games](https://2026.igem.wiki/jlu-fbh/games) brings together the [virtual laboratory](https://2026.igem.wiki/jlu-fbh/games#game-virtual-lab), [Breast Guardian RPG](https://2026.igem.wiki/jlu-fbh/games#game-breast-guardian), [Bomb Cat](https://2026.igem.wiki/jlu-fbh/games#game-bomb-cat), and [Bio Memory Match](https://2026.igem.wiki/jlu-fbh/games#game-bio-memory).
 
 <details>
 <summary>View all page paths and descriptions</summary>
@@ -937,7 +937,7 @@ All paths are relative to `/jlu-fbh/`. `/team` redirects to `/roster`, and `/att
 
 ### Home: from the problem to the design
 
-The homepage opens with the CirCure signature animation, then follows the TNBC exploration map, antigen switcher, and circRNA illustrations. SVG strokes, Canvas particles, and GSAP timelines handle the intro and scene transitions.
+The [homepage](https://2026.igem.wiki/jlu-fbh/) opens with the CirCure signature animation, then follows the TNBC exploration map, antigen switcher, and circRNA illustrations. SVG strokes, Canvas particles, and GSAP timelines handle the intro and scene transitions.
 
 Code lives in `src/components/home/`, data in `src/data/`, and styles mainly in `src/styles/home-*.css`. Home has its own layout; article pages use the shared reader.
 
@@ -947,7 +947,7 @@ Code lives in `src/components/home/`, data in `src/data/`, and styles mainly in 
 
 Hand-drawn Hero artwork follows an ink-wash watercolor style, with a separate palette for each content group. When an illustration already includes its title, `hideHeroCopy` can hide duplicate text while retaining a semantic `h1` for assistive technologies.
 
-The reader includes the marker-style `WikiLineSidebar`, section navigation, charts, and citations. `WikiNextRecord` links to the next chapter at the end. Deeper outline entries usually expand around the reading position; some pages show the full outline. See the [design and typography specification](文案集/Wiki-设计与排版规范.md) (Chinese) for details.
+The reader includes the marker-style `WikiLineSidebar`, section navigation, charts, and citations. `WikiNextRecord` links to the next chapter at the end. Deeper outline entries usually expand around the reading position; some pages show the full outline. Try it on the [project description page](https://2026.igem.wiki/jlu-fbh/description). See the [design and typography specification](文案集/Wiki-设计与排版规范.md) (Chinese) for details.
 
 <a id="virtual-molecular-biology-laboratory"></a>
 
@@ -978,11 +978,11 @@ Source and development instructions are in [virtual-lab/README.en.md](virtual-la
 
 ### Science communication games
 
-Selecting a game in `/games` loads that experience:
+Selecting a game on the [Games page](https://2026.igem.wiki/jlu-fbh/games) loads that experience:
 
-- **Breast Guardian RPG** introduces breast-health concepts through characters and situations across life stages.
-- **Bomb Cat** is a circRNA-themed strategy card game with local bots, online rooms, and a rulebook.
-- **Bio Memory Match** introduces biological concepts through observing, remembering, and matching specimen cards.
+- **[Breast Guardian RPG](https://2026.igem.wiki/jlu-fbh/games#game-breast-guardian)** introduces breast-health concepts through characters and situations across life stages.
+- **[Bomb Cat](https://2026.igem.wiki/jlu-fbh/games#game-bomb-cat)** is a circRNA-themed strategy card game with local bots, online rooms, and a rulebook.
+- **[Bio Memory Match](https://2026.igem.wiki/jlu-fbh/games#game-bio-memory)** introduces biological concepts through observing, remembering, and matching specimen cards.
 
 Buildable source for the first two games lives in `games/`; Bio Memory's runtime files are in `public/game-assets/bio-memory/`. See [games/README.en.md](games/README.en.md) for source records and build instructions.
 
@@ -990,7 +990,7 @@ Buildable source for the first two games lives in `games/`; Bio Memory's runtime
 
 ### Molecular structures and model charts
 
-The Model page displays the Trop2 complex with Mol\*. Readers can rotate, zoom, focus on segments, and toggle surfaces and polar contacts. The molecular runtime and PDB files load as readers approach the figure.
+The [Model page](https://2026.igem.wiki/jlu-fbh/model) displays the [Trop2 complex](https://2026.igem.wiki/jlu-fbh/model#model-structural-confirmation) with Mol\*. Readers can rotate, zoom, focus on segments, and toggle surfaces and polar contacts. The molecular runtime and PDB files load as readers approach the figure.
 
 ECharts and related components display model data with interactive legends, range highlights, and tooltips for reading alongside the analysis.
 
