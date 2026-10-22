@@ -35,8 +35,14 @@
 </p>
 
 <p align="center">
-  <a href="https://2026.igem.wiki/jlu-fbh/"><strong>浏览 Wiki ↗</strong></a>
-  &nbsp;·&nbsp;
+  <a href="https://2026.igem.wiki/jlu-fbh/" title="浏览 CirCure 官方 Wiki">
+    <img src="docs/media/readme-visit-wiki-zh.svg" alt="浏览完整 Wiki ↗" width="300" height="76" />
+  </a>
+  <br />
+  <sub><a href="https://2026.igem.wiki/jlu-fbh/">进入官方 Wiki，浏览完整项目与交互展示 ↗</a></sub>
+</p>
+
+<p align="center">
   <a href="#给未来-igem-团队的设计参考">设计经验</a>
   &nbsp;·&nbsp;
   <a href="#全站模块与页面体系">页面导航</a>
@@ -53,6 +59,16 @@
 首页用手绘插画和滚动动画介绍 TNBC 的疾病背景与 circRNA 的设计思路。实验、建模和社会实践页面记录团队开展的工作、采用的方法和参考资料。网站还提供分子结构查看器、虚拟实验室和科普游戏，读者可以查看分子结构、体验实验步骤，也可以通过游戏了解相关的生物学知识。
 
 本仓库包含网站源码、页面文案、插画和素材来源记录，以及虚拟实验室和游戏的源码。主站使用 React、TypeScript 和 Vite 开发，正文内容、素材引用与交互组件分别维护。运行方式、目录说明和部署流程见下方文档。
+
+<p align="center">
+  <strong>项目宣传视频 · Promotion Video</strong><br />
+  <a href="https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16">
+    <img src="https://video.igem.org/lazy-static/thumbnails/a5170f77-bfc2-4ce8-a304-5b86a23cccc2.jpg" alt="CirCure 项目宣传视频官方封面，点击前往 iGEM 视频平台观看。" width="800" />
+  </a>
+  <br />
+  <a href="https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16"><strong>▶ 观看宣传视频 · 2 分 03 秒 ↗</strong></a><br />
+  <sub>iGEM 官方视频平台 · 点击封面或链接播放</sub>
+</p>
 
 <details>
 <summary><strong>展开官网预览</strong> · circRNA 手绘场景</summary>
@@ -547,8 +563,14 @@ GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配
 </p>
 
 <p align="center">
-  <a href="https://2026.igem.wiki/jlu-fbh/"><strong>Wiki ↗</strong></a>
-  &nbsp;·&nbsp;
+  <a href="https://2026.igem.wiki/jlu-fbh/" title="Visit the official CirCure Wiki">
+    <img src="docs/media/readme-visit-wiki-en.svg" alt="Explore the Wiki ↗" width="300" height="76" />
+  </a>
+  <br />
+  <sub><a href="https://2026.igem.wiki/jlu-fbh/">Open the official Wiki for the full project and interactive features ↗</a></sub>
+</p>
+
+<p align="center">
   <a href="#design-reference-for-future-igem-teams">Design lessons</a>
   &nbsp;·&nbsp;
   <a href="#site-modules-and-pages">Pages</a>
@@ -565,6 +587,16 @@ GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配
 The homepage uses hand-drawn illustrations and scroll animations to introduce TNBC and the circRNA design. The experimental, modeling, and human practices pages describe the team’s work, methods, and references. A molecular structure viewer, virtual laboratory, and science games let readers examine molecular structures, try experimental procedures, and learn about the biology behind the project.
 
 This repository contains the website source, page text, illustrations, asset source records, and the source code for the virtual laboratory and games. The main site uses React, TypeScript, and Vite, with page content, asset references, and interactive components maintained separately. The documentation below explains how to run the project, find files, and deploy the site.
+
+<p align="center">
+  <strong>Project Promotion Video</strong><br />
+  <a href="https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16">
+    <img src="https://video.igem.org/lazy-static/thumbnails/a5170f77-bfc2-4ce8-a304-5b86a23cccc2.jpg" alt="Official cover of the CirCure project promotion video. Open the video on iGEM Video Universe." width="800" />
+  </a>
+  <br />
+  <a href="https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16"><strong>▶ Watch the promotion video · 2 min 03 sec ↗</strong></a><br />
+  <sub>iGEM Video Universe · Click the cover or link to watch</sub>
+</p>
 
 <details>
 <summary><strong>Preview the Wiki</strong> · Hand-painted circRNA scene</summary>
