@@ -46,11 +46,11 @@
 
 ## 项目概览
 
-**CirCure** 是 JLU-FBH 战队面向三阴性乳腺癌（Triple-Negative Breast Cancer, TNBC）开展的合成生物学研究项目，探索以工程化环状 RNA（circular RNA, circRNA）为载体的多靶向治疗性疫苗设计。本网站作为团队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki，系统记录从研究问题、方案设计到实验探索与计算建模的工作，以及社会需求、公众沟通与可持续性对项目发展的影响。
+**CirCure** 是 JLU-FBH 团队面向三阴性乳腺癌（Triple-Negative Breast Cancer, TNBC）开展的合成生物学研究项目，探索以工程化环状 RNA（circular RNA, circRNA）为载体的多靶向治疗性疫苗设计。本网站作为团队参加 2026 年国际基因工程机器大赛（International Genetically Engineered Machine Competition, iGEM）的官方 Wiki，系统记录从研究问题、方案设计到实验探索与计算建模的工作，以及社会需求、公众沟通与可持续性对项目发展的影响。
 
-网站以“理解问题—探索设计—查阅证据”为阅读线索，将研究内容组织为相互衔接的页面。首页通过手绘插画与滚动叙事引入疾病背景和 circRNA 设计思路，正文以实验记录、模型分析、图表和参考文献展开论证；分子结构可视化、虚拟实验室与科普游戏则提供可操作的学习体验，让不同背景的读者都能找到理解项目的入口。
+首页用手绘插画和滚动动画介绍 TNBC 的疾病背景与 circRNA 的设计思路。实验、建模和社会实践页面记录团队开展的工作、采用的方法和参考资料。网站还提供分子结构查看器、虚拟实验室和科普游戏，读者可以查看分子结构、体验实验步骤，也可以通过游戏了解相关的生物学知识。
 
-本仓库保存 Wiki 前端工程、页面正文、插画与素材来源，以及虚拟实验室和游戏等子项目源码。主站基于 React、TypeScript 与 Vite 构建，通过共享阅读组件、独立的内容与资产映射、按需加载的交互模块支持协作维护，并为后续开发者提供可查阅、可运行、可复用的实现与文档。
+本仓库包含网站源码、页面文案、插画和素材来源记录，以及虚拟实验室和游戏的源码。主站使用 React、TypeScript 和 Vite 开发，正文内容、素材引用与交互组件分别维护。运行方式、目录说明和部署流程见下方文档。
 
 <details>
 <summary><strong>展开官网预览</strong> · circRNA 手绘场景</summary>
@@ -511,9 +511,9 @@ GitHub Pages 不读取 Cloudflare 的 `_redirects`，另行托管时需独立配
 
 **CirCure** is a synthetic biology research project by JLU-FBH exploring engineered circular RNA (**circRNA**) as a platform for a multi-target therapeutic vaccine against triple-negative breast cancer (**TNBC**). As the team’s official Wiki for the 2026 International Genetically Engineered Machine Competition (**iGEM**), this website documents the work from defining the research question and developing the design to experimental investigation and computational modeling. It also traces how societal needs, public engagement, and sustainability inform the project’s development.
 
-The Wiki follows a reading path from understanding the problem to exploring the design and examining the evidence. Hand-drawn illustrations and scroll-driven storytelling introduce the disease context and circRNA design on the homepage; experimental records, model analyses, figures, and references develop the reasoning across the content pages. Molecular visualizations, a virtual laboratory, and science communication games offer hands-on ways for readers with different backgrounds to engage with the project.
+The homepage uses hand-drawn illustrations and scroll animations to introduce TNBC and the circRNA design. The experimental, modeling, and human practices pages describe the team’s work, methods, and references. A molecular structure viewer, virtual laboratory, and science games let readers examine molecular structures, try experimental procedures, and learn about the biology behind the project.
 
-This repository contains the Wiki frontend, page content, illustrations and asset provenance, and source code for companion applications, including the virtual laboratory and games. Built with React, TypeScript, and Vite, the main site supports collaborative maintenance through shared reading components, separate content and asset mappings, and on-demand interactive modules. The source and documentation give future contributors implementations they can inspect, run, and reuse.
+This repository contains the website source, page text, illustrations, asset source records, and the source code for the virtual laboratory and games. The main site uses React, TypeScript, and Vite, with page content, asset references, and interactive components maintained separately. The documentation below explains how to run the project, find files, and deploy the site.
 
 <details>
 <summary><strong>Preview the Wiki</strong> · Hand-painted circRNA scene</summary>
