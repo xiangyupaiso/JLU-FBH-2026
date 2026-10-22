@@ -9,7 +9,7 @@
     <img src="docs/media/readme-language-en.svg" alt="English" width="112" height="38" />
   </a>
   <br />
-  <sub><a href="README.fr.md" lang="fr">Français</a> &nbsp; <a href="README.de.md" lang="de">Deutsch</a> &nbsp; <a href="README.es.md" lang="es">Español</a> &nbsp; <a href="README.ru.md" lang="ru">Русский</a> &nbsp; <a href="README.ar.md" lang="ar">العربية</a> &nbsp; <a href="README.pt.md" lang="pt">Português</a> &nbsp; <a href="README.ja.md" lang="ja">日&#8288;本&#8288;語</a> &nbsp; <a href="README.ko.md" lang="ko">한&#8288;국&#8288;어</a></sub>
+  <sub><a href="#readme-ar" lang="ar" dir="rtl">العربية</a> &nbsp; <a href="#readme-fr" lang="fr">Français</a> &nbsp; <a href="#readme-ru" lang="ru">Русский</a> &nbsp; <a href="#readme-es" lang="es">Español</a> &nbsp; <a href="#readme-de" lang="de">Deutsch</a> &nbsp; <a href="#readme-ja" lang="ja">日&#8288;本&#8288;語</a> &nbsp; <a href="#readme-ko" lang="ko">한&#8288;국&#8288;어</a> &nbsp; <a href="#readme-pt" lang="pt">Português</a></sub>
   <br />
   <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
 </p>
@@ -660,7 +660,7 @@ Vite preview 和官方 GitLab Pages 按 base 挂载产物；Cloudflare 由 [wran
     <img src="docs/media/readme-language-en.svg" alt="English" width="112" height="38" />
   </a>
   <br />
-  <sub><a href="README.fr.md" lang="fr">Français</a> &nbsp; <a href="README.de.md" lang="de">Deutsch</a> &nbsp; <a href="README.es.md" lang="es">Español</a> &nbsp; <a href="README.ru.md" lang="ru">Русский</a> &nbsp; <a href="README.ar.md" lang="ar">العربية</a> &nbsp; <a href="README.pt.md" lang="pt">Português</a> &nbsp; <a href="README.ja.md" lang="ja">日&#8288;本&#8288;語</a> &nbsp; <a href="README.ko.md" lang="ko">한&#8288;국&#8288;어</a></sub>
+  <sub><a href="#readme-ar" lang="ar" dir="rtl">العربية</a> &nbsp; <a href="#readme-fr" lang="fr">Français</a> &nbsp; <a href="#readme-ru" lang="ru">Русский</a> &nbsp; <a href="#readme-es" lang="es">Español</a> &nbsp; <a href="#readme-de" lang="de">Deutsch</a> &nbsp; <a href="#readme-ja" lang="ja">日&#8288;本&#8288;語</a> &nbsp; <a href="#readme-ko" lang="ko">한&#8288;국&#8288;어</a> &nbsp; <a href="#readme-pt" lang="pt">Português</a></sub>
   <br />
   <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
 </p>
@@ -1294,3 +1294,1016 @@ The root repository uses [CC BY 4.0](LICENSE). Retain the required attribution a
 Preserve the shared footer's license notice and official GitLab repository link. AI-assisted work also follows [Contributing](CONTRIBUTING.en.md) and the [responsible-use guidance](.claude/RESPONSIBLE_AI_USE.en.md).
 
 <p align="center"><a href="#readme-en">↑ Back to English</a> · <a href="#readme-zh">阅读中文版</a></p>
+
+---
+
+<a name="readme-ar"></a><br />
+
+<div lang="ar">
+
+<h1 lang="ar" dir="rtl">العربية</h1>
+
+<p align="center" dir="ltr">
+  <a href="#readme-zh" lang="zh-Hans" title="阅读简体中文版">
+    <img src="docs/media/readme-language-zh.svg" alt="简体中文" width="112" height="38" />
+  </a>
+  &nbsp;
+  <a href="#readme-en" lang="en" title="Read the full README in English">
+    <img src="docs/media/readme-language-en.svg" alt="English" width="112" height="38" />
+  </a>
+  <br />
+  <sub><a href="#readme-ar" lang="ar" dir="rtl">العربية</a> &nbsp; <a href="#readme-fr" lang="fr">Français</a> &nbsp; <a href="#readme-ru" lang="ru">Русский</a> &nbsp; <a href="#readme-es" lang="es">Español</a> &nbsp; <a href="#readme-de" lang="de">Deutsch</a> &nbsp; <a href="#readme-ja" lang="ja">日&#8288;本&#8288;語</a> &nbsp; <a href="#readme-ko" lang="ko">한&#8288;국&#8288;어</a> &nbsp; <a href="#readme-pt" lang="pt">Português</a></sub>
+  <br />
+  <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
+</p>
+
+<p dir="rtl" lang="ar">دليل موجز باللغة العربية. تتوفر الوثائق التقنية الكاملة باللغتين الإنجليزية والصينية.</p>
+
+<div dir="rtl" lang="ar">
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/">
+    <img src="docs/media/circure-wordmark.svg" alt="CirCure" width="340" />
+  </a>
+</p>
+
+<h1 align="center">JLU-FBH · iGEM 2026</h1>
+
+<p align="center">
+  <img src="docs/media/readme-team-marks.svg" alt="JLU-FBH · iGEM" width="180" /><br />
+  بحث حول لقاح قائم على الحمض النووي الريبي الدائري لسرطان الثدي الثلاثي السلبي<br />
+  <a href="https://2026.igem.wiki/jlu-fbh/"><strong>استكشاف موقع Wiki الرسمي ↗</strong></a>
+</p>
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/visual-design#lumi-mascot">
+    <img src="docs/media/readme-lumi.png" alt="Lumi" width="120" height="120" />
+  </a><br />
+  <sub>لومي، الخروف الصغير الذي يرافقك في التعرف على CirCure.</sub>
+</p>
+
+## نبذة عن المشروع
+
+يضم هذا المستودع موقع Wiki الرسمي لفريق **JLU-FBH** المشارك في المسابقة الدولية للبيولوجيا التركيبية **iGEM 2026**. ويشمل واجهة الموقع والمقالات والرسوم والألعاب التعليمية والشيفرة المصدرية للمختبر الافتراضي.
+
+يدرس مشروع **CirCure** منصة تعتمد على الحمض النووي الريبي الدائري المعدّل هندسيًا (**circRNA**) لتطوير لقاح متعدد الأهداف لسرطان الثدي الثلاثي السلبي (**TNBC**). يعرض الموقع التصميم والتجارب والنتائج البحثية من خلال المقالات والرسوم اليدوية والسرد المرتبط بالتمرير والتصورات التفاعلية.
+
+يبدأ السرد بأسئلة المريضات ومخاوفهن، ثم ينتقل إلى الآليات الجزيئية وخيارات تصميم التجارب. ويمكن للقراء التوقف والمقارنة واستكشاف المواد بالوتيرة المناسبة لهم.
+
+## مراجع التصميم لفرق iGEM
+
+تشرح صفحة [Visual Design](https://2026.igem.wiki/jlu-fbh/visual-design) الهوية البصرية والرسوم والتحريك وبنية الصفحات وتجارب التعلم.
+
+- [القسم الثامن: الاهتمام بالإنسان وتصميم السرد](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) — ربط أسئلة المريضات بالشرح العلمي.
+- [القسم التاسع: مساهمتنا من خلال Wiki](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) — إعداد الرسوم في طبقات، وإيقاع القراءة، والتنقل، والتفاعلات التي يمكن الرجوع عنها.
+- [Design Folios](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive) — مقترحات مبكرة ومقارنات وعروض قابلة للتفاعل.
+- [دليل التصميم والشيفرة المصدرية باللغة الإنجليزية](docs/visual-design-guide.en.md) — الأساليب ومسارات الملفات والمراجع ونسب العمل إلى أصحابه.
+
+## استكشاف المشروع
+
+ينقسم الموقع إلى خمس مجموعات: **Team** و**Project** و**Wet Lab** و**Dry Lab** و**Engagement**. وتتناول أعضاء الفريق وتصميم المشروع والتجارب والنماذج والبرمجيات والأنشطة التعليمية والاستدامة.
+
+تجمع [بوابة الألعاب](https://2026.igem.wiki/jlu-fbh/games) المختبر الافتراضي وألعاب **Breast Guardian RPG** و**Bomb Cat** و**Bio Memory Match**. ويقدم [المختبر الافتراضي](https://virtual-lab-208fd4.igem.wiki/) تسع تجارب في البيولوجيا الجزيئية، من زراعة البكتيريا إلى تفاعل البوليميراز المتسلسل وتحليل التعبير البروتيني.
+
+| المورد | الرابط |
+| --- | --- |
+| موقع Wiki الرسمي | [المشروع والنتائج](https://2026.igem.wiki/jlu-fbh/) |
+| معاينة التطوير | [النسخة التي يجري تطويرها](https://wiki.dayquay.com/jlu-fbh/) |
+| فيديو المشروع | [منصة الفيديو الرسمية لـ iGEM](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
+| الشيفرة على GitHub | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| مستودع GitLab الرسمي | [الشيفرة وسجل النشر](https://gitlab.igem.org/2026/jlu-fbh) |
+
+يُنشر الموقع الرسمي ومعاينة التطوير بصورة مستقلة، وقد يختلف محتواهما. راجع [دليل النشر باللغة الإنجليزية](docs/deployment.en.md). يغيّر اختيار اللغة أعلى الصفحة دليل README المعروض؛ وتحتفظ صفحات الموقع والوثائق المرتبطة بلغاتها الأصلية.
+
+## الشيفرة والبنية
+
+يستخدم الموقع **React** و**TypeScript** و**Vite**. تتولى **GSAP** التحريك، وتعرض **Mol\*** البنى الجزيئية، وتُظهر **ECharts** بيانات النماذج.
+
+| المسار | المحتوى |
+| --- | --- |
+| <code dir="ltr">src/data/</code> | المقالات والأقسام وخرائط الموارد |
+| <code dir="ltr">src/contents/</code> | تجميع الصفحات |
+| <code dir="ltr">src/components/wiki/</code> | واجهة القراءة المشتركة والتفاعلات |
+| <code dir="ltr">src/components/home/</code> | مشاهد الصفحة الرئيسية |
+| <code dir="ltr">src/styles/</code> | التخطيط والألوان والتحريك |
+| <code dir="ltr">virtual-lab/</code> و<code dir="ltr">games/</code> | تطبيقات لها اعتماديات وعمليات بناء مستقلة |
+
+راجع [خريطة المستودع باللغة الإنجليزية](docs/repository-layout.en.md) و[دليل الموارد باللغة الإنجليزية](docs/assets.en.md).
+
+## التشغيل السريع
+
+استخدم **Node.js 22.12 أو أحدث ضمن سلسلة 22.x** و**Yarn Classic 1.22.22**. نفّذ الأوامر التالية من المجلد الجذري للمستودع:
+
+<!-- Keep command blocks outside the RTL container so shell syntax reads left to right. -->
+</div>
+
+```sh
+yarn install --frozen-lockfile
+yarn dev
+```
+
+<div dir="rtl" lang="ar">
+
+افتح العنوان الذي يظهر في الطرفية، ويكون عادةً <code dir="ltr">http://localhost:5173/jlu-fbh/</code>.
+
+</div>
+
+```sh
+yarn lint
+yarn test:page-loading
+yarn build
+yarn preview
+```
+
+<div dir="rtl" lang="ar">
+
+تُكتب نواتج البناء في <code dir="ltr">dist/</code>. يُبنى المختبر والألعاب بصورة منفصلة؛ اتبع ملفات README الخاصة بها. يقدّم خادم التطوير الرئيسي موقع Wiki فقط. للتفاصيل، راجع [دليل التطوير باللغة الإنجليزية](docs/development.en.md) و[دليل المختبر باللغة الإنجليزية](virtual-lab/README.md#readme-en) و[دليل الألعاب باللغة الإنجليزية](games/README.md#readme-en).
+
+## الفريق والمساهمة والترخيص
+
+توثق صفحتا [Roster](https://2026.igem.wiki/jlu-fbh/roster) و[Attributions](https://2026.igem.wiki/jlu-fbh/attributions) أعضاء الفريق ومساهماتهم والدعم المؤسسي. وتحتوي [النسخة الإنجليزية الكاملة](#team-and-acknowledgements) على الشكر والتقدير بالتفصيل.
+
+قبل اقتراح تغييرات، اقرأ [دليل المساهمة باللغة الإنجليزية](CONTRIBUTING.en.md). يخضع المستودع الجذري لترخيص [CC BY 4.0](LICENSE). احتفظ بنسب العمل إلى أصحابه، والتزم بالتراخيص الخاصة بموارد الجهات الخارجية والتطبيقات المستقلة.
+
+هذا الدليل ملخص مترجم من README. تتوفر التفاصيل التقنية الكاملة وتوزيع المسؤوليات في [النسخة الإنجليزية](#readme-en) و[النسخة الصينية](#readme-zh).
+
+</div>
+
+<p align="center"><a href="#readme-ar">↑ العربية</a> · <a href="#readme-zh">简体中文</a> · <a href="#readme-en">English</a></p>
+
+</div>
+
+---
+
+<a name="readme-fr"></a><br />
+
+<div lang="fr">
+
+<h1 lang="fr">Français</h1>
+
+<p align="center" dir="ltr">
+  <a href="#readme-zh" lang="zh-Hans" title="阅读简体中文版">
+    <img src="docs/media/readme-language-zh.svg" alt="简体中文" width="112" height="38" />
+  </a>
+  &nbsp;
+  <a href="#readme-en" lang="en" title="Read the full README in English">
+    <img src="docs/media/readme-language-en.svg" alt="English" width="112" height="38" />
+  </a>
+  <br />
+  <sub><a href="#readme-ar" lang="ar" dir="rtl">العربية</a> &nbsp; <a href="#readme-fr" lang="fr">Français</a> &nbsp; <a href="#readme-ru" lang="ru">Русский</a> &nbsp; <a href="#readme-es" lang="es">Español</a> &nbsp; <a href="#readme-de" lang="de">Deutsch</a> &nbsp; <a href="#readme-ja" lang="ja">日&#8288;本&#8288;語</a> &nbsp; <a href="#readme-ko" lang="ko">한&#8288;국&#8288;어</a> &nbsp; <a href="#readme-pt" lang="pt">Português</a></sub>
+  <br />
+  <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
+</p>
+
+> Guide de lecture en français. La documentation technique complète reste disponible en anglais et en chinois.
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/">
+    <img src="docs/media/circure-wordmark.svg" alt="CirCure" width="340" />
+  </a>
+</p>
+
+<h1 align="center">JLU-FBH · iGEM 2026</h1>
+
+<p align="center">
+  <img src="docs/media/readme-team-marks.svg" alt="JLU-FBH · iGEM" width="180" /><br />
+  Recherche sur un vaccin à ARN circulaire contre le cancer du sein triple négatif<br />
+  <a href="https://2026.igem.wiki/jlu-fbh/"><strong>Découvrir le Wiki officiel ↗</strong></a>
+</p>
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/visual-design#lumi-mascot">
+    <img src="docs/media/readme-lumi.png" alt="Lumi" width="120" height="120" />
+  </a><br />
+  <sub>Lumi, le petit mouton qui vous accompagne dans CirCure.</sub>
+</p>
+
+## Présentation du projet
+
+Ce dépôt contient le Wiki officiel de **JLU-FBH** pour le concours international de biologie synthétique **iGEM 2026** : interface du site, articles, illustrations, jeux pédagogiques et laboratoire virtuel.
+
+**CirCure** étudie une plateforme d’ARN circulaire (**circRNA**) modifié pour un vaccin à cibles multiples contre le cancer du sein triple négatif (**TNBC**). Le Wiki présente la conception, les expériences et les résultats du projet à travers des articles, des illustrations originales, une narration liée au défilement et des visualisations interactives.
+
+Le récit part des questions et des préoccupations des patientes, puis aborde les mécanismes moléculaires et les choix expérimentaux. Les lecteurs peuvent s’arrêter, comparer et explorer les contenus à leur rythme.
+
+## Références de conception pour les équipes iGEM
+
+La page [Visual Design](https://2026.igem.wiki/jlu-fbh/visual-design) présente l’identité visuelle, les illustrations, les animations, la structure des pages et les expériences pédagogiques.
+
+- [Section 8 : approche humaine et narration](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) — relier les questions des patientes à l’explication scientifique.
+- [Section 9 : contribution du Wiki](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) — préparation des illustrations par calques, rythme de lecture, navigation et interactions réversibles.
+- [Design Folios](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive) — premières propositions, comparaisons et démonstrations interactives.
+- [Guide de conception et sources (anglais)](docs/visual-design-guide.en.md) — méthodes, chemins de fichiers, références et attribution.
+
+## Explorer le projet
+
+Le site comprend cinq groupes : **Team**, **Project**, **Wet Lab**, **Dry Lab** et **Engagement**. Ils rassemblent les membres, la conception du projet, les expériences, les modèles, les logiciels, les actions éducatives et la durabilité.
+
+Le [portail Games](https://2026.igem.wiki/jlu-fbh/games) réunit le laboratoire virtuel, **Breast Guardian RPG**, **Bomb Cat** et **Bio Memory Match**. Le [laboratoire virtuel](https://virtual-lab-208fd4.igem.wiki/) propose neuf expériences de biologie moléculaire, de la culture bactérienne à la PCR et à l’analyse de l’expression des protéines.
+
+| Ressource | Accès |
+| --- | --- |
+| Wiki officiel | [Projet et résultats](https://2026.igem.wiki/jlu-fbh/) |
+| Aperçu de développement | [Version en cours d’évolution](https://wiki.dayquay.com/jlu-fbh/) |
+| Vidéo du projet | [Plateforme vidéo officielle iGEM](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
+| Code GitHub | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| GitLab officiel | [Source et historique de publication](https://gitlab.igem.org/2026/jlu-fbh) |
+
+Les sites officiel et de développement sont déployés séparément et peuvent présenter des contenus différents. Voir le [guide de déploiement (anglais)](docs/deployment.en.md). Le choix de langue en haut de cette page change le guide README ; les pages du Wiki et les documents liés conservent leur langue.
+
+## Code et architecture
+
+Le Wiki utilise **React, TypeScript et Vite**. **GSAP** anime les scènes, **Mol\*** affiche les structures moléculaires et **ECharts** présente les données des modèles.
+
+| Emplacement | Contenu |
+| --- | --- |
+| `src/data/` | Articles, sections et correspondances des ressources |
+| `src/contents/` | Assemblage des pages |
+| `src/components/wiki/` | Lecteur commun et interactions |
+| `src/components/home/` | Scènes de la page d’accueil |
+| `src/styles/` | Mise en page, couleurs et animations |
+| `virtual-lab/` et `games/` | Applications avec leurs propres dépendances et compilations |
+
+Voir le [plan du dépôt (anglais)](docs/repository-layout.en.md) et le [guide des ressources (anglais)](docs/assets.en.md).
+
+## Démarrage rapide
+
+Utilisez **Node.js 22.12+ dans la branche 22.x** et **Yarn Classic 1.22.22**. À la racine du dépôt :
+
+```sh
+yarn install --frozen-lockfile
+yarn dev
+```
+
+Ouvrez l’adresse indiquée dans le terminal, généralement `http://localhost:5173/jlu-fbh/`.
+
+```sh
+yarn lint
+yarn test:page-loading
+yarn build
+yarn preview
+```
+
+La compilation écrit dans `dist/`. Le laboratoire et les jeux se compilent séparément ; consultez leurs README. Le serveur de développement principal sert uniquement le Wiki. Instructions détaillées : [développement (anglais)](docs/development.en.md), [laboratoire (anglais)](virtual-lab/README.md#readme-en) et [jeux (anglais)](games/README.md#readme-en).
+
+## Équipe, contributions et licence
+
+Consultez [Roster](https://2026.igem.wiki/jlu-fbh/roster) et [Attributions](https://2026.igem.wiki/jlu-fbh/attributions) pour les membres, leurs contributions et les soutiens institutionnels. La [version anglaise complète](#team-and-acknowledgements) conserve les remerciements détaillés.
+
+Pour proposer une modification, lisez le [guide de contribution (anglais)](CONTRIBUTING.en.md). Le dépôt racine est sous licence [CC BY 4.0](LICENSE). Conservez les attributions et respectez les licences propres aux ressources tierces et aux applications autonomes.
+
+Ce guide est une synthèse traduite du README. Pour l’ensemble des détails techniques et des responsabilités, consultez le [README anglais](#readme-en) ou le [README chinois](#readme-zh).
+
+<p align="center"><a href="#readme-fr">↑ Français</a> · <a href="#readme-zh">简体中文</a> · <a href="#readme-en">English</a></p>
+
+</div>
+
+---
+
+<a name="readme-ru"></a><br />
+
+<div lang="ru">
+
+<h1 lang="ru">Русский</h1>
+
+<p align="center" dir="ltr">
+  <a href="#readme-zh" lang="zh-Hans" title="阅读简体中文版">
+    <img src="docs/media/readme-language-zh.svg" alt="简体中文" width="112" height="38" />
+  </a>
+  &nbsp;
+  <a href="#readme-en" lang="en" title="Read the full README in English">
+    <img src="docs/media/readme-language-en.svg" alt="English" width="112" height="38" />
+  </a>
+  <br />
+  <sub><a href="#readme-ar" lang="ar" dir="rtl">العربية</a> &nbsp; <a href="#readme-fr" lang="fr">Français</a> &nbsp; <a href="#readme-ru" lang="ru">Русский</a> &nbsp; <a href="#readme-es" lang="es">Español</a> &nbsp; <a href="#readme-de" lang="de">Deutsch</a> &nbsp; <a href="#readme-ja" lang="ja">日&#8288;本&#8288;語</a> &nbsp; <a href="#readme-ko" lang="ko">한&#8288;국&#8288;어</a> &nbsp; <a href="#readme-pt" lang="pt">Português</a></sub>
+  <br />
+  <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
+</p>
+
+> Обзор на русском языке. Полная техническая документация доступна на английском и китайском языках.
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/">
+    <img src="docs/media/circure-wordmark.svg" alt="CirCure" width="340" />
+  </a>
+</p>
+
+<h1 align="center">JLU-FBH · iGEM 2026</h1>
+
+<p align="center">
+  <img src="docs/media/readme-team-marks.svg" alt="JLU-FBH · iGEM" width="180" /><br />
+  Исследование вакцины на основе кольцевой РНК против трижды негативного рака молочной железы<br />
+  <a href="https://2026.igem.wiki/jlu-fbh/"><strong>Открыть официальную Wiki ↗</strong></a>
+</p>
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/visual-design#lumi-mascot">
+    <img src="docs/media/readme-lumi.png" alt="Lumi" width="120" height="120" />
+  </a><br />
+  <sub>Луми — маленькая овечка, которая сопровождает вас в CirCure.</sub>
+</p>
+
+## О проекте
+
+Этот репозиторий содержит официальную Wiki команды **JLU-FBH** для международного конкурса по синтетической биологии **iGEM 2026**: сайт, статьи, иллюстрации, обучающие игры и исходный код виртуальной лаборатории.
+
+**CirCure** исследует платформу на основе сконструированной кольцевой РНК (**circRNA**) для вакцины, направленной на несколько мишеней трижды негативного рака молочной железы (**TNBC**). Wiki представляет замысел, эксперименты и результаты с помощью статей, авторских рисунков, повествования, связанного с прокруткой, и интерактивных визуализаций.
+
+Рассказ начинается с вопросов и переживаний пациенток, затем переходит к молекулярным механизмам и выбору экспериментальных подходов. Читатели могут останавливаться, сравнивать материалы и изучать их в удобном темпе.
+
+## Дизайн: материалы для команд iGEM
+
+Раздел [Visual Design](https://2026.igem.wiki/jlu-fbh/visual-design) посвящён визуальному стилю, иллюстрациям, анимации, структуре страниц и обучающим сценариям.
+
+- [Раздел 8: внимание к человеку и построение повествования](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) — связь вопросов пациенток с научными объяснениями.
+- [Раздел 9: наш вклад через Wiki](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) — подготовка иллюстраций по слоям, темп чтения, навигация и обратимые взаимодействия.
+- [Design Folios](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive) — ранние варианты, сравнения и интерактивные демонстрации.
+- [Руководство по дизайну и исходному коду (английский)](docs/visual-design-guide.en.md) — методы, пути к файлам, источники и указание авторства.
+
+## Знакомство с проектом
+
+Сайт состоит из пяти групп: **Team**, **Project**, **Wet Lab**, **Dry Lab** и **Engagement**. В них представлены участники, разработка проекта, эксперименты, модели, программное обеспечение, образовательная деятельность и устойчивое развитие.
+
+Портал [Games](https://2026.igem.wiki/jlu-fbh/games) объединяет виртуальную лабораторию, **Breast Guardian RPG**, **Bomb Cat** и **Bio Memory Match**. [Виртуальная лаборатория](https://virtual-lab-208fd4.igem.wiki/) предлагает девять опытов по молекулярной биологии: от культивирования бактерий до ПЦР и анализа экспрессии белка.
+
+| Ресурс | Ссылка |
+| --- | --- |
+| Официальная Wiki | [Проект и результаты](https://2026.igem.wiki/jlu-fbh/) |
+| Предварительная версия | [Текущая разработка](https://wiki.dayquay.com/jlu-fbh/) |
+| Видео проекта | [Официальная видеоплатформа iGEM](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
+| Код на GitHub | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| Официальный GitLab | [Код и история публикаций](https://gitlab.igem.org/2026/jlu-fbh) |
+
+Официальный сайт и предварительная версия развёртываются отдельно и могут различаться по содержанию. См. [руководство по развёртыванию (английский)](docs/deployment.en.md). Выбор языка вверху переключает руководство README; страницы Wiki и связанные документы сохраняют свой язык.
+
+## Код и архитектура
+
+Wiki использует **React, TypeScript и Vite**. **GSAP** управляет анимацией, **Mol\*** отображает молекулярные структуры, а **ECharts** визуализирует данные моделей.
+
+| Расположение | Содержание |
+| --- | --- |
+| `src/data/` | Статьи, разделы и соответствия ресурсов |
+| `src/contents/` | Сборка страниц из компонентов |
+| `src/components/wiki/` | Общий интерфейс чтения и интерактивные компоненты |
+| `src/components/home/` | Сцены главной страницы |
+| `src/styles/` | Компоновка, цвета и анимация |
+| `virtual-lab/` и `games/` | Приложения с отдельными зависимостями и сборками |
+
+См. [карту репозитория (английский)](docs/repository-layout.en.md) и [руководство по ресурсам (английский)](docs/assets.en.md).
+
+## Быстрый запуск
+
+Используйте **Node.js 22.12 или новее в рамках ветки 22.x** и **Yarn Classic 1.22.22**. Из корневого каталога репозитория:
+
+```sh
+yarn install --frozen-lockfile
+yarn dev
+```
+
+Откройте адрес из терминала, обычно `http://localhost:5173/jlu-fbh/`.
+
+```sh
+yarn lint
+yarn test:page-loading
+yarn build
+yarn preview
+```
+
+Результат сборки записывается в `dist/`. Лаборатория и игры собираются отдельно; следуйте их README. Основной сервер разработки обслуживает только Wiki. Подробности: [разработка (английский)](docs/development.en.md), [лаборатория (английский)](virtual-lab/README.md#readme-en) и [игры (английский)](games/README.md#readme-en).
+
+## Команда, участие и лицензия
+
+На страницах [Roster](https://2026.igem.wiki/jlu-fbh/roster) и [Attributions](https://2026.igem.wiki/jlu-fbh/attributions) указаны участники, их вклад и поддержавшие проект организации. Подробные благодарности сохранены в [полной английской версии](#team-and-acknowledgements).
+
+Перед предложением изменений прочитайте [руководство для участников (английский)](CONTRIBUTING.en.md). Корневой репозиторий распространяется по лицензии [CC BY 4.0](LICENSE). Сохраняйте необходимые указания авторства и соблюдайте отдельные лицензии сторонних материалов и самостоятельных приложений.
+
+Это руководство — сокращённый перевод README. Полные технические сведения и распределение обязанностей приведены в [английском README](#readme-en) и [китайском README](#readme-zh).
+
+<p align="center"><a href="#readme-ru">↑ Русский</a> · <a href="#readme-zh">简体中文</a> · <a href="#readme-en">English</a></p>
+
+</div>
+
+---
+
+<a name="readme-es"></a><br />
+
+<div lang="es">
+
+<h1 lang="es">Español</h1>
+
+<p align="center" dir="ltr">
+  <a href="#readme-zh" lang="zh-Hans" title="阅读简体中文版">
+    <img src="docs/media/readme-language-zh.svg" alt="简体中文" width="112" height="38" />
+  </a>
+  &nbsp;
+  <a href="#readme-en" lang="en" title="Read the full README in English">
+    <img src="docs/media/readme-language-en.svg" alt="English" width="112" height="38" />
+  </a>
+  <br />
+  <sub><a href="#readme-ar" lang="ar" dir="rtl">العربية</a> &nbsp; <a href="#readme-fr" lang="fr">Français</a> &nbsp; <a href="#readme-ru" lang="ru">Русский</a> &nbsp; <a href="#readme-es" lang="es">Español</a> &nbsp; <a href="#readme-de" lang="de">Deutsch</a> &nbsp; <a href="#readme-ja" lang="ja">日&#8288;本&#8288;語</a> &nbsp; <a href="#readme-ko" lang="ko">한&#8288;국&#8288;어</a> &nbsp; <a href="#readme-pt" lang="pt">Português</a></sub>
+  <br />
+  <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
+</p>
+
+> Guía de lectura en español. La documentación técnica completa está disponible en inglés y en chino.
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/">
+    <img src="docs/media/circure-wordmark.svg" alt="CirCure" width="340" />
+  </a>
+</p>
+
+<h1 align="center">JLU-FBH · iGEM 2026</h1>
+
+<p align="center">
+  <img src="docs/media/readme-team-marks.svg" alt="JLU-FBH · iGEM" width="180" /><br />
+  Investigación de una vacuna de ARN circular contra el cáncer de mama triple negativo<br />
+  <a href="https://2026.igem.wiki/jlu-fbh/"><strong>Explorar el Wiki oficial ↗</strong></a>
+</p>
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/visual-design#lumi-mascot">
+    <img src="docs/media/readme-lumi.png" alt="Lumi" width="120" height="120" />
+  </a><br />
+  <sub>Lumi, la pequeña oveja que te acompaña por CirCure.</sub>
+</p>
+
+## Presentación del proyecto
+
+Este repositorio contiene el Wiki oficial de **JLU-FBH** para la competición internacional de biología sintética **iGEM 2026**: sitio web, artículos, ilustraciones, juegos educativos y código fuente del laboratorio virtual.
+
+**CirCure** investiga una plataforma de ARN circular (**circRNA**) modificado para una vacuna dirigida a múltiples dianas del cáncer de mama triple negativo (**TNBC**). El Wiki presenta el diseño, los experimentos y los resultados mediante artículos, ilustraciones originales, narración vinculada al desplazamiento y visualizaciones interactivas.
+
+El relato parte de las preguntas y preocupaciones de las pacientes y avanza hacia los mecanismos moleculares y las decisiones experimentales. Cada persona puede detenerse, comparar y explorar el contenido a su ritmo.
+
+## Referencias de diseño para equipos iGEM
+
+[Visual Design](https://2026.igem.wiki/jlu-fbh/visual-design) explica la identidad visual, las ilustraciones, las animaciones, la estructura de las páginas y las experiencias educativas.
+
+- [Sección 8: perspectiva humana y narrativa](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) — conectar las preguntas de las pacientes con las explicaciones científicas.
+- [Sección 9: nuestra contribución mediante el Wiki](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) — ilustraciones por capas, ritmo de lectura, navegación e interacciones reversibles.
+- [Design Folios](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive) — propuestas iniciales, comparaciones y demostraciones interactivas.
+- [Guía de diseño y código fuente (inglés)](docs/visual-design-guide.en.md) — métodos, rutas de archivos, referencias y atribución.
+
+## Explorar el proyecto
+
+El sitio se organiza en cinco grupos: **Team**, **Project**, **Wet Lab**, **Dry Lab** y **Engagement**. Incluyen miembros, diseño del proyecto, experimentos, modelos, software, actividades educativas y sostenibilidad.
+
+El [portal Games](https://2026.igem.wiki/jlu-fbh/games) reúne el laboratorio virtual, **Breast Guardian RPG**, **Bomb Cat** y **Bio Memory Match**. El [laboratorio virtual](https://virtual-lab-208fd4.igem.wiki/) ofrece nueve experimentos de biología molecular, desde el cultivo bacteriano hasta la PCR y el análisis de la expresión de proteínas.
+
+| Recurso | Acceso |
+| --- | --- |
+| Wiki oficial | [Proyecto y resultados](https://2026.igem.wiki/jlu-fbh/) |
+| Vista de desarrollo | [Versión en evolución](https://wiki.dayquay.com/jlu-fbh/) |
+| Vídeo del proyecto | [Plataforma oficial de vídeo iGEM](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
+| Código en GitHub | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| GitLab oficial | [Código e historial de publicación](https://gitlab.igem.org/2026/jlu-fbh) |
+
+El sitio oficial y la vista de desarrollo se despliegan por separado y pueden mostrar contenidos distintos. Consulta la [guía de despliegue (inglés)](docs/deployment.en.md). El selector de idioma superior cambia la guía README; las páginas del Wiki y los documentos enlazados conservan su idioma.
+
+## Código y arquitectura
+
+El Wiki utiliza **React, TypeScript y Vite**. **GSAP** gestiona las animaciones, **Mol\*** muestra estructuras moleculares y **ECharts** representa datos de los modelos.
+
+| Ubicación | Contenido |
+| --- | --- |
+| `src/data/` | Artículos, secciones y correspondencias de recursos |
+| `src/contents/` | Composición de las páginas |
+| `src/components/wiki/` | Lector compartido e interacciones |
+| `src/components/home/` | Escenas de la página de inicio |
+| `src/styles/` | Maquetación, colores y animaciones |
+| `virtual-lab/` y `games/` | Aplicaciones con dependencias y compilaciones propias |
+
+Consulta el [mapa del repositorio (inglés)](docs/repository-layout.en.md) y la [guía de recursos (inglés)](docs/assets.en.md).
+
+## Inicio rápido
+
+Utiliza **Node.js 22.12 o posterior dentro de la serie 22.x** y **Yarn Classic 1.22.22**. Desde la raíz del repositorio:
+
+```sh
+yarn install --frozen-lockfile
+yarn dev
+```
+
+Abre la dirección indicada en la terminal, normalmente `http://localhost:5173/jlu-fbh/`.
+
+```sh
+yarn lint
+yarn test:page-loading
+yarn build
+yarn preview
+```
+
+La compilación escribe en `dist/`. El laboratorio y los juegos se compilan por separado; sigue sus README. El servidor de desarrollo principal sirve únicamente el Wiki. Instrucciones detalladas: [desarrollo (inglés)](docs/development.en.md), [laboratorio (inglés)](virtual-lab/README.md#readme-en) y [juegos (inglés)](games/README.md#readme-en).
+
+## Equipo, contribuciones y licencia
+
+[Roster](https://2026.igem.wiki/jlu-fbh/roster) y [Attributions](https://2026.igem.wiki/jlu-fbh/attributions) recogen los miembros, sus aportaciones y el apoyo institucional. La [versión inglesa completa](#team-and-acknowledgements) incluye los agradecimientos detallados.
+
+Antes de proponer cambios, consulta la [guía de contribución (inglés)](CONTRIBUTING.en.md). El repositorio raíz usa [CC BY 4.0](LICENSE). Conserva las atribuciones y respeta las licencias propias de recursos de terceros y aplicaciones independientes.
+
+Esta guía es una síntesis traducida del README. Los detalles técnicos completos y las responsabilidades figuran en el [README inglés](#readme-en) y el [README chino](#readme-zh).
+
+<p align="center"><a href="#readme-es">↑ Español</a> · <a href="#readme-zh">简体中文</a> · <a href="#readme-en">English</a></p>
+
+</div>
+
+---
+
+<a name="readme-de"></a><br />
+
+<div lang="de">
+
+<h1 lang="de">Deutsch</h1>
+
+<p align="center" dir="ltr">
+  <a href="#readme-zh" lang="zh-Hans" title="阅读简体中文版">
+    <img src="docs/media/readme-language-zh.svg" alt="简体中文" width="112" height="38" />
+  </a>
+  &nbsp;
+  <a href="#readme-en" lang="en" title="Read the full README in English">
+    <img src="docs/media/readme-language-en.svg" alt="English" width="112" height="38" />
+  </a>
+  <br />
+  <sub><a href="#readme-ar" lang="ar" dir="rtl">العربية</a> &nbsp; <a href="#readme-fr" lang="fr">Français</a> &nbsp; <a href="#readme-ru" lang="ru">Русский</a> &nbsp; <a href="#readme-es" lang="es">Español</a> &nbsp; <a href="#readme-de" lang="de">Deutsch</a> &nbsp; <a href="#readme-ja" lang="ja">日&#8288;本&#8288;語</a> &nbsp; <a href="#readme-ko" lang="ko">한&#8288;국&#8288;어</a> &nbsp; <a href="#readme-pt" lang="pt">Português</a></sub>
+  <br />
+  <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
+</p>
+
+> Deutschsprachiger Überblick. Die vollständige technische Dokumentation ist auf Englisch und Chinesisch verfügbar.
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/">
+    <img src="docs/media/circure-wordmark.svg" alt="CirCure" width="340" />
+  </a>
+</p>
+
+<h1 align="center">JLU-FBH · iGEM 2026</h1>
+
+<p align="center">
+  <img src="docs/media/readme-team-marks.svg" alt="JLU-FBH · iGEM" width="180" /><br />
+  Forschung an einem Impfstoff mit zirkulärer RNA gegen dreifach negativen Brustkrebs<br />
+  <a href="https://2026.igem.wiki/jlu-fbh/"><strong>Offizielles Wiki öffnen ↗</strong></a>
+</p>
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/visual-design#lumi-mascot">
+    <img src="docs/media/readme-lumi.png" alt="Lumi" width="120" height="120" />
+  </a><br />
+  <sub>Lumi, das kleine Schaf, begleitet Sie durch CirCure.</sub>
+</p>
+
+## Projektüberblick
+
+Dieses Repository enthält das offizielle Wiki von **JLU-FBH** für den internationalen Wettbewerb für synthetische Biologie **iGEM 2026**: Website, Artikel, Illustrationen, Lernspiele und den Quellcode des virtuellen Labors.
+
+**CirCure** untersucht eine Plattform mit gezielt veränderter zirkulärer RNA (**circRNA**) für einen Impfstoff gegen mehrere Zielstrukturen bei dreifach negativem Brustkrebs (**TNBC**). Das Wiki stellt Entwurf, Experimente und Forschungsergebnisse mit Artikeln, handgezeichneten Bildern, einer durch Scrollen gesteuerten Erzählung und interaktiven Visualisierungen vor.
+
+Die Erzählung beginnt bei den Fragen und Sorgen von Patientinnen und führt zu molekularen Mechanismen und Versuchsentscheidungen. Leserinnen und Leser können Inhalte in ihrem eigenen Tempo lesen, vergleichen und erkunden.
+
+## Gestaltung als Referenz für iGEM-Teams
+
+[Visual Design](https://2026.igem.wiki/jlu-fbh/visual-design) erläutert visuelle Identität, Illustrationen, Animationen, Seitenaufbau und interaktive Lernangebote.
+
+- [Abschnitt 8: Menschliche Perspektive und Erzählung](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) verbindet Fragen von Patientinnen mit wissenschaftlichen Erklärungen.
+- [Abschnitt 9: Unser Wiki-Beitrag](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) behandelt Illustrationsebenen, Lesetempo, Navigation und umkehrbare Interaktionen.
+- [Design Folios](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive) enthält frühe Entwürfe, Vergleiche und bedienbare Demonstrationen.
+- Der [Gestaltungsleitfaden mit Quellcodeverweisen (Englisch)](docs/visual-design-guide.en.md) erklärt Methoden, Dateipfade, Quellen und Namensnennung.
+
+## Das Projekt erkunden
+
+Die Website umfasst fünf Bereiche: **Team**, **Project**, **Wet Lab**, **Dry Lab** und **Engagement**. Sie behandeln Mitglieder, Projektentwicklung, Experimente, Modelle, Software, Bildungsangebote und Nachhaltigkeit.
+
+Das [Spieleportal](https://2026.igem.wiki/jlu-fbh/games) bündelt das virtuelle Labor, **Breast Guardian RPG**, **Bomb Cat** und **Bio Memory Match**. Das [virtuelle Labor](https://virtual-lab-208fd4.igem.wiki/) bietet neun molekularbiologische Experimente von Bakterienkultur über PCR bis zur Untersuchung der Proteinexpression.
+
+| Ressource | Zugang |
+| --- | --- |
+| Offizielles Wiki | [Projekt und Ergebnisse](https://2026.igem.wiki/jlu-fbh/) |
+| Entwicklungsvorschau | [Laufende Weiterentwicklung](https://wiki.dayquay.com/jlu-fbh/) |
+| Projektvideo | [Offizielle iGEM-Videoplattform](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
+| GitHub-Quellcode | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| Offizielles GitLab | [Quellcode und Veröffentlichungsverlauf](https://gitlab.igem.org/2026/jlu-fbh) |
+
+Offizielle Website und Entwicklungsvorschau werden getrennt bereitgestellt und können unterschiedliche Inhalte zeigen. Einzelheiten stehen im [Bereitstellungsleitfaden (Englisch)](docs/deployment.en.md). Die Sprachauswahl oben wechselt den README-Leitfaden; Wiki-Seiten und verlinkte Dokumente behalten ihre jeweilige Sprache.
+
+## Quellcode und Architektur
+
+Das Wiki verwendet **React, TypeScript und Vite**. **GSAP** steuert Animationen, **Mol\*** zeigt Molekülstrukturen und **ECharts** visualisiert Modelldaten.
+
+| Pfad | Inhalt |
+| --- | --- |
+| `src/data/` | Artikel, Abschnitte und Ressourcenzuordnungen |
+| `src/contents/` | Zusammenstellung der Seiten |
+| `src/components/wiki/` | Gemeinsame Leseansicht und Interaktionen |
+| `src/components/home/` | Szenen der Startseite |
+| `src/styles/` | Layout, Farben und Animationen |
+| `virtual-lab/` und `games/` | Anwendungen mit eigenen Abhängigkeiten und Builds |
+
+Siehe [Repository-Übersicht (Englisch)](docs/repository-layout.en.md) und [Ressourcenleitfaden (Englisch)](docs/assets.en.md).
+
+## Schnellstart
+
+Verwenden Sie **Node.js 22.12+ innerhalb der Reihe 22.x** und **Yarn Classic 1.22.22**. Im Stammverzeichnis des Repositorys:
+
+```sh
+yarn install --frozen-lockfile
+yarn dev
+```
+
+Öffnen Sie die im Terminal angezeigte Adresse, üblicherweise `http://localhost:5173/jlu-fbh/`.
+
+```sh
+yarn lint
+yarn test:page-loading
+yarn build
+yarn preview
+```
+
+Der Build schreibt nach `dist/`. Labor und Spiele werden separat gebaut; beachten Sie deren README-Dateien. Der zentrale Entwicklungsserver stellt nur das Wiki bereit. Weitere Anleitungen: [Entwicklung (Englisch)](docs/development.en.md), [Labor (Englisch)](virtual-lab/README.md#readme-en) und [Spiele (Englisch)](games/README.md#readme-en).
+
+## Team, Mitarbeit und Lizenz
+
+[Roster](https://2026.igem.wiki/jlu-fbh/roster) und [Attributions](https://2026.igem.wiki/jlu-fbh/attributions) dokumentieren Mitglieder, Beiträge und institutionelle Unterstützung. Die ausführlichen Danksagungen stehen in der [vollständigen englischen Version](#team-and-acknowledgements).
+
+Lesen Sie vor Änderungsvorschlägen die [Hinweise zur Mitarbeit (Englisch)](CONTRIBUTING.en.md). Für das Hauptrepository gilt [CC BY 4.0](LICENSE). Erhalten Sie die erforderlichen Namensnennungen und beachten Sie die eigenen Lizenzen von Drittmaterialien und eigenständigen Anwendungen.
+
+Dieser Leitfaden ist eine übersetzte Zusammenfassung des README. Vollständige technische Einzelheiten und Zuständigkeiten finden Sie im [englischen README](#readme-en) oder [chinesischen README](#readme-zh).
+
+<p align="center"><a href="#readme-de">↑ Deutsch</a> · <a href="#readme-zh">简体中文</a> · <a href="#readme-en">English</a></p>
+
+</div>
+
+---
+
+<a name="readme-ja"></a><br />
+
+<div lang="ja">
+
+<h1 lang="ja">日本語</h1>
+
+<p align="center" dir="ltr">
+  <a href="#readme-zh" lang="zh-Hans" title="阅读简体中文版">
+    <img src="docs/media/readme-language-zh.svg" alt="简体中文" width="112" height="38" />
+  </a>
+  &nbsp;
+  <a href="#readme-en" lang="en" title="Read the full README in English">
+    <img src="docs/media/readme-language-en.svg" alt="English" width="112" height="38" />
+  </a>
+  <br />
+  <sub><a href="#readme-ar" lang="ar" dir="rtl">العربية</a> &nbsp; <a href="#readme-fr" lang="fr">Français</a> &nbsp; <a href="#readme-ru" lang="ru">Русский</a> &nbsp; <a href="#readme-es" lang="es">Español</a> &nbsp; <a href="#readme-de" lang="de">Deutsch</a> &nbsp; <a href="#readme-ja" lang="ja">日&#8288;本&#8288;語</a> &nbsp; <a href="#readme-ko" lang="ko">한&#8288;국&#8288;어</a> &nbsp; <a href="#readme-pt" lang="pt">Português</a></sub>
+  <br />
+  <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
+</p>
+
+> 日本語の概要ガイドです。詳しい技術文書は英語版と中国語版をご覧ください。
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/">
+    <img src="docs/media/circure-wordmark.svg" alt="CirCure" width="340" />
+  </a>
+</p>
+
+<h1 align="center">JLU-FBH · iGEM 2026</h1>
+
+<p align="center">
+  <img src="docs/media/readme-team-marks.svg" alt="JLU-FBH · iGEM" width="180" /><br />
+  トリプルネガティブ乳がんを対象とする環状 RNA ワクチンの研究<br />
+  <a href="https://2026.igem.wiki/jlu-fbh/"><strong>公式 Wiki を開く ↗</strong></a>
+</p>
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/visual-design#lumi-mascot">
+    <img src="docs/media/readme-lumi.png" alt="Lumi" width="120" height="120" />
+  </a><br />
+  <sub>小さな羊の Lumi が CirCure を案内します。</sub>
+</p>
+
+## プロジェクト概要
+
+このリポジトリは、合成生物学の国際大会 **iGEM 2026** に参加する **JLU-FBH** チームの公式 Wiki ソースです。Web サイト、記事、イラスト、学習ゲーム、仮想実験室のソースコードを収録しています。
+
+**CirCure** は、トリプルネガティブ乳がん（**TNBC**）の複数の標的に対応するワクチンに向けて、改変した環状 RNA（**circRNA**）のプラットフォームを研究しています。Wiki では、記事、手描きのイラスト、スクロールに連動する物語、対話型の可視化を通じて、設計、実験、研究結果を紹介します。
+
+患者さんの疑問や不安を出発点に、分子機構や実験設計へと説明を進めます。読者は自分のペースで立ち止まり、比較し、内容を探索できます。
+
+## iGEM チームに向けたデザイン資料
+
+[Visual Design](https://2026.igem.wiki/jlu-fbh/visual-design) では、ビジュアルアイデンティティ、イラスト、アニメーション、ページ構成、学習体験を紹介しています。
+
+- [第 8 節：人への配慮と物語の設計](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) — 患者さんの問いと科学的な説明をつなぎます。
+- [第 9 節：Wiki を通じた貢献](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) — イラストのレイヤー分け、読むための時間、ナビゲーション、元に戻せる操作を説明します。
+- [Design Folios](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive) — 初期案、比較、操作できるデモをまとめています。
+- [デザイン手法とソースのガイド（英語）](docs/visual-design-guide.en.md) — 手法、ファイルの場所、参考文献、クレジットを確認できます。
+
+## コンテンツを探す
+
+サイトには **Team、Project、Wet Lab、Dry Lab、Engagement** の 5 つのグループがあります。メンバー、プロジェクト設計、実験、モデル、ソフトウェア、教育活動、持続可能性を扱います。
+
+[Games](https://2026.igem.wiki/jlu-fbh/games) には、仮想実験室、**Breast Guardian RPG**、**Bomb Cat**、**Bio Memory Match** が集まっています。[仮想実験室](https://virtual-lab-208fd4.igem.wiki/) では、細菌培養から PCR、タンパク質発現の解析まで、9 つの分子生物学実験を学べます。
+
+| 資料 | リンク |
+| --- | --- |
+| 公式 Wiki | [プロジェクトと研究結果](https://2026.igem.wiki/jlu-fbh/) |
+| 開発プレビュー | [継続して更新される開発版](https://wiki.dayquay.com/jlu-fbh/) |
+| 紹介動画 | [iGEM 公式動画プラットフォーム](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
+| GitHub ソース | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| 公式 GitLab | [ソースと公開履歴](https://gitlab.igem.org/2026/jlu-fbh) |
+
+公式サイトと開発プレビューは別々にデプロイされるため、内容が異なる場合があります。詳細は[デプロイガイド（英語）](docs/deployment.en.md)をご覧ください。ページ上部の言語選択は README ガイドを切り替えます。Wiki 本体やリンク先の文書は、それぞれの言語のままです。
+
+## ソース構成
+
+Wiki は **React、TypeScript、Vite** で構築しています。**GSAP** はアニメーション、**Mol\*** は分子構造の表示、**ECharts** はモデルのデータ可視化を担当します。
+
+| 場所 | 内容 |
+| --- | --- |
+| `src/data/` | 記事、節、リソースの対応関係 |
+| `src/contents/` | ページの組み立て |
+| `src/components/wiki/` | 共通の閲覧表示と対話機能 |
+| `src/components/home/` | ホームページのシーン |
+| `src/styles/` | レイアウト、配色、アニメーション |
+| `virtual-lab/` と `games/` | 依存関係とビルドを個別に管理するアプリ |
+
+[リポジトリ構成（英語）](docs/repository-layout.en.md)と[リソース管理ガイド（英語）](docs/assets.en.md)も参照してください。
+
+## クイックスタート
+
+**Node.js 22.x の 22.12 以降**と **Yarn Classic 1.22.22** を使用します。リポジトリのルートで実行してください。
+
+```sh
+yarn install --frozen-lockfile
+yarn dev
+```
+
+ターミナルに表示された URL を開きます。通常は `http://localhost:5173/jlu-fbh/` です。
+
+```sh
+yarn lint
+yarn test:page-loading
+yarn build
+yarn preview
+```
+
+ビルドの出力先は `dist/` です。仮想実験室とゲームは個別にビルドします。それぞれの README を確認してください。ルートの開発サーバーは Wiki のみを配信します。詳しい手順：[開発ガイド（英語）](docs/development.en.md)、[仮想実験室（英語）](virtual-lab/README.md#readme-en)、[ゲーム（英語）](games/README.md#readme-en)。
+
+## チーム・貢献・ライセンス
+
+メンバー、役割、協力機関については [Roster](https://2026.igem.wiki/jlu-fbh/roster) と [Attributions](https://2026.igem.wiki/jlu-fbh/attributions) をご覧ください。詳しい謝辞は[英語完全版](#team-and-acknowledgements)に掲載しています。
+
+変更を提案する際は、[貢献ガイド（英語）](CONTRIBUTING.en.md)を確認してください。ルートリポジトリは [CC BY 4.0](LICENSE) で公開しています。必要なクレジットを保持し、第三者の素材や独立したアプリのライセンスにも従ってください。
+
+このページは README の要約翻訳です。技術情報と担当範囲の全体は、[英語版](#readme-en)または[中国語版](#readme-zh)を参照してください。
+
+<p align="center"><a href="#readme-ja">↑ 日本語</a> · <a href="#readme-zh">简体中文</a> · <a href="#readme-en">English</a></p>
+
+</div>
+
+---
+
+<a name="readme-ko"></a><br />
+
+<div lang="ko">
+
+<h1 lang="ko">한국어</h1>
+
+<p align="center" dir="ltr">
+  <a href="#readme-zh" lang="zh-Hans" title="阅读简体中文版">
+    <img src="docs/media/readme-language-zh.svg" alt="简体中文" width="112" height="38" />
+  </a>
+  &nbsp;
+  <a href="#readme-en" lang="en" title="Read the full README in English">
+    <img src="docs/media/readme-language-en.svg" alt="English" width="112" height="38" />
+  </a>
+  <br />
+  <sub><a href="#readme-ar" lang="ar" dir="rtl">العربية</a> &nbsp; <a href="#readme-fr" lang="fr">Français</a> &nbsp; <a href="#readme-ru" lang="ru">Русский</a> &nbsp; <a href="#readme-es" lang="es">Español</a> &nbsp; <a href="#readme-de" lang="de">Deutsch</a> &nbsp; <a href="#readme-ja" lang="ja">日&#8288;本&#8288;語</a> &nbsp; <a href="#readme-ko" lang="ko">한&#8288;국&#8288;어</a> &nbsp; <a href="#readme-pt" lang="pt">Português</a></sub>
+  <br />
+  <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
+</p>
+
+> 한국어 개요 안내입니다. 전체 기술 문서는 영어판과 중국어판에서 확인할 수 있습니다.
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/">
+    <img src="docs/media/circure-wordmark.svg" alt="CirCure" width="340" />
+  </a>
+</p>
+
+<h1 align="center">JLU-FBH · iGEM 2026</h1>
+
+<p align="center">
+  <img src="docs/media/readme-team-marks.svg" alt="JLU-FBH · iGEM" width="180" /><br />
+  삼중음성 유방암을 대상으로 하는 원형 RNA 백신 연구<br />
+  <a href="https://2026.igem.wiki/jlu-fbh/"><strong>공식 Wiki 보기 ↗</strong></a>
+</p>
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/visual-design#lumi-mascot">
+    <img src="docs/media/readme-lumi.png" alt="Lumi" width="120" height="120" />
+  </a><br />
+  <sub>작은 양 Lumi가 CirCure를 안내합니다.</sub>
+</p>
+
+## 프로젝트 소개
+
+이 저장소는 국제 합성생물학 경진대회 **iGEM 2026**에 참가하는 **JLU-FBH** 팀의 공식 Wiki 소스입니다. 웹사이트, 문서, 일러스트, 교육용 게임과 가상 실험실 소스 코드를 포함합니다.
+
+**CirCure**는 삼중음성 유방암(**TNBC**)의 여러 표적을 겨냥하는 백신을 위해 설계한 원형 RNA(**circRNA**) 플랫폼을 연구합니다. Wiki는 문서, 손으로 그린 일러스트, 스크롤에 따라 진행되는 이야기와 상호작용형 시각화를 통해 설계, 실험, 연구 결과를 소개합니다.
+
+환자의 질문과 걱정에서 출발해 분자 기전과 실험 설계로 설명을 이어갑니다. 독자는 자신의 속도에 맞춰 멈추고, 비교하고, 내용을 탐색할 수 있습니다.
+
+## iGEM 팀을 위한 디자인 참고 자료
+
+[Visual Design](https://2026.igem.wiki/jlu-fbh/visual-design)은 시각적 정체성, 일러스트, 애니메이션, 페이지 구조와 교육 경험을 설명합니다.
+
+- [8절: 사람을 고려한 서사 설계](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) — 환자의 질문과 과학적 설명을 연결합니다.
+- [9절: Wiki를 통한 기여](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) — 일러스트 레이어 구성, 읽기 속도, 탐색 구조와 되돌릴 수 있는 상호작용을 다룹니다.
+- [Design Folios](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive) — 초기 시안, 비교 자료와 직접 조작할 수 있는 데모를 제공합니다.
+- [디자인 방법과 소스 안내서(영어)](docs/visual-design-guide.en.md) — 방법, 파일 경로, 참고 문헌과 출처 표기를 확인할 수 있습니다.
+
+## 프로젝트 둘러보기
+
+웹사이트에는 **Team, Project, Wet Lab, Dry Lab, Engagement**의 다섯 그룹이 있습니다. 팀원, 프로젝트 설계, 실험, 모델, 소프트웨어, 교육 활동과 지속가능성을 다룹니다.
+
+[Games](https://2026.igem.wiki/jlu-fbh/games)에서 가상 실험실, **Breast Guardian RPG**, **Bomb Cat**, **Bio Memory Match**를 이용할 수 있습니다. [가상 실험실](https://virtual-lab-208fd4.igem.wiki/)은 세균 배양부터 PCR과 단백질 발현 분석까지 아홉 가지 분자생물학 실험을 제공합니다.
+
+| 자료 | 링크 |
+| --- | --- |
+| 공식 Wiki | [프로젝트와 연구 결과](https://2026.igem.wiki/jlu-fbh/) |
+| 개발 미리보기 | [계속 수정되는 개발 버전](https://wiki.dayquay.com/jlu-fbh/) |
+| 프로젝트 소개 영상 | [iGEM 공식 영상 플랫폼](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
+| GitHub 소스 | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| 공식 GitLab | [소스와 배포 이력](https://gitlab.igem.org/2026/jlu-fbh) |
+
+공식 사이트와 개발 미리보기는 별도로 배포되므로 내용이 다를 수 있습니다. [배포 안내서(영어)](docs/deployment.en.md)를 참고하세요. 상단 언어 선택은 README 안내서를 전환합니다. Wiki 페이지와 연결된 문서는 각자의 언어를 유지합니다.
+
+## 소스 구성
+
+Wiki는 **React, TypeScript, Vite**를 사용합니다. **GSAP**는 애니메이션, **Mol\***는 분자 구조 표시, **ECharts**는 모델 데이터 시각화를 담당합니다.
+
+| 위치 | 내용 |
+| --- | --- |
+| `src/data/` | 문서, 절과 리소스 매핑 |
+| `src/contents/` | 페이지 조립 |
+| `src/components/wiki/` | 공통 읽기 화면과 상호작용 |
+| `src/components/home/` | 홈페이지 장면 |
+| `src/styles/` | 레이아웃, 색상과 애니메이션 |
+| `virtual-lab/` 및 `games/` | 의존성과 빌드를 별도로 관리하는 앱 |
+
+[저장소 구성 안내서(영어)](docs/repository-layout.en.md)와 [리소스 안내서(영어)](docs/assets.en.md)도 참고하세요.
+
+## 빠른 시작
+
+**Node.js 22.x 계열의 22.12 이상**과 **Yarn Classic 1.22.22**를 사용하세요. 저장소 루트에서 실행합니다.
+
+```sh
+yarn install --frozen-lockfile
+yarn dev
+```
+
+터미널에 표시된 주소를 엽니다. 일반적으로 `http://localhost:5173/jlu-fbh/`입니다.
+
+```sh
+yarn lint
+yarn test:page-loading
+yarn build
+yarn preview
+```
+
+빌드 결과는 `dist/`에 생성됩니다. 실험실과 게임은 별도로 빌드하며 각각의 README를 따라야 합니다. 루트 개발 서버는 Wiki만 제공합니다. 자세한 절차: [개발 안내서(영어)](docs/development.en.md), [가상 실험실(영어)](virtual-lab/README.md#readme-en), [게임(영어)](games/README.md#readme-en).
+
+## 팀·기여·라이선스
+
+팀원, 역할과 기관의 지원은 [Roster](https://2026.igem.wiki/jlu-fbh/roster) 및 [Attributions](https://2026.igem.wiki/jlu-fbh/attributions)를 확인하세요. 자세한 감사의 글은 [영어 전체판](#team-and-acknowledgements)에 있습니다.
+
+변경을 제안하기 전에 [기여 안내서(영어)](CONTRIBUTING.en.md)를 읽어 주세요. 루트 저장소에는 [CC BY 4.0](LICENSE)이 적용됩니다. 필요한 출처 표기를 유지하고 외부 리소스와 독립 앱의 개별 라이선스도 준수해야 합니다.
+
+이 안내서는 README의 요약 번역입니다. 전체 기술 정보와 담당 범위는 [영어판](#readme-en) 또는 [중국어판](#readme-zh)을 참고하세요.
+
+<p align="center"><a href="#readme-ko">↑ 한국어</a> · <a href="#readme-zh">简体中文</a> · <a href="#readme-en">English</a></p>
+
+</div>
+
+---
+
+<a name="readme-pt"></a><br />
+
+<div lang="pt">
+
+<h1 lang="pt">Português</h1>
+
+<p align="center" dir="ltr">
+  <a href="#readme-zh" lang="zh-Hans" title="阅读简体中文版">
+    <img src="docs/media/readme-language-zh.svg" alt="简体中文" width="112" height="38" />
+  </a>
+  &nbsp;
+  <a href="#readme-en" lang="en" title="Read the full README in English">
+    <img src="docs/media/readme-language-en.svg" alt="English" width="112" height="38" />
+  </a>
+  <br />
+  <sub><a href="#readme-ar" lang="ar" dir="rtl">العربية</a> &nbsp; <a href="#readme-fr" lang="fr">Français</a> &nbsp; <a href="#readme-ru" lang="ru">Русский</a> &nbsp; <a href="#readme-es" lang="es">Español</a> &nbsp; <a href="#readme-de" lang="de">Deutsch</a> &nbsp; <a href="#readme-ja" lang="ja">日&#8288;本&#8288;語</a> &nbsp; <a href="#readme-ko" lang="ko">한&#8288;국&#8288;어</a> &nbsp; <a href="#readme-pt" lang="pt">Português</a></sub>
+  <br />
+  <sub><a href="docs/README.md">中文文档</a> · <a href="docs/README.en.md">English documentation →</a></sub>
+</p>
+
+> Guia de leitura em português. A documentação técnica completa está disponível em inglês e chinês.
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/">
+    <img src="docs/media/circure-wordmark.svg" alt="CirCure" width="340" />
+  </a>
+</p>
+
+<h1 align="center">JLU-FBH · iGEM 2026</h1>
+
+<p align="center">
+  <img src="docs/media/readme-team-marks.svg" alt="JLU-FBH · iGEM" width="180" /><br />
+  Pesquisa de uma vacina de RNA circular contra o câncer de mama triplo-negativo<br />
+  <a href="https://2026.igem.wiki/jlu-fbh/"><strong>Explorar o Wiki oficial ↗</strong></a>
+</p>
+
+<p align="center">
+  <a href="https://2026.igem.wiki/jlu-fbh/visual-design#lumi-mascot">
+    <img src="docs/media/readme-lumi.png" alt="Lumi" width="120" height="120" />
+  </a><br />
+  <sub>Lumi, a pequena ovelha que acompanha você pelo CirCure.</sub>
+</p>
+
+## Visão geral do projeto
+
+Este repositório contém o Wiki oficial da equipe **JLU-FBH** para a competição internacional de biologia sintética **iGEM 2026**: site, artigos, ilustrações, jogos educativos e código-fonte do laboratório virtual.
+
+O **CirCure** investiga uma plataforma de RNA circular (**circRNA**) modificado para uma vacina com múltiplos alvos contra o câncer de mama triplo-negativo (**TNBC**). O Wiki apresenta a concepção, os experimentos e os resultados por meio de artigos, ilustrações originais, narrativa vinculada à rolagem e visualizações interativas.
+
+A narrativa parte das perguntas e preocupações das pacientes e avança para os mecanismos moleculares e as decisões experimentais. Cada pessoa pode parar, comparar e explorar o conteúdo no próprio ritmo.
+
+## Referências de design para equipes iGEM
+
+A página [Visual Design](https://2026.igem.wiki/jlu-fbh/visual-design) explica a identidade visual, as ilustrações, as animações, a estrutura das páginas e as experiências educativas.
+
+- [Seção 8: perspectiva humana e narrativa](https://2026.igem.wiki/jlu-fbh/visual-design#human-centered-experience) — conectar as perguntas das pacientes às explicações científicas.
+- [Seção 9: nossa contribuição por meio do Wiki](https://2026.igem.wiki/jlu-fbh/visual-design#interaction-craft) — ilustrações em camadas, ritmo de leitura, navegação e interações reversíveis.
+- [Design Folios](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive) — propostas iniciais, comparações e demonstrações interativas.
+- [Guia de design e código-fonte (inglês)](docs/visual-design-guide.en.md) — métodos, caminhos de arquivos, referências e atribuição.
+
+## Explorar o projeto
+
+O site está organizado em cinco grupos: **Team**, **Project**, **Wet Lab**, **Dry Lab** e **Engagement**. Eles abrangem integrantes, concepção do projeto, experimentos, modelos, software, ações educativas e sustentabilidade.
+
+O [portal Games](https://2026.igem.wiki/jlu-fbh/games) reúne o laboratório virtual, **Breast Guardian RPG**, **Bomb Cat** e **Bio Memory Match**. O [laboratório virtual](https://virtual-lab-208fd4.igem.wiki/) oferece nove experimentos de biologia molecular, da cultura bacteriana à PCR e à análise da expressão de proteínas.
+
+| Recurso | Acesso |
+| --- | --- |
+| Wiki oficial | [Projeto e resultados](https://2026.igem.wiki/jlu-fbh/) |
+| Prévia de desenvolvimento | [Versão em evolução](https://wiki.dayquay.com/jlu-fbh/) |
+| Vídeo do projeto | [Plataforma oficial de vídeos do iGEM](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
+| Código no GitHub | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| GitLab oficial | [Código e histórico de publicação](https://gitlab.igem.org/2026/jlu-fbh) |
+
+O site oficial e a prévia de desenvolvimento são publicados separadamente e podem apresentar conteúdos diferentes. Consulte o [guia de implantação (inglês)](docs/deployment.en.md). A seleção de idioma no topo muda o guia README; as páginas do Wiki e os documentos vinculados mantêm seus próprios idiomas.
+
+## Código e arquitetura
+
+O Wiki usa **React, TypeScript e Vite**. O **GSAP** controla as animações, o **Mol\*** exibe estruturas moleculares e o **ECharts** apresenta dados dos modelos.
+
+| Local | Conteúdo |
+| --- | --- |
+| `src/data/` | Artigos, seções e mapeamentos de recursos |
+| `src/contents/` | Composição das páginas |
+| `src/components/wiki/` | Leitor compartilhado e interações |
+| `src/components/home/` | Cenas da página inicial |
+| `src/styles/` | Layout, cores e animações |
+| `virtual-lab/` e `games/` | Aplicações com dependências e compilações próprias |
+
+Veja o [mapa do repositório (inglês)](docs/repository-layout.en.md) e o [guia de recursos (inglês)](docs/assets.en.md).
+
+## Início rápido
+
+Use **Node.js 22.12 ou superior dentro da série 22.x** e **Yarn Classic 1.22.22**. Na raiz do repositório:
+
+```sh
+yarn install --frozen-lockfile
+yarn dev
+```
+
+Abra o endereço indicado no terminal, normalmente `http://localhost:5173/jlu-fbh/`.
+
+```sh
+yarn lint
+yarn test:page-loading
+yarn build
+yarn preview
+```
+
+A compilação gera os arquivos em `dist/`. O laboratório e os jogos são compilados separadamente; siga os respectivos README. O servidor de desenvolvimento principal serve apenas o Wiki. Instruções detalhadas: [desenvolvimento (inglês)](docs/development.en.md), [laboratório (inglês)](virtual-lab/README.md#readme-en) e [jogos (inglês)](games/README.md#readme-en).
+
+## Equipe, contribuições e licença
+
+As páginas [Roster](https://2026.igem.wiki/jlu-fbh/roster) e [Attributions](https://2026.igem.wiki/jlu-fbh/attributions) registram integrantes, contribuições e apoio institucional. A [versão completa em inglês](#team-and-acknowledgements) contém os agradecimentos detalhados.
+
+Antes de propor mudanças, leia o [guia de contribuição (inglês)](CONTRIBUTING.en.md). O repositório raiz usa [CC BY 4.0](LICENSE). Preserve as atribuições e respeite as licenças próprias de recursos de terceiros e aplicações independentes.
+
+Este guia é um resumo traduzido do README. Os detalhes técnicos completos e as responsabilidades estão no [README em inglês](#readme-en) e no [README em chinês](#readme-zh).
+
+<p align="center"><a href="#readme-pt">↑ Português</a> · <a href="#readme-zh">简体中文</a> · <a href="#readme-en">English</a></p>
+
+</div>
