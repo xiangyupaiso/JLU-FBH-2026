@@ -116,6 +116,14 @@
 
 其中五个交互演示保留为 HTML 页面，可在作品集中直接操作，也可通过 **Open in full window** 单独体验。[方法指南中的作品集入口](docs/visual-design-guide.md#design-folios设计作品集与历史方案)列出了具体案例和源码，方便后续团队从设计比较继续深入到实现细节。
 
+以下职责说明结合[官方 Attributions 贡献表](https://teams.igem.org/wiki/6056/attributions#team-member-contributions)与项目分工整理。
+
+- **Yupeng Xu**担任 Wiki Lead（Wiki 负责人），统筹 CirCure Wiki 的开发与数字设计，安排阶段目标、开发进度及跨组协作，搭建模块化前端框架并协调网站架构与阅读体验。参与科普游戏、虚拟实验和交互式数据展示的开发，将项目内容整理为便于探索的页面与工具；编写技术文档，核对内容质量、代码及数字素材的规范与开源许可要求，并为队友整理多智能体协作流程、技能与工具。
+
+- **Jianyuan Li**主要负责 CirCure 首页的设计与开发、Visual Design 第 8、9 节的调研、撰写与设计，以及 Design Folios 中相关的设计研究与交互实现。结合 iGEM 官方指南、历届 Wiki 和 2026 发布流程，参与信息架构、页面层级与叙事组织，完善页面实现、素材整合和图文排版；审阅草稿中的事实表述、术语、逻辑、格式与英文表达，并整理草图、交互原型及修改记录，供后续团队对照源码理解设计过程。
+
+- **Jingchen He**主要负责虚拟实验室的构建，将九个分子生物学实验整理为可交互的学习页面，完善实验侧栏、操作入口与媒体展示；参与中文切换、图片迁移和源码压缩，在保留原有交互的基础上维护资源引用与页面呈现。同时参与 Wiki 页面的创建与结构组织，整合队友提供的文字、图片和项目结果，根据内容与设计反馈调整布局、排查显示和技术问题，使实验学习流程与项目资料的呈现更加连贯清楚。
+
 ### Visual Design 九个部分
 
 | 部分 | 内容与调研入口 |
@@ -571,9 +579,9 @@ Vite preview 和官方 GitLab Pages 按 base 挂载产物；Cloudflare 由 [wran
 感谢六位成员为 CirCure 的视觉设计与 Wiki 建设付出的工作。以下结合[官方 Attributions 团队贡献表](https://teams.igem.org/wiki/6056/attributions#team-member-contributions)、[Roster](https://2026.igem.wiki/jlu-fbh/roster)及本仓库已有的页面分工整理：
 
 - **Shuyi Wang · Art Lead（美术负责人）**：设计吉祥物、周边与队服，制定 Wiki 配色、版式和动效，并完善科学示意图与流程图。协调美术组分工，与湿实验成员沟通修改图稿，保持网站与宣传材料的视觉风格一致。
-- **Wiki Lead（Wiki 负责人）**：统筹 Wiki 开发进度与跨组协作，搭建模块化前端框架，负责网站架构与阅读体验。参与教育游戏、虚拟实验和交互式数据展示的开发，编写技术文档，并检查内容质量、代码与数字素材的合规要求。
-- **团队成员**：主要负责首页设计与开发，以及 Visual Design 第 8、9 节的调研、撰写与设计。参与信息架构、页面实现、素材整合与版式调整，检查术语、逻辑和英文表达，并整理草图、迭代记录与设计经验。
-- **团队成员**：主要负责虚拟实验室构建，并参与 Wiki 页面开发，组织页面结构、调整布局，并整合队友提供的文字、图片和项目结果。根据内容与设计反馈修改页面，排查显示及技术问题，让不同部分的项目资料得到清楚呈现。
+- **Yupeng Xu · Wiki Lead（Wiki 负责人）**：统筹 Wiki 开发进度与跨组协作，搭建模块化前端框架，负责网站架构与阅读体验。参与教育游戏、虚拟实验和交互式数据展示的开发，编写技术文档，并检查内容质量、代码与数字素材的合规要求。
+- **Jianyuan Li · 团队成员**：主要负责首页设计与开发，以及 Visual Design 第 8、9 节的调研、撰写与设计。参与信息架构、页面实现、素材整合与版式调整，检查术语、逻辑和英文表达，并整理草图、迭代记录与设计经验。
+- **Jingchen He · 团队成员**：主要负责虚拟实验室构建，并参与 Wiki 页面开发，组织页面结构、调整布局，并整合队友提供的文字、图片和项目结果。根据内容与设计反馈修改页面，排查显示及技术问题，让不同部分的项目资料得到清楚呈现。
 - **Muzi Li · 团队成员**：参与项目视觉概念与角色设计，绘制队徽、吉祥物、Wiki 插画、科学示意图、首页元素和图标。制作面向公众的医学与科学传播材料，并调整各板块的构图与风格，帮助读者理解项目及相关生物学概念。
 - **Zhixia Ye · 团队成员**：绘制 Wiki 加载页与首页的原创画稿，并为网站界面制作定制图形素材。参与项目封面及其他插画创作，将图像融入页面设计，形成首页与加载界面相互呼应的视觉效果，支持网站整体风格的统一。
 
@@ -754,6 +762,14 @@ Try the demonstrations first, then expand **Technical details** to connect the e
 **To see how the designs evolved, expand the [Design Folios: six studies and revisions ↗](https://2026.igem.wiki/jlu-fbh/visual-design#design-history-archive) near the end of the page.** They preserve explorations left out of the final Wiki, earlier directions, and reasons for revision: image-led navigation, a pink thread and expanding emblem, three Human Practices timelines, and comparisons of artwork composition and RNA-ring transitions. These records let readers compare alternatives and understand the reasoning and trade-offs behind each revision.
 
 Five interactive demonstrations are preserved as HTML pages. Try them within the folios or choose **Open in full window** to explore them separately. The [guide's Design Folios section](docs/visual-design-guide.en.md#design-folios-earlier-directions-and-interactive-studies) lists the examples and source files, helping future teams move from comparing designs to examining implementation details.
+
+The contribution summaries below combine the [official Attributions form](https://teams.igem.org/wiki/6056/attributions#team-member-contributions) with the project responsibilities documented here.
+
+- **Yupeng Xu** served as Wiki Lead, coordinating CirCure Wiki development and digital design through milestone planning, task allocation, and cross-team collaboration. The work included building the modular frontend framework, overseeing site architecture and the reading experience, and developing educational games, virtual-lab simulations, and interactive data displays for science communication. Yupeng also wrote technical documentation, reviewed content quality, and checked code and digital assets against iGEM guidance and open-source requirements. Alongside these responsibilities, Yupeng organized AI-agent collaboration and documented reusable workflows, skills, and tools so teammates could contribute to the website through a shared development process.
+
+- **Jianyuan Li** primarily designed and developed the CirCure homepage; researched, wrote, and designed Visual Design Sections 8 and 9; and developed related design studies and interactive implementations in Design Folios. Drawing on iGEM guidance, previous team Wikis, and the 2026 publishing workflow, Jianyuan contributed to information architecture, page hierarchy, narrative flow, page implementation, asset integration, and the arrangement of text and figures. The work also included reviewing drafts for factual accuracy, terminology, logical coherence, formatting, and clear English expression. Sketches, interactive prototypes, and revision records were retained so future teams can examine the design process alongside the source code.
+
+- **Jingchen He** primarily built the virtual laboratory, organizing nine molecular biology experiments into interactive learning pages and refining experiment sidebars, controls, and media presentation. The work included Chinese-language switching, image migration, and source compression, maintaining resource references and page presentation while preserving existing interactions. Beyond the laboratory, Jingchen helped create and organize Wiki pages, integrate teammates' text, images, and project results, and adjust layouts so materials displayed correctly. Jingchen also discussed content and design with teammates, revised pages in response to their feedback, and addressed display and technical issues, helping connect the experimental learning flow with the wider project website.
 
 ### All nine Visual Design sections
 
@@ -1208,9 +1224,9 @@ We thank the university, clinical institutions, research platforms, and supporte
 We thank all six members for their work on CirCure's visual design and Wiki. The summaries below draw on the [official Attributions form](https://teams.igem.org/wiki/6056/attributions#team-member-contributions), the [Roster](https://2026.igem.wiki/jlu-fbh/roster), and the page responsibilities already documented in this repository:
 
 - **Shuyi Wang · Art Lead**: Designed the mascot, merchandise, and team uniform, and developed Wiki palettes, layouts, and animation effects. Coordinated art-team tasks, refined scientific schematics and flowcharts with wet-lab feedback, and maintained a consistent visual style across the website and outreach materials.
-- **Wiki Lead**: Led Wiki planning and coordination, built the modular frontend framework, and oversaw website architecture and user experience. Developed educational games, virtual-lab simulations, and interactive data displays; wrote technical documentation; and reviewed content quality, code, and digital assets against iGEM and licensing requirements.
-- **Team Member**: Primarily designed and developed the homepage and researched, wrote, and designed Visual Design Sections 8 and 9. Contributed to information architecture, page implementation, asset integration, layout refinement, and editorial review, while documenting sketches, revisions, and design lessons for future teams.
-- **Team Member**: Primarily built the virtual laboratory and contributed to Wiki coding, organizing pages, adjusting layouts, and integrating teammates' text, images, and project results. Worked with the team on content and design revisions and addressed display and technical problems to present the project's materials clearly.
+- **Yupeng Xu · Wiki Lead**: Led Wiki planning and coordination, built the modular frontend framework, and oversaw website architecture and user experience. Developed educational games, virtual-lab simulations, and interactive data displays; wrote technical documentation; and reviewed content quality, code, and digital assets against iGEM and licensing requirements.
+- **Jianyuan Li · Team Member**: Primarily designed and developed the homepage and researched, wrote, and designed Visual Design Sections 8 and 9. Contributed to information architecture, page implementation, asset integration, layout refinement, and editorial review, while documenting sketches, revisions, and design lessons for future teams.
+- **Jingchen He · Team Member**: Primarily built the virtual laboratory and contributed to Wiki coding, organizing pages, adjusting layouts, and integrating teammates' text, images, and project results. Worked with the team on content and design revisions and addressed display and technical problems to present the project's materials clearly.
 - **Muzi Li · Team Member**: Developed visual concepts and character designs, creating the team logo, mascot illustrations, Wiki graphics, scientific diagrams, homepage elements, and icons. Prepared illustrated medical and science communication materials and refined composition and style across sections to help wider audiences understand the project.
 - **Zhixia Ye · Team Member**: Created original drawings for the Wiki loading page and homepage, alongside custom graphics for the website interface. Contributed cover art and other project illustrations, helping the entry pages share a coherent visual identity and supporting consistency across the site's artwork.
 
