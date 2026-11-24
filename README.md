@@ -116,16 +116,6 @@
 
 其中五个交互演示保留为 HTML 页面，可在作品集中直接操作，也可通过 **Open in full window** 单独体验。[方法指南中的作品集入口](docs/visual-design-guide.md#design-folios设计作品集与历史方案)列出了具体案例和源码，方便后续团队从设计比较继续深入到实现细节。
 
-相关成员及分工见 [Roster · Visual Design 分组 ↗](https://wiki.dayquay.com/jlu-fbh/roster#visual-design)。点击下方姓名，可直接展开对应成员的详细介绍：
-
-以下职责说明结合[官方 Attributions 贡献表](https://teams.igem.org/wiki/6056/attributions#team-member-contributions)与项目分工整理。
-
-- **[Yupeng Xu](https://wiki.dayquay.com/jlu-fbh/roster#yupeng-xu)**（GitHub：[@xiangyupaiso](https://github.com/xiangyupaiso)）担任 Wiki Lead（Wiki 负责人），统筹 CirCure Wiki 的开发与数字设计，安排阶段目标、开发进度及跨组协作，搭建模块化前端框架并协调网站架构与阅读体验。参与科普游戏、虚拟实验和交互式数据展示的开发，将项目内容整理为便于探索的页面与工具；编写技术文档，核对内容质量、代码及数字素材的规范与开源许可要求，并为队友整理多智能体协作流程、技能与工具。
-
-- **[Jianyuan Li](https://wiki.dayquay.com/jlu-fbh/roster#jianyuan-li)**（GitHub：[@jianyuanliljy-hub](https://github.com/jianyuanliljy-hub)）主要负责 CirCure 首页的设计与开发、Visual Design 第 8、9 节的调研、撰写与设计，以及 Design Folios 中相关的设计研究与交互实现。结合 iGEM 官方指南、历届 Wiki 和 2026 发布流程，参与信息架构、页面层级与叙事组织，完善页面实现、素材整合和图文排版；审阅草稿中的事实表述、术语、逻辑、格式与英文表达，并整理草图、交互原型及修改记录，供后续团队对照源码理解设计过程。
-
-- **[Jingchen He](https://wiki.dayquay.com/jlu-fbh/roster#jingchen-he)**（GitHub：[@HE-JINGCHEN](https://github.com/HE-JINGCHEN)）主要负责虚拟实验室的构建，将九个分子生物学实验整理为可交互的学习页面，完善实验侧栏、操作入口与媒体展示；参与中文切换、图片迁移和源码压缩，在保留原有交互的基础上维护资源引用与页面呈现。同时参与 Wiki 页面的创建与结构组织，整合队友提供的文字、图片和项目结果，根据内容与设计反馈调整布局、排查显示和技术问题，使实验学习流程与项目资料的呈现更加连贯清楚。
-
 ### Visual Design 九个部分
 
 | 部分 | 内容与调研入口 |
@@ -144,11 +134,9 @@
 
 ## 项目链接
 
-**GitHub 仓库** · 开发协作、设计方法与可复用源码<br />[JLU-FBH / CirCure — xiangyupaiso/Official-wiki](https://github.com/xiangyupaiso/Official-wiki)
+完整项目源码已开源，可在 [iGEM 官方 GitLab](https://gitlab.igem.org/2026/jlu-fbh) 和 [GitHub](https://github.com/xiangyupaiso/JLU-FBH-2026) 查看。
 
 **在线 Wiki** · 正式网站与项目展示<br />[https://2026.igem.wiki/jlu-fbh/](https://2026.igem.wiki/jlu-fbh/)
-
-**开发预览版** · 持续更新的页面、交互与设计展示<br />[https://wiki.dayquay.com/jlu-fbh/](https://wiki.dayquay.com/jlu-fbh/)
 
 **项目宣传视频 · Promotion Video** · iGEM 官方视频平台<br />[https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16)
 
@@ -162,11 +150,11 @@
 
 根据 [iGEM 2026 官方日历](https://competition.igem.org/about/calendar)，官方 Wiki 于 <strong>2026 年 10 月 21 日 15:00 UTC（北京时间 23:00，UTC+8）</strong>进入冻结期（Wiki Freeze）。冻结期间无法继续编辑，需等待赛事结束后的 Wiki Thaw 重新开放修改。
 
-[`2026.igem.wiki/jlu-fbh/`](https://2026.igem.wiki/jlu-fbh/)保留正式参赛的冻结版本。后续补充、资料恢复和页面改进保存在本 GitHub 仓库，部署后可在[开发预览版 `wiki.dayquay.com`](https://wiki.dayquay.com/jlu-fbh/)查看。两个站点独立发布。
+[iGEM 官方 Wiki](https://2026.igem.wiki/jlu-fbh/) 保留正式参赛的冻结版本。后续补充、资料恢复和页面改进保存在本 GitHub 仓库。
 
 截至 2026-10-22，GitHub 开发版相较官方 GitLab 保留了以下补充：
 
-- **Visual Design**：11 张初始草稿、四种图片圆角对比、Next page 与页脚之间的留白说明和完整截图，以及更完整的丝带与历史设计展示。已在 dayquay 预览页核对草稿、圆角对比和留白展示。
+- **Visual Design**：11 张初始草稿、四种图片圆角对比、Next page 与页脚之间的留白说明和完整截图，以及更完整的丝带与历史设计展示。
 - **Bomb Cat**：创建与加入在线房间、大厅、连接状态及 PeerJS 联机源码；源码与重建产物均保留在 GitHub。
 - **Sustainability**：恢复 10 月 21 日晚紧急回退覆盖的 Tracker 汇总，区分 66 位参与者、38 份来源档案和 78 条反馈，展示 10 项框架 SDG 的 SET / DEVELOP / GROW 分层；长期路径保留待验证说明。
 - **素材与工程资料**：保留可构建的游戏与虚拟实验室源码、本地素材、来源记录及双语开发文档。
@@ -582,26 +570,26 @@ Vite preview 和官方 GitLab Pages 按 base 挂载产物；Cloudflare 由 [wran
 
 感谢六位成员为 CirCure 的视觉设计与 Wiki 建设付出的工作。以下结合[官方 Attributions 团队贡献表](https://teams.igem.org/wiki/6056/attributions#team-member-contributions)、[Roster](https://2026.igem.wiki/jlu-fbh/roster)及本仓库已有的页面分工整理：
 
-- **[Shuyi Wang](https://wiki.dayquay.com/jlu-fbh/roster#shuyi-wang) · Art Lead（美术负责人）**：设计吉祥物、周边与队服，制定 Wiki 配色、版式和动效，并完善科学示意图与流程图。协调美术组分工，与湿实验成员沟通修改图稿，保持网站与宣传材料的视觉风格一致。
-- **[Yupeng Xu](https://wiki.dayquay.com/jlu-fbh/roster#yupeng-xu) · Wiki Lead（Wiki 负责人）**：统筹 Wiki 开发进度与跨组协作，搭建模块化前端框架，负责网站架构与阅读体验。参与教育游戏、虚拟实验和交互式数据展示的开发，编写技术文档，并检查内容质量、代码与数字素材的合规要求。
-- **[Jianyuan Li](https://wiki.dayquay.com/jlu-fbh/roster#jianyuan-li) · 团队成员**：主要负责首页设计与开发，以及 Visual Design 第 8、9 节的调研、撰写与设计。参与信息架构、页面实现、素材整合与版式调整，检查术语、逻辑和英文表达，并整理草图、迭代记录与设计经验。
-- **[Jingchen He](https://wiki.dayquay.com/jlu-fbh/roster#jingchen-he) · 团队成员**：主要负责虚拟实验室构建，并参与 Wiki 页面开发，组织页面结构、调整布局，并整合队友提供的文字、图片和项目结果。根据内容与设计反馈修改页面，排查显示及技术问题，让不同部分的项目资料得到清楚呈现。
-- **[Muzi Li](https://wiki.dayquay.com/jlu-fbh/roster#muzi-li) · 团队成员**：参与项目视觉概念与角色设计，绘制队徽、吉祥物、Wiki 插画、科学示意图、首页元素和图标。制作面向公众的医学与科学传播材料，并调整各板块的构图与风格，帮助读者理解项目及相关生物学概念。
-- **[Zhixia Ye](https://wiki.dayquay.com/jlu-fbh/roster#zhixia-ye) · 团队成员**：绘制 Wiki 加载页与首页的原创画稿，并为网站界面制作定制图形素材。参与项目封面及其他插画创作，将图像融入页面设计，形成首页与加载界面相互呼应的视觉效果，支持网站整体风格的统一。
+- **Shuyi Wang · Art Lead（美术负责人）**：设计吉祥物、周边与队服，制定 Wiki 配色、版式和动效，并完善科学示意图与流程图。协调美术组分工，与湿实验成员沟通修改图稿，保持网站与宣传材料的视觉风格一致。
+- **Wiki Lead（Wiki 负责人）**：统筹 Wiki 开发进度与跨组协作，搭建模块化前端框架，负责网站架构与阅读体验。参与教育游戏、虚拟实验和交互式数据展示的开发，编写技术文档，并检查内容质量、代码与数字素材的合规要求。
+- **团队成员**：主要负责首页设计与开发，以及 Visual Design 第 8、9 节的调研、撰写与设计。参与信息架构、页面实现、素材整合与版式调整，检查术语、逻辑和英文表达，并整理草图、迭代记录与设计经验。
+- **团队成员**：主要负责虚拟实验室构建，并参与 Wiki 页面开发，组织页面结构、调整布局，并整合队友提供的文字、图片和项目结果。根据内容与设计反馈修改页面，排查显示及技术问题，让不同部分的项目资料得到清楚呈现。
+- **Muzi Li · 团队成员**：参与项目视觉概念与角色设计，绘制队徽、吉祥物、Wiki 插画、科学示意图、首页元素和图标。制作面向公众的医学与科学传播材料，并调整各板块的构图与风格，帮助读者理解项目及相关生物学概念。
+- **Zhixia Ye · 团队成员**：绘制 Wiki 加载页与首页的原创画稿，并为网站界面制作定制图形素材。参与项目封面及其他插画创作，将图像融入页面设计，形成首页与加载界面相互呼应的视觉效果，支持网站整体风格的统一。
 
 ### 团队负责人与其他工作组
 
 感谢团队负责人、各组负责人及新媒体小组负责人在研究、组织与传播中的投入。以下同样依据官方贡献表与 Roster 整理：
 
-- **[Ding Ma](https://wiki.dayquay.com/jlu-fbh/roster#ding-ma) · Team Leader（团队负责人）**：参与项目构思、背景调研、数据分析与记录整理，并协助规划和审阅软硬件工作。承担秘书职责，协调日程、内部沟通与行政材料，同时参与安全准备、公众交流、筹资及项目文稿的撰写修改。
-- **[Jinqi Xu](https://wiki.dayquay.com/jlu-fbh/roster#jinqi-xu) · Team Leader（团队负责人）**：参与组建团队、安排赛季时间表，并协调湿实验、计算与公众交流工作的进度。与其他负责人共同推进筹资、赞助和创业交流，撰写 Engineering 页面内容，并负责宣传视频与展示视频的拍摄剪辑。
-- **[Xuanhe Chang](https://wiki.dayquay.com/jlu-fbh/roster#xuanhe-chang) · Team Leader（团队负责人）**：参与文献调研与项目实验框架设计，协调湿实验、Wiki 和美术组工作，监督疫苗构建及功能验证。规范实验记录与数据管理，负责 Description、Contribution 和首页等模块内容，并协助科学图表绘制与公众科普。
-- **[Ke Wang](https://wiki.dayquay.com/jlu-fbh/roster#ke-wang) · Wet Lab 负责人**：统筹湿实验进度，参与疫苗与靶点调研、实验执行、数据分析和记录整理。牵头湿实验及 Hardware 页面写作，提交 Parts 登记与安全、Check-In、动物实验表单，并参与教育活动、商业材料及实用新型专利申请。
-- **[Ouyang Li](https://wiki.dayquay.com/jlu-fbh/roster#ouyang-li) · Dry Lab 负责人**：牵头多尺度机制建模、敏感性分析、贝叶斯校准与给药窗口预测，并开展多组学靶点筛选及表位结构分析。开发首版 circForge 软件流程，整理计算数据与结构图，并撰写修改中英文 Model 页面。
-- **[Zhe Jia](https://wiki.dayquay.com/jlu-fbh/roster#zhe-jia) · Human Practices 负责人**：统筹人类实践，设计访谈提纲与活动方案，通过利益相关方反馈推动项目设计调整。组织教育活动、队际合作和新媒体传播，参与创业规划，并撰写 Human Practices、Entrepreneurship 页面及修改 Education 内容。
-- **[Yirou Gong](https://wiki.dayquay.com/jlu-fbh/roster#yirou-gong) · Human Practices 负责人**：参与线上线下工作坊、互动游戏、科普与队际合作活动的策划和实施，协调活动与受众交流。撰写、修改和整合 Human Practices 与 Education 页面内容，并设计视觉和动画元素，使活动记录清晰易读、呈现一致。
-- **[Zecun Li](https://wiki.dayquay.com/jlu-fbh/roster#zecun-li) · Human Practices 负责人**：设计 Bio Memory Match 教育游戏，提出虚拟实验室与 SST-QN 网络概念并参与完善。发起 Together with iGEM 合作，组织读书日与八段锦活动，撰写 Sustainability 页面及生物安全角色扮演游戏 DDL Crisis 的完整剧本。
-- **[Rong Gao](https://wiki.dayquay.com/jlu-fbh/roster#rong-gao) · 新媒体小组负责人**：调研其他 iGEM 团队案例，为项目与传播提供参考；参与杏花节等公众活动的物料设计、现场组织和交流。协调新媒体运营，制作公众号内容、海报、宣传图与手册，并参与视频剪辑，保持团队对外传播的视觉风格一致。
+- **Ding Ma · Team Leader（团队负责人）**：参与项目构思、背景调研、数据分析与记录整理，并协助规划和审阅软硬件工作。承担秘书职责，协调日程、内部沟通与行政材料，同时参与安全准备、公众交流、筹资及项目文稿的撰写修改。
+- **Jinqi Xu · Team Leader（团队负责人）**：参与组建团队、安排赛季时间表，并协调湿实验、计算与公众交流工作的进度。与其他负责人共同推进筹资、赞助和创业交流，撰写 Engineering 页面内容，并负责宣传视频与展示视频的拍摄剪辑。
+- **Xuanhe Chang · Team Leader（团队负责人）**：参与文献调研与项目实验框架设计，协调湿实验、Wiki 和美术组工作，监督疫苗构建及功能验证。规范实验记录与数据管理，负责 Description、Contribution 和首页等模块内容，并协助科学图表绘制与公众科普。
+- **Ke Wang · Wet Lab 负责人**：统筹湿实验进度，参与疫苗与靶点调研、实验执行、数据分析和记录整理。牵头湿实验及 Hardware 页面写作，提交 Parts 登记与安全、Check-In、动物实验表单，并参与教育活动、商业材料及实用新型专利申请。
+- **Ouyang Li · Dry Lab 负责人**：牵头多尺度机制建模、敏感性分析、贝叶斯校准与给药窗口预测，并开展多组学靶点筛选及表位结构分析。开发首版 circForge 软件流程，整理计算数据与结构图，并撰写修改中英文 Model 页面。
+- **Zhe Jia · Human Practices 负责人**：统筹人类实践，设计访谈提纲与活动方案，通过利益相关方反馈推动项目设计调整。组织教育活动、队际合作和新媒体传播，参与创业规划，并撰写 Human Practices、Entrepreneurship 页面及修改 Education 内容。
+- **Yirou Gong · Human Practices 负责人**：参与线上线下工作坊、互动游戏、科普与队际合作活动的策划和实施，协调活动与受众交流。撰写、修改和整合 Human Practices 与 Education 页面内容，并设计视觉和动画元素，使活动记录清晰易读、呈现一致。
+- **Zecun Li · Human Practices 负责人**：设计 Bio Memory Match 教育游戏，提出虚拟实验室与 SST-QN 网络概念并参与完善。发起 Together with iGEM 合作，组织读书日与八段锦活动，撰写 Sustainability 页面及生物安全角色扮演游戏 DDL Crisis 的完整剧本。
+- **Rong Gao · 新媒体小组负责人**：调研其他 iGEM 团队案例，为项目与传播提供参考；参与杏花节等公众活动的物料设计、现场组织和交流。协调新媒体运营，制作公众号内容、海报、宣传图与手册，并参与视频剪辑，保持团队对外传播的视觉风格一致。
 
 也感谢 Wet Lab、Dry Lab 与 Human Practices 的全体成员在实验执行、安全与记录、生物信息学与计算设计、数学建模、工具开发、教育和公共传播中的共同投入，为 Wiki 的科学内容、项目记录与公众交流提供基础。
 
@@ -609,13 +597,13 @@ Vite preview 和官方 GitLab Pages 按 base 挂载产物；Cloudflare 由 [wran
 
 也感谢以下同学、指导教师与顾问的参与和支持。名单按 [Roster](https://2026.igem.wiki/jlu-fbh/roster) 分组，并与[官方 Attributions 团队贡献表](https://teams.igem.org/wiki/6056/attributions#team-member-contributions)核对；连同上文所列成员，完整团队共 44 人。各人的具体贡献可在官方表中查阅。
 
-- **Wet Lab**：[Jiaze Xu](https://wiki.dayquay.com/jlu-fbh/roster#jiaze-xu)、[Minxu Jin](https://wiki.dayquay.com/jlu-fbh/roster#minxu-jin)、[Zitong Ye](https://wiki.dayquay.com/jlu-fbh/roster#zitong-ye)、[Shuangshuo Tian](https://wiki.dayquay.com/jlu-fbh/roster#shuangshuo-tian)、[Jingtong Xu](https://wiki.dayquay.com/jlu-fbh/roster#jingtong-xu)、[Jiayi Zhang](https://wiki.dayquay.com/jlu-fbh/roster#jiayi-zhang)。
-- **Dry Lab**：[Hui Pan](https://wiki.dayquay.com/jlu-fbh/roster#hui-pan)、[Ziyi Yan](https://wiki.dayquay.com/jlu-fbh/roster#ziyi-yan)、[Yufan Ji](https://wiki.dayquay.com/jlu-fbh/roster#yufan-ji)。
-- **Human Practices**：[Jianyu Zhou](https://wiki.dayquay.com/jlu-fbh/roster#jianyu-zhou)、[Qihang Chen](https://wiki.dayquay.com/jlu-fbh/roster#qihang-chen)、[Jiatong Zhang](https://wiki.dayquay.com/jlu-fbh/roster#jiatong-zhang)、[Yiran Zheng](https://wiki.dayquay.com/jlu-fbh/roster#yiran-zheng)、[Junhan Lu](https://wiki.dayquay.com/jlu-fbh/roster#junhan-lu)。
-- **Primary PIs（主要指导教师）**：[Bin Liu](https://wiki.dayquay.com/jlu-fbh/roster#bin-liu)、[Guoyue Lv](https://wiki.dayquay.com/jlu-fbh/roster#guoyue-lv)、[Jiuwei Cui](https://wiki.dayquay.com/jlu-fbh/roster#jiuwei-cui)、[Songling Zhang](https://wiki.dayquay.com/jlu-fbh/roster#songling-zhang)。
-- **Secondary PIs（共同指导教师）**：[Lin Jia](https://wiki.dayquay.com/jlu-fbh/roster#lin-jia)、[Meihua Piao](https://wiki.dayquay.com/jlu-fbh/roster#meihua-piao)、[Qingtian Guan](https://wiki.dayquay.com/jlu-fbh/roster#qingtian-guan)。
-- **Instructors（指导教师）**：[Bin Wang](https://wiki.dayquay.com/jlu-fbh/roster#bin-wang)、[Kexin Gao](https://wiki.dayquay.com/jlu-fbh/roster#kexin-gao)、[Ruihong Wu](https://wiki.dayquay.com/jlu-fbh/roster#ruihong-wu)、[Ruohan Yang](https://wiki.dayquay.com/jlu-fbh/roster#ruohan-yang)。
-- **Advisors（顾问）**：[Mingwan Liu](https://wiki.dayquay.com/jlu-fbh/roster#mingwan-liu)、[Sirui Dong](https://wiki.dayquay.com/jlu-fbh/roster#sirui-dong)、[Xilei Song](https://wiki.dayquay.com/jlu-fbh/roster#xilei-song)、[Yurui Wei](https://wiki.dayquay.com/jlu-fbh/roster#yurui-wei)。
+- **Wet Lab**：Jiaze Xu、Minxu Jin、Zitong Ye、Shuangshuo Tian、Jingtong Xu、Jiayi Zhang。
+- **Dry Lab**：Hui Pan、Ziyi Yan、Yufan Ji。
+- **Human Practices**：Jianyu Zhou、Qihang Chen、Jiatong Zhang、Yiran Zheng、Junhan Lu。
+- **Primary PIs（主要指导教师）**：Bin Liu、Guoyue Lv、Jiuwei Cui、Songling Zhang。
+- **Secondary PIs（共同指导教师）**：Lin Jia、Meihua Piao、Qingtian Guan。
+- **Instructors（指导教师）**：Bin Wang、Kexin Gao、Ruihong Wu、Ruohan Yang。
+- **Advisors（顾问）**：Mingwan Liu、Sirui Dong、Xilei Song、Yurui Wei。
 
 <p align="center">
   <img src="docs/media/readme-institutions.svg" alt="吉林大学；吉林大学白求恩第一医院；吉林大学白求恩第一临床医学院。" width="640" />
@@ -767,16 +755,6 @@ Try the demonstrations first, then expand **Technical details** to connect the e
 
 Five interactive demonstrations are preserved as HTML pages. Try them within the folios or choose **Open in full window** to explore them separately. The [guide's Design Folios section](docs/visual-design-guide.en.md#design-folios-earlier-directions-and-interactive-studies) lists the examples and source files, helping future teams move from comparing designs to examining implementation details.
 
-Meet the contributors and learn about their responsibilities in the [Roster · Visual Design group ↗](https://wiki.dayquay.com/jlu-fbh/roster#visual-design). Select a name below to open that member’s full profile directly:
-
-The contribution summaries below combine the [official Attributions form](https://teams.igem.org/wiki/6056/attributions#team-member-contributions) with the project responsibilities documented here.
-
-- **[Yupeng Xu](https://wiki.dayquay.com/jlu-fbh/roster#yupeng-xu)** (GitHub: [@xiangyupaiso](https://github.com/xiangyupaiso)) served as Wiki Lead, coordinating CirCure Wiki development and digital design through milestone planning, task allocation, and cross-team collaboration. The work included building the modular frontend framework, overseeing site architecture and the reading experience, and developing educational games, virtual-lab simulations, and interactive data displays for science communication. Yupeng also wrote technical documentation, reviewed content quality, and checked code and digital assets against iGEM guidance and open-source requirements. Alongside these responsibilities, Yupeng organized AI-agent collaboration and documented reusable workflows, skills, and tools so teammates could contribute to the website through a shared development process.
-
-- **[Jianyuan Li](https://wiki.dayquay.com/jlu-fbh/roster#jianyuan-li)** (GitHub: [@jianyuanliljy-hub](https://github.com/jianyuanliljy-hub)) primarily designed and developed the CirCure homepage; researched, wrote, and designed Visual Design Sections 8 and 9; and developed related design studies and interactive implementations in Design Folios. Drawing on iGEM guidance, previous team Wikis, and the 2026 publishing workflow, Jianyuan contributed to information architecture, page hierarchy, narrative flow, page implementation, asset integration, and the arrangement of text and figures. The work also included reviewing drafts for factual accuracy, terminology, logical coherence, formatting, and clear English expression. Sketches, interactive prototypes, and revision records were retained so future teams can examine the design process alongside the source code.
-
-- **[Jingchen He](https://wiki.dayquay.com/jlu-fbh/roster#jingchen-he)** (GitHub: [@HE-JINGCHEN](https://github.com/HE-JINGCHEN)) primarily built the virtual laboratory, organizing nine molecular biology experiments into interactive learning pages and refining experiment sidebars, controls, and media presentation. The work included Chinese-language switching, image migration, and source compression, maintaining resource references and page presentation while preserving existing interactions. Beyond the laboratory, Jingchen helped create and organize Wiki pages, integrate teammates' text, images, and project results, and adjust layouts so materials displayed correctly. Jingchen also discussed content and design with teammates, revised pages in response to their feedback, and addressed display and technical issues, helping connect the experimental learning flow with the wider project website.
-
 ### All nine Visual Design sections
 
 | Section | What to study |
@@ -795,11 +773,9 @@ Research and reuse: [Methods and source map](docs/visual-design-guide.en.md) · 
 
 ## Project links
 
-**GitHub repository** · Development, design methods, and reusable source<br />[JLU-FBH / CirCure — xiangyupaiso/Official-wiki](https://github.com/xiangyupaiso/Official-wiki)
+The full project source code is available on [the official iGEM GitLab](https://gitlab.igem.org/2026/jlu-fbh) and [GitHub](https://github.com/xiangyupaiso/JLU-FBH-2026).
 
 **Live Wiki** · Published site and project showcase<br />[https://2026.igem.wiki/jlu-fbh/](https://2026.igem.wiki/jlu-fbh/)
-
-**Development preview** · Ongoing page, interaction, and design updates<br />[https://wiki.dayquay.com/jlu-fbh/](https://wiki.dayquay.com/jlu-fbh/)
 
 **Project Promotion Video** · Hosted on the official iGEM video platform<br />[https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16)
 
@@ -813,11 +789,11 @@ Development and Pull Requests take place in this GitHub repository. See the [dep
 
 According to the [official iGEM 2026 calendar](https://competition.igem.org/about/calendar), the official Wiki entered the **Wiki Freeze on October 21, 2026, at 15:00 UTC (23:00 Beijing time, UTC+8)**. Editing is closed during the freeze and will reopen at the Wiki Thaw after the Grand Jamboree.
 
-[`2026.igem.wiki/jlu-fbh/`](https://2026.igem.wiki/jlu-fbh/) preserves the frozen competition version. Later additions, restored materials, and page improvements are kept in this GitHub repository and appear on the [development preview at `wiki.dayquay.com`](https://wiki.dayquay.com/jlu-fbh/) after deployment. The two sites deploy independently.
+The [official iGEM Wiki](https://2026.igem.wiki/jlu-fbh/) preserves the frozen competition version. This GitHub repository includes later additions, restored materials, and page improvements.
 
 As of 2026-10-22, the GitHub development version retains these additions relative to official GitLab:
 
-- **Visual Design**: eleven initial sketches, four image-corner comparisons, complete screenshots explaining the gap between Next page and the footer, and additional ribbon and historical design studies. The sketches, corner comparison, and spacing study were also checked on the live dayquay preview.
+- **Visual Design**: eleven initial sketches, four image-corner comparisons, complete screenshots explaining the gap between Next page and the footer, and additional ribbon and historical design studies.
 - **Bomb Cat**: online room creation and joining, the lobby, connection state, and PeerJS networking source, together with rebuilt runtime assets.
 - **Sustainability**: restored Tracker summaries overwritten by the October 21 emergency rollback, distinguishing 66 participants, 38 source profiles, and 78 feedback records, with ten framework SDGs grouped into SET / DEVELOP / GROW. Long-term pathways retain their evidence limitations.
 - **Assets and engineering resources**: buildable game and virtual laboratory source, local assets, provenance, and bilingual development documentation.
@@ -1231,26 +1207,26 @@ We thank the university, clinical institutions, research platforms, and supporte
 
 We thank all six members for their work on CirCure's visual design and Wiki. The summaries below draw on the [official Attributions form](https://teams.igem.org/wiki/6056/attributions#team-member-contributions), the [Roster](https://2026.igem.wiki/jlu-fbh/roster), and the page responsibilities already documented in this repository:
 
-- **[Shuyi Wang](https://wiki.dayquay.com/jlu-fbh/roster#shuyi-wang) · Art Lead**: Designed the mascot, merchandise, and team uniform, and developed Wiki palettes, layouts, and animation effects. Coordinated art-team tasks, refined scientific schematics and flowcharts with wet-lab feedback, and maintained a consistent visual style across the website and outreach materials.
-- **[Yupeng Xu](https://wiki.dayquay.com/jlu-fbh/roster#yupeng-xu) · Wiki Lead**: Led Wiki planning and coordination, built the modular frontend framework, and oversaw website architecture and user experience. Developed educational games, virtual-lab simulations, and interactive data displays; wrote technical documentation; and reviewed content quality, code, and digital assets against iGEM and licensing requirements.
-- **[Jianyuan Li](https://wiki.dayquay.com/jlu-fbh/roster#jianyuan-li) · Team Member**: Primarily designed and developed the homepage and researched, wrote, and designed Visual Design Sections 8 and 9. Contributed to information architecture, page implementation, asset integration, layout refinement, and editorial review, while documenting sketches, revisions, and design lessons for future teams.
-- **[Jingchen He](https://wiki.dayquay.com/jlu-fbh/roster#jingchen-he) · Team Member**: Primarily built the virtual laboratory and contributed to Wiki coding, organizing pages, adjusting layouts, and integrating teammates' text, images, and project results. Worked with the team on content and design revisions and addressed display and technical problems to present the project's materials clearly.
-- **[Muzi Li](https://wiki.dayquay.com/jlu-fbh/roster#muzi-li) · Team Member**: Developed visual concepts and character designs, creating the team logo, mascot illustrations, Wiki graphics, scientific diagrams, homepage elements, and icons. Prepared illustrated medical and science communication materials and refined composition and style across sections to help wider audiences understand the project.
-- **[Zhixia Ye](https://wiki.dayquay.com/jlu-fbh/roster#zhixia-ye) · Team Member**: Created original drawings for the Wiki loading page and homepage, alongside custom graphics for the website interface. Contributed cover art and other project illustrations, helping the entry pages share a coherent visual identity and supporting consistency across the site's artwork.
+- **Shuyi Wang · Art Lead**: Designed the mascot, merchandise, and team uniform, and developed Wiki palettes, layouts, and animation effects. Coordinated art-team tasks, refined scientific schematics and flowcharts with wet-lab feedback, and maintained a consistent visual style across the website and outreach materials.
+- **Wiki Lead**: Led Wiki planning and coordination, built the modular frontend framework, and oversaw website architecture and user experience. Developed educational games, virtual-lab simulations, and interactive data displays; wrote technical documentation; and reviewed content quality, code, and digital assets against iGEM and licensing requirements.
+- **Team Member**: Primarily designed and developed the homepage and researched, wrote, and designed Visual Design Sections 8 and 9. Contributed to information architecture, page implementation, asset integration, layout refinement, and editorial review, while documenting sketches, revisions, and design lessons for future teams.
+- **Team Member**: Primarily built the virtual laboratory and contributed to Wiki coding, organizing pages, adjusting layouts, and integrating teammates' text, images, and project results. Worked with the team on content and design revisions and addressed display and technical problems to present the project's materials clearly.
+- **Muzi Li · Team Member**: Developed visual concepts and character designs, creating the team logo, mascot illustrations, Wiki graphics, scientific diagrams, homepage elements, and icons. Prepared illustrated medical and science communication materials and refined composition and style across sections to help wider audiences understand the project.
+- **Zhixia Ye · Team Member**: Created original drawings for the Wiki loading page and homepage, alongside custom graphics for the website interface. Contributed cover art and other project illustrations, helping the entry pages share a coherent visual identity and supporting consistency across the site's artwork.
 
 ### Team leaders and other working groups
 
 We thank the team leaders, group leads, and new media subgroup lead for their research, coordination, and communication work. These summaries follow the same Attributions form and Roster:
 
-- **[Ding Ma](https://wiki.dayquay.com/jlu-fbh/roster#ding-ma) · Team Leader**: Contributed to project ideas, background research, data analysis, record organization, and reviews of hardware and software plans. As team secretary, coordinated schedules, internal communication, and administrative documentation, while supporting safety preparation, public engagement, fundraising, and the drafting and revision of project materials.
-- **[Jinqi Xu](https://wiki.dayquay.com/jlu-fbh/roster#jinqi-xu) · Team Leader**: Helped assemble the team, plan the season, and coordinate wet-lab, dry-lab, and outreach work. Worked with fellow leaders on fundraising, sponsorship, public engagement, and entrepreneurship; drafted Engineering content; and filmed and edited the team's Promotion Video and Presentation Video.
-- **[Xuanhe Chang](https://wiki.dayquay.com/jlu-fbh/roster#xuanhe-chang) · Team Leader**: Helped define the experimental framework through literature research and coordinated wet-lab, Wiki, and art work. Supervised vaccine construction and functional verification, organized laboratory records and data management, prepared Description, Contribution, and homepage content, and supported scientific visualization and public outreach.
-- **[Ke Wang](https://wiki.dayquay.com/jlu-fbh/roster#ke-wang) · Wet Lab Lead**: Coordinated wet-lab schedules, researched vaccine platforms and targets, and conducted experiments, analysis, and record keeping. Led Wet Lab and Hardware page writing, submitted Parts Registry entries and safety-related forms, and contributed to education, commercial materials, and a utility-model patent application.
-- **[Ouyang Li](https://wiki.dayquay.com/jlu-fbh/roster#ouyang-li) · Dry Lab Lead**: Led multiscale mechanistic modeling, sensitivity analysis, Bayesian calibration, and dosing-window prediction, alongside multi-omics target screening and epitope structural analysis. Developed the first circForge pipeline, organized computational data and structural figures, and drafted and revised the bilingual Model page.
-- **[Zhe Jia](https://wiki.dayquay.com/jlu-fbh/roster#zhe-jia) · Human Practices Lead**: Coordinated Human Practices, designed interview outlines and activity plans, and used stakeholder feedback to refine project design. Organized educational activities, inter-team collaborations, and social media outreach, contributed to entrepreneurship planning, wrote Human Practices and Entrepreneurship content, and revised Education materials.
-- **[Yirou Gong](https://wiki.dayquay.com/jlu-fbh/roster#yirou-gong) · Human Practices Lead**: Planned and delivered workshops, interactive games, science outreach, and inter-team activities, helping coordinate events and audience engagement. Drafted, revised, and integrated Human Practices and Education content, and designed visual and animated elements to improve clarity, accessibility, and consistency across the Wiki.
-- **[Zecun Li](https://wiki.dayquay.com/jlu-fbh/roster#zecun-li) · Human Practices Lead**: Designed Bio Memory Match and proposed the Virtual Laboratory and SST-QN concepts, supporting their development. Initiated Together with iGEM, organized World Book Day and Baduanjin activities, wrote Sustainability content, and authored the complete script for the biosafety role-playing game DDL Crisis.
-- **[Rong Gao](https://wiki.dayquay.com/jlu-fbh/roster#rong-gao) · New Media Subgroup Lead**: Reviewed other iGEM projects and supported outreach events, including the Apricot Blossom Festival, through materials, on-site organization, and audience communication. Coordinated new media work, producing WeChat content, posters, promotional graphics, and brochures, and contributed video editing while maintaining consistent visual communication.
+- **Ding Ma · Team Leader**: Contributed to project ideas, background research, data analysis, record organization, and reviews of hardware and software plans. As team secretary, coordinated schedules, internal communication, and administrative documentation, while supporting safety preparation, public engagement, fundraising, and the drafting and revision of project materials.
+- **Jinqi Xu · Team Leader**: Helped assemble the team, plan the season, and coordinate wet-lab, dry-lab, and outreach work. Worked with fellow leaders on fundraising, sponsorship, public engagement, and entrepreneurship; drafted Engineering content; and filmed and edited the team's Promotion Video and Presentation Video.
+- **Xuanhe Chang · Team Leader**: Helped define the experimental framework through literature research and coordinated wet-lab, Wiki, and art work. Supervised vaccine construction and functional verification, organized laboratory records and data management, prepared Description, Contribution, and homepage content, and supported scientific visualization and public outreach.
+- **Ke Wang · Wet Lab Lead**: Coordinated wet-lab schedules, researched vaccine platforms and targets, and conducted experiments, analysis, and record keeping. Led Wet Lab and Hardware page writing, submitted Parts Registry entries and safety-related forms, and contributed to education, commercial materials, and a utility-model patent application.
+- **Ouyang Li · Dry Lab Lead**: Led multiscale mechanistic modeling, sensitivity analysis, Bayesian calibration, and dosing-window prediction, alongside multi-omics target screening and epitope structural analysis. Developed the first circForge pipeline, organized computational data and structural figures, and drafted and revised the bilingual Model page.
+- **Zhe Jia · Human Practices Lead**: Coordinated Human Practices, designed interview outlines and activity plans, and used stakeholder feedback to refine project design. Organized educational activities, inter-team collaborations, and social media outreach, contributed to entrepreneurship planning, wrote Human Practices and Entrepreneurship content, and revised Education materials.
+- **Yirou Gong · Human Practices Lead**: Planned and delivered workshops, interactive games, science outreach, and inter-team activities, helping coordinate events and audience engagement. Drafted, revised, and integrated Human Practices and Education content, and designed visual and animated elements to improve clarity, accessibility, and consistency across the Wiki.
+- **Zecun Li · Human Practices Lead**: Designed Bio Memory Match and proposed the Virtual Laboratory and SST-QN concepts, supporting their development. Initiated Together with iGEM, organized World Book Day and Baduanjin activities, wrote Sustainability content, and authored the complete script for the biosafety role-playing game DDL Crisis.
+- **Rong Gao · New Media Subgroup Lead**: Reviewed other iGEM projects and supported outreach events, including the Apricot Blossom Festival, through materials, on-site organization, and audience communication. Coordinated new media work, producing WeChat content, posters, promotional graphics, and brochures, and contributed video editing while maintaining consistent visual communication.
 
 We also thank every member of Wet Lab, Dry Lab, and Human Practices for their work on experiments, safety and documentation, bioinformatics and computational design, mathematical modeling, tool development, education, and public communication, which underpins the Wiki's scientific content and project records.
 
@@ -1258,13 +1234,13 @@ We also thank every member of Wet Lab, Dry Lab, and Human Practices for their wo
 
 We also thank the following students, PIs, instructors, and advisors for their participation and support. The names follow the [Roster](https://2026.igem.wiki/jlu-fbh/roster) groups and have been checked against the [official Attributions form](https://teams.igem.org/wiki/6056/attributions#team-member-contributions). Together with those listed above, they make up the full team of 44 people. Individual contributions are recorded in the official form.
 
-- **Wet Lab**: [Jiaze Xu](https://wiki.dayquay.com/jlu-fbh/roster#jiaze-xu), [Minxu Jin](https://wiki.dayquay.com/jlu-fbh/roster#minxu-jin), [Zitong Ye](https://wiki.dayquay.com/jlu-fbh/roster#zitong-ye), [Shuangshuo Tian](https://wiki.dayquay.com/jlu-fbh/roster#shuangshuo-tian), [Jingtong Xu](https://wiki.dayquay.com/jlu-fbh/roster#jingtong-xu), [Jiayi Zhang](https://wiki.dayquay.com/jlu-fbh/roster#jiayi-zhang).
-- **Dry Lab**: [Hui Pan](https://wiki.dayquay.com/jlu-fbh/roster#hui-pan), [Ziyi Yan](https://wiki.dayquay.com/jlu-fbh/roster#ziyi-yan), [Yufan Ji](https://wiki.dayquay.com/jlu-fbh/roster#yufan-ji).
-- **Human Practices**: [Jianyu Zhou](https://wiki.dayquay.com/jlu-fbh/roster#jianyu-zhou), [Qihang Chen](https://wiki.dayquay.com/jlu-fbh/roster#qihang-chen), [Jiatong Zhang](https://wiki.dayquay.com/jlu-fbh/roster#jiatong-zhang), [Yiran Zheng](https://wiki.dayquay.com/jlu-fbh/roster#yiran-zheng), [Junhan Lu](https://wiki.dayquay.com/jlu-fbh/roster#junhan-lu).
-- **Primary PIs**: [Bin Liu](https://wiki.dayquay.com/jlu-fbh/roster#bin-liu), [Guoyue Lv](https://wiki.dayquay.com/jlu-fbh/roster#guoyue-lv), [Jiuwei Cui](https://wiki.dayquay.com/jlu-fbh/roster#jiuwei-cui), [Songling Zhang](https://wiki.dayquay.com/jlu-fbh/roster#songling-zhang).
-- **Secondary PIs**: [Lin Jia](https://wiki.dayquay.com/jlu-fbh/roster#lin-jia), [Meihua Piao](https://wiki.dayquay.com/jlu-fbh/roster#meihua-piao), [Qingtian Guan](https://wiki.dayquay.com/jlu-fbh/roster#qingtian-guan).
-- **Instructors**: [Bin Wang](https://wiki.dayquay.com/jlu-fbh/roster#bin-wang), [Kexin Gao](https://wiki.dayquay.com/jlu-fbh/roster#kexin-gao), [Ruihong Wu](https://wiki.dayquay.com/jlu-fbh/roster#ruihong-wu), [Ruohan Yang](https://wiki.dayquay.com/jlu-fbh/roster#ruohan-yang).
-- **Advisors**: [Mingwan Liu](https://wiki.dayquay.com/jlu-fbh/roster#mingwan-liu), [Sirui Dong](https://wiki.dayquay.com/jlu-fbh/roster#sirui-dong), [Xilei Song](https://wiki.dayquay.com/jlu-fbh/roster#xilei-song), [Yurui Wei](https://wiki.dayquay.com/jlu-fbh/roster#yurui-wei).
+- **Wet Lab**: Jiaze Xu, Minxu Jin, Zitong Ye, Shuangshuo Tian, Jingtong Xu, Jiayi Zhang.
+- **Dry Lab**: Hui Pan, Ziyi Yan, Yufan Ji.
+- **Human Practices**: Jianyu Zhou, Qihang Chen, Jiatong Zhang, Yiran Zheng, Junhan Lu.
+- **Primary PIs**: Bin Liu, Guoyue Lv, Jiuwei Cui, Songling Zhang.
+- **Secondary PIs**: Lin Jia, Meihua Piao, Qingtian Guan.
+- **Instructors**: Bin Wang, Kexin Gao, Ruihong Wu, Ruohan Yang.
+- **Advisors**: Mingwan Liu, Sirui Dong, Xilei Song, Yurui Wei.
 
 <p align="center">
   <img src="docs/media/readme-institutions.svg" alt="Jilin University; The First Bethune Hospital of Jilin University; The First Bethune Clinical Medical College of Jilin University." width="640" />
@@ -1368,9 +1344,8 @@ Preserve the shared footer's license notice and official GitLab repository link.
 | المورد | الرابط |
 | --- | --- |
 | موقع Wiki الرسمي | [المشروع والنتائج](https://2026.igem.wiki/jlu-fbh/) |
-| معاينة التطوير | [النسخة التي يجري تطويرها](https://wiki.dayquay.com/jlu-fbh/) |
 | فيديو المشروع | [منصة الفيديو الرسمية لـ iGEM](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
-| الشيفرة على GitHub | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| الشيفرة على GitHub | [JLU-FBH-2026](https://github.com/xiangyupaiso/JLU-FBH-2026) |
 | مستودع GitLab الرسمي | [الشيفرة وسجل النشر](https://gitlab.igem.org/2026/jlu-fbh) |
 
 يُنشر الموقع الرسمي ومعاينة التطوير بصورة مستقلة، وقد يختلف محتواهما. راجع [دليل النشر باللغة الإنجليزية](docs/deployment.en.md). يغيّر اختيار اللغة أعلى الصفحة دليل README المعروض؛ وتحتفظ صفحات الموقع والوثائق المرتبطة بلغاتها الأصلية.
@@ -1504,9 +1479,8 @@ Le [portail Games](https://2026.igem.wiki/jlu-fbh/games) réunit le laboratoire 
 | Ressource | Accès |
 | --- | --- |
 | Wiki officiel | [Projet et résultats](https://2026.igem.wiki/jlu-fbh/) |
-| Aperçu de développement | [Version en cours d’évolution](https://wiki.dayquay.com/jlu-fbh/) |
 | Vidéo du projet | [Plateforme vidéo officielle iGEM](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
-| Code GitHub | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| Code GitHub | [JLU-FBH-2026](https://github.com/xiangyupaiso/JLU-FBH-2026) |
 | GitLab officiel | [Source et historique de publication](https://gitlab.igem.org/2026/jlu-fbh) |
 
 Les sites officiel et de développement sont déployés séparément et peuvent présenter des contenus différents. Voir le [guide de déploiement (anglais)](docs/deployment.en.md). Le choix de langue en haut de cette page change le guide README ; les pages du Wiki et les documents liés conservent leur langue.
@@ -1629,9 +1603,8 @@ Ce guide est une synthèse traduite du README. Pour l’ensemble des détails te
 | Ресурс | Ссылка |
 | --- | --- |
 | Официальная Wiki | [Проект и результаты](https://2026.igem.wiki/jlu-fbh/) |
-| Предварительная версия | [Текущая разработка](https://wiki.dayquay.com/jlu-fbh/) |
 | Видео проекта | [Официальная видеоплатформа iGEM](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
-| Код на GitHub | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| Код на GitHub | [JLU-FBH-2026](https://github.com/xiangyupaiso/JLU-FBH-2026) |
 | Официальный GitLab | [Код и история публикаций](https://gitlab.igem.org/2026/jlu-fbh) |
 
 Официальный сайт и предварительная версия развёртываются отдельно и могут различаться по содержанию. См. [руководство по развёртыванию (английский)](docs/deployment.en.md). Выбор языка вверху переключает руководство README; страницы Wiki и связанные документы сохраняют свой язык.
@@ -1754,9 +1727,8 @@ El [portal Games](https://2026.igem.wiki/jlu-fbh/games) reúne el laboratorio vi
 | Recurso | Acceso |
 | --- | --- |
 | Wiki oficial | [Proyecto y resultados](https://2026.igem.wiki/jlu-fbh/) |
-| Vista de desarrollo | [Versión en evolución](https://wiki.dayquay.com/jlu-fbh/) |
 | Vídeo del proyecto | [Plataforma oficial de vídeo iGEM](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
-| Código en GitHub | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| Código en GitHub | [JLU-FBH-2026](https://github.com/xiangyupaiso/JLU-FBH-2026) |
 | GitLab oficial | [Código e historial de publicación](https://gitlab.igem.org/2026/jlu-fbh) |
 
 El sitio oficial y la vista de desarrollo se despliegan por separado y pueden mostrar contenidos distintos. Consulta la [guía de despliegue (inglés)](docs/deployment.en.md). El selector de idioma superior cambia la guía README; las páginas del Wiki y los documentos enlazados conservan su idioma.
@@ -1879,9 +1851,8 @@ Das [Spieleportal](https://2026.igem.wiki/jlu-fbh/games) bündelt das virtuelle 
 | Ressource | Zugang |
 | --- | --- |
 | Offizielles Wiki | [Projekt und Ergebnisse](https://2026.igem.wiki/jlu-fbh/) |
-| Entwicklungsvorschau | [Laufende Weiterentwicklung](https://wiki.dayquay.com/jlu-fbh/) |
 | Projektvideo | [Offizielle iGEM-Videoplattform](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
-| GitHub-Quellcode | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| GitHub-Quellcode | [JLU-FBH-2026](https://github.com/xiangyupaiso/JLU-FBH-2026) |
 | Offizielles GitLab | [Quellcode und Veröffentlichungsverlauf](https://gitlab.igem.org/2026/jlu-fbh) |
 
 Offizielle Website und Entwicklungsvorschau werden getrennt bereitgestellt und können unterschiedliche Inhalte zeigen. Einzelheiten stehen im [Bereitstellungsleitfaden (Englisch)](docs/deployment.en.md). Die Sprachauswahl oben wechselt den README-Leitfaden; Wiki-Seiten und verlinkte Dokumente behalten ihre jeweilige Sprache.
@@ -2004,9 +1975,8 @@ Dieser Leitfaden ist eine übersetzte Zusammenfassung des README. Vollständige 
 | 資料 | リンク |
 | --- | --- |
 | 公式 Wiki | [プロジェクトと研究結果](https://2026.igem.wiki/jlu-fbh/) |
-| 開発プレビュー | [継続して更新される開発版](https://wiki.dayquay.com/jlu-fbh/) |
 | 紹介動画 | [iGEM 公式動画プラットフォーム](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
-| GitHub ソース | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| GitHub ソース | [JLU-FBH-2026](https://github.com/xiangyupaiso/JLU-FBH-2026) |
 | 公式 GitLab | [ソースと公開履歴](https://gitlab.igem.org/2026/jlu-fbh) |
 
 公式サイトと開発プレビューは別々にデプロイされるため、内容が異なる場合があります。詳細は[デプロイガイド（英語）](docs/deployment.en.md)をご覧ください。ページ上部の言語選択は README ガイドを切り替えます。Wiki 本体やリンク先の文書は、それぞれの言語のままです。
@@ -2129,9 +2099,8 @@ yarn preview
 | 자료 | 링크 |
 | --- | --- |
 | 공식 Wiki | [프로젝트와 연구 결과](https://2026.igem.wiki/jlu-fbh/) |
-| 개발 미리보기 | [계속 수정되는 개발 버전](https://wiki.dayquay.com/jlu-fbh/) |
 | 프로젝트 소개 영상 | [iGEM 공식 영상 플랫폼](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
-| GitHub 소스 | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| GitHub 소스 | [JLU-FBH-2026](https://github.com/xiangyupaiso/JLU-FBH-2026) |
 | 공식 GitLab | [소스와 배포 이력](https://gitlab.igem.org/2026/jlu-fbh) |
 
 공식 사이트와 개발 미리보기는 별도로 배포되므로 내용이 다를 수 있습니다. [배포 안내서(영어)](docs/deployment.en.md)를 참고하세요. 상단 언어 선택은 README 안내서를 전환합니다. Wiki 페이지와 연결된 문서는 각자의 언어를 유지합니다.
@@ -2254,9 +2223,8 @@ O [portal Games](https://2026.igem.wiki/jlu-fbh/games) reúne o laboratório vir
 | Recurso | Acesso |
 | --- | --- |
 | Wiki oficial | [Projeto e resultados](https://2026.igem.wiki/jlu-fbh/) |
-| Prévia de desenvolvimento | [Versão em evolução](https://wiki.dayquay.com/jlu-fbh/) |
 | Vídeo do projeto | [Plataforma oficial de vídeos do iGEM](https://video.igem.org/w/m8LNK1BBUzt9hSXsHRqH16) |
-| Código no GitHub | [Official-wiki](https://github.com/xiangyupaiso/Official-wiki) |
+| Código no GitHub | [JLU-FBH-2026](https://github.com/xiangyupaiso/JLU-FBH-2026) |
 | GitLab oficial | [Código e histórico de publicação](https://gitlab.igem.org/2026/jlu-fbh) |
 
 O site oficial e a prévia de desenvolvimento são publicados separadamente e podem apresentar conteúdos diferentes. Consulte o [guia de implantação (inglês)](docs/deployment.en.md). A seleção de idioma no topo muda o guia README; as páginas do Wiki e os documentos vinculados mantêm seus próprios idiomas.
